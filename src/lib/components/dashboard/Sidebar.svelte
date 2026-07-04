@@ -44,7 +44,7 @@
   <div class="sidebar-top-glow" aria-hidden="true"></div>
 
   <!-- Logo -->
-  <div class="relative z-10 px-5 pt-6 pb-3 flex items-center justify-between">
+  <div class="relative z-10 pt-6 pb-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <img src="/genfx-logo.png" alt="GenesisFX" class="h-8 w-auto" />
     </div>
@@ -57,15 +57,15 @@
     </button>
   </div>
 
-  <div class="relative z-10 px-5 pb-2">
+  <div class="relative z-10 pb-2">
     <span class="text-white text-[14px]">AI-Powered Trading</span>
   </div>
 
   <!-- Divider -->
-  <div class="mx-5 my-3 h-0 outline outline-1 outline-offset-[-0.51px] outline-zinc-900" aria-hidden="true"></div>
+  <div class="py-4" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="269" height="2" viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#paint0_linear_2533_1364_1)" stroke-width="1.02273" stroke-linecap="round"></path><defs><linearGradient id="paint0_linear_2533_1364_1" x1="7.67046" y1="1.01136" x2="268.466" y2="1.01136" gradientUnits="userSpaceOnUse"><stop stop-color="#0F221C"></stop><stop offset="0.562406" stop-color="#005C3D"></stop><stop offset="1" stop-color="#0F221C"></stop></linearGradient></defs></svg></div>
 
   <!-- User Account -->
-  <div class="relative z-10 px-5 mb-2">
+  <div class="relative z-10 mb-2">
     <div class="text-[14px] text-gfx-neutral-300 mb-3">User Account</div>
     <div class="user-card flex items-center gap-3 p-3 rounded-2xl bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
       <div class="user-card-glow" aria-hidden="true"></div>
@@ -83,10 +83,10 @@
   </div>
 
   <!-- Divider -->
-  <div class="mx-5 my-3 h-0 outline outline-1 outline-offset-[-0.51px] outline-zinc-900" aria-hidden="true"></div>
+  <div class="py-4" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="269" height="2" viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#paint0_linear_2533_1364_2)" stroke-width="1.02273" stroke-linecap="round"></path><defs><linearGradient id="paint0_linear_2533_1364_2" x1="7.67046" y1="1.01136" x2="268.466" y2="1.01136" gradientUnits="userSpaceOnUse"><stop stop-color="#0F221C"></stop><stop offset="0.562406" stop-color="#005C3D"></stop><stop offset="1" stop-color="#0F221C"></stop></linearGradient></defs></svg></div>
 
   <!-- Navigation -->
-  <div class="relative z-10 px-5 flex-1 overflow-y-auto">
+  <div class="relative z-10 flex-1 overflow-y-auto">
     <div class="text-[14px] text-gfx-neutral-300 mb-3">Overview</div>
     <nav aria-label="Main menu">
       <ul class="flex flex-col gap-1.5" role="list">
@@ -129,25 +129,13 @@
   </div>
 
   <!-- Switch Modes -->
-  <div class="relative z-10 px-5 mb-4">
+  <div class="relative z-10">
     <div class="text-[16px] text-white font-medium mb-3">Switch Modes</div>
     <ModeToggle />
   </div>
 
-  <!-- Trade Button -->
-  <div class="relative z-10 px-5 mb-4 flex justify-center">
-    <button class="trade-btn relative w-28 h-12 rounded-[300px] font-medium text-base text-black cursor-pointer border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500">
-      <div class="absolute inset-0 left-[7px] top-[3px] w-28 h-11 bg-gradient-to-b from-neutral-300/0 to-teal-700 rounded-[276px] blur-xl" aria-hidden="true"></div>
-      <div class="absolute inset-0 w-28 h-12 bg-gradient-to-b from-neutral-300/0 to-teal-400 rounded-[240px] blur-md" aria-hidden="true"></div>
-      <div class="absolute left-0 top-[3px] w-28 h-11 rounded-[300px]" style="background: linear-gradient(324deg, rgb(212,212,212) 18%, rgb(204,251,241) 64%, rgb(204,251,241) 80%)" aria-hidden="true"></div>
-      <div class="absolute left-0 top-[3px] w-28 h-11 bg-gradient-to-l from-neutral-300 to-teal-200/0 rounded-[300px] blur-xs" aria-hidden="true"></div>
-      <div class="absolute left-0 top-[3px] w-28 h-11 bg-gradient-to-l from-cyan-50 to-teal-200/0 rounded-[300px] blur-xs" aria-hidden="true"></div>
-      <span class="relative z-10">Trade</span>
-    </button>
-  </div>
-
   <!-- Logout -->
-  <div class="relative z-10 px-5 pb-5">
+  <div class="relative z-10 pb-5">
     <NavButton>
       <LogoutIcon />
       <span class="text-gfx-neutral-300">Logout</span>
