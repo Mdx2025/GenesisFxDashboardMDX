@@ -13,8 +13,8 @@ export function ActionItem({ title, subtitle, icon }: ActionItemProps) {
         {icon}
       </div>
       <div>
-        <div className="text-[16px] text-white">{title}</div>
-        <div className="text-gfx-neutral-300 text-[14px]">{subtitle}</div>
+        <span className="text-btn text-white block">{title}</span>
+        <span className="text-gfx-neutral-300 text-body1 block">{subtitle}</span>
       </div>
     </button>
   )

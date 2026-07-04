@@ -16,7 +16,7 @@ export function QuickActions() {
     <GlassCard variant="heavy" divider="white" rounded="20px" className="h-full">
       <div className="absolute w-[250px] h-[120px] right-[-40px] top-[-20px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(100px)' }} aria-hidden="true" />
       <div className="relative z-10 p-4 sm:p-6">
-        <h2 className="text-[16px] text-white mb-4">Quick Actions</h2>
+        <h2 className="text-btn text-white mb-4 font-normal">Quick Actions</h2>
         <div className="flex flex-col gap-3">
           {quickActions.map((action) => (
             <ActionItem

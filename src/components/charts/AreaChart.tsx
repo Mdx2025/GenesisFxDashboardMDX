@@ -44,5 +44,5 @@ export function AreaChart({ color = '#10BC83', className = 'h-14' }: AreaChartPr
     return () => { mounted = false; chartRef.current?.destroy() }
   }, [color])
 
-  return <div className={className}><canvas ref={canvasRef} className="w-full h-full" /></div>
+  return <div className={className}><canvas ref={canvasRef} className="w-full h-full" aria-label="Trend chart" role="img" /></div>
 }

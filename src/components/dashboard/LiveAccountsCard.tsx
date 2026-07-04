@@ -21,9 +21,9 @@ export function LiveAccountsCard({
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
       <div className="relative z-10 flex h-full p-4 sm:p-6">
         <div className="flex-1 flex flex-col justify-center">
-          <div className="text-card-label text-gfx-neutral-500 mb-2">Live Accounts</div>
-          <div className="text-card-value text-white mb-1">{accounts.length}</div>
-          <div className="text-card-label text-gfx-neutral-500">Active</div>
+          <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">Live Accounts</h3>
+          <p className="text-card-value text-white mb-1">{accounts.length}</p>
+          <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
         <div className="flex items-end gap-2">
           {accounts.map((acc) => (

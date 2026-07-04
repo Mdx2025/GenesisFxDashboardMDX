@@ -15,6 +15,7 @@ export function SearchInput({ placeholder = 'Search for', value = '', onChange }
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
+        aria-label="Search accounts"
         className="pl-9 pr-4 py-2.5 border border-gfx-card-border rounded-full bg-transparent text-white text-body2 w-[200px] focus:border-gfx-green-500/30 focus:outline-none transition-colors placeholder:text-gfx-neutral-300"
       />
     </div>

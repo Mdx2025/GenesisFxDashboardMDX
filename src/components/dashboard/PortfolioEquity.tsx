@@ -9,9 +9,9 @@ export function PortfolioEquity() {
       <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
         <div className="flex items-start justify-between mb-4 flex-wrap gap-3">
           <div>
-            <div className="text-tab uppercase tracking-[2.32px] text-gfx-neutral-300 mb-2">PORTFOLIO EQUITY</div>
-            <div className="text-2xl sm:text-3xl text-white mb-1">$17,897.30</div>
-            <div className="text-sm text-gfx-green-500">+$6,437.21 (56.1%)</div>
+            <h2 className="text-tab uppercase tracking-[2.32px] text-gfx-neutral-300 mb-2">PORTFOLIO EQUITY</h2>
+            <p className="text-2xl sm:text-3xl text-white mb-1">$17,897.30</p>
+            <p className="text-sm text-gfx-green-500">+$6,437.21 (56.1%)</p>
           </div>
           <PeriodPill />
         </div>

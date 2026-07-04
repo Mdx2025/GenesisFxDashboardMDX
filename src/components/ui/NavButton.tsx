@@ -3,15 +3,17 @@ import type { ReactNode } from 'react'
 
 interface NavButtonProps {
   active?: boolean
+  expanded?: boolean
   children: ReactNode
   onClick?: () => void
 }
 
-export function NavButton({ active = false, children, onClick }: NavButtonProps) {
+export function NavButton({ active = false, expanded, children, onClick }: NavButtonProps) {
   return (
     <button
       className={`nav-btn rounded-xl py-2.5 lg:py-2 2xl:py-3 px-2 ${active ? 'active' : ''}`}
       aria-current={active ? 'page' : undefined}
+      aria-expanded={expanded}
       onClick={onClick}
     >
       {children}

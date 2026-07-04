@@ -66,7 +66,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="relative z-10 mb-1.5 2xl:mb-2">
-          <div className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3">User Account</div>
+          <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal">User Account</h2>
           <div className="user-card flex items-center gap-3 p-3 rounded-2xl bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
             <div className="user-card-glow" aria-hidden="true" />
             <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none" style={{ background: '#104030' }} aria-hidden="true" />
@@ -77,8 +77,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               <span className="relative z-10">M</span>
             </div>
             <div className="relative z-10">
-              <div className="text-white text-sidebar-label leading-5">Marcelo Cedeno</div>
-              <div className="text-gfx-neutral-300 text-sidebar-label leading-5">Sep 27th, 2025</div>
+              <p className="text-white text-sidebar-label leading-5">Marcelo Cedeno</p>
+              <time className="text-gfx-neutral-300 text-sidebar-label leading-5 block" dateTime="2025-09-27">Sep 27th, 2025</time>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="relative z-10 flex-1 overflow-y-auto">
-          <div className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3">Overview</div>
+          <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal">Overview</h2>
           <nav aria-label="Main menu">
             <ul className="flex flex-col gap-1" role="list">
               {navItems.map((item) => {
@@ -97,6 +97,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   <li key={item.id}>
                     <NavButton
                       active={item.active}
+                      expanded={item.submenu ? tradelockerOpen : undefined}
                       onClick={item.submenu ? () => setTradelockerOpen(!tradelockerOpen) : undefined}
                     >
                       {Icon && <Icon />}
@@ -129,7 +130,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="relative z-10 flex flex-col gap-3 2xl:gap-6">
-          <div className="text-sidebar-btn text-white font-normal mb-1">Switch Modes</div>
+          <h3 className="text-sidebar-btn text-white font-normal mb-1">Switch Modes</h3>
           <ModeToggle />
           <NavButton>
             <LogoutIcon />

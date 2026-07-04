@@ -45,5 +45,5 @@ export function CandlestickChart({ data, className = 'h-14' }: CandlestickChartP
     return () => { mounted = false; chartRef.current?.destroy() }
   }, [data])
 
-  return <div className={className}><canvas ref={canvasRef} className="w-full h-full" /></div>
+  return <div className={className}><canvas ref={canvasRef} className="w-full h-full" aria-label="Candlestick chart" role="img" /></div>
 }

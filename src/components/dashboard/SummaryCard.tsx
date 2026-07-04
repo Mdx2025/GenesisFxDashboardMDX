@@ -27,8 +27,8 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', g
         aria-hidden="true"
       />
       <div className="relative z-10 px-4 pt-4 sm:px-6 sm:pt-6">
-        <div className="text-card-label text-gfx-neutral-500 mb-2">{title}</div>
-        <div className="text-card-value text-white mb-2">{value}</div>
+        <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">{title}</h3>
+        <p className="text-card-value text-white mb-2">{value}</p>
         <div className="flex items-center gap-1.5">
           <span className={`text-card-change ${colorMap[changeColor]}`}>{arrow}</span>
           <span className={`text-card-change ${colorMap[changeColor]}`}>{changeText}</span>

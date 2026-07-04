@@ -26,7 +26,7 @@ export function AssetsIcon({ size = 21, color = 'currentColor', className }: Ico
 
 export function TradelockerIcon({ size = 21, className }: IconProps) {
   return (
-    <img src="/tradelocker-logo.svg" width={size} height={size} alt="" className={className} style={{ borderRadius: 5 }} />
+    <img src="/tradelocker-logo.svg" width={size} height={size} alt="Tradelocker" className={className} style={{ borderRadius: 5 }} />
   )
 }
 

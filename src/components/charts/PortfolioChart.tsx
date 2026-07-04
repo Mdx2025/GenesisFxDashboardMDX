@@ -58,5 +58,5 @@ export function PortfolioChart() {
     return () => { mounted = false; chartRef.current?.destroy() }
   }, [])
 
-  return <canvas ref={canvasRef} className="w-full h-full" />
+  return <canvas ref={canvasRef} className="w-full h-full" aria-label="Portfolio equity chart over 12 months" role="img" />
 }
