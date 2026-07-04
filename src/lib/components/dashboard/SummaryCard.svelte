@@ -43,10 +43,8 @@
     </div>
 
     {#if children}
-      <div class="mt-2 flex justify-end">
-        <div class="w-1/2">
-          {@render children()}
-        </div>
+      <div class="mt-auto">
+        {@render children()}
       </div>
     {/if}
   </div>

@@ -1,8 +1,8 @@
 <script>
   import { browser } from '$app/environment';
 
-  /** @type {{ data: Array<{wickTop: number, body: number, wickBottom: number, bullish: boolean}>, height?: number }} */
-  let { data = [], height = 48 } = $props();
+  /** @type {{ data: Array<{wickTop: number, body: number, wickBottom: number, bullish: boolean}>, className?: string }} */
+  let { data = [], className = 'h-14' } = $props();
 
   let canvasEl = $state(null);
 
@@ -22,7 +22,7 @@
       instance = new Chart(canvasEl.getContext('2d'), {
         type: 'bar',
         data: {
-          labels: data.map((_, i) => ''),
+          labels: data.map(() => ''),
           datasets: [{
             data: barData,
             backgroundColor: colors,
@@ -59,6 +59,6 @@
   });
 </script>
 
-<div style="height: {height}px" role="img" aria-label="Candlestick chart">
+<div class={className} role="img" aria-label="Candlestick chart">
   <canvas bind:this={canvasEl}></canvas>
 </div>

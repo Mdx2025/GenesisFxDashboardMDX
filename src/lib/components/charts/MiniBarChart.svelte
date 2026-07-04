@@ -1,8 +1,8 @@
 <script>
   import { browser } from '$app/environment';
 
-  /** @type {{ data: Array<{value: number, label?: string}>, maxHeight?: number }} */
-  let { data = [], maxHeight = 48 } = $props();
+  /** @type {{ data: Array<{value: number, label?: string}>, className?: string }} */
+  let { data = [], className = 'h-14' } = $props();
 
   let canvasEl = $state(null);
 
@@ -19,7 +19,7 @@
       instance = new Chart(canvasEl.getContext('2d'), {
         type: 'bar',
         data: {
-          labels: data.map((d, i) => d.label || ''),
+          labels: data.map((d) => d.label || ''),
           datasets: [{
             data: data.map(d => d.value),
             backgroundColor: (ctx) => {
@@ -46,10 +46,17 @@
               borderColor: 'rgba(255,255,255,0.1)',
               borderWidth: 1,
               displayColors: false,
+              callbacks: {
+                label: (ctx) => `$${ctx.parsed.y.toLocaleString()}`
+              }
             }
           },
           scales: {
-            x: { display: false },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#606060', font: { size: 9 } },
+              border: { display: false }
+            },
             y: { display: false }
           }
         }
@@ -63,6 +70,6 @@
   });
 </script>
 
-<div style="height: {maxHeight}px" role="img" aria-label="Bar chart">
+<div class={className} role="img" aria-label="Bar chart">
   <canvas bind:this={canvasEl}></canvas>
 </div>

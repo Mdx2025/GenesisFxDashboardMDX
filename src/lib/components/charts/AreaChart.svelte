@@ -1,8 +1,8 @@
 <script>
   import { browser } from '$app/environment';
 
-  /** @type {{ color?: string, height?: number }} */
-  let { color = '#e29d58', height = 48 } = $props();
+  /** @type {{ color?: string, className?: string }} */
+  let { color = '#10BC83', className = 'h-14' } = $props();
 
   let canvasEl = $state(null);
 
@@ -17,7 +17,8 @@
       Chart.register(...registerables);
 
       const ctx = canvasEl.getContext('2d');
-      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      const rect = canvasEl.parentElement.getBoundingClientRect();
+      const gradient = ctx.createLinearGradient(0, 0, 0, rect.height);
       gradient.addColorStop(0, color + '4D');
       gradient.addColorStop(1, color + '00');
 
@@ -26,7 +27,7 @@
         data: {
           labels: ['', '', '', '', '', '', ''],
           datasets: [{
-            data: [50, 45, 40, 25, 30, 15, 10],
+            data: [10, 15, 12, 25, 22, 35, 50],
             borderColor: color,
             backgroundColor: gradient,
             borderWidth: 2,
@@ -65,6 +66,6 @@
   });
 </script>
 
-<div class="relative" style="height: {height}px" role="img" aria-label="Area trend chart">
+<div class={className} role="img" aria-label="Area trend chart">
   <canvas bind:this={canvasEl}></canvas>
 </div>

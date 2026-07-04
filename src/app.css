@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @font-face {
   font-family: 'Acid Grotesk';
@@ -8,6 +6,47 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+}
+
+@theme {
+  --font-acid: "Acid Grotesk", sans-serif;
+
+  --color-gfx-green-50: #01130d;
+  --color-gfx-green-100: #021B13;
+  --color-gfx-green-200: #064B34;
+  --color-gfx-green-500: #10BC83;
+  --color-gfx-green-glow: #00f0a0;
+
+  --color-gfx-neutral-300: #606060;
+  --color-gfx-neutral-500: #A0A0A0;
+
+  --color-gfx-red: #ff717e;
+  --color-gfx-red-dark: #ff4d6a;
+  --color-gfx-amber: #e29d58;
+  --color-gfx-sidebar: #000705;
+  --color-gfx-main: #040b09;
+  --color-gfx-card-border: oklch(100% 0 0 / 0.06);
+  --color-gfx-card-bg: oklch(100% 0 0 / 0.03);
+  --color-gfx-bullish: #0c9104;
+  --color-gfx-bearish: #b8312b;
+
+  --font-size-h1: 50px;
+  --font-size-h1--line-height: 100%;
+  --font-size-h2: 36px;
+  --font-size-h2--line-height: 100%;
+  --font-size-h3: 24px;
+  --font-size-h3--line-height: 100%;
+  --font-size-body1: 14px;
+  --font-size-body1--line-height: 18.8px;
+  --font-size-body2: 12px;
+  --font-size-body2--line-height: 18.8px;
+  --font-size-btn: 16px;
+  --font-size-btn--line-height: 24.44px;
+  --font-size-micro: 16px;
+  --font-size-micro--line-height: 24.44px;
+  --font-size-tab: 12px;
+  --font-size-tab--line-height: 15.68px;
+  --font-size-tab--letter-spacing: 2.32px;
 }
 
 @layer base {
