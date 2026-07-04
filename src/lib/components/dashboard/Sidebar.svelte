@@ -128,14 +128,10 @@
     </nav>
   </div>
 
-  <!-- Switch Modes -->
-  <div class="relative z-10">
-    <div class="text-[16px] text-white font-medium mb-3">Switch Modes</div>
+  <!-- Switch Modes + Logout -->
+  <div class="relative z-10 flex flex-col gap-1.5 pb-5">
+    <div class="text-[16px] text-white font-medium mb-1.5">Switch Modes</div>
     <ModeToggle />
-  </div>
-
-  <!-- Logout -->
-  <div class="relative z-10 pb-5">
     <NavButton>
       <LogoutIcon />
       <span class="text-gfx-neutral-300">Logout</span>
