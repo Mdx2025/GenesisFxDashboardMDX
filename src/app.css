@@ -30,6 +30,11 @@
   --color-gfx-bullish: #0c9104;
   --color-gfx-bearish: #b8312b;
 
+  --color-gfx-glow-green: #104030;
+  --color-gfx-glow-red: #241B1C;
+  --color-gfx-glow-amber: #281E14;
+  --color-gfx-glow-green-light: #104030;
+
   --font-size-h1: 50px;
   --font-size-h1--line-height: 100%;
   --font-size-h2: 36px;

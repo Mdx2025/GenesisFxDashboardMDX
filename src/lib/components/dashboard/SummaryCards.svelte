@@ -7,7 +7,7 @@
   import { MoreDotsIcon } from '$icons';
   import { summaryCards } from '$data/summary-cards.js';
 
-  const glowPattern = ['green', 'stone', 'stone', 'green'];
+  const glowColors = ['#104030', '#241B1C', '#281E14', 'rgba(16, 64, 48, 0.6)'];
 </script>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-4">
@@ -16,7 +16,7 @@
       <!-- Live Accounts card -->
       <div class="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl">
         <div class="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-white/0 via-white/10 to-white/0"></div>
-        <div class="absolute w-[493px] h-72 -left-[72px] -bottom-10 rounded-full blur-[157px] pointer-events-none {glowPattern[i] === 'green' ? 'bg-green-900' : 'bg-stone-900'}" aria-hidden="true"></div>
+        <div class="absolute w-[493px] h-72 -left-[72px] -bottom-10 rounded-full blur-[157px] pointer-events-none" style="background: {glowColors[i]}" aria-hidden="true"></div>
 
         <div class="relative z-10 p-5 flex flex-col h-full">
           <div class="flex items-center justify-between mb-3">
@@ -49,7 +49,7 @@
         value={card.value}
         changeText="{card.change}{card.changeLabel ? ` ${card.changeLabel}` : ''}"
         changeColor={card.changeColor}
-        glowColor={glowPattern[i]}
+        glowColor={glowColors[i]}
       >
         {#if card.chartType === 'bar'}
           <MiniBarChart data={card.chartData} className="h-16" />
