@@ -1,11 +1,8 @@
-[phases.setup]
-nixPkgs = ["nodejs_22", "nginx"]
-
 [phases.install]
 cmds = ["npm install -g pnpm@latest", "pnpm install --frozen-lockfile"]
 
 [phases.build]
-cmds = ["pnpm build", "cp -r dist /usr/share/nginx/html", "cp nginx.conf /etc/nginx/conf.d/default.conf"]
+cmds = ["pnpm build"]
 
 [start]
-cmd = "nginx -g 'daemon off;'"
+cmd = "node server.js"
