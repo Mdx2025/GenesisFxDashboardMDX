@@ -28,7 +28,7 @@
       <div class="w-1/2 flex flex-col px-5 pb-4">
         <div class="flex items-center gap-2 mt-2">
           <span class="text-4xl text-white font-normal font-acid">3</span>
-          <span class="text-sm font-normal font-acid leading-5 text-gfx-green-500">Active</span>
+          <span class="text-sm font-normal font-acid leading-5" style="color: #606060">Active</span>
         </div>
       </div>
 

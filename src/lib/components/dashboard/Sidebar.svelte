@@ -68,6 +68,7 @@
     <div class="text-[14px] text-gfx-neutral-300 mb-3">User Account</div>
     <div class="user-card flex items-center gap-3 p-3 rounded-2xl bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
       <div class="user-card-glow" aria-hidden="true"></div>
+      <div class="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none" style="background: #104030" aria-hidden="true"></div>
       <div class="relative z-10 w-9 h-9 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-[16px] overflow-hidden">
         <svg class="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
           <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="blur(30px)"/>
