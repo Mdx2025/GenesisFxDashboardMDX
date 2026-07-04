@@ -8,10 +8,10 @@
   <div class="p-4">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
       <div class="flex items-center gap-3">
-        <span class="text-[16px] font-medium text-white">Trading Accounts</span>
+        <span class="text-[16px] font-medium text-white whitespace-nowrap">Trading Accounts</span>
         <Badge variant="status">2 ACTIVE</Badge>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 w-full sm:w-auto">
         <SearchInput placeholder="Search for" />
         <SparkleButton size="small">
           <span class="flex items-center gap-1.5">

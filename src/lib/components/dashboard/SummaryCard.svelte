@@ -17,10 +17,10 @@
   <div class="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full blur-[157px] pointer-events-none" style="background: {glowColor}" aria-hidden="true"></div>
 
   <div class="relative z-10 flex flex-col h-full">
-    <div class="px-6 pt-6">
+    <div class="px-4 pt-4 sm:px-6 sm:pt-6">
       <div class="text-sm font-normal font-acid leading-5 text-gfx-neutral-500 mb-2">{title}</div>
 
-      <div class="text-4xl text-white font-normal font-acid mb-2">{value}</div>
+      <div class="text-2xl sm:text-4xl text-white font-normal font-acid mb-2">{value}</div>
 
       <div class="flex items-center gap-1.5">
         <span class="text-xs font-bold {colorClasses[changeColor]}">{changeColor === 'red' ? '▼' : '▲'}</span>

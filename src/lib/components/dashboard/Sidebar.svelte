@@ -35,8 +35,8 @@
 {/if}
 
 <aside
-  class="sidebar w-[260px] 2xl:w-xs min-h-screen bg-black border-r border-zinc-900 flex flex-col relative shrink-0 sticky top-0 h-screen overflow-hidden p-5 2xl:p-6
-  fixed inset-y-0 left-0 z-50 transform transition-transform lg:translate-x-0 lg:relative lg:z-auto
+  class="sidebar w-[260px] 2xl:w-xs min-h-screen bg-black border-r border-zinc-900 flex flex-col shrink-0 h-screen overflow-hidden p-5 2xl:p-6
+  fixed inset-y-0 left-0 z-50 transition-transform lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto
   {$sidebarOpen ? 'translate-x-0' : '-translate-x-full'}"
   aria-label="Main navigation"
 >
