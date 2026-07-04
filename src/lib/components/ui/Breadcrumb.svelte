@@ -17,7 +17,7 @@
       {/if}
       <li class="flex items-center">
         {#if item.current}
-          <span class="font-medium" style="color: #606060">{item.label}</span>
+          <span class="font-normal" style="color: #606060">{item.label}</span>
         {:else}
           <a href={item.href || '#'} class="hover:opacity-80 transition-colors" style="color: #606060">
             {item.label}

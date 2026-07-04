@@ -23,7 +23,7 @@
       <div class="text-2xl sm:text-4xl text-white font-normal font-acid mb-2">{value}</div>
 
       <div class="flex items-center gap-1.5">
-        <span class="text-xs font-bold {colorClasses[changeColor]}">{changeColor === 'red' ? '▼' : '▲'}</span>
+        <span class="text-xs font-normal {colorClasses[changeColor]}">{changeColor === 'red' ? '▼' : '▲'}</span>
         <span class="text-sm font-normal font-acid leading-5 {colorClasses[changeColor]}">{changeText}</span>
       </div>
     </div>

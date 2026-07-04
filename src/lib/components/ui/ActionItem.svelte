@@ -8,7 +8,7 @@
     {@render icon()}
   </div>
   <div class="text-left">
-    <div class="text-white text-base font-medium font-acid leading-6">{title}</div>
+    <div class="text-white text-base font-normal font-acid leading-6">{title}</div>
     <div class="text-gfx-neutral-300 text-sm font-normal font-acid leading-5">{subtitle}</div>
   </div>
 </button>

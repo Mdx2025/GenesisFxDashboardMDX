@@ -9,7 +9,7 @@
   <div class="w-28 h-11 absolute left-0 top-[3px] rounded-[300px] bg-gradient-to-br from-neutral-300 via-teal-100 to-teal-100" aria-hidden="true"></div>
   <div class="w-28 h-11 absolute left-0 top-[3px] rounded-[300px] bg-gradient-to-l from-neutral-300 to-teal-200/0 blur-xs" aria-hidden="true"></div>
   <div class="w-28 h-11 absolute left-0 top-[3px] rounded-[300px] bg-gradient-to-l from-cyan-50 to-teal-200/0 blur-xs" aria-hidden="true"></div>
-  <span class="absolute inset-0 flex items-center justify-center text-black text-base font-medium font-acid leading-6 relative z-10">
+  <span class="absolute inset-0 flex items-center justify-center text-black text-base font-normal font-acid leading-6 relative z-10">
     {@render children()}
   </span>
 </button>

@@ -45,7 +45,7 @@
     background: transparent;
     color: #606060;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
     z-index: 1;
     border-radius: 60px;
@@ -61,7 +61,7 @@
     background: rgba(20,184,166,0.2);
     border: none;
     color: #fff;
-    font-weight: 500;
+    font-weight: 400;
   }
   .fading-border {
     position: absolute;

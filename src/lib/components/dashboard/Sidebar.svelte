@@ -130,7 +130,7 @@
 
   <!-- Switch Modes + Logout -->
   <div class="relative z-10 flex flex-col gap-6">
-    <div class="text-[16px] text-white font-medium mb-1.5">Switch Modes</div>
+    <div class="text-[16px] text-white font-normal mb-1.5">Switch Modes</div>
     <ModeToggle />
     <NavButton>
       <LogoutIcon />

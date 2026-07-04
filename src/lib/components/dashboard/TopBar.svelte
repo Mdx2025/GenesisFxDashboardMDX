@@ -21,18 +21,18 @@
   <div class="flex items-center gap-2 sm:gap-4 shrink-0">
     <div class="flex items-center gap-2">
       <GreenDot size={6} />
-      <span class="text-gfx-green-500 text-body2 font-medium hidden sm:inline">Markets Open</span>
+      <span class="text-gfx-green-500 text-body2 font-normal hidden sm:inline">Markets Open</span>
     </div>
 
     <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-gfx-card-border bg-gfx-card-bg">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
         <path d="M7 1v2m0 8v2M1 7h2m8 0h2" stroke="#A0A0A0" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
-      <span class="text-white text-body2 font-medium">$100.00</span>
+      <span class="text-white text-body2 font-normal">$100.00</span>
     </div>
 
     <button
-      class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gfx-card-border bg-gfx-card-bg text-gfx-neutral-500 text-body2 font-medium hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
+      class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gfx-card-border bg-gfx-card-bg text-gfx-neutral-500 text-body2 font-normal hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
       aria-label="Change language, currently English"
     >
       EN

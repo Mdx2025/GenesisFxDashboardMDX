@@ -35,7 +35,7 @@
     <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#sparkle_blur)"/>
   </svg>
 
-  <span class="absolute inset-0 flex items-center justify-center gap-2 text-gfx-neutral-500 text-base font-medium font-acid leading-6 relative z-10">
+  <span class="absolute inset-0 flex items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6 relative z-10">
     {@render children()}
   </span>
 
