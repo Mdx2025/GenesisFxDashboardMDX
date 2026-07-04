@@ -25,7 +25,7 @@
         <div class="flex-1 min-w-0 flex flex-col">
           <PortfolioEquity />
         </div>
-        <div class="w-[280px] shrink-0 flex flex-col">
+        <div class="w-sm shrink-0 flex flex-col">
           <QuickActions />
         </div>
       </div>

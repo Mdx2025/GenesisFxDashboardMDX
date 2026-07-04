@@ -18,7 +18,7 @@
       <div class="flex items-center gap-2">
         <PeriodPill />
         <button
-          class="text-gfx-neutral-500 hover:text-white transition-colors p-2 rounded-lg border border-gfx-card-border bg-gfx-card-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
+          class="size-9 flex items-center justify-center rounded-lg bg-white/[0.03] outline outline-1 outline-offset-[-1px] outline-white/5 text-white hover:bg-white/[0.06] transition-colors focus-visible:outline-2 focus-visible:outline-gfx-green-500"
           aria-label="Select date range"
         >
           <CalendarIcon />
