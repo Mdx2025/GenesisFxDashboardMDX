@@ -1,5 +1,6 @@
 <script>
   import '../app.css';
+  import 'lenis/dist/lenis.css';
   import { onMount } from 'svelte';
   import Lenis from 'lenis';
 
