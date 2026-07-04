@@ -9,7 +9,7 @@
   };
 </script>
 
-<div class="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl">
+<div class="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl h-full">
   <!-- Top divider glow -->
   <div class="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-white/0 via-white/10 to-white/0"></div>
 
@@ -29,8 +29,8 @@
     </div>
 
     {#if children}
-      <div class="flex justify-end mt-auto px-6 pb-4">
-        <div class="w-1/2 h-14">
+      <div class="flex justify-end items-end flex-1">
+        <div class="w-1/2 h-full">
           {@render children()}
         </div>
       </div>
