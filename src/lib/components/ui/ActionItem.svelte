@@ -31,4 +31,8 @@
   .action-item:hover {
     background: rgba(255,255,255,0.04);
   }
+  .action-item:focus-visible {
+    outline: 2px solid #10BC83;
+    outline-offset: 2px;
+  }
 </style>

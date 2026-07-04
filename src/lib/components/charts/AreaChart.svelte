@@ -4,8 +4,8 @@
   const id = `area-${Math.random().toString(36).slice(2, 8)}`;
 </script>
 
-<div class="relative" style="height: {height}px">
-  <svg width="100%" height={height} viewBox="0 0 280 60" preserveAspectRatio="none">
+<div class="relative" style="height: {height}px" role="img" aria-label="Area trend chart">
+  <svg width="100%" height={height} viewBox="0 0 280 60" preserveAspectRatio="none" aria-hidden="true">
     <defs>
       <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color={color} stop-opacity="0.3"/>

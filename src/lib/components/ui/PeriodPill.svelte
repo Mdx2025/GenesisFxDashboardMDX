@@ -5,9 +5,14 @@
   let selected = $state(active);
 </script>
 
-<div class="flex gap-1">
+<div class="flex gap-1" role="group" aria-label="Time period selection">
   {#each periods as period}
-    <button class="period-pill" class:active={selected === period} onclick={() => selected = period}>
+    <button
+      class="period-pill"
+      class:active={selected === period}
+      onclick={() => selected = period}
+      aria-pressed={selected === period}
+    >
       {period}
     </button>
   {/each}
@@ -27,6 +32,10 @@
   }
   .period-pill:hover {
     color: #A0A0A0;
+  }
+  .period-pill:focus-visible {
+    outline: 2px solid #10BC83;
+    outline-offset: 1px;
   }
   .period-pill.active {
     color: #10BC83;

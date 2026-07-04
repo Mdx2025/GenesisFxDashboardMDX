@@ -21,6 +21,10 @@
     cursor: pointer;
     backdrop-filter: blur(10px);
   }
+  .sparkle-btn:focus-visible {
+    outline: 2px solid #10BC83;
+    outline-offset: 2px;
+  }
   .sparkle-btn.small {
     padding: 8px 20px;
     font-size: 13px;

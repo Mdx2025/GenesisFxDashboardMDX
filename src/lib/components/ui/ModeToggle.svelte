@@ -5,9 +5,13 @@
   let active = $state(activeIndex);
 </script>
 
-<div class="mode-toggle">
+<div class="mode-toggle" role="group" aria-label="Mode selection">
   {#each options as option, i}
-    <button class:active={active === i} onclick={() => active = i}>
+    <button
+      class:active={active === i}
+      onclick={() => active = i}
+      aria-pressed={active === i}
+    >
       {option}
     </button>
   {/each}
@@ -35,6 +39,10 @@
     z-index: 1;
     border-radius: 60px;
     transition: all 0.3s;
+  }
+  .mode-toggle button:focus-visible {
+    outline: 2px solid #10BC83;
+    outline-offset: -2px;
   }
   .mode-toggle button.active {
     background: #10BC83;

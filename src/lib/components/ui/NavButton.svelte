@@ -3,7 +3,7 @@
   let { active = false, href = '#', children } = $props();
 </script>
 
-<button class="nav-btn" class:active>
+<button class="nav-btn" class:active aria-current={active ? 'page' : undefined}>
   {@render children()}
 </button>
 
@@ -25,6 +25,10 @@
   }
   .nav-btn:hover {
     background: rgba(255,255,255,0.03);
+  }
+  .nav-btn:focus-visible {
+    outline: 2px solid #10BC83;
+    outline-offset: -2px;
   }
   .nav-btn.active {
     background: #141414;

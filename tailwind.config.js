@@ -25,6 +25,8 @@ export default {
         'gfx-main': '#040b09',
         'gfx-card-border': 'rgba(255,255,255,0.06)',
         'gfx-card-bg': 'rgba(255,255,255,0.03)',
+        'gfx-bullish': '#0c9104',
+        'gfx-bearish': '#b8312b',
       },
       fontSize: {
         'h1': ['50px', { lineHeight: '100%', letterSpacing: '0' }],
