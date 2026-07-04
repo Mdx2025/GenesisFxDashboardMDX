@@ -26,29 +26,18 @@
     </div>
 
     <div class="overflow-x-auto">
-      <table class="w-full table-fixed" aria-label="Trading accounts">
-        <colgroup>
-          <col style="width: 15%;" />
-          <col style="width: 13%;" />
-          <col style="width: 10%;" />
-          <col style="width: 12%;" />
-          <col style="width: 12%;" />
-          <col style="width: 12%;" />
-          <col style="width: 12%;" />
-          <col style="width: 7%;" />
-          <col style="width: 7%;" />
-        </colgroup>
+      <table class="w-full" aria-label="Trading accounts">
         <thead>
           <tr class="border-b border-gfx-card-border">
-            <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Account</th>
-            <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Platform</th>
-            <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Type</th>
-            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Balance</th>
-            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Equity</th>
-            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Closed P&L</th>
-            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Open P&L</th>
-            <th scope="col" class="text-center text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Status</th>
-            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3"><span class="sr-only">Actions</span></th>
+            <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Account</th>
+            <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Platform</th>
+            <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Type</th>
+            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Balance</th>
+            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Equity</th>
+            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Closed P&L</th>
+            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Open P&L</th>
+            <th scope="col" class="text-center text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4 whitespace-nowrap">Status</th>
+            <th scope="col" class="text-right text-tab uppercase text-gfx-neutral-500 font-normal py-3 whitespace-nowrap"><span class="sr-only">Actions</span></th>
           </tr>
         </thead>
         <tbody>
@@ -58,21 +47,21 @@
                 <div class="text-white text-body1 font-normal">{row.account}</div>
                 <div class="text-gfx-neutral-500 text-body2">{row.username}</div>
               </td>
-              <td class="py-3 pr-4 text-gfx-neutral-500 text-body1">{row.platform}</td>
+              <td class="py-3 pr-4 text-gfx-neutral-500 text-body1 whitespace-nowrap">{row.platform}</td>
               <td class="py-3 pr-4">
                 <Badge variant={row.type}>{row.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
               </td>
-              <td class="py-3 pr-4 text-white text-body1 font-normal text-right">{row.balance}</td>
-              <td class="py-3 pr-4 text-white text-body1 font-normal text-right">{row.equity}</td>
-              <td class="py-3 pr-4 text-body1 font-normal text-right {row.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}">{row.closedPL}</td>
-              <td class="py-3 pr-4 text-body1 font-normal text-right {row.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}">{row.openPL}</td>
-              <td class="py-3 pr-4">
+              <td class="py-3 pr-4 text-white text-body1 font-normal text-right whitespace-nowrap">{row.balance}</td>
+              <td class="py-3 pr-4 text-white text-body1 font-normal text-right whitespace-nowrap">{row.equity}</td>
+              <td class="py-3 pr-4 text-body1 font-normal text-right whitespace-nowrap {row.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}">{row.closedPL}</td>
+              <td class="py-3 pr-4 text-body1 font-normal text-right whitespace-nowrap {row.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}">{row.openPL}</td>
+              <td class="py-3 pr-4 whitespace-nowrap">
                 <div class="flex items-center justify-center gap-1.5">
                   <GreenDot size={6} />
                   <span class="text-gfx-green-500 text-body2 font-normal">{row.status}</span>
                 </div>
               </td>
-              <td class="py-3">
+              <td class="py-3 whitespace-nowrap">
                 <div class="flex items-center justify-end gap-6">
                   <button class="text-gfx-neutral-500 hover:text-white text-body2 font-normal transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded px-1">View</button>
                   <TradeButton>Trade</TradeButton>
