@@ -7,7 +7,7 @@
   <div class="size-14 shrink-0 bg-teal-500/5 rounded-xl outline outline-[1.25px] outline-offset-[-1.25px] outline-teal-500/10 flex items-center justify-center">
     {@render icon()}
   </div>
-  <div>
+  <div class="text-left">
     <div class="text-white text-base font-medium font-acid leading-6">{title}</div>
     <div class="text-gfx-neutral-300 text-sm font-normal font-acid leading-5">{subtitle}</div>
   </div>

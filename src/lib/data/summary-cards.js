@@ -36,7 +36,7 @@ export const summaryCards = [
     title: 'Closed P&L (30D)',
     value: '$6,436.51',
     change: '+56.1%',
-    changeColor: 'green',
+    changeColor: 'amber',
     chartType: 'area',
   },
   {
@@ -45,8 +45,5 @@ export const summaryCards = [
     change: 'Active',
     changeColor: 'green',
     chartType: 'mini-bars',
-    isCompact: true,
-    totalValue: '$90,254.58',
-    accountId: 'L#1644545',
   },
 ];

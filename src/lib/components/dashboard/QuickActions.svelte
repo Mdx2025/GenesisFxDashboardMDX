@@ -12,7 +12,8 @@
 </script>
 
 <GlassCard variant="heavy" divider="white" rounded="20px" className="h-full">
-  <div class="p-4 flex-1 flex flex-col">
+  <div class="absolute w-[300px] h-[200px] -right-[60px] -top-[60px] rounded-full blur-[120px] pointer-events-none" style="background: #104030" aria-hidden="true"></div>
+  <div class="relative z-10 p-4 flex-1 flex flex-col">
     <div class="text-[16px] font-medium text-white mb-4">Quick Actions</div>
 
     <div class="flex flex-col gap-2 flex-1">

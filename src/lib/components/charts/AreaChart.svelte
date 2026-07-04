@@ -33,8 +33,11 @@
             borderWidth: 2,
             fill: true,
             tension: 0.4,
-            pointRadius: 0,
-            pointHoverRadius: 3,
+            pointRadius: [0, 0, 0, 0, 4, 0, 0],
+            pointBackgroundColor: color,
+            pointBorderColor: color,
+            pointBorderWidth: 2,
+            pointHoverRadius: 5,
             pointHoverBackgroundColor: color,
           }]
         },
