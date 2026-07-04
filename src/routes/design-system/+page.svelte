@@ -20,6 +20,7 @@
   import CandlestickChart from '$components/charts/CandlestickChart.svelte';
   import AreaChart from '$components/charts/AreaChart.svelte';
   import SummaryCard from '$components/dashboard/SummaryCard.svelte';
+  import LiveAccountsCard from '$components/dashboard/LiveAccountsCard.svelte';
   import { summaryCards } from '$data/summary-cards.js';
 
   const sections = [
@@ -230,10 +231,8 @@
             </SummaryCard>
           </div>
           <div>
-            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Live Accounts — Mini Bars</div>
-            <SummaryCard title={summaryCards[3].title} value={summaryCards[3].value} changeText={summaryCards[3].change} changeColor={summaryCards[3].changeColor} glowColor="rgba(16, 64, 48, 0.6)">
-              <MiniBarChart data={[{value: 40}, {value: 60}, {value: 35}]} className="h-full" />
-            </SummaryCard>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Live Accounts — Custom Card</div>
+            <LiveAccountsCard />
           </div>
         </div>
       </section>

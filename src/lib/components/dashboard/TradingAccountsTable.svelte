@@ -61,7 +61,7 @@
                 </div>
               </td>
               <td class="py-3">
-                <div class="flex items-center justify-end gap-2">
+                <div class="flex items-center justify-end gap-6">
                   <button class="text-gfx-neutral-500 hover:text-white text-body2 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded px-1">View</button>
                   <TradeButton>Trade</TradeButton>
                   <button class="text-gfx-neutral-500 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded" aria-label="More options for {row.account}">
