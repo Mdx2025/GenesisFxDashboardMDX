@@ -26,7 +26,18 @@
     </div>
 
     <div class="overflow-x-auto">
-      <table class="w-full" aria-label="Trading accounts">
+      <table class="w-full table-fixed" aria-label="Trading accounts">
+        <colgroup>
+          <col style="width: 15%;" />
+          <col style="width: 13%;" />
+          <col style="width: 10%;" />
+          <col style="width: 12%;" />
+          <col style="width: 12%;" />
+          <col style="width: 12%;" />
+          <col style="width: 12%;" />
+          <col style="width: 7%;" />
+          <col style="width: 7%;" />
+        </colgroup>
         <thead>
           <tr class="border-b border-gfx-card-border">
             <th scope="col" class="text-left text-tab uppercase text-gfx-neutral-500 font-normal py-3 pr-4">Account</th>
