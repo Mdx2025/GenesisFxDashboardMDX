@@ -5,7 +5,7 @@
   let selected = $state(active);
 </script>
 
-<div class="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-2 px-4" role="group" aria-label="Time period selection">
+<div class="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-1 px-2" role="group" aria-label="Time period selection">
   {#each periods as period}
     <button
       class="px-3.5 py-1.5 rounded-[60px] text-xs font-normal font-acid leading-5 cursor-pointer transition-all duration-200
