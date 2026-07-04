@@ -17,7 +17,10 @@
     UserIcon, BookIcon
   } from '$icons';
   import MiniBarChart from '$components/charts/MiniBarChart.svelte';
+  import CandlestickChart from '$components/charts/CandlestickChart.svelte';
+  import AreaChart from '$components/charts/AreaChart.svelte';
   import SummaryCard from '$components/dashboard/SummaryCard.svelte';
+  import { summaryCards } from '$data/summary-cards.js';
 
   const sections = [
     { id: 'colors', label: 'Colors' },
@@ -207,17 +210,29 @@
       <!-- Summary Cards -->
       <section id="summary-card" class="mb-16 scroll-mt-8" aria-labelledby="summary-card-heading">
         <h2 id="summary-card-heading" class="text-h2 font-bold mb-8">Summary Card</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           <div>
-            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Green glow variant (chart 50% right)</div>
-            <SummaryCard title="Total Balance" value="$42,680.00" changeText="+12.4% this month" changeColor="green" glowColor="green">
-              <MiniBarChart data={chartData} />
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Total Balance — Bar Chart</div>
+            <SummaryCard title={summaryCards[0].title} value={summaryCards[0].value} changeText="{summaryCards[0].change} {summaryCards[0].changeLabel ?? ''}" changeColor={summaryCards[0].changeColor} glowColor="#104030">
+              <MiniBarChart data={summaryCards[0].chartData} className="h-full" />
             </SummaryCard>
           </div>
           <div>
-            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Stone glow variant</div>
-            <SummaryCard title="Total Equity" value="$46,897.30" changeText="-$3,517.30" changeColor="red" glowColor="stone">
-              <MiniBarChart data={chartData} />
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Total Equity — Candlestick</div>
+            <SummaryCard title={summaryCards[1].title} value={summaryCards[1].value} changeText={summaryCards[1].change} changeColor={summaryCards[1].changeColor} glowColor="#241B1C">
+              <CandlestickChart data={summaryCards[1].chartData} className="h-full" />
+            </SummaryCard>
+          </div>
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Closed P&L — Area Chart</div>
+            <SummaryCard title={summaryCards[2].title} value={summaryCards[2].value} changeText={summaryCards[2].change} changeColor={summaryCards[2].changeColor} glowColor="#281E14">
+              <AreaChart color="#e29d58" className="h-full" />
+            </SummaryCard>
+          </div>
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Live Accounts — Mini Bars</div>
+            <SummaryCard title={summaryCards[3].title} value={summaryCards[3].value} changeText={summaryCards[3].change} changeColor={summaryCards[3].changeColor} glowColor="rgba(16, 64, 48, 0.6)">
+              <MiniBarChart data={[{value: 40}, {value: 60}, {value: 35}]} className="h-full" />
             </SummaryCard>
           </div>
         </div>

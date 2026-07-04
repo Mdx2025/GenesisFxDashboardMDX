@@ -30,13 +30,13 @@
 
 <div class="flex items-center gap-2">
   <div
-    class="relative inline-flex items-center h-10 rounded-[60px] bg-white/5 px-1"
+    class="relative inline-flex items-center h-10 rounded-[60px] bg-[#1A1F1D] px-1"
     role="group"
     aria-label="Time period selection"
     bind:this={containerEl}
   >
     <div
-      class="absolute rounded-[60px] bg-teal-500/20 overflow-hidden pointer-events-none transition-all duration-300 ease-out outline outline-[0.50px] outline-offset-[-0.50px] outline-teal-500"
+      class="absolute rounded-[60px] bg-gfx-green-500/25 overflow-hidden pointer-events-none transition-all duration-300 ease-out outline outline-[0.50px] outline-offset-[-0.50px] outline-gfx-green-500/50"
       style={indicatorStyle}
     >
       <svg class="absolute left-1/2 -translate-x-1/2 bottom-0" width="54" height="33" viewBox="0 0 54 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
