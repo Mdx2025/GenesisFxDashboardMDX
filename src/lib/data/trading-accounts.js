@@ -1,0 +1,28 @@
+export const tradingAccounts = [
+  {
+    account: 'L#716445',
+    username: 'anapinzon.ux',
+    platform: 'TradeLocker',
+    type: 'genfx',
+    balance: '$12,480.00',
+    equity: '$13,102.50',
+    closedPL: '+$2,841.71',
+    closedPLColor: 'green',
+    openPL: '$-155.20',
+    openPLColor: 'red',
+    status: 'Live',
+  },
+  {
+    account: 'L#718302',
+    username: 'anapinzon.ux',
+    platform: 'TradeLocker',
+    type: '10x',
+    balance: '$5,200.00',
+    equity: '$5,044.80',
+    closedPL: '$-155.20',
+    closedPLColor: 'red',
+    openPL: '+$2,841.71',
+    openPLColor: 'green',
+    status: 'Live',
+  },
+];
