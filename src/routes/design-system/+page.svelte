@@ -17,11 +17,13 @@
     UserIcon, BookIcon
   } from '$icons';
   import MiniBarChart from '$components/charts/MiniBarChart.svelte';
+  import SummaryCard from '$components/dashboard/SummaryCard.svelte';
 
   const sections = [
     { id: 'colors', label: 'Colors' },
     { id: 'typography', label: 'Typography' },
     { id: 'spacing', label: 'Spacing' },
+    { id: 'summary-card', label: 'Summary Card' },
     { id: 'glass-card', label: 'Glass Card' },
     { id: 'dividers', label: 'Dividers' },
     { id: 'status-indicators', label: 'Status Indicators' },
@@ -199,6 +201,23 @@
               <div class="text-gfx-neutral-500 text-[11px] font-mono">{space.tailwindClass}</div>
             </div>
           {/each}
+        </div>
+      </section>
+
+      <!-- Summary Cards -->
+      <section id="summary-card" class="mb-16 scroll-mt-8" aria-labelledby="summary-card-heading">
+        <h2 id="summary-card-heading" class="text-h2 font-bold mb-8">Summary Card</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Green glow variant</div>
+            <SummaryCard title="Total Balance" value="$42,680.00" changeText="+12.4% this month" changeColor="green" glowColor="green">
+              <MiniBarChart data={chartData} />
+            </SummaryCard>
+          </div>
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Stone glow variant</div>
+            <SummaryCard title="Total Equity" value="$46,897.30" changeText="-$3,517.30" changeColor="red" glowColor="stone" />
+          </div>
         </div>
       </section>
 

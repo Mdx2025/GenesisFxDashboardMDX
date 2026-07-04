@@ -5,6 +5,9 @@
 
 <button class="nav-btn" class:active aria-current={active ? 'page' : undefined}>
   {@render children()}
+  {#if active}
+    <div class="active-indicator" aria-hidden="true"></div>
+  {/if}
 </button>
 
 <style>
@@ -12,7 +15,7 @@
     width: 100%;
     height: 46px;
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(23,23,23,1);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -22,6 +25,8 @@
     color: #A0A0A0;
     font-size: 14px;
     background: transparent;
+    position: relative;
+    overflow: hidden;
   }
   .nav-btn:hover {
     background: rgba(255,255,255,0.03);
@@ -32,19 +37,41 @@
   }
   .nav-btn.active {
     background: #141414;
-    border-color: #0d1e18;
+    border-color: #171717;
     color: #fff;
-    position: relative;
   }
   .nav-btn.active::before {
     content: '';
     position: absolute;
-    left: -10px;
+    left: -20px;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,240,160,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0,240,160,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .nav-btn.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16,185,131,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .active-indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 14px;
+    background: white;
+    border-radius: 1px;
   }
 </style>

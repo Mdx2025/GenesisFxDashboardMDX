@@ -20,10 +20,9 @@
 <style>
   .mode-toggle {
     width: 100%;
-    height: 46px;
+    height: 44px;
     border-radius: 60px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.05);
     display: flex;
     position: relative;
     overflow: hidden;
@@ -33,7 +32,7 @@
     border: none;
     background: transparent;
     color: #606060;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     z-index: 1;
@@ -45,8 +44,10 @@
     outline-offset: -2px;
   }
   .mode-toggle button.active {
-    background: #10BC83;
-    color: #000;
-    font-weight: 700;
+    background: rgba(20,184,166,0.2);
+    border: 0.5px solid #14b8a6;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
   }
 </style>

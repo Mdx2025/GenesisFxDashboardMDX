@@ -9,16 +9,16 @@ export const summaryCards = [
     chartData: [
       { value: 30, label: 'Jun' },
       { value: 45, label: 'Jul' },
-      { value: 25, label: 'Aug' },
-      { value: 50, label: 'Sep' },
-      { value: 35, label: 'Oct' },
-      { value: 55, label: 'Nov' },
+      { value: 65, label: 'Aug' },
+      { value: 18, label: 'Sep' },
+      { value: 50, label: 'Oct' },
+      { value: 8, label: 'Nov' },
     ],
   },
   {
     title: 'Total Equity',
     value: '$46,897.30',
-    change: '+$3,517.30',
+    change: '-$3,517.30',
     changeColor: 'red',
     chartType: 'candlestick',
     chartData: [
@@ -36,7 +36,7 @@ export const summaryCards = [
     title: 'Closed P&L (30D)',
     value: '$6,436.51',
     change: '+56.1%',
-    changeColor: 'amber',
+    changeColor: 'green',
     chartType: 'area',
   },
   {

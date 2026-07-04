@@ -35,24 +35,27 @@
 {/if}
 
 <aside
-  class="w-[240px] min-h-screen bg-gfx-sidebar border-r border-gfx-card-border flex flex-col relative shrink-0 sticky top-0 h-screen overflow-y-auto
+  class="sidebar w-[280px] min-h-screen bg-black border-r border-zinc-900 flex flex-col relative shrink-0 sticky top-0 h-screen overflow-hidden
   fixed inset-y-0 left-0 z-50 transform transition-transform lg:translate-x-0 lg:relative lg:z-auto
   {$sidebarOpen ? 'translate-x-0' : '-translate-x-full'}"
   aria-label="Main navigation"
 >
-  <div class="p-5 flex items-center justify-between">
+  <!-- Top glow -->
+  <div class="sidebar-top-glow" aria-hidden="true"></div>
+
+  <!-- Logo -->
+  <div class="relative z-10 px-5 pt-6 pb-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect width="32" height="32" rx="8" fill="#10BC83" fill-opacity="0.15"/>
-        <path d="M10 16h12M16 10v12" stroke="#10BC83" stroke-width="2" stroke-linecap="round"/>
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="10" fill="#10BC83" fill-opacity="0.15"/>
+        <path d="M12 20h16M20 12v16" stroke="#10BC83" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
       <div>
-        <div class="text-white text-[15px] font-bold tracking-wide">GenFX</div>
-        <div class="text-gfx-neutral-500 text-[10px]">AI-Powered Trading</div>
+        <div class="text-white text-[16px] font-bold tracking-wide">GenFX</div>
       </div>
     </div>
     <button
-      class="text-gfx-neutral-500 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded"
+      class="w-8 h-8 rounded-[10px] bg-emerald-950 flex items-center justify-center text-zinc-500 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
       onclick={closeSidebar}
       aria-label="Close sidebar"
     >
@@ -60,21 +63,37 @@
     </button>
   </div>
 
-  <div class="px-5 mb-4">
-    <div class="text-[10px] text-gfx-neutral-500 uppercase tracking-[2px] mb-3 font-bold">User Account</div>
-    <div class="flex items-center gap-3 p-3 rounded-[12px] border border-gfx-card-border bg-gfx-card-bg">
-      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-gfx-green-500 to-gfx-green-200 flex items-center justify-center text-white text-[13px] font-bold" aria-hidden="true">M</div>
-      <div>
-        <div class="text-white text-[13px] font-medium">Marcelo Cedeno</div>
-        <div class="text-gfx-neutral-500 text-[11px]">Sep 27th 2025</div>
+  <div class="relative z-10 px-5 pb-2">
+    <span class="text-white text-[14px]">AI-Powered Trading</span>
+  </div>
+
+  <!-- Divider -->
+  <div class="mx-5 my-3 h-px bg-zinc-900" aria-hidden="true"></div>
+
+  <!-- User Account -->
+  <div class="relative z-10 px-5 mb-2">
+    <div class="text-[14px] text-gfx-neutral-300 mb-3">User Account</div>
+    <div class="user-card flex items-center gap-3 p-3 rounded-2xl border border-zinc-900 bg-zinc-950 relative overflow-hidden">
+      <div class="user-card-glow" aria-hidden="true"></div>
+      <div class="relative z-10 w-9 h-9 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-[16px] overflow-hidden">
+        <div class="absolute w-5 h-2.5 bg-teal-300 rounded-full blur-[30px] top-[-4px] left-[9px]" aria-hidden="true"></div>
+        <span class="relative z-10">M</span>
+      </div>
+      <div class="relative z-10">
+        <div class="text-white text-[14px]">Marcelo Cedeno</div>
+        <div class="text-gfx-neutral-300 text-[14px]">Sep 27th, 2025</div>
       </div>
     </div>
   </div>
 
-  <div class="px-5 flex-1">
-    <div class="text-[10px] text-gfx-neutral-500 uppercase tracking-[2px] mb-3 font-bold">Overview</div>
+  <!-- Divider -->
+  <div class="mx-5 my-3 h-px bg-zinc-900" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <div class="relative z-10 px-5 flex-1 overflow-y-auto">
+    <div class="text-[14px] text-gfx-neutral-300 mb-3">Overview</div>
     <nav aria-label="Main menu">
-      <ul class="flex flex-col gap-1" role="list">
+      <ul class="flex flex-col gap-2.5" role="list">
         {#each navItems as item}
           {@const IconComponent = iconMap[item.icon]}
           <li>
@@ -97,10 +116,10 @@
           </li>
           {#if item.submenu && tradelockerOpen}
             <li>
-              <ul class="ml-8 flex flex-col gap-1" role="list">
+              <ul class="flex flex-col gap-0" role="list">
                 {#each item.submenu as sub}
                   <li>
-                    <a href={sub.href} class="text-gfx-neutral-500 hover:text-white text-[13px] py-1.5 px-3 rounded-lg hover:bg-gfx-card-bg transition-colors block focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500">
+                    <a href={sub.href} class="text-gfx-neutral-500 hover:text-white text-[14px] py-2.5 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded-lg">
                       {sub.label}
                     </a>
                   </li>
@@ -113,15 +132,50 @@
     </nav>
   </div>
 
-  <div class="px-5 mb-4">
-    <div class="text-[10px] text-gfx-neutral-500 uppercase tracking-[2px] mb-3 font-bold">Switch Modes</div>
+  <!-- Switch Modes -->
+  <div class="relative z-10 px-5 mb-4">
+    <div class="text-[16px] text-white font-medium mb-3">Switch Modes</div>
     <ModeToggle />
   </div>
 
-  <div class="px-5 pb-5">
+  <!-- Logout -->
+  <div class="relative z-10 px-5 pb-5">
     <NavButton>
       <LogoutIcon />
-      <span class="text-red-400">Logout</span>
+      <span class="text-gfx-neutral-300">Logout</span>
     </NavButton>
   </div>
 </aside>
+
+<style>
+  .sidebar {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .sidebar-top-glow {
+    position: absolute;
+    width: 600px;
+    height: 176px;
+    left: 53px;
+    top: -58px;
+    transform: rotate(47.67deg);
+    transform-origin: top left;
+    background: #134e4a;
+    border-radius: 50%;
+    filter: blur(161px);
+    pointer-events: none;
+  }
+
+  .user-card-glow {
+    position: absolute;
+    width: 96px;
+    height: 56px;
+    left: 86px;
+    bottom: -20px;
+    background: #6ee7b7;
+    border-radius: 50%;
+    filter: blur(77px);
+    pointer-events: none;
+  }
+</style>
