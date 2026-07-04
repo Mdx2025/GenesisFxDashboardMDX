@@ -6,21 +6,18 @@
 </script>
 
 <nav aria-label="Breadcrumb">
-  <ol class="flex items-center gap-2 text-body2">
-    {#each items as item, i}
-      {#if i > 0}
-        <span class="text-gfx-neutral-500">/</span>
-      {/if}
-      <li class="flex items-center gap-1.5">
-        {#if i === 0}
-          <span class="{item.current ? 'text-white' : 'text-gfx-neutral-500'}">
-            <HomeIcon />
-          </span>
-        {/if}
+  <ol class="flex items-center gap-4 text-body2" style="color: #606060">
+    <li class="flex items-center">
+      <HomeIcon />
+    </li>
+
+    {#each items as item}
+      <span style="color: #606060">/</span>
+      <li class="flex items-center">
         {#if item.current}
-          <span class="text-white font-medium">{item.label}</span>
+          <span class="font-medium" style="color: #606060">{item.label}</span>
         {:else}
-          <a href={item.href || '#'} class="text-gfx-neutral-500 hover:text-gfx-neutral-300 transition-colors">
+          <a href={item.href || '#'} class="hover:opacity-80 transition-colors" style="color: #606060">
             {item.label}
           </a>
         {/if}
