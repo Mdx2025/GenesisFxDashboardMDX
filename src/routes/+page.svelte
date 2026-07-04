@@ -15,7 +15,7 @@
 <div class="flex w-full min-h-screen bg-gfx-main text-white font-acid">
   <Sidebar />
 
-  <main class="flex-1 h-screen overflow-y-auto">
+  <main class="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden">
     <div class="px-7 py-4">
       <TopBar />
       <GreetingRow />
