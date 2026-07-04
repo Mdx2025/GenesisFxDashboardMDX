@@ -5,6 +5,7 @@ import { tradingAccounts } from '@/data/trading-accounts'
 export function TradingAccountsTable() {
   return (
     <GlassCard variant="heavy" divider="white" rounded="19px">
+      <div className="divider-green absolute top-0 left-[10%] right-[10%]" aria-hidden="true" />
       <div className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
           <div className="flex items-center gap-3">
@@ -34,7 +35,7 @@ export function TradingAccountsTable() {
                 <th className="pb-3 font-normal text-right">Closed P&L</th>
                 <th className="pb-3 font-normal text-right">Open P&L</th>
                 <th className="pb-3 font-normal text-center">Status</th>
-                <th className="pb-3 font-normal text-right">Actions</th>
+                <th className="pb-3 font-normal text-right"></th>
               </tr>
             </thead>
             <tbody>
@@ -57,8 +58,8 @@ export function TradingAccountsTable() {
                     </div>
                   </td>
                   <td className="py-4">
-                    <div className="flex items-center justify-end gap-2">
-                      <button className="text-gfx-neutral-300 text-xs hover:text-white transition-colors px-3 py-1.5 rounded border border-white/10">View</button>
+                    <div className="flex items-center gap-6">
+                      <button className="text-gfx-neutral-300 text-xs hover:text-white transition-colors px-3 py-1.5 rounded">View</button>
                       <TradeButton>Trade</TradeButton>
                       <button className="text-gfx-neutral-300 hover:text-white transition-colors p-1" aria-label="More options">
                         <MoreDotsVerticalIcon />

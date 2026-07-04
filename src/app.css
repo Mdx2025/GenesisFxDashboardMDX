@@ -111,6 +111,22 @@
   }
 }
 
+@layer utilities {
+  .text-h1 { font-size: var(--font-size-h1); line-height: var(--font-size-h1--line-height); }
+  .text-h2 { font-size: var(--font-size-h2); line-height: var(--font-size-h2--line-height); }
+  .text-h3 { font-size: var(--font-size-h3); line-height: var(--font-size-h3--line-height); }
+  .text-body1 { font-size: var(--font-size-body1); line-height: var(--font-size-body1--line-height); }
+  .text-body2 { font-size: var(--font-size-body2); line-height: var(--font-size-body2--line-height); }
+  .text-btn { font-size: var(--font-size-btn); line-height: var(--font-size-btn--line-height); }
+  .text-micro { font-size: var(--font-size-micro); line-height: var(--font-size-micro--line-height); }
+  .text-tab { font-size: var(--font-size-tab); line-height: var(--font-size-tab--line-height); letter-spacing: var(--font-size-tab--letter-spacing); }
+  .text-card-value { font-size: var(--font-size-card-value); line-height: var(--font-size-card-value--line-height); }
+  .text-card-label { font-size: var(--font-size-card-label); line-height: var(--font-size-card-label--line-height); }
+  .text-card-change { font-size: var(--font-size-card-change); line-height: var(--font-size-card-change--line-height); }
+  .text-sidebar-label { font-size: var(--font-size-sidebar-label); line-height: var(--font-size-sidebar-label--line-height); }
+  .text-sidebar-btn { font-size: var(--font-size-sidebar-btn); line-height: var(--font-size-sidebar-btn--line-height); }
+}
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
