@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genesis FX Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            acid: ['"FFF Acid Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            'gfx-green': {
+              50: '#01130d',
+              100: '#021B13',
+              200: '#064B34',
+              500: '#10BC83',
+              glow: '#00f0a0',
+            },
+            'gfx-neutral': {
+              300: '#606060',
+              500: '#A0A0A0',
+            },
+            'gfx-red': '#ff717e',
+            'gfx-red-dark': '#ff4d6a',
+            'gfx-amber': '#e29d58',
+            'gfx-sidebar': '#000705',
+            'gfx-main': '#040b09',
+            'gfx-card-border': 'rgba(255,255,255,0.06)',
+            'gfx-card-bg': 'rgba(255,255,255,0.03)',
+          },
+          fontSize: {
+            'h1': ['50px', { lineHeight: '100%', letterSpacing: '0' }],
+            'h2': ['36px', { lineHeight: '100%', letterSpacing: '0' }],
+            'h3': ['24px', { lineHeight: '100%', letterSpacing: '0' }],
+            'body1': ['14px', { lineHeight: '18.8px', letterSpacing: '0' }],
+            'body2': ['12px', { lineHeight: '18.8px', letterSpacing: '0' }],
+            'btn': ['16px', { lineHeight: '24.44px', letterSpacing: '0' }],
+            'micro': ['16px', { lineHeight: '24.44px', letterSpacing: '0' }],
+            'tab': ['12px', { lineHeight: '15.68px', letterSpacing: '2.32px' }],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'FFF Acid Grotesk';
+      src: url('assets/FFFAcidGrotesk-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'FFF Acid Grotesk';
+      src: url('assets/FFFAcidGrotesk-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'FFF Acid Grotesk';
+      src: url('assets/FFFAcidGrotesk-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'FFF Acid Grotesk', sans-serif; background: #000; overflow-x: hidden; }
+
+    .glass-card {
+      background: rgba(255,255,255,0.03);
+      border: 1.16px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(23px);
+      -webkit-backdrop-filter: blur(23px);
+      box-shadow: 0px 4.641px 23.204px rgba(0,0,0,0.2), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04);
+    }
+
+    .glass-card-heavy {
+      background: rgba(255,255,255,0.03);
+      border: 1.16px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(23px);
+      -webkit-backdrop-filter: blur(23px);
+      box-shadow: 0px 9.08px 36.321px rgba(0,0,0,0.3), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04);
+    }
+
+    .divider-glow {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+      height: 1px;
+    }
+
+    .divider-green {
+      background: linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%);
+      height: 1px;
+    }
+
+    .green-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #00f0a0;
+      box-shadow: 0 0 5px rgba(0,240,160,0.8);
+    }
+
+    .nav-btn {
+      width: 273px; height: 46px; border-radius: 10px;
+      border: 1px solid transparent;
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 16px; cursor: pointer; transition: all 0.2s;
+      color: #A0A0A0; font-size: 14px;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.03); }
+    .nav-btn.active {
+      background: #141414; border-color: #0d1e18; color: #fff;
+      position: relative;
+    }
+    .nav-btn.active::before {
+      content: ''; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,240,160,0.15) 0%, transparent 70%);
+    }
+
+    .sparkle-btn {
+      position: relative; overflow: hidden; border-radius: 60px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(16,188,131,0.2) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 24px; font-size: 14px; font-weight: 500;
+      color: #fff; cursor: pointer; backdrop-filter: blur(10px);
+    }
+    .sparkle-btn::before {
+      content: '✦'; position: absolute; left: 8px; top: 4px;
+      font-size: 8px; color: rgba(0,240,160,0.4);
+    }
+    .sparkle-btn::after {
+      content: '✦'; position: absolute; right: 8px; bottom: 4px;
+      font-size: 6px; color: rgba(255,255,255,0.2);
+    }
+
+    .trade-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(16,188,131,0.15) 50%, rgba(255,255,255,0.05) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 60px; padding: 8px 20px;
+      font-size: 12px; font-weight: 500; color: #fff; cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .mode-toggle {
+      width: 274px; height: 46px; border-radius: 60px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      display: flex; position: relative; overflow: hidden;
+    }
+    .mode-toggle button {
+      flex: 1; border: none; background: transparent; color: #606060;
+      font-size: 14px; font-weight: 500; cursor: pointer; z-index: 1;
+      border-radius: 60px; transition: all 0.3s;
+    }
+    .mode-toggle button.active {
+      background: #10BC83; color: #000; font-weight: 700;
+    }
+
+    .action-item {
+      height: 89px; border-radius: 15px;
+      border: 1.25px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.02);
+      display: flex; align-items: center; gap: 16px; padding: 0 20px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .action-item:hover { background: rgba(255,255,255,0.04); }
+    .action-item .icon-wrap {
+      width: 53px; height: 53px; border-radius: 13px;
+      background: rgba(0,240,160,0.06); border: 1px solid rgba(0,240,160,0.1);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .period-pill {
+      padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 500;
+      color: #606060; cursor: pointer; border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .period-pill:hover { color: #A0A0A0; }
+    .period-pill.active {
+      color: #10BC83; border-color: #10BC83; background: rgba(16,188,131,0.08);
+    }
+
+    .badge-genfx {
+      background: rgba(16,188,131,0.15); color: #10BC83;
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .badge-10x {
+      background: rgba(226,157,88,0.15); color: #e29d58;
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  </style>
+</head>
+<body>
+  <div class="w-[1920px] h-[1090px] bg-black rounded-[30px] overflow-hidden flex mx-auto relative">
+
+    <!-- SIDEBAR -->
+    <aside class="w-[315px] h-full bg-[#000705] border-r border-[#1a1a1a] flex flex-col relative shrink-0">
+
+      <!-- Logo -->
+      <div class="px-5 pt-6 pb-2 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#10BC83" fill-opacity="0.15"/>
+            <path d="M10 16h12M16 10v12" stroke="#10BC83" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="text-white font-medium text-[15px] tracking-wide">GenFX</div>
+            <div class="text-gfx-neutral-500 text-[10px]">AI-Powered Trading</div>
+          </div>
+        </div>
+        <button class="w-7 h-7 rounded-lg border border-[rgba(255,255,255,0.06)] flex items-center justify-center text-gfx-neutral-500 hover:text-white transition">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- User Card -->
+      <div class="mx-5 mt-4 p-3 rounded-[14px] border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#003c28] flex items-center justify-center text-gfx-green-500 font-bold text-sm">M</div>
+        <div>
+          <div class="text-white text-[13px] font-medium">Marcelo Cedeno</div>
+          <div class="text-gfx-neutral-500 text-[11px]">Sep 27th, 2025</div>
+        </div>
+      </div>
+
+      <!-- Overview Label -->
+      <div class="px-5 mt-6 mb-3">
+        <span class="text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px]">Overview</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="px-5 flex flex-col gap-[10px]">
+        <button class="nav-btn active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10BC83" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span class="text-white font-medium">Dashboard</span>
+        </button>
+        <button class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Assets Management
+        </button>
+        <div>
+          <button class="nav-btn" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <span class="flex-1 text-left">Tradelocker</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="hidden ml-12 mt-1 flex flex-col gap-1">
+            <button class="text-left text-gfx-neutral-500 text-[13px] py-2 px-3 rounded-lg hover:text-white hover:bg-[rgba(255,255,255,0.03)] transition">Accounts</button>
+            <button class="text-left text-gfx-neutral-500 text-[13px] py-2 px-3 rounded-lg hover:text-white hover:bg-[rgba(255,255,255,0.03)] transition">Journal</button>
+            <button class="text-left text-gfx-neutral-500 text-[13px] py-2 px-3 rounded-lg hover:text-white hover:bg-[rgba(255,255,255,0.03)] transition">Platforms</button>
+          </div>
+        </div>
+        <button class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          10x Challenges
+        </button>
+        <button class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+          PAMM Portal
+        </button>
+        <button class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5M8 19V9M12 19v-6M16 19V7M20 19v-8"/></svg>
+          Market News
+        </button>
+        <button class="nav-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          Genesis Academy
+        </button>
+      </nav>
+
+      <!-- Switch Modes -->
+      <div class="px-5 mt-auto mb-4">
+        <div class="mb-3">
+          <span class="text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px]">Switch Modes</span>
+        </div>
+        <div class="mode-toggle">
+          <button class="active">Client</button>
+          <button>Partner</button>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <div class="px-5 pb-6">
+        <button class="nav-btn text-gfx-red hover:bg-[rgba(255,113,126,0.06)]">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff717e" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 bg-[#040b09] overflow-y-auto p-8">
+
+      <!-- Top Bar -->
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-2 text-gfx-neutral-500 text-body1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <span class="text-gfx-neutral-300">/</span>
+          <span>Overview</span>
+          <span class="text-gfx-neutral-300">/</span>
+          <span class="text-white">Dashboard</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 text-body2">
+            <span class="green-dot"></span>
+            <span class="text-gfx-green-500 font-medium">Markets Open</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)]">
+            <span class="text-[16px]">💰</span>
+            <span class="text-white text-body1 font-medium">Wallet</span>
+            <span class="text-gfx-green-500 font-medium text-body1">$100.00</span>
+          </div>
+          <div class="flex items-center gap-2 px-3 py-2 rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] cursor-pointer">
+            <div class="w-7 h-7 rounded-full bg-[#003c28] flex items-center justify-center text-gfx-green-500 text-[11px] font-bold">M</div>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="flex items-center gap-2 px-3 py-2 rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] cursor-pointer">
+            <span class="text-[14px]">🇬🇧</span>
+            <span class="text-white text-body2 font-medium">EN</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <button class="w-9 h-9 rounded-full border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center text-gfx-neutral-500 hover:text-white transition">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Greeting -->
+      <div class="mb-8">
+        <div class="text-body1 text-gfx-neutral-500 mb-2">Command Center — Friday, Apr 3</div>
+        <h1 class="text-h1 text-white font-normal mb-1">Good afternoon, Marcelo</h1>
+        <div class="text-body1 text-gfx-neutral-500">Born To Outperform</div>
+      </div>
+
+      <!-- Summary Cards Row -->
+      <div class="flex gap-5 mb-5">
+        <!-- Total Balance -->
+        <div class="flex-1 glass-card rounded-[19px] p-5 relative overflow-hidden">
+          <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-body2 text-gfx-neutral-500 uppercase tracking-[2.32px] font-bold">Total Balance</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#606060" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+          <div class="text-[32px] text-white font-normal mb-2">$42,680.00</div>
+          <div class="flex items-center gap-2 mb-6">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4l6 8H6l6-8z" fill="#10BC83"/></svg>
+            <span class="text-gfx-green-500 text-body2 font-medium">+12.4% this month</span>
+          </div>
+          <!-- Mini bar chart -->
+          <div class="flex items-end gap-3 h-[60px]">
+            <div class="flex flex-col items-center gap-1 flex-1">
+              <div class="w-full rounded-t-[4px] h-[30px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+              <span class="text-[9px] text-gfx-neutral-500">Jun</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 flex-1">
+              <div class="w-full rounded-t-[4px] h-[45px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+              <span class="text-[9px] text-gfx-neutral-500">Jul</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 flex-1">
+              <div class="w-full rounded-t-[4px] h-[25px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+              <span class="text-[9px] text-gfx-neutral-500">Aug</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 flex-1">
+              <div class="w-full rounded-t-[4px] h-[50px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+              <span class="text-[9px] text-gfx-neutral-500">Sep</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 flex-1">
+              <div class="w-full rounded-t-[4px] h-[35px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+              <span class="text-[9px] text-gfx-neutral-500">Oct</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 flex-1">
+              <div class="w-full rounded-t-[4px] h-[55px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+              <span class="text-[9px] text-gfx-neutral-500">Nov</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Equity -->
+        <div class="flex-1 glass-card rounded-[19px] p-5 relative overflow-hidden">
+          <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-body2 text-gfx-neutral-500 uppercase tracking-[2.32px] font-bold">Total Equity</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#606060" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+          <div class="text-[32px] text-white font-normal mb-2">$46,897.30</div>
+          <div class="flex items-center gap-2 mb-6">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 20l6-8H6l6 8z" fill="#ff717e"/></svg>
+            <span class="text-gfx-red text-body2 font-medium">+$3,517.30</span>
+          </div>
+          <!-- Candlestick chart -->
+          <div class="flex items-center gap-2 h-[60px] justify-center">
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[8px] bg-[#0c9104]"></div>
+              <div class="w-[10px] h-[25px] rounded-[2px] bg-[#0c9104]" style="box-shadow: 0 0 8px #0c9104;"></div>
+              <div class="w-[1px] h-[5px] bg-[#0c9104]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[5px] bg-[#b8312b]"></div>
+              <div class="w-[10px] h-[18px] rounded-[2px] bg-[#b8312b]" style="box-shadow: 0 0 7px #b8312b;"></div>
+              <div class="w-[1px] h-[10px] bg-[#b8312b]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[6px] bg-[#0c9104]"></div>
+              <div class="w-[10px] h-[30px] rounded-[2px] bg-[#0c9104]" style="box-shadow: 0 0 8px #0c9104;"></div>
+              <div class="w-[1px] h-[4px] bg-[#0c9104]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[4px] bg-[#0c9104]"></div>
+              <div class="w-[10px] h-[20px] rounded-[2px] bg-[#0c9104]" style="box-shadow: 0 0 8px #0c9104;"></div>
+              <div class="w-[1px] h-[8px] bg-[#0c9104]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[10px] bg-[#b8312b]"></div>
+              <div class="w-[10px] h-[15px] rounded-[2px] bg-[#b8312b]" style="box-shadow: 0 0 7px #b8312b;"></div>
+              <div class="w-[1px] h-[6px] bg-[#b8312b]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[3px] bg-[#0c9104]"></div>
+              <div class="w-[10px] h-[35px] rounded-[2px] bg-[#0c9104]" style="box-shadow: 0 0 8px #0c9104;"></div>
+              <div class="w-[1px] h-[5px] bg-[#0c9104]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[7px] bg-[#b8312b]"></div>
+              <div class="w-[10px] h-[22px] rounded-[2px] bg-[#b8312b]" style="box-shadow: 0 0 7px #b8312b;"></div>
+              <div class="w-[1px] h-[4px] bg-[#b8312b]"></div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-[1px] h-[5px] bg-[#0c9104]"></div>
+              <div class="w-[10px] h-[28px] rounded-[2px] bg-[#0c9104]" style="box-shadow: 0 0 8px #0c9104;"></div>
+              <div class="w-[1px] h-[6px] bg-[#0c9104]"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Closed P&L -->
+        <div class="flex-1 glass-card rounded-[19px] p-5 relative overflow-hidden">
+          <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-body2 text-gfx-neutral-500 uppercase tracking-[2.32px] font-bold">Closed P&L (30D)</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#606060" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          </div>
+          <div class="text-[32px] text-white font-normal mb-2">$6,436.51</div>
+          <div class="flex items-center gap-2 mb-6">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4l6 8H6l6-8z" fill="#e29d58"/></svg>
+            <span class="text-gfx-amber text-body2 font-medium">+56.1%</span>
+          </div>
+          <!-- Area chart -->
+          <div class="h-[60px] relative">
+            <svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e29d58" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#e29d58" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,50 Q30,45 60,40 T120,25 T180,30 T240,15 T280,10 V60 H0 Z" fill="url(#areaGrad)"/>
+              <path d="M0,50 Q30,45 60,40 T120,25 T180,30 T240,15 T280,10" fill="none" stroke="#e29d58" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Live Accounts -->
+        <div class="w-[200px] glass-card rounded-[19px] p-5 relative overflow-hidden shrink-0">
+          <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-body2 text-gfx-neutral-500 uppercase tracking-[2.32px] font-bold">Live Accounts</span>
+          </div>
+          <div class="flex items-baseline gap-2 mb-1">
+            <span class="text-[40px] text-white font-normal">3</span>
+            <span class="text-gfx-green-500 text-body2 font-medium">Active</span>
+          </div>
+          <!-- Mini bars -->
+          <div class="flex items-end gap-3 h-[50px] mt-3">
+            <div class="flex-1 rounded-t-[4px] h-[30px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+            <div class="flex-1 rounded-t-[4px] h-[45px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+            <div class="flex-1 rounded-t-[4px] h-[35px]" style="background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
+          </div>
+          <div class="mt-2 px-2 py-1 rounded-full bg-[rgba(0,240,160,0.08)] border border-[rgba(0,240,160,0.15)] inline-block">
+            <span class="text-gfx-green-500 text-[11px] font-medium">$90,254.58</span>
+          </div>
+          <div class="text-gfx-neutral-500 text-[10px] mt-1">L#1644545</div>
+        </div>
+      </div>
+
+      <!-- Portfolio Equity + Quick Actions Row -->
+      <div class="flex gap-5 mb-5">
+        <!-- Portfolio Equity Chart -->
+        <div class="flex-1 glass-card-heavy rounded-[18px] relative overflow-hidden" style="min-height: 420px;">
+          <div class="divider-green absolute top-0 left-[10%] right-[10%]"></div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <div class="text-body2 text-gfx-neutral-500 uppercase tracking-[2.32px] font-bold mb-3">Portfolio Equity</div>
+                <div class="flex items-baseline gap-3">
+                  <span class="text-[28px] text-white font-normal">$17,897.30</span>
+                  <span class="text-gfx-green-500 text-body1 font-medium">+$6,437.21 (56.1%)</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-1">
+                  <button class="period-pill">1D</button>
+                  <button class="period-pill">1W</button>
+                  <button class="period-pill">1M</button>
+                  <button class="period-pill">3M</button>
+                  <button class="period-pill">1Y</button>
+                  <button class="period-pill active">ALL</button>
+                </div>
+                <button class="w-8 h-8 rounded-lg border border-[rgba(255,255,255,0.06)] flex items-center justify-center text-gfx-neutral-500">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </button>
+              </div>
+            </div>
+            <!-- Chart Area -->
+            <div class="relative h-[280px]">
+              <!-- Y-axis labels -->
+              <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-[10px] text-gfx-neutral-500 pr-3">
+                <span>$305</span>
+                <span>$253</span>
+                <span>$202</span>
+                <span>$150</span>
+                <span>$98</span>
+              </div>
+              <!-- Grid + Chart -->
+              <div class="ml-10 h-full relative">
+                <!-- Grid lines -->
+                <div class="absolute inset-0 flex flex-col justify-between">
+                  <div class="border-b border-[rgba(255,255,255,0.04)]"></div>
+                  <div class="border-b border-[rgba(255,255,255,0.04)]"></div>
+                  <div class="border-b border-[rgba(255,255,255,0.04)]"></div>
+                  <div class="border-b border-[rgba(255,255,255,0.04)]"></div>
+                  <div class="border-b border-[rgba(255,255,255,0.04)]"></div>
+                </div>
+                <!-- Chart SVG -->
+                <svg width="100%" height="100%" viewBox="0 0 900 280" preserveAspectRatio="none" class="relative z-10">
+                  <defs>
+                    <linearGradient id="portfolioGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#10BC83" stop-opacity="0.25"/>
+                      <stop offset="100%" stop-color="#10BC83" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,250 C50,248 80,240 120,230 C160,220 200,210 240,195 C280,180 320,170 360,155 C400,140 440,125 480,115 C520,105 560,100 600,90 C640,80 680,70 720,55 C760,42 800,35 850,28 L900,20 V280 H0 Z" fill="url(#portfolioGrad)"/>
+                  <path d="M0,250 C50,248 80,240 120,230 C160,220 200,210 240,195 C280,180 320,170 360,155 C400,140 440,125 480,115 C520,105 560,100 600,90 C640,80 680,70 720,55 C760,42 800,35 850,28 L900,20" fill="none" stroke="#10BC83" stroke-width="2"/>
+                  <!-- Indicator dot -->
+                  <circle cx="720" cy="55" r="5" fill="#10BC83" stroke="#000" stroke-width="2"/>
+                </svg>
+                <!-- Vertical dashed line -->
+                <div class="absolute top-0 bottom-0 border-l border-dashed border-[rgba(16,188,131,0.3)]" style="left: 80%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="w-[320px] shrink-0 glass-card-heavy rounded-[20px] relative overflow-hidden flex flex-col">
+          <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
+          <div class="p-5 flex-1 flex flex-col">
+            <h3 class="text-white text-[18px] font-medium mb-5">Quick Actions</h3>
+            <div class="flex flex-col gap-3 flex-1">
+              <div class="action-item">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0a0" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+                <div>
+                  <div class="text-white text-body1 font-medium">Deposit Funds</div>
+                  <div class="text-gfx-neutral-500 text-body2">Add capital to wallet</div>
+                </div>
+              </div>
+              <div class="action-item">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0a0" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                  <div class="text-white text-body1 font-medium">New Account</div>
+                  <div class="text-gfx-neutral-500 text-body2">Open trading account</div>
+                </div>
+              </div>
+              <div class="action-item">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0a0" stroke-width="2" stroke-linecap="round"><path d="M4 19V5M8 19V9M12 19v-6M16 19V7M20 19v-8"/></svg>
+                </div>
+                <div>
+                  <div class="text-white text-body1 font-medium">Market News</div>
+                  <div class="text-gfx-neutral-500 text-body2">Latest market updates</div>
+                </div>
+              </div>
+              <div class="action-item">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0a0" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                </div>
+                <div>
+                  <div class="text-white text-body1 font-medium">Journal</div>
+                  <div class="text-gfx-neutral-500 text-body2">Review trading log</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Server Time -->
+            <div class="mt-4 p-4 rounded-[15px] border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.02)]">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-body2 text-gfx-neutral-500 font-medium">Server Time</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="green-dot" style="width:6px;height:6px;"></span>
+                  <span class="text-gfx-green-500 text-[11px] font-medium">Markets Open</span>
+                </div>
+              </div>
+              <div class="text-white text-[22px] font-medium tracking-wider">16:44:57</div>
+              <div class="text-gfx-neutral-500 text-[11px]">UTC-3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-3 mb-5">
+        <button class="sparkle-btn">
+          <svg class="inline mr-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10BC83" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Deposit
+        </button>
+        <button class="sparkle-btn">
+          <svg class="inline mr-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10BC83" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Withdraw
+        </button>
+        <button class="sparkle-btn">
+          <svg class="inline mr-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10BC83" stroke-width="2" stroke-linecap="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          Transfer
+        </button>
+      </div>
+
+      <!-- Trading Accounts Table -->
+      <div class="glass-card-heavy rounded-[19px] relative overflow-hidden">
+        <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
+        <div class="p-5">
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-3">
+              <h3 class="text-white text-[18px] font-medium">Trading Accounts</h3>
+              <span class="px-3 py-1 rounded-full bg-[rgba(16,188,131,0.12)] text-gfx-green-500 text-[11px] font-bold tracking-wide">2 ACTIVE</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-gfx-neutral-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" placeholder="Search for" class="bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)] rounded-xl pl-9 pr-4 py-2.5 text-body2 text-white placeholder-gfx-neutral-500 outline-none focus:border-gfx-green-500/30 w-[200px]">
+              </div>
+              <button class="sparkle-btn text-[13px] py-2 px-5">New Account</button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-[rgba(255,255,255,0.06)]">
+                  <th class="text-left text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Account</th>
+                  <th class="text-left text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Platform</th>
+                  <th class="text-left text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Type</th>
+                  <th class="text-right text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Balance</th>
+                  <th class="text-right text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Equity</th>
+                  <th class="text-right text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Closed P&L</th>
+                  <th class="text-right text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Open P&L</th>
+                  <th class="text-center text-tab uppercase font-bold text-gfx-neutral-300 tracking-[2.32px] pb-4 pr-4">Status</th>
+                  <th class="pb-4"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row 1 -->
+                <tr class="border-b border-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.02)] transition">
+                  <td class="py-4 pr-4">
+                    <div class="text-white text-body1 font-medium">L#716445</div>
+                    <div class="text-gfx-neutral-500 text-body2">anapinzon.ux</div>
+                  </td>
+                  <td class="py-4 pr-4 text-gfx-neutral-500 text-body1">TradeLocker</td>
+                  <td class="py-4 pr-4"><span class="badge-genfx">GenFX</span></td>
+                  <td class="py-4 pr-4 text-right text-white text-body1 font-medium">$12,480.00</td>
+                  <td class="py-4 pr-4 text-right text-white text-body1 font-medium">$13,102.50</td>
+                  <td class="py-4 pr-4 text-right text-gfx-green-500 text-body1 font-medium">+$2,841.71</td>
+                  <td class="py-4 pr-4 text-right text-gfx-red text-body1 font-medium">$-155.20</td>
+                  <td class="py-4 pr-4 text-center">
+                    <div class="flex items-center justify-center gap-1.5">
+                      <span class="green-dot" style="width:6px;height:6px;"></span>
+                      <span class="text-gfx-green-500 text-body2 font-medium">Live</span>
+                    </div>
+                  </td>
+                  <td class="py-4">
+                    <div class="flex items-center gap-3">
+                      <a href="#" class="text-gfx-neutral-500 text-body2 hover:text-white transition underline">View</a>
+                      <button class="trade-btn">Trade</button>
+                      <button class="text-gfx-neutral-500 hover:text-white transition">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="hover:bg-[rgba(255,255,255,0.02)] transition">
+                  <td class="py-4 pr-4">
+                    <div class="text-white text-body1 font-medium">L#718302</div>
+                    <div class="text-gfx-neutral-500 text-body2">anapinzon.ux</div>
+                  </td>
+                  <td class="py-4 pr-4 text-gfx-neutral-500 text-body1">TradeLocker</td>
+                  <td class="py-4 pr-4"><span class="badge-10x">10X</span></td>
+                  <td class="py-4 pr-4 text-right text-white text-body1 font-medium">$5,200.00</td>
+                  <td class="py-4 pr-4 text-right text-white text-body1 font-medium">$5,044.80</td>
+                  <td class="py-4 pr-4 text-right text-gfx-red text-body1 font-medium">$-155.20</td>
+                  <td class="py-4 pr-4 text-right text-gfx-green-500 text-body1 font-medium">+$2,841.71</td>
+                  <td class="py-4 pr-4 text-center">
+                    <div class="flex items-center justify-center gap-1.5">
+                      <span class="green-dot" style="width:6px;height:6px;"></span>
+                      <span class="text-gfx-green-500 text-body2 font-medium">Live</span>
+                    </div>
+                  </td>
+                  <td class="py-4">
+                    <div class="flex items-center gap-3">
+                      <a href="#" class="text-gfx-neutral-500 text-body2 hover:text-white transition underline">View</a>
+                      <button class="trade-btn">Trade</button>
+                      <button class="text-gfx-neutral-500 hover:text-white transition">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('.mode-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    function updateServerTime() {
+      const now = new Date();
+      const h = String(now.getUTCHours() - 3).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      const el = document.querySelector('.server-time');
+      if (el) el.textContent = `${h}:${m}:${s}`;
+    }
+  </script>
+</body>
+</html>
