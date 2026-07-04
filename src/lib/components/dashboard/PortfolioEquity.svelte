@@ -4,7 +4,7 @@
   import { CalendarIcon } from '$icons';
 </script>
 
-<GlassCard variant="heavy" divider="green" rounded="18px">
+<GlassCard variant="heavy" divider="green" rounded="18px" className="h-full">
   <div class="p-5">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
       <div>

@@ -209,14 +209,16 @@
         <h2 id="summary-card-heading" class="text-h2 font-bold mb-8">Summary Card</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Green glow variant</div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Green glow variant (chart 50% right)</div>
             <SummaryCard title="Total Balance" value="$42,680.00" changeText="+12.4% this month" changeColor="green" glowColor="green">
               <MiniBarChart data={chartData} />
             </SummaryCard>
           </div>
           <div>
             <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Stone glow variant</div>
-            <SummaryCard title="Total Equity" value="$46,897.30" changeText="-$3,517.30" changeColor="red" glowColor="stone" />
+            <SummaryCard title="Total Equity" value="$46,897.30" changeText="-$3,517.30" changeColor="red" glowColor="stone">
+              <MiniBarChart data={chartData} />
+            </SummaryCard>
           </div>
         </div>
       </section>

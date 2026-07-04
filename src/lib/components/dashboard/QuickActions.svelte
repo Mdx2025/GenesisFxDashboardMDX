@@ -12,7 +12,7 @@
   };
 </script>
 
-<GlassCard variant="heavy" divider="white" rounded="20px">
+<GlassCard variant="heavy" divider="white" rounded="20px" className="h-full">
   <div class="p-4 flex-1 flex flex-col">
     <div class="text-[16px] font-medium text-white mb-4">Quick Actions</div>
 

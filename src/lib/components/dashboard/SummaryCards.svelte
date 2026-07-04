@@ -34,8 +34,10 @@
             </span>
           </div>
 
-          <div class="mb-3 mt-4">
-            <MiniBarChart data={[{value: 40}, {value: 60}, {value: 35}]} maxHeight={40} />
+          <div class="mb-3 mt-4 flex justify-end">
+            <div class="w-1/2">
+              <MiniBarChart data={[{value: 40}, {value: 60}, {value: 35}]} maxHeight={40} />
+            </div>
           </div>
 
           <div class="flex items-center justify-between pt-3 border-t border-[rgba(255,255,255,0.04)]">

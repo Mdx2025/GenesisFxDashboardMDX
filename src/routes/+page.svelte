@@ -17,11 +17,11 @@
       <GreetingRow />
       <SummaryCards />
 
-      <div class="flex gap-5 mb-4">
-        <div class="flex-1 min-w-0">
+      <div class="flex gap-5 mb-4 items-stretch">
+        <div class="flex-1 min-w-0 flex flex-col">
           <PortfolioEquity />
         </div>
-        <div class="w-[280px] shrink-0">
+        <div class="w-[280px] shrink-0 flex flex-col">
           <QuickActions />
         </div>
       </div>

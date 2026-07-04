@@ -46,13 +46,7 @@
   <!-- Logo -->
   <div class="relative z-10 px-5 pt-6 pb-3 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <rect width="40" height="40" rx="10" fill="#10BC83" fill-opacity="0.15"/>
-        <path d="M12 20h16M20 12v16" stroke="#10BC83" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <div class="text-white text-[16px] font-bold tracking-wide">GenFX</div>
-      </div>
+      <img src="/genfx-logo.png" alt="GenesisFX" class="h-8 w-auto" />
     </div>
     <button
       class="w-8 h-8 rounded-[10px] bg-emerald-950 flex items-center justify-center text-zinc-500 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
