@@ -7,14 +7,15 @@
   let { children } = $props();
 
   onMount(() => {
-    const mainEl = document.querySelector('main');
-    if (!mainEl) return;
+    const wrapper = document.querySelector('main');
+    if (!wrapper) return;
 
     const lenis = new Lenis({
-      wrapper: mainEl,
-      content: mainEl.firstElementChild,
+      wrapper,
+      content: wrapper.firstElementChild,
       smoothWheel: true,
       lerp: 0.1,
+      autoResize: true,
     });
 
     function raf(time) {
