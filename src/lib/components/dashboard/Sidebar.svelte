@@ -35,7 +35,7 @@
 {/if}
 
 <aside
-  class="sidebar w-[280px] min-h-screen bg-black border-r border-zinc-900 flex flex-col relative shrink-0 sticky top-0 h-screen overflow-hidden
+  class="sidebar w-lg min-h-screen bg-black border-r border-zinc-900 flex flex-col relative shrink-0 sticky top-0 h-screen overflow-hidden p-6
   fixed inset-y-0 left-0 z-50 transform transition-transform lg:translate-x-0 lg:relative lg:z-auto
   {$sidebarOpen ? 'translate-x-0' : '-translate-x-full'}"
   aria-label="Main navigation"
@@ -44,25 +44,24 @@
   <div class="sidebar-top-glow" aria-hidden="true"></div>
 
   <!-- Logo -->
-  <div class="relative z-10 pt-6 pb-3 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <img src="/genfx-logo.png" alt="GenesisFX" class="h-8 w-auto" />
+  <div class="relative z-10">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="/genfx-logo.png" alt="GenesisFX" class="h-8 w-auto" />
+      </div>
+      <button
+        class="w-8 h-8 rounded-[10px] bg-emerald-950 flex items-center justify-center text-zinc-500 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
+        onclick={closeSidebar}
+        aria-label="Close sidebar"
+      >
+        <ChevronLeftIcon />
+      </button>
     </div>
-    <button
-      class="w-8 h-8 rounded-[10px] bg-emerald-950 flex items-center justify-center text-zinc-500 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500"
-      onclick={closeSidebar}
-      aria-label="Close sidebar"
-    >
-      <ChevronLeftIcon />
-    </button>
-  </div>
-
-  <div class="relative z-10 pb-2">
     <span class="text-white text-[14px]">AI-Powered Trading</span>
   </div>
 
   <!-- Divider -->
-  <div class="py-4" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="269" height="2" viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#paint0_linear_2533_1364_1)" stroke-width="1.02273" stroke-linecap="round"></path><defs><linearGradient id="paint0_linear_2533_1364_1" x1="7.67046" y1="1.01136" x2="268.466" y2="1.01136" gradientUnits="userSpaceOnUse"><stop stop-color="#0F221C"></stop><stop offset="0.562406" stop-color="#005C3D"></stop><stop offset="1" stop-color="#0F221C"></stop></linearGradient></defs></svg></div>
+  <div class="w-full py-4" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#paint0_linear_2533_1364_1)" stroke-width="1.02273" stroke-linecap="round"></path><defs><linearGradient id="paint0_linear_2533_1364_1" x1="7.67046" y1="1.01136" x2="268.466" y2="1.01136" gradientUnits="userSpaceOnUse"><stop stop-color="#0F221C"></stop><stop offset="0.562406" stop-color="#005C3D"></stop><stop offset="1" stop-color="#0F221C"></stop></linearGradient></defs></svg></div>
 
   <!-- User Account -->
   <div class="relative z-10 mb-2">
@@ -83,7 +82,7 @@
   </div>
 
   <!-- Divider -->
-  <div class="py-4" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="269" height="2" viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#paint0_linear_2533_1364_2)" stroke-width="1.02273" stroke-linecap="round"></path><defs><linearGradient id="paint0_linear_2533_1364_2" x1="7.67046" y1="1.01136" x2="268.466" y2="1.01136" gradientUnits="userSpaceOnUse"><stop stop-color="#0F221C"></stop><stop offset="0.562406" stop-color="#005C3D"></stop><stop offset="1" stop-color="#0F221C"></stop></linearGradient></defs></svg></div>
+  <div class="w-full py-4" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#paint0_linear_2533_1364_2)" stroke-width="1.02273" stroke-linecap="round"></path><defs><linearGradient id="paint0_linear_2533_1364_2" x1="7.67046" y1="1.01136" x2="268.466" y2="1.01136" gradientUnits="userSpaceOnUse"><stop stop-color="#0F221C"></stop><stop offset="0.562406" stop-color="#005C3D"></stop><stop offset="1" stop-color="#0F221C"></stop></linearGradient></defs></svg></div>
 
   <!-- Navigation -->
   <div class="relative z-10 flex-1 overflow-y-auto">
