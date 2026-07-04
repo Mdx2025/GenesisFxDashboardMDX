@@ -14,9 +14,9 @@
   {#each summaryCards as card, i}
     {#if card.isCompact}
       <!-- Live Accounts card -->
-      <div class="summary-card relative overflow-hidden">
-        <div class="divider-glow absolute top-0 left-[10%] right-[10%]"></div>
-        <div class="glow-blob {glowPattern[i] === 'green' ? 'glow-green' : 'glow-stone'}" aria-hidden="true"></div>
+      <div class="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl">
+        <div class="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-white/0 via-white/10 to-white/0"></div>
+        <div class="absolute w-[493px] h-72 -left-[72px] -bottom-10 rounded-full blur-[157px] pointer-events-none {glowPattern[i] === 'green' ? 'bg-green-900' : 'bg-stone-900'}" aria-hidden="true"></div>
 
         <div class="relative z-10 p-5 flex flex-col h-full">
           <div class="flex items-center justify-between mb-3">
@@ -62,35 +62,3 @@
     {/if}
   {/each}
 </div>
-
-<style>
-  .summary-card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(23px);
-    -webkit-backdrop-filter: blur(23px);
-    box-shadow:
-      0px 4.64px 23.2px rgba(0,0,0,0.2),
-      inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04);
-  }
-
-  .glow-blob {
-    position: absolute;
-    width: 493px;
-    height: 288px;
-    left: -72px;
-    bottom: -40px;
-    border-radius: 50%;
-    filter: blur(157px);
-    pointer-events: none;
-  }
-
-  .glow-green {
-    background: #14532d;
-  }
-
-  .glow-stone {
-    background: #1c1917;
-  }
-</style>

@@ -69,8 +69,8 @@
     border-radius: 60px;
     border: 1px solid #14b8a6;
     pointer-events: none;
-    mask-image: linear-gradient(to bottom, transparent 20%, white 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 20%, white 100%);
+    mask-image: linear-gradient(to bottom, white 0%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent 80%);
   }
   .btn-label {
     position: relative;

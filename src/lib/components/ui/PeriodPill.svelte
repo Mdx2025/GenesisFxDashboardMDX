@@ -5,24 +5,20 @@
   let { periods = ['1D','1W','1M','3M','1Y','ALL'], active = 'ALL' } = $props();
 
   let selected = $state(active);
+  /** @type {Record<string, HTMLButtonElement>} */
+  let btnRefs = {};
   let containerEl = $state(null);
-  let indicatorX = $state(0);
-  let indicatorW = $state(0);
-  let indicatorH = $state(0);
-  let indicatorY = $state(0);
-  let ready = $state(false);
+  let indicatorStyle = $state('opacity:0');
 
   function updateIndicator() {
     if (!containerEl) return;
-    const btn = containerEl.querySelector('[data-active="true"]');
+    const btn = btnRefs[selected];
     if (!btn) return;
-    const containerRect = containerEl.getBoundingClientRect();
-    const btnRect = btn.getBoundingClientRect();
-    indicatorX = btnRect.left - containerRect.left;
-    indicatorY = btnRect.top - containerRect.top;
-    indicatorW = btnRect.width;
-    indicatorH = btnRect.height;
-    ready = true;
+    const cRect = containerEl.getBoundingClientRect();
+    const bRect = btn.getBoundingClientRect();
+    const x = bRect.left - cRect.left;
+    const y = bRect.top - cRect.top;
+    indicatorStyle = `transform:translate(${x}px,${y}px);width:${bRect.width}px;height:${bRect.height}px;opacity:1`;
   }
 
   $effect(() => {
@@ -33,17 +29,17 @@
 </script>
 
 <div
-  class="relative flex gap-0.5 rounded-[60px] bg-white/[0.03] p-1"
+  class="relative inline-flex rounded-[60px] bg-white/[0.03] p-1"
   role="group"
   aria-label="Time period selection"
   bind:this={containerEl}
 >
   <div
-    class="absolute rounded-[60px] bg-teal-500/20 overflow-hidden pointer-events-none transition-all duration-300 ease-out {ready ? 'opacity-100' : 'opacity-0'}"
-    style="transform: translate({indicatorX}px, {indicatorY}px); width: {indicatorW}px; height: {indicatorH}px"
+    class="absolute rounded-[60px] bg-teal-500/20 overflow-hidden pointer-events-none transition-all duration-300 ease-out"
+    style={indicatorStyle}
   >
-    <!-- Fading bottom border -->
-    <div class="absolute inset-0 rounded-[60px] border border-teal-500 pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent 20%, white 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 20%, white 100%)" aria-hidden="true"></div>
+    <!-- Inverted fading border: solid top, fades toward bottom -->
+    <div class="absolute inset-0 rounded-[60px] border border-teal-500 pointer-events-none" style="mask-image:linear-gradient(to bottom, white 0%, transparent 80%);-webkit-mask-image:linear-gradient(to bottom, white 0%, transparent 80%)" aria-hidden="true"></div>
 
     <svg class="absolute left-1/2 -translate-x-1/2 bottom-0" width="54" height="33" viewBox="0 0 54 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g filter="url(#filter0_f_pill_glow)">
@@ -63,7 +59,7 @@
     <button
       class="relative z-10 px-3.5 py-1.5 rounded-[60px] text-xs font-normal font-acid leading-5 cursor-pointer transition-colors duration-200
         {selected === period ? 'text-white' : 'text-gfx-neutral-300 hover:text-gfx-neutral-500'}"
-      data-active={selected === period}
+      bind:this={btnRefs[period]}
       onclick={() => selected = period}
       aria-pressed={selected === period}
     >
