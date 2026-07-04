@@ -9,7 +9,7 @@
 <div class="flex flex-col sm:flex-row items-center justify-between mb-5 gap-4">
   <div>
     <div class="text-gfx-neutral-500 text-body2 mb-1">{date}</div>
-    <h1 class="text-[36px] text-white font-normal leading-none mb-1">Good afternoon, {userName}</h1>
+    <h1 class="text-[24px] xl:text-[28px] 2xl:text-[36px] text-white font-normal leading-none mb-1">Good afternoon, {userName}</h1>
     <div class="text-gfx-neutral-500 text-body2">{tagline}</div>
   </div>
 

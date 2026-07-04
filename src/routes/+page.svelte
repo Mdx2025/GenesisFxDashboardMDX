@@ -16,16 +16,16 @@
   <Sidebar />
 
   <main class="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden">
-    <div class="px-7 py-4">
+    <div class="px-4 xl:px-5 2xl:px-7 py-4 max-w-[1600px]">
       <TopBar />
       <GreetingRow />
       <SummaryCards />
 
-      <div class="flex gap-5 mb-4 items-stretch">
+      <div class="flex flex-col xl:flex-row gap-5 mb-4 items-stretch">
         <div class="flex-1 min-w-0 flex flex-col">
           <PortfolioEquity />
         </div>
-        <div class="w-[23rem] shrink-0 flex flex-col">
+        <div class="xl:w-[280px] 2xl:w-[23rem] xl:shrink-0 flex flex-col">
           <QuickActions />
         </div>
       </div>
