@@ -67,15 +67,17 @@
   <!-- User Account -->
   <div class="relative z-10 px-5 mb-2">
     <div class="text-[14px] text-gfx-neutral-300 mb-3">User Account</div>
-    <div class="user-card flex items-center gap-3 p-3 rounded-2xl border border-zinc-900 bg-zinc-950 relative overflow-hidden">
+    <div class="user-card flex items-center gap-3 p-3 rounded-2xl bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
       <div class="user-card-glow" aria-hidden="true"></div>
       <div class="relative z-10 w-9 h-9 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-[16px] overflow-hidden">
-        <div class="absolute w-5 h-2.5 bg-teal-300 rounded-full blur-[30px] top-[-4px] left-[9px]" aria-hidden="true"></div>
+        <svg class="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
+          <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="blur(30px)"/>
+        </svg>
         <span class="relative z-10">M</span>
       </div>
       <div class="relative z-10">
-        <div class="text-white text-[14px]">Marcelo Cedeno</div>
-        <div class="text-gfx-neutral-300 text-[14px]">Sep 27th, 2025</div>
+        <div class="text-white text-[14px] leading-5">Marcelo Cedeno</div>
+        <div class="text-gfx-neutral-300 text-[14px] leading-5">Sep 27th, 2025</div>
       </div>
     </div>
   </div>
@@ -87,7 +89,7 @@
   <div class="relative z-10 px-5 flex-1 overflow-y-auto">
     <div class="text-[14px] text-gfx-neutral-300 mb-3">Overview</div>
     <nav aria-label="Main menu">
-      <ul class="flex flex-col gap-2.5" role="list">
+      <ul class="flex flex-col" role="list">
         {#each navItems as item}
           {@const IconComponent = iconMap[item.icon]}
           <li>
