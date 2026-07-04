@@ -57,7 +57,7 @@
         <ChevronLeftIcon />
       </button>
     </div>
-    <span class="text-white text-[14px]">AI-Powered Trading</span>
+    <span class="px-4 text-[14px]" style="color: #FFF">AI-Powered Trading</span>
   </div>
 
   <!-- Divider -->
