@@ -15,6 +15,7 @@
       <span class="btn-label">{option}</span>
       {#if active === i}
         <div class="glow-emerald" aria-hidden="true"></div>
+        <div class="fading-border" aria-hidden="true"></div>
         <div class="star star-1" aria-hidden="true"></div>
         <div class="star star-2" aria-hidden="true"></div>
         <div class="star star-3" aria-hidden="true"></div>
@@ -58,9 +59,18 @@
   }
   .mode-toggle button.active {
     background: rgba(20,184,166,0.2);
-    border: 0.5px solid #14b8a6;
+    border: none;
     color: #fff;
     font-weight: 500;
+  }
+  .fading-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 60px;
+    border: 1px solid #14b8a6;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 20%, white 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 20%, white 100%);
   }
   .btn-label {
     position: relative;

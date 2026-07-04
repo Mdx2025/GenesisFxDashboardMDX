@@ -8,6 +8,8 @@
   let containerEl = $state(null);
   let indicatorX = $state(0);
   let indicatorW = $state(0);
+  let indicatorH = $state(0);
+  let indicatorY = $state(0);
   let ready = $state(false);
 
   function updateIndicator() {
@@ -17,7 +19,9 @@
     const containerRect = containerEl.getBoundingClientRect();
     const btnRect = btn.getBoundingClientRect();
     indicatorX = btnRect.left - containerRect.left;
+    indicatorY = btnRect.top - containerRect.top;
     indicatorW = btnRect.width;
+    indicatorH = btnRect.height;
     ready = true;
   }
 
@@ -29,16 +33,18 @@
 </script>
 
 <div
-  class="relative flex gap-0.5 rounded-[60px] bg-white/[0.03] p-0.5"
+  class="relative flex gap-0.5 rounded-[60px] bg-white/[0.03] p-1"
   role="group"
   aria-label="Time period selection"
   bind:this={containerEl}
 >
-  <!-- Sliding indicator -->
   <div
-    class="absolute top-0.5 bottom-0.5 rounded-[60px] bg-teal-500/20 outline outline-[0.5px] outline-offset-[-0.5px] outline-teal-500 overflow-hidden pointer-events-none transition-all duration-300 ease-out {ready ? 'opacity-100' : 'opacity-0'}"
-    style="transform: translateX({indicatorX}px); width: {indicatorW}px"
+    class="absolute rounded-[60px] bg-teal-500/20 overflow-hidden pointer-events-none transition-all duration-300 ease-out {ready ? 'opacity-100' : 'opacity-0'}"
+    style="transform: translate({indicatorX}px, {indicatorY}px); width: {indicatorW}px; height: {indicatorH}px"
   >
+    <!-- Fading bottom border -->
+    <div class="absolute inset-0 rounded-[60px] border border-teal-500 pointer-events-none" style="mask-image: linear-gradient(to bottom, transparent 20%, white 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 20%, white 100%)" aria-hidden="true"></div>
+
     <svg class="absolute left-1/2 -translate-x-1/2 bottom-0" width="54" height="33" viewBox="0 0 54 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g filter="url(#filter0_f_pill_glow)">
         <ellipse cx="27" cy="35" rx="14.5" ry="8" fill="#55FFC7"/>
