@@ -17,14 +17,16 @@
   <div class="relative z-10 flex h-full">
     <!-- Left: text content -->
     <div class="w-1/2 flex flex-col px-5 pt-5 pb-4">
-      <div class="flex items-start justify-between mb-1">
+      <div class="flex items-center justify-between mb-1">
         <div class="text-sm font-normal font-acid leading-5 text-gfx-neutral-500">Live Accounts</div>
+        <div class="px-2.5 py-1.5 bg-teal-700/25 rounded-[20.83px] outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex justify-start items-start gap-1.5">
+          <span class="text-white text-xs font-normal font-acid leading-5">{totalBalance}</span>
+        </div>
       </div>
       <div class="flex items-baseline gap-2 mb-2">
         <span class="text-4xl text-white font-normal font-acid">3</span>
         <span class="text-sm font-normal font-acid leading-5 text-gfx-green-500">Active</span>
       </div>
-      <div class="text-sm font-medium font-acid text-gfx-neutral-300 bg-white/5 rounded-lg px-3 py-1 mt-auto self-start">{totalBalance}</div>
     </div>
 
     <!-- Right: bar charts (50%) -->
