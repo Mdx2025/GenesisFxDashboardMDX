@@ -1,13 +1,13 @@
 import { GlassCard, ActionItem } from '@/components/ui'
 import { ServerTime } from './ServerTime'
-import { DepositIcon, UserIcon, BookIcon } from '@/components/icons'
+import { DepositIcon, UserIcon, BookIcon, MarketNewsIcon } from '@/components/icons'
 import { quickActions } from '@/data/quick-actions'
 import type { ReactNode } from 'react'
 
 const iconRender: Record<string, ReactNode> = {
   deposit: <DepositIcon size={24} color="#10BC83" />,
   user: <UserIcon size={24} color="#10BC83" />,
-  chart: <span className="text-2xl">📊</span>,
+  chart: <MarketNewsIcon size={21} color="#10BC83" />,
   book: <BookIcon size={24} color="#10BC83" />,
 }
 

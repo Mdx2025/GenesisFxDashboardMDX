@@ -5,7 +5,7 @@ interface AreaChartProps {
   className?: string
 }
 
-export function AreaChart({ color = '#10BC83', className = 'h-14' }: AreaChartProps) {
+export function AreaChart({ color = '#10BC83', className = 'h-full' }: AreaChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const chartRef = useRef<any>(null)
 

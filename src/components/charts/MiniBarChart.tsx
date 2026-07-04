@@ -5,7 +5,7 @@ interface MiniBarChartProps {
   className?: string
 }
 
-export function MiniBarChart({ data, className = 'h-14' }: MiniBarChartProps) {
+export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const chartRef = useRef<any>(null)
 

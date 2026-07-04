@@ -12,7 +12,7 @@ interface CandlestickChartProps {
   className?: string
 }
 
-export function CandlestickChart({ data, className = 'h-14' }: CandlestickChartProps) {
+export function CandlestickChart({ data, className = 'h-full' }: CandlestickChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const chartRef = useRef<any>(null)
 

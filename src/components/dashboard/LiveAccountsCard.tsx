@@ -20,7 +20,7 @@ export function LiveAccountsCard({
     <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl h-[12.8125rem]">
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
       <div className="relative z-10 flex h-full p-4 sm:p-6">
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col">
           <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">Live Accounts</h3>
           <p className="text-card-value text-white mb-1">{accounts.length}</p>
           <span className="text-card-label text-gfx-neutral-500">Active</span>
