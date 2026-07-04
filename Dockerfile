@@ -3,6 +3,7 @@ WORKDIR /app
 RUN npm install -g pnpm@latest
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
+ARG CACHE_BUST=1
 COPY . .
 RUN pnpm build
 
