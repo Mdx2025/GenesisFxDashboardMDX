@@ -1,15 +1,68 @@
 <script>
+  import { browser } from '$app/environment';
+
   /** @type {{ data: Array<{value: number, label?: string}>, maxHeight?: number }} */
   let { data = [], maxHeight = 48 } = $props();
 
-  let maxVal = $derived(Math.max(...data.map(d => d.value)));
+  let canvasEl = $state(null);
+
+  $effect(() => {
+    if (!browser || !canvasEl || data.length === 0) return;
+
+    let destroyed = false;
+    let instance;
+
+    import('chart.js').then(({ Chart, registerables }) => {
+      if (destroyed) return;
+      Chart.register(...registerables);
+
+      instance = new Chart(canvasEl.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: data.map((d, i) => d.label || ''),
+          datasets: [{
+            data: data.map(d => d.value),
+            backgroundColor: (ctx) => {
+              const chart = ctx.chart;
+              const { ctx: c, chartArea } = chart;
+              if (!chartArea) return '#10BC83';
+              const g = c.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+              g.addColorStop(0, '#064B34');
+              g.addColorStop(1, '#10BC83');
+              return g;
+            },
+            borderRadius: { topLeft: 4, topRight: 4 },
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              bodyColor: '#fff',
+              borderColor: 'rgba(255,255,255,0.1)',
+              borderWidth: 1,
+              displayColors: false,
+            }
+          },
+          scales: {
+            x: { display: false },
+            y: { display: false }
+          }
+        }
+      });
+    });
+
+    return () => {
+      destroyed = true;
+      if (instance) instance.destroy();
+    };
+  });
 </script>
 
-<div class="flex items-end gap-3" style="height: {maxHeight}px" role="img" aria-label="Bar chart">
-  {#each data as bar}
-    <div class="flex flex-col items-center gap-1 flex-1" aria-hidden="true">
-      <div class="w-full rounded-t-[4px]" style="height: {(bar.value / maxVal) * maxHeight}px; background: linear-gradient(180deg, #10BC83 0%, #064B34 100%);"></div>
-      {#if bar.label}<span class="text-[9px] text-gfx-neutral-500">{bar.label}</span>{/if}
-    </div>
-  {/each}
+<div style="height: {maxHeight}px" role="img" aria-label="Bar chart">
+  <canvas bind:this={canvasEl}></canvas>
 </div>

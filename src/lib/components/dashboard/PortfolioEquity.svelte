@@ -5,7 +5,7 @@
 </script>
 
 <GlassCard variant="heavy" divider="green" rounded="18px" className="h-full">
-  <div class="p-5">
+  <div class="p-5 flex flex-col h-full">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
       <div>
         <div class="text-body2 uppercase tracking-[2.32px] font-bold text-gfx-neutral-500 mb-2">Portfolio Equity</div>
@@ -26,6 +26,8 @@
       </div>
     </div>
 
-    <PortfolioChart />
+    <div class="flex-1 min-h-[200px]">
+      <PortfolioChart />
+    </div>
   </div>
 </GlassCard>

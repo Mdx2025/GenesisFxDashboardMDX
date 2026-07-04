@@ -1,15 +1,64 @@
 <script>
+  import { browser } from '$app/environment';
+
   /** @type {{ data: Array<{wickTop: number, body: number, wickBottom: number, bullish: boolean}>, height?: number }} */
   let { data = [], height = 48 } = $props();
+
+  let canvasEl = $state(null);
+
+  $effect(() => {
+    if (!browser || !canvasEl || data.length === 0) return;
+
+    let destroyed = false;
+    let instance;
+
+    import('chart.js').then(({ Chart, registerables }) => {
+      if (destroyed) return;
+      Chart.register(...registerables);
+
+      const barData = data.map(c => c.body);
+      const colors = data.map(c => c.bullish ? '#10BC83' : '#ff717e');
+
+      instance = new Chart(canvasEl.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: data.map((_, i) => ''),
+          datasets: [{
+            data: barData,
+            backgroundColor: colors,
+            borderRadius: 2,
+            borderSkipped: false,
+            barPercentage: 0.5,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              bodyColor: '#fff',
+              borderColor: 'rgba(255,255,255,0.1)',
+              borderWidth: 1,
+              displayColors: false,
+            }
+          },
+          scales: {
+            x: { display: false },
+            y: { display: false }
+          }
+        }
+      });
+    });
+
+    return () => {
+      destroyed = true;
+      if (instance) instance.destroy();
+    };
+  });
 </script>
 
-<div class="flex items-center gap-2 justify-center" style="height: {height}px" role="img" aria-label="Candlestick chart">
-  {#each data as candle}
-    {@const color = candle.bullish ? 'var(--color-gfx-green-500, #10BC83)' : 'var(--color-gfx-red, #ff717e)'}
-    <div class="flex flex-col items-center" aria-hidden="true">
-      <div style="width: 1px; height: {candle.wickTop}px; background: {color};"></div>
-      <div style="width: 10px; height: {candle.body}px; border-radius: 2px; background: {color}; box-shadow: 0 0 {candle.bullish ? 8 : 7}px {color};"></div>
-      <div style="width: 1px; height: {candle.wickBottom}px; background: {color};"></div>
-    </div>
-  {/each}
+<div style="height: {height}px" role="img" aria-label="Candlestick chart">
+  <canvas bind:this={canvasEl}></canvas>
 </div>

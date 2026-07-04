@@ -17,7 +17,8 @@
 
 <style>
   .action-item {
-    height: 62px;
+    flex: 1;
+    min-height: 62px;
     border-radius: 13px;
     border: 1.25px solid rgba(255,255,255,0.04);
     background: rgba(255,255,255,0.02);

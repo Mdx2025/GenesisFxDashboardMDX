@@ -1,32 +1,92 @@
 <script>
-  /** @type {{ yLabels?: string[] }} */
-  let { yLabels = ['$305','$253','$202','$150','$98'] } = $props();
+  import { browser } from '$app/environment';
+
+  let canvasEl = $state(null);
+  let chart = $state(null);
+
+  const labels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dataPoints = [98, 110, 125, 150, 165, 180, 195, 202, 220, 240, 253, 305];
+
+  $effect(() => {
+    if (!browser || !canvasEl) return;
+
+    let destroyed = false;
+    let instance;
+
+    import('chart.js').then(({ Chart, registerables }) => {
+      if (destroyed) return;
+      Chart.register(...registerables);
+
+      const ctx = canvasEl.getContext('2d');
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvasEl.height);
+      gradient.addColorStop(0, 'rgba(16, 188, 131, 0.25)');
+      gradient.addColorStop(1, 'rgba(16, 188, 131, 0)');
+
+      instance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            data: dataPoints,
+            borderColor: '#10BC83',
+            backgroundColor: gradient,
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4,
+            pointRadius: 0,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: '#10BC83',
+            pointHoverBorderColor: '#000',
+            pointHoverBorderWidth: 2,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { intersect: false, mode: 'index' },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              titleColor: '#A0A0A0',
+              bodyColor: '#fff',
+              borderColor: 'rgba(255,255,255,0.1)',
+              borderWidth: 1,
+              padding: 10,
+              displayColors: false,
+              callbacks: {
+                label: (ctx) => `$${ctx.parsed.y.toFixed(2)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+              ticks: { color: '#A0A0A0', font: { size: 10 } },
+              border: { display: false }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+              ticks: {
+                color: '#A0A0A0',
+                font: { size: 10 },
+                callback: (v) => `$${v}`
+              },
+              border: { display: false }
+            }
+          }
+        }
+      });
+      chart = instance;
+    });
+
+    return () => {
+      destroyed = true;
+      if (instance) instance.destroy();
+    };
+  });
 </script>
 
-<div class="relative h-[150px]" role="img" aria-label="Portfolio equity line chart">
-  <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-[10px] text-gfx-neutral-500 pr-3" aria-hidden="true">
-    {#each yLabels as label}
-      <span>{label}</span>
-    {/each}
-  </div>
-  <div class="ml-10 h-full relative">
-    <div class="absolute inset-0 flex flex-col justify-between" aria-hidden="true">
-      {#each yLabels as _}
-        <div class="border-b border-[rgba(255,255,255,0.04)]"></div>
-      {/each}
-    </div>
-    <svg width="100%" height="100%" viewBox="0 0 900 280" preserveAspectRatio="none" class="relative z-10" aria-hidden="true">
-      <title>Portfolio equity trend</title>
-      <defs>
-        <linearGradient id="portfolioGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#10BC83" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="#10BC83" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <path d="M0,250 C50,248 80,240 120,230 C160,220 200,210 240,195 C280,180 320,170 360,155 C400,140 440,125 480,115 C520,105 560,100 600,90 C640,80 680,70 720,55 C760,42 800,35 850,28 L900,20 V280 H0 Z" fill="url(#portfolioGrad)"/>
-      <path d="M0,250 C50,248 80,240 120,230 C160,220 200,210 240,195 C280,180 320,170 360,155 C400,140 440,125 480,115 C520,105 560,100 600,90 C640,80 680,70 720,55 C760,42 800,35 850,28 L900,20" fill="none" stroke="#10BC83" stroke-width="2"/>
-      <circle cx="720" cy="55" r="5" fill="#10BC83" stroke="#000" stroke-width="2"/>
-    </svg>
-    <div class="absolute top-0 bottom-0 border-l border-dashed border-gfx-green-500/30" style="left: 80%;" aria-hidden="true"></div>
-  </div>
+<div class="w-full h-full" role="img" aria-label="Portfolio equity line chart">
+  <canvas bind:this={canvasEl}></canvas>
 </div>

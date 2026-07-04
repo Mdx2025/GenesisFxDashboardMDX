@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        acid: ['"FFF Acid Grotesk"', 'sans-serif'],
+        acid: ['"Acid Grotesk"', 'sans-serif'],
       },
       colors: {
         'gfx-green': {
