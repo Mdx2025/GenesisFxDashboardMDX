@@ -17,7 +17,7 @@
   <div class="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full blur-[157px] pointer-events-none" style="background: {glowColor}" aria-hidden="true"></div>
 
   <div class="relative z-10 flex flex-col h-full">
-    <div class="p-6">
+    <div class="px-6 pt-6">
       <div class="text-sm font-normal font-acid leading-5 text-gfx-neutral-500 mb-2">{title}</div>
 
       <div class="text-4xl text-white font-normal font-acid mb-2">{value}</div>
