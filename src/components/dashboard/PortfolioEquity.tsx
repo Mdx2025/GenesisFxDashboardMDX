@@ -15,9 +15,7 @@ export function PortfolioEquity() {
           </div>
           <PeriodPill />
         </div>
-        <div className="flex-1 min-h-[200px]">
-          <PortfolioChart />
-        </div>
+        <PortfolioChart />
       </div>
     </GlassCard>
   )

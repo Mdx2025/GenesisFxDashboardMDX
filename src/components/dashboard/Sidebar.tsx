@@ -130,8 +130,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="relative z-10 flex flex-col gap-3 2xl:gap-6">
-          <h3 className="text-sidebar-btn text-white font-normal mb-1">Switch Modes</h3>
-          <ModeToggle />
+          <div className="flex flex-col gap-2">
+            <h3 className="text-sidebar-btn text-white font-normal">Switch Modes</h3>
+            <ModeToggle />
+          </div>
           <NavButton>
             <LogoutIcon />
             <span className="text-gfx-neutral-300">Logout</span>
