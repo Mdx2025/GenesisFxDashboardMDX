@@ -1,4 +1,4 @@
-import { Breadcrumb, GreenDot } from '@/components/ui'
+import { Breadcrumb } from '@/components/ui'
 import { HelpIcon } from '@/components/icons'
 
 interface TopBarProps {
@@ -23,7 +23,23 @@ export function TopBar({ onMenuClick }: TopBarProps) {
 
       <div className="flex items-center gap-2 sm:gap-4 shrink-0">
         <div className="flex items-center gap-2">
-          <GreenDot size={6} />
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" className="shrink-0" aria-hidden="true">
+            <g filter="url(#glow_market)">
+              <rect x="12.5333" y="12.5333" width="8.77332" height="8.77332" rx="4.38666" fill="#10BC83"/>
+            </g>
+            <defs>
+              <filter id="glow_market" x="0" y="0" width="33.84" height="33.84" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset/>
+                <feGaussianBlur stdDeviation="6.267"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.941 0 0 0 0 0.627 0 0 0 0.8 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+              </filter>
+            </defs>
+          </svg>
           <span className="text-gfx-green-500 text-body2 font-normal hidden sm:inline">Markets Open</span>
         </div>
 

@@ -5,10 +5,10 @@ import { quickActions } from '@/data/quick-actions'
 import type { ReactNode } from 'react'
 
 const iconRender: Record<string, ReactNode> = {
-  deposit: <DepositIcon size={24} color="#10BC83" />,
-  user: <UserIcon size={24} color="#10BC83" />,
-  chart: <MarketNewsIcon size={21} color="#10BC83" />,
-  book: <BookIcon size={24} color="#10BC83" />,
+  deposit: <DepositIcon size={24} color="white" />,
+  user: <UserIcon size={24} color="white" />,
+  chart: <MarketNewsIcon size={21} color="white" />,
+  book: <BookIcon size={24} color="white" />,
 }
 
 export function QuickActions() {
