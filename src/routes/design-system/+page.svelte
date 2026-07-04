@@ -309,10 +309,33 @@
       <!-- Buttons -->
       <section id="buttons" class="mb-16 scroll-mt-8" aria-labelledby="buttons-heading">
         <h2 id="buttons-heading" class="text-h2 font-bold mb-8">Buttons</h2>
-        <div class="space-y-6">
+        <div class="space-y-8">
           <div>
-            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Sparkle Button</div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Sparkle Button — With Icon</div>
             <div class="flex flex-wrap gap-4">
+              <SparkleButton>
+                <span class="flex items-center gap-2">
+                  <DepositIcon />
+                  <span>Deposit</span>
+                </span>
+              </SparkleButton>
+              <SparkleButton>
+                <span class="flex items-center gap-2">
+                  <WithdrawIcon />
+                  <span>Withdraw</span>
+                </span>
+              </SparkleButton>
+              <SparkleButton>
+                <span class="flex items-center gap-2">
+                  <TransferIcon />
+                  <span>Transfer</span>
+                </span>
+              </SparkleButton>
+            </div>
+          </div>
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Sparkle Button — Sizes</div>
+            <div class="flex flex-wrap items-center gap-4">
               <SparkleButton>Default Size</SparkleButton>
               <SparkleButton size="small">Small Size</SparkleButton>
             </div>
@@ -355,15 +378,18 @@
       <!-- Action Items -->
       <section id="action-items" class="mb-16 scroll-mt-8" aria-labelledby="action-items-heading">
         <h2 id="action-items-heading" class="text-h2 font-bold mb-8">Action Items</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[900px]">
-          <ActionItem title="Deposit" subtitle="Fund your account">
+        <div class="flex flex-col gap-2 max-w-[400px]">
+          <ActionItem title="Deposit Funds" subtitle="Add capital to wallet">
             {#snippet icon()}<DepositIcon />{/snippet}
           </ActionItem>
-          <ActionItem title="Withdraw" subtitle="Cash out funds">
-            {#snippet icon()}<WithdrawIcon />{/snippet}
+          <ActionItem title="New Account" subtitle="Open trading account">
+            {#snippet icon()}<UserIcon />{/snippet}
           </ActionItem>
-          <ActionItem title="Transfer" subtitle="Move between accounts">
-            {#snippet icon()}<TransferIcon />{/snippet}
+          <ActionItem title="Market News" subtitle="Latest market updates">
+            {#snippet icon()}<MarketNewsIcon />{/snippet}
+          </ActionItem>
+          <ActionItem title="Journal" subtitle="Review trading log">
+            {#snippet icon()}<BookIcon />{/snippet}
           </ActionItem>
         </div>
       </section>

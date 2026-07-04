@@ -5,6 +5,7 @@
 </script>
 
 <GlassCard variant="heavy" divider="white" rounded="19px">
+  <div class="divider-green absolute top-0 left-[10%] right-[10%]"></div>
   <div class="p-4">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
       <div class="flex items-center gap-3">
