@@ -4,7 +4,7 @@
 </script>
 
 <button class="w-36 h-12 relative cursor-pointer group" type="button">
-  <div class="w-36 h-12 absolute left-0 top-0 rounded-[30px] bg-gradient-to-t from-[#104030] to-black/0" aria-hidden="true"></div>
+  <div class="w-36 h-12 absolute left-0 top-0 rounded-[30px] bg-gradient-to-t from-[#1040308f] to-black/0" aria-hidden="true"></div>
 
   <!-- Fading border: solid top, fades toward bottom -->
   <div class="absolute inset-0 rounded-[30px] border border-zinc-300/30 pointer-events-none" style="mask-image:linear-gradient(to bottom, white 0%, transparent 80%);-webkit-mask-image:linear-gradient(to bottom, white 0%, transparent 80%)" aria-hidden="true"></div>
