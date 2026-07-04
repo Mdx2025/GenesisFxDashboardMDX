@@ -11,8 +11,10 @@
       <HomeIcon />
     </li>
 
-    {#each items as item}
-      <span style="color: #606060">/</span>
+    {#each items as item, i}
+      {#if i > 0}
+        <span style="color: #606060">/</span>
+      {/if}
       <li class="flex items-center">
         {#if item.current}
           <span class="font-medium" style="color: #606060">{item.label}</span>
