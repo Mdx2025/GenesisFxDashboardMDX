@@ -7,7 +7,7 @@
   <div class="w-36 h-12 absolute left-0 top-0 rounded-[30px] bg-gradient-to-t from-[#104030] to-black/0" aria-hidden="true"></div>
 
   <!-- Fading border: solid top, fades toward bottom -->
-  <div class="absolute inset-0 rounded-[30px] border border-zinc-300 pointer-events-none" style="mask-image:linear-gradient(to bottom, white 0%, transparent 80%);-webkit-mask-image:linear-gradient(to bottom, white 0%, transparent 80%)" aria-hidden="true"></div>
+  <div class="absolute inset-0 rounded-[30px] border border-zinc-300/30 pointer-events-none" style="mask-image:linear-gradient(to bottom, white 0%, transparent 80%);-webkit-mask-image:linear-gradient(to bottom, white 0%, transparent 80%)" aria-hidden="true"></div>
 
   <!-- Sparkle dots -->
   <svg class="absolute left-[139.89px] top-[27.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
