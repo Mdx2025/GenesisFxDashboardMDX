@@ -380,9 +380,15 @@
       <!-- Nav Button -->
       <section id="nav-button" class="mb-16 scroll-mt-8" aria-labelledby="nav-button-heading">
         <h2 id="nav-button-heading" class="text-h2 font-bold mb-8">Nav Button</h2>
-        <div class="max-w-[240px] space-y-2">
-          <NavButton active={true}><DashboardIcon /><span>Dashboard</span></NavButton>
-          <NavButton active={false}><AssetsIcon /><span>Assets</span></NavButton>
+        <div class="max-w-[280px] space-y-4">
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Active (with glow + indicator)</div>
+            <NavButton active={true}><DashboardIcon /><span>Dashboard</span></NavButton>
+          </div>
+          <div>
+            <div class="text-body2 text-gfx-neutral-500 mb-3 uppercase tracking-widest">Inactive (no border, no bg)</div>
+            <NavButton active={false}><AssetsIcon /><span>Assets</span></NavButton>
+          </div>
         </div>
       </section>
 

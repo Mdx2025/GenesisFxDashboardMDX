@@ -7,15 +7,24 @@
   {@render children()}
   {#if active}
     <div class="active-indicator" aria-hidden="true"></div>
+    <div class="glow-teal" aria-hidden="true"></div>
+    <div class="glow-emerald-bottom" aria-hidden="true"></div>
+    <div class="glow-emerald-top" aria-hidden="true"></div>
+    <div class="star star-1" aria-hidden="true"></div>
+    <div class="star star-2" aria-hidden="true"></div>
+    <div class="star star-3" aria-hidden="true"></div>
+    <div class="star star-4" aria-hidden="true"></div>
+    <div class="star star-5" aria-hidden="true"></div>
+    <div class="star star-6" aria-hidden="true"></div>
   {/if}
 </button>
 
 <style>
   .nav-btn {
     width: 100%;
-    height: 46px;
+    height: 48px;
     border-radius: 10px;
-    border: 1px solid rgba(23,23,23,1);
+    border: none;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -36,32 +45,46 @@
     outline-offset: -2px;
   }
   .nav-btn.active {
-    background: #141414;
-    border-color: #171717;
+    background: #171717;
+    outline: 1px solid #171717;
+    outline-offset: -1px;
     color: #fff;
   }
-  .nav-btn.active::before {
-    content: '';
+  .glow-teal {
     position: absolute;
-    left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
+    width: 288px;
+    height: 80px;
+    left: 67px;
+    top: -171px;
+    transform: rotate(47.67deg);
+    transform-origin: top left;
+    background: #134e4a;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,240,160,0.12) 0%, transparent 70%);
+    filter: blur(161px);
     pointer-events: none;
   }
-  .nav-btn.active::after {
-    content: '';
+  .glow-emerald-bottom {
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100px;
-    height: 60px;
+    width: 96px;
+    height: 56px;
+    left: 78px;
+    bottom: -25px;
+    transform: rotate(-27.65deg);
+    transform-origin: top left;
+    background: #6ee7b7;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(16,185,131,0.08) 0%, transparent 70%);
+    filter: blur(77px);
+    pointer-events: none;
+  }
+  .glow-emerald-top {
+    position: absolute;
+    width: 96px;
+    height: 56px;
+    left: 169px;
+    top: -47px;
+    background: #059669;
+    border-radius: 50%;
+    filter: blur(50px);
     pointer-events: none;
   }
   .active-indicator {
@@ -74,4 +97,17 @@
     background: white;
     border-radius: 1px;
   }
+  .star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .star-1 { right: 4px; top: 5px; background: white; filter: blur(0.5px); }
+  .star-2 { right: 19px; top: 10px; background: white; opacity: 0.5; filter: blur(0.5px); }
+  .star-3 { left: 177px; top: 6px; background: #a3a3a3; filter: blur(0.5px); }
+  .star-4 { left: 198px; bottom: 5px; background: #a3a3a3; filter: blur(0.5px); }
+  .star-5 { left: 216px; top: 10px; background: #a3a3a3; filter: blur(0.5px); }
+  .star-6 { left: 159px; top: 13px; background: #a3a3a3; filter: blur(0.5px); }
 </style>

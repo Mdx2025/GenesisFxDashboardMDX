@@ -62,7 +62,7 @@
   </div>
 
   <!-- Divider -->
-  <div class="mx-5 my-3 h-px bg-zinc-900" aria-hidden="true"></div>
+  <div class="mx-5 my-3 h-0 outline outline-1 outline-offset-[-0.51px] outline-zinc-900" aria-hidden="true"></div>
 
   <!-- User Account -->
   <div class="relative z-10 px-5 mb-2">
@@ -81,7 +81,7 @@
   </div>
 
   <!-- Divider -->
-  <div class="mx-5 my-3 h-px bg-zinc-900" aria-hidden="true"></div>
+  <div class="mx-5 my-3 h-0 outline outline-1 outline-offset-[-0.51px] outline-zinc-900" aria-hidden="true"></div>
 
   <!-- Navigation -->
   <div class="relative z-10 px-5 flex-1 overflow-y-auto">
