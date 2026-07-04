@@ -7,47 +7,49 @@
   let selected = $state(active);
   /** @type {Record<string, HTMLButtonElement>} */
   let btnRefs = {};
-  let containerEl = $state(null);
+  /** @type {HTMLDivElement | null} */
+  let overlayEl = $state(null);
   let indicatorStyle = $state('opacity:0');
 
   function updateIndicator() {
-    if (!containerEl) return;
+    if (!overlayEl) return;
     const btn = btnRefs[selected];
     if (!btn) return;
-    const cRect = containerEl.getBoundingClientRect();
+    const oRect = overlayEl.getBoundingClientRect();
     const bRect = btn.getBoundingClientRect();
-    const x = bRect.left - cRect.left;
-    const y = bRect.top - cRect.top;
-    indicatorStyle = `transform:translate(${x}px,${y}px);width:${bRect.width}px;height:${bRect.height}px;opacity:1`;
+    const x = bRect.left - oRect.left;
+    indicatorStyle = `transform:translateX(${x}px);width:${bRect.width}px;opacity:1`;
   }
 
   $effect(() => {
-    if (!browser || !containerEl) return;
+    if (!browser || !overlayEl) return;
     selected;
     requestAnimationFrame(updateIndicator);
   });
 </script>
 
 <div class="flex items-center gap-2">
+  <!-- Overlay pill bar -->
   <div
-    class="relative inline-flex items-center h-10 rounded-[60px] bg-[#1A1F1D] px-1"
+    class="relative inline-flex items-center h-10 rounded-[60px] bg-white/5 px-1"
     role="group"
     aria-label="Time period selection"
-    bind:this={containerEl}
+    bind:this={overlayEl}
   >
+    <!-- Sliding indicator -->
     <div
-      class="absolute rounded-[60px] bg-gfx-green-500/25 overflow-hidden pointer-events-none transition-all duration-300 ease-out outline outline-[0.50px] outline-offset-[-0.50px] outline-gfx-green-500/50"
+      class="absolute top-[3px] h-8 rounded-[60px] bg-teal-500/20 overflow-hidden pointer-events-none transition-all duration-300 ease-out outline outline-[0.50px] outline-offset-[-0.50px] outline-teal-500"
       style={indicatorStyle}
     >
-      <svg class="absolute left-1/2 -translate-x-1/2 bottom-0" width="54" height="33" viewBox="0 0 54 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <g filter="url(#filter0_f_pill_glow)">
-          <ellipse cx="27" cy="35" rx="14.5" ry="8" fill="#55FFC7"/>
+      <svg class="absolute left-1/2 -translate-x-1/2 bottom-[-6px]" width="54" height="33" viewBox="0 0 54 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g filter="url(#filter0_f_1413_30200)">
+          <ellipse cx="26.9688" cy="35" rx="14.5" ry="8" fill="#55FFC7"/>
         </g>
         <defs>
-          <filter id="filter0_f_pill_glow" x="-27.5" y="-13" width="109" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <filter id="filter0_f_1413_30200" x="-27.5312" y="-13" width="109" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
             <feFlood flood-opacity="0" result="BackgroundImageFix"/>
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-            <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur"/>
+            <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_1413_30200"/>
           </filter>
         </defs>
       </svg>
@@ -55,8 +57,8 @@
 
     {#each periods as period}
       <button
-        class="relative z-10 px-3.5 py-1.5 rounded-[60px] text-xs font-normal font-acid leading-5 cursor-pointer transition-colors duration-200
-          {selected === period ? 'text-white' : 'text-gfx-neutral-300 hover:text-gfx-neutral-500'}"
+        class="relative z-10 px-3.5 py-1.5 rounded-[60px] text-center text-xs font-normal font-acid leading-5 cursor-pointer transition-colors duration-200
+          {selected === period ? 'text-white' : 'text-gfx-neutral-300 hover:text-white/60'}"
         bind:this={btnRefs[period]}
         onclick={() => selected = period}
         aria-pressed={selected === period}
@@ -66,8 +68,9 @@
     {/each}
   </div>
 
+  <!-- Calendar button -->
   <button
-    class="size-9 flex items-center justify-center rounded-lg bg-white/[0.03] outline outline-1 outline-offset-[-1px] outline-white/5 text-white/35 hover:text-white/60 transition-colors focus-visible:outline-2 focus-visible:outline-gfx-green-500"
+    class="size-9 flex items-center justify-center rounded-lg text-white/35 hover:text-white/60 transition-colors focus-visible:outline-2 focus-visible:outline-gfx-green-500"
     aria-label="Select date range"
   >
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

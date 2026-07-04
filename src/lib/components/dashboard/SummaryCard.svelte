@@ -29,7 +29,7 @@
     </div>
 
     {#if children}
-      <div class="flex justify-end items-end flex-1">
+      <div class="flex justify-end items-end mt-auto h-1/2">
         <div class="w-1/2 h-full">
           {@render children()}
         </div>
