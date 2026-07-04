@@ -16,8 +16,9 @@
         <SearchInput placeholder="Search for" />
         <SparkleButton size="small">
           <span class="flex items-center gap-1.5">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="4.5" r="3" fill="#BEBEBE"/>
+              <ellipse cx="9" cy="12.75" rx="5.25" ry="3" fill="#BEBEBE"/>
             </svg>
             New Account
           </span>

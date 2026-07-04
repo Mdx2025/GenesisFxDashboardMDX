@@ -386,7 +386,7 @@
             {#snippet icon()}<UserIcon />{/snippet}
           </ActionItem>
           <ActionItem title="Market News" subtitle="Latest market updates">
-            {#snippet icon()}<MarketNewsIcon />{/snippet}
+            {#snippet icon()}<span class="text-white text-2xl leading-8">📊</span>{/snippet}
           </ActionItem>
           <ActionItem title="Journal" subtitle="Review trading log">
             {#snippet icon()}<BookIcon />{/snippet}
