@@ -3,7 +3,7 @@
   let { active = false, href = '#', children } = $props();
 </script>
 
-<button class="nav-btn" class:active aria-current={active ? 'page' : undefined}>
+<button class="nav-btn rounded-xl py-3 px-2" class:active aria-current={active ? 'page' : undefined}>
   {@render children()}
   {#if active}
     <div class="active-indicator" aria-hidden="true"></div>
@@ -22,13 +22,10 @@
 <style>
   .nav-btn {
     width: 100%;
-    height: 48px;
-    border-radius: 10px;
     border: none;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 0 16px;
     cursor: pointer;
     transition: all 0.2s;
     color: #A0A0A0;

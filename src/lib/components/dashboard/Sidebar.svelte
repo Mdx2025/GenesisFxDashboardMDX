@@ -89,7 +89,7 @@
   <div class="relative z-10 px-5 flex-1 overflow-y-auto">
     <div class="text-[14px] text-gfx-neutral-300 mb-3">Overview</div>
     <nav aria-label="Main menu">
-      <ul class="flex flex-col" role="list">
+      <ul class="flex flex-col gap-1.5" role="list">
         {#each navItems as item}
           {@const IconComponent = iconMap[item.icon]}
           <li>
@@ -132,6 +132,18 @@
   <div class="relative z-10 px-5 mb-4">
     <div class="text-[16px] text-white font-medium mb-3">Switch Modes</div>
     <ModeToggle />
+  </div>
+
+  <!-- Trade Button -->
+  <div class="relative z-10 px-5 mb-4 flex justify-center">
+    <button class="trade-btn relative w-28 h-12 rounded-[300px] font-medium text-base text-black cursor-pointer border-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500">
+      <div class="absolute inset-0 left-[7px] top-[3px] w-28 h-11 bg-gradient-to-b from-neutral-300/0 to-teal-700 rounded-[276px] blur-xl" aria-hidden="true"></div>
+      <div class="absolute inset-0 w-28 h-12 bg-gradient-to-b from-neutral-300/0 to-teal-400 rounded-[240px] blur-md" aria-hidden="true"></div>
+      <div class="absolute left-0 top-[3px] w-28 h-11 rounded-[300px]" style="background: linear-gradient(324deg, rgb(212,212,212) 18%, rgb(204,251,241) 64%, rgb(204,251,241) 80%)" aria-hidden="true"></div>
+      <div class="absolute left-0 top-[3px] w-28 h-11 bg-gradient-to-l from-neutral-300 to-teal-200/0 rounded-[300px] blur-xs" aria-hidden="true"></div>
+      <div class="absolute left-0 top-[3px] w-28 h-11 bg-gradient-to-l from-cyan-50 to-teal-200/0 rounded-[300px] blur-xs" aria-hidden="true"></div>
+      <span class="relative z-10">Trade</span>
+    </button>
   </div>
 
   <!-- Logout -->

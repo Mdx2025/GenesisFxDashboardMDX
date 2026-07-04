@@ -8,6 +8,10 @@
   import TradingAccountsTable from '$components/dashboard/TradingAccountsTable.svelte';
 </script>
 
+<svelte:head>
+  <title>Welcome to Genesis Fx</title>
+</svelte:head>
+
 <div class="flex w-full min-h-screen bg-gfx-main text-white font-acid">
   <Sidebar />
 
