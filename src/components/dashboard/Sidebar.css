@@ -1,0 +1,28 @@
+.sidebar {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sidebar-top-glow {
+  position: absolute;
+  width: 600px;
+  height: 176px;
+  left: 53px;
+  top: -58px;
+  transform: rotate(47.67deg);
+  transform-origin: top left;
+  background: #134e4a;
+  border-radius: 50%;
+  filter: blur(161px);
+  pointer-events: none;
+}
+.user-card-glow {
+  position: absolute;
+  width: 96px;
+  height: 56px;
+  left: 86px;
+  bottom: -20px;
+  background: #6ee7b7;
+  border-radius: 50%;
+  filter: blur(77px);
+  pointer-events: none;
+}

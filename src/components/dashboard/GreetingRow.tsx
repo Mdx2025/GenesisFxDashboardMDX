@@ -1,0 +1,40 @@
+import { SparkleButton } from '@/components/ui'
+import { DepositIcon, WithdrawIcon, TransferIcon } from '@/components/icons'
+
+interface GreetingRowProps {
+  userName?: string
+  date?: string
+  tagline?: string
+}
+
+export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagline = 'Born To Outperform' }: GreetingRowProps) {
+  return (
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-5 gap-4">
+      <div>
+        <div className="text-gfx-neutral-500 text-body2 mb-1">{date}</div>
+        <h1 className="text-white font-normal leading-none mb-1" style={{ fontSize: 'clamp(1.25rem, 0.75rem + 1.5vw, 2.25rem)' }}>Good afternoon, {userName}</h1>
+        <div className="text-gfx-neutral-500 text-body2">{tagline}</div>
+      </div>
+      <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+        <SparkleButton>
+          <span className="flex items-center gap-2">
+            <DepositIcon />
+            <span className="hidden sm:inline">Deposit</span>
+          </span>
+        </SparkleButton>
+        <SparkleButton>
+          <span className="flex items-center gap-2">
+            <WithdrawIcon />
+            <span className="hidden sm:inline">Withdraw</span>
+          </span>
+        </SparkleButton>
+        <SparkleButton>
+          <span className="flex items-center gap-2">
+            <TransferIcon />
+            <span className="hidden sm:inline">Transfer</span>
+          </span>
+        </SparkleButton>
+      </div>
+    </div>
+  )
+}

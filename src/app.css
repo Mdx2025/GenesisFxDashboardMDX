@@ -35,23 +35,34 @@
   --color-gfx-glow-amber: #281E14;
   --color-gfx-glow-green-light: #104030;
 
-  --font-size-h1: 50px;
+  --font-size-h1: clamp(2rem, 1.5rem + 1.3vw, 3.125rem);
   --font-size-h1--line-height: 100%;
-  --font-size-h2: 36px;
+  --font-size-h2: clamp(1.5rem, 1rem + 1.3vw, 2.25rem);
   --font-size-h2--line-height: 100%;
-  --font-size-h3: 24px;
+  --font-size-h3: clamp(1.125rem, 0.875rem + 0.65vw, 1.5rem);
   --font-size-h3--line-height: 100%;
-  --font-size-body1: 14px;
+  --font-size-body1: clamp(0.75rem, 0.625rem + 0.2vw, 0.875rem);
   --font-size-body1--line-height: 18.8px;
-  --font-size-body2: 12px;
+  --font-size-body2: clamp(0.625rem, 0.55rem + 0.15vw, 0.75rem);
   --font-size-body2--line-height: 18.8px;
-  --font-size-btn: 16px;
+  --font-size-btn: clamp(0.875rem, 0.75rem + 0.2vw, 1rem);
   --font-size-btn--line-height: 24.44px;
-  --font-size-micro: 16px;
+  --font-size-micro: clamp(0.875rem, 0.75rem + 0.2vw, 1rem);
   --font-size-micro--line-height: 24.44px;
-  --font-size-tab: 12px;
+  --font-size-tab: clamp(0.625rem, 0.55rem + 0.15vw, 0.75rem);
   --font-size-tab--line-height: 15.68px;
   --font-size-tab--letter-spacing: 2.32px;
+
+  --font-size-card-value: clamp(1.25rem, 0.5rem + 2vw, 2.25rem);
+  --font-size-card-value--line-height: 1.1;
+  --font-size-card-label: clamp(0.7rem, 0.6rem + 0.2vw, 0.875rem);
+  --font-size-card-label--line-height: 1.3;
+  --font-size-card-change: clamp(0.65rem, 0.55rem + 0.15vw, 0.875rem);
+  --font-size-card-change--line-height: 1.3;
+  --font-size-sidebar-label: clamp(0.7rem, 0.6rem + 0.25vw, 0.875rem);
+  --font-size-sidebar-label--line-height: 1.35;
+  --font-size-sidebar-btn: clamp(0.8rem, 0.7rem + 0.2vw, 1rem);
+  --font-size-sidebar-btn--line-height: 1.5;
 }
 
 @layer base {

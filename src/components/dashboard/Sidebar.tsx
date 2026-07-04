@@ -1,0 +1,142 @@
+import './Sidebar.css'
+import { useState } from 'react'
+import { NavButton, ModeToggle } from '@/components/ui'
+import {
+  DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
+  PammIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
+  ChevronDownIcon, ChevronLeftIcon
+} from '@/components/icons'
+import { navItems } from '@/data/navigation'
+import type { ComponentType } from 'react'
+
+const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> = {
+  dashboard: DashboardIcon,
+  assets: AssetsIcon,
+  tradelocker: TradelockerIcon,
+  challenges: ChallengesIcon,
+  pamm: PammIcon,
+  news: MarketNewsIcon,
+  academy: AcademyIcon,
+}
+
+interface SidebarProps {
+  open: boolean
+  onClose: () => void
+}
+
+export function Sidebar({ open, onClose }: SidebarProps) {
+  const [tradelockerOpen, setTradelockerOpen] = useState(false)
+
+  return (
+    <>
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+          onClick={onClose}
+          role="presentation"
+        />
+      )}
+      <aside
+        className={`sidebar w-[260px] 2xl:w-xs min-h-screen bg-black border-r border-zinc-900 flex flex-col shrink-0 h-screen overflow-hidden p-3.5 lg:p-4 2xl:p-6 fixed inset-y-0 left-0 z-50 transition-transform lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto ${open ? 'translate-x-0' : '-translate-x-full'}`}
+        aria-label="Main navigation"
+      >
+        <div className="sidebar-top-glow" aria-hidden="true" />
+
+        <div className="relative z-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img src="/genfx-logo.png" alt="GenesisFX" className="h-10 w-auto" />
+            </div>
+            <button
+              className="shrink-0 hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded-xl"
+              onClick={onClose}
+              aria-label="Close sidebar"
+            >
+              <svg width="33" height="33" viewBox="0 0 33 33" fill="none">
+                <path d="M0 10.227C0 4.579 4.579 0 10.227 0H22.5c5.648 0 10.227 4.579 10.227 10.227V22.5c0 5.648-4.579 10.227-10.227 10.227H10.227C4.579 32.727 0 28.148 0 22.5V10.227z" fill="#04281C"/>
+                <path d="M19.431 22.5L13.295 16.364 19.431 10.227" stroke="#808080" strokeWidth="1.023" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <span className="px-4 text-sidebar-label text-white">AI-Powered Trading</span>
+        </div>
+
+        <div className="w-full py-2.5 2xl:py-4" aria-hidden="true">
+          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop stopColor="#0F221C"/><stop offset="0.56" stopColor="#005C3D"/><stop offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
+        </div>
+
+        <div className="relative z-10 mb-1.5 2xl:mb-2">
+          <div className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3">User Account</div>
+          <div className="user-card flex items-center gap-3 p-3 rounded-2xl bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
+            <div className="user-card-glow" aria-hidden="true" />
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none" style={{ background: '#104030' }} aria-hidden="true" />
+            <div className="relative z-10 w-9 h-9 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-sidebar-btn overflow-hidden">
+              <svg className="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
+                <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="blur(30px)" />
+              </svg>
+              <span className="relative z-10">M</span>
+            </div>
+            <div className="relative z-10">
+              <div className="text-white text-sidebar-label leading-5">Marcelo Cedeno</div>
+              <div className="text-gfx-neutral-300 text-sidebar-label leading-5">Sep 27th, 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full py-2.5 2xl:py-4" aria-hidden="true">
+          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-2)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-2" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop stopColor="#0F221C"/><stop offset="0.56" stopColor="#005C3D"/><stop offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
+        </div>
+
+        <div className="relative z-10 flex-1 overflow-y-auto">
+          <div className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3">Overview</div>
+          <nav aria-label="Main menu">
+            <ul className="flex flex-col gap-1" role="list">
+              {navItems.map((item) => {
+                const Icon = iconMap[item.icon]
+                return (
+                  <li key={item.id}>
+                    <NavButton
+                      active={item.active}
+                      onClick={item.submenu ? () => setTradelockerOpen(!tradelockerOpen) : undefined}
+                    >
+                      {Icon && <Icon />}
+                      <span>{item.label}</span>
+                      {item.submenu && (
+                        <span
+                          className={`ml-auto text-gfx-neutral-500 transition-transform duration-200 ${tradelockerOpen ? 'rotate-180' : ''}`}
+                          aria-hidden="true"
+                        >
+                          <ChevronDownIcon />
+                        </span>
+                      )}
+                    </NavButton>
+                    {item.submenu && tradelockerOpen && (
+                      <ul className="flex flex-col gap-0" role="list">
+                        {item.submenu.map((sub) => (
+                          <li key={sub.href}>
+                            <a href={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-lg">
+                              {sub.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+        </div>
+
+        <div className="relative z-10 flex flex-col gap-3 2xl:gap-6">
+          <div className="text-sidebar-btn text-white font-normal mb-1">Switch Modes</div>
+          <ModeToggle />
+          <NavButton>
+            <LogoutIcon />
+            <span className="text-gfx-neutral-300">Logout</span>
+          </NavButton>
+        </div>
+      </aside>
+    </>
+  )
+}
