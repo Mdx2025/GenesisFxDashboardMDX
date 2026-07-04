@@ -1,30 +1,48 @@
 <script>
   import '../app.css';
   import 'lenis/dist/lenis.css';
-  import { onMount } from 'svelte';
-  import Lenis from 'lenis';
+  import { browser } from '$app/environment';
 
   let { children } = $props();
 
-  onMount(() => {
-    const wrapper = document.querySelector('main');
-    if (!wrapper) return;
+  let lenisInstance = $state(null);
 
-    const lenis = new Lenis({
-      wrapper,
-      content: wrapper.firstElementChild,
-      smoothWheel: true,
-      lerp: 0.1,
-      autoResize: true,
+  $effect(() => {
+    if (!browser) return;
+
+    let destroyed = false;
+    let lenis;
+    let rafId;
+
+    import('lenis').then(({ default: Lenis }) => {
+      if (destroyed) return;
+
+      const wrapper = document.querySelector('main');
+      if (!wrapper) return;
+
+      lenis = new Lenis({
+        wrapper,
+        content: wrapper.firstElementChild,
+        smoothWheel: true,
+        lerp: 0.1,
+        autoResize: true,
+      });
+
+      lenisInstance = lenis;
+
+      function raf(time) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
+      rafId = requestAnimationFrame(raf);
     });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    return () => lenis.destroy();
+    return () => {
+      destroyed = true;
+      if (rafId) cancelAnimationFrame(rafId);
+      if (lenis) lenis.destroy();
+      lenisInstance = null;
+    };
   });
 </script>
 
