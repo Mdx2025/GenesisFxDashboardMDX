@@ -1,6 +1,10 @@
 .sidebar {
   overflow-y: auto;
   overflow-x: hidden;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-right 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .sidebar-top-glow {
   position: absolute;
@@ -21,20 +25,32 @@
   width: 72px;
   padding-left: 10px;
   padding-right: 10px;
+  overflow-y: hidden;
 }
 .sidebar .sidebar-logo {
-  transition: opacity 0.2s ease, width 0.2s ease;
+  transition: opacity 0.25s ease, width 0.25s ease;
 }
 .sidebar.sidebar-collapsed .sidebar-logo {
   opacity: 0;
   width: 0;
   overflow: hidden;
 }
+.sidebar .sidebar-hide {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease 0.1s, visibility 0s;
+}
 .sidebar.sidebar-collapsed .sidebar-hide {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0s 0.15s;
 }
 .sidebar.sidebar-collapsed .nav-btn {
   justify-content: center;
+}
+.sidebar .user-card {
+  transition: padding 0.3s ease;
 }
 .sidebar.sidebar-collapsed .user-card {
   padding: 8px;
