@@ -2,7 +2,7 @@ import { GlassCard, SparkleButton, TradeButton, Badge, GreenDot, SearchInput } f
 import { MoreDotsVerticalIcon, UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
 
-const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% 4.5% auto 3%'
+const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 
 export function TradingAccountsTable() {
   return (
@@ -37,7 +37,7 @@ export function TradingAccountsTable() {
         <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Closed P&L</span>
         <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Open P&L</span>
         <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Status</span>
-        <span /><span /><span />
+        <span />
       </div>
 
       {tradingAccounts.map((acc, i) => (
@@ -62,13 +62,13 @@ export function TradingAccountsTable() {
             <GreenDot size={8} />
             <span className="text-gfx-neutral-300 text-[14px]">{acc.status}</span>
           </div>
-          <button className="text-gfx-neutral-300 text-[14px] hover:text-white transition-colors text-left">View</button>
-          <div className="flex justify-center">
+          <div className="flex items-center justify-end gap-6">
+            <button className="text-gfx-neutral-300 text-[14px] hover:text-white transition-colors">View</button>
             <TradeButton>Trade</TradeButton>
+            <button className="text-gfx-neutral-300 hover:text-white transition-colors text-lg tracking-widest" aria-label="More options">
+              ···
+            </button>
           </div>
-          <button className="text-gfx-neutral-300 hover:text-white transition-colors text-lg tracking-widest text-center" aria-label="More options">
-            ···
-          </button>
         </div>
       ))}
 
