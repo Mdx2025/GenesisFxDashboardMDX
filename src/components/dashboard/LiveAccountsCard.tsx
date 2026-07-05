@@ -31,7 +31,7 @@ export function LiveAccountsCard({
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-[65%] flex items-stretch justify-center gap-6 px-6 pb-4">
+      <div className="absolute bottom-0 right-0 h-[65%] flex gap-6 px-6 pb-4">
         {accounts.map((acc, i) => (
           <div key={i} className="flex flex-col items-center gap-1 flex-1 max-w-[60px]">
             <div className="w-full flex-1 bg-white/5 rounded-sm overflow-hidden flex items-end">
