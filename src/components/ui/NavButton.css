@@ -64,11 +64,11 @@
 }
 .active-indicator {
   position: absolute;
-  right: 0;
+  right: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
   width: 2px;
-  height: 14px;
+  height: 1.2rem;
   background: white;
   border-radius: 1px;
 }
