@@ -10,7 +10,7 @@ const glowColors = ['#104030', '#241B1C', '#281E14']
 
 export function SummaryCards() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8 mb-4 4xl:mb-6">
+    <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8 mb-4 4xl:mb-6">
       {summaryCards.slice(0, 3).map((card, i) => (
         <SummaryCard
           key={card.title}
