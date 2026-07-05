@@ -5,7 +5,7 @@ export function SvgFilters() {
     <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
       <defs>
         {blurs.map((r) => (
-          <filter key={r} id={`blur-${r}`} x="-50%" y="-50%" width="200%" height="200%">
+          <filter key={r} id={`blur-${r}`} x="-200%" y="-200%" width="500%" height="500%" colorInterpolationFilters="sRGB">
             <feGaussianBlur in="SourceGraphic" stdDeviation={r} />
           </filter>
         ))}
