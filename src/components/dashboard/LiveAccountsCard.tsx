@@ -19,33 +19,33 @@ export function LiveAccountsCard({
   return (
     <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl h-[12.8125rem]">
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
-      <div className="relative z-10 flex h-full p-4 sm:p-6">
-        <div className="flex-1 flex flex-col">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-card-label text-gfx-neutral-500 font-normal">Live Accounts</h3>
-            <div className="px-2.5 py-1.5 bg-teal-700/25 rounded-[20.83px] outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex justify-start items-start gap-1.5">
-              <span className="text-white text-xs font-normal leading-5">{totalBalance}</span>
-            </div>
+      <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="text-card-label text-gfx-neutral-500 font-normal">Live Accounts</h3>
+          <div className="px-2.5 py-1.5 bg-teal-700/25 rounded-[20.83px] outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex justify-start items-start gap-1.5">
+            <span className="text-white text-xs font-normal leading-5">{totalBalance}</span>
           </div>
-          <p className="text-card-value text-white mb-1">{accounts.length}</p>
+        </div>
+        <div className="flex flex-row items-center gap-2">
+          <p className="text-card-value text-white">{accounts.length}</p>
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
-        <div className="flex items-end gap-2">
-          {accounts.map((acc) => (
-            <div key={acc.label} className="flex flex-col items-center gap-1">
-              <div className="w-6 h-[72px] bg-white/5 rounded-sm overflow-hidden flex items-end">
-                <div
-                  className="w-full rounded-t-sm"
-                  style={{
-                    height: `${acc.value}%`,
-                    background: 'linear-gradient(to top, #064B34, #10BC83)',
-                  }}
-                />
-              </div>
-              <span className="text-[9px] text-gfx-neutral-300">{acc.label}</span>
+      </div>
+      <div className="absolute bottom-0 right-0 flex items-end gap-2 p-4 sm:p-6">
+        {accounts.map((acc) => (
+          <div key={acc.label} className="flex flex-col items-center gap-1">
+            <div className="w-6 h-[72px] bg-white/5 rounded-sm overflow-hidden flex items-end">
+              <div
+                className="w-full rounded-t-sm"
+                style={{
+                  height: `${acc.value}%`,
+                  background: 'linear-gradient(to top, #064B34, #10BC83)',
+                }}
+              />
             </div>
-          ))}
-        </div>
+            <span className="text-[9px] text-gfx-neutral-300">{acc.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   )

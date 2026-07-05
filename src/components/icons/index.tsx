@@ -154,11 +154,11 @@ export function HelpIcon({ size = 18, color = 'currentColor', className }: IconP
   )
 }
 
-export function CalendarIcon({ size = 16, color = 'currentColor', className }: IconProps) {
+export function CalendarIcon({ size = 18, className }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className}>
-      <rect x="2" y="3" width="12" height="11" rx="2" stroke={color} strokeWidth="1.5"/>
-      <path d="M2 7H14M5.5 1.5V4.5M10.5 1.5V4.5" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+    <svg width={size} height={size} viewBox="0 0 18 18" fill="none" className={className}>
+      <path d="M16.5 10.5V9C16.5 8.37072 16.5 7.81145 16.4903 7.3125H1.50968C1.5 7.81145 1.5 8.37072 1.5 9V10.5C1.5 13.3284 1.5 14.7426 2.37868 15.6213C3.25736 16.5 4.67157 16.5 7.5 16.5H10.5C13.3284 16.5 14.7426 16.5 15.6213 15.6213C16.5 14.7426 16.5 13.3284 16.5 10.5Z" fill="white" fillOpacity={0.35}/>
+      <path d="M5.8125 1.875C5.8125 1.56434 5.56066 1.3125 5.25 1.3125C4.93934 1.3125 4.6875 1.56434 4.6875 1.875V3.05944C3.608 3.14588 2.89933 3.35803 2.37868 3.87868C1.85803 4.39933 1.64588 5.108 1.55944 6.1875H16.4406C16.3541 5.108 16.142 4.39933 15.6213 3.87868C15.1007 3.35803 14.392 3.14588 13.3125 3.05944V1.875C13.3125 1.56434 13.0607 1.3125 12.75 1.3125C12.4393 1.3125 12.1875 1.56434 12.1875 1.875V3.00968C11.6886 3 11.1293 3 10.5 3H7.5C6.87072 3 6.31145 3 5.8125 3.00968V1.875Z" fill="white" fillOpacity={0.35}/>
     </svg>
   )
 }

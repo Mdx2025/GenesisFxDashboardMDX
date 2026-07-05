@@ -15,17 +15,28 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
         <button
           key={p}
           onClick={() => setSelected(p)}
-          className={`px-3 py-1 rounded-full text-xs transition-all cursor-pointer ${
+          className={`relative px-3 py-1 rounded-full text-xs transition-all cursor-pointer overflow-hidden ${
             selected === p
-              ? 'bg-teal-500/20 outline outline-[0.50px] outline-teal-500 text-white'
+              ? 'text-white'
               : 'text-gfx-neutral-300 hover:text-white'
           }`}
+          style={selected === p ? {
+            background: 'rgba(0, 240, 160, 0.15)',
+            borderRadius: '60px',
+            outline: '0.50px #00F0A0 solid',
+            outlineOffset: '-0.50px',
+          } : undefined}
         >
+          {selected === p && (
+            <svg className="absolute left-1/2 -translate-x-1/2 bottom-[-8px] pointer-events-none" width="54" height="33" viewBox="0 0 54 33" fill="none" aria-hidden="true">
+              <ellipse cx="27" cy="35" rx="14.5" ry="8" fill="#55FFC7" filter="blur(20px)" />
+            </svg>
+          )}
           {p}
         </button>
       ))}
       <button className="p-1.5 text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="Calendar">
-        <CalendarIcon size={16} />
+        <CalendarIcon size={18} />
       </button>
     </div>
   )
