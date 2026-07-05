@@ -18,7 +18,7 @@ export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) 
 
       const ctx = canvasRef.current.getContext('2d')!
       const gradient = ctx.createLinearGradient(0, canvasRef.current.height, 0, 0)
-      gradient.addColorStop(0, '#064B34')
+      gradient.addColorStop(0, '#0D271F')
       gradient.addColorStop(1, '#10BC83')
 
       chartRef.current = new Chart(ctx, {
@@ -34,7 +34,7 @@ export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) 
             callbacks: { label: (ctx) => `$${(ctx.parsed.y ?? 0).toLocaleString()}` },
           }},
           scales: {
-            x: { grid: { display: false }, border: { display: false }, ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 8 }, padding: 2 } },
+            x: { grid: { display: false }, border: { display: false }, ticks: { color: 'rgba(255,255,255,1)', font: { size: 12 }, padding: 2 } },
             y: { display: false },
           },
         },

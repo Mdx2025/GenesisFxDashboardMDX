@@ -39,11 +39,11 @@ export function LiveAccountsCard({
                 className="w-full rounded-t-sm"
                 style={{
                   height: `${acc.value}%`,
-                  background: 'linear-gradient(to top, #064B34, #10BC83)',
+                  background: 'linear-gradient(180deg, #10BC83 -44.07%, #0D271F 65.37%)',
                 }}
               />
             </div>
-            <span className="text-[9px] text-gfx-neutral-300">{acc.label}</span>
+            <span className="text-[0.75rem] text-white">{acc.label}</span>
           </div>
         ))}
       </div>

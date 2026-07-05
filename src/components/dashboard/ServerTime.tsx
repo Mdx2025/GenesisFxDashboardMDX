@@ -19,8 +19,8 @@ export function ServerTime() {
   }, [])
 
   return (
-    <div className="mt-2 3xl:mt-3 relative bg-gfx-green-50 rounded-lg outline outline-[1.25px] outline-offset-[-1.25px] outline-teal-500/10 px-[18px] py-3 3xl:py-5">
-      <div className="flex items-center justify-between mb-2 3xl:mb-3">
+    <div className="mt-2 2xl:mt-3 relative bg-gfx-green-50 rounded-lg outline outline-[1.25px] outline-offset-[-1.25px] outline-teal-500/10 px-[18px] py-3 2xl:py-5">
+      <div className="flex items-center justify-between mb-2 2xl:mb-3">
         <span className="text-gfx-neutral-300 text-sm">Server Time</span>
         <div className="flex items-center gap-1.5">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
