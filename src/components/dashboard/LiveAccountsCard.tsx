@@ -17,7 +17,7 @@ export function LiveAccountsCard({
   totalBalance = '$90.254,58',
 }: LiveAccountsCardProps) {
   return (
-    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl h-[12.8125rem] 3xl:h-[16rem]">
+    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl aspect-[1.6/1]">
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
       <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
         <div className="flex justify-between items-center mb-2">
@@ -34,7 +34,7 @@ export function LiveAccountsCard({
       <div className="absolute bottom-0 right-0 flex items-end gap-2 p-4">
         {accounts.map((acc) => (
           <div key={acc.label} className="flex flex-col items-center gap-1">
-            <div className="w-6 h-[72px] bg-white/5 rounded-sm overflow-hidden flex items-end">
+            <div className="w-6 h-[60%] bg-white/5 rounded-sm overflow-hidden flex items-end">
               <div
                 className="w-full rounded-t-sm"
                 style={{

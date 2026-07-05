@@ -27,30 +27,30 @@ export function TradingAccountsTable() {
           <table className="w-full text-left">
             <thead>
               <tr className="text-gfx-neutral-300 text-body2 border-b border-white/5">
-                <th className="pb-3 font-normal">Account</th>
-                <th className="pb-3 font-normal">Platform</th>
-                <th className="pb-3 font-normal">Type</th>
-                <th className="pb-3 font-normal text-right">Balance</th>
-                <th className="pb-3 font-normal text-right">Equity</th>
-                <th className="pb-3 font-normal text-right">Closed P&L</th>
-                <th className="pb-3 font-normal text-right">Open P&L</th>
-                <th className="pb-3 font-normal text-center">Status</th>
-                <th className="pb-3 font-normal text-right"></th>
+                <th className="pb-3 4xl:pb-5 font-normal">Account</th>
+                <th className="pb-3 4xl:pb-5 font-normal">Platform</th>
+                <th className="pb-3 4xl:pb-5 font-normal">Type</th>
+                <th className="pb-3 4xl:pb-5 font-normal text-right">Balance</th>
+                <th className="pb-3 4xl:pb-5 font-normal text-right">Equity</th>
+                <th className="pb-3 4xl:pb-5 font-normal text-right">Closed P&L</th>
+                <th className="pb-3 4xl:pb-5 font-normal text-right">Open P&L</th>
+                <th className="pb-3 4xl:pb-5 font-normal text-center">Status</th>
+                <th className="pb-3 4xl:pb-5 font-normal text-right"></th>
               </tr>
             </thead>
             <tbody>
               {tradingAccounts.map((acc) => (
                 <tr key={acc.account} className="border-b border-white/5 last:border-0">
-                  <td className="py-4">
-                    <div className="text-white text-sm">{acc.account}</div>
-                    <div className="text-gfx-neutral-300 text-xs">{acc.username}</div>
+                  <td className="py-4 4xl:py-6">
+                    <div className="text-white text-sm 4xl:text-base">{acc.account}</div>
+                    <div className="text-gfx-neutral-300 text-xs 4xl:text-sm">{acc.username}</div>
                   </td>
-                  <td className="py-4 text-gfx-neutral-300 text-sm">{acc.platform}</td>
+                  <td className="py-4 4xl:py-6 text-gfx-neutral-300 text-sm 4xl:text-base">{acc.platform}</td>
                   <td className="py-4"><Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge></td>
-                  <td className="py-4 text-white text-sm text-right">{acc.balance}</td>
-                  <td className="py-4 text-white text-sm text-right">{acc.equity}</td>
-                  <td className={`py-4 text-sm text-right ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
-                  <td className={`py-4 text-sm text-right ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
+                  <td className="py-4 4xl:py-6 text-white text-sm 4xl:text-base text-right">{acc.balance}</td>
+                  <td className="py-4 4xl:py-6 text-white text-sm 4xl:text-base text-right">{acc.equity}</td>
+                  <td className={`py-4 4xl:py-6 text-sm 4xl:text-base text-right ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
+                  <td className={`py-4 4xl:py-6 text-sm 4xl:text-base text-right ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
                   <td className="py-4">
                     <div className="flex items-center justify-center gap-1.5">
                       <GreenDot size={6} />

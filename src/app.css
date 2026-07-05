@@ -10,6 +10,7 @@
 
 @theme {
   --breakpoint-3xl: 2200px;
+  --breakpoint-4xl: 3200px;
 
   --font-acid: "Acid Grotesk", sans-serif;
 
@@ -81,51 +82,51 @@
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
-  --font-size-h1: clamp(1.75rem, 1.416rem + 1.424vw, 4rem);
+  --font-size-h1: clamp(1.75rem, 1.25rem + 1.5vw, 5rem);
   --font-size-h1--line-height: 100%;
-  --font-size-h2: clamp(1.25rem, 1rem + 1.036vw, 3rem);
+  --font-size-h2: clamp(1.25rem, 0.85rem + 1.2vw, 3.75rem);
   --font-size-h2--line-height: 100%;
-  --font-size-h3: clamp(1rem, 0.878rem + 0.518vw, 2rem);
+  --font-size-h3: clamp(1rem, 0.75rem + 0.65vw, 2.5rem);
   --font-size-h3--line-height: 100%;
-  --font-size-body1: clamp(0.75rem, 0.72rem + 0.13vw, 1.125rem);
-  --font-size-body1--line-height: 18.8px;
-  --font-size-body2: clamp(0.625rem, 0.595rem + 0.13vw, 1rem);
-  --font-size-body2--line-height: 18.8px;
-  --font-size-btn: clamp(0.875rem, 0.845rem + 0.13vw, 1.25rem);
-  --font-size-btn--line-height: 24.44px;
-  --font-size-micro: clamp(0.875rem, 0.845rem + 0.13vw, 1.25rem);
-  --font-size-micro--line-height: 24.44px;
-  --font-size-tab: clamp(0.625rem, 0.595rem + 0.13vw, 1rem);
-  --font-size-tab--line-height: 15.68px;
+  --font-size-body1: clamp(0.75rem, 0.65rem + 0.26vw, 1.5rem);
+  --font-size-body1--line-height: 1.5;
+  --font-size-body2: clamp(0.625rem, 0.525rem + 0.26vw, 1.25rem);
+  --font-size-body2--line-height: 1.5;
+  --font-size-btn: clamp(0.875rem, 0.75rem + 0.26vw, 1.625rem);
+  --font-size-btn--line-height: 1.5;
+  --font-size-micro: clamp(0.875rem, 0.75rem + 0.26vw, 1.625rem);
+  --font-size-micro--line-height: 1.5;
+  --font-size-tab: clamp(0.625rem, 0.525rem + 0.26vw, 1.25rem);
+  --font-size-tab--line-height: 1.3;
   --font-size-tab--letter-spacing: 2.32px;
 
-  --font-size-card-value: clamp(1.125rem, 0.852rem + 1.165vw, 3rem);
+  --font-size-card-value: clamp(1.125rem, 0.6rem + 1.4vw, 4rem);
   --font-size-card-value--line-height: 1.1;
-  --font-size-card-label: clamp(0.625rem, 0.565rem + 0.259vw, 1.125rem);
+  --font-size-card-label: clamp(0.625rem, 0.45rem + 0.45vw, 1.5rem);
   --font-size-card-label--line-height: 1.3;
-  --font-size-card-change: clamp(0.6rem, 0.533rem + 0.285vw, 1.125rem);
+  --font-size-card-change: clamp(0.6rem, 0.4rem + 0.45vw, 1.5rem);
   --font-size-card-change--line-height: 1.3;
-  --font-size-sidebar-label: clamp(0.7rem, 0.658rem + 0.181vw, 1.125rem);
+  --font-size-sidebar-label: clamp(0.7rem, 0.55rem + 0.35vw, 1.5rem);
   --font-size-sidebar-label--line-height: 1.35;
-  --font-size-sidebar-btn: clamp(0.8rem, 0.752rem + 0.207vw, 1.25rem);
+  --font-size-sidebar-btn: clamp(0.8rem, 0.6rem + 0.4vw, 1.625rem);
   --font-size-sidebar-btn--line-height: 1.5;
 
   /* Extended type scale */
-  --font-size-display: clamp(2.25rem, 1.75rem + 2.133vw, 4.5rem);
+  --font-size-display: clamp(2.25rem, 1.5rem + 2.5vw, 6rem);
   --font-size-display--line-height: 95%;
-  --font-size-h4: clamp(0.875rem, 0.815rem + 0.259vw, 1.125rem);
+  --font-size-h4: clamp(0.875rem, 0.7rem + 0.35vw, 1.5rem);
   --font-size-h4--line-height: 120%;
-  --font-size-h5: clamp(0.75rem, 0.72rem + 0.13vw, 0.875rem);
+  --font-size-h5: clamp(0.75rem, 0.6rem + 0.26vw, 1.25rem);
   --font-size-h5--line-height: 130%;
-  --font-size-h6: clamp(0.625rem, 0.595rem + 0.13vw, 0.75rem);
+  --font-size-h6: clamp(0.625rem, 0.5rem + 0.26vw, 1.125rem);
   --font-size-h6--line-height: 130%;
-  --font-size-body-lg: clamp(0.875rem, 0.815rem + 0.259vw, 1.125rem);
+  --font-size-body-lg: clamp(0.875rem, 0.7rem + 0.35vw, 1.5rem);
   --font-size-body-lg--line-height: 150%;
-  --font-size-caption: clamp(0.5625rem, 0.533rem + 0.13vw, 0.6875rem);
+  --font-size-caption: clamp(0.5625rem, 0.4rem + 0.26vw, 1rem);
   --font-size-caption--line-height: 140%;
-  --font-size-label: clamp(0.625rem, 0.595rem + 0.13vw, 0.75rem);
+  --font-size-label: clamp(0.625rem, 0.5rem + 0.26vw, 1.125rem);
   --font-size-label--line-height: 130%;
-  --font-size-eyebrow: clamp(0.5625rem, 0.533rem + 0.13vw, 0.6875rem);
+  --font-size-eyebrow: clamp(0.5625rem, 0.4rem + 0.26vw, 1rem);
   --font-size-eyebrow--line-height: 120%;
   --font-size-eyebrow--letter-spacing: 2.5px;
 }
