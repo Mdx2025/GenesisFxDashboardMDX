@@ -82,11 +82,11 @@
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
-  --font-size-h1: clamp(1.75rem, 1.25rem + 1.5vw, 5rem);
+  --font-size-h1: clamp(1.75rem, 1.25rem + 1.5vw, 4rem);
   --font-size-h1--line-height: 100%;
-  --font-size-h2: clamp(1.25rem, 0.85rem + 1.2vw, 3.75rem);
+  --font-size-h2: clamp(1.25rem, 0.85rem + 1.2vw, 3rem);
   --font-size-h2--line-height: 100%;
-  --font-size-h3: clamp(1rem, 0.75rem + 0.65vw, 2.5rem);
+  --font-size-h3: clamp(1rem, 0.75rem + 0.65vw, 2rem);
   --font-size-h3--line-height: 100%;
   --font-size-body1: clamp(0.75rem, 0.65rem + 0.26vw, 1.5rem);
   --font-size-body1--line-height: 1.5;
@@ -100,7 +100,7 @@
   --font-size-tab--line-height: 1.3;
   --font-size-tab--letter-spacing: 2.32px;
 
-  --font-size-card-value: clamp(1.125rem, 0.6rem + 1.4vw, 4rem);
+  --font-size-card-value: clamp(1.125rem, 0.6rem + 1.4vw, 3rem);
   --font-size-card-value--line-height: 1.1;
   --font-size-card-label: clamp(0.625rem, 0.45rem + 0.45vw, 1.5rem);
   --font-size-card-label--line-height: 1.3;
@@ -112,7 +112,7 @@
   --font-size-sidebar-btn--line-height: 1.5;
 
   /* Extended type scale */
-  --font-size-display: clamp(2.25rem, 1.5rem + 2.5vw, 6rem);
+  --font-size-display: clamp(2.25rem, 1.5rem + 2.5vw, 4.5rem);
   --font-size-display--line-height: 95%;
   --font-size-h4: clamp(0.875rem, 0.7rem + 0.35vw, 1.5rem);
   --font-size-h4--line-height: 120%;
@@ -138,6 +138,9 @@
     font-family: 'Acid Grotesk', sans-serif;
     background: #000;
     overflow-x: hidden;
+  }
+  @media (min-width: 3200px) {
+    html { font-size: clamp(18px, 0.52vw + 2px, 24px); }
   }
 }
 

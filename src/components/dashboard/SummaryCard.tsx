@@ -6,6 +6,7 @@ interface SummaryCardProps {
   changeText: string
   changeColor?: 'green' | 'red' | 'amber'
   glowColor?: string
+  chartClassName?: string
   children?: ReactNode
 }
 
@@ -15,7 +16,7 @@ const colorMap = {
   amber: 'text-gfx-amber',
 }
 
-export function SummaryCard({ title, value, changeText, changeColor = 'green', glowColor = '#104030', children }: SummaryCardProps) {
+export function SummaryCard({ title, value, changeText, changeColor = 'green', glowColor = '#104030', chartClassName, children }: SummaryCardProps) {
   const arrow = changeColor === 'red' ? '▼' : '▲'
 
   return (
@@ -35,7 +36,7 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', g
         </div>
       </div>
       {children && (
-        <div className="absolute bottom-0 right-0 w-1/2 h-1/2">
+        <div className={`absolute ${chartClassName ?? 'bottom-0 right-0'} w-1/2 h-1/2`}>
           {children}
         </div>
       )}

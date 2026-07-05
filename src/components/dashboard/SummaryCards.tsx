@@ -19,6 +19,7 @@ export function SummaryCards() {
           changeText={card.changeText}
           changeColor={card.changeColor}
           glowColor={glowColors[i]}
+          chartClassName={card.title === 'Total Balance' ? 'bottom-3 right-3' : undefined}
         >
           {card.chartType === 'bar' && card.chartData && (
             <MiniBarChart data={card.chartData as number[]} />
