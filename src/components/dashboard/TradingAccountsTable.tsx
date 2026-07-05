@@ -24,18 +24,18 @@ export function TradingAccountsTable() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
+          <table className="w-full text-left table-fixed">
             <thead>
               <tr className="text-gfx-neutral-300 text-body2 border-b border-white/5">
-                <th className="pb-3 4xl:pb-5 font-normal">Account</th>
-                <th className="pb-3 4xl:pb-5 font-normal">Platform</th>
-                <th className="pb-3 4xl:pb-5 font-normal">Type</th>
-                <th className="pb-3 4xl:pb-5 font-normal text-right">Balance</th>
-                <th className="pb-3 4xl:pb-5 font-normal text-right">Equity</th>
-                <th className="pb-3 4xl:pb-5 font-normal text-right">Closed P&L</th>
-                <th className="pb-3 4xl:pb-5 font-normal text-right">Open P&L</th>
-                <th className="pb-3 4xl:pb-5 font-normal text-center">Status</th>
-                <th className="pb-3 4xl:pb-5 font-normal text-right"></th>
+                <th style={{ width: '12%' }} className="pb-3 4xl:pb-5 font-normal">Account</th>
+                <th style={{ width: '11%' }} className="pb-3 4xl:pb-5 font-normal">Platform</th>
+                <th style={{ width: '8%' }} className="pb-3 4xl:pb-5 font-normal">Type</th>
+                <th style={{ width: '11%' }} className="pb-3 4xl:pb-5 font-normal text-right">Balance</th>
+                <th style={{ width: '11%' }} className="pb-3 4xl:pb-5 font-normal text-right">Equity</th>
+                <th style={{ width: '11%' }} className="pb-3 4xl:pb-5 font-normal text-right">Closed P&L</th>
+                <th style={{ width: '11%' }} className="pb-3 4xl:pb-5 font-normal text-right">Open P&L</th>
+                <th style={{ width: '7%' }} className="pb-3 4xl:pb-5 font-normal text-center">Status</th>
+                <th style={{ width: '18%' }} className="pb-3 4xl:pb-5 font-normal text-right"></th>
               </tr>
             </thead>
             <tbody>
@@ -58,8 +58,8 @@ export function TradingAccountsTable() {
                     </div>
                   </td>
                   <td className="py-4">
-                    <div className="flex items-center gap-6">
-                      <button className="text-gfx-neutral-300 text-xs hover:text-white transition-colors px-3 py-1.5 rounded">View</button>
+                    <div className="flex items-center justify-end gap-3">
+                      <button className="text-gfx-neutral-300 text-xs hover:text-white transition-colors">View</button>
                       <TradeButton>Trade</TradeButton>
                       <button className="text-gfx-neutral-300 hover:text-white transition-colors p-1" aria-label="More options">
                         <MoreDotsVerticalIcon />
