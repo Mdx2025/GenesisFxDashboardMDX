@@ -165,12 +165,6 @@
     bottom: 0.75rem;
     right: 0.75rem;
   }
-  @media (min-width: 640px) {
-    .chart-wrap {
-      bottom: 0;
-      right: 0;
-    }
-  }
   .chart-wrap.chart-wrap-flush {
     bottom: 0;
     right: 0;
