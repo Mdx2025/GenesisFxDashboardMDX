@@ -17,11 +17,11 @@ export function LiveAccountsCard({
   totalBalance = '$90.254,58',
 }: LiveAccountsCardProps) {
   return (
-    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl aspect-[1.6/1]">
+    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl aspect-[1.6/1] isolate" style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}>
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none"
-        style={{ background: '#104030', filter: 'blur(157px)' }}
+        style={{ background: '#104030', filter: 'blur(157px)', willChange: 'transform' }}
         aria-hidden="true"
       />
       <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
