@@ -36,12 +36,12 @@ export function LiveAccountsCard({
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 w-[65%] sm:w-[55%] h-[65%] flex justify-between gap-3 px-3 sm:px-4 3xl:px-6 pb-2 sm:pb-3 3xl:pb-4">
+      <div className="absolute bottom-0 right-0 w-[65%] sm:w-[55%] h-[65%] flex justify-between gap-0 sm:gap-3 px-3 sm:px-4 3xl:px-6 pb-2 sm:pb-3 3xl:pb-4">
         {accounts.map((acc, i) => {
           const align = i === 0 ? 'text-right' : i === accounts.length - 1 ? 'text-left' : 'text-center'
           return (
             <div key={i} className="flex-1 min-w-0 flex flex-col items-center gap-0.5 sm:gap-1">
-              <div className="w-[clamp(1.25rem,1.5vw+0.25rem,3rem)] flex-1 min-h-[2rem] bg-white/5 rounded-sm overflow-hidden flex items-end">
+              <div className="w-[2.5rem] flex-1 min-h-[2rem] bg-white/5 rounded-sm overflow-hidden flex items-end">
                 <div
                   className="w-full rounded-t-sm"
                   style={{
