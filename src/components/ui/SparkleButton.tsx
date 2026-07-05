@@ -38,7 +38,7 @@ export function SparkleButton({ children, onClick }: SparkleButtonProps) {
       <svg className="absolute left-[12.89px] top-[29.87px]" width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
         <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#sparkle_blur)" />
       </svg>
-      <span className="absolute inset-0 flex items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
+      <span className="relative flex items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
         {children}
       </span>
       <svg className="absolute w-0 h-0" aria-hidden="true">
