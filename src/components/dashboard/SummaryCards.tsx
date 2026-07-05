@@ -20,8 +20,8 @@ export function SummaryCards() {
           changeColor={card.changeColor}
           glowColor={glowColors[i]}
           chartClassName={
-            card.title === 'Total Balance' ? 'bottom-3 right-3 h-[40%]' :
-            card.title === 'Total Equity' ? 'bottom-0 right-0 h-[45%]' :
+            card.title === 'Total Balance' ? 'sm:bottom-3 h-[40%]' :
+            card.title === 'Total Equity' ? 'h-[45%]' :
             undefined
           }
         >

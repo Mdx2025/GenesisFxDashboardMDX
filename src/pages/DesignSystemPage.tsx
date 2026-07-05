@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, TradeButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
+  FloatingNavBar,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -297,6 +298,13 @@ export default function DesignSystemPage() {
 
           <Subsection title="Language Dropdown">
             <LanguageDropdown />
+          </Subsection>
+
+          <Subsection title="Floating Nav Bar">
+            <div className="flex flex-col items-center gap-6 py-8 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(16,188,131,0.08) 0%, rgba(91,156,245,0.06) 50%, rgba(255,77,106,0.05) 100%)' }}>
+              <FloatingNavBar />
+              <p className="text-caption text-gfx-neutral-500">Click each icon to see the expand/collapse animation</p>
+            </div>
           </Subsection>
         </Section>
 

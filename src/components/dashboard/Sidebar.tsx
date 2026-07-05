@@ -1,5 +1,6 @@
 import './Sidebar.css'
-import { useState } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
+import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
 import {
   DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
@@ -26,6 +27,25 @@ interface SidebarProps {
 
 export function Sidebar({ open, onClose }: SidebarProps) {
   const [tradelockerOpen, setTradelockerOpen] = useState(false)
+  const submenuRef = useRef<HTMLDivElement>(null)
+  const submenuFirstRender = useRef(true)
+
+  useLayoutEffect(() => {
+    const el = submenuRef.current
+    if (!el) return
+
+    if (submenuFirstRender.current) {
+      submenuFirstRender.current = false
+      return
+    }
+
+    if (tradelockerOpen) {
+      gsap.set(el, { height: 'auto', opacity: 1 })
+      gsap.from(el, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.out' })
+    } else {
+      gsap.to(el, { height: 0, opacity: 0, duration: 0.25, ease: 'power2.in' })
+    }
+  }, [tradelockerOpen])
 
   return (
     <>
@@ -111,16 +131,18 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                         </span>
                       )}
                     </NavButton>
-                    {item.submenu && tradelockerOpen && (
-                      <ul className="flex flex-col gap-0" role="list">
-                        {item.submenu.map((sub) => (
-                          <li key={sub.href}>
-                            <a href={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-lg">
-                              {sub.label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+                    {item.submenu && (
+                      <div ref={submenuRef} style={{ overflow: 'hidden', height: 0, opacity: 0 }}>
+                        <ul className="flex flex-col gap-0" role="list">
+                          {item.submenu.map((sub) => (
+                            <li key={sub.href}>
+                              <a href={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-lg">
+                                {sub.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
                   </li>
                 )

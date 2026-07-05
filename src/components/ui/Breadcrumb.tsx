@@ -22,10 +22,11 @@ function BreadcrumbIcon() {
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex items-center gap-4 text-body2" style={{ color: '#606060' }}>
+      <ol className="flex items-center gap-4" style={{ color: '#606060', fontSize: '0.7rem' }}>
         <li><BreadcrumbIcon /></li>
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-4">
+            {i > 0 && <span>/</span>}
             {item.current ? (
               <span aria-current="page">{item.label}</span>
             ) : (

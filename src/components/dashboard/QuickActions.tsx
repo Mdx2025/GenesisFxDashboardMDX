@@ -15,9 +15,9 @@ export function QuickActions() {
   return (
     <GlassCard variant="heavy" divider="white" rounded="20px" className="h-full">
       <div className="absolute w-[250px] h-[120px] right-[-40px] top-[-20px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(100px)' }} aria-hidden="true" />
-      <div className="relative z-10 p-4 xl:p-4 2xl:p-6">
+      <div className="relative z-10 p-3 xl:p-4 2xl:p-6 3xl:p-8">
         <h2 className="text-btn text-white mb-2 2xl:mb-4 font-normal">Quick Actions</h2>
-        <div className="flex flex-col gap-2 2xl:gap-3">
+        <div className="flex flex-col gap-1.5 xl:gap-2 2xl:gap-3">
           {quickActions.map((action) => (
             <ActionItem
               key={action.title}

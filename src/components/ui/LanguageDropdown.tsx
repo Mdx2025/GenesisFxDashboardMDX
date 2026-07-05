@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import gsap from 'gsap'
 
 interface Language {
   code: string
@@ -46,6 +47,8 @@ export function LanguageDropdown() {
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState(languages[0])
   const ref = useRef<HTMLDivElement>(null)
+  const dropdownRef = useRef<HTMLUListElement>(null)
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -54,6 +57,23 @@ export function LanguageDropdown() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  useLayoutEffect(() => {
+    const el = dropdownRef.current
+    if (!el) return
+
+    if (isFirstRender.current) {
+      gsap.set(el, { autoAlpha: 0, y: -8, scaleY: 0.96, transformOrigin: 'top center' })
+      isFirstRender.current = false
+      return
+    }
+
+    if (open) {
+      gsap.to(el, { autoAlpha: 1, y: 0, scaleY: 1, duration: 0.25, ease: 'power2.out' })
+    } else {
+      gsap.to(el, { autoAlpha: 0, y: -8, scaleY: 0.96, duration: 0.2, ease: 'power2.in' })
+    }
+  }, [open])
 
   function handleSelect(lang: Language) {
     setSelected(lang)
@@ -84,13 +104,13 @@ export function LanguageDropdown() {
         </svg>
       </button>
 
-      {open && (
-        <ul
-          role="listbox"
-          aria-label="Select language"
-          className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06]"
-          style={{ background: 'rgba(255,255,255,0.03)' }}
-        >
+      <ul
+        ref={dropdownRef}
+        role="listbox"
+        aria-label="Select language"
+        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06]"
+        style={{ background: 'rgba(255,255,255,0.03)' }}
+      >
           <svg className="absolute w-0 h-0" aria-hidden="true">
             <defs>
               <filter id="lang-blur" x="-50%" y="-50%" width="200%" height="200%">
@@ -117,8 +137,7 @@ export function LanguageDropdown() {
               </button>
             </li>
           ))}
-        </ul>
-      )}
+      </ul>
     </div>
   )
 }

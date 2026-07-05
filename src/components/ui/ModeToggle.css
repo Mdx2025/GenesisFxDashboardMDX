@@ -26,10 +26,21 @@
   outline-offset: -2px;
 }
 .mode-toggle button.active {
-  background: rgba(20,184,166,0.2);
+  background: transparent;
   border: none;
   color: #fff;
   font-weight: 400;
+}
+.mode-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 60px;
+  background: rgba(20,184,166,0.2);
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
 }
 .fading-border {
   position: absolute;

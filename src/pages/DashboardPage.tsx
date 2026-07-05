@@ -6,6 +6,7 @@ import { SummaryCards } from '@/components/dashboard/SummaryCards'
 import { PortfolioEquity } from '@/components/dashboard/PortfolioEquity'
 import { QuickActions } from '@/components/dashboard/QuickActions'
 import { TradingAccountsTable } from '@/components/dashboard/TradingAccountsTable'
+import { FloatingNavBar } from '@/components/ui'
 
 export default function DashboardPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -27,6 +28,10 @@ export default function DashboardPage() {
             </div>
           </div>
           <TradingAccountsTable />
+        </div>
+        {/* Mobile-only floating nav */}
+        <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+          <FloatingNavBar />
         </div>
       </main>
     </div>

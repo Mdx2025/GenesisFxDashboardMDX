@@ -19,6 +19,11 @@ export function LiveAccountsCard({
   return (
     <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 backdrop-blur-xl aspect-[1.6/1]">
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
+      <div
+        className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none"
+        style={{ background: '#104030', filter: 'blur(157px)' }}
+        aria-hidden="true"
+      />
       <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-card-label text-gfx-neutral-500 font-normal">Live Accounts</h3>
@@ -31,12 +36,12 @@ export function LiveAccountsCard({
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 h-[65%] flex justify-between px-6 pb-4">
+      <div className="absolute bottom-0 right-0 w-[65%] sm:w-[55%] h-[65%] flex justify-between gap-3 px-3 sm:px-4 3xl:px-6 pb-2 sm:pb-3 3xl:pb-4">
         {accounts.map((acc, i) => {
           const align = i === 0 ? 'text-right' : i === accounts.length - 1 ? 'text-left' : 'text-center'
           return (
-            <div key={i} className="flex flex-col items-center gap-1">
-              <div className="w-[2rem] flex-1 bg-white/5 rounded-sm overflow-hidden flex items-end">
+            <div key={i} className="flex-1 min-w-0 flex flex-col items-center gap-0.5 sm:gap-1">
+              <div className="w-[clamp(1.25rem,1.5vw+0.25rem,3rem)] flex-1 min-h-[2rem] bg-white/5 rounded-sm overflow-hidden flex items-end">
                 <div
                   className="w-full rounded-t-sm"
                   style={{
@@ -45,7 +50,7 @@ export function LiveAccountsCard({
                   }}
                 />
               </div>
-              <span className={`text-[0.6rem] leading-tight text-white whitespace-nowrap ${align}`}>{acc.label}</span>
+              <span className={`whitespace-nowrap ${align}`} style={{ fontSize: '0.7rem', color: i < 2 ? '#606060' : '#fff' }}>{acc.label}</span>
             </div>
           )
         })}

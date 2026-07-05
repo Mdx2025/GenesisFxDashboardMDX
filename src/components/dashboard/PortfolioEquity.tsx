@@ -1,9 +1,9 @@
 import { GlassCard, PeriodPill } from '@/components/ui'
-import { PortfolioChart } from '@/components/charts/PortfolioChart'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 
 export function PortfolioEquity() {
   return (
-    <GlassCard variant="heavy" divider="green" rounded="18px" className="h-full overflow-hidden">
+    <GlassCard variant="heavy" divider="green" rounded="18px" className="h-full min-h-[320px] sm:min-h-[400px] overflow-hidden">
       <div className="absolute w-[400px] h-[200px] -left-[120px] -top-[80px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(120px)' }} aria-hidden="true" />
       <div className="absolute w-[300px] h-[150px] left-1/2 -translate-x-1/2 -bottom-[80px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(100px)' }} aria-hidden="true" />
       <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
@@ -17,7 +17,7 @@ export function PortfolioEquity() {
           </div>
           <PeriodPill />
         </div>
-        <PortfolioChart />
+        <PortfolioChart config={defaultChartConfig} />
       </div>
     </GlassCard>
   )
