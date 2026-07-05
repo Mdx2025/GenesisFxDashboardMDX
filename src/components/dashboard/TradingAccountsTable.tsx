@@ -1,4 +1,4 @@
-import { GlassCard, TradeButton, Badge, GreenDot, SearchInput, ButtonGlow } from '@/components/ui'
+import { GlassCard, SparkleButton, TradeButton, Badge, GreenDot, SearchInput } from '@/components/ui'
 import { MoreDotsVerticalIcon, UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
 
@@ -17,12 +17,12 @@ export function TradingAccountsTable() {
         </div>
         <div className="flex items-center gap-4">
           <SearchInput />
-          <ButtonGlow>
-            <span className="flex items-center gap-2.5">
-              <UserIcon size={16} />
+          <SparkleButton>
+            <span className="flex items-center gap-2">
+              <UserIcon size={18} color="#A0A0A0" />
               <span className="hidden sm:inline">New Account</span>
             </span>
-          </ButtonGlow>
+          </SparkleButton>
         </div>
       </div>
 
