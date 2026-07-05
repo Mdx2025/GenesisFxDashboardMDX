@@ -58,5 +58,9 @@ export function PortfolioChart() {
     return () => { mounted = false; chartRef.current?.destroy() }
   }, [])
 
-  return <canvas ref={canvasRef} className="w-full h-full" />
+  return (
+    <div className="relative flex-1 min-h-0 w-full">
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+    </div>
+  )
 }
