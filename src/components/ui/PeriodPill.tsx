@@ -15,7 +15,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
         <button
           key={p}
           onClick={() => setSelected(p)}
-          className={`px-3 py-1 rounded-full text-xs transition-all ${
+          className={`px-3 py-1 rounded-full text-xs transition-all cursor-pointer ${
             selected === p
               ? 'bg-teal-500/20 outline outline-[0.50px] outline-teal-500 text-white'
               : 'text-gfx-neutral-300 hover:text-white'
@@ -24,7 +24,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           {p}
         </button>
       ))}
-      <button className="p-1.5 text-gfx-neutral-300 hover:text-white transition-colors" aria-label="Calendar">
+      <button className="p-1.5 text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="Calendar">
         <CalendarIcon size={16} />
       </button>
     </div>

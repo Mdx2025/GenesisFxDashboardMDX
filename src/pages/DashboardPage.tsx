@@ -18,11 +18,11 @@ export default function DashboardPage() {
           <TopBar onMenuClick={() => setSidebarOpen(true)} />
           <GreetingRow />
           <SummaryCards />
-          <div className="flex flex-col xl:flex-row gap-5 mb-4 items-stretch">
-            <div className="flex-1 min-w-0 flex flex-col">
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-4">
+            <div className="xl:col-span-3 flex flex-col">
               <PortfolioEquity />
             </div>
-            <div className="xl:w-[280px] 2xl:w-[23rem] xl:shrink-0 flex flex-col">
+            <div className="xl:col-span-1 flex flex-col">
               <QuickActions />
             </div>
           </div>

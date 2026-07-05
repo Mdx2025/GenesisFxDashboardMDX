@@ -64,7 +64,7 @@ export function LanguageDropdown() {
     <div ref={ref} className="relative hidden sm:block">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity"
+        className="flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity cursor-pointer"
         style={{ background: 'rgba(0, 27, 18, 0.30)' }}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -88,13 +88,26 @@ export function LanguageDropdown() {
         <ul
           role="listbox"
           aria-label="Select language"
-          className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden glass-card-heavy z-50"
+          className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06]"
+          style={{ background: 'rgba(255,255,255,0.03)' }}
         >
+          <svg className="absolute w-0 h-0" aria-hidden="true">
+            <defs>
+              <filter id="lang-blur" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="23" />
+              </filter>
+            </defs>
+          </svg>
+          <div
+            className="absolute inset-0 -z-10"
+            style={{ backdropFilter: 'url(#lang-blur)', WebkitBackdropFilter: 'blur(23px)' }}
+            aria-hidden="true"
+          />
           {languages.map((lang) => (
             <li key={lang.code} role="option" aria-selected={selected.code === lang.code}>
               <button
                 onClick={() => handleSelect(lang)}
-                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-white/[0.06] ${
+                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors cursor-pointer hover:bg-white/[0.06] ${
                   selected.code === lang.code ? 'bg-white/[0.04] text-white' : 'text-gfx-neutral-500'
                 }`}
               >

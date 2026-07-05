@@ -5,15 +5,28 @@ import {
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="mb-12">
+    <section id={id} className="mb-12 scroll-mt-6">
       <h2 className="text-h2 text-white mb-1">{title}</h2>
       <div className="divider-green mb-6" aria-hidden="true" />
       {children}
     </section>
   )
 }
+
+const sections = [
+  { id: 'tokens', label: 'Design Tokens' },
+  { id: 'typography', label: 'Typography' },
+  { id: 'buttons', label: 'Buttons' },
+  { id: 'badges', label: 'Badges' },
+  { id: 'surfaces', label: 'Surface Components' },
+  { id: 'navigation', label: 'Navigation' },
+  { id: 'forms', label: 'Form Components' },
+  { id: 'data-display', label: 'Data Display' },
+  { id: 'feedback', label: 'Feedback States' },
+  { id: 'accessibility', label: 'Accessibility' },
+]
 
 function Subsection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -41,7 +54,24 @@ export default function DesignSystemPage() {
 
   return (
     <div className="min-h-screen bg-gfx-main text-white font-acid">
-      <div className="max-w-6xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto px-6 py-10 flex gap-10">
+        <nav className="hidden lg:block w-52 shrink-0 sticky top-10 self-start" aria-label="Page sections">
+          <p className="text-eyebrow text-gfx-green-500 mb-4">Contents</p>
+          <ul className="space-y-1">
+            {sections.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  className="block px-3 py-1.5 rounded-lg text-sm text-gfx-neutral-500 hover:text-white hover:bg-white/[0.04] transition-colors"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="flex-1 min-w-0">
         <header className="mb-12">
           <p className="text-eyebrow text-gfx-green-500 mb-2">Genesis FX</p>
           <h1 className="text-display text-white mb-3">Design System</h1>
@@ -52,7 +82,7 @@ export default function DesignSystemPage() {
         </header>
 
         {/* Design Tokens */}
-        <Section title="Design Tokens">
+        <Section id="tokens" title="Design Tokens">
           <Subsection title="Color Palette">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               <TokenSwatch name="Green 500 (Primary)" value="#10BC83" />
@@ -120,7 +150,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Typography */}
-        <Section title="Typography">
+        <Section id="typography" title="Typography">
           <div className="space-y-6">
             <div><p className="text-caption text-gfx-neutral-300 mb-1">Display</p><p className="text-display text-white">The quick brown fox</p></div>
             <div><p className="text-caption text-gfx-neutral-300 mb-1">H1</p><p className="text-h1 text-white">Heading One</p></div>
@@ -141,22 +171,22 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Buttons */}
-        <Section title="Buttons">
+        <Section id="buttons" title="Buttons">
           <Subsection title="Variants">
             <div className="flex flex-wrap items-center gap-4">
               <SparkleButton>Deposit</SparkleButton>
               <SparkleButton>Withdraw</SparkleButton>
               <TradeButton>Trade</TradeButton>
-              <button className="h-12 px-6 rounded-full bg-gfx-green-500 text-black text-sm font-medium hover:bg-gfx-green-500/90 transition-colors">
+              <button className="h-12 px-6 rounded-full bg-gfx-green-500 text-black text-sm font-medium hover:bg-gfx-green-500/90 transition-colors cursor-pointer">
                 Primary
               </button>
-              <button className="h-12 px-6 rounded-full border border-white/10 text-white text-sm hover:bg-white/[0.04] transition-colors">
+              <button className="h-12 px-6 rounded-full border border-white/10 text-white text-sm hover:bg-white/[0.04] transition-colors cursor-pointer">
                 Outline
               </button>
-              <button className="h-12 px-6 rounded-full text-gfx-neutral-500 text-sm hover:text-white hover:bg-white/[0.04] transition-colors">
+              <button className="h-12 px-6 rounded-full text-gfx-neutral-500 text-sm hover:text-white hover:bg-white/[0.04] transition-colors cursor-pointer">
                 Ghost
               </button>
-              <button className="h-12 px-6 rounded-full bg-gfx-red-dark/20 text-gfx-red text-sm hover:bg-gfx-red-dark/30 transition-colors">
+              <button className="h-12 px-6 rounded-full bg-gfx-red-dark/20 text-gfx-red text-sm hover:bg-gfx-red-dark/30 transition-colors cursor-pointer">
                 Destructive
               </button>
             </div>
@@ -164,9 +194,9 @@ export default function DesignSystemPage() {
 
           <Subsection title="Sizes">
             <div className="flex flex-wrap items-center gap-4">
-              <button className="h-8 px-4 rounded-full bg-gfx-green-500 text-black text-xs font-medium">Small</button>
-              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium">Medium</button>
-              <button className="h-12 px-6 rounded-full bg-gfx-green-500 text-black text-base font-medium">Large</button>
+              <button className="h-8 px-4 rounded-full bg-gfx-green-500 text-black text-xs font-medium cursor-pointer">Small</button>
+              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium cursor-pointer">Medium</button>
+              <button className="h-12 px-6 rounded-full bg-gfx-green-500 text-black text-base font-medium cursor-pointer">Large</button>
             </div>
           </Subsection>
 
@@ -186,10 +216,10 @@ export default function DesignSystemPage() {
 
           <Subsection title="States">
             <div className="flex flex-wrap items-center gap-4">
-              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium">Default</button>
-              <button className="h-10 px-5 rounded-full bg-gfx-green-500/80 text-black text-sm font-medium">Hover</button>
-              <button className="h-10 px-5 rounded-full bg-gfx-green-500/60 text-black text-sm font-medium">Active</button>
-              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium ring-2 ring-gfx-green-500 ring-offset-2 ring-offset-gfx-main">Focus</button>
+              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium cursor-pointer">Default</button>
+              <button className="h-10 px-5 rounded-full bg-gfx-green-500/80 text-black text-sm font-medium cursor-pointer">Hover</button>
+              <button className="h-10 px-5 rounded-full bg-gfx-green-500/60 text-black text-sm font-medium cursor-pointer">Active</button>
+              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium ring-2 ring-gfx-green-500 ring-offset-2 ring-offset-gfx-main cursor-pointer">Focus</button>
               <button className="h-10 px-5 rounded-full bg-white/10 text-gfx-neutral-300 text-sm cursor-not-allowed" disabled>Disabled</button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium flex items-center gap-2" disabled>
                 <svg className="animate-spin size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
@@ -200,7 +230,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Badges */}
-        <Section title="Badges">
+        <Section id="badges" title="Badges">
           <div className="flex flex-wrap items-center gap-4">
             <Badge variant="genfx">GenFX</Badge>
             <Badge variant="10x">10X</Badge>
@@ -215,7 +245,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Surface Components */}
-        <Section title="Surface Components">
+        <Section id="surfaces" title="Surface Components">
           <Subsection title="Glass Cards">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <GlassCard className="p-6">
@@ -248,7 +278,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Navigation */}
-        <Section title="Navigation">
+        <Section id="navigation" title="Navigation">
           <Subsection title="Breadcrumb">
             <Breadcrumb items={[{ label: 'Overview' }, { label: 'Dashboard', current: true }]} />
           </Subsection>
@@ -266,7 +296,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Forms */}
-        <Section title="Form Components">
+        <Section id="forms" title="Form Components">
           <Subsection title="Search Input">
             <div className="flex flex-wrap gap-4">
               <SearchInput value={searchValue} onChange={setSearchValue} />
@@ -331,7 +361,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Data Display */}
-        <Section title="Data Display">
+        <Section id="data-display" title="Data Display">
           <Subsection title="Action Items">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
               <ActionItem title="Deposit Funds" subtitle="Add funds instantly" icon={<DepositIcon size={24} color="white" />} />
@@ -371,7 +401,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Feedback States */}
-        <Section title="Feedback States">
+        <Section id="feedback" title="Feedback States">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
             <div className="flex items-start gap-3 p-4 rounded-xl border border-gfx-green-500/20 bg-gfx-green-500/5" role="alert">
               <GreenDot size={8} />
@@ -432,7 +462,7 @@ export default function DesignSystemPage() {
         </Section>
 
         {/* Accessibility */}
-        <Section title="Accessibility">
+        <Section id="accessibility" title="Accessibility">
           <div className="space-y-4 max-w-2xl">
             <GlassCard divider="none" className="p-6">
               <div className="flex items-start gap-4">
@@ -473,6 +503,7 @@ export default function DesignSystemPage() {
         <footer className="mt-16 pt-6 border-t border-white/5">
           <p className="text-caption text-gfx-neutral-300">Genesis FX Design System &middot; Built with React, TypeScript, and Tailwind CSS v4</p>
         </footer>
+        </div>
       </div>
     </div>
   )
