@@ -40,14 +40,13 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
   }, [selected, periods])
 
   return (
-    <div ref={containerRef} className="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-1 px-2 relative">
+    <div ref={containerRef} className="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-1 px-2 relative overflow-hidden">
       <div
         ref={indicatorRef}
         className="absolute top-1 bottom-1 rounded-full pointer-events-none"
         style={{
           background: 'rgba(0, 240, 160, 0.15)',
-          outline: '0.50px #00F0A0 solid',
-          outlineOffset: '-0.50px',
+          boxShadow: 'inset 0 0 0 0.5px #00F0A0',
         }}
         aria-hidden="true"
       >
