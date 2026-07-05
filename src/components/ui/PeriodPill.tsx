@@ -17,25 +17,25 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
   useLayoutEffect(() => {
     const idx = periods.indexOf(selected)
     const btn = buttonRefs.current[idx]
-    const container = containerRef.current
     const indicator = indicatorRef.current
-    if (!btn || !container || !indicator) return
+    if (!btn || !indicator) return
 
-    const containerRect = container.getBoundingClientRect()
-    const btnRect = btn.getBoundingClientRect()
-    const left = btnRect.left - containerRect.left
-    const width = btnRect.width
+    const place = (animate: boolean) => {
+      const left = btn.offsetLeft
+      const width = btn.offsetWidth
+      if (animate) {
+        gsap.to(indicator, { x: left, width, duration: 0.35, ease: 'power2.inOut' })
+      } else {
+        gsap.set(indicator, { x: left, width })
+      }
+    }
 
     if (isFirst.current) {
-      gsap.set(indicator, { x: left, width })
+      place(false)
+      document.fonts?.ready.then(() => place(false))
       isFirst.current = false
     } else {
-      gsap.to(indicator, {
-        x: left,
-        width,
-        duration: 0.35,
-        ease: 'power2.inOut',
-      })
+      place(true)
     }
   }, [selected, periods])
 
@@ -43,7 +43,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
     <div ref={containerRef} className="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-1 px-2 relative overflow-hidden">
       <div
         ref={indicatorRef}
-        className="absolute top-1 bottom-1 rounded-full pointer-events-none"
+        className="absolute left-0 top-1 bottom-1 rounded-full pointer-events-none"
         style={{
           background: 'rgba(0, 240, 160, 0.15)',
           boxShadow: 'inset 0 0 0 0.5px #00F0A0',
