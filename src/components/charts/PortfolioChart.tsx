@@ -26,7 +26,7 @@ export const defaultChartConfig: ChartConfig = {
   fillOpacity: 0.28,
   tension: 0.45,
   lineWidth: 2,
-  glowIntensity: 18,
+  glowIntensity: 8,
   highlightIndex: DEFAULT_HIGHLIGHT_INDEX,
   gridOpacity: 0.04,
   waveHeight: 0.6,
