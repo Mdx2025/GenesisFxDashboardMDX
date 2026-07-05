@@ -47,8 +47,16 @@ export function PortfolioChart() {
             callbacks: { label: (ctx) => `$${(ctx.parsed.y ?? 0).toFixed(2)}` },
           }},
           scales: {
-            x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#A0A0A0', font: { size: 10 } } },
-            y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#A0A0A0', font: { size: 10 }, callback: (v) => `$${v}` } },
+            x: {
+              border: { display: false },
+              grid: { color: 'rgba(255,255,255,0.055)', drawTicks: false },
+              ticks: { display: false },
+            },
+            y: {
+              border: { display: false },
+              grid: { display: false, drawTicks: false },
+              ticks: { display: false },
+            },
           },
         },
       })
