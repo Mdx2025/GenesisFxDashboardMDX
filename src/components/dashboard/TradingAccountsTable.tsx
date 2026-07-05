@@ -15,12 +15,14 @@ export function TradingAccountsTable() {
           <h2 className="text-[19px] font-bold tracking-tight text-white">Trading Accounts</h2>
           <Badge variant="status">2 ACTIVE</Badge>
         </div>
-        <div className="flex items-center gap-4">
-          <SearchInput />
+        <div className="flex items-center gap-4 w-full sm:w-auto">
+          <div className="flex-1 sm:flex-none min-w-0">
+            <SearchInput />
+          </div>
           <SparkleButton>
             <span className="flex items-center gap-2">
               <UserIcon size={18} color="#A0A0A0" />
-              <span className="hidden sm:inline">New Account</span>
+              <span>New Account</span>
             </span>
           </SparkleButton>
         </div>
