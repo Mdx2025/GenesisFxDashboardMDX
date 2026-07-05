@@ -35,16 +35,8 @@
   width: 0;
   overflow: hidden;
 }
-.sidebar .sidebar-hide {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.25s ease 0.1s, visibility 0s;
-}
 .sidebar.sidebar-collapsed .sidebar-hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.15s ease, visibility 0s 0.15s;
+  display: none;
 }
 .sidebar.sidebar-collapsed .nav-btn {
   justify-content: center;
