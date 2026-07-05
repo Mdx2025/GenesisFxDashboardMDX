@@ -31,10 +31,10 @@ export function LiveAccountsCard({
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 flex items-end gap-2 p-4">
+      <div className="absolute inset-0 flex items-end justify-end gap-2 p-4 pointer-events-none">
         {accounts.map((acc) => (
           <div key={acc.label} className="flex flex-col items-center gap-1">
-            <div className="w-6 h-[60%] bg-white/5 rounded-sm overflow-hidden flex items-end">
+            <div className="w-6 h-full bg-white/5 rounded-sm overflow-hidden flex items-end">
               <div
                 className="w-full rounded-t-sm"
                 style={{
