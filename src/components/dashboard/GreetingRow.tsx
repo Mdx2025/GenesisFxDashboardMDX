@@ -9,7 +9,7 @@ interface GreetingRowProps {
 
 export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagline = 'Born To Outperform' }: GreetingRowProps) {
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-5 gap-4">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 sm:mt-0 mb-5 gap-4">
       <div>
         <time className="text-gfx-neutral-500 text-base sm:text-body2 mb-1 block">{date}</time>
         <h1 className="text-white font-normal leading-none mb-1" style={{ fontSize: 'clamp(1.5rem, 0.75rem + 1.5vw, 3.5rem)' }}>Good afternoon, {userName}</h1>
