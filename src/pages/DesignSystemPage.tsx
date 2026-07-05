@@ -4,6 +4,10 @@ import {
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
+import { PortfolioChart } from '@/components/charts/PortfolioChart'
+import { CandlestickChart } from '@/components/charts/CandlestickChart'
+import { MiniBarChart } from '@/components/charts/MiniBarChart'
+import { AreaChart } from '@/components/charts/AreaChart'
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -23,6 +27,7 @@ const sections = [
   { id: 'surfaces', label: 'Surface Components' },
   { id: 'navigation', label: 'Navigation' },
   { id: 'forms', label: 'Form Components' },
+  { id: 'charts', label: 'Charts' },
   { id: 'data-display', label: 'Data Display' },
   { id: 'feedback', label: 'Feedback States' },
   { id: 'accessibility', label: 'Accessibility' },
@@ -357,6 +362,65 @@ export default function DesignSystemPage() {
 
           <Subsection title="Toggle / Switch">
             <ModeToggle />
+          </Subsection>
+        </Section>
+
+        {/* Charts */}
+        <Section id="charts" title="Charts">
+          <Subsection title="Portfolio Line Chart">
+            <GlassCard variant="heavy" divider="green" className="p-6 h-[300px]">
+              <PortfolioChart />
+            </GlassCard>
+          </Subsection>
+
+          <Subsection title="Candlestick Chart">
+            <GlassCard className="p-6 h-[200px]">
+              <CandlestickChart data={[
+                { wickTop: 10, body: 8, wickBottom: 5, bullish: true },
+                { wickTop: 12, body: 6, wickBottom: 4, bullish: false },
+                { wickTop: 15, body: 10, wickBottom: 7, bullish: true },
+                { wickTop: 9, body: 5, wickBottom: 3, bullish: false },
+                { wickTop: 14, body: 11, wickBottom: 8, bullish: true },
+                { wickTop: 11, body: 7, wickBottom: 4, bullish: true },
+                { wickTop: 13, body: 9, wickBottom: 6, bullish: false },
+                { wickTop: 16, body: 12, wickBottom: 9, bullish: true },
+                { wickTop: 10, body: 6, wickBottom: 3, bullish: false },
+                { wickTop: 14, body: 10, wickBottom: 7, bullish: true },
+                { wickTop: 12, body: 8, wickBottom: 5, bullish: true },
+                { wickTop: 11, body: 7, wickBottom: 4, bullish: false },
+              ]} />
+            </GlassCard>
+          </Subsection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <Subsection title="Mini Bar Chart">
+              <GlassCard className="p-6 h-[200px]">
+                <MiniBarChart data={[120, 180, 90, 250, 200, 160, 300, 220, 180, 270]} />
+              </GlassCard>
+            </Subsection>
+
+            <Subsection title="Area Chart">
+              <GlassCard className="p-6 h-[200px]">
+                <AreaChart />
+              </GlassCard>
+            </Subsection>
+          </div>
+
+          <Subsection title="Area Chart Variants">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <GlassCard divider="none" className="p-4 h-[120px]">
+                <p className="text-caption text-gfx-neutral-300 mb-2">Green (default)</p>
+                <AreaChart />
+              </GlassCard>
+              <GlassCard divider="none" className="p-4 h-[120px]">
+                <p className="text-caption text-gfx-neutral-300 mb-2">Red</p>
+                <AreaChart color="#ff717e" />
+              </GlassCard>
+              <GlassCard divider="none" className="p-4 h-[120px]">
+                <p className="text-caption text-gfx-neutral-300 mb-2">Blue</p>
+                <AreaChart color="#5b9cf5" />
+              </GlassCard>
+            </div>
           </Subsection>
         </Section>
 
