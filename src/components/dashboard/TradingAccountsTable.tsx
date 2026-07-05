@@ -53,7 +53,7 @@ export function TradingAccountsTable() {
                 <p className="text-white text-[15px] font-bold leading-tight">{acc.account}</p>
                 <p className="text-gfx-neutral-300 text-[13px] mt-0.5">{acc.username}</p>
               </div>
-              <p className="text-gfx-neutral-300 text-[15px]">{acc.platform}</p>
+              <p className="text-[15px]" style={{ color: 'rgba(255,255,255,0.60)' }}>{acc.platform}</p>
               <div>
                 <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
               </div>
