@@ -24,7 +24,7 @@ export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) 
       chartRef.current = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: data.map(() => ''),
+          labels: ['June', 'July', 'Aug', 'Sep', 'Oct', 'Nov'].slice(0, data.length),
           datasets: [{ data, backgroundColor: gradient, borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: false }],
         },
         options: {
@@ -34,7 +34,7 @@ export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) 
             callbacks: { label: (ctx) => `$${(ctx.parsed.y ?? 0).toLocaleString()}` },
           }},
           scales: {
-            x: { grid: { display: false }, ticks: { color: '#606060', font: { size: 9 } } },
+            x: { grid: { display: false }, border: { display: false }, ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 8 }, padding: 2 } },
             y: { display: false },
           },
         },

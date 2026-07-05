@@ -54,8 +54,8 @@ export function PortfolioChart() {
             },
             y: {
               border: { display: false },
-              grid: { display: false },
-              ticks: { display: false },
+              grid: { color: 'rgba(255,255,255,0.06)' },
+              ticks: { color: 'rgba(255,255,255,0.35)', font: { size: 10 }, padding: 8, callback: (v: any) => `$${v}` },
             },
           },
         },
