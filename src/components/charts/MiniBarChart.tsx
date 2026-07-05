@@ -34,7 +34,7 @@ export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) 
             callbacks: { label: (ctx) => `$${(ctx.parsed.y ?? 0).toLocaleString()}` },
           }},
           scales: {
-            x: { grid: { display: false }, border: { display: false }, ticks: { color: 'rgba(255,255,255,1)', font: { size: 12 }, padding: 2 } },
+            x: { grid: { display: false }, border: { display: false }, ticks: { color: 'rgba(255,255,255,1)', font: { size: 12 }, padding: 2, maxRotation: 0, minRotation: 0 } },
             y: { display: false },
           },
         },

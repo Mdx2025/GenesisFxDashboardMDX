@@ -32,20 +32,23 @@ export function LiveAccountsCard({
         </div>
       </div>
       <div className="absolute bottom-0 right-0 h-[65%] flex gap-6 px-6 pb-4">
-        {accounts.map((acc, i) => (
-          <div key={i} className="flex flex-col items-center gap-1 flex-1 max-w-[60px]">
-            <div className="w-full flex-1 bg-white/5 rounded-sm overflow-hidden flex items-end">
-              <div
-                className="w-full rounded-t-sm"
-                style={{
-                  height: `${acc.value}%`,
-                  background: 'linear-gradient(180deg, #10BC83 -44.07%, #0D271F 65.37%)',
-                }}
-              />
+        {accounts.map((acc, i) => {
+          const align = i === 0 ? 'text-right' : i === accounts.length - 1 ? 'text-left' : 'text-center'
+          return (
+            <div key={i} className="flex flex-col items-center gap-1">
+              <div className="w-[2rem] flex-1 bg-white/5 rounded-sm overflow-hidden flex items-end">
+                <div
+                  className="w-full rounded-t-sm"
+                  style={{
+                    height: `${acc.value}%`,
+                    background: 'linear-gradient(180deg, #10BC83 -44.07%, #0D271F 65.37%)',
+                  }}
+                />
+              </div>
+              <span className={`text-[0.75rem] text-white ${align}`}>{acc.label}</span>
             </div>
-            <span className="text-[0.75rem] text-white">{acc.label}</span>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
