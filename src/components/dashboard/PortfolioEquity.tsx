@@ -11,8 +11,8 @@ export function PortfolioEquity() {
           <div>
             <h2 className="text-tab uppercase tracking-[2.32px] text-gfx-neutral-300 mb-2">PORTFOLIO EQUITY</h2>
             <div className="flex flex-row items-center gap-3">
-              <p className="text-2xl sm:text-3xl text-white">$17,897.30</p>
-              <p className="text-sm text-gfx-green-500">+$6,437.21 (56.1%)</p>
+              <p className="text-2xl sm:text-3xl 3xl:text-4xl text-white">$17,897.30</p>
+              <p className="text-sm 3xl:text-base text-gfx-green-500">+$6,437.21 (56.1%)</p>
             </div>
           </div>
           <PeriodPill />

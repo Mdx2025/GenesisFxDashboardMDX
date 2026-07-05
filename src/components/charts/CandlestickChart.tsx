@@ -21,7 +21,7 @@ interface NormalizedCandle {
 
 const CHART_WIDTH = 240
 const CHART_HEIGHT = 118
-const CANDLE_WIDTH = 13
+const CANDLE_WIDTH = 14
 const BODY_RADIUS = 4
 
 function normalizeCandles(data: CandleData[]): NormalizedCandle[] {
@@ -29,8 +29,8 @@ function normalizeCandles(data: CandleData[]): NormalizedCandle[] {
   const max = Math.max(...source.flatMap((c) => [c.wickTop, c.body, c.wickBottom]), 100)
   const min = Math.min(...source.flatMap((c) => [c.wickTop, c.body, c.wickBottom]), 0)
   const range = Math.max(max - min, 1)
-  const topPad = 10
-  const bottomPad = 12
+  const topPad = 4
+  const bottomPad = 4
   const usable = CHART_HEIGHT - topPad - bottomPad
 
   const y = (value: number) => topPad + ((max - value) / range) * usable
@@ -38,7 +38,7 @@ function normalizeCandles(data: CandleData[]): NormalizedCandle[] {
 
   return source.map((candle, index) => {
     const x = step * (index + 0.7)
-    const bodyHalf = Math.max(8, candle.body / max * 24)
+    const bodyHalf = Math.max(12, candle.body / max * 32)
     const center = y((candle.wickTop + candle.wickBottom) / 2)
     const bodyTop = Math.max(topPad, center - bodyHalf)
     const bodyBottom = Math.min(CHART_HEIGHT - bottomPad, center + bodyHalf)
