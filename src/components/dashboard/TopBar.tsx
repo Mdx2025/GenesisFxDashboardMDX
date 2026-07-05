@@ -12,6 +12,7 @@ const SCROLL_THRESHOLD = 8
 
 export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
   const [hidden, setHidden] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const lastY = useRef(0)
 
@@ -31,6 +32,7 @@ export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
     function onScroll() {
       if (!mq.matches) return
       const y = main!.scrollTop
+      setScrolled(y > 10)
       if (Math.abs(y - lastY.current) < SCROLL_THRESHOLD) return
       setHidden(y > lastY.current && y > 56)
       lastY.current = y
@@ -65,12 +67,12 @@ export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
             : 'relative mb-4'
         }`}
         style={isMobile ? {
-          background: 'rgba(10, 14, 12, 0.85)',
-          backdropFilter: 'url(#blur-23)',
-          WebkitBackdropFilter: 'url(#blur-23)',
-          borderBottom: '1px solid rgba(255,255,255,0.04)',
+          background: scrolled ? 'rgba(10, 14, 12, 0.85)' : 'transparent',
+          backdropFilter: scrolled ? 'url(#blur-23)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'url(#blur-23)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
           transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
-          transition: 'transform 400ms cubic-bezier(0.4, 0, 0.15, 1)',
+          transition: 'transform 400ms cubic-bezier(0.4, 0, 0.15, 1), background 300ms ease, border-bottom 300ms ease, backdrop-filter 300ms ease',
         } : undefined}
       >
         <div className="flex items-center gap-3 min-w-0">
