@@ -67,17 +67,17 @@ export function CandlestickChart({ data, className = 'h-full' }: CandlestickChar
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
-          <filter id="candlestick-green-glow" x="-120%" y="-120%" width="340%" height="340%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.063 0 0 0 0 0.737 0 0 0 0 0.514 0 0 0 0.9 0" />
+          <filter id="candlestick-green-glow" x="-150%" y="-150%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0" />
             <feMerge>
               <feMergeNode />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <filter id="candlestick-red-glow" x="-120%" y="-120%" width="340%" height="340%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feColorMatrix in="blur" type="matrix" values="0 0 0 0 1 0 0 0 0 0.306 0 0 0 0 0.357 0 0 0 0.9 0" />
+          <filter id="candlestick-red-glow" x="-150%" y="-150%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
             <feMerge>
               <feMergeNode />
               <feMergeNode in="SourceGraphic" />
@@ -86,7 +86,7 @@ export function CandlestickChart({ data, className = 'h-full' }: CandlestickChar
         </defs>
 
         {candles.map((candle, index) => {
-          const color = candle.bullish ? '#10BC83' : '#FF4E5B'
+          const color = candle.bullish ? '#00FF00' : '#FF0000'
           const bodyHeight = candle.bodyBottom - candle.bodyTop
           const filter = candle.bullish ? 'url(#candlestick-green-glow)' : 'url(#candlestick-red-glow)'
 

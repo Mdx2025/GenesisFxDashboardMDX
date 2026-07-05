@@ -49,12 +49,12 @@ export function PortfolioChart() {
           scales: {
             x: {
               border: { display: false },
-              grid: { color: 'rgba(255,255,255,0.055)', drawTicks: false },
+              grid: { display: false },
               ticks: { display: false },
             },
             y: {
               border: { display: false },
-              grid: { display: false, drawTicks: false },
+              grid: { display: false },
               ticks: { display: false },
             },
           },
