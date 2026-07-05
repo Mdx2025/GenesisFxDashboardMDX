@@ -32,14 +32,14 @@ export function TradingAccountsTable() {
             className="grid items-center px-4 sm:px-6 xl:px-10 py-4 border-y border-white/5"
             style={{ gridTemplateColumns: GRID_COLS }}
           >
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Account</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Platform</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Type</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Balance</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Equity</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Closed P&L</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Open P&L</span>
-            <span className="text-[11px] font-semibold tracking-[0.22em] text-gfx-neutral-300 uppercase">Status</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Account</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Platform</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Type</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Balance</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Equity</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Closed P&L</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Open P&L</span>
+            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Status</span>
             <span />
           </div>
 
