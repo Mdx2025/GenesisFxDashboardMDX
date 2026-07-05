@@ -22,6 +22,7 @@ export function SummaryCards() {
           chartClassName={
             card.title === 'Total Balance' ? 'sm:bottom-3 h-[40%]' :
             card.title === 'Total Equity' ? 'h-[45%]' :
+            card.title === 'Closed P&L (30D)' ? '!bottom-0 !right-0' :
             undefined
           }
         >
