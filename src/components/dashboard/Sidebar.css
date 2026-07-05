@@ -15,6 +15,7 @@
   filter: blur(161px);
   pointer-events: none;
 }
+
 .user-card-glow {
   position: absolute;
   width: 96px;
