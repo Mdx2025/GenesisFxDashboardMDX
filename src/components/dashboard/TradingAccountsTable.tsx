@@ -7,6 +7,7 @@ const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 export function TradingAccountsTable() {
   return (
     <GlassCard variant="heavy" divider="white" rounded="26px">
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[500px] h-[200px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
       <div className="divider-green absolute top-0 left-[10%] right-[10%]" aria-hidden="true" />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4 xl:pb-6">
