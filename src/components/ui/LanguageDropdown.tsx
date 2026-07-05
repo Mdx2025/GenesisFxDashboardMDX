@@ -81,7 +81,7 @@ export function LanguageDropdown() {
   }
 
   return (
-    <div ref={ref} className="relative hidden sm:block">
+    <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity cursor-pointer"

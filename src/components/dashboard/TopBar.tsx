@@ -116,7 +116,7 @@ export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-6 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-6 shrink-0">
           <div className="flex items-center gap-2">
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none" className="shrink-0" aria-hidden="true">
               <g filter="url(#glow_market)">
