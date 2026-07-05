@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/ui'
+import { LanguageDropdown } from '@/components/ui/LanguageDropdown'
 import { HelpIcon } from '@/components/icons'
 
 interface TopBarProps {
@@ -51,18 +52,7 @@ export function TopBar({ onMenuClick }: TopBarProps) {
           <span className="text-white text-sm font-normal">$100.00</span>
         </div>
 
-        <button className="hidden sm:flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity" style={{ background: 'rgba(0, 27, 18, 0.30)' }} aria-label="Change language">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M0 4.5295V6.5H2.814L0 4.5295ZM2.332 15.5H6.5V12.5815L2.332 15.5ZM11.5 12.582V15.5H15.6675L11.5 12.582ZM0 11.5V13.4705L2.815 11.5H0ZM15.6685 2.5H11.5V5.4185L15.6685 2.5ZM18 13.471V11.5H15.1845L18 13.471ZM18 6.5V4.5295L15.1855 6.5H18ZM6.5 2.5H2.332L6.5 5.4185V2.5Z" fill="#00247D"/>
-            <path d="M12.5696 11.5001L17.4256 14.9006C17.6628 14.6563 17.8332 14.3552 17.9206 14.0261L14.3131 11.5001H12.5696ZM6.49963 11.5001H5.42913L0.573625 14.9001C0.834125 15.1651 1.16812 15.3546 1.54262 15.4426L6.49963 11.9716V11.5001ZM11.4996 6.50012H12.5701L17.4256 3.10012C17.1607 2.83125 16.8248 2.64313 16.4571 2.55762L11.4996 6.02862V6.50012ZM5.42913 6.50012L0.573625 3.10012C0.336602 3.3446 0.166032 3.64564 0.078125 3.97462L3.68563 6.50012H5.42913Z" fill="#CF1B2B"/>
-            <path d="M18 10.5H10.5V15.5H11.5V12.582L15.6675 15.5H16C16.2656 15.5 16.5286 15.447 16.7735 15.3441C17.0183 15.2411 17.2402 15.0903 17.426 14.9005L12.57 11.5H14.3135L17.921 14.026C17.9675 13.8575 18 13.683 18 13.5V13.471L15.1845 11.5H18V10.5ZM0 10.5V11.5H2.815L0 13.4705V13.5C0 14.0455 0.2195 14.539 0.574 14.9L5.4295 11.5H6.5V11.9715L1.543 15.442C1.69 15.477 1.842 15.5 2 15.5H2.332L6.5 12.5815V15.5H7.5V10.5H0ZM18 4.5C18.0003 3.97599 17.7941 3.47298 17.426 3.1L12.5705 6.5H11.5V6.0285L16.4575 2.5575C16.3077 2.52076 16.1542 2.50147 16 2.5H15.6685L11.5 5.4185V2.5H10.5V7.5H18V6.5H15.1855L18 4.5295V4.5ZM6.5 2.5V5.4185L2.332 2.5H2C1.73431 2.49988 1.47128 2.55291 1.22639 2.65595C0.981495 2.75899 0.759682 2.90997 0.574 3.1L5.4295 6.5H3.686L0.0785 3.9745C0.0288901 4.14535 0.00248671 4.32211 0 4.5L0 4.5295L2.814 6.5H0V7.5H7.5V2.5H6.5Z" fill="#EEEEEE"/>
-            <path d="M10.5 7.5V2.5H7.5V7.5H0V10.5H7.5V15.5H10.5V10.5H18V7.5H10.5Z" fill="#CF1B2B"/>
-          </svg>
-          <span className="text-white text-base font-medium">EN</span>
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-            <path d="M3.617 5.425L7.234 9.041l3.617-3.616" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
+        <LanguageDropdown />
 
         <button className="text-gfx-neutral-500 hover:text-white transition-colors rounded" aria-label="Help">
           <HelpIcon />
