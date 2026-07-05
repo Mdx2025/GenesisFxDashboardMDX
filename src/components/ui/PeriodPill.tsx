@@ -46,13 +46,17 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
         className="absolute left-0 top-1 bottom-1 rounded-full pointer-events-none"
         style={{
           background: 'rgba(0, 240, 160, 0.15)',
-          boxShadow: 'inset 0 0 0 0.5px #00F0A0',
         }}
         aria-hidden="true"
       >
-        <svg className="absolute left-1/2 -translate-x-1/2 bottom-[-8px] pointer-events-none" width="54" height="33" viewBox="0 0 54 33" fill="none" aria-hidden="true">
-          <ellipse cx="27" cy="35" rx="14.5" ry="8" fill="#55FFC7" filter="blur(20px)" />
-        </svg>
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            border: '0.5px solid #00F0A0',
+            mask: 'linear-gradient(to bottom, black 0%, transparent 60%)',
+            WebkitMask: 'linear-gradient(to bottom, black 0%, transparent 60%)',
+          }}
+        />
       </div>
       {periods.map((p, i) => (
         <button

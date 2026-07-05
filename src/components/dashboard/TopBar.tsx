@@ -5,11 +5,12 @@ import { HelpIcon } from '@/components/icons'
 
 interface TopBarProps {
   onMenuClick: () => void
+  menuOpen?: boolean
 }
 
 const SCROLL_THRESHOLD = 8
 
-export function TopBar({ onMenuClick }: TopBarProps) {
+export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
   const [hidden, setHidden] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const lastY = useRef(0)
@@ -74,12 +75,40 @@ export function TopBar({ onMenuClick }: TopBarProps) {
       >
         <div className="flex items-center gap-3 min-w-0">
           <button
-            className="lg:hidden text-gfx-neutral-500 hover:text-white rounded shrink-0"
+            className="lg:hidden shrink-0 cursor-pointer"
             onClick={onMenuClick}
-            aria-label="Open navigation menu"
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <svg
+              viewBox="0 0 32 32"
+              className="h-7"
+              style={{
+                transform: menuOpen ? 'rotate(-45deg)' : 'rotate(0deg)',
+                transition: 'transform 600ms cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+              aria-hidden="true"
+            >
+              <path
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                fill="none"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="3"
+                style={{
+                  strokeDasharray: menuOpen ? '20 300' : '12 63',
+                  strokeDashoffset: menuOpen ? -32.42 : 0,
+                  transition: 'stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              />
+              <path
+                d="M7 16 27 16"
+                fill="none"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="3"
+              />
             </svg>
           </button>
           <Breadcrumb items={[{ label: 'Overview' }, { label: 'Dashboard', current: true }]} />

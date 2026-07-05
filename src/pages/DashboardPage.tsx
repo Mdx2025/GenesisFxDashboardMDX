@@ -16,7 +16,7 @@ export default function DashboardPage() {
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden">
         <div className="px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
-          <TopBar onMenuClick={() => setSidebarOpen(true)} />
+          <TopBar menuOpen={sidebarOpen} onMenuClick={() => setSidebarOpen(v => !v)} />
           <GreetingRow />
           <SummaryCards />
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8 mb-4 4xl:mb-6">
