@@ -161,14 +161,6 @@
     box-shadow: 0px 9.08px 36.321px rgba(0,0,0,0.3), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04);
   }
 
-  .chart-wrap {
-    bottom: 0.75rem;
-    right: 0.75rem;
-  }
-  .chart-wrap.chart-wrap-flush {
-    bottom: 0;
-    right: 0;
-  }
 
   .divider-glow {
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);

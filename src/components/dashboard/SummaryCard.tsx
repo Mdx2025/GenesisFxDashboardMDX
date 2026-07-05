@@ -36,7 +36,7 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', g
         </div>
       </div>
       {children && (
-        <div className={`chart-wrap absolute w-3/5 sm:w-1/2 ${chartClassName ?? 'h-3/4'}`}>
+        <div className={`absolute bottom-3 right-3 w-3/5 sm:w-1/2 ${chartClassName ?? 'h-3/4'}`}>
           {children}
         </div>
       )}
