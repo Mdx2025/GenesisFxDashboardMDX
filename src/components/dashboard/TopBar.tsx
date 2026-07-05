@@ -66,8 +66,8 @@ export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
         }`}
         style={isMobile ? {
           background: 'rgba(10, 14, 12, 0.85)',
-          backdropFilter: 'url(#topbar-blur) blur(23px)',
-          WebkitBackdropFilter: 'url(#topbar-blur) blur(23px)',
+          backdropFilter: 'url(#blur-23)',
+          WebkitBackdropFilter: 'url(#blur-23)',
           borderBottom: '1px solid rgba(255,255,255,0.04)',
           transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
           transition: 'transform 400ms cubic-bezier(0.4, 0, 0.15, 1)',

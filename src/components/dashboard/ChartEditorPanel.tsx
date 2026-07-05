@@ -28,7 +28,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
         style={{
           background: 'rgba(255,255,255,0.05)',
           border: '1px solid rgba(255,255,255,0.08)',
-          backdropFilter: 'blur(12px)',
+          backdropFilter: 'url(#blur-12)',
         }}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -47,7 +47,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
       style={{
         background: 'rgba(10, 14, 12, 0.92)',
         border: '1px solid rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(24px)',
+        backdropFilter: 'url(#blur-24)',
         boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
       }}
     >

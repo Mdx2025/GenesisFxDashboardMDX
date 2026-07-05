@@ -120,7 +120,7 @@ export function LanguageDropdown() {
           </svg>
           <div
             className="absolute inset-0 -z-10"
-            style={{ backdropFilter: 'url(#lang-blur)', WebkitBackdropFilter: 'blur(23px)' }}
+            style={{ backdropFilter: 'url(#blur-23)', WebkitBackdropFilter: 'url(#blur-23)' }}
             aria-hidden="true"
           />
           {languages.map((lang) => (

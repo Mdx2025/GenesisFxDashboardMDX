@@ -60,8 +60,8 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0 }: Floa
         style={{
           background: 'rgba(255,255,255,0.03)',
           border: '1.16px solid rgba(255,255,255,0.06)',
-          backdropFilter: 'url(#fnb-blur) blur(23px)',
-          WebkitBackdropFilter: 'url(#fnb-blur) blur(23px)',
+          backdropFilter: 'url(#blur-23)',
+          WebkitBackdropFilter: 'url(#blur-23)',
           boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.2), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04)',
         }}
       >
@@ -103,7 +103,7 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0 }: Floa
                       bottom: '-20px',
                       background: '#55FFC7',
                       borderRadius: '50%',
-                      filter: 'blur(20px)',
+                      filter: 'url(#blur-20)',
                       opacity: 0.3,
                     }}
                     aria-hidden="true"

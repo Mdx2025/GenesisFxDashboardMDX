@@ -63,7 +63,7 @@
   bottom: -20px;
   background: #55FFC7;
   border-radius: 50%;
-  filter: blur(20px);
+  filter: url(#blur-20);
   pointer-events: none;
   opacity: 0.3;
 }

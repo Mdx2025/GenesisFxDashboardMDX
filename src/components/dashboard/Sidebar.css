@@ -12,7 +12,7 @@
   transform-origin: top left;
   background: #134e4a;
   border-radius: 50%;
-  filter: blur(161px);
+  filter: url(#blur-161);
   pointer-events: none;
 }
 
@@ -53,6 +53,6 @@
   bottom: -20px;
   background: #6ee7b7;
   border-radius: 50%;
-  filter: blur(77px);
+  filter: url(#blur-77);
   pointer-events: none;
 }

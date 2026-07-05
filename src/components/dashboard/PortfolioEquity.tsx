@@ -4,8 +4,8 @@ import { PortfolioChart, defaultChartConfig } from '@/components/charts/Portfoli
 export function PortfolioEquity() {
   return (
     <GlassCard variant="heavy" divider="green" rounded="18px" className="h-full min-h-[320px] sm:min-h-[400px] overflow-hidden">
-      <div className="absolute w-[400px] h-[200px] -left-[120px] -top-[80px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(120px)', willChange: 'transform' }} aria-hidden="true" />
-      <div className="absolute w-[300px] h-[150px] left-1/2 -translate-x-1/2 -bottom-[80px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(100px)', willChange: 'transform' }} aria-hidden="true" />
+      <div className="absolute w-[400px] h-[200px] -left-[120px] -top-[80px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
+      <div className="absolute w-[300px] h-[150px] left-1/2 -translate-x-1/2 -bottom-[80px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'url(#blur-100)', willChange: 'transform' }} aria-hidden="true" />
       <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
         <div className="flex items-start justify-between mb-4 flex-wrap gap-3">
           <div>

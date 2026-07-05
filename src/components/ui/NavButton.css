@@ -35,7 +35,7 @@
   transform-origin: top left;
   background: #134e4a;
   border-radius: 50%;
-  filter: blur(161px);
+  filter: url(#blur-161);
   pointer-events: none;
 }
 .glow-emerald-bottom {
@@ -48,7 +48,7 @@
   transform-origin: top left;
   background: #6ee7b7;
   border-radius: 50%;
-  filter: blur(77px);
+  filter: url(#blur-77);
   pointer-events: none;
 }
 .glow-emerald-top {
@@ -59,7 +59,7 @@
   top: -47px;
   background: #059669;
   border-radius: 50%;
-  filter: blur(50px);
+  filter: url(#blur-50);
   pointer-events: none;
 }
 .active-indicator {
