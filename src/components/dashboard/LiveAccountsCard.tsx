@@ -31,7 +31,7 @@ export function LiveAccountsCard({
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 h-[65%] flex gap-6 px-6 pb-4">
+      <div className="absolute bottom-0 right-0 h-[65%] flex justify-between px-6 pb-4">
         {accounts.map((acc, i) => {
           const align = i === 0 ? 'text-right' : i === accounts.length - 1 ? 'text-left' : 'text-center'
           return (
@@ -45,7 +45,7 @@ export function LiveAccountsCard({
                   }}
                 />
               </div>
-              <span className={`text-[0.75rem] text-white ${align}`}>{acc.label}</span>
+              <span className={`text-[0.75rem] text-white whitespace-nowrap ${align}`}>{acc.label}</span>
             </div>
           )
         })}
