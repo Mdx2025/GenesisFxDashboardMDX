@@ -112,16 +112,17 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
           if (!meta.dataset) return
           const c = chart.ctx
           const passes = [
-            { blur: config.glowIntensity * 2.5, opacity: '30' },
-            { blur: config.glowIntensity * 1.5, opacity: '50' },
-            { blur: config.glowIntensity, opacity: '80' },
+            { blur: config.glowIntensity * 4, opacity: '25', offsetY: 12 },
+            { blur: config.glowIntensity * 2.5, opacity: '40', offsetY: 8 },
+            { blur: config.glowIntensity * 1.5, opacity: '60', offsetY: 4 },
+            { blur: config.glowIntensity, opacity: '90', offsetY: 2 },
           ]
           for (const pass of passes) {
             c.save()
             c.shadowColor = config.lineColor + pass.opacity
             c.shadowBlur = pass.blur
             c.shadowOffsetX = 0
-            c.shadowOffsetY = 0
+            c.shadowOffsetY = pass.offsetY
             c.strokeStyle = config.lineColor + '40'
             c.lineWidth = config.lineWidth
             c.lineJoin = 'round'
