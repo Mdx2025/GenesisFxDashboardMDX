@@ -16,6 +16,31 @@
   pointer-events: none;
 }
 
+/* Collapsed sidebar */
+.sidebar.sidebar-collapsed {
+  width: 72px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.sidebar .sidebar-logo {
+  transition: opacity 0.2s ease, width 0.2s ease;
+}
+.sidebar.sidebar-collapsed .sidebar-logo {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+.sidebar.sidebar-collapsed .sidebar-hide {
+  display: none;
+}
+.sidebar.sidebar-collapsed .nav-btn {
+  justify-content: center;
+}
+.sidebar.sidebar-collapsed .user-card {
+  padding: 8px;
+  justify-content: center;
+}
+
 .user-card-glow {
   position: absolute;
   width: 96px;
