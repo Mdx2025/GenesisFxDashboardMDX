@@ -24,18 +24,7 @@ export function TradingAccountsTable() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left table-fixed">
-            <colgroup>
-              <col className="w-[14%]" />
-              <col className="w-[11%]" />
-              <col className="w-[10%]" />
-              <col className="w-[12%]" />
-              <col className="w-[12%]" />
-              <col className="w-[12%]" />
-              <col className="w-[12%]" />
-              <col className="w-[9%]" />
-              <col className="w-[8%]" />
-            </colgroup>
+          <table className="w-full text-left">
             <thead>
               <tr className="text-gfx-neutral-300 text-body2 border-b border-white/5">
                 <th className="pb-3 4xl:pb-5 font-normal">Account</th>

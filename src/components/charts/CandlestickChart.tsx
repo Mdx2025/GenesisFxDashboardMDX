@@ -38,7 +38,7 @@ function normalizeCandles(data: CandleData[]): NormalizedCandle[] {
 
   return source.map((candle, index) => {
     const x = step * (index + 0.7)
-    const bodyHalf = Math.max(12, candle.body / max * 32)
+    const bodyHalf = Math.max(16, candle.body / max * 44)
     const center = y((candle.wickTop + candle.wickBottom) / 2)
     const bodyTop = Math.max(topPad, center - bodyHalf)
     const bodyBottom = Math.min(CHART_HEIGHT - bottomPad, center + bodyHalf)
