@@ -15,7 +15,7 @@ export default function DashboardPage() {
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style={{ background: '#104030', filter: 'blur(157px)' }} aria-hidden="true" />
+        <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style={{ top: '-30%', background: '#104030', filter: 'blur(157px)' }} aria-hidden="true" />
         <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
           <TopBar menuOpen={sidebarOpen} onMenuClick={() => setSidebarOpen(v => !v)} />
           <GreetingRow />
