@@ -24,14 +24,14 @@ export function LiveAccountsCard({
         style={{ background: '#104030', filter: 'url(#blur-157)', willChange: 'transform' }}
         aria-hidden="true"
       />
-      <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="text-card-label text-gfx-neutral-500 font-normal">Live Accounts</h3>
+      <div className="relative z-10 flex flex-col h-full px-4 pt-4 sm:px-6 sm:pt-6">
+        <div className="flex justify-between items-center">
+          <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">Live Accounts</h3>
           <div className="px-2.5 py-1.5 bg-teal-700/25 rounded-[20.83px] outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex justify-start items-start gap-1.5">
             <span className="text-white text-card-change font-normal leading-5">{totalBalance}</span>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center gap-2 mb-2">
           <p className="text-card-value text-white">{accounts.length}</p>
           <span className="text-card-label text-gfx-neutral-500">Active</span>
         </div>
