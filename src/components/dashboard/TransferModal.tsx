@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
+import gsap from 'gsap'
+import { GlassSelectIcon } from '@/components/ui'
 
 function SearchCoinIcon() {
   return (
@@ -17,13 +19,12 @@ function WalletCircleIcon() {
   )
 }
 
-function ChevronDownSmall() {
-  return (
-    <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
-      <path d="M1 1l7 6 7-6" stroke="#606060" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
+const COIN_OPTIONS = [
+  { value: 'usdt', label: 'USDT' },
+  { value: 'btc', label: 'BTC' },
+  { value: 'eth', label: 'ETH' },
+  { value: 'usdc', label: 'USDC' },
+]
 
 interface TransferModalProps {
   open: boolean
@@ -32,29 +33,60 @@ interface TransferModalProps {
 
 export function TransferModal({ open, onClose }: TransferModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  const handleClose = useCallback(() => {
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) { onClose(); return }
+
+    gsap.to(modal, { opacity: 0, scale: 0.96, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlay, {
+      opacity: 0, duration: 0.2, ease: 'power2.in',
+      onComplete: () => { setMounted(false); onClose() },
+    })
+  }, [onClose])
 
   useEffect(() => {
-    if (!open) return
+    if (open) setMounted(true)
+  }, [open])
+
+  useLayoutEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) return
+
+    gsap.set(overlay, { opacity: 0 })
+    gsap.set(modal, { opacity: 0, scale: 0.96 })
+    gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
+  }, [mounted])
+
+  useEffect(() => {
+    if (!mounted) return
     function handleKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') handleClose()
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [open, onClose])
+  }, [mounted, handleClose])
 
-  if (!open) return null
+  if (!mounted) return null
 
   return (
     <div
       ref={overlayRef}
       className="fixed inset-0 z-[100] flex items-center justify-center"
       style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
-      onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
+      onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
       aria-label="Internal Transfer"
     >
       <div
+        ref={modalRef}
         className="relative overflow-hidden"
         style={{
           width: 793,
@@ -76,7 +108,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
 
         {/* Close button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity"
           style={{ right: 28, top: 28, width: 24, height: 24 }}
           aria-label="Close modal"
@@ -125,54 +157,22 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
 
           {/* From Account */}
           <div className="relative z-10" style={{ marginBottom: 22 }}>
-            <label className="block text-white font-acid font-medium" style={{ fontSize: 16, lineHeight: '24.44px', marginBottom: 2 }}>
-              From Account
-            </label>
-            <div
-              className="flex items-center relative"
-              style={{ height: 50, background: '#101E1A', borderRadius: 30, border: '1px solid #404040' }}
-            >
-              <div
-                className="shrink-0 flex items-center justify-center"
-                style={{
-                  width: 38, height: 38, marginLeft: 6,
-                  background: 'linear-gradient(204deg, #01130D 0%, #064B34 100%)',
-                  borderRadius: 9999,
-                }}
-              >
-                <SearchCoinIcon />
-              </div>
-              <span className="font-acid" style={{ color: '#808080', fontSize: 16, marginLeft: 10 }}>Search  Coin</span>
-              <div className="absolute" style={{ right: 16, top: '50%', transform: 'translateY(-50%)' }}>
-                <ChevronDownSmall />
-              </div>
-            </div>
+            <GlassSelectIcon
+              label="From Account"
+              placeholder="Search  Coin"
+              icon={<SearchCoinIcon />}
+              options={COIN_OPTIONS}
+            />
           </div>
 
           {/* To Account */}
           <div className="relative z-10" style={{ marginBottom: 22 }}>
-            <label className="block text-white font-acid font-medium" style={{ fontSize: 16, lineHeight: '24.44px', marginBottom: 2 }}>
-              To Account
-            </label>
-            <div
-              className="flex items-center relative"
-              style={{ height: 50, background: '#101E1A', borderRadius: 30, border: '1px solid #404040' }}
-            >
-              <div
-                className="shrink-0 flex items-center justify-center"
-                style={{
-                  width: 38, height: 38, marginLeft: 6,
-                  background: 'linear-gradient(204deg, #01130D 0%, #064B34 100%)',
-                  borderRadius: 9999,
-                }}
-              >
-                <WalletCircleIcon />
-              </div>
-              <span className="font-acid" style={{ color: '#808080', fontSize: 16, marginLeft: 10 }}>Search  Coin</span>
-              <div className="absolute" style={{ right: 16, top: '50%', transform: 'translateY(-50%)' }}>
-                <ChevronDownSmall />
-              </div>
-            </div>
+            <GlassSelectIcon
+              label="To Account"
+              placeholder="Search  Coin"
+              icon={<WalletCircleIcon />}
+              options={COIN_OPTIONS}
+            />
           </div>
 
           {/* Amount */}
@@ -190,7 +190,6 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
 
           {/* Transfer Funds button with multi-layer glow */}
           <div className="relative z-10">
-            {/* Glow layers behind button */}
             <div
               className="absolute pointer-events-none"
               style={{
@@ -228,7 +227,6 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
               aria-hidden="true"
             />
 
-            {/* Actual button */}
             <button
               type="button"
               className="relative w-full cursor-pointer hover:opacity-90 transition-opacity font-acid font-medium"
