@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback } from 'react'
 
 interface GlowButtonProps {
   label?: string
-  width?: number
+  width?: number | string
   height?: number
   radius?: number
   smoothing?: number

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlassSelectIcon, GlassInput } from '@/components/ui'
+import { GlassSelectIcon, GlassInput, GlowButton } from '@/components/ui'
 
 function SearchCoinIcon() {
   return (
@@ -165,33 +165,12 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
             <GlassInput label="Amount(USD)" placeholder="0.00" type="number" />
           </div>
 
-          {/* Transfer Funds button with multi-layer glow */}
-          <div className="relative">
-            <div
-              className="absolute pointer-events-none w-[90%] h-[44px] left-[5%] top-[3px] bg-[linear-gradient(92deg,rgba(209,209,210,0)_0%,#38846B_100%)] rounded-[276px] blur-[25px]"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute pointer-events-none w-full h-[52px] left-0 top-0 bg-[linear-gradient(118deg,rgba(209,209,210,0)_0%,#38FFBD_100%)] rounded-[240px] blur-[12.65px]"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute pointer-events-none w-full h-[44px] left-0 top-[3px] bg-[linear-gradient(270deg,#D1D1D1_0%,rgba(162,245,227,0)_100%)] rounded-[300px] blur-[4.65px]"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute pointer-events-none w-full h-[44px] left-0 top-[3px] bg-[linear-gradient(270deg,#F0FEFE_0%,rgba(162,245,227,0)_100%)] rounded-[300px] blur-[4.65px]"
-              aria-hidden="true"
-            />
-
-            <button
-              type="button"
-              className="relative w-full cursor-pointer hover:opacity-90 transition-opacity font-acid font-medium h-[44px] bg-[linear-gradient(54deg,#D1D1D1_18%,#D2F5ED_64%,#D5FFF1_80%)] rounded-[300px] text-black text-[16px] leading-[24.44px]"
-              onClick={() => { handleClose(); onTransfer?.() }}
-            >
-              Transfer Funds
-            </button>
-          </div>
+          {/* Transfer Funds button */}
+          <GlowButton
+            label="Transfer Funds"
+            width="100%"
+            onClick={() => { handleClose(); onTransfer?.() }}
+          />
           </div>
         </div>
       </div>
