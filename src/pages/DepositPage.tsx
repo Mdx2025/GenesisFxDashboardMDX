@@ -222,8 +222,8 @@ function FaqTag({ label }: { label: string }) {
 export default function DepositPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
-  const [selectedCoin, setSelectedCoin] = useState('usdt')
-  const [selectedNetwork, setSelectedNetwork] = useState('erc20')
+  const [selectedCoin, setSelectedCoin] = useState('')
+  const [selectedNetwork, setSelectedNetwork] = useState('')
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
   const [copied, setCopied] = useState(false)
 
@@ -293,10 +293,10 @@ export default function DepositPage() {
 
                   <div className="mt-4 max-w-[546px]">
                     <GlassSelectIcon
-                      icon={<SearchIcon size={18} color="#808080" />}
+                      icon={selectedCoin ? (COINS.find(c => c.id === selectedCoin)?.icon ?? <SearchIcon size={18} color="#808080" />) : <SearchIcon size={18} color="#808080" />}
                       options={COINS.map(c => ({ value: c.id, label: `${c.label}  ${c.name}` }))}
                       placeholder="Search Coin"
-                      value={selectedCoin}
+                      value={selectedCoin || undefined}
                       onChange={handleCoinSelect}
                     />
                   </div>
@@ -338,7 +338,7 @@ export default function DepositPage() {
                       <GlassSelect
                         options={NETWORK_OPTIONS.map(n => ({ value: n.value, label: `${n.shortLabel}  ${n.label}` }))}
                         placeholder="Select Network"
-                        value={selectedNetwork}
+                        value={selectedNetwork || undefined}
                         onChange={handleNetworkSelect}
                       />
                     </div>
