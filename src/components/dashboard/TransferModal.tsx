@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlassSelectIcon } from '@/components/ui'
+import { GlassSelectIcon, GlassInput } from '@/components/ui'
 
 function SearchCoinIcon() {
   return (
@@ -130,25 +130,34 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
 
         {/* Inner glass card */}
         <div
-          className="relative overflow-hidden mx-auto"
+          className="relative mx-auto"
           style={{
             width: 701,
             maxWidth: '90%',
             marginTop: 35,
             marginBottom: 46,
-            background: 'rgba(255,255,255,0.03)',
-            boxShadow: '0px 1.25px 0px 1.25px rgba(255,255,255,0.04) inset, 0px 5.01px 25.07px rgba(0,0,0,0.20)',
-            borderRadius: 20,
-            outline: '1.25px rgba(255,255,255,0.06) solid',
-            outlineOffset: -1.25,
-            backdropFilter: 'blur(25px)',
-            padding: '32px 78px 54px',
           }}
         >
-          {/* Decorative glows inside card */}
-          <div className="absolute pointer-events-none" style={{ width: 587, height: 435, left: 304, top: -333, transform: 'rotate(48deg)', transformOrigin: 'top left', background: '#00110B', borderRadius: 9999, filter: 'blur(157px)' }} aria-hidden="true" />
-          <div className="absolute pointer-events-none" style={{ width: 493, height: 278, left: 36, top: -28, background: '#114131', borderRadius: 9999, filter: 'blur(157px)' }} aria-hidden="true" />
-          <div className="absolute pointer-events-none" style={{ width: 237, height: 237, left: 555, top: -75, opacity: 0.3, mixBlendMode: 'color', background: '#0D4532', borderRadius: 9999, filter: 'blur(87px)' }} aria-hidden="true" />
+          {/* Card background with glows (clipped) */}
+          <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{
+              borderRadius: 20,
+              background: 'rgba(255,255,255,0.03)',
+              boxShadow: '0px 1.25px 0px 1.25px rgba(255,255,255,0.04) inset, 0px 5.01px 25.07px rgba(0,0,0,0.20)',
+              outline: '1.25px rgba(255,255,255,0.06) solid',
+              outlineOffset: -1.25,
+              backdropFilter: 'blur(25px)',
+            }}
+            aria-hidden="true"
+          >
+            <div className="absolute" style={{ width: 587, height: 435, left: 304, top: -333, transform: 'rotate(48deg)', transformOrigin: 'top left', background: '#00110B', borderRadius: 9999, filter: 'blur(157px)' }} />
+            <div className="absolute" style={{ width: 493, height: 278, left: 36, top: -28, background: '#114131', borderRadius: 9999, filter: 'blur(157px)' }} />
+            <div className="absolute" style={{ width: 237, height: 237, left: 555, top: -75, opacity: 0.3, mixBlendMode: 'color', background: '#0D4532', borderRadius: 9999, filter: 'blur(87px)' }} />
+          </div>
+
+          {/* Card content (not clipped, dropdowns can overflow) */}
+          <div className="relative" style={{ padding: '32px 78px 54px' }}>
 
           {/* Card title */}
           <h3 className="text-white font-acid font-normal text-center relative z-10" style={{ fontSize: 24, marginBottom: 42 }}>
@@ -177,15 +186,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
 
           {/* Amount */}
           <div className="relative z-10" style={{ marginBottom: 40 }}>
-            <label className="block text-white font-acid font-medium" style={{ fontSize: 16, lineHeight: '24.44px', marginBottom: 2 }}>
-              Amount(USD)
-            </label>
-            <div
-              className="flex items-center"
-              style={{ height: 50, background: '#101E1A', borderRadius: 30, border: '1px solid #404040', paddingLeft: 16 }}
-            >
-              <span className="font-acid" style={{ color: '#808080', fontSize: 16 }}>0.00</span>
-            </div>
+            <GlassInput label="Amount(USD)" placeholder="0.00" type="number" />
           </div>
 
           {/* Transfer Funds button with multi-layer glow */}
@@ -241,6 +242,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
             >
               Transfer Funds
             </button>
+          </div>
           </div>
         </div>
       </div>
