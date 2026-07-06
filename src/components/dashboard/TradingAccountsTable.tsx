@@ -1,4 +1,4 @@
-import { GlassCard, SparkleButton, TradeButton, Badge, GreenDot, SearchInput } from '@/components/ui'
+import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton } from '@/components/ui'
 import { GLOW_GREEN } from '@/constants/colors'
 import { MoreDotsVerticalIcon, UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
@@ -70,7 +70,7 @@ export function TradingAccountsTable() {
               </div>
               <div className="flex items-center justify-end gap-6">
                 <button className="text-gfx-neutral-300 text-[14px] hover:text-white transition-colors">View</button>
-                <TradeButton>Trade</TradeButton>
+                <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                 <button className="text-gfx-neutral-300 hover:text-white transition-colors text-lg tracking-widest" aria-label="More options">
                   ···
                 </button>
