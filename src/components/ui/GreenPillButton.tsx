@@ -8,11 +8,21 @@ interface GreenPillButtonProps {
 export function GreenPillButton({ children, onClick }: GreenPillButtonProps) {
   return (
     <button
-      className="h-12 px-6 relative cursor-pointer group rounded-full overflow-hidden focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
+      className="h-12 px-12 relative cursor-pointer group rounded-full overflow-hidden focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
       type="button"
       onClick={onClick}
-      style={{ background: '#0A2E1E', border: '1px solid #1A4A35' }}
+      style={{ background: '#021B13', border: 'none' }}
     >
+      <div
+        className="absolute top-0 left-0 w-1/2 h-px pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, transparent 0%, #DBDBDB 40%, transparent 100%)' }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-0 right-0 w-1/2 h-px pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, transparent 0%, #DBDBDB 60%, transparent 100%)' }}
+        aria-hidden="true"
+      />
       <svg className="absolute left-[18%] top-[25%] opacity-70" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.7" fill="white" filter="url(#gpb_blur)" />
       </svg>
