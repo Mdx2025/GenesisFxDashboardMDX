@@ -6,11 +6,13 @@ interface NavButtonProps {
   expanded?: boolean
   children: ReactNode
   onClick?: () => void
+  as?: 'button' | 'div'
 }
 
-export function NavButton({ active = false, expanded, children, onClick }: NavButtonProps) {
+export function NavButton({ active = false, expanded, children, onClick, as = 'button' }: NavButtonProps) {
+  const Tag = as
   return (
-    <button
+    <Tag
       className={`nav-btn rounded-sm py-2.5 lg:py-2 2xl:py-3 px-2 ${active ? 'active' : ''}`}
       aria-current={active ? 'page' : undefined}
       aria-expanded={expanded}
@@ -31,6 +33,6 @@ export function NavButton({ active = false, expanded, children, onClick }: NavBu
           <div className="star star-6" aria-hidden="true" />
         </>
       )}
-    </button>
+    </Tag>
   )
 }

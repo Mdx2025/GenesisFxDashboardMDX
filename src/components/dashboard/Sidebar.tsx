@@ -132,6 +132,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     active={isActive}
                     expanded={item.submenu ? tradelockerOpen : undefined}
                     onClick={item.submenu ? () => !collapsed && setTradelockerOpen(!tradelockerOpen) : undefined}
+                    as={item.submenu ? 'button' : 'div'}
                   >
                     {Icon && <Icon />}
                     <span className="sidebar-hide">{item.label}</span>
