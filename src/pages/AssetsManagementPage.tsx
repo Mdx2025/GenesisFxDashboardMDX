@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton, SuccessSnackbar } from '@/components/ui'
@@ -88,6 +89,7 @@ function FilterDropdown({ label, wide }: { label: string; wide?: boolean }) {
 }
 
 export default function AssetsManagementPage() {
+  const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [transferOpen, setTransferOpen] = useState(false)
   const [processingOpen, setProcessingOpen] = useState(false)
@@ -129,7 +131,7 @@ export default function AssetsManagementPage() {
                   </div>
                   <div className="flex flex-col shrink-0">
                     <div className="flex items-center gap-3 flex-wrap">
-                      <SparkleButton aria-label="Deposit funds">
+                      <SparkleButton onClick={() => navigate('/deposit')}>
                         <span className="flex items-center gap-2">
                           <DepositIcon />
                           <span>Deposit</span>

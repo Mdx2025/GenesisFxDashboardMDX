@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { SparkleButton } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon } from '@/components/icons'
 
@@ -8,6 +9,7 @@ interface GreetingRowProps {
 }
 
 export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagline = 'Born To Outperform' }: GreetingRowProps) {
+  const navigate = useNavigate()
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 sm:mt-0 mb-5 gap-4">
       <div>
@@ -16,7 +18,7 @@ export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagl
         <p className="text-gfx-neutral-500 text-base sm:text-body2">{tagline}</p>
       </div>
       <div className="hidden xl:flex items-center gap-3 flex-wrap">
-        <SparkleButton>
+        <SparkleButton onClick={() => navigate('/deposit')}>
           <span className="flex items-center gap-2">
             <DepositIcon />
             <span className="hidden sm:inline">Deposit</span>
