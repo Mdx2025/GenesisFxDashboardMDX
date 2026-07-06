@@ -73,12 +73,11 @@ export function GlassSelect({ options, defaultValue, placeholder = 'Select...', 
         id={id}
         type="button"
         onClick={() => setOpen(!open)}
-        className={`w-full ${s.trigger} text-sm text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus:outline-none ${
-          open
-            ? 'border-[#10BC83]/50 text-white'
-            : 'border-[#404040] text-white hover:border-[#505050]'
-        }`}
-        style={{ background: '#101E1A' }}
+        className={`w-full ${s.trigger} text-sm text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus:outline-none text-white`}
+        style={{
+          background: '#101E1A',
+          border: open ? '1px solid rgba(16,188,131,0.5)' : '1px solid #404040',
+        }}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
