@@ -77,33 +77,31 @@ export default function AssetsManagementPage() {
                       <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 flex-wrap shrink-0">
-                    <SparkleButton aria-label="Deposit funds">
-                      <span className="flex items-center gap-2">
-                        <DepositIcon />
-                        <span>Deposit</span>
-                      </span>
-                    </SparkleButton>
-                    <SparkleButton aria-label="Withdraw funds">
-                      <span className="flex items-center gap-2">
-                        <WithdrawIcon />
-                        <span>Withdraw</span>
-                      </span>
-                    </SparkleButton>
-                    <SparkleButton aria-label="Transfer funds">
-                      <span className="flex items-center gap-2">
-                        <TransferIcon />
-                        <span>Transfer</span>
-                      </span>
-                    </SparkleButton>
+                  <div className="flex flex-col gap-4 shrink-0">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <SparkleButton aria-label="Deposit funds">
+                        <span className="flex items-center gap-2">
+                          <DepositIcon />
+                          <span>Deposit</span>
+                        </span>
+                      </SparkleButton>
+                      <SparkleButton aria-label="Withdraw funds">
+                        <span className="flex items-center gap-2">
+                          <WithdrawIcon />
+                          <span>Withdraw</span>
+                        </span>
+                      </SparkleButton>
+                      <SparkleButton aria-label="Transfer funds">
+                        <span className="flex items-center gap-2">
+                          <TransferIcon />
+                          <span>Transfer</span>
+                        </span>
+                      </SparkleButton>
+                    </div>
+                    <div className="h-[100px]">
+                      <AreaChart className="h-full" />
+                    </div>
                   </div>
-                </div>
-                <div className="relative mt-4 h-[120px] xl:h-[100px]">
-                  <div className="absolute inset-0 opacity-10" style={{
-                    backgroundImage: 'radial-gradient(circle, var(--color-gfx-green-500) 1px, transparent 1px)',
-                    backgroundSize: '16px 16px',
-                  }} aria-hidden="true" />
-                  <AreaChart className="h-full relative z-10" />
                 </div>
               </div>
             </GlassCard>
