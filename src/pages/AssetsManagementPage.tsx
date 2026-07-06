@@ -4,6 +4,7 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { TransferModal } from '@/components/dashboard/TransferModal'
+import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
 import { GLOW_GREEN, STATUS_STYLES } from '@/constants/colors'
@@ -89,6 +90,7 @@ function FilterDropdown({ label, wide }: { label: string; wide?: boolean }) {
 export default function AssetsManagementPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [transferOpen, setTransferOpen] = useState(false)
+  const [processingOpen, setProcessingOpen] = useState(false)
 
   return (
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
@@ -286,7 +288,8 @@ export default function AssetsManagementPage() {
           <FloatingNavBar />
         </div>
       </main>
-      <TransferModal open={transferOpen} onClose={() => setTransferOpen(false)} />
+      <TransferModal open={transferOpen} onClose={() => setTransferOpen(false)} onTransfer={() => setProcessingOpen(true)} />
+      <TransferProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} />
     </div>
   )
 }

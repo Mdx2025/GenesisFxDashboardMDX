@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
 import { GlassSelectIcon, GlassInput } from '@/components/ui'
-import { TransferProcessingModal } from './TransferProcessingModal'
 
 function SearchCoinIcon() {
   return (
@@ -30,13 +29,13 @@ const COIN_OPTIONS = [
 interface TransferModalProps {
   open: boolean
   onClose: () => void
+  onTransfer?: () => void
 }
 
-export function TransferModal({ open, onClose }: TransferModalProps) {
+export function TransferModal({ open, onClose, onTransfer }: TransferModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
-  const [processingOpen, setProcessingOpen] = useState(false)
 
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
@@ -162,15 +161,15 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
           </div>
 
           {/* Card content (not clipped, dropdowns can overflow) */}
-          <div className="relative" style={{ padding: '32px 78px 54px' }}>
+          <div className="relative z-10" style={{ padding: '32px 78px 54px' }}>
 
           {/* Card title */}
-          <h3 className="text-white font-acid font-normal text-center relative z-10" style={{ fontSize: 24, marginBottom: 42 }}>
+          <h3 className="text-white font-acid font-normal text-center" style={{ fontSize: 24, marginBottom: 42 }}>
             Transfer Funds
           </h3>
 
           {/* From Account */}
-          <div className="relative z-10" style={{ marginBottom: 22 }}>
+          <div style={{ marginBottom: 22 }}>
             <GlassSelectIcon
               label="From Account"
               placeholder="Search  Coin"
@@ -180,7 +179,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
           </div>
 
           {/* To Account */}
-          <div className="relative z-10" style={{ marginBottom: 22 }}>
+          <div style={{ marginBottom: 22 }}>
             <GlassSelectIcon
               label="To Account"
               placeholder="Search  Coin"
@@ -190,12 +189,12 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
           </div>
 
           {/* Amount */}
-          <div className="relative z-10" style={{ marginBottom: 40 }}>
+          <div style={{ marginBottom: 40 }}>
             <GlassInput label="Amount(USD)" placeholder="0.00" type="number" />
           </div>
 
           {/* Transfer Funds button with multi-layer glow */}
-          <div className="relative z-10">
+          <div className="relative">
             <div
               className="absolute pointer-events-none"
               style={{
@@ -244,7 +243,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
                 fontSize: 16,
                 lineHeight: '24.44px',
               }}
-              onClick={() => setProcessingOpen(true)}
+              onClick={() => { handleClose(); onTransfer?.() }}
             >
               Transfer Funds
             </button>
@@ -252,7 +251,6 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
           </div>
         </div>
       </div>
-      <TransferProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} />
     </div>
   )
 }
