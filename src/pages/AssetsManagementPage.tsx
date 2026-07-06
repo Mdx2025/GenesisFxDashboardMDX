@@ -57,25 +57,27 @@ export default function AssetsManagementPage() {
 
           <h1 className="text-white font-normal leading-none mb-6" style={{ fontSize: 'clamp(1.5rem, 0.75rem + 1.5vw, 3.5rem)' }}>Funding</h1>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-6">
-            <section aria-label="Fiat Wallet">
-              <GlassCard variant="heavy" divider="green" rounded="26px">
-                <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
-                <div className="relative z-10 p-6 xl:p-8">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-gfx-neutral-300 text-body2">Fiat Wallet</span>
-                    <WalletIcon />
+          <section aria-label="Fiat Wallet" className="mb-6">
+            <GlassCard variant="heavy" divider="green" rounded="26px">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
+              <div className="relative z-10 p-6 xl:p-8">
+                <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-gfx-neutral-300 text-body2">Fiat Wallet</span>
+                      <WalletIcon />
+                    </div>
+                    <div className="flex items-baseline gap-3 mb-2">
+                      <span className="text-white font-normal" style={{ fontSize: 'clamp(2rem, 1.5rem + 1.5vw, 3.5rem)' }}>$100.00</span>
+                      <span className="text-gfx-neutral-300 text-body2">USD</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
+                      <span className="text-white text-sm font-semibold">$0.00</span>
+                      <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
+                    </div>
                   </div>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-white font-normal" style={{ fontSize: 'clamp(2rem, 1.5rem + 1.5vw, 3.5rem)' }}>$100.00</span>
-                    <span className="text-gfx-neutral-300 text-body2">USD</span>
-                  </div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
-                    <span className="text-white text-sm font-semibold">$0.00</span>
-                    <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
-                  </div>
-                  <div className="flex items-center gap-3 flex-wrap">
+                  <div className="flex items-center gap-3 flex-wrap shrink-0">
                     <SparkleButton aria-label="Deposit funds">
                       <span className="flex items-center gap-2">
                         <DepositIcon />
@@ -96,21 +98,16 @@ export default function AssetsManagementPage() {
                     </SparkleButton>
                   </div>
                 </div>
-              </GlassCard>
-            </section>
-
-            <section aria-label="Portfolio chart">
-              <GlassCard variant="light" divider="none" rounded="26px">
-                <div className="relative h-full min-h-[200px] p-6">
+                <div className="relative mt-4 h-[120px] xl:h-[100px]">
                   <div className="absolute inset-0 opacity-10" style={{
                     backgroundImage: 'radial-gradient(circle, var(--color-gfx-green-500) 1px, transparent 1px)',
                     backgroundSize: '16px 16px',
                   }} aria-hidden="true" />
                   <AreaChart className="h-full relative z-10" />
                 </div>
-              </GlassCard>
-            </section>
-          </div>
+              </div>
+            </GlassCard>
+          </section>
 
           <nav aria-label="Transaction type tabs">
             <div className="flex items-center gap-1 mb-6" role="tablist">
