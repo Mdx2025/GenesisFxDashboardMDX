@@ -3,6 +3,7 @@ import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
+import { TransferModal } from '@/components/dashboard/TransferModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
 import { GLOW_GREEN, STATUS_STYLES } from '@/constants/colors'
@@ -87,6 +88,7 @@ function FilterDropdown({ label, wide }: { label: string; wide?: boolean }) {
 
 export default function AssetsManagementPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [transferOpen, setTransferOpen] = useState(false)
 
   return (
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
@@ -136,7 +138,7 @@ export default function AssetsManagementPage() {
                           <span>Withdraw</span>
                         </span>
                       </SparkleButton>
-                      <SparkleButton aria-label="Transfer funds">
+                      <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
                         <span className="flex items-center gap-2">
                           <TransferIcon />
                           <span>Transfer</span>
@@ -284,6 +286,7 @@ export default function AssetsManagementPage() {
           <FloatingNavBar />
         </div>
       </main>
+      <TransferModal open={transferOpen} onClose={() => setTransferOpen(false)} />
     </div>
   )
 }
