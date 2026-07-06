@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  SparkleButton, TradeButton, Badge, GreenDot, ModeToggle, PeriodPill,
+  SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
   FloatingNavBar, GlassSelect, GreenPillButton, GlowButton,
 } from '@/components/ui'
@@ -183,7 +183,7 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap items-center gap-4">
               <SparkleButton>Deposit</SparkleButton>
               <SparkleButton>Withdraw</SparkleButton>
-              <TradeButton>Trade</TradeButton>
+
               <button className="h-12 px-6 rounded-full bg-gfx-green-500 text-black text-sm font-medium hover:bg-gfx-green-500/90 transition-colors cursor-pointer">
                 Primary
               </button>
