@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
@@ -181,7 +181,7 @@ export default function AssetsManagementPage() {
               <div className="p-6">
                 <div className="flex items-center gap-3">
                   <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
-                  <span className="text-[11px] text-gfx-neutral-300 bg-white/[0.06] border border-white/[0.08] rounded-full px-3 py-1">Total ({assetTransactions.length} records)</span>
+                  <Badge variant="status">Total ({assetTransactions.length} records)</Badge>
                 </div>
               </div>
 
