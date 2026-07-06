@@ -143,11 +143,12 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         <div className="absolute left-[43px] right-[43px] top-[269px] h-[10px]">
           {/* Track */}
           <div className="absolute inset-0 bg-[#101E1A] rounded-2xl" />
-          {/* Animated fill (grows left to right) */}
-          <div ref={progressRef} className="absolute inset-0 bg-[linear-gradient(to_right,#064E3B_0%,#10B981_40%,#70D7B5_70%,#ffffff_100%)] rounded-2xl scale-x-0 origin-left" />
-          {/* Glow layers */}
-          <div className="absolute -inset-y-[6px] inset-x-0 pointer-events-none bg-[linear-gradient(to_right,transparent_10%,rgba(16,185,129,0.4)_50%,rgba(112,215,181,0.6)_80%,rgba(255,255,255,0.5)_100%)] rounded-2xl blur-[8px]" aria-hidden="true" />
-          <div className="absolute -inset-y-[12px] inset-x-0 pointer-events-none bg-[linear-gradient(to_right,transparent_20%,rgba(16,185,129,0.2)_50%,rgba(112,215,181,0.3)_80%,rgba(255,255,255,0.2)_100%)] rounded-2xl blur-[20px]" aria-hidden="true" />
+          {/* Animated fill + glow (all scale together) */}
+          <div ref={progressRef} className="absolute inset-0 scale-x-0 origin-left">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#064E3B_0%,#10B981_40%,#70D7B5_70%,#ffffff_100%)] rounded-2xl" />
+            <div className="absolute -inset-y-[6px] inset-x-0 pointer-events-none bg-[linear-gradient(to_right,transparent_10%,rgba(16,185,129,0.4)_50%,rgba(112,215,181,0.6)_80%,rgba(255,255,255,0.5)_100%)] rounded-2xl blur-[8px]" aria-hidden="true" />
+            <div className="absolute -inset-y-[12px] inset-x-0 pointer-events-none bg-[linear-gradient(to_right,transparent_20%,rgba(16,185,129,0.2)_50%,rgba(112,215,181,0.3)_80%,rgba(255,255,255,0.2)_100%)] rounded-2xl blur-[20px]" aria-hidden="true" />
+          </div>
         </div>
 
         {/* Endpoint circle glow layers (SVG filter blur, animated by gsap) */}
