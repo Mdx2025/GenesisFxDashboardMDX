@@ -439,7 +439,7 @@ export default function DepositPage() {
             </div>
 
             {/* FAQs column */}
-            <div className="xl:w-[380px] 2xl:w-[420px] shrink-0">
+            <div className="w-full xl:flex-1">
               <h2 className="text-[24px] font-normal mb-6 leading-[30px]">FAQs</h2>
               <div className="space-y-4">
                 {FAQS.map((faq, i) => (
