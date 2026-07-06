@@ -247,7 +247,7 @@ export default function AssetsManagementPage() {
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="flex items-center gap-2">
-                              <span className="text-[14px] text-gfx-neutral-300 truncate">{tx.address}</span>
+                              <span className="text-[14px] text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </div>
                           </td>
@@ -257,8 +257,8 @@ export default function AssetsManagementPage() {
                               <span className="text-white text-[14px] font-semibold">{tx.coin}</span>
                             </div>
                           </td>
-                          <td className="text-gfx-neutral-300 text-[14px] py-4 xl:py-5">{tx.network}</td>
-                          <td className="text-gfx-neutral-300 text-[14px] py-4 xl:py-5"><time>{tx.date}</time></td>
+                          <td className="text-white text-[14px] py-4 xl:py-5">{tx.network}</td>
+                          <td className="text-white text-[14px] py-4 xl:py-5"><time>{tx.date}</time></td>
                           <td className="py-4 xl:py-5">
                             <span
                               className="inline-flex items-center text-[11px] font-normal capitalize tracking-wider rounded-full px-3 py-1"
