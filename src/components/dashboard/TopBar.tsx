@@ -3,14 +3,21 @@ import { Breadcrumb } from '@/components/ui'
 import { LanguageDropdown } from '@/components/ui/LanguageDropdown'
 import { HelpIcon } from '@/components/icons'
 
+interface BreadcrumbItem {
+  label: string
+  href?: string
+  current?: boolean
+}
+
 interface TopBarProps {
   onMenuClick: () => void
   menuOpen?: boolean
+  breadcrumbItems?: BreadcrumbItem[]
 }
 
 const SCROLL_THRESHOLD = 8
 
-export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
+export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBarProps) {
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -114,7 +121,7 @@ export function TopBar({ onMenuClick, menuOpen = false }: TopBarProps) {
             </svg>
           </button>
           <div className="hidden sm:block">
-            <Breadcrumb items={[{ label: 'Overview' }, { label: 'Dashboard', current: true }]} />
+            <Breadcrumb items={breadcrumbItems ?? [{ label: 'Overview' }, { label: 'Dashboard', current: true }]} />
           </div>
         </div>
 

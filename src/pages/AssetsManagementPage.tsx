@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, Breadcrumb, FloatingNavBar } from '@/components/ui'
+import { GlassCard, SparkleButton, FloatingNavBar } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { AreaChart } from '@/components/charts/AreaChart'
 import { assetTransactions } from '@/data/assets-history'
@@ -54,11 +54,11 @@ export default function AssetsManagementPage() {
       <main className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
         <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style={{ top: '-30%', background: '#104030', filter: 'url(#blur-157)', willChange: 'transform' }} aria-hidden="true" />
         <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
-          <TopBar menuOpen={sidebarOpen} onMenuClick={() => setSidebarOpen(v => !v)} />
-
-          <div className="mt-4 sm:mt-0 mb-2">
-            <Breadcrumb items={[{ label: 'Assets Management', href: '/assets-management' }, { label: 'Funding', current: true }]} />
-          </div>
+          <TopBar
+            menuOpen={sidebarOpen}
+            onMenuClick={() => setSidebarOpen(v => !v)}
+            breadcrumbItems={[{ label: 'Assets Management', href: '/assets-management' }, { label: 'Funding', current: true }]}
+          />
 
           <h1 className="text-white font-normal leading-none mb-6" style={{ fontSize: 'clamp(1.5rem, 0.75rem + 1.5vw, 3.5rem)' }}>Funding</h1>
 
