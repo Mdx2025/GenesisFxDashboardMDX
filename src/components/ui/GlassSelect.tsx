@@ -14,14 +14,21 @@ interface GlassSelectProps {
   placeholder?: string
   label?: string
   id?: string
+  size?: 'sm' | 'default'
   onChange?: (value: string) => void
 }
 
-export function GlassSelect({ options, defaultValue, placeholder = 'Select...', label, id, onChange }: GlassSelectProps) {
+const SIZE_STYLES = {
+  default: { trigger: 'h-12 px-4 rounded-xl', dropdown: 'rounded-xl', item: 'px-4 py-3' },
+  sm: { trigger: 'h-[42px] px-4 rounded-sm', dropdown: 'rounded-sm', item: 'px-4 py-2.5' },
+} as const
+
+export function GlassSelect({ options, defaultValue, placeholder = 'Select...', label, id, size = 'default', onChange }: GlassSelectProps) {
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState<GlassSelectOption | null>(
     defaultValue ? options.find(o => o.value === defaultValue) || null : null
   )
+  const s = SIZE_STYLES[size]
   const ref = useRef<HTMLDivElement>(null)
   const dropdownRef = useRef<HTMLUListElement>(null)
   const isFirstRender = useRef(true)
@@ -66,10 +73,10 @@ export function GlassSelect({ options, defaultValue, placeholder = 'Select...', 
         id={id}
         type="button"
         onClick={() => setOpen(!open)}
-        className={`w-full h-12 px-4 rounded-xl bg-transparent border text-sm text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus:outline-none ${
+        className={`w-full ${s.trigger} bg-transparent border text-sm text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus:outline-none ${
           open
             ? 'border-gfx-green-500/50 text-white'
-            : 'border-white/10 text-white hover:border-white/20'
+            : 'border-white/[0.06] text-white hover:border-white/10'
         }`}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -92,7 +99,7 @@ export function GlassSelect({ options, defaultValue, placeholder = 'Select...', 
       <ul
         ref={dropdownRef}
         role="listbox"
-        className="absolute left-0 right-0 top-full mt-2 rounded-xl overflow-hidden z-50 border border-white/[0.06]"
+        className={`absolute left-0 right-0 top-full mt-2 ${s.dropdown} overflow-hidden z-50 border border-white/[0.06]`}
         style={{ background: 'rgba(10, 14, 12, 0.92)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
       >
         {options.map((option) => {
@@ -102,7 +109,7 @@ export function GlassSelect({ options, defaultValue, placeholder = 'Select...', 
               <button
                 type="button"
                 onClick={() => handleSelect(option)}
-                className={`w-full flex items-center gap-3 px-4 py-3 text-left text-sm transition-colors cursor-pointer hover:bg-white/[0.06] ${
+                className={`w-full flex items-center gap-3 ${s.item} text-left text-sm transition-colors cursor-pointer hover:bg-white/[0.06] ${
                   isSelected ? 'bg-white/[0.04] text-gfx-green-500' : 'text-gfx-neutral-500 hover:text-white'
                 }`}
               >

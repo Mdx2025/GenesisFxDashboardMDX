@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
@@ -157,9 +157,44 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Assets History">
             <div className="flex items-center gap-3 mb-6 flex-wrap" role="group" aria-label="Transaction filters">
-              <FilterDropdown label="Type" />
-              <FilterDropdown label="Time" wide />
-              <FilterDropdown label="Coin" wide />
+              <div className="min-w-[100px]">
+                <GlassSelect
+                  size="sm"
+                  placeholder="Type"
+                  options={[
+                    { value: 'all', label: 'All Types' },
+                    { value: 'deposit', label: 'Deposit' },
+                    { value: 'withdraw', label: 'Withdraw' },
+                    { value: 'transfer', label: 'Transfer' },
+                  ]}
+                />
+              </div>
+              <div className="min-w-[160px]">
+                <GlassSelect
+                  size="sm"
+                  placeholder="Time"
+                  options={[
+                    { value: 'all', label: 'All Time' },
+                    { value: '24h', label: 'Last 24h' },
+                    { value: '7d', label: 'Last 7 Days' },
+                    { value: '30d', label: 'Last 30 Days' },
+                    { value: '90d', label: 'Last 90 Days' },
+                  ]}
+                />
+              </div>
+              <div className="min-w-[160px]">
+                <GlassSelect
+                  size="sm"
+                  placeholder="Coin"
+                  options={[
+                    { value: 'all', label: 'All Coins' },
+                    { value: 'usdt', label: 'USDT' },
+                    { value: 'btc', label: 'BTC' },
+                    { value: 'usdc', label: 'USDC' },
+                    { value: 'eth', label: 'ETH' },
+                  ]}
+                />
+              </div>
               <button
                 className="px-5 py-2.5 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-300 text-sm hover:text-white hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
                 aria-label="Reset all filters"
