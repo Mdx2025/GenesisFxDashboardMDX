@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { GLOW_GREEN } from '@/constants/colors'
 
 interface SummaryCardProps {
   title: string
@@ -16,7 +17,7 @@ const colorMap = {
   amber: 'text-gfx-amber',
 }
 
-export function SummaryCard({ title, value, changeText, changeColor = 'green', glowColor = '#104030', chartClassName, children }: SummaryCardProps) {
+export function SummaryCard({ title, value, changeText, changeColor = 'green', glowColor = GLOW_GREEN, chartClassName, children }: SummaryCardProps) {
   const arrow = changeColor === 'red' ? '▼' : '▲'
 
   return (

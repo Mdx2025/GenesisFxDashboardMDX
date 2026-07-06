@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, TradeButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar,
+  FloatingNavBar, ButtonGlow,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -232,6 +232,20 @@ export default function DesignSystemPage() {
                 Loading
               </button>
             </div>
+          </Subsection>
+
+          <Subsection title="Button Glow">
+            <div className="flex flex-wrap items-center gap-6 py-8 px-6 rounded-2xl bg-black/40">
+              <ButtonGlow />
+              <ButtonGlow>GET STARTED</ButtonGlow>
+              <ButtonGlow>
+                <span className="flex items-center gap-2">
+                  <DepositIcon size={16} />
+                  <span>DEPOSIT NOW</span>
+                </span>
+              </ButtonGlow>
+            </div>
+            <p className="text-caption text-gfx-neutral-500 mt-2">Hover to see the edge-tracking glow effect</p>
           </Subsection>
         </Section>
 

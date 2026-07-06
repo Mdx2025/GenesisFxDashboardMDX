@@ -1,3 +1,5 @@
+import { GLOW_GREEN } from '@/constants/colors'
+
 interface LiveAccount {
   label: string
   value: number
@@ -21,7 +23,7 @@ export function LiveAccountsCard({
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none"
-        style={{ background: '#104030', filter: 'url(#blur-157)', willChange: 'transform' }}
+        style={{ background: GLOW_GREEN, filter: 'url(#blur-157)', willChange: 'transform' }}
         aria-hidden="true"
       />
       <div className="relative z-10 flex flex-col h-full px-4 pt-4 sm:px-6 sm:pt-6">

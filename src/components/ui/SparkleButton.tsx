@@ -7,7 +7,7 @@ interface SparkleButtonProps {
 
 export function SparkleButton({ children, onClick }: SparkleButtonProps) {
   return (
-    <button className="min-w-12 w-auto sm:w-auto h-12 px-4 relative cursor-pointer group" type="button" onClick={onClick}>
+    <button className="min-w-12 w-auto sm:w-auto h-12 px-4 relative cursor-pointer group focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded-[30px]" type="button" onClick={onClick}>
       <div className="absolute inset-0 rounded-[30px] bg-gradient-to-t from-[#1040308f] to-black/0" aria-hidden="true" />
       <div
         className="absolute inset-0 rounded-[30px] border border-zinc-300/60 pointer-events-none"

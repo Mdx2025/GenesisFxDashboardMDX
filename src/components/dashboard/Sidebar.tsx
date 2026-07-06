@@ -1,5 +1,6 @@
 import './Sidebar.css'
-import { useState, useRef, useLayoutEffect, useEffect } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
+import { useLocation, Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
 import {
@@ -8,6 +9,7 @@ import {
   ChevronDownIcon,
 } from '@/components/icons'
 import { navItems } from '@/data/navigation'
+import { GLOW_GREEN } from '@/constants/colors'
 import type { ComponentType } from 'react'
 
 const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> = {
@@ -26,6 +28,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ open, onClose }: SidebarProps) {
+  const location = useLocation()
   const [tradelockerOpen, setTradelockerOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
   const submenuRef = useRef<HTMLDivElement>(null)
@@ -99,7 +102,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">User Account</h2>
           <div className="user-card flex items-center gap-3 p-3 rounded-lg bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
             <div className="user-card-glow" aria-hidden="true" />
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none" style={{ background: '#104030' }} aria-hidden="true" />
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none" style={{ background: GLOW_GREEN }} aria-hidden="true" />
             <div className="relative z-10 w-9 h-9 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
               <svg className="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
                 <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="url(#blur-30)" />
@@ -123,32 +126,40 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <ul className="flex flex-col gap-1" role="list">
               {navItems.map((item) => {
                 const Icon = iconMap[item.icon]
+                const isActive = location.pathname === item.href
+                const navContent = (
+                  <NavButton
+                    active={isActive}
+                    expanded={item.submenu ? tradelockerOpen : undefined}
+                    onClick={item.submenu ? () => !collapsed && setTradelockerOpen(!tradelockerOpen) : undefined}
+                  >
+                    {Icon && <Icon />}
+                    <span className="sidebar-hide">{item.label}</span>
+                    {item.submenu && (
+                      <span
+                        className={`ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${tradelockerOpen ? 'rotate-180' : ''}`}
+                        aria-hidden="true"
+                      >
+                        <ChevronDownIcon />
+                      </span>
+                    )}
+                  </NavButton>
+                )
                 return (
                   <li key={item.id}>
-                    <NavButton
-                      active={item.active}
-                      expanded={item.submenu ? tradelockerOpen : undefined}
-                      onClick={item.submenu ? () => !collapsed && setTradelockerOpen(!tradelockerOpen) : undefined}
-                    >
-                      {Icon && <Icon />}
-                      <span className="sidebar-hide">{item.label}</span>
-                      {item.submenu && (
-                        <span
-                          className={`ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${tradelockerOpen ? 'rotate-180' : ''}`}
-                          aria-hidden="true"
-                        >
-                          <ChevronDownIcon />
-                        </span>
-                      )}
-                    </NavButton>
+                    {item.submenu ? navContent : (
+                      <Link to={item.href} aria-current={isActive ? 'page' : undefined}>
+                        {navContent}
+                      </Link>
+                    )}
                     {item.submenu && (
                       <div ref={submenuRef} className="sidebar-hide" style={{ overflow: 'hidden', height: 0, opacity: 0 }}>
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>
-                              <a href={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-lg">
+                              <Link to={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-lg">
                                 {sub.label}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>

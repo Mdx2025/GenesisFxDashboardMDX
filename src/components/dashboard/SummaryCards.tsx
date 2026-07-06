@@ -6,7 +6,7 @@ import { AreaChart } from '@/components/charts/AreaChart'
 import { summaryCards } from '@/data/summary-cards'
 import type { CandleData } from '@/data/summary-cards'
 
-const glowColors = ['#104030', '#241B1C', '#281E14']
+import { GLOW_COLORS } from '@/constants/colors'
 
 export function SummaryCards() {
   return (
@@ -18,7 +18,7 @@ export function SummaryCards() {
           value={card.value}
           changeText={card.changeText}
           changeColor={card.changeColor}
-          glowColor={glowColors[i]}
+          glowColor={GLOW_COLORS[i]}
           chartClassName={
             card.title === 'Total Balance' ? 'h-[40%]' :
             card.title === 'Total Equity' ? 'h-[45%]' :
