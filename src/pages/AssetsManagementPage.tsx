@@ -195,12 +195,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <button
-                className="px-5 py-2.5 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-300 text-sm hover:text-white hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
-                aria-label="Reset all filters"
-              >
-                Reset
-              </button>
+              <SparkleButton aria-label="Reset all filters">Reset</SparkleButton>
               <div className="ml-auto">
                 <button className="p-2 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-500 hover:text-white hover:border-white/10 transition-colors cursor-pointer" aria-label="Export table">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
