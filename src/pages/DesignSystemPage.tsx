@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, TradeButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, GlassSelect, GreenPillButton,
+  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -233,6 +233,22 @@ export default function DesignSystemPage() {
                 Loading
               </button>
             </div>
+          </Subsection>
+
+          <Subsection title="Glow Button">
+            <div className="flex flex-wrap items-end gap-8">
+              <GlowButton label="Transfer Funds" onClick={() => {}} />
+              <GlowButton label="Confirm" width={200} height={40} onClick={() => {}} />
+              <GlowButton
+                label="Custom Glow"
+                width={240}
+                surface={['#1a1a2e', '#16213e', '#0f3460']}
+                glow={['#533483', '#e94560', '#D1D1D1', '#F0FEFE']}
+                textColor="#ffffff"
+                onClick={() => {}}
+              />
+            </div>
+            <p className="text-caption text-gfx-neutral-500 mt-2">Pill button with 4-layer cursor-following glow — hover and move your cursor to see the effect</p>
           </Subsection>
 
           <Subsection title="Green Pill Button">
