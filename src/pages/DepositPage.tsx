@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassSelect, FloatingNavBar, DividerGlow } from '@/components/ui'
@@ -54,11 +54,113 @@ function SolIcon({ size = 24 }: { size?: number }) {
   )
 }
 
-const COINS = [
-  { id: 'btc', label: 'BTC', icon: <BtcIcon /> },
-  { id: 'eth', label: 'ETH', icon: <EthIcon /> },
-  { id: 'usdt', label: 'USDT', icon: <UsdtIcon /> },
-  { id: 'usdc', label: 'USDC', icon: <UsdcIcon /> },
+function CopyIcon({ size = 24, color = 'currentColor' }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="9" y="9" width="10" height="10" rx="2" stroke={color} strokeWidth="1.5" />
+      <path d="M5 15V6a1 1 0 011-1h9" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function QrCodePlaceholder() {
+  return (
+    <svg width="100%" height="100%" viewBox="0 0 157 159" fill="none" aria-hidden="true">
+      <rect width="157" height="159" rx="5" fill="white" />
+      <rect x="12" y="12" width="40" height="40" rx="4" fill="black" />
+      <rect x="16" y="16" width="32" height="32" rx="2" fill="white" />
+      <rect x="22" y="22" width="20" height="20" rx="1" fill="black" />
+      <rect x="105" y="12" width="40" height="40" rx="4" fill="black" />
+      <rect x="109" y="16" width="32" height="32" rx="2" fill="white" />
+      <rect x="115" y="22" width="20" height="20" rx="1" fill="black" />
+      <rect x="12" y="107" width="40" height="40" rx="4" fill="black" />
+      <rect x="16" y="111" width="32" height="32" rx="2" fill="white" />
+      <rect x="22" y="117" width="20" height="20" rx="1" fill="black" />
+      <rect x="60" y="12" width="8" height="8" fill="black" />
+      <rect x="60" y="28" width="8" height="8" fill="black" />
+      <rect x="76" y="12" width="8" height="8" fill="black" />
+      <rect x="76" y="28" width="8" height="8" fill="black" />
+      <rect x="60" y="44" width="8" height="8" fill="black" />
+      <rect x="76" y="44" width="8" height="8" fill="black" />
+      <rect x="68" y="20" width="8" height="8" fill="black" />
+      <rect x="68" y="36" width="8" height="8" fill="black" />
+      <rect x="84" y="20" width="8" height="8" fill="black" />
+      <rect x="92" y="12" width="8" height="8" fill="black" />
+      <rect x="12" y="60" width="8" height="8" fill="black" />
+      <rect x="28" y="60" width="8" height="8" fill="black" />
+      <rect x="44" y="60" width="8" height="8" fill="black" />
+      <rect x="20" y="68" width="8" height="8" fill="black" />
+      <rect x="36" y="68" width="8" height="8" fill="black" />
+      <rect x="12" y="76" width="8" height="8" fill="black" />
+      <rect x="28" y="76" width="8" height="8" fill="black" />
+      <rect x="44" y="76" width="8" height="8" fill="black" />
+      <rect x="20" y="84" width="8" height="8" fill="black" />
+      <rect x="36" y="84" width="8" height="8" fill="black" />
+      <rect x="12" y="92" width="8" height="8" fill="black" />
+      <rect x="28" y="92" width="8" height="8" fill="black" />
+      <rect x="60" y="60" width="8" height="8" fill="black" />
+      <rect x="76" y="60" width="8" height="8" fill="black" />
+      <rect x="92" y="60" width="8" height="8" fill="black" />
+      <rect x="68" y="68" width="8" height="8" fill="black" />
+      <rect x="84" y="68" width="8" height="8" fill="black" />
+      <rect x="60" y="76" width="8" height="8" fill="black" />
+      <rect x="76" y="76" width="8" height="8" fill="black" />
+      <rect x="92" y="76" width="8" height="8" fill="black" />
+      <rect x="108" y="60" width="8" height="8" fill="black" />
+      <rect x="124" y="60" width="8" height="8" fill="black" />
+      <rect x="140" y="60" width="8" height="8" fill="black" />
+      <rect x="116" y="68" width="8" height="8" fill="black" />
+      <rect x="132" y="68" width="8" height="8" fill="black" />
+      <rect x="108" y="76" width="8" height="8" fill="black" />
+      <rect x="124" y="76" width="8" height="8" fill="black" />
+      <rect x="140" y="76" width="8" height="8" fill="black" />
+      <rect x="68" y="84" width="8" height="8" fill="black" />
+      <rect x="84" y="84" width="8" height="8" fill="black" />
+      <rect x="60" y="92" width="8" height="8" fill="black" />
+      <rect x="76" y="92" width="8" height="8" fill="black" />
+      <rect x="92" y="92" width="8" height="8" fill="black" />
+      <rect x="108" y="84" width="8" height="8" fill="black" />
+      <rect x="124" y="84" width="8" height="8" fill="black" />
+      <rect x="108" y="92" width="8" height="8" fill="black" />
+      <rect x="140" y="92" width="8" height="8" fill="black" />
+      <rect x="108" y="107" width="8" height="8" fill="black" />
+      <rect x="124" y="107" width="8" height="8" fill="black" />
+      <rect x="140" y="107" width="8" height="8" fill="black" />
+      <rect x="116" y="115" width="8" height="8" fill="black" />
+      <rect x="132" y="115" width="8" height="8" fill="black" />
+      <rect x="108" y="123" width="8" height="8" fill="black" />
+      <rect x="124" y="123" width="8" height="8" fill="black" />
+      <rect x="140" y="123" width="8" height="8" fill="black" />
+      <rect x="60" y="107" width="8" height="8" fill="black" />
+      <rect x="76" y="107" width="8" height="8" fill="black" />
+      <rect x="92" y="107" width="8" height="8" fill="black" />
+      <rect x="68" y="115" width="8" height="8" fill="black" />
+      <rect x="60" y="123" width="8" height="8" fill="black" />
+      <rect x="76" y="123" width="8" height="8" fill="black" />
+      <rect x="92" y="123" width="8" height="8" fill="black" />
+      <rect x="68" y="131" width="8" height="8" fill="black" />
+      <rect x="84" y="131" width="8" height="8" fill="black" />
+      <rect x="60" y="139" width="8" height="8" fill="black" />
+      <rect x="116" y="131" width="8" height="8" fill="black" />
+      <rect x="108" y="139" width="8" height="8" fill="black" />
+      <rect x="124" y="139" width="8" height="8" fill="black" />
+      <rect x="140" y="139" width="8" height="8" fill="black" />
+    </svg>
+  )
+}
+
+interface CoinConfig {
+  id: string
+  label: string
+  name: string
+  icon: React.ReactNode
+}
+
+const COINS: CoinConfig[] = [
+  { id: 'btc', label: 'BTC', name: 'Bitcoin', icon: <BtcIcon /> },
+  { id: 'eth', label: 'ETH', name: 'Ethereum', icon: <EthIcon /> },
+  { id: 'usdt', label: 'USDT', name: 'Tether US', icon: <UsdtIcon /> },
+  { id: 'usdc', label: 'USDC', name: 'USD Coin', icon: <UsdcIcon /> },
 ]
 
 const EXTRA_COINS = [
@@ -69,18 +171,24 @@ const EXTRA_COINS = [
   <UsdcIcon size={30} key="x-usdc" />,
 ]
 
-const NETWORK_OPTIONS = [
-  { value: 'erc20', label: 'Ethereum (ERC-20)' },
-  { value: 'trc20', label: 'Tron (TRC-20)' },
-  { value: 'bep20', label: 'BSC (BEP-20)' },
-  { value: 'sol', label: 'Solana (SOL)' },
+interface NetworkConfig {
+  value: string
+  label: string
+  shortLabel: string
+}
+
+const NETWORK_OPTIONS: NetworkConfig[] = [
+  { value: 'erc20', label: 'Ethereum (ERC20)', shortLabel: 'ETH' },
+  { value: 'trc20', label: 'Tron (TRC20)', shortLabel: 'TRX' },
+  { value: 'bep20', label: 'BSC (BEP20)', shortLabel: 'BSC' },
+  { value: 'sol', label: 'Solana (SOL)', shortLabel: 'SOL' },
 ]
 
 const FAQS = [
-  'What is TradeLocker and how does it work?',
-  'Is my money secure in a Genesis trading account?',
-  'What is the minimum age to trade with Genesis?',
-  'How does Genesis keep client funds safe?',
+  { question: 'What is TradeLocker and how does it work?', tag: 'General' },
+  { question: 'Is my money secure in a Genesis trading account?', tag: 'General' },
+  { question: 'What is the minimum age to trade with Genesis?', tag: 'General' },
+  { question: 'How does Genesis keep client funds safe?', tag: 'General' },
 ]
 
 const TRANSACTIONS = [
@@ -91,10 +199,85 @@ const TRANSACTIONS = [
   { date: '04/30/2026 12', type: 'Withdraw' as const, amount: '-$170', status: 'Completed' },
 ]
 
+const DEPOSIT_ADDRESS = '0x0a3e23bf27c99b93d2ce8e6572d71188c7e75671'
+
+function StepCircle({ stepNumber, status }: { stepNumber: number; status: 'completed' | 'active' | 'inactive' }) {
+  if (status === 'inactive') {
+    return (
+      <div className="w-10 h-10 rounded-full bg-[#404040] flex items-center justify-center">
+        <span className="text-[#a0a0a0] text-[16px] font-medium">{stepNumber}</span>
+      </div>
+    )
+  }
+
+  return (
+    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-[0px_4px_15.7px_5px_rgba(255,255,255,0.25)]">
+      {status === 'completed' ? (
+        <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
+          <path d="M1 3.5L3.5 6L9 1" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ) : (
+        <span className="text-black text-[16px] font-medium">{stepNumber}</span>
+      )}
+    </div>
+  )
+}
+
+function StepConnector({ status }: { status: 'completed' | 'inactive' }) {
+  return <div className={`flex-1 w-px mt-3 mb-1 ${status === 'completed' ? 'bg-white' : 'bg-[#404040]'}`} />
+}
+
+function ConfirmedSelection({ icon, label, sublabel }: { icon: React.ReactNode; label: string; sublabel: string }) {
+  return (
+    <div className="mt-4 flex items-center h-[50px] bg-[#101E1A] border border-[#404040] rounded-[30px] px-5 gap-3 max-w-[546px]">
+      <span className="shrink-0">{icon}</span>
+      <span className="text-white text-[16px] font-medium">{label}</span>
+      <span className="text-[#808080] text-[16px]">{sublabel}</span>
+      <ChevronDownIcon size={14} color="#606060" className="ml-auto shrink-0" />
+    </div>
+  )
+}
+
+function FaqTag({ label }: { label: string }) {
+  return (
+    <span className="inline-block px-3 py-[5px] rounded-[60px] border border-[#3d3d3d] bg-[linear-gradient(38deg,#1e1e1e_24%,#3f4341_128%)] text-[12px] text-[#bebebe] leading-[20px]">
+      {label}
+    </span>
+  )
+}
+
 export default function DepositPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [currentStep, setCurrentStep] = useState(3)
   const [selectedCoin, setSelectedCoin] = useState('usdt')
+  const [selectedNetwork, setSelectedNetwork] = useState('erc20')
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [copied, setCopied] = useState(false)
+
+  const selectedCoinConfig = COINS.find(c => c.id === selectedCoin)
+  const selectedNetworkConfig = NETWORK_OPTIONS.find(n => n.value === selectedNetwork)
+
+  const getStepStatus = useCallback((step: number): 'completed' | 'active' | 'inactive' => {
+    if (step < currentStep) return 'completed'
+    if (step === currentStep) return 'active'
+    return 'inactive'
+  }, [currentStep])
+
+  const handleCoinSelect = (coinId: string) => {
+    setSelectedCoin(coinId)
+    if (currentStep === 1) setCurrentStep(2)
+  }
+
+  const handleNetworkSelect = (value: string) => {
+    setSelectedNetwork(value)
+    if (currentStep === 2) setCurrentStep(3)
+  }
+
+  const handleCopyAddress = async () => {
+    await navigator.clipboard.writeText(DEPOSIT_ADDRESS)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
@@ -124,79 +307,133 @@ export default function DepositPage() {
 
           <div className="flex flex-col xl:flex-row gap-10 xl:gap-20">
             {/* Steps column */}
-            <div className="flex-1 max-w-[600px]">
+            <div className="flex-1 max-w-[650px]">
               {/* Step 1: Select Coin */}
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-[0_0_15.7px_5px_rgba(255,255,255,0.25)] [filter:blur(0.3px)]">
-                    <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
-                      <path d="M1 3.5L3.5 6L9 1" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1 w-px bg-white mt-3 mb-1" />
+                  <StepCircle stepNumber={1} status={getStepStatus(1)} />
+                  <StepConnector status={getStepStatus(1) === 'completed' ? 'completed' : 'inactive'} />
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className="text-[24px] text-white font-normal leading-[30px]">Select Coin</h3>
-                  <div className="mt-4 flex items-center h-[50px] bg-[#0f1e19] rounded-[30px] px-5 gap-3 max-w-[546px]">
-                    <SearchIcon size={24} color="#808080" />
-                    <span className="text-[#808080] text-[16px] flex-1">Search Coin</span>
-                    <ChevronDownIcon size={14} color="#606060" />
-                  </div>
-                  <div className="flex items-center gap-2.5 mt-4 flex-wrap">
-                    {COINS.map(coin => (
-                      <button
-                        key={coin.id}
-                        type="button"
-                        onClick={() => setSelectedCoin(coin.id)}
-                        className={`h-[50px] px-4 rounded-[30px] flex items-center gap-2.5 cursor-pointer transition-colors ${
-                          selectedCoin === coin.id
-                            ? 'bg-[#064b34] border border-[#0a714f]'
-                            : 'bg-[#011b12] border border-transparent hover:bg-[#021B13]'
-                        }`}
-                      >
-                        {coin.icon}
-                        <span className="text-white text-[16px] font-medium">{coin.label}</span>
-                      </button>
-                    ))}
-                    <div className="flex -space-x-1 ml-2">
-                      {EXTRA_COINS.map((icon, i) => (
-                        <div key={i} className="w-[30px] h-[30px] rounded-full ring-2 ring-gfx-main">
-                          {icon}
+                  <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    Select Coin
+                  </h3>
+
+                  {getStepStatus(1) === 'active' && (
+                    <>
+                      <div className="mt-4 flex items-center h-[50px] bg-[#0f1e19] rounded-[30px] px-5 gap-3 max-w-[546px]">
+                        <SearchIcon size={24} color="#808080" />
+                        <span className="text-[#808080] text-[16px] flex-1">Search Coin</span>
+                        <ChevronDownIcon size={14} color="#606060" />
+                      </div>
+                      <div className="flex items-center gap-2.5 mt-4 flex-wrap">
+                        {COINS.map(coin => (
+                          <button
+                            key={coin.id}
+                            type="button"
+                            onClick={() => handleCoinSelect(coin.id)}
+                            className={`h-[50px] px-4 rounded-[30px] flex items-center gap-2.5 cursor-pointer transition-colors ${
+                              selectedCoin === coin.id
+                                ? 'bg-[#064b34] border border-[#0a714f]'
+                                : 'bg-[#011b12] border border-transparent hover:bg-[#021B13]'
+                            }`}
+                          >
+                            {coin.icon}
+                            <span className="text-white text-[16px] font-medium">{coin.label}</span>
+                          </button>
+                        ))}
+                        <div className="flex -space-x-1 ml-2">
+                          {EXTRA_COINS.map((icon, i) => (
+                            <div key={i} className="w-[30px] h-[30px] rounded-full ring-2 ring-gfx-main">
+                              {icon}
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
+                    </>
+                  )}
+
+                  {getStepStatus(1) === 'completed' && selectedCoinConfig && (
+                    <ConfirmedSelection
+                      icon={selectedCoinConfig.icon}
+                      label={selectedCoinConfig.label}
+                      sublabel={selectedCoinConfig.name}
+                    />
+                  )}
                 </div>
               </div>
 
               {/* Step 2: Select Network */}
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                    <span className="text-black text-[16px] font-medium">2</span>
-                  </div>
-                  <div className="flex-1 w-px bg-[#404040] mt-3 mb-1" />
+                  <StepCircle stepNumber={2} status={getStepStatus(2)} />
+                  <StepConnector status={getStepStatus(2) === 'completed' ? 'completed' : 'inactive'} />
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className="text-[24px] text-white font-normal leading-[30px]">Select Network</h3>
-                  <div className="mt-4 max-w-[546px]">
-                    <GlassSelect
-                      options={NETWORK_OPTIONS}
-                      placeholder="Select Network"
+                  <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    Select Network
+                  </h3>
+
+                  {getStepStatus(2) === 'active' && (
+                    <div className="mt-4 max-w-[546px]">
+                      <GlassSelect
+                        options={NETWORK_OPTIONS.map(n => ({ value: n.value, label: `${n.shortLabel}  ${n.label}` }))}
+                        placeholder="Select Network"
+                        onChange={handleNetworkSelect}
+                      />
+                    </div>
+                  )}
+
+                  {getStepStatus(2) === 'completed' && selectedNetworkConfig && (
+                    <ConfirmedSelection
+                      icon={null}
+                      label={selectedNetworkConfig.shortLabel}
+                      sublabel={selectedNetworkConfig.label}
                     />
-                  </div>
+                  )}
                 </div>
               </div>
 
               {/* Step 3: Deposit Address */}
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-[#404040] flex items-center justify-center">
-                    <span className="text-[#a0a0a0] text-[16px] font-medium">3</span>
-                  </div>
+                  <StepCircle stepNumber={3} status={getStepStatus(3)} />
                 </div>
-                <div>
-                  <h3 className="text-[24px] text-gfx-neutral-300 font-normal leading-[30px]">Deposit Address</h3>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    Deposit Address
+                  </h3>
+
+                  {getStepStatus(3) === 'active' && (
+                    <div className="mt-4 max-w-[546px]">
+                      <GlassCard variant="heavy" rounded="20px">
+                        <div className="relative z-10 p-5 flex flex-col sm:flex-row gap-5">
+                          <div className="w-[157px] h-[159px] shrink-0 rounded-[5px] overflow-hidden">
+                            <QrCodePlaceholder />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-[14px] text-gfx-neutral-300 leading-[18.8px]">Address</span>
+                            <div className="flex items-start gap-2 mt-3">
+                              <p className="text-[16px] text-white leading-[24.44px] break-all">
+                                {DEPOSIT_ADDRESS}
+                              </p>
+                              <button
+                                type="button"
+                                onClick={handleCopyAddress}
+                                className="shrink-0 cursor-pointer hover:opacity-80 transition-opacity mt-0.5"
+                                aria-label="Copy address"
+                              >
+                                <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
+                              </button>
+                            </div>
+                            <p className="text-[14px] text-gfx-neutral-300 leading-[18.8px] mt-3">
+                              Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
+                            </p>
+                          </div>
+                        </div>
+                      </GlassCard>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -205,18 +442,25 @@ export default function DepositPage() {
             <div className="xl:w-[380px] 2xl:w-[420px] shrink-0">
               <h2 className="text-[24px] font-normal mb-6 leading-[30px]">FAQs</h2>
               <div className="space-y-4">
-                {FAQS.map((question, i) => (
-                  <button
+                {FAQS.map((faq, i) => (
+                  <div
                     key={i}
-                    type="button"
-                    onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
-                    className="w-full rounded-[30px] border border-[rgba(0,240,160,0.2)] px-8 py-7 flex items-center justify-between gap-6 text-left cursor-pointer hover:border-[rgba(0,240,160,0.35)] transition-colors"
+                    className="rounded-[30px] border border-[#00422c] px-8 py-7"
                   >
-                    <span className="text-[18px] text-white font-normal leading-[22.5px]">{question}</span>
-                    <div className={`w-11 h-11 rounded-[15px] bg-gradient-to-b from-[#011b12] to-[#08291e] flex items-center justify-center shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`}>
-                      <ChevronDownIcon size={14} color="#00f0a0" />
+                    <div className="flex items-center justify-between gap-6">
+                      <span className="text-[18px] text-white font-normal leading-[22.5px]">{faq.question}</span>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                        className={`w-11 h-11 rounded-[15px] bg-gradient-to-b from-[#011b12] to-[#08291e] flex items-center justify-center shrink-0 cursor-pointer transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`}
+                      >
+                        <ChevronDownIcon size={14} color="#00f0a0" />
+                      </button>
                     </div>
-                  </button>
+                    <div className="mt-3">
+                      <FaqTag label={faq.tag} />
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
