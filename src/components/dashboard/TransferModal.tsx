@@ -87,24 +87,27 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative overflow-hidden"
+        className="relative"
         style={{
           width: 793,
           maxWidth: '95vw',
-          background: '#040B09',
-          boxShadow: '0px 1.16px 0px 1.16px rgba(255,255,255,0.05) inset, 0px 9.29px 37.17px rgba(0,0,0,0.30)',
-          borderRadius: 40,
-          outline: '1.16px rgba(0,0,0,0.20) solid',
-          outlineOffset: -1.16,
-          backdropFilter: 'blur(23.23px)',
         }}
       >
-        {/* Bottom glow ellipse */}
+        {/* Modal background (clipped to contain glows) */}
         <div
-          className="absolute pointer-events-none"
-          style={{ width: 493, height: 278, left: 190, top: 682, background: '#114131', borderRadius: 9999, filter: 'blur(157px)' }}
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+          style={{
+            background: '#040B09',
+            boxShadow: '0px 1.16px 0px 1.16px rgba(255,255,255,0.05) inset, 0px 9.29px 37.17px rgba(0,0,0,0.30)',
+            borderRadius: 40,
+            outline: '1.16px rgba(0,0,0,0.20) solid',
+            outlineOffset: -1.16,
+            backdropFilter: 'blur(23.23px)',
+          }}
           aria-hidden="true"
-        />
+        >
+          <div style={{ width: 493, height: 278, left: 190, top: 682, position: 'absolute', background: '#114131', borderRadius: 9999, filter: 'blur(157px)' }} />
+        </div>
 
         {/* Close button */}
         <button

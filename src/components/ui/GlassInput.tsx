@@ -33,8 +33,15 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
           {label}
         </label>
       )}
-      <div
-        className="flex items-center"
+      <input
+        type="text"
+        inputMode={type === 'number' ? 'decimal' : 'text'}
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => handleChange(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        className="w-full bg-transparent font-acid text-white placeholder:text-[#808080]"
         style={{
           height: 50,
           background: '#101E1A',
@@ -43,20 +50,10 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
           paddingLeft: 16,
           paddingRight: 16,
           transition: 'border-color 0.2s',
+          fontSize: 16,
+          outline: 'none',
         }}
-      >
-        <input
-          type="text"
-          inputMode={type === 'number' ? 'decimal' : 'text'}
-          value={value}
-          placeholder={placeholder}
-          onChange={(e) => handleChange(e.target.value)}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          className="w-full bg-transparent font-acid text-white outline-none placeholder:text-[#808080]"
-          style={{ fontSize: 16 }}
-        />
-      </div>
+      />
     </div>
   )
 }
