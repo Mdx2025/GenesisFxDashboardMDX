@@ -79,8 +79,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center"
-      style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -88,33 +87,20 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
     >
       <div
         ref={modalRef}
-        className="relative"
-        style={{
-          width: 793,
-          maxWidth: '95vw',
-        }}
+        className="relative w-[793px] max-w-[95vw]"
       >
         {/* Modal background (clipped to contain glows) */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none"
-          style={{
-            background: '#040B09',
-            boxShadow: '0px 1.16px 0px 1.16px rgba(255,255,255,0.05) inset, 0px 9.29px 37.17px rgba(0,0,0,0.30)',
-            borderRadius: 40,
-            outline: '1.16px rgba(0,0,0,0.20) solid',
-            outlineOffset: -1.16,
-            backdropFilter: 'blur(23.23px)',
-          }}
+          className="absolute inset-0 overflow-hidden pointer-events-none bg-gfx-main rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
           aria-hidden="true"
         >
-          <div style={{ width: 493, height: 278, left: 190, top: 682, position: 'absolute', background: '#114131', borderRadius: 9999, filter: 'blur(157px)' }} />
+          <div className="absolute w-[493px] h-[278px] left-[190px] top-[682px] bg-[#114131] rounded-full blur-[157px]" />
         </div>
 
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity"
-          style={{ right: 28, top: 28, width: 24, height: 24 }}
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[28px] top-[28px] w-[24px] h-[24px]"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -123,53 +109,39 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
         </button>
 
         {/* Title */}
-        <div className="relative z-10 text-center" style={{ paddingTop: 63 }}>
-          <h2 className="text-white font-acid font-normal" style={{ fontSize: 50, lineHeight: 1 }}>
+        <div className="relative z-10 text-center pt-[63px]">
+          <h2 className="text-white font-acid font-normal text-[50px] leading-none">
             Internal Transfer
           </h2>
-          <p className="mx-auto font-acid font-medium" style={{ color: '#A0A0A0', fontSize: 16, lineHeight: '24.44px', maxWidth: 352, marginTop: 3 }}>
+          <p className="mx-auto font-acid font-medium text-gfx-neutral-500 text-[16px] leading-[24.44px] max-w-[352px] mt-[3px]">
             Transfer funds between your wallets and trading accounts instantly with no fees.
           </p>
         </div>
 
         {/* Inner glass card */}
         <div
-          className="relative mx-auto"
-          style={{
-            width: 701,
-            maxWidth: '90%',
-            marginTop: 35,
-            marginBottom: 46,
-          }}
+          className="relative mx-auto w-[701px] max-w-[90%] mt-[35px] mb-[46px]"
         >
           {/* Card background with glows (clipped) */}
           <div
-            className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{
-              borderRadius: 20,
-              background: 'rgba(255,255,255,0.03)',
-              boxShadow: '0px 1.25px 0px 1.25px rgba(255,255,255,0.04) inset, 0px 5.01px 25.07px rgba(0,0,0,0.20)',
-              outline: '1.25px rgba(255,255,255,0.06) solid',
-              outlineOffset: -1.25,
-              backdropFilter: 'blur(25px)',
-            }}
+            className="absolute inset-0 overflow-hidden pointer-events-none rounded-[20px] bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
             aria-hidden="true"
           >
-            <div className="absolute" style={{ width: 587, height: 435, left: 304, top: -333, transform: 'rotate(48deg)', transformOrigin: 'top left', background: '#00110B', borderRadius: 9999, filter: 'blur(157px)' }} />
-            <div className="absolute" style={{ width: 493, height: 278, left: 36, top: -28, background: '#114131', borderRadius: 9999, filter: 'blur(157px)' }} />
-            <div className="absolute" style={{ width: 237, height: 237, left: 555, top: -75, opacity: 0.3, mixBlendMode: 'color', background: '#0D4532', borderRadius: 9999, filter: 'blur(87px)' }} />
+            <div className="absolute w-[587px] h-[435px] left-[304px] top-[-333px] rotate-[48deg] origin-top-left bg-[#00110B] rounded-full blur-[157px]" />
+            <div className="absolute w-[493px] h-[278px] left-[36px] top-[-28px] bg-[#114131] rounded-full blur-[157px]" />
+            <div className="absolute w-[237px] h-[237px] left-[555px] top-[-75px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px]" />
           </div>
 
           {/* Card content (not clipped, dropdowns can overflow) */}
-          <div className="relative z-10" style={{ padding: '32px 78px 54px' }}>
+          <div className="relative z-10 px-[78px] pt-[32px] pb-[54px]">
 
           {/* Card title */}
-          <h3 className="text-white font-acid font-normal text-center" style={{ fontSize: 24, marginBottom: 42 }}>
+          <h3 className="text-white font-acid font-normal text-center text-[24px] mb-[42px]">
             Transfer Funds
           </h3>
 
           {/* From Account */}
-          <div style={{ marginBottom: 22 }}>
+          <div className="mb-[22px]">
             <GlassSelectIcon
               label="From Account"
               placeholder="Search  Coin"
@@ -179,7 +151,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
           </div>
 
           {/* To Account */}
-          <div style={{ marginBottom: 22 }}>
+          <div className="mb-[22px]">
             <GlassSelectIcon
               label="To Account"
               placeholder="Search  Coin"
@@ -189,60 +161,32 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
           </div>
 
           {/* Amount */}
-          <div style={{ marginBottom: 40 }}>
+          <div className="mb-[40px]">
             <GlassInput label="Amount(USD)" placeholder="0.00" type="number" />
           </div>
 
           {/* Transfer Funds button with multi-layer glow */}
           <div className="relative">
             <div
-              className="absolute pointer-events-none"
-              style={{
-                width: '90%', height: 44, left: '5%', top: 3,
-                background: 'linear-gradient(92deg, rgba(209,209,210,0) 0%, #38846B 100%)',
-                borderRadius: 276, filter: 'blur(25px)',
-              }}
+              className="absolute pointer-events-none w-[90%] h-[44px] left-[5%] top-[3px] bg-[linear-gradient(92deg,rgba(209,209,210,0)_0%,#38846B_100%)] rounded-[276px] blur-[25px]"
               aria-hidden="true"
             />
             <div
-              className="absolute pointer-events-none"
-              style={{
-                width: '100%', height: 52, left: 0, top: 0,
-                background: 'linear-gradient(118deg, rgba(209,209,210,0) 0%, #38FFBD 100%)',
-                borderRadius: 240, filter: 'blur(12.65px)',
-              }}
+              className="absolute pointer-events-none w-full h-[52px] left-0 top-0 bg-[linear-gradient(118deg,rgba(209,209,210,0)_0%,#38FFBD_100%)] rounded-[240px] blur-[12.65px]"
               aria-hidden="true"
             />
             <div
-              className="absolute pointer-events-none"
-              style={{
-                width: '100%', height: 44, left: 0, top: 3,
-                background: 'linear-gradient(270deg, #D1D1D1 0%, rgba(162,245,227,0) 100%)',
-                borderRadius: 300, filter: 'blur(4.65px)',
-              }}
+              className="absolute pointer-events-none w-full h-[44px] left-0 top-[3px] bg-[linear-gradient(270deg,#D1D1D1_0%,rgba(162,245,227,0)_100%)] rounded-[300px] blur-[4.65px]"
               aria-hidden="true"
             />
             <div
-              className="absolute pointer-events-none"
-              style={{
-                width: '100%', height: 44, left: 0, top: 3,
-                background: 'linear-gradient(270deg, #F0FEFE 0%, rgba(162,245,227,0) 100%)',
-                borderRadius: 300, filter: 'blur(4.65px)',
-              }}
+              className="absolute pointer-events-none w-full h-[44px] left-0 top-[3px] bg-[linear-gradient(270deg,#F0FEFE_0%,rgba(162,245,227,0)_100%)] rounded-[300px] blur-[4.65px]"
               aria-hidden="true"
             />
 
             <button
               type="button"
-              className="relative w-full cursor-pointer hover:opacity-90 transition-opacity font-acid font-medium"
-              style={{
-                height: 44,
-                background: 'linear-gradient(54deg, #D1D1D1 18%, #D2F5ED 64%, #D5FFF1 80%)',
-                borderRadius: 300,
-                color: 'black',
-                fontSize: 16,
-                lineHeight: '24.44px',
-              }}
+              className="relative w-full cursor-pointer hover:opacity-90 transition-opacity font-acid font-medium h-[44px] bg-[linear-gradient(54deg,#D1D1D1_18%,#D2F5ED_64%,#D5FFF1_80%)] rounded-[300px] text-black text-[16px] leading-[24.44px]"
               onClick={() => { handleClose(); onTransfer?.() }}
             >
               Transfer Funds

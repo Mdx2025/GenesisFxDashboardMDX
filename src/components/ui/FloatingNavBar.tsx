@@ -67,14 +67,7 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0 }: Floa
         </defs>
       </svg>
       <nav
-        className="inline-flex items-center gap-1 rounded-full p-1.5"
-        style={{
-          background: 'rgba(255,255,255,0.03)',
-          border: '1.16px solid rgba(255,255,255,0.06)',
-          backdropFilter: 'url(#blur-23)',
-          WebkitBackdropFilter: 'url(#blur-23)',
-          boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.2), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04)',
-        }}
+        className="inline-flex items-center gap-1 rounded-full p-1.5 bg-[rgba(255,255,255,0.03)] border-[1.16px] border-[rgba(255,255,255,0.06)] backdrop-[url(#blur-23)] shadow-[0px_4.641px_23.204px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)]"
       >
         {items.map((item, i) => {
           const isActive = i === active
@@ -83,60 +76,37 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0 }: Floa
               key={item.label}
               onClick={() => setActive(i)}
               aria-current={isActive ? 'page' : undefined}
-              className={`relative flex items-center rounded-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 overflow-hidden ${
-                isActive ? 'text-white' : 'text-gfx-neutral-300 hover:text-white'
+              className={`relative flex items-center rounded-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.15,1)] ${
+                isActive
+                  ? 'text-white bg-[rgba(20,184,166,0.2)] py-[10px] pr-[18px] pl-[12px] gap-[8px]'
+                  : 'text-gfx-neutral-300 hover:text-white bg-transparent p-[10px] gap-0'
               }`}
-              style={{
-                background: isActive ? 'rgba(20, 184, 166, 0.2)' : 'transparent',
-                padding: isActive ? '10px 18px 10px 12px' : '10px',
-                gap: isActive ? '8px' : '0px',
-                transition: 'all 400ms cubic-bezier(0.4, 0, 0.15, 1)',
-              }}
             >
               {isActive && (
                 <>
                   <div
-                    className="absolute inset-0 rounded-full pointer-events-none"
-                    style={{
-                      border: '1px solid #14b8a6',
-                      maskImage: 'linear-gradient(to bottom, white 0%, transparent 80%)',
-                      WebkitMaskImage: 'linear-gradient(to bottom, white 0%, transparent 80%)',
-                    }}
+                    className="absolute inset-0 rounded-full pointer-events-none border border-[#14b8a6] [mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)]"
                     aria-hidden="true"
                   />
                   <div
-                    className="absolute pointer-events-none"
-                    style={{
-                      width: '98px',
-                      height: '45px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      bottom: '-20px',
-                      background: '#55FFC7',
-                      borderRadius: '50%',
-                      filter: 'url(#blur-20)',
-                      opacity: 0.3,
-                    }}
+                    className="absolute pointer-events-none w-[98px] h-[45px] left-1/2 -translate-x-1/2 bottom-[-20px] bg-[#55FFC7] rounded-full [filter:url(#blur-20)] opacity-30"
                     aria-hidden="true"
                   />
-                  <div className="absolute w-px h-px rounded-full bg-white pointer-events-none z-[1]" style={{ right: '8px', top: '8px', filter: 'blur(0.5px)' }} aria-hidden="true" />
-                  <div className="absolute w-px h-px rounded-full bg-white/50 pointer-events-none z-[1]" style={{ right: '16px', bottom: '6px', filter: 'blur(0.5px)' }} aria-hidden="true" />
-                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1]" style={{ left: '30%', top: '4px', background: '#acacac', filter: 'blur(0.5px)' }} aria-hidden="true" />
-                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1]" style={{ left: '60%', bottom: '4px', background: '#acacac', filter: 'blur(0.5px)' }} aria-hidden="true" />
-                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1]" style={{ right: '25%', top: '6px', background: '#acacac', filter: 'blur(0.5px)' }} aria-hidden="true" />
-                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1]" style={{ left: '15%', bottom: '8px', background: '#8c8c8c', filter: 'blur(0.5px)' }} aria-hidden="true" />
+                  <div className="absolute w-px h-px rounded-full bg-white pointer-events-none z-[1] right-[8px] top-[8px] blur-[0.5px]" aria-hidden="true" />
+                  <div className="absolute w-px h-px rounded-full bg-white/50 pointer-events-none z-[1] right-[16px] bottom-[6px] blur-[0.5px]" aria-hidden="true" />
+                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1] left-[30%] top-[4px] bg-[#acacac] blur-[0.5px]" aria-hidden="true" />
+                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1] left-[60%] bottom-[4px] bg-[#acacac] blur-[0.5px]" aria-hidden="true" />
+                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1] right-[25%] top-[6px] bg-[#acacac] blur-[0.5px]" aria-hidden="true" />
+                  <div className="absolute w-px h-px rounded-full pointer-events-none z-[1] left-[15%] bottom-[8px] bg-[#8c8c8c] blur-[0.5px]" aria-hidden="true" />
                 </>
               )}
               <span className="relative z-10 shrink-0 flex items-center justify-center size-[18px]">
                 {item.icon}
               </span>
               <span
-                className="relative z-10 text-sm font-medium whitespace-nowrap overflow-hidden"
-                style={{
-                  maxWidth: isActive ? '120px' : '0px',
-                  opacity: isActive ? 1 : 0,
-                  transition: 'max-width 400ms cubic-bezier(0.4, 0, 0.15, 1), opacity 250ms ease',
-                }}
+                className={`relative z-10 text-sm font-medium whitespace-nowrap overflow-hidden transition-[max-width] duration-[400ms] ease-[cubic-bezier(0.4,0,0.15,1)] ${
+                  isActive ? 'max-w-[120px] opacity-100' : 'max-w-0 opacity-0'
+                }`}
               >
                 {item.label}
               </span>

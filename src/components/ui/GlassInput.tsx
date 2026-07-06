@@ -29,7 +29,7 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
   return (
     <div>
       {label && (
-        <label className="block text-white font-acid font-medium" style={{ fontSize: 16, lineHeight: '24.44px', marginBottom: 2 }}>
+        <label className="block text-white font-acid font-medium text-[16px] leading-[24.44px] mb-[2px]">
           {label}
         </label>
       )}
@@ -41,18 +41,9 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
         onChange={(e) => handleChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="w-full bg-transparent font-acid text-white placeholder:text-[#808080]"
-        style={{
-          height: 50,
-          background: '#101E1A',
-          borderRadius: 30,
-          border: focused ? '1px solid rgba(16,188,131,0.5)' : '1px solid #404040',
-          paddingLeft: 16,
-          paddingRight: 16,
-          transition: 'border-color 0.2s',
-          fontSize: 16,
-          outline: 'none',
-        }}
+        className={`w-full bg-[#101E1A] font-acid text-white placeholder:text-[#808080] h-[50px] rounded-[30px] px-[16px] text-[16px] outline-none transition-[border-color] duration-200 ${
+          focused ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#404040]'
+        }`}
       />
     </div>
   )

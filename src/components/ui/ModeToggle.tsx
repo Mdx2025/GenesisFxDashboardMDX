@@ -34,7 +34,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0 }
       <div
         ref={indicatorRef}
         className="mode-indicator"
-        style={{ width: `${100 / options.length}%` }}
+        style={{ width: `${100 / options.length}%` }} /* dynamic */
         aria-hidden="true"
       >
         <div className="glow-emerald-mode" aria-hidden="true" />

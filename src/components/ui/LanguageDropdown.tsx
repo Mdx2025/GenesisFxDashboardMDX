@@ -84,8 +84,7 @@ export function LanguageDropdown() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity cursor-pointer"
-        style={{ background: 'rgba(0, 27, 18, 0.30)' }}
+        className="flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity cursor-pointer bg-[rgba(0,27,18,0.30)]"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={`Language: ${selected.label}`}
@@ -108,8 +107,7 @@ export function LanguageDropdown() {
         ref={dropdownRef}
         role="listbox"
         aria-label="Select language"
-        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06]"
-        style={{ background: 'rgba(255,255,255,0.03)' }}
+        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(255,255,255,0.03)]"
       >
           <svg className="absolute w-0 h-0" aria-hidden="true">
             <defs>
@@ -119,8 +117,7 @@ export function LanguageDropdown() {
             </defs>
           </svg>
           <div
-            className="absolute inset-0 -z-10"
-            style={{ backdropFilter: 'url(#blur-23)', WebkitBackdropFilter: 'url(#blur-23)' }}
+            className="absolute inset-0 -z-10 backdrop-[url(#blur-23)]"
             aria-hidden="true"
           />
           {languages.map((lang) => (

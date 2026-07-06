@@ -59,38 +59,28 @@ export function GlassSelectIcon({ options, defaultValue, placeholder = 'Search  
   return (
     <div ref={ref} className={`relative ${open ? 'z-50' : 'z-0'}`}>
       {label && (
-        <label className="block text-white font-acid font-medium" style={{ fontSize: 16, lineHeight: '24.44px', marginBottom: 2 }}>
+        <label className="block text-white font-acid font-medium text-[16px] leading-[24.44px] mb-[2px]">
           {label}
         </label>
       )}
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center cursor-pointer focus:outline-none"
-        style={{
-          height: 50,
-          background: '#101E1A',
-          borderRadius: 30,
-          border: open ? '1px solid rgba(16,188,131,0.5)' : '1px solid #404040',
-        }}
+        className={`w-full flex items-center cursor-pointer focus:outline-none h-[50px] bg-[#101E1A] rounded-[30px] ${
+          open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#404040]'
+        }`}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
         {icon && (
           <div
-            className="shrink-0 flex items-center justify-center"
-            style={{
-              width: 38, height: 38, marginLeft: 6,
-              background: 'linear-gradient(204deg, #01130D 0%, #064B34 100%)',
-              borderRadius: 9999,
-            }}
+            className="shrink-0 flex items-center justify-center w-[38px] h-[38px] ml-[6px] bg-[linear-gradient(204deg,#01130D_0%,#064B34_100%)] rounded-full"
           >
             {icon}
           </div>
         )}
         <span
-          className="font-acid flex-1 text-left"
-          style={{ color: selected ? '#fff' : '#808080', fontSize: 16, marginLeft: 10 }}
+          className={`font-acid flex-1 text-left text-[16px] ml-[10px] ${selected ? 'text-white' : 'text-[#808080]'}`}
         >
           {selected ? selected.label : placeholder}
         </span>
@@ -99,14 +89,13 @@ export function GlassSelectIcon({ options, defaultValue, placeholder = 'Search  
           color="#606060"
           className={`transition-transform duration-200 shrink-0 ${open ? 'rotate-180' : ''}`}
         />
-        <div style={{ width: 16 }} />
+        <div className="w-[16px]" />
       </button>
 
       <ul
         ref={dropdownRef}
         role="listbox"
-        className="absolute left-0 right-0 top-full mt-2 rounded-2xl overflow-hidden z-50 border border-white/[0.06]"
-        style={{ background: 'rgba(10, 14, 12, 0.92)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
+        className="absolute left-0 right-0 top-full mt-2 rounded-2xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] backdrop-blur-[24px]"
       >
         {options.map((option) => {
           const isSelected = selected?.value === option.value

@@ -99,26 +99,14 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[110] flex items-center justify-center"
-      style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
+      className="fixed inset-0 z-[110] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       role="dialog"
       aria-modal="true"
       aria-label="Transfer Processing"
     >
       <div
         ref={modalRef}
-        className="relative overflow-hidden"
-        style={{
-          width: 793,
-          height: 479,
-          maxWidth: '95vw',
-          background: '#09090b',
-          boxShadow: '0px 1.16px 0px 1.16px rgba(255,255,255,0.05) inset, 0px 9.29px 37.17px rgba(0,0,0,0.30)',
-          borderRadius: 40,
-          outline: '1.16px rgba(0,0,0,0.20) solid',
-          outlineOffset: -1.16,
-          backdropFilter: 'blur(23.23px)',
-        }}
+        className="relative overflow-hidden w-[793px] h-[479px] max-w-[95vw] bg-[#09090b] rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
       >
         {/* SVG filter for circle glow */}
         <svg width="0" height="0" className="absolute">
@@ -130,43 +118,43 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         </svg>
 
         {/* Bottom glow */}
-        <div className="absolute pointer-events-none" style={{ width: 493, height: 288, left: 190, top: 540, background: '#14532d', borderRadius: 9999, filter: 'blur(157px)' }} aria-hidden="true" />
+        <div className="absolute pointer-events-none w-[493px] h-[288px] left-[190px] top-[540px] bg-[#14532d] rounded-full blur-[157px]" aria-hidden="true" />
 
         {/* Title */}
-        <div className="absolute text-white font-acid font-normal text-center" style={{ left: 0, right: 0, top: 111, fontSize: 36 }}>
+        <div className="absolute text-white font-acid font-normal text-center left-0 right-0 top-[111px] text-[36px]">
           Sending 0.1 ETH
         </div>
 
         {/* Subtitle */}
-        <div className="absolute font-acid font-normal text-center" style={{ left: 0, right: 0, top: 158, fontSize: 24, color: '#A0A0A0' }}>
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[158px] text-[24px] text-gfx-neutral-500">
           Processing Internal Transfer
         </div>
 
         {/* Progress bar */}
-        <div className="absolute" style={{ left: 43, right: 43, top: 269, height: 10 }}>
+        <div className="absolute left-[43px] right-[43px] top-[269px] h-[10px]">
           {/* Track */}
-          <div className="absolute inset-0" style={{ background: '#18181b', borderRadius: 30 }} />
+          <div className="absolute inset-0 bg-[#18181b] rounded-2xl" />
           {/* Animated fill (grows left to right) */}
-          <div ref={progressRef} className="absolute inset-0" style={{ background: 'linear-gradient(to right, #064E3B 0%, #047857 60%, #10B981 90%)', borderRadius: 30, transform: 'scaleX(0)', transformOrigin: 'left center' }} />
+          <div ref={progressRef} className="absolute inset-0 bg-[linear-gradient(to_right,#064E3B_0%,#047857_60%,#10B981_90%)] rounded-2xl scale-x-0 origin-left" />
           {/* Glow layers */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, transparent, rgba(4,120,87,0.3), rgba(16,185,129,0.5))', borderRadius: 30, filter: 'blur(3px)' }} aria-hidden="true" />
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, transparent, rgba(4,120,87,0.2), rgba(16,185,129,0.3))', borderRadius: 30, filter: 'blur(6px)' }} aria-hidden="true" />
+          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,transparent,rgba(4,120,87,0.3),rgba(16,185,129,0.5))] rounded-2xl blur-[3px]" aria-hidden="true" />
+          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,transparent,rgba(4,120,87,0.2),rgba(16,185,129,0.3))] rounded-2xl blur-[6px]" aria-hidden="true" />
         </div>
 
         {/* Endpoint circle glow layers (SVG filter blur, animated by gsap) */}
-        <div ref={glow1Ref} className="absolute pointer-events-none" style={{ width: 80, height: 80, left: 356, top: 233, background: '#10B981', borderRadius: 9999, filter: 'url(#circle-glow)', opacity: 0 }} aria-hidden="true" />
-        <div ref={glow2Ref} className="absolute pointer-events-none" style={{ width: 80, height: 80, left: 690, top: 233, background: '#10B981', borderRadius: 9999, filter: 'url(#circle-glow)', opacity: 0 }} aria-hidden="true" />
+        <div ref={glow1Ref} className="absolute pointer-events-none w-[80px] h-[80px] left-[356px] top-[233px] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
+        <div ref={glow2Ref} className="absolute pointer-events-none w-[80px] h-[80px] left-[690px] top-[233px] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
 
         {/* Endpoint circles */}
-        <div className="absolute" style={{ width: 64, height: 64, left: 364, top: 241, background: '#18181b', borderRadius: 9999 }} aria-hidden="true" />
-        <div className="absolute" style={{ width: 64, height: 64, left: 698, top: 241, background: '#18181b', borderRadius: 9999 }} aria-hidden="true" />
+        <div className="absolute w-[64px] h-[64px] left-[364px] top-[241px] bg-[#18181b] rounded-full" aria-hidden="true" />
+        <div className="absolute w-[64px] h-[64px] left-[698px] top-[241px] bg-[#18181b] rounded-full" aria-hidden="true" />
 
         {/* Icons */}
-        <div className="absolute" style={{ left: 383, top: 260 }}><LinkCircleIcon /></div>
-        <div className="absolute" style={{ left: 721, top: 264 }}><CheckCircleIcon /></div>
+        <div className="absolute left-[383px] top-[260px]"><LinkCircleIcon /></div>
+        <div className="absolute left-[721px] top-[264px]"><CheckCircleIcon /></div>
 
         {/* Disclaimer */}
-        <div className="absolute font-acid font-normal text-center" style={{ left: 0, right: 0, top: 354, fontSize: 16, color: '#606060', lineHeight: '24px' }}>
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[354px] text-[16px] text-gfx-neutral-300 leading-[24px]">
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
       </div>

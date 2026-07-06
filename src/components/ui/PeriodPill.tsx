@@ -43,19 +43,11 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
     <div ref={containerRef} className="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-1 px-2 relative overflow-hidden">
       <div
         ref={indicatorRef}
-        className="absolute left-0 top-1 bottom-1 rounded-full pointer-events-none"
-        style={{
-          background: 'rgba(0, 240, 160, 0.15)',
-        }}
+        className="absolute left-0 top-1 bottom-1 rounded-full pointer-events-none bg-[rgba(0,240,160,0.15)]"
         aria-hidden="true"
       >
         <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            border: '0.5px solid #00F0A0',
-            mask: 'linear-gradient(to bottom, black 0%, transparent 60%)',
-            WebkitMask: 'linear-gradient(to bottom, black 0%, transparent 60%)',
-          }}
+          className="absolute inset-0 rounded-full border-[0.5px] border-gfx-green-glow [mask:linear-gradient(to_bottom,black_0%,transparent_60%)] [-webkit-mask:linear-gradient(to_bottom,black_0%,transparent_60%)]"
         />
       </div>
       {periods.map((p, i) => (

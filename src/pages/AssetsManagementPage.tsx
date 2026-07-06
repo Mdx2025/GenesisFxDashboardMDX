@@ -7,7 +7,7 @@ import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
-import { GLOW_GREEN, STATUS_STYLES } from '@/constants/colors'
+import { STATUS_STYLES } from '@/constants/colors'
 import type { AssetTransaction } from '@/data/assets-history'
 
 const TYPE_CONFIG: Record<AssetTransaction['type'], { icon: typeof DepositIcon; label: string }> = {
@@ -51,7 +51,7 @@ function CoinLogo({ coin }: { coin: string }) {
     )
   }
   return (
-    <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: bg }}>
+    <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: bg }} /* dynamic */>
       <span className="text-[10px] font-bold text-white">{coin.charAt(0)}</span>
     </div>
   )
@@ -97,7 +97,7 @@ export default function AssetsManagementPage() {
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
-        <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none" style={{ top: '-30%', background: GLOW_GREEN, filter: 'url(#blur-157)', willChange: 'transform' }} aria-hidden="true" />
+        <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
         <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
           <TopBar
             menuOpen={sidebarOpen}
@@ -105,7 +105,7 @@ export default function AssetsManagementPage() {
             breadcrumbItems={[{ label: 'Assets Management', href: '/assets-management' }, { label: 'Funding', current: true }]}
           />
 
-          <h1 className="text-white font-normal leading-none" style={{ fontSize: 'clamp(1.5rem, 0.75rem + 1.5vw, 3.5rem)' }}>Funding</h1>
+          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">Funding</h1>
 
           <section aria-label="Fiat Wallet" className="py-15">
             <GlassCard variant="heavy" divider="green" rounded="26px">
@@ -118,10 +118,10 @@ export default function AssetsManagementPage() {
                       <WalletIcon />
                     </div>
                     <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-white font-normal" style={{ fontSize: 'clamp(2rem, 1.5rem + 1.5vw, 3.5rem)' }}>$100.00</span>
+                      <span className="text-white font-normal text-[clamp(2rem,1.5rem+1.5vw,3.5rem)]">$100.00</span>
                       <span className="text-gfx-neutral-300 text-body2">USD</span>
                     </div>
-                    <div className="flex items-center gap-3 border border-[#021B13] rounded-lg p-3">
+                    <div className="flex items-center gap-3 border border-gfx-green-100 rounded-lg p-3">
                       <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
                       <span className="text-white text-sm font-semibold">$0.00</span>
                       <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
@@ -215,7 +215,7 @@ export default function AssetsManagementPage() {
             </div>
             <GlassCard variant="heavy" divider="white" rounded="26px">
               <div className="divider-green absolute top-0 left-[10%] right-[10%]" aria-hidden="true" />
-              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
+              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">
                 <div className="flex items-center gap-3">
                   <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
@@ -227,13 +227,13 @@ export default function AssetsManagementPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4" style={{ width: '8%' }}>Type</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '18%' }}>Deposit Address</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '12%' }}>Coin</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '10%' }}>Network</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '18%' }}>Date</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '12%' }}>Status</th>
-                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" style={{ width: '10%' }}>Amount</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Deposit Address</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Coin</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Network</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Date</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Status</th>
+                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -251,7 +251,7 @@ export default function AssetsManagementPage() {
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
-                            <div className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity" style={{ background: '#021B13' }}>
+                            <div className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100">
                               <span className="text-[14px] text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </div>
@@ -267,7 +267,7 @@ export default function AssetsManagementPage() {
                           <td className="py-4 xl:py-5">
                             <span
                               className="inline-flex items-center text-[11px] font-normal capitalize tracking-wider rounded-full px-3 py-1"
-                              style={{ background: status.bg, border: status.border, color: status.color }}
+                              style={{ background: status.bg, border: status.border, color: status.color }} /* dynamic */
                             >
                               {tx.status}
                             </span>

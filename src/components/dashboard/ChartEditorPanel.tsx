@@ -24,12 +24,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="absolute top-3 right-3 z-30 size-9 flex items-center justify-center rounded-lg cursor-pointer"
-        style={{
-          background: 'rgba(255,255,255,0.05)',
-          border: '1px solid rgba(255,255,255,0.08)',
-          backdropFilter: 'url(#blur-12)',
-        }}
+        className="absolute top-3 right-3 z-30 size-9 flex items-center justify-center rounded-lg cursor-pointer bg-white/5 border border-white/[0.08] [backdrop-filter:url(#blur-12)]"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M13.3 2.7a2.1 2.1 0 0 0-3 0L3.6 9.4l-.9 3.2a.4.4 0 0 0 .5.5l3.2-.9 6.7-6.7a2.1 2.1 0 0 0 0-3Z" stroke="#A0A0A0" strokeWidth="1.2" strokeLinejoin="round" />
@@ -43,16 +38,10 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
 
   return (
     <div
-      className="absolute top-3 right-3 z-30 w-[280px] rounded-xl overflow-hidden"
-      style={{
-        background: 'rgba(10, 14, 12, 0.92)',
-        border: '1px solid rgba(255,255,255,0.06)',
-        backdropFilter: 'url(#blur-24)',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-      }}
+      className="absolute top-3 right-3 z-30 w-[280px] rounded-xl overflow-hidden bg-[rgba(10,14,12,0.92)] border border-white/[0.06] [backdrop-filter:url(#blur-24)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
         <span className="text-xs uppercase tracking-[2px] text-gfx-neutral-300 font-medium">Chart Editor</span>
         <button onClick={() => setOpen(false)} className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -71,12 +60,11 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
                 <button
                   key={p.label}
                   onClick={() => update({ data: p.data })}
-                  className="px-2.5 py-1 rounded-md text-xs cursor-pointer transition-all"
-                  style={{
-                    background: active ? 'rgba(20, 184, 166, 0.2)' : 'rgba(255,255,255,0.04)',
-                    color: active ? '#fff' : '#606060',
-                    border: active ? '1px solid rgba(20, 184, 166, 0.4)' : '1px solid rgba(255,255,255,0.06)',
-                  }}
+                  className={`px-2.5 py-1 rounded-md text-xs cursor-pointer transition-all ${
+                    active
+                      ? 'bg-[rgba(20,184,166,0.2)] text-white border border-[rgba(20,184,166,0.4)]'
+                      : 'bg-white/[0.04] text-gfx-neutral-300 border border-white/[0.06]'
+                  }`}
                 >
                   {p.label}
                 </button>
@@ -98,10 +86,10 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
                   outline: config.lineColor === c ? `2px solid ${c}` : '2px solid transparent',
                   outlineOffset: '2px',
                   boxShadow: config.lineColor === c ? `0 0 12px ${c}80` : 'none',
-                }}
+                }} /* dynamic value */
               />
             ))}
-            <label className="relative size-6 rounded-full cursor-pointer overflow-hidden" style={{ background: 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)' }}>
+            <label className="relative size-6 rounded-full cursor-pointer overflow-hidden bg-[conic-gradient(red,yellow,lime,aqua,blue,magenta,red)]">
               <input
                 type="color"
                 value={config.lineColor}
@@ -150,8 +138,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
         {/* Reset */}
         <button
           onClick={() => onChange(defaultChartConfig)}
-          className="w-full py-2 rounded-lg text-xs uppercase tracking-[1.5px] text-gfx-neutral-300 hover:text-white cursor-pointer transition-colors"
-          style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+          className="w-full py-2 rounded-lg text-xs uppercase tracking-[1.5px] text-gfx-neutral-300 hover:text-white cursor-pointer transition-colors bg-white/[0.03] border border-white/[0.06]"
         >
           Reset Defaults
         </button>
@@ -174,8 +161,11 @@ function Slider({ value, min, max, step, color, onChange }: { value: number; min
 
   return (
     <div className="flex items-center gap-3">
-      <div className="relative flex-1 h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
-        <div className="absolute left-0 top-0 h-full rounded-full" style={{ width: `${pct}%`, background: color, opacity: 0.6 }} />
+      <div className="relative flex-1 h-1.5 rounded-full bg-white/[0.06]">
+        <div
+          className="absolute left-0 top-0 h-full rounded-full opacity-60"
+          style={{ width: `${pct}%`, background: color }} /* dynamic value */
+        />
         <input
           type="range"
           min={min}
@@ -186,13 +176,12 @@ function Slider({ value, min, max, step, color, onChange }: { value: number; min
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
         />
         <div
-          className="absolute top-1/2 -translate-y-1/2 size-3 rounded-full pointer-events-none"
+          className="absolute top-1/2 size-3 rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
           style={{
             left: `${pct}%`,
-            transform: `translate(-50%, -50%)`,
             background: color,
             boxShadow: `0 0 8px ${color}80`,
-          }}
+          }} /* dynamic value */
         />
       </div>
       <span className="text-[10px] text-gfx-neutral-500 tabular-nums w-8 text-right">

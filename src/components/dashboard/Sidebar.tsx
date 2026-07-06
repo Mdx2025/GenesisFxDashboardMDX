@@ -84,7 +84,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             >
               <svg
                 width="33" height="33" viewBox="0 0 33 33" fill="none"
-                style={{ transform: collapsed ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+                className={`transition-transform duration-300 ease-in-out ${collapsed ? 'rotate-180' : 'rotate-0'}`}
               >
                 <path d="M0 10.227C0 4.579 4.579 0 10.227 0H22.5c5.648 0 10.227 4.579 10.227 10.227V22.5c0 5.648-4.579 10.227-10.227 10.227H10.227C4.579 32.727 0 28.148 0 22.5V10.227z" fill="#04281C"/>
                 <path d="M19.431 22.5L13.295 16.364 19.431 10.227" stroke="#808080" strokeWidth="1.023" strokeLinecap="round" strokeLinejoin="round"/>
@@ -102,7 +102,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">User Account</h2>
           <div className="user-card flex items-center gap-3 p-3 rounded-lg bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-zinc-900 relative overflow-hidden">
             <div className="user-card-glow" aria-hidden="true" />
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none" style={{ background: GLOW_GREEN }} aria-hidden="true" />
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none bg-gfx-glow-green" aria-hidden="true" />
             <div className="relative z-10 w-9 h-9 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
               <svg className="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
                 <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="url(#blur-30)" />
@@ -154,7 +154,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                       </Link>
                     )}
                     {item.submenu && (
-                      <div ref={submenuRef} className="sidebar-hide" style={{ overflow: 'hidden', height: 0, opacity: 0 }}>
+                      <div ref={submenuRef} className="sidebar-hide overflow-hidden h-0 opacity-0">
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>

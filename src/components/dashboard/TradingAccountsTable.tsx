@@ -8,7 +8,7 @@ const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 export function TradingAccountsTable() {
   return (
     <GlassCard variant="heavy" divider="white" rounded="26px">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[500px] h-[200px] rounded-full pointer-events-none" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
       <div className="divider-green absolute top-0 left-[10%] right-[10%]" aria-hidden="true" />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4 xl:pb-6">
@@ -33,7 +33,7 @@ export function TradingAccountsTable() {
         <div className="min-w-[900px]">
           <div
             className="grid items-center px-4 sm:px-6 xl:px-10 py-4 border-y border-white/5"
-            style={{ gridTemplateColumns: GRID_COLS }}
+            style={{ gridTemplateColumns: GRID_COLS }} /* dynamic value */
           >
             <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Account</span>
             <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Platform</span>
@@ -50,13 +50,13 @@ export function TradingAccountsTable() {
             <div
               key={acc.account}
               className={`grid items-center px-4 sm:px-6 xl:px-10 py-4 xl:py-6 ${i > 0 ? 'border-t border-white/5' : ''}`}
-              style={{ gridTemplateColumns: GRID_COLS }}
+              style={{ gridTemplateColumns: GRID_COLS }} /* dynamic value */
             >
               <div>
                 <p className="text-white text-[15px] font-bold leading-tight">{acc.account}</p>
                 <p className="text-gfx-neutral-300 text-[13px] mt-0.5">{acc.username}</p>
               </div>
-              <p className="text-[15px]" style={{ color: 'rgba(255,255,255,0.60)' }}>{acc.platform}</p>
+              <p className="text-[15px] text-white/60">{acc.platform}</p>
               <div>
                 <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
               </div>

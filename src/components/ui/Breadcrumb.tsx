@@ -22,7 +22,7 @@ function BreadcrumbIcon() {
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex items-center gap-4" style={{ color: '#606060', fontSize: '0.7rem' }}>
+      <ol className="flex items-center gap-4 text-gfx-neutral-300 text-[0.7rem]">
         <li><BreadcrumbIcon /></li>
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-4">

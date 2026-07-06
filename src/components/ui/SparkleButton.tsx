@@ -10,8 +10,7 @@ export function SparkleButton({ children, onClick }: SparkleButtonProps) {
     <button className="min-w-12 w-auto sm:w-auto h-12 px-4 relative cursor-pointer group focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded-[30px]" type="button" onClick={onClick}>
       <div className="absolute inset-0 rounded-[30px] bg-gradient-to-t from-[#1040308f] to-black/0" aria-hidden="true" />
       <div
-        className="absolute inset-0 rounded-[30px] border border-zinc-300/60 pointer-events-none"
-        style={{ maskImage: 'linear-gradient(to bottom, white 0%, transparent 80%)', WebkitMaskImage: 'linear-gradient(to bottom, white 0%, transparent 80%)' }}
+        className="absolute inset-0 rounded-[30px] border border-zinc-300/60 pointer-events-none [mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)]"
         aria-hidden="true"
       />
       <svg className="absolute left-[139.89px] top-[27.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">

@@ -80,7 +80,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
           transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
           transition: 'transform 400ms cubic-bezier(0.4, 0, 0.15, 1), background 300ms ease, border-bottom 300ms ease, backdrop-filter 300ms ease',
-        } : undefined}
+        } : undefined} /* dynamic value */
       >
         <div className="flex items-center gap-3 min-w-0">
           <button
@@ -90,11 +90,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
           >
             <svg
               viewBox="0 0 32 32"
-              className="h-7"
-              style={{
-                transform: menuOpen ? 'rotate(-45deg)' : 'rotate(0deg)',
-                transition: 'transform 600ms cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
+              className={`h-7 transition-transform duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${menuOpen ? '-rotate-45' : 'rotate-0'}`}
               aria-hidden="true"
             >
               <path
@@ -108,7 +104,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                   strokeDasharray: menuOpen ? '20 300' : '12 63',
                   strokeDashoffset: menuOpen ? -32.42 : 0,
                   transition: 'stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1)',
-                }}
+                }} /* dynamic value */
               />
               <path
                 d="M7 16 27 16"

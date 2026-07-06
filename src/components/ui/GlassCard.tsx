@@ -13,7 +13,7 @@ export function GlassCard({ variant = 'light', divider = 'white', rounded = '19p
   return (
     <div
       className={`${variant === 'heavy' ? 'glass-card-heavy' : 'glass-card'} relative overflow-hidden ${className}`}
-      style={{ borderRadius: rounded }}
+      style={{ borderRadius: rounded }} /* dynamic */
     >
       {divider !== 'none' && <DividerGlow variant={divider} />}
       {children}

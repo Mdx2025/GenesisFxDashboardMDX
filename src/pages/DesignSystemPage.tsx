@@ -46,7 +46,9 @@ function Subsection({ title, children }: { title: string; children: React.ReactN
 function TokenSwatch({ name, value, className }: { name: string; value: string; className?: string }) {
   return (
     <div className="flex items-center gap-3">
-      <div className={`size-10 rounded-lg border border-white/10 ${className || ''}`} style={!className ? { background: value } : undefined} />
+      <div className={`size-10 rounded-lg border border-white/10 ${className || ''}`} style={!className ? { background: value } : undefined} /* dynamic: color from props */>
+        {/* When className is provided, background comes from the class; otherwise from the value prop */}
+      </div>
       <div>
         <p className="text-sm text-white">{name}</p>
         <p className="text-caption text-gfx-neutral-300">{value}</p>
@@ -120,15 +122,15 @@ export default function DesignSystemPage() {
           <Subsection title="Radius Scale">
             <div className="flex flex-wrap gap-4">
               {[
-                { name: 'sm', value: '6px' },
-                { name: 'md', value: '12px' },
-                { name: 'lg', value: '18px' },
-                { name: 'xl', value: '24px' },
-                { name: '2xl', value: '30px' },
-                { name: 'full', value: '9999px' },
+                { name: 'sm', value: '6px', twClass: 'rounded-sm' },
+                { name: 'md', value: '12px', twClass: 'rounded-md' },
+                { name: 'lg', value: '18px', twClass: 'rounded-lg' },
+                { name: 'xl', value: '24px', twClass: 'rounded-xl' },
+                { name: '2xl', value: '30px', twClass: 'rounded-2xl' },
+                { name: 'full', value: '9999px', twClass: 'rounded-full' },
               ].map((r) => (
                 <div key={r.name} className="flex flex-col items-center gap-2">
-                  <div className="size-16 border border-white/10 bg-white/[0.04]" style={{ borderRadius: r.value }} />
+                  <div className={`size-16 border border-white/10 bg-white/[0.04] ${r.twClass}`} />
                   <p className="text-caption text-gfx-neutral-300">{r.name}</p>
                   <p className="text-caption text-gfx-neutral-500">{r.value}</p>
                 </div>
@@ -139,14 +141,13 @@ export default function DesignSystemPage() {
           <Subsection title="Shadow & Elevation">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
-                { name: 'sm', shadow: '0px 2px 8px rgba(0,0,0,0.15)' },
-                { name: 'md', shadow: '0px 4.64px 23.2px rgba(0,0,0,0.2)' },
-                { name: 'lg', shadow: '0px 9.08px 36.32px rgba(0,0,0,0.3)' },
+                { name: 'sm', twClass: 'shadow-sm' },
+                { name: 'md', twClass: 'shadow-md' },
+                { name: 'lg', twClass: 'shadow-lg' },
               ].map((s) => (
                 <div
                   key={s.name}
-                  className="h-24 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center"
-                  style={{ boxShadow: s.shadow }}
+                  className={`h-24 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center ${s.twClass}`}
                 >
                   <p className="text-sm text-gfx-neutral-500">shadow-{s.name}</p>
                 </div>
@@ -311,7 +312,7 @@ export default function DesignSystemPage() {
           </Subsection>
 
           <Subsection title="Floating Nav Bar">
-            <div className="flex flex-col items-center gap-6 py-8 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(16,188,131,0.08) 0%, rgba(91,156,245,0.06) 50%, rgba(255,77,106,0.05) 100%)' }}>
+            <div className="flex flex-col items-center gap-6 py-8 rounded-2xl bg-[linear-gradient(135deg,_rgba(16,188,131,0.08)_0%,_rgba(91,156,245,0.06)_50%,_rgba(255,77,106,0.05)_100%)]">
               <FloatingNavBar />
               <p className="text-caption text-gfx-neutral-500">Click each icon to see the expand/collapse animation</p>
             </div>

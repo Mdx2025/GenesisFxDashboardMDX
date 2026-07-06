@@ -19,11 +19,10 @@ export function LiveAccountsCard({
   totalBalance = '$90.254,58',
 }: LiveAccountsCardProps) {
   return (
-    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 aspect-[1.6/1] isolate" style={{ backdropFilter: 'url(#blur-24)', WebkitBackdropFilter: 'url(#blur-24)', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}>
+    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 aspect-[1.6/1] isolate [backdrop-filter:url(#blur-24)] [-webkit-backdrop-filter:url(#blur-24)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
       <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
       <div
-        className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none"
-        style={{ background: GLOW_GREEN, filter: 'url(#blur-157)', willChange: 'transform' }}
+        className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform"
         aria-hidden="true"
       />
       <div className="relative z-10 flex flex-col h-full px-4 pt-4 sm:px-6 sm:pt-6">
@@ -45,14 +44,13 @@ export function LiveAccountsCard({
             <div key={i} className="flex-1 min-w-0 flex flex-col items-center gap-0.5 sm:gap-1">
               <div className="w-[2.5rem] flex-1 min-h-[2rem] bg-white/5 rounded-sm overflow-hidden flex items-end">
                 <div
-                  className="w-full rounded-t-sm"
-                  style={{
-                    height: `${acc.value}%`,
-                    background: 'linear-gradient(180deg, #10BC83 -44.07%, #0D271F 65.37%)',
-                  }}
+                  className="w-full rounded-t-sm bg-[linear-gradient(180deg,#10BC83_-44.07%,#0D271F_65.37%)]"
+                  style={{ height: `${acc.value}%` }} /* dynamic value */
                 />
               </div>
-              <span className={`whitespace-nowrap ${align}`} style={{ fontSize: '0.7rem', color: i < 2 ? '#606060' : '#fff' }}>{acc.label}</span>
+              <span
+                className={`whitespace-nowrap ${align} text-[0.7rem] ${i < 2 ? 'text-gfx-neutral-300' : 'text-white'}`}
+              >{acc.label}</span>
             </div>
           )
         })}
