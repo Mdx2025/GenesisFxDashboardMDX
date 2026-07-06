@@ -3,7 +3,7 @@ import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, FloatingNavBar } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
-import { AreaChart } from '@/components/charts/AreaChart'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
 import { GLOW_GREEN, STATUS_STYLES, COIN_STYLES } from '@/constants/colors'
 import type { AssetTransaction } from '@/data/assets-history'
@@ -99,7 +99,7 @@ export default function AssetsManagementPage() {
                       </SparkleButton>
                     </div>
                     <div className="h-[100px]">
-                      <AreaChart className="h-full" />
+                      <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
                     </div>
                   </div>
                 </div>

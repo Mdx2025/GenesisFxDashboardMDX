@@ -66,7 +66,7 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
         id: 'highlightPoint',
         afterDatasetsDraw(chart: any) {
           const meta = chart.getDatasetMeta(0)
-          if (!meta.data[config.highlightIndex]) return
+          if (config.highlightIndex < 0 || !meta.data[config.highlightIndex]) return
           const point = meta.data[config.highlightIndex]
           const { ctx: c, chartArea } = chart
 
@@ -177,6 +177,7 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
               border: { display: false },
               grid: { color: `rgba(255,255,255,${config.gridOpacity})` },
               ticks: {
+                display: config.gridOpacity > 0,
                 color: 'rgba(255,255,255,0.25)',
                 font: { size: 10 },
                 padding: 8,
