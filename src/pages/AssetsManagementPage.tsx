@@ -122,7 +122,7 @@ export default function AssetsManagementPage() {
                       <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-4 shrink-0">
+                  <div className="flex flex-col gap-1 shrink-0">
                     <div className="flex items-center gap-3 flex-wrap">
                       <SparkleButton aria-label="Deposit funds">
                         <span className="flex items-center gap-2">
