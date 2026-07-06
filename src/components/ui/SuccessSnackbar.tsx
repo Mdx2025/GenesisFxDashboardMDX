@@ -96,7 +96,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
         <div
           ref={barRef}
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to right, #10B981, #047857, #064E3B)', borderRadius: 30 }}
+          style={{ background: 'linear-gradient(90deg, rgba(6,75,52,0) 0%, #CFF2E6 100%)', borderRadius: 30, filter: 'blur(3.95px)' }}
         />
         {/* Glow layers */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(16,185,129,0.4), rgba(4,120,87,0.3))', borderRadius: 30, filter: 'blur(2px)' }} aria-hidden="true" />
