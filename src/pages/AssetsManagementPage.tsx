@@ -103,7 +103,8 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Fiat Wallet" className="py-15">
             <GlassCard variant="heavy" divider="green" rounded="26px">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
+              <img src="/images/pixels.png" alt="" aria-hidden="true" className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none opacity-20 z-[1]" />
+              <div className="absolute top-0 left-0 w-[400px] h-[160px] rounded-full pointer-events-none z-[2]" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
               <div className="relative z-10 p-6 xl:p-8">
                 <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
                   <div>
