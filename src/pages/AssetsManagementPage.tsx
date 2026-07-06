@@ -65,8 +65,9 @@ function WalletIcon() {
 
 function CopyIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer">
-      <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/>
+    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" aria-hidden="true" className="shrink-0">
+      <path d="M16.9717 7.63672H9.33398C8.39661 7.63672 7.63672 8.39661 7.63672 9.33398V16.9717C7.63672 17.9091 8.39661 18.6689 9.33398 18.6689H16.9717C17.9091 18.6689 18.6689 17.9091 18.6689 16.9717V9.33398C18.6689 8.39661 17.9091 7.63672 16.9717 7.63672Z" stroke="white" strokeWidth="1.69727" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M4.24316 12.7295H3.39453C2.94439 12.7295 2.51268 12.5507 2.19438 12.2324C1.87608 11.9141 1.69727 11.4824 1.69727 11.0322V3.39453C1.69727 2.94439 1.87608 2.51268 2.19438 2.19438C2.51268 1.87608 2.94439 1.69727 3.39453 1.69727H11.0322C11.4824 1.69727 11.9141 1.87608 12.2324 2.19438C12.5507 2.51268 12.7295 2.94439 12.7295 3.39453V4.24316" stroke="white" strokeWidth="1.69727" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -246,7 +247,7 @@ export default function AssetsManagementPage() {
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
-                            <div className="flex items-center gap-2">
+                            <div className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity" style={{ background: '#021B13' }}>
                               <span className="text-[14px] text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </div>
