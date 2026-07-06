@@ -104,7 +104,7 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Fiat Wallet" className="py-15">
             <GlassCard variant="heavy" divider="green" rounded="26px">
-              <img src="/images/fiat-wallet-glow.svg" alt="" aria-hidden="true" className="absolute top-0 left-0 w-full pointer-events-none z-[1]" />
+              <img src="/images/fiat-wallet-glow.svg" alt="" aria-hidden="true" className="absolute top-0 left-0 w-[50%] pointer-events-none z-[1]" />
               <div className="relative z-10 p-6 xl:p-8">
                 <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
                   <div>
