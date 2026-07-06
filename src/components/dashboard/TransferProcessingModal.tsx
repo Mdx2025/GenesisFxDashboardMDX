@@ -4,7 +4,7 @@ import gsap from 'gsap'
 function LinkCircleIcon() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path fillRule="evenodd" clipRule="evenodd" d="M4.04058 23.9588C5.74912 25.6673 8.49898 25.6673 13.9987 25.6673C19.4984 25.6673 22.2483 25.6673 23.9568 23.9588C25.6654 22.2502 25.6654 19.5004 25.6654 14.0007C25.6654 8.50093 25.6654 5.75107 23.9568 4.04253C22.2483 2.33398 19.4984 2.33398 13.9987 2.33398C8.49898 2.33398 5.74912 2.33398 4.04058 4.04253C2.33203 5.75107 2.33203 8.50093 2.33203 14.0007C2.33203 19.5004 2.33203 22.2502 4.04058 23.9588ZM11.082 10.209C8.98795 10.209 7.29036 11.9066 7.29036 14.0007C7.29036 16.0947 8.98795 17.7923 11.082 17.7923C13.1761 17.7923 14.8737 16.0947 14.8737 14.0007C14.8737 13.5174 15.2655 13.1257 15.7487 13.1257C16.2319 13.1257 16.6237 13.5174 16.6237 14.0007C16.6237 17.0612 14.1426 19.5423 11.082 19.5423C8.02145 19.5423 5.54036 17.0612 5.54036 14.0007C5.54036 10.9401 8.02145 8.45898 11.082 8.45898C11.5653 8.45898 11.957 8.85074 11.957 9.33398C11.957 9.81723 11.5653 10.209 11.082 10.209ZM20.707 14.0007C20.707 16.0947 19.0094 17.7923 16.9154 17.7923C16.4321 17.7923 16.0404 18.1841 16.0404 18.6673C16.0404 19.1506 16.4321 19.5423 16.9154 19.5423C19.9759 19.5423 22.457 17.0612 22.457 14.0007C22.457 10.9401 19.9759 8.45898 16.9154 8.45898C13.8548 8.45898 11.3737 10.9401 11.3737 14.0007C11.3737 14.4839 11.7654 14.8757 12.2487 14.8757C12.7319 14.8757 13.1237 14.4839 13.1237 14.0007C13.1237 11.9066 14.8213 10.209 16.9154 10.209C19.0094 10.209 20.707 11.9066 20.707 14.0007Z" fill="#114131"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M4.04058 23.9588C5.74912 25.6673 8.49898 25.6673 13.9987 25.6673C19.4984 25.6673 22.2483 25.6673 23.9568 23.9588C25.6654 22.2502 25.6654 19.5004 25.6654 14.0007C25.6654 8.50093 25.6654 5.75107 23.9568 4.04253C22.2483 2.33398 19.4984 2.33398 13.9987 2.33398C8.49898 2.33398 5.74912 2.33398 4.04058 4.04253C2.33203 5.75107 2.33203 8.50093 2.33203 14.0007C2.33203 19.5004 2.33203 22.2502 4.04058 23.9588ZM11.082 10.209C8.98795 10.209 7.29036 11.9066 7.29036 14.0007C7.29036 16.0947 8.98795 17.7923 11.082 17.7923C13.1761 17.7923 14.8737 16.0947 14.8737 14.0007C14.8737 13.5174 15.2655 13.1257 15.7487 13.1257C16.2319 13.1257 16.6237 13.5174 16.6237 14.0007C16.6237 17.0612 14.1426 19.5423 11.082 19.5423C8.02145 19.5423 5.54036 17.0612 5.54036 14.0007C5.54036 10.9401 8.02145 8.45898 11.082 8.45898C11.5653 8.45898 11.957 8.85074 11.957 9.33398C11.957 9.81723 11.5653 10.209 11.082 10.209ZM20.707 14.0007C20.707 16.0947 19.0094 17.7923 16.9154 17.7923C16.4321 17.7923 16.0404 18.1841 16.0404 18.6673C16.0404 19.1506 16.4321 19.5423 16.9154 19.5423C19.9759 19.5423 22.457 17.0612 22.457 14.0007C22.457 10.9401 19.9759 8.45898 16.9154 8.45898C13.8548 8.45898 11.3737 10.9401 11.3737 14.0007C11.3737 14.4839 11.7654 14.8757 12.2487 14.8757C12.7319 14.8757 13.1237 14.4839 13.1237 14.0007C13.1237 11.9066 14.8213 10.209 16.9154 10.209C19.0094 10.209 20.707 11.9066 20.707 14.0007Z" fill="currentColor"/>
     </svg>
   )
 }
@@ -12,7 +12,7 @@ function LinkCircleIcon() {
 function CheckCircleIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path fillRule="evenodd" clipRule="evenodd" d="M19.3333 9.66667C19.3333 15.0054 15.0054 19.3333 9.66667 19.3333C4.32791 19.3333 0 15.0054 0 9.66667C0 4.32791 4.32791 0 9.66667 0C15.0054 0 19.3333 4.32791 19.3333 9.66667ZM13.5627 6.73735C13.8458 7.02048 13.8458 7.47952 13.5627 7.76265L8.72932 12.596C8.44619 12.8791 7.98714 12.8791 7.70401 12.596L5.77068 10.6627C5.48755 10.3795 5.48755 9.92048 5.77068 9.63735C6.05381 9.35422 6.51286 9.35422 6.79599 9.63735L8.21667 11.058L10.377 8.89769L12.5373 6.73735C12.8205 6.45422 13.2795 6.45422 13.5627 6.73735Z" fill="#114131"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M19.3333 9.66667C19.3333 15.0054 15.0054 19.3333 9.66667 19.3333C4.32791 19.3333 0 15.0054 0 9.66667C0 4.32791 4.32791 0 9.66667 0C15.0054 0 19.3333 4.32791 19.3333 9.66667ZM13.5627 6.73735C13.8458 7.02048 13.8458 7.47952 13.5627 7.76265L8.72932 12.596C8.44619 12.8791 7.98714 12.8791 7.70401 12.596L5.77068 10.6627C5.48755 10.3795 5.48755 9.92048 5.77068 9.63735C6.05381 9.35422 6.51286 9.35422 6.79599 9.63735L8.21667 11.058L10.377 8.89769L12.5373 6.73735C12.8205 6.45422 13.2795 6.45422 13.5627 6.73735Z" fill="currentColor"/>
     </svg>
   )
 }
@@ -29,6 +29,8 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
   const progressRef = useRef<HTMLDivElement>(null)
   const glow1Ref = useRef<HTMLDivElement>(null)
   const glow2Ref = useRef<HTMLDivElement>(null)
+  const icon1Ref = useRef<HTMLDivElement>(null)
+  const icon2Ref = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
 
   const handleClose = useCallback(() => {
@@ -82,6 +84,13 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
       tl.to(glow2, { opacity: 0.8, duration: 0.5, ease: 'power2.out' }, 2.85)
     }
 
+    if (icon1Ref.current) {
+      tl.to(icon1Ref.current, { color: '#70D7B5', duration: 0.4, ease: 'power2.out' }, 1.5)
+    }
+    if (icon2Ref.current) {
+      tl.to(icon2Ref.current, { color: '#70D7B5', duration: 0.4, ease: 'power2.out' }, 2.85)
+    }
+
     return () => { tl.kill() }
   }, [mounted, handleClose, onComplete])
 
@@ -133,12 +142,12 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         {/* Progress bar */}
         <div className="absolute left-[43px] right-[43px] top-[269px] h-[10px]">
           {/* Track */}
-          <div className="absolute inset-0 bg-[#18181b] rounded-2xl" />
+          <div className="absolute inset-0 bg-[#101E1A] rounded-2xl" />
           {/* Animated fill (grows left to right) */}
-          <div ref={progressRef} className="absolute inset-0 bg-[linear-gradient(to_right,#064E3B_0%,#047857_60%,#10B981_90%)] rounded-2xl scale-x-0 origin-left" />
+          <div ref={progressRef} className="absolute inset-0 bg-[linear-gradient(to_right,#064E3B_0%,#10B981_40%,#70D7B5_70%,#ffffff_100%)] rounded-2xl scale-x-0 origin-left" />
           {/* Glow layers */}
-          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,transparent,rgba(4,120,87,0.3),rgba(16,185,129,0.5))] rounded-2xl blur-[3px]" aria-hidden="true" />
-          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,transparent,rgba(4,120,87,0.2),rgba(16,185,129,0.3))] rounded-2xl blur-[6px]" aria-hidden="true" />
+          <div className="absolute -inset-y-[6px] inset-x-0 pointer-events-none bg-[linear-gradient(to_right,transparent_10%,rgba(16,185,129,0.4)_50%,rgba(112,215,181,0.6)_80%,rgba(255,255,255,0.5)_100%)] rounded-2xl blur-[8px]" aria-hidden="true" />
+          <div className="absolute -inset-y-[12px] inset-x-0 pointer-events-none bg-[linear-gradient(to_right,transparent_20%,rgba(16,185,129,0.2)_50%,rgba(112,215,181,0.3)_80%,rgba(255,255,255,0.2)_100%)] rounded-2xl blur-[20px]" aria-hidden="true" />
         </div>
 
         {/* Endpoint circle glow layers (SVG filter blur, animated by gsap) */}
@@ -150,8 +159,8 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         <div className="absolute w-[64px] h-[64px] left-[698px] top-[241px] bg-[#18181b] rounded-full" aria-hidden="true" />
 
         {/* Icons */}
-        <div className="absolute left-[383px] top-[260px]"><LinkCircleIcon /></div>
-        <div className="absolute left-[721px] top-[264px]"><CheckCircleIcon /></div>
+        <div ref={icon1Ref} className="absolute left-[383px] top-[260px] text-gfx-neutral-300"><LinkCircleIcon /></div>
+        <div ref={icon2Ref} className="absolute left-[721px] top-[264px] text-gfx-neutral-300"><CheckCircleIcon /></div>
 
         {/* Disclaimer */}
         <div className="absolute font-acid font-normal text-center left-0 right-0 top-[354px] text-[16px] text-gfx-neutral-300 leading-[24px]">

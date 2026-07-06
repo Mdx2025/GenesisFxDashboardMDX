@@ -79,7 +79,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
       {/* Bottom progress bar */}
       <div className="absolute left-0 right-0 bottom-[6px] h-[4px]">
         {/* Track */}
-        <div className="absolute inset-0 bg-gfx-green-50 rounded-2xl" />
+        <div className="absolute inset-0 bg-[#101E1A] rounded-2xl" />
         {/* Animated fill */}
         <div
           ref={barRef}
