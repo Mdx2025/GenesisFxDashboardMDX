@@ -57,7 +57,7 @@ export function GlassSelectIcon({ options, defaultValue, placeholder = 'Search  
   }
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className={`relative ${open ? 'z-50' : 'z-0'}`}>
       {label && (
         <label className="block text-white font-acid font-medium" style={{ fontSize: 16, lineHeight: '24.44px', marginBottom: 2 }}>
           {label}
