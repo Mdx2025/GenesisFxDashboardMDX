@@ -45,15 +45,6 @@ function UsdcIcon({ size = 24 }: { size?: number }) {
   )
 }
 
-function SolIcon({ size = 24 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="12" fill="#658FFF" />
-      <path d="M7.5 14.8c.1-.1.2-.1.3-.1h8.5c.2 0 .3.2.1.3l-1.6 1.6c-.1.1-.2.1-.3.1H6c-.2 0-.3-.2-.1-.3l1.6-1.6zm0-7.4c.1-.1.2-.1.3-.1h8.5c.2 0 .3.2.1.3L14.8 9.2c-.1.1-.2.1-.3.1H6c-.2 0-.3-.2-.1-.3l1.6-1.6zm8.9 3.6c-.1-.1-.2-.1-.3-.1H7.6c-.2 0-.3.2-.1.3l1.6 1.6c.1.1.2.1.3.1h8.5c.2 0 .3-.2.1-.3l-1.6-1.6z" fill="white" />
-    </svg>
-  )
-}
-
 function CopyIcon({ size = 24, color = 'currentColor' }: { size?: number; color?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -163,13 +154,6 @@ const COINS: CoinConfig[] = [
   { id: 'usdc', label: 'USDC', name: 'USD Coin', icon: <UsdcIcon /> },
 ]
 
-const EXTRA_COINS = [
-  <BtcIcon size={30} key="x-btc" />,
-  <SolIcon size={30} key="x-sol" />,
-  <UsdtIcon size={30} key="x-usdt" />,
-  <EthIcon size={30} key="x-eth" />,
-  <UsdcIcon size={30} key="x-usdc" />,
-]
 
 interface NetworkConfig {
   value: string
@@ -332,20 +316,13 @@ export default function DepositPage() {
                         <span className="text-white text-[16px] font-medium">{coin.label}</span>
                       </button>
                     ))}
-                    <div className="flex -space-x-1 ml-2">
-                      {EXTRA_COINS.map((icon, i) => (
-                        <div key={i} className="w-[30px] h-[30px] rounded-full ring-2 ring-gfx-main">
-                          {icon}
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Step 2: Select Network */}
               {currentStep >= 2 && (
-                <div className="flex gap-5">
+                <div className="flex gap-5 animate-[fadeInStep_0.4s_ease-out]">
                   <div className="flex flex-col items-center shrink-0">
                     <StepCircle stepNumber={2} status={getStepStatus(2)} />
                     {currentStep >= 3 && (
@@ -371,7 +348,7 @@ export default function DepositPage() {
 
               {/* Step 3: Deposit Address */}
               {currentStep >= 3 && (
-                <div className="flex gap-5">
+                <div className="flex gap-5 animate-[fadeInStep_0.4s_ease-out]">
                   <div className="flex flex-col items-center shrink-0">
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
