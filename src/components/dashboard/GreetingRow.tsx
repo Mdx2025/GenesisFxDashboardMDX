@@ -6,9 +6,10 @@ interface GreetingRowProps {
   userName?: string
   date?: string
   tagline?: string
+  onTransferClick?: () => void
 }
 
-export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagline = 'Born To Outperform' }: GreetingRowProps) {
+export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagline = 'Born To Outperform', onTransferClick }: GreetingRowProps) {
   const navigate = useNavigate()
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 sm:mt-0 mb-5 gap-4">
@@ -30,7 +31,7 @@ export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagl
             <span className="hidden sm:inline">Withdraw</span>
           </span>
         </SparkleButton>
-        <SparkleButton>
+        <SparkleButton onClick={onTransferClick}>
           <span className="flex items-center gap-2">
             <TransferIcon />
             <span className="hidden sm:inline">Transfer</span>

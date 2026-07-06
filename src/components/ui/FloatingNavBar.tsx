@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface FloatingNavItem {
   icon: React.ReactNode
@@ -44,12 +45,19 @@ const defaultItems: FloatingNavItem[] = [
   },
 ]
 
+const NAV_ROUTES: Record<string, string> = {
+  Home: '/',
+  Deposit: '/deposit',
+}
+
 interface FloatingNavBarProps {
   items?: FloatingNavItem[]
   defaultActive?: number
+  onTransferClick?: () => void
 }
 
-export function FloatingNavBar({ items = defaultItems, defaultActive = 0 }: FloatingNavBarProps) {
+export function FloatingNavBar({ items = defaultItems, defaultActive = 0, onTransferClick }: FloatingNavBarProps) {
+  const navigate = useNavigate()
   const [active, setActive] = useState(defaultActive)
 
   return (
@@ -74,7 +82,14 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0 }: Floa
           return (
             <button
               key={item.label}
-              onClick={() => setActive(i)}
+              onClick={() => {
+                setActive(i)
+                if (item.label === 'Transfer' && onTransferClick) {
+                  onTransferClick()
+                } else if (NAV_ROUTES[item.label]) {
+                  navigate(NAV_ROUTES[item.label])
+                }
+              }}
               aria-current={isActive ? 'page' : undefined}
               className={`relative flex items-center rounded-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.15,1)] ${
                 isActive
