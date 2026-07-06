@@ -27,17 +27,13 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
     const mq = window.matchMedia('(max-width: 1279px)')
     setIsMobile(mq.matches)
 
-    const onChange = (e: MediaQueryListEvent) => {
-      setIsMobile(e.matches)
-      if (!e.matches) setHidden(false)
-    }
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
     mq.addEventListener('change', onChange)
 
     const main = document.querySelector('main')
     if (!main) return () => mq.removeEventListener('change', onChange)
 
     function onScroll() {
-      if (!mq.matches) return
       const y = main!.scrollTop
       setScrolled(y > 10)
       if (Math.abs(y - lastY.current) < SCROLL_THRESHOLD) return
@@ -71,16 +67,16 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
         className={`flex items-center justify-between gap-2 ${
           isMobile
             ? 'fixed top-0 left-0 right-0 z-40 px-4 py-3'
-            : 'relative mb-4'
+            : 'sticky top-0 z-40 py-4'
         }`}
-        style={isMobile ? {
+        style={{
           background: scrolled ? 'rgba(10, 14, 12, 0.85)' : 'transparent',
           backdropFilter: scrolled ? 'url(#blur-23)' : 'none',
           WebkitBackdropFilter: scrolled ? 'url(#blur-23)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
           transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
           transition: 'transform 400ms cubic-bezier(0.4, 0, 0.15, 1), background 300ms ease, border-bottom 300ms ease, backdrop-filter 300ms ease',
-        } : undefined} /* dynamic value */
+        }}
       >
         <div className="flex items-center gap-3 min-w-0">
           <button

@@ -329,7 +329,7 @@ export default function DepositPage() {
                       <StepConnector status={getStepStatus(2) === 'completed' ? 'completed' : 'inactive'} />
                     )}
                   </div>
-                  <div className="pb-6 flex-1 min-w-0">
+                  <div className="pb-10 flex-1 min-w-0">
                     <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Select Network
                     </h3>
