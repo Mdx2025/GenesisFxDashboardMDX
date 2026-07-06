@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
 import { GlassSelectIcon, GlassInput } from '@/components/ui'
+import { TransferProcessingModal } from './TransferProcessingModal'
 
 function SearchCoinIcon() {
   return (
@@ -35,6 +36,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
+  const [processingOpen, setProcessingOpen] = useState(false)
 
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
@@ -242,6 +244,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
                 fontSize: 16,
                 lineHeight: '24.44px',
               }}
+              onClick={() => setProcessingOpen(true)}
             >
               Transfer Funds
             </button>
@@ -249,6 +252,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
           </div>
         </div>
       </div>
+      <TransferProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} />
     </div>
   )
 }
