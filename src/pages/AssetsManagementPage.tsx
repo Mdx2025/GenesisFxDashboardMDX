@@ -107,7 +107,7 @@ export default function AssetsManagementPage() {
 
           <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">Funding</h1>
 
-          <section aria-label="Fiat Wallet" className="py-15">
+          <section aria-label="Fiat Wallet" className="py-7 md:py-15">
             <GlassCard variant="heavy" divider="green" rounded="26px">
               <img src="/images/fiat-wallet-glow.svg" alt="" aria-hidden="true" className="absolute top-0 left-0 w-[50%] pointer-events-none z-[1]" />
               <div className="relative z-10 p-6 xl:p-8">

@@ -3,7 +3,7 @@ import gsap from 'gsap'
 
 function LinkCircleIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 28 28" fill="none" aria-hidden="true">
       <path fillRule="evenodd" clipRule="evenodd" d="M4.04058 23.9588C5.74912 25.6673 8.49898 25.6673 13.9987 25.6673C19.4984 25.6673 22.2483 25.6673 23.9568 23.9588C25.6654 22.2502 25.6654 19.5004 25.6654 14.0007C25.6654 8.50093 25.6654 5.75107 23.9568 4.04253C22.2483 2.33398 19.4984 2.33398 13.9987 2.33398C8.49898 2.33398 5.74912 2.33398 4.04058 4.04253C2.33203 5.75107 2.33203 8.50093 2.33203 14.0007C2.33203 19.5004 2.33203 22.2502 4.04058 23.9588ZM11.082 10.209C8.98795 10.209 7.29036 11.9066 7.29036 14.0007C7.29036 16.0947 8.98795 17.7923 11.082 17.7923C13.1761 17.7923 14.8737 16.0947 14.8737 14.0007C14.8737 13.5174 15.2655 13.1257 15.7487 13.1257C16.2319 13.1257 16.6237 13.5174 16.6237 14.0007C16.6237 17.0612 14.1426 19.5423 11.082 19.5423C8.02145 19.5423 5.54036 17.0612 5.54036 14.0007C5.54036 10.9401 8.02145 8.45898 11.082 8.45898C11.5653 8.45898 11.957 8.85074 11.957 9.33398C11.957 9.81723 11.5653 10.209 11.082 10.209ZM20.707 14.0007C20.707 16.0947 19.0094 17.7923 16.9154 17.7923C16.4321 17.7923 16.0404 18.1841 16.0404 18.6673C16.0404 19.1506 16.4321 19.5423 16.9154 19.5423C19.9759 19.5423 22.457 17.0612 22.457 14.0007C22.457 10.9401 19.9759 8.45898 16.9154 8.45898C13.8548 8.45898 11.3737 10.9401 11.3737 14.0007C11.3737 14.4839 11.7654 14.8757 12.2487 14.8757C12.7319 14.8757 13.1237 14.4839 13.1237 14.0007C13.1237 11.9066 14.8213 10.209 16.9154 10.209C19.0094 10.209 20.707 11.9066 20.707 14.0007Z" fill="currentColor"/>
     </svg>
   )
@@ -11,7 +11,7 @@ function LinkCircleIcon() {
 
 function CheckCircleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path fillRule="evenodd" clipRule="evenodd" d="M19.3333 9.66667C19.3333 15.0054 15.0054 19.3333 9.66667 19.3333C4.32791 19.3333 0 15.0054 0 9.66667C0 4.32791 4.32791 0 9.66667 0C15.0054 0 19.3333 4.32791 19.3333 9.66667ZM13.5627 6.73735C13.8458 7.02048 13.8458 7.47952 13.5627 7.76265L8.72932 12.596C8.44619 12.8791 7.98714 12.8791 7.70401 12.596L5.77068 10.6627C5.48755 10.3795 5.48755 9.92048 5.77068 9.63735C6.05381 9.35422 6.51286 9.35422 6.79599 9.63735L8.21667 11.058L10.377 8.89769L12.5373 6.73735C12.8205 6.45422 13.2795 6.45422 13.5627 6.73735Z" fill="currentColor"/>
     </svg>
   )
@@ -115,7 +115,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
     >
       <div
         ref={modalRef}
-        className="relative overflow-hidden w-[793px] h-[479px] max-w-[95vw] bg-[#09090b] rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
+        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-[#09090b] rounded-[20px] sm:rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
       >
         {/* SVG filter for circle glow */}
         <svg width="0" height="0" className="absolute">
@@ -130,12 +130,12 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         <div className="absolute pointer-events-none w-[493px] h-[288px] left-[190px] top-[540px] bg-[#14532d] rounded-full blur-[157px]" aria-hidden="true" />
 
         {/* Title */}
-        <div className="absolute text-white font-acid font-normal text-center left-0 right-0 top-[111px] text-[36px]">
+        <div className="absolute text-white font-acid font-normal text-center left-0 right-0 top-[23%] text-[clamp(1.125rem,4.8vw,2.25rem)]">
           Sending 0.1 ETH
         </div>
 
         {/* Subtitle */}
-        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[158px] text-[24px] text-gfx-neutral-500">
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[33%] text-[clamp(0.875rem,3.2vw,1.5rem)] text-gfx-neutral-500">
           Processing Internal Transfer
         </div>
 
@@ -151,20 +151,20 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
           </div>
         </div>
 
-        {/* Endpoint circle glow layers (SVG filter blur, animated by gsap) */}
-        <div ref={glow1Ref} className="absolute pointer-events-none w-[10%] aspect-square left-[44.9%] top-[48.6%] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
-        <div ref={glow2Ref} className="absolute pointer-events-none w-[10%] aspect-square left-[87%] top-[48.6%] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
+        {/* Endpoint 1 — center of progress bar */}
+        <div ref={glow1Ref} className="absolute pointer-events-none w-[14%] sm:w-[10%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
+        <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-[#101E1A] rounded-full flex items-center justify-center" aria-hidden="true">
+          <div ref={icon1Ref} className="w-1/2 h-1/2 text-gfx-neutral-300"><LinkCircleIcon /></div>
+        </div>
 
-        {/* Endpoint circles */}
-        <div className="absolute w-[8%] aspect-square left-[45.9%] top-[50.3%] bg-[#101E1A] rounded-full" aria-hidden="true" />
-        <div className="absolute w-[8%] aspect-square left-[88%] top-[50.3%] bg-[#101E1A] rounded-full" aria-hidden="true" />
-
-        {/* Icons */}
-        <div ref={icon1Ref} className="absolute left-[48.3%] top-[54.3%] text-gfx-neutral-300"><LinkCircleIcon /></div>
-        <div ref={icon2Ref} className="absolute left-[90.9%] top-[55.1%] text-gfx-neutral-300"><CheckCircleIcon /></div>
+        {/* Endpoint 2 — end of progress bar */}
+        <div ref={glow2Ref} className="absolute pointer-events-none w-[14%] sm:w-[10%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
+        <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-[#101E1A] rounded-full flex items-center justify-center" aria-hidden="true">
+          <div ref={icon2Ref} className="w-1/2 h-1/2 text-gfx-neutral-300"><CheckCircleIcon /></div>
+        </div>
 
         {/* Disclaimer */}
-        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[354px] text-[16px] text-gfx-neutral-300 leading-[24px]">
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[74%] text-[clamp(0.625rem,2vw,1rem)] text-gfx-neutral-300 leading-normal">
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
       </div>
