@@ -19,8 +19,8 @@ interface GlassSelectProps {
 }
 
 const SIZE_STYLES = {
-  default: { trigger: 'h-12 px-4 rounded-xl', dropdown: 'rounded-xl', item: 'px-4 py-3' },
-  sm: { trigger: 'h-[42px] px-4 rounded-sm', dropdown: 'rounded-sm', item: 'px-4 py-2.5' },
+  default: { trigger: 'h-12 px-5 rounded-full', dropdown: 'rounded-2xl', item: 'px-4 py-3' },
+  sm: { trigger: 'h-12 px-5 rounded-full', dropdown: 'rounded-2xl', item: 'px-4 py-2.5' },
 } as const
 
 export function GlassSelect({ options, defaultValue, placeholder = 'Select...', label, id, size = 'default', onChange }: GlassSelectProps) {
