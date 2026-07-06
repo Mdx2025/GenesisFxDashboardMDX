@@ -156,8 +156,8 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         <div ref={glow2Ref} className="absolute pointer-events-none w-[80px] h-[80px] left-[690px] top-[233px] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
 
         {/* Endpoint circles */}
-        <div className="absolute w-[64px] h-[64px] left-[364px] top-[241px] bg-[#18181b] rounded-full" aria-hidden="true" />
-        <div className="absolute w-[64px] h-[64px] left-[698px] top-[241px] bg-[#18181b] rounded-full" aria-hidden="true" />
+        <div className="absolute w-[64px] h-[64px] left-[364px] top-[241px] bg-[#101E1A] rounded-full" aria-hidden="true" />
+        <div className="absolute w-[64px] h-[64px] left-[698px] top-[241px] bg-[#101E1A] rounded-full" aria-hidden="true" />
 
         {/* Icons */}
         <div ref={icon1Ref} className="absolute left-[383px] top-[260px] text-gfx-neutral-300"><LinkCircleIcon /></div>
