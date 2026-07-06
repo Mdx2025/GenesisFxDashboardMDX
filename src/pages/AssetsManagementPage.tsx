@@ -116,7 +116,7 @@ export default function AssetsManagementPage() {
                       <span className="text-white font-normal" style={{ fontSize: 'clamp(2rem, 1.5rem + 1.5vw, 3.5rem)' }}>$100.00</span>
                       <span className="text-gfx-neutral-300 text-body2">USD</span>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 border border-[#021B13] rounded-lg p-3">
                       <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
                       <span className="text-white text-sm font-semibold">$0.00</span>
                       <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
