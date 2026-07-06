@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 
 export default function RootLayout() {
   const lenisRef = useRef<Lenis | null>(null)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const wrapper = document.querySelector('main')
@@ -31,7 +32,7 @@ export default function RootLayout() {
       lenis.destroy()
       lenisRef.current = null
     }
-  }, [])
+  }, [pathname])
 
   return <Outlet />
 }
