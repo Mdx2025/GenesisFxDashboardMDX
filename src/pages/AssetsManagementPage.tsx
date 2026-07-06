@@ -157,7 +157,7 @@ export default function AssetsManagementPage() {
             </GlassCard>
           </section>
 
-          <div className="mb-10 w-xl">
+          <div className="mb-10 w-full max-w-xl">
             <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} />
           </div>
 

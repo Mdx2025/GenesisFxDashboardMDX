@@ -113,9 +113,11 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
       aria-modal="true"
       aria-label="Transfer Processing"
     >
+      <div className="w-[793px] max-w-[95vw]" style={{ aspectRatio: '793 / 479' }} /* dynamic */>
       <div
         ref={modalRef}
-        className="relative overflow-hidden w-[793px] h-[479px] max-w-[95vw] bg-[#09090b] rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
+        className="relative overflow-hidden w-[793px] h-[479px] bg-[#09090b] rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200 origin-top-left"
+        style={{ transform: 'scale(min(1, calc(95vw / 793px)))' }} /* dynamic */
       >
         {/* SVG filter for circle glow */}
         <svg width="0" height="0" className="absolute">
@@ -167,6 +169,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         <div className="absolute font-acid font-normal text-center left-0 right-0 top-[354px] text-[16px] text-gfx-neutral-300 leading-[24px]">
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
+      </div>
       </div>
     </div>
   )
