@@ -124,7 +124,7 @@ export function TransferModal({ open, onClose }: TransferModalProps) {
         </button>
 
         {/* Title */}
-        <div className="text-center" style={{ paddingTop: 63 }}>
+        <div className="relative z-10 text-center" style={{ paddingTop: 63 }}>
           <h2 className="text-white font-acid font-normal" style={{ fontSize: 50, lineHeight: 1 }}>
             Internal Transfer
           </h2>
