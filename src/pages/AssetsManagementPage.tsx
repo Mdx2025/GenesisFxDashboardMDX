@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
@@ -195,7 +195,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <SparkleButton aria-label="Reset all filters">Reset</SparkleButton>
+              <GreenPillButton>Reset</GreenPillButton>
               <div className="ml-auto">
                 <button className="p-2 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-500 hover:text-white hover:border-white/10 transition-colors cursor-pointer" aria-label="Export table">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -208,7 +208,9 @@ export default function AssetsManagementPage() {
               </div>
             </div>
             <GlassCard variant="heavy" divider="white" rounded="26px">
-              <div className="p-6">
+              <div className="divider-green absolute top-0 left-[10%] right-[10%]" aria-hidden="true" />
+              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none" style={{ background: GLOW_GREEN, filter: 'url(#blur-120)', willChange: 'transform' }} aria-hidden="true" />
+              <div className="relative z-10 p-6">
                 <div className="flex items-center gap-3">
                   <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
                   <Badge variant="status">Total ({assetTransactions.length} records)</Badge>

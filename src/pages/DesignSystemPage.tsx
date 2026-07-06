@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, TradeButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, ButtonGlow, GlassSelect,
+  FloatingNavBar, ButtonGlow, GlassSelect, GreenPillButton,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -232,6 +232,15 @@ export default function DesignSystemPage() {
                 Loading
               </button>
             </div>
+          </Subsection>
+
+          <Subsection title="Green Pill Button">
+            <div className="flex flex-wrap items-center gap-4">
+              <GreenPillButton>Reset</GreenPillButton>
+              <GreenPillButton>Apply</GreenPillButton>
+              <GreenPillButton>Clear All</GreenPillButton>
+            </div>
+            <p className="text-caption text-gfx-neutral-500 mt-2">Dark green pill with subtle sparkle dust — used for filter actions</p>
           </Subsection>
 
           <Subsection title="Button Glow">
