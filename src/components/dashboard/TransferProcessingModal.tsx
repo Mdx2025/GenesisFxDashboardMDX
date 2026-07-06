@@ -113,11 +113,9 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
       aria-modal="true"
       aria-label="Transfer Processing"
     >
-      <div className="w-[793px] max-w-[95vw]" style={{ aspectRatio: '793 / 479' }} /* dynamic */>
       <div
         ref={modalRef}
-        className="relative overflow-hidden w-[793px] h-[479px] bg-[#09090b] rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200 origin-top-left"
-        style={{ transform: 'scale(min(1, calc(95vw / 793px)))' }} /* dynamic */
+        className="relative overflow-hidden w-[793px] h-[479px] max-w-[95vw] bg-[#09090b] rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
       >
         {/* SVG filter for circle glow */}
         <svg width="0" height="0" className="absolute">
@@ -142,7 +140,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         </div>
 
         {/* Progress bar */}
-        <div className="absolute left-[43px] right-[43px] top-[269px] h-[10px]">
+        <div className="absolute left-[5.4%] right-[5.4%] top-[56.2%] h-[10px]">
           {/* Track */}
           <div className="absolute inset-0 bg-[#101E1A] rounded-2xl" />
           {/* Animated fill + glow (all scale together) */}
@@ -154,22 +152,21 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         </div>
 
         {/* Endpoint circle glow layers (SVG filter blur, animated by gsap) */}
-        <div ref={glow1Ref} className="absolute pointer-events-none w-[80px] h-[80px] left-[356px] top-[233px] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
-        <div ref={glow2Ref} className="absolute pointer-events-none w-[80px] h-[80px] left-[690px] top-[233px] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
+        <div ref={glow1Ref} className="absolute pointer-events-none w-[10%] aspect-square left-[44.9%] top-[48.6%] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
+        <div ref={glow2Ref} className="absolute pointer-events-none w-[10%] aspect-square left-[87%] top-[48.6%] bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
 
         {/* Endpoint circles */}
-        <div className="absolute w-[64px] h-[64px] left-[364px] top-[241px] bg-[#101E1A] rounded-full" aria-hidden="true" />
-        <div className="absolute w-[64px] h-[64px] left-[698px] top-[241px] bg-[#101E1A] rounded-full" aria-hidden="true" />
+        <div className="absolute w-[8%] aspect-square left-[45.9%] top-[50.3%] bg-[#101E1A] rounded-full" aria-hidden="true" />
+        <div className="absolute w-[8%] aspect-square left-[88%] top-[50.3%] bg-[#101E1A] rounded-full" aria-hidden="true" />
 
         {/* Icons */}
-        <div ref={icon1Ref} className="absolute left-[383px] top-[260px] text-gfx-neutral-300"><LinkCircleIcon /></div>
-        <div ref={icon2Ref} className="absolute left-[721px] top-[264px] text-gfx-neutral-300"><CheckCircleIcon /></div>
+        <div ref={icon1Ref} className="absolute left-[48.3%] top-[54.3%] text-gfx-neutral-300"><LinkCircleIcon /></div>
+        <div ref={icon2Ref} className="absolute left-[90.9%] top-[55.1%] text-gfx-neutral-300"><CheckCircleIcon /></div>
 
         {/* Disclaimer */}
         <div className="absolute font-acid font-normal text-center left-0 right-0 top-[354px] text-[16px] text-gfx-neutral-300 leading-[24px]">
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
-      </div>
       </div>
     </div>
   )
