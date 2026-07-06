@@ -151,7 +151,7 @@ export default function AssetsManagementPage() {
             </GlassCard>
           </section>
 
-          <div className="mb-6">
+          <div className="mb-6 w-2xl">
             <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} />
           </div>
 
@@ -179,9 +179,9 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Assets History">
             <GlassCard variant="heavy" divider="white" rounded="26px">
-              <div className="px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4">
+              <div className="p-6">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-[19px] font-bold tracking-tight text-white italic">Assets History</h2>
+                  <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
                   <span className="text-[11px] text-gfx-neutral-300 bg-white/[0.06] border border-white/[0.08] rounded-full px-3 py-1">Total ({assetTransactions.length} records)</span>
                 </div>
               </div>
@@ -190,13 +190,13 @@ export default function AssetsManagementPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 xl:px-10 py-4" style={{ width: '8%' }}>Type</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4" style={{ width: '8%' }}>Type</th>
                       <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '18%' }}>Deposit Address</th>
                       <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '12%' }}>Coin</th>
                       <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '10%' }}>Network</th>
                       <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '18%' }}>Date</th>
                       <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '12%' }}>Status</th>
-                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 xl:pr-10 py-4" style={{ width: '10%' }}>Amount</th>
+                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" style={{ width: '10%' }}>Amount</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -205,7 +205,7 @@ export default function AssetsManagementPage() {
                       const status = STATUS_STYLES[tx.status]
                       return (
                         <tr key={`${tx.type}-${tx.date}-${i}`} className={i > 0 ? 'border-t border-white/5' : ''}>
-                          <td className="px-4 sm:px-6 xl:px-10 py-4 xl:py-5">
+                          <td className="px-4 sm:px-6 py-4 xl:py-5">
                             <div className="flex items-center gap-3">
                               <div className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center shrink-0">
                                 <Icon size={16} color="#A0A0A0" />
@@ -235,7 +235,7 @@ export default function AssetsManagementPage() {
                               {tx.status}
                             </span>
                           </td>
-                          <td className="text-white text-[14px] font-semibold text-right pr-4 sm:pr-6 xl:pr-10 py-4 xl:py-5">{tx.amount}</td>
+                          <td className="text-white text-[14px] font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
                         </tr>
                       )
                     })}
