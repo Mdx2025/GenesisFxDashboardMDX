@@ -248,7 +248,7 @@ function FaqTag({ label }: { label: string }) {
 
 export default function DepositPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [currentStep, setCurrentStep] = useState(3)
+  const [currentStep, setCurrentStep] = useState(1)
   const [selectedCoin, setSelectedCoin] = useState('usdt')
   const [selectedNetwork, setSelectedNetwork] = useState('erc20')
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
@@ -312,7 +312,9 @@ export default function DepositPage() {
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
                   <StepCircle stepNumber={1} status={getStepStatus(1)} />
-                  <StepConnector status={getStepStatus(1) === 'completed' ? 'completed' : 'inactive'} />
+                  {currentStep >= 2 && (
+                    <StepConnector status={getStepStatus(1) === 'completed' ? 'completed' : 'inactive'} />
+                  )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
                   <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
@@ -364,78 +366,84 @@ export default function DepositPage() {
               </div>
 
               {/* Step 2: Select Network */}
-              <div className="flex gap-5">
-                <div className="flex flex-col items-center shrink-0">
-                  <StepCircle stepNumber={2} status={getStepStatus(2)} />
-                  <StepConnector status={getStepStatus(2) === 'completed' ? 'completed' : 'inactive'} />
-                </div>
-                <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
-                    Select Network
-                  </h3>
+              {currentStep >= 2 && (
+                <div className="flex gap-5">
+                  <div className="flex flex-col items-center shrink-0">
+                    <StepCircle stepNumber={2} status={getStepStatus(2)} />
+                    {currentStep >= 3 && (
+                      <StepConnector status={getStepStatus(2) === 'completed' ? 'completed' : 'inactive'} />
+                    )}
+                  </div>
+                  <div className="pb-6 flex-1 min-w-0">
+                    <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                      Select Network
+                    </h3>
 
-                  {getStepStatus(2) === 'active' && (
-                    <div className="mt-4 max-w-[546px]">
-                      <GlassSelect
-                        options={NETWORK_OPTIONS.map(n => ({ value: n.value, label: `${n.shortLabel}  ${n.label}` }))}
-                        placeholder="Select Network"
-                        onChange={handleNetworkSelect}
+                    {getStepStatus(2) === 'active' && (
+                      <div className="mt-4 max-w-[546px]">
+                        <GlassSelect
+                          options={NETWORK_OPTIONS.map(n => ({ value: n.value, label: `${n.shortLabel}  ${n.label}` }))}
+                          placeholder="Select Network"
+                          onChange={handleNetworkSelect}
+                        />
+                      </div>
+                    )}
+
+                    {getStepStatus(2) === 'completed' && selectedNetworkConfig && (
+                      <ConfirmedSelection
+                        icon={null}
+                        label={selectedNetworkConfig.shortLabel}
+                        sublabel={selectedNetworkConfig.label}
                       />
-                    </div>
-                  )}
-
-                  {getStepStatus(2) === 'completed' && selectedNetworkConfig && (
-                    <ConfirmedSelection
-                      icon={null}
-                      label={selectedNetworkConfig.shortLabel}
-                      sublabel={selectedNetworkConfig.label}
-                    />
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Step 3: Deposit Address */}
-              <div className="flex gap-5">
-                <div className="flex flex-col items-center shrink-0">
-                  <StepCircle stepNumber={3} status={getStepStatus(3)} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
-                    Deposit Address
-                  </h3>
+              {currentStep >= 3 && (
+                <div className="flex gap-5">
+                  <div className="flex flex-col items-center shrink-0">
+                    <StepCircle stepNumber={3} status={getStepStatus(3)} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                      Deposit Address
+                    </h3>
 
-                  {getStepStatus(3) === 'active' && (
-                    <div className="mt-4 max-w-[546px]">
-                      <GlassCard variant="heavy" rounded="20px">
-                        <div className="relative z-10 p-5 flex flex-col sm:flex-row gap-5">
-                          <div className="w-[157px] h-[159px] shrink-0 rounded-[5px] overflow-hidden">
-                            <QrCodePlaceholder />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <span className="text-[14px] text-gfx-neutral-300 leading-[18.8px]">Address</span>
-                            <div className="flex items-start gap-2 mt-3">
-                              <p className="text-[16px] text-white leading-[24.44px] break-all">
-                                {DEPOSIT_ADDRESS}
-                              </p>
-                              <button
-                                type="button"
-                                onClick={handleCopyAddress}
-                                className="shrink-0 cursor-pointer hover:opacity-80 transition-opacity mt-0.5"
-                                aria-label="Copy address"
-                              >
-                                <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
-                              </button>
+                    {getStepStatus(3) === 'active' && (
+                      <div className="mt-4 max-w-[546px]">
+                        <GlassCard variant="heavy" rounded="20px">
+                          <div className="relative z-10 p-5 flex flex-col sm:flex-row gap-5">
+                            <div className="w-[157px] h-[159px] shrink-0 rounded-[5px] overflow-hidden">
+                              <QrCodePlaceholder />
                             </div>
-                            <p className="text-[14px] text-gfx-neutral-300 leading-[18.8px] mt-3">
-                              Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
-                            </p>
+                            <div className="flex-1 min-w-0">
+                              <span className="text-[14px] text-gfx-neutral-300 leading-[18.8px]">Address</span>
+                              <div className="flex items-start gap-2 mt-3">
+                                <p className="text-[16px] text-white leading-[24.44px] break-all">
+                                  {DEPOSIT_ADDRESS}
+                                </p>
+                                <button
+                                  type="button"
+                                  onClick={handleCopyAddress}
+                                  className="shrink-0 cursor-pointer hover:opacity-80 transition-opacity mt-0.5"
+                                  aria-label="Copy address"
+                                >
+                                  <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
+                                </button>
+                              </div>
+                              <p className="text-[14px] text-gfx-neutral-300 leading-[18.8px] mt-3">
+                                Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </GlassCard>
-                    </div>
-                  )}
+                        </GlassCard>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* FAQs column */}
