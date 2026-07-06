@@ -5,7 +5,7 @@ import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar } from '@/componen
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
-import { GLOW_GREEN, STATUS_STYLES, COIN_STYLES } from '@/constants/colors'
+import { GLOW_GREEN, STATUS_STYLES } from '@/constants/colors'
 import type { AssetTransaction } from '@/data/assets-history'
 
 const TYPE_CONFIG: Record<AssetTransaction['type'], { icon: typeof DepositIcon; label: string }> = {
@@ -15,10 +15,44 @@ const TYPE_CONFIG: Record<AssetTransaction['type'], { icon: typeof DepositIcon; 
 }
 
 const COIN_ICON_COLORS: Record<string, string> = {
-  USDT: '#10BC83',
-  BTC: '#e29d58',
-  ETH: '#5b9cf5',
-  USDC: '#5b9cf5',
+  USDT: '#26A17B',
+  BTC: '#F7931A',
+  ETH: '#627EEA',
+  USDC: '#2775CA',
+}
+
+function CoinLogo({ coin }: { coin: string }) {
+  const bg = COIN_ICON_COLORS[coin] || '#A0A0A0'
+  if (coin === 'USDT') {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill={bg} />
+        <path d="M13.4 10.9v-1.5h3.1V7H7.5v2.4h3.1v1.5c-2.7.1-4.7.7-4.7 1.4 0 .7 2 1.3 4.7 1.4v4.3h1.8v-4.3c2.7-.1 4.7-.7 4.7-1.4 0-.7-2-1.3-4.7-1.4zm0 2.3v0c-.1 0-.5 0-.9 0s-.7 0-.9 0v0c-2.4-.1-4.2-.6-4.2-1.1 0-.5 1.8-1 4.2-1.1v1.7c.2 0 .6 0 .9 0 .4 0 .7 0 .9 0v-1.7c2.4.1 4.2.6 4.2 1.1 0 .5-1.8 1-4.2 1.1z" fill="white" />
+      </svg>
+    )
+  }
+  if (coin === 'BTC') {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill={bg} />
+        <path d="M15.5 10.8c.2-1.4-0.8-2.1-2.3-2.6l.5-1.9-1.2-.3-.5 1.9c-.3-.1-.6-.2-1-.2l.5-1.9-1.2-.3-.5 1.9c-.3-.1-.5-.1-.7-.2l-1.6-.4-.3 1.3s.9.2.9.2c.5.1.6.4.5.7l-.5 2.1c0 0 .1 0 .1 0l-.1 0-.8 3c-.1.2-.2.4-.6.3 0 0-.9-.2-.9-.2l-.6 1.4 1.5.4c.3.1.6.1.8.2l-.5 2 1.2.3.5-1.9c.3.1.7.2 1 .3l-.5 1.9 1.2.3.5-2c2.1.4 3.6.2 4.3-1.6.5-1.5 0-2.3-1.1-2.9.8-.2 1.4-.7 1.5-1.8zm-2.8 3.9c-.4 1.5-2.8.7-3.6.5l.6-2.6c.8.2 3.4.6 3 2.1zm.4-3.9c-.3 1.3-2.3.7-3 .5l.6-2.3c.7.2 2.8.5 2.4 1.8z" fill="white" />
+      </svg>
+    )
+  }
+  if (coin === 'USDC') {
+    return (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill={bg} />
+        <path d="M12 17.5c-3 0-5.5-2.5-5.5-5.5S9 6.5 12 6.5s5.5 2.5 5.5 5.5-2.5 5.5-5.5 5.5zm0-10c-2.5 0-4.5 2-4.5 4.5s2 4.5 4.5 4.5 4.5-2 4.5-4.5-2-4.5-4.5-4.5z" fill="white" />
+        <path d="M13.2 13.6c0-.7-.5-1-1.5-1.1-.7-.1-0.9-.3-.9-.6 0-.3.3-.5.7-.5.4 0 .7.2.8.5l.7-.3c-.2-.5-.6-.8-1.1-.9V10h-.8v.7c-.7.2-1.2.7-1.2 1.3 0 .8.5 1.1 1.5 1.2.7.1.9.3.9.6 0 .4-.3.6-.8.6-.5 0-.8-.2-.9-.6l-.7.3c.2.5.7.9 1.2 1v.7h.8v-.7c.8-.1 1.3-.7 1.3-1.4z" fill="white" />
+      </svg>
+    )
+  }
+  return (
+    <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: bg }}>
+      <span className="text-[10px] font-bold text-white">{coin.charAt(0)}</span>
+    </div>
+  )
 }
 
 function WalletIcon() {
@@ -131,6 +165,16 @@ export default function AssetsManagementPage() {
             >
               Reset
             </button>
+            <div className="ml-auto">
+              <button className="p-2 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-500 hover:text-white hover:border-white/10 transition-colors cursor-pointer" aria-label="Export table">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                  <rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                  <rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                  <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.2" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <section aria-label="Assets History">
@@ -138,7 +182,7 @@ export default function AssetsManagementPage() {
               <div className="px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4">
                 <div className="flex items-center gap-3">
                   <h2 className="text-[19px] font-bold tracking-tight text-white italic">Assets History</h2>
-                  <span className="text-[11px] text-gfx-neutral-300 bg-white/[0.06] border border-white/[0.08] rounded-full px-3 py-1">Total {assetTransactions.length} records</span>
+                  <span className="text-[11px] text-gfx-neutral-300 bg-white/[0.06] border border-white/[0.08] rounded-full px-3 py-1">Total ({assetTransactions.length} records)</span>
                 </div>
               </div>
 
@@ -158,7 +202,6 @@ export default function AssetsManagementPage() {
                   <tbody>
                     {assetTransactions.map((tx, i) => {
                       const { icon: Icon, label } = TYPE_CONFIG[tx.type]
-                      const coinColor = COIN_ICON_COLORS[tx.coin] || '#A0A0A0'
                       const status = STATUS_STYLES[tx.status]
                       return (
                         <tr key={`${tx.type}-${tx.date}-${i}`} className={i > 0 ? 'border-t border-white/5' : ''}>
@@ -178,9 +221,7 @@ export default function AssetsManagementPage() {
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="flex items-center gap-2">
-                              <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: coinColor }}>
-                                <span className="text-[10px] font-bold text-white">{tx.coin.charAt(0)}</span>
-                              </div>
+                              <CoinLogo coin={tx.coin} />
                               <span className="text-white text-[14px] font-semibold">{tx.coin}</span>
                             </div>
                           </td>

@@ -3,8 +3,8 @@ export const GLOW_GREEN_SEMI = '#1040308f'
 
 export const STATUS_STYLES = {
   pending: { bg: 'rgba(226,157,88,0.10)', border: '1px solid rgba(226,157,88,0.25)', color: '#e29d58' },
-  canceled: { bg: 'rgba(255,77,106,0.10)', border: '1px solid rgba(255,77,106,0.25)', color: '#ff4d6a' },
-  routed: { bg: 'rgba(16,188,131,0.10)', border: '1px solid rgba(16,188,131,0.25)', color: '#10BC83' },
+  approved: { bg: 'rgba(16,188,131,0.10)', border: '1px solid rgba(16,188,131,0.25)', color: '#10BC83' },
+  expired: { bg: 'rgba(255,77,106,0.10)', border: '1px solid rgba(255,77,106,0.25)', color: '#ff4d6a' },
 } as const
 
 export const COIN_STYLES = {
