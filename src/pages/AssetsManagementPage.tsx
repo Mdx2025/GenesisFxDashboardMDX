@@ -157,7 +157,7 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Assets History">
             <div className="flex items-center gap-3 mb-6 flex-wrap" role="group" aria-label="Transaction filters">
-              <div className="min-w-[100px]">
+              <div className="w-[18rem]">
                 <GlassSelect
                   size="sm"
                   placeholder="Type"
@@ -169,7 +169,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <div className="min-w-[160px]">
+              <div className="w-[18rem]">
                 <GlassSelect
                   size="sm"
                   placeholder="Time"
@@ -182,7 +182,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <div className="min-w-[160px]">
+              <div className="w-[18rem]">
                 <GlassSelect
                   size="sm"
                   placeholder="Coin"
