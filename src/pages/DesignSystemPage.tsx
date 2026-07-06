@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, TradeButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, ButtonGlow,
+  FloatingNavBar, ButtonGlow, GlassSelect,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -369,16 +369,16 @@ export default function DesignSystemPage() {
 
           <Subsection title="Select">
             <div className="max-w-xs">
-              <label htmlFor="ds-select" className="text-label text-gfx-neutral-500 mb-1.5 block">Account type</label>
-              <select
+              <GlassSelect
                 id="ds-select"
-                className="w-full h-12 px-4 rounded-xl bg-transparent border border-white/10 text-white text-sm appearance-none focus:border-gfx-green-500/50 focus:outline-none transition-colors"
-                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%23A0A0A0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
-              >
-                <option value="genfx">GenFX</option>
-                <option value="10x">10X Challenge</option>
-                <option value="pamm">PAMM</option>
-              </select>
+                label="Account type"
+                defaultValue="genfx"
+                options={[
+                  { value: 'genfx', label: 'GenFX' },
+                  { value: '10x', label: '10X Challenge' },
+                  { value: 'pamm', label: 'PAMM' },
+                ]}
+              />
             </div>
           </Subsection>
 
