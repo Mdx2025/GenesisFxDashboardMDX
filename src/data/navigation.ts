@@ -4,12 +4,13 @@ export interface NavItem {
   icon: string
   href: string
   active?: boolean
+  activeOn?: string[]
   submenu?: { label: string; href: string }[]
 }
 
 export const navItems: NavItem[] = [
   { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', href: '/' },
-  { id: 'assets', label: 'Assets Management', icon: 'assets', href: '/assets-management' },
+  { id: 'assets', label: 'Assets Management', icon: 'assets', href: '/assets-management', activeOn: ['/deposit', '/withdraw'] },
   { id: 'tradelocker', label: 'Tradelocker', icon: 'tradelocker', href: '#', submenu: [
     { label: 'Accounts', href: '/tradelocker/accounts' },
     { label: 'Journal', href: '/tradelocker/journal' },

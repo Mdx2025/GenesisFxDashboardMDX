@@ -126,7 +126,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <ul className="flex flex-col gap-1" role="list">
               {navItems.map((item) => {
                 const Icon = iconMap[item.icon]
-                const isActive = location.pathname === item.href
+                const isActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname)
                 const navContent = (
                   <NavButton
                     active={isActive}

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassSelect, FloatingNavBar, DividerGlow } from '@/components/ui'
+import { GlassCard, GlassSelect, GlassSelectIcon, FloatingNavBar, DividerGlow } from '@/components/ui'
 import { ChevronDownIcon, SearchIcon } from '@/components/icons'
 
 function UsdtIcon({ size = 24 }: { size?: number }) {
@@ -227,17 +227,6 @@ function StepConnector({ status }: { status: 'completed' | 'inactive' }) {
   return <div className={`flex-1 w-px mt-3 mb-1 ${status === 'completed' ? 'bg-white' : 'bg-[#404040]'}`} />
 }
 
-function ConfirmedSelection({ icon, label, sublabel }: { icon: React.ReactNode; label: string; sublabel: string }) {
-  return (
-    <div className="mt-4 flex items-center h-[50px] bg-[#101E1A] border border-[#404040] rounded-[30px] px-5 gap-3 max-w-[546px]">
-      <span className="shrink-0">{icon}</span>
-      <span className="text-white text-[16px] font-medium">{label}</span>
-      <span className="text-[#808080] text-[16px]">{sublabel}</span>
-      <ChevronDownIcon size={14} color="#606060" className="ml-auto shrink-0" />
-    </div>
-  )
-}
-
 function FaqTag({ label }: { label: string }) {
   return (
     <span className="inline-block px-3 py-[5px] rounded-[60px] border border-[#3d3d3d] bg-[linear-gradient(38deg,#1e1e1e_24%,#3f4341_128%)] text-[12px] text-[#bebebe] leading-[20px]">
@@ -254,9 +243,6 @@ export default function DepositPage() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
   const [copied, setCopied] = useState(false)
 
-  const selectedCoinConfig = COINS.find(c => c.id === selectedCoin)
-  const selectedNetworkConfig = NETWORK_OPTIONS.find(n => n.value === selectedNetwork)
-
   const getStepStatus = useCallback((step: number): 'completed' | 'active' | 'inactive' => {
     if (step < currentStep) return 'completed'
     if (step === currentStep) return 'active'
@@ -265,12 +251,12 @@ export default function DepositPage() {
 
   const handleCoinSelect = (coinId: string) => {
     setSelectedCoin(coinId)
-    if (currentStep === 1) setCurrentStep(2)
+    setCurrentStep(2)
   }
 
-  const handleNetworkSelect = (value: string) => {
-    setSelectedNetwork(value)
-    if (currentStep === 2) setCurrentStep(3)
+  const handleNetworkSelect = (networkValue: string) => {
+    setSelectedNetwork(networkValue)
+    setCurrentStep(3)
   }
 
   const handleCopyAddress = async () => {
@@ -321,47 +307,39 @@ export default function DepositPage() {
                     Select Coin
                   </h3>
 
-                  {getStepStatus(1) === 'active' && (
-                    <>
-                      <div className="mt-4 flex items-center h-[50px] bg-[#0f1e19] rounded-[30px] px-5 gap-3 max-w-[546px]">
-                        <SearchIcon size={24} color="#808080" />
-                        <span className="text-[#808080] text-[16px] flex-1">Search Coin</span>
-                        <ChevronDownIcon size={14} color="#606060" />
-                      </div>
-                      <div className="flex items-center gap-2.5 mt-4 flex-wrap">
-                        {COINS.map(coin => (
-                          <button
-                            key={coin.id}
-                            type="button"
-                            onClick={() => handleCoinSelect(coin.id)}
-                            className={`h-[50px] px-4 rounded-[30px] flex items-center gap-2.5 cursor-pointer transition-colors ${
-                              selectedCoin === coin.id
-                                ? 'bg-[#064b34] border border-[#0a714f]'
-                                : 'bg-[#011b12] border border-transparent hover:bg-[#021B13]'
-                            }`}
-                          >
-                            {coin.icon}
-                            <span className="text-white text-[16px] font-medium">{coin.label}</span>
-                          </button>
-                        ))}
-                        <div className="flex -space-x-1 ml-2">
-                          {EXTRA_COINS.map((icon, i) => (
-                            <div key={i} className="w-[30px] h-[30px] rounded-full ring-2 ring-gfx-main">
-                              {icon}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {getStepStatus(1) === 'completed' && selectedCoinConfig && (
-                    <ConfirmedSelection
-                      icon={selectedCoinConfig.icon}
-                      label={selectedCoinConfig.label}
-                      sublabel={selectedCoinConfig.name}
+                  <div className="mt-4 max-w-[546px]">
+                    <GlassSelectIcon
+                      icon={<SearchIcon size={18} color="#808080" />}
+                      options={COINS.map(c => ({ value: c.id, label: `${c.label}  ${c.name}` }))}
+                      placeholder="Search Coin"
+                      value={selectedCoin}
+                      onChange={handleCoinSelect}
                     />
-                  )}
+                  </div>
+                  <div className="flex items-center gap-2.5 mt-4 flex-wrap">
+                    {COINS.map(coin => (
+                      <button
+                        key={coin.id}
+                        type="button"
+                        onClick={() => handleCoinSelect(coin.id)}
+                        className={`h-[50px] px-4 rounded-[30px] flex items-center gap-2.5 cursor-pointer transition-colors ${
+                          selectedCoin === coin.id
+                            ? 'bg-[#064b34] border border-[#0a714f]'
+                            : 'bg-[#011b12] border border-transparent hover:bg-[#021B13]'
+                        }`}
+                      >
+                        {coin.icon}
+                        <span className="text-white text-[16px] font-medium">{coin.label}</span>
+                      </button>
+                    ))}
+                    <div className="flex -space-x-1 ml-2">
+                      {EXTRA_COINS.map((icon, i) => (
+                        <div key={i} className="w-[30px] h-[30px] rounded-full ring-2 ring-gfx-main">
+                          {icon}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -379,23 +357,14 @@ export default function DepositPage() {
                       Select Network
                     </h3>
 
-                    {getStepStatus(2) === 'active' && (
-                      <div className="mt-4 max-w-[546px]">
-                        <GlassSelect
-                          options={NETWORK_OPTIONS.map(n => ({ value: n.value, label: `${n.shortLabel}  ${n.label}` }))}
-                          placeholder="Select Network"
-                          onChange={handleNetworkSelect}
-                        />
-                      </div>
-                    )}
-
-                    {getStepStatus(2) === 'completed' && selectedNetworkConfig && (
-                      <ConfirmedSelection
-                        icon={null}
-                        label={selectedNetworkConfig.shortLabel}
-                        sublabel={selectedNetworkConfig.label}
+                    <div className="mt-4 max-w-[546px]">
+                      <GlassSelect
+                        options={NETWORK_OPTIONS.map(n => ({ value: n.value, label: `${n.shortLabel}  ${n.label}` }))}
+                        placeholder="Select Network"
+                        value={selectedNetwork}
+                        onChange={handleNetworkSelect}
                       />
-                    )}
+                    </div>
                   </div>
                 </div>
               )}

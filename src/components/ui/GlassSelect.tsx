@@ -11,6 +11,7 @@ export interface GlassSelectOption {
 interface GlassSelectProps {
   options: GlassSelectOption[]
   defaultValue?: string
+  value?: string
   placeholder?: string
   label?: string
   id?: string
@@ -23,15 +24,21 @@ const SIZE_STYLES = {
   sm: { trigger: 'h-12 px-5 rounded-full', dropdown: 'rounded-2xl', item: 'px-4 py-2.5' },
 } as const
 
-export function GlassSelect({ options, defaultValue, placeholder = 'Select...', label, id, size = 'default', onChange }: GlassSelectProps) {
+export function GlassSelect({ options, defaultValue, value, placeholder = 'Select...', label, id, size = 'default', onChange }: GlassSelectProps) {
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState<GlassSelectOption | null>(
-    defaultValue ? options.find(o => o.value === defaultValue) || null : null
+    (value ?? defaultValue) ? options.find(o => o.value === (value ?? defaultValue)) || null : null
   )
   const s = SIZE_STYLES[size]
   const ref = useRef<HTMLDivElement>(null)
   const dropdownRef = useRef<HTMLUListElement>(null)
   const isFirstRender = useRef(true)
+
+  useEffect(() => {
+    if (value !== undefined && value !== selected?.value) {
+      setSelected(options.find(o => o.value === value) || null)
+    }
+  }, [value])
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {

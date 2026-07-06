@@ -10,20 +10,27 @@ export interface GlassSelectIconOption {
 interface GlassSelectIconProps {
   options: GlassSelectIconOption[]
   defaultValue?: string
+  value?: string
   placeholder?: string
   label?: string
   icon?: React.ReactNode
   onChange?: (value: string) => void
 }
 
-export function GlassSelectIcon({ options, defaultValue, placeholder = 'Search  Coin', label, icon, onChange }: GlassSelectIconProps) {
+export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'Search  Coin', label, icon, onChange }: GlassSelectIconProps) {
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState<GlassSelectIconOption | null>(
-    defaultValue ? options.find(o => o.value === defaultValue) || null : null
+    (value ?? defaultValue) ? options.find(o => o.value === (value ?? defaultValue)) || null : null
   )
   const ref = useRef<HTMLDivElement>(null)
   const dropdownRef = useRef<HTMLUListElement>(null)
   const isFirstRender = useRef(true)
+
+  useEffect(() => {
+    if (value !== undefined && value !== selected?.value) {
+      setSelected(options.find(o => o.value === value) || null)
+    }
+  }, [value])
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
