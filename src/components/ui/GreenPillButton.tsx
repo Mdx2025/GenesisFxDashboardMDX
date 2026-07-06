@@ -13,7 +13,7 @@ export function GreenPillButton({ children, onClick }: GreenPillButtonProps) {
       onClick={onClick}
     >
       <div
-        className="absolute inset-0 rounded-full pointer-events-none border border-[#DBDBDB] [mask-image:radial-gradient(ellipse_35%_60%_at_0%_30%,white,transparent),radial-gradient(ellipse_35%_60%_at_100%_30%,white,transparent)] [-webkit-mask-image:radial-gradient(ellipse_35%_60%_at_0%_30%,white,transparent),radial-gradient(ellipse_35%_60%_at_100%_30%,white,transparent)] [mask-composite:add] [-webkit-mask-composite:destination-over]"
+        className="absolute inset-0 rounded-full pointer-events-none border border-[#DBDBDB] [mask-image:radial-gradient(25%_60%_at_0_10%,#fff,#0000),radial-gradient(25%_60%_at_100%_10%,#fff,#0000)] [-webkit-mask-image:radial-gradient(25%_60%_at_0_10%,#fff,#0000),radial-gradient(25%_60%_at_100%_10%,#fff,#0000)] [mask-composite:add] [-webkit-mask-composite:destination-over]"
         aria-hidden="true"
       />
       <svg className="absolute left-[18%] top-[25%] opacity-70" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
