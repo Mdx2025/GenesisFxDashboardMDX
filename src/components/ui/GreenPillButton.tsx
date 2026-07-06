@@ -14,13 +14,14 @@ export function GreenPillButton({ children, onClick }: GreenPillButtonProps) {
       style={{ background: '#021B13', border: 'none' }}
     >
       <div
-        className="absolute top-0 left-0 w-1/2 h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, #DBDBDB 40%, transparent 100%)' }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-0 right-0 w-1/2 h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, #DBDBDB 60%, transparent 100%)' }}
+        className="absolute inset-0 rounded-full pointer-events-none"
+        style={{
+          border: '1px solid #DBDBDB',
+          maskImage: 'radial-gradient(ellipse 35% 60% at 0% 30%, white, transparent), radial-gradient(ellipse 35% 60% at 100% 30%, white, transparent)',
+          WebkitMaskImage: 'radial-gradient(ellipse 35% 60% at 0% 30%, white, transparent), radial-gradient(ellipse 35% 60% at 100% 30%, white, transparent)',
+          maskComposite: 'add',
+          WebkitMaskComposite: 'destination-over',
+        }}
         aria-hidden="true"
       />
       <svg className="absolute left-[18%] top-[25%] opacity-70" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
