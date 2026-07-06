@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton, SuccessSnackbar } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
@@ -91,6 +91,7 @@ export default function AssetsManagementPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [transferOpen, setTransferOpen] = useState(false)
   const [processingOpen, setProcessingOpen] = useState(false)
+  const [snackbarOpen, setSnackbarOpen] = useState(false)
 
   return (
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
@@ -289,7 +290,8 @@ export default function AssetsManagementPage() {
         </div>
       </main>
       <TransferModal open={transferOpen} onClose={() => setTransferOpen(false)} onTransfer={() => setProcessingOpen(true)} />
-      <TransferProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} />
+      <TransferProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} onComplete={() => setSnackbarOpen(true)} />
+      <SuccessSnackbar open={snackbarOpen} onClose={() => setSnackbarOpen(false)} />
     </div>
   )
 }

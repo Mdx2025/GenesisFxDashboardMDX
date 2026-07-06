@@ -20,11 +20,13 @@ function CheckCircleIcon() {
 interface TransferProcessingModalProps {
   open: boolean
   onClose: () => void
+  onComplete?: () => void
 }
 
-export function TransferProcessingModal({ open, onClose }: TransferProcessingModalProps) {
+export function TransferProcessingModal({ open, onClose, onComplete }: TransferProcessingModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
+  const progressRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
 
   const handleClose = useCallback(() => {
@@ -47,13 +49,25 @@ export function TransferProcessingModal({ open, onClose }: TransferProcessingMod
     if (!mounted) return
     const overlay = overlayRef.current
     const modal = modalRef.current
-    if (!overlay || !modal) return
+    const progress = progressRef.current
+    if (!overlay || !modal || !progress) return
 
     gsap.set(overlay, { opacity: 0 })
     gsap.set(modal, { opacity: 0, scale: 0.96 })
     gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
     gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
-  }, [mounted])
+
+    gsap.fromTo(progress,
+      { scaleX: 0, transformOrigin: 'right center' },
+      {
+        scaleX: 1, duration: 3, ease: 'power1.inOut', delay: 0.4,
+        onComplete: () => {
+          handleClose()
+          setTimeout(() => onComplete?.(), 300)
+        },
+      }
+    )
+  }, [mounted, handleClose, onComplete])
 
   useEffect(() => {
     if (!mounted) return
@@ -71,7 +85,6 @@ export function TransferProcessingModal({ open, onClose }: TransferProcessingMod
       ref={overlayRef}
       className="fixed inset-0 z-[110] flex items-center justify-center"
       style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
-      onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
       aria-label="Transfer Processing"
@@ -91,75 +104,40 @@ export function TransferProcessingModal({ open, onClose }: TransferProcessingMod
           backdropFilter: 'blur(23.23px)',
         }}
       >
-        {/* Bottom glow ellipse */}
-        <div
-          className="absolute pointer-events-none"
-          style={{ width: 493, height: 288, left: 190, top: 540, background: '#14532d', borderRadius: 9999, filter: 'blur(157px)' }}
-          aria-hidden="true"
-        />
+        {/* Bottom glow */}
+        <div className="absolute pointer-events-none" style={{ width: 493, height: 288, left: 190, top: 540, background: '#14532d', borderRadius: 9999, filter: 'blur(157px)' }} aria-hidden="true" />
 
-        {/* Title: Sending 0.1 ETH */}
-        <div
-          className="absolute text-white font-acid font-normal"
-          style={{ left: 265, top: 111, fontSize: 36 }}
-        >
+        {/* Title */}
+        <div className="absolute text-white font-acid font-normal text-center" style={{ left: 0, right: 0, top: 111, fontSize: 36 }}>
           Sending 0.1 ETH
         </div>
 
-        {/* Subtitle: Processing Internal Transfer */}
-        <div
-          className="absolute font-acid font-normal text-center"
-          style={{ left: 235, top: 158, fontSize: 24, color: '#A0A0A0' }}
-        >
+        {/* Subtitle */}
+        <div className="absolute font-acid font-normal text-center" style={{ left: 0, right: 0, top: 158, fontSize: 24, color: '#A0A0A0' }}>
           Processing Internal Transfer
         </div>
 
-        {/* Progress bar area */}
-        {/* Track background */}
-        <div
-          className="absolute"
-          style={{ width: 720, height: 10, left: 43, top: 269, background: '#18181b', borderRadius: 30 }}
-          aria-hidden="true"
-        />
-
-        {/* Progress fill glow layers */}
-        <div className="absolute" style={{ width: 288, height: 10, left: 43, top: 269, background: 'linear-gradient(to right, rgba(4,120,87,0) 10%, rgba(110,231,183,0) 31%, #064E3B 100%)', borderRadius: 30, filter: 'blur(2px)' }} aria-hidden="true" />
-        <div className="absolute" style={{ width: 288, height: 10, left: 43, top: 269, background: 'linear-gradient(to right, rgba(4,120,87,0) 10%, rgba(110,231,183,0) 31%, #064E3B 100%)', borderRadius: 30, filter: 'blur(4px)' }} aria-hidden="true" />
-        <div className="absolute" style={{ width: 288, height: 10, left: 43, top: 269, background: 'linear-gradient(to right, rgba(4,120,87,0) 10%, rgba(110,231,183,0) 31%, #064E3B 100%)', borderRadius: 30, filter: 'blur(5.9px)' }} aria-hidden="true" />
-        <div className="absolute" style={{ width: 288, height: 10, left: 43, top: 269, background: 'linear-gradient(to right, #10B981 10%, #047857 31%, #064E3B 100%)', borderRadius: 30, filter: 'blur(4px)' }} aria-hidden="true" />
-        <div className="absolute" style={{ width: 288, height: 10, left: 43, top: 269, background: 'linear-gradient(to right, #10B981 10%, #047857 31%, #064E3B 100%)', borderRadius: 30, filter: 'blur(4px)' }} aria-hidden="true" />
-        {/* Solid fill */}
-        <div className="absolute" style={{ width: 288, height: 10, left: 43, top: 269, background: 'linear-gradient(to right, #10B981 10%, #047857 31%, #064E3B 100%)', borderRadius: 30 }} />
-
-        {/* Left endpoint circle */}
-        <div
-          className="absolute"
-          style={{ width: 64, height: 64, left: 364, top: 241, background: '#18181b', borderRadius: 9999 }}
-          aria-hidden="true"
-        />
-
-        {/* Right endpoint circle */}
-        <div
-          className="absolute"
-          style={{ width: 64, height: 64, left: 698, top: 241, background: '#18181b', borderRadius: 9999 }}
-          aria-hidden="true"
-        />
-
-        {/* Link icon centered on progress */}
-        <div className="absolute" style={{ left: 383, top: 260 }}>
-          <LinkCircleIcon />
+        {/* Progress bar */}
+        <div className="absolute" style={{ left: 43, right: 43, top: 269, height: 10 }}>
+          {/* Track */}
+          <div className="absolute inset-0" style={{ background: '#18181b', borderRadius: 30 }} />
+          {/* Animated fill (grows right to left = transformOrigin right) */}
+          <div ref={progressRef} className="absolute inset-0" style={{ background: 'linear-gradient(to left, #10B981 10%, #047857 40%, #064E3B 100%)', borderRadius: 30, transform: 'scaleX(0)', transformOrigin: 'right center' }} />
+          {/* Glow layers */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to left, rgba(16,185,129,0.5), rgba(4,120,87,0.3), transparent)', borderRadius: 30, filter: 'blur(3px)' }} aria-hidden="true" />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to left, rgba(16,185,129,0.3), rgba(4,120,87,0.2), transparent)', borderRadius: 30, filter: 'blur(6px)' }} aria-hidden="true" />
         </div>
 
-        {/* Check icon at end */}
-        <div className="absolute" style={{ left: 721, top: 264 }}>
-          <CheckCircleIcon />
-        </div>
+        {/* Endpoint circles */}
+        <div className="absolute" style={{ width: 64, height: 64, left: 364, top: 241, background: '#18181b', borderRadius: 9999 }} aria-hidden="true" />
+        <div className="absolute" style={{ width: 64, height: 64, left: 698, top: 241, background: '#18181b', borderRadius: 9999 }} aria-hidden="true" />
 
-        {/* Disclaimer text */}
-        <div
-          className="absolute font-acid font-normal text-center"
-          style={{ left: 233, top: 354, fontSize: 16, color: '#606060', lineHeight: '24px' }}
-        >
+        {/* Icons */}
+        <div className="absolute" style={{ left: 383, top: 260 }}><LinkCircleIcon /></div>
+        <div className="absolute" style={{ left: 721, top: 264 }}><CheckCircleIcon /></div>
+
+        {/* Disclaimer */}
+        <div className="absolute font-acid font-normal text-center" style={{ left: 0, right: 0, top: 354, fontSize: 16, color: '#606060', lineHeight: '24px' }}>
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
       </div>
