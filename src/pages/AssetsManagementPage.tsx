@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, FloatingNavBar } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions } from '@/data/assets-history'
 import { GLOW_GREEN, STATUS_STYLES, COIN_STYLES } from '@/constants/colors'
 import type { AssetTransaction } from '@/data/assets-history'
-
-const TABS = ['Deposits', 'Withdrawals', 'Transfers', 'Credits'] as const
 
 const TYPE_CONFIG: Record<AssetTransaction['type'], { icon: typeof DepositIcon; label: string }> = {
   deposit: { icon: DepositIcon, label: 'Deposit' },
@@ -16,7 +14,12 @@ const TYPE_CONFIG: Record<AssetTransaction['type'], { icon: typeof DepositIcon; 
   transfer: { icon: TransferIcon, label: 'Transfer' },
 }
 
-const TABLE_COLUMNS = '10% 20% 8% 10% 8% 16% 10% auto'
+const COIN_ICON_COLORS: Record<string, string> = {
+  USDT: '#10BC83',
+  BTC: '#e29d58',
+  ETH: '#5b9cf5',
+  USDC: '#5b9cf5',
+}
 
 function WalletIcon() {
   return (
@@ -26,10 +29,18 @@ function WalletIcon() {
   )
 }
 
-function FilterDropdown({ label }: { label: string }) {
+function CopyIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer">
+      <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function FilterDropdown({ label, wide }: { label: string; wide?: boolean }) {
   return (
     <button
-      className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-300 text-sm hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
+      className={`flex items-center justify-between gap-4 px-4 py-2.5 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-300 text-sm hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none ${wide ? 'min-w-[160px]' : 'min-w-[100px]'}`}
       aria-label={`Filter by ${label}`}
       aria-haspopup="listbox"
     >
@@ -41,7 +52,6 @@ function FilterDropdown({ label }: { label: string }) {
 
 export default function AssetsManagementPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
@@ -107,32 +117,16 @@ export default function AssetsManagementPage() {
             </GlassCard>
           </section>
 
-          <nav aria-label="Transaction type tabs">
-            <div className="flex items-center gap-1 mb-6" role="tablist">
-              {TABS.map((tab, i) => (
-                <button
-                  key={tab}
-                  role="tab"
-                  aria-selected={activeTab === i}
-                  onClick={() => setActiveTab(i)}
-                  className={`px-5 py-2 rounded-full text-sm font-normal transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none ${
-                    activeTab === i
-                      ? 'bg-gfx-green-500/20 text-gfx-green-500 border border-gfx-green-500/30'
-                      : 'text-gfx-neutral-300 hover:text-white border border-transparent'
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </nav>
+          <div className="mb-6">
+            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} />
+          </div>
 
           <div className="flex items-center gap-3 mb-6 flex-wrap" role="group" aria-label="Transaction filters">
             <FilterDropdown label="Type" />
-            <FilterDropdown label="Time" />
-            <FilterDropdown label="Coin" />
+            <FilterDropdown label="Time" wide />
+            <FilterDropdown label="Coin" wide />
             <button
-              className="px-4 py-2.5 rounded-full text-sm text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
+              className="px-5 py-2.5 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-300 text-sm hover:text-white hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
               aria-label="Reset all filters"
             >
               Reset
@@ -143,8 +137,8 @@ export default function AssetsManagementPage() {
             <GlassCard variant="heavy" divider="white" rounded="26px">
               <div className="px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
-                  <span className="text-gfx-neutral-500 text-sm">Total {assetTransactions.length} records</span>
+                  <h2 className="text-[19px] font-bold tracking-tight text-white italic">Assets History</h2>
+                  <span className="text-[11px] text-gfx-neutral-300 bg-white/[0.06] border border-white/[0.08] rounded-full px-3 py-1">Total {assetTransactions.length} records</span>
                 </div>
               </div>
 
@@ -152,20 +146,19 @@ export default function AssetsManagementPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 xl:px-10 py-4" style={{ width: '10%' }}>Type</th>
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '20%' }}>Deposit Address</th>
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '8%' }}><span className="sr-only">Coin</span></th>
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '10%' }}><span className="sr-only">Amount</span></th>
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '8%' }}>Fees</th>
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '16%' }}>Date</th>
-                      <th className="text-left text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '10%' }}>Status</th>
-                      <th className="py-4"><span className="sr-only">Total</span></th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 xl:px-10 py-4" style={{ width: '8%' }}>Type</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '18%' }}>Deposit Address</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '12%' }}>Coin</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '10%' }}>Network</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '18%' }}>Date</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4" style={{ width: '12%' }}>Status</th>
+                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 xl:pr-10 py-4" style={{ width: '10%' }}>Amount</th>
                     </tr>
                   </thead>
                   <tbody>
                     {assetTransactions.map((tx, i) => {
                       const { icon: Icon, label } = TYPE_CONFIG[tx.type]
-                      const coin = COIN_STYLES[tx.coin]
+                      const coinColor = COIN_ICON_COLORS[tx.coin] || '#A0A0A0'
                       const status = STATUS_STYLES[tx.status]
                       return (
                         <tr key={`${tx.type}-${tx.date}-${i}`} className={i > 0 ? 'border-t border-white/5' : ''}>
@@ -177,21 +170,31 @@ export default function AssetsManagementPage() {
                               <span className="text-white text-[14px]">{label}</span>
                             </div>
                           </td>
-                          <td className="text-[14px] text-gfx-neutral-300 truncate pr-4 py-4 xl:py-5">{tx.address}</td>
                           <td className="py-4 xl:py-5">
-                            <span className="inline-flex items-center text-[11px] font-normal uppercase tracking-wider rounded-full px-2.5 py-1" style={{ background: coin.bg, border: coin.border, color: coin.color }}>
-                              {tx.coin}
-                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[14px] text-gfx-neutral-300 truncate">{tx.address}</span>
+                              <CopyIcon />
+                            </div>
                           </td>
-                          <td className="text-white text-[14px] font-semibold py-4 xl:py-5">{tx.amount}</td>
+                          <td className="py-4 xl:py-5">
+                            <div className="flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: coinColor }}>
+                                <span className="text-[10px] font-bold text-white">{tx.coin.charAt(0)}</span>
+                              </div>
+                              <span className="text-white text-[14px] font-semibold">{tx.coin}</span>
+                            </div>
+                          </td>
                           <td className="text-gfx-neutral-300 text-[14px] py-4 xl:py-5">{tx.network}</td>
                           <td className="text-gfx-neutral-300 text-[14px] py-4 xl:py-5"><time>{tx.date}</time></td>
                           <td className="py-4 xl:py-5">
-                            <span className="inline-flex items-center text-[11px] font-normal capitalize tracking-wider rounded-full px-2.5 py-1" style={{ background: status.bg, border: status.border, color: status.color }}>
+                            <span
+                              className="inline-flex items-center text-[11px] font-normal capitalize tracking-wider rounded-full px-3 py-1"
+                              style={{ background: status.bg, border: status.border, color: status.color }}
+                            >
                               {tx.status}
                             </span>
                           </td>
-                          <td className="text-white text-[14px] font-semibold text-right pr-4 sm:pr-6 xl:pr-10 py-4 xl:py-5">{tx.total}</td>
+                          <td className="text-white text-[14px] font-semibold text-right pr-4 sm:pr-6 xl:pr-10 py-4 xl:py-5">{tx.amount}</td>
                         </tr>
                       )
                     })}
