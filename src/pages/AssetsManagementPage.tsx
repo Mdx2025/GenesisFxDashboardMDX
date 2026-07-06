@@ -244,9 +244,7 @@ export default function AssetsManagementPage() {
                         <tr key={`${tx.type}-${tx.date}-${i}`} className={i > 0 ? 'border-t border-white/5' : ''}>
                           <td className="px-4 sm:px-6 py-4 xl:py-5">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.06] flex items-center justify-center shrink-0">
-                                <Icon size={16} color="#A0A0A0" />
-                              </div>
+                              <Icon size={16} color="#A0A0A0" />
                               <span className="text-white text-[14px]">{label}</span>
                             </div>
                           </td>
