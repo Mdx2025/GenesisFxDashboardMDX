@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 
 interface WithdrawCodeModalProps {
   open: boolean
@@ -14,11 +14,14 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
   const [mounted, setMounted] = useState(false)
   const [error, setError] = useState(false)
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
+  const codeRef = useRef(['', '', '', ''])
 
   useEffect(() => {
     if (open) {
       setMounted(true)
-      setCode(['', '', '', ''])
+      const empty = ['', '', '', '']
+      setCode(empty)
+      codeRef.current = [...empty]
       setError(false)
       requestAnimationFrame(() => setVisible(true))
       setTimeout(() => inputRefs.current[0]?.focus(), 200)
@@ -29,50 +32,68 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
     }
   }, [open])
 
-  const validateCode = (newCode: string[]) => {
-    const full = newCode.join('')
-    if (full.length !== 4) return
-    if (full === VALID_CODE) {
-      setError(false)
-      onClose()
-      onSuccess?.()
-    } else {
-      setError(true)
-    }
-  }
-
-  const handleChange = (index: number, value: string) => {
+  const handleChange = useCallback((index: number, value: string) => {
     if (!/^\d*$/.test(value)) return
     const digit = value.slice(-1)
-    const newCode = [...code]
-    newCode[index] = digit
-    setCode(newCode)
+
+    codeRef.current[index] = digit
+    const snapshot = [...codeRef.current]
+    setCode(snapshot)
     setError(false)
+
     if (digit && index < 3) {
       inputRefs.current[index + 1]?.focus()
     }
-    if (digit) validateCode(newCode)
-  }
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
-    if (e.key === 'Backspace' && !code[index] && index > 0) {
+    if (digit) {
+      const full = snapshot.join('')
+      if (full.length === 4) {
+        if (full === VALID_CODE) {
+          setError(false)
+          setTimeout(() => {
+            onClose()
+            onSuccess?.()
+          }, 150)
+        } else {
+          setError(true)
+        }
+      }
+    }
+  }, [onClose, onSuccess])
+
+  const handleKeyDown = useCallback((index: number, e: React.KeyboardEvent) => {
+    if (e.key === 'Backspace' && !codeRef.current[index] && index > 0) {
+      codeRef.current[index - 1] = ''
+      setCode([...codeRef.current])
+      setError(false)
       inputRefs.current[index - 1]?.focus()
     }
-  }
+  }, [])
 
-  const handlePaste = (e: React.ClipboardEvent) => {
+  const handlePaste = useCallback((e: React.ClipboardEvent) => {
     e.preventDefault()
     const pasted = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 4)
-    const newCode = [...code]
-    for (let i = 0; i < pasted.length; i++) {
-      newCode[i] = pasted[i]
+    for (let i = 0; i < 4; i++) {
+      codeRef.current[i] = pasted[i] || ''
     }
-    setCode(newCode)
+    const snapshot = [...codeRef.current]
+    setCode(snapshot)
     setError(false)
     const focusIndex = Math.min(pasted.length, 3)
     inputRefs.current[focusIndex]?.focus()
-    if (pasted.length === 4) validateCode(newCode)
-  }
+
+    if (pasted.length === 4) {
+      const full = snapshot.join('')
+      if (full === VALID_CODE) {
+        setTimeout(() => {
+          onClose()
+          onSuccess?.()
+        }, 150)
+      } else {
+        setError(true)
+      }
+    }
+  }, [onClose, onSuccess])
 
   if (!mounted) return null
 
@@ -95,7 +116,6 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
             : 'modalFadeOut 0.25s ease-in forwards',
         }}
       >
-        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute right-7 top-7 z-10 cursor-pointer hover:opacity-70 transition-opacity"
@@ -107,7 +127,6 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </svg>
         </button>
 
-        {/* Security illustration */}
         <div className="flex justify-center pt-6 sm:pt-10 pb-2 sm:pb-4">
           <img
             src="/images/withdraw-security.svg"
@@ -117,12 +136,10 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           />
         </div>
 
-        {/* Title */}
         <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
           Enter your code
         </h2>
 
-        {/* Subtitle */}
         <div className="text-center mt-3 sm:mt-4 px-6">
           <p className="text-gfx-neutral-300 text-[14px] sm:text-[16px] leading-6">
             We sent a 4-digit code to your email
@@ -132,7 +149,6 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </p>
         </div>
 
-        {/* Code inputs */}
         <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-10 px-4 sm:px-8">
           {code.map((digit, i) => (
             <input
@@ -157,14 +173,12 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           ))}
         </div>
 
-        {/* Error message */}
         {error && (
           <p className="text-center text-red-500 text-[14px] mt-4 animate-[fadeInStep_0.3s_ease-out]">
             Invalid code. Please try again.
           </p>
         )}
 
-        {/* Resend */}
         <div className="flex items-center justify-center gap-1 mt-8 sm:mt-16 pb-10 sm:pb-20">
           <span className="text-gfx-neutral-300 text-[16px] leading-6">
             Didn't receive the code?
@@ -174,7 +188,6 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </button>
         </div>
 
-        {/* Bottom glow */}
         <div
           className="absolute left-1/2 -translate-x-1/2 bottom-[-80px] w-[493px] h-72 bg-green-900 rounded-full pointer-events-none"
           style={{ filter: 'blur(157px)' }}
