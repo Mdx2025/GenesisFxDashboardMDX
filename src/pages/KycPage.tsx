@@ -68,8 +68,8 @@ export default function KycPage() {
               <div className="flex-1 flex flex-col items-center justify-center py-16 px-8 xl:border-r xl:border-white/[0.06]">
                 <KycIllustration />
 
-                <div className="flex flex-col gap-4 items-center">
-                  <h2 className="text-white text-[28px] xl:text-[36px] font-normal text-center">
+                <div className="flex flex-col gap-6 items-center">
+                  <h2 className="text-white text-[28px] xl:text-[36px] font-normal text-center leading-none">
                     KYC Verification Required
                   </h2>
 

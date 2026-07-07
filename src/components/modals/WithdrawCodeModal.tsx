@@ -127,12 +127,20 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </svg>
         </button>
 
-        <div className="flex justify-center pt-6 sm:pt-10 pb-2 sm:pb-4">
+        <div className="relative flex justify-center pt-6 sm:pt-10 pb-2 sm:pb-4">
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
+            <defs>
+              <filter id="ellipse-blur">
+                <feGaussianBlur stdDeviation="111.635" />
+              </filter>
+            </defs>
+            <ellipse cx="50%" cy="50%" rx="40%" ry="45%" fill="#0D4532" opacity="0.3" style={{ mixBlendMode: 'color' }} filter="url(#ellipse-blur)" />
+          </svg>
           <img
-            src="/images/withdraw-security-icon.png"
+            src="/images/withdraw-briefcase-icon.png"
             alt=""
             aria-hidden="true"
-            className="w-auto max-h-[120px] sm:max-h-[200px] object-contain"
+            className="relative z-10 w-auto max-h-[120px] sm:max-h-[200px] object-contain"
           />
         </div>
 
