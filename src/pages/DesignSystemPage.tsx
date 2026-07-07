@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard,
+  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -570,6 +570,13 @@ export default function DesignSystemPage() {
                 <div className="h-3 w-3/4 rounded bg-white/5 animate-pulse" />
                 <div className="h-3 w-1/2 rounded bg-white/5 animate-pulse" />
               </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-h4 text-gfx-neutral-500 mb-4">Glossary Card</h3>
+            <div className="max-w-md">
+              <GlossaryCard term="Address" definition="A unique identifier used to send and receive cryptocurrency, similar to a bank account number in traditional finance." />
             </div>
           </div>
 
