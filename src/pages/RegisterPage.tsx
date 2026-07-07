@@ -138,7 +138,6 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
   return (
     <div className="w-[400px] flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</h1>
-      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Join Genesis FX Markets today</p>
 
       <div className="w-full flex items-center justify-between">
         <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Type</span>
