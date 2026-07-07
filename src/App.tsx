@@ -8,6 +8,7 @@ import WithdrawPage from './pages/WithdrawPage'
 import WithdrawProcessingPage from './pages/WithdrawProcessingPage'
 import KycPage from './pages/KycPage'
 import AllPagesPage from './pages/AllPagesPage'
+import AcademyPage from './pages/AcademyPage'
 import { SvgFilters } from './components/SvgFilters'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/withdraw" element={<WithdrawPage />} />
           <Route path="/withdraw-processing" element={<WithdrawProcessingPage />} />
           <Route path="/kyc" element={<KycPage />} />
+          <Route path="/academy" element={<AcademyPage />} />
           <Route path="/design-system" element={<DesignSystemPage />} />
           <Route path="/allpages" element={<AllPagesPage />} />
         </Route>
