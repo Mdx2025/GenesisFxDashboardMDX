@@ -109,7 +109,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
       />
 
       <div
-        className="relative w-[793px] max-w-[95vw] max-h-[90vh] bg-[#0a0a0a] rounded-[40px] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
+        className="relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] bg-[#0a0a0a] rounded-[2.5rem] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
         style={{
           animation: visible
             ? 'modalFadeIn 0.3s ease-out forwards'
@@ -151,10 +151,10 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
             </h2>
 
             <div className="text-center px-6">
-              <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
+              <p className="text-[#A0A0A0] text-[0.875rem] sm:text-[1rem] leading-6">
                 We sent a 4-digit code to your email
               </p>
-              <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
+              <p className="text-[#A0A0A0] text-[0.875rem] sm:text-[1rem] leading-6">
                 Enter it below to confirm your withdrawal
               </p>
             </div>
@@ -185,24 +185,23 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </div>
 
           {error && (
-            <p className="text-center text-red-500 text-[14px] animate-[fadeInStep_0.3s_ease-out]">
+            <p className="text-center text-red-500 text-[0.875rem] animate-[fadeInStep_0.3s_ease-out]">
               Invalid code. Please try again.
             </p>
           )}
 
           <div className="flex items-center justify-center gap-1 pb-10 sm:pb-20">
-            <span className="text-[#A0A0A0] text-[16px] leading-6">
+            <span className="text-[#A0A0A0] text-[1rem] leading-6">
               Didn't receive the code?
             </span>
-            <button className="text-white text-[16px] leading-6 hover:underline cursor-pointer">
+            <button className="text-white text-[1rem] leading-6 hover:underline cursor-pointer">
               Resend
             </button>
           </div>
         </div>
 
         <div
-          className="absolute left-1/2 -translate-x-1/2 bottom-[-30%] w-[493px] h-72 bg-green-900 rounded-full pointer-events-none"
-          style={{ filter: 'blur(157px)' }}
+          className="absolute left-1/2 -translate-x-1/2 bottom-[-30%] w-[30.8125rem] h-72 bg-green-900 rounded-full pointer-events-none [filter:url(#blur-157)]"
           aria-hidden="true"
         />
       </div>

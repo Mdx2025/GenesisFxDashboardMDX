@@ -13,7 +13,7 @@ export function TradingAccountsTable() {
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4 xl:pb-6">
         <div className="flex items-center gap-4">
-          <h2 className="text-[19px] font-bold tracking-tight text-white">Trading Accounts</h2>
+          <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Trading Accounts</h2>
           <Badge variant="status">2 ACTIVE</Badge>
         </div>
         <div className="flex items-center gap-4 w-full sm:w-auto">
@@ -53,23 +53,23 @@ export function TradingAccountsTable() {
               style={{ gridTemplateColumns: GRID_COLS }} /* dynamic value */
             >
               <div>
-                <p className="text-white text-[15px] font-bold leading-tight">{acc.account}</p>
-                <p className="text-gfx-neutral-300 text-[13px] mt-0.5">{acc.username}</p>
+                <p className="text-white text-[0.9375rem] font-bold leading-tight">{acc.account}</p>
+                <p className="text-gfx-neutral-300 text-[0.8125rem] mt-0.5">{acc.username}</p>
               </div>
-              <p className="text-[15px] text-white/60">{acc.platform}</p>
+              <p className="text-[0.9375rem] text-white/60">{acc.platform}</p>
               <div>
                 <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
               </div>
-              <p className="text-white text-[15px] font-semibold">{acc.balance}</p>
-              <p className="text-white text-[15px] font-semibold">{acc.equity}</p>
-              <p className={`text-[15px] font-semibold ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</p>
-              <p className={`text-[15px] font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</p>
+              <p className="text-white text-[0.9375rem] font-semibold">{acc.balance}</p>
+              <p className="text-white text-[0.9375rem] font-semibold">{acc.equity}</p>
+              <p className={`text-[0.9375rem] font-semibold ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</p>
+              <p className={`text-[0.9375rem] font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</p>
               <div className="flex items-center gap-2">
                 <GreenDot size={8} />
-                <span className="text-gfx-neutral-300 text-[14px]">{acc.status}</span>
+                <span className="text-gfx-neutral-300 text-[0.875rem]">{acc.status}</span>
               </div>
               <div className="flex items-center justify-end gap-6">
-                <button className="text-gfx-neutral-300 text-[14px] hover:text-white transition-colors">View</button>
+                <button className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors">View</button>
                 <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                 <button className="text-gfx-neutral-300 hover:text-white transition-colors text-lg tracking-widest" aria-label="More options">
                   ···

@@ -55,7 +55,7 @@ function CoinLogo({ coin }: { coin: string }) {
   }
   return (
     <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: bg }} /* dynamic */>
-      <span className="text-[10px] font-bold text-white">{coin.charAt(0)}</span>
+      <span className="text-[0.625rem] font-bold text-white">{coin.charAt(0)}</span>
     </div>
   )
 }
@@ -266,7 +266,7 @@ export default function AssetsManagementPage() {
               <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
+                  <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Assets History</h2>
                   <Badge variant="status">Total ({filteredTransactions.length} records)</Badge>
                 </div>
               </div>
@@ -293,32 +293,32 @@ export default function AssetsManagementPage() {
                           <td className="px-4 sm:px-6 py-4 xl:py-5">
                             <div className="flex items-center gap-3">
                               <Icon size={16} color="#A0A0A0" />
-                              <span className="text-white text-[14px] 3xl:text-[18px] 4xl:text-[24px]">{label}</span>
+                              <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{label}</span>
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100">
-                              <span className="text-[14px] 3xl:text-[18px] 4xl:text-[24px] text-white truncate">{tx.address}</span>
+                              <span className="text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="flex items-center gap-2">
                               <CoinLogo coin={tx.coin} />
-                              <span className="text-white text-[14px] 3xl:text-[18px] 4xl:text-[24px] font-semibold">{tx.coin}</span>
+                              <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold">{tx.coin}</span>
                             </div>
                           </td>
-                          <td className="text-white text-[14px] 3xl:text-[18px] 4xl:text-[24px] py-4 xl:py-5">{tx.network}</td>
-                          <td className="text-white text-[14px] 3xl:text-[18px] 4xl:text-[24px] py-4 xl:py-5"><time>{tx.date}</time></td>
+                          <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{tx.network}</td>
+                          <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5"><time>{tx.date}</time></td>
                           <td className="py-4 xl:py-5">
                             <span
-                              className="inline-flex items-center text-[11px] font-normal capitalize tracking-wider rounded-full px-3 py-1"
+                              className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1"
                               style={{ background: status.bg, border: status.border, color: status.color }} /* dynamic */
                             >
                               {tx.status}
                             </span>
                           </td>
-                          <td className="text-white text-[14px] 3xl:text-[18px] 4xl:text-[24px] font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
+                          <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
                         </tr>
                       )
                     })}

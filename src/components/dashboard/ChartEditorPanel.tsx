@@ -150,7 +150,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-[10px] uppercase tracking-[1.5px] text-gfx-neutral-500">{label}</span>
+      <span className="text-[0.625rem] uppercase tracking-[1.5px] text-gfx-neutral-500">{label}</span>
       {children}
     </div>
   )
@@ -184,7 +184,7 @@ function Slider({ value, min, max, step, color, onChange }: { value: number; min
           }} /* dynamic value */
         />
       </div>
-      <span className="text-[10px] text-gfx-neutral-500 tabular-nums w-8 text-right">
+      <span className="text-[0.625rem] text-gfx-neutral-500 tabular-nums w-8 text-right">
         {Number.isInteger(step) ? value : value.toFixed(2)}
       </span>
     </div>

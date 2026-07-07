@@ -7,8 +7,7 @@ function KycIllustration() {
     <div className="relative w-auto h-fit">
       {/* Gradient ellipse behind the image */}
       <div
-        className="absolute inset-0 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(16,188,131,0.15) 0%, rgba(16,188,131,0) 70%)' }}
+        className="absolute inset-0 rounded-full pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(16,188,131,0.15)_0%,rgba(16,188,131,0)_70%)]"
         aria-hidden="true"
       />
       <img
@@ -42,7 +41,7 @@ export default function KycPage() {
           <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
             Withdraw Funds
           </h1>
-          <p className="text-gfx-neutral-300 text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px]">
+          <p className="text-gfx-neutral-300 text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
             Choose your preferred withdrawal method to get started.
           </p>
         </div>
@@ -52,15 +51,14 @@ export default function KycPage() {
           <div className="relative z-10 min-h-[730px] 3xl:min-h-[900px] 4xl:min-h-[1200px] overflow-hidden">
             {/* Horizontal divider at top */}
             <div
-              className="absolute left-[10%] right-[10%] top-[0.84px] h-[1.25px] pointer-events-none"
-              style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)' }}
+              className="absolute left-[10%] right-[10%] top-[0.84px] h-[1.25px] pointer-events-none bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.08)_50%,rgba(255,255,255,0)_100%)]"
               aria-hidden="true"
             />
 
             {/* Internal glow ellipses */}
-            <div className="absolute w-[587px] h-[435px] left-[25%] -top-[235px] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left" style={{ background: '#00110B' }} aria-hidden="true" />
-            <div className="absolute w-[493px] h-[278px] left-[8%] top-[70px] rounded-full [filter:url(#blur-157)] pointer-events-none" style={{ background: '#114131' }} aria-hidden="true" />
-            <div className="absolute w-[493px] h-[278px] right-0 -top-[466px] rounded-full [filter:url(#blur-157)] pointer-events-none" style={{ background: '#114131' }} aria-hidden="true" />
+            <div className="absolute w-[36.6875rem] h-[27.1875rem] left-[25%] -top-[14.6875rem] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left bg-[#00110B]" aria-hidden="true" />
+            <div className="absolute w-[30.8125rem] h-[17.375rem] left-[8%] top-[4.375rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-[#114131]" aria-hidden="true" />
+            <div className="absolute w-[30.8125rem] h-[17.375rem] right-0 -top-[29.125rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-[#114131]" aria-hidden="true" />
 
             {/* Two-panel layout */}
             <div className="relative z-10 flex flex-col xl:flex-row min-h-[730px] 3xl:min-h-[900px] 4xl:min-h-[1200px]">
@@ -70,11 +68,11 @@ export default function KycPage() {
                   <KycIllustration />
 
                   <div className="flex flex-col gap-6 3xl:gap-8 4xl:gap-12 items-center">
-                    <h2 className="text-white text-[28px] xl:text-[36px] 3xl:text-[48px] 4xl:text-[64px] font-normal text-center leading-none">
+                    <h2 className="text-white text-[1.75rem] xl:text-[2.25rem] 3xl:text-[3rem] 4xl:text-[4rem] font-normal text-center leading-none">
                       KYC Verification Required
                     </h2>
 
-                    <p className="text-gfx-neutral-500 text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
+                    <p className="text-gfx-neutral-500 text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
                       To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
                     </p>
 
@@ -94,28 +92,28 @@ export default function KycPage() {
                   className="w-auto h-[120px] 3xl:h-[160px] 4xl:h-[220px] object-contain mb-10 3xl:mb-14 4xl:mb-16"
                 />
 
-                <h3 className="text-[#606060] text-[28px] xl:text-[32px] 3xl:text-[42px] 4xl:text-[56px] font-normal text-center">
+                <h3 className="text-[#606060] text-[1.75rem] xl:text-[2rem] 3xl:text-[2.625rem] 4xl:text-[3.5rem] font-normal text-center">
                   Choose Withdrawal Method
                 </h3>
 
-                <p className="text-[#606060] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-[#606060] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Select your preferred withdrawal method to get started
                 </p>
 
-                <h4 className="text-[#606060] text-[24px] 3xl:text-[32px] 4xl:text-[44px] font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
+                <h4 className="text-[#606060] text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
                   Cryptocurrency
                 </h4>
 
-                <p className="text-[#606060] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-[#606060] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Bitcoin, Ethereum, USDT, USDC, and more
                 </p>
 
                 <div className="flex items-center gap-2 3xl:gap-3 mt-4 3xl:mt-6 4xl:mt-8">
-                  <svg className="w-[18px] h-[18px] 3xl:w-[24px] 3xl:h-[24px] 4xl:w-[32px] 4xl:h-[32px]" viewBox="0 0 18 18" fill="none">
+                  <svg className="w-[1.125rem] h-[1.125rem] 3xl:w-[1.5rem] 3xl:h-[1.5rem] 4xl:w-[2rem] 4xl:h-[2rem]" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                     <circle cx="9" cy="9" r="8" stroke="#606060" strokeWidth="1.5"/>
                     <path d="M9 5v4l2.5 2.5" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-[#606060] text-[14px] 3xl:text-[18px] 4xl:text-[24px] font-medium">Avrg 4 hours</span>
+                  <span className="text-[#606060] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-medium">Avrg 4 hours</span>
                 </div>
               </div>
             </div>

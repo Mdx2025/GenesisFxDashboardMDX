@@ -56,7 +56,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
   return (
     <div
       ref={ref}
-      className="fixed z-[200] overflow-hidden top-[24px] right-[24px] w-[384px] h-[80px] bg-[rgba(255,255,255,0.05)] rounded-[20px] shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-[rgba(255,255,255,0.05)] backdrop-blur-[25px]"
+      className="fixed z-[200] overflow-hidden top-[1.5rem] right-[1.5rem] w-[24rem] h-[5rem] bg-[rgba(255,255,255,0.05)] rounded-[1.25rem] shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-[rgba(255,255,255,0.05)] backdrop-blur-[25px]"
       role="status"
       aria-live="polite"
     >
@@ -65,7 +65,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
       <div className="absolute pointer-events-none w-[493px] h-[288px] left-[-17px] top-[-28px] bg-[#14532d] rounded-full blur-[157px]" aria-hidden="true" />
 
       {/* Content */}
-      <div className="relative z-10 flex items-center gap-3 pl-[29px] pt-[25px]">
+      <div className="relative z-10 flex items-center gap-3 pl-[1.8125rem] pt-[1.5625rem]">
         {/* Glow check icon */}
         <div className="relative">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="absolute left-[-2px] top-[-2px] blur-[1px]" aria-hidden="true">

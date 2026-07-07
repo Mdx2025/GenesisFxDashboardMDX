@@ -8,7 +8,7 @@ function HourglassIllustration() {
     <div className="relative w-[280px] h-[280px] 3xl:w-[400px] 3xl:h-[400px] 4xl:w-[560px] 4xl:h-[560px] mx-auto [&>svg]:scale-100 3xl:[&>svg]:scale-[1.43] 4xl:[&>svg]:scale-[2]">
       <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" width="134" height="227" viewBox="0 0 134 227" fill="none">
         <g filter="url(#hg-frame)">
-          <path d="M67.16 166.38H12.01V131.28c0-2.25.85-4.43 2.37-6.09l33.82-36.86c3.2-3.48 3.16-8.85-.09-12.28L14.47 40.51c-1.58-1.67-2.47-3.89-2.47-6.19V0h55.16v166.38zm54.42-166.38v34.36c0 2.28-.87 4.48-2.42 6.15L85.93 76.09c-3.2 3.42-3.24 8.72-.1 12.19l33.42 36.92c1.5 1.66 2.33 3.81 2.33 6.05v35.14H67.16V0h54.42z" fill="#F8F8F8" fillOpacity="0.025" style={{ mixBlendMode: 'luminosity' }} shapeRendering="crispEdges" />
+          <path d="M67.16 166.38H12.01V131.28c0-2.25.85-4.43 2.37-6.09l33.82-36.86c3.2-3.48 3.16-8.85-.09-12.28L14.47 40.51c-1.58-1.67-2.47-3.89-2.47-6.19V0h55.16v166.38zm54.42-166.38v34.36c0 2.28-.87 4.48-2.42 6.15L85.93 76.09c-3.2 3.42-3.24 8.72-.1 12.19l33.42 36.92c1.5 1.66 2.33 3.81 2.33 6.05v35.14H67.16V0h54.42z" fill="#F8F8F8" fillOpacity="0.025" className="mix-blend-luminosity" shapeRendering="crispEdges" />
         </g>
         <defs>
           <filter id="hg-frame" x="-6" y="-18" width="146" height="245" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -50,7 +50,7 @@ function HourglassIllustration() {
 
       <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" width="133" height="143" viewBox="0 0 133 143" fill="none">
         <g filter="url(#hg-detail)">
-          <path d="M67.43 0h-1.09c-7.76 0-11.65 0-13.51 1.56a7.5 7.5 0 0 0-2.39 5.49c.13 2.42 2.78 5.26 8.07 10.95l2.71 2.92c1.06 1.14 1.59 1.71 1.97 2.36a7.5 7.5 0 0 1 .73 1.86c.17.74.17 1.51.17 3.07v32.25c0 1.49 0 2.24-.16 2.94a7.5 7.5 0 0 1-.67 1.8 7.5 7.5 0 0 1-1.82 2.31l-9.26 10.57c-1.18 1.34-1.77 2.02-2.48 2.5a7.5 7.5 0 0 1-2.06.94 7.5 7.5 0 0 1-2.07.22H30.2c-3.21 0-4.82 0-6.08.54a6 6 0 0 0-3.51 3.51c-.54 1.26-.54 2.87-.54 6.08s0 4.82.54 6.08a6 6 0 0 0 3.51 3.51c1.26.54 2.87.54 6.08.54h71.73c3.21 0 4.82 0 6.08-.54a6 6 0 0 0 3.51-3.51c.54-1.26.54-2.87.54-6.08s0-4.82-.54-6.08a6 6 0 0 0-3.51-3.51c-1.26-.54-2.87-.54-6.08-.54H89.97a7.5 7.5 0 0 1-2.07-.22 7.5 7.5 0 0 1-2.06-.94c-.71-.48-1.3-1.16-2.48-2.5l-9.26-10.57a7.5 7.5 0 0 1-1.82-2.31 7.5 7.5 0 0 1-.67-1.8c-.16-.71-.16-1.45-.16-2.94V28.02c0-1.49 0-2.24.16-2.94a7.5 7.5 0 0 1 .67-1.8 7.5 7.5 0 0 1 1.82-2.31l2.81-3.21c4.94-5.64 7.41-8.46 7.49-10.85a7.5 7.5 0 0 0-2.44-5.39C80.67 0 76.93 0 69.43 0h-2z" fill="#F8F8F8" fillOpacity="0.1" style={{ mixBlendMode: 'luminosity' }} shapeRendering="crispEdges" />
+          <path d="M67.43 0h-1.09c-7.76 0-11.65 0-13.51 1.56a7.5 7.5 0 0 0-2.39 5.49c.13 2.42 2.78 5.26 8.07 10.95l2.71 2.92c1.06 1.14 1.59 1.71 1.97 2.36a7.5 7.5 0 0 1 .73 1.86c.17.74.17 1.51.17 3.07v32.25c0 1.49 0 2.24-.16 2.94a7.5 7.5 0 0 1-.67 1.8 7.5 7.5 0 0 1-1.82 2.31l-9.26 10.57c-1.18 1.34-1.77 2.02-2.48 2.5a7.5 7.5 0 0 1-2.06.94 7.5 7.5 0 0 1-2.07.22H30.2c-3.21 0-4.82 0-6.08.54a6 6 0 0 0-3.51 3.51c-.54 1.26-.54 2.87-.54 6.08s0 4.82.54 6.08a6 6 0 0 0 3.51 3.51c1.26.54 2.87.54 6.08.54h71.73c3.21 0 4.82 0 6.08-.54a6 6 0 0 0 3.51-3.51c.54-1.26.54-2.87.54-6.08s0-4.82-.54-6.08a6 6 0 0 0-3.51-3.51c-1.26-.54-2.87-.54-6.08-.54H89.97a7.5 7.5 0 0 1-2.07-.22 7.5 7.5 0 0 1-2.06-.94c-.71-.48-1.3-1.16-2.48-2.5l-9.26-10.57a7.5 7.5 0 0 1-1.82-2.31 7.5 7.5 0 0 1-.67-1.8c-.16-.71-.16-1.45-.16-2.94V28.02c0-1.49 0-2.24.16-2.94a7.5 7.5 0 0 1 .67-1.8 7.5 7.5 0 0 1 1.82-2.31l2.81-3.21c4.94-5.64 7.41-8.46 7.49-10.85a7.5 7.5 0 0 0-2.44-5.39C80.67 0 76.93 0 69.43 0h-2z" fill="#F8F8F8" fillOpacity="0.1" className="mix-blend-luminosity" shapeRendering="crispEdges" />
           <path d="M66.34.63h1.09c3.76 0 6.54 0 8.61.19 2.09.19 3.32.56 4.09 1.19a6.25 6.25 0 0 1 2.26 4.88c-.03 1-.57 2.17-1.8 3.86a83 83 0 0 1-5.53 6.6l-2.81 3.21a6.25 6.25 0 0 0-1.9 4.46v32.44c0 1.46 0 2.29.17 3.08.15.69.4 1.35.74 1.96.29.53.67 1.01 1.25 1.68l.65.74 9.26 10.57c1.15 1.32 1.8 2.06 2.6 2.6.69.47 1.45.79 2.26 1a6.25 6.25 0 0 0 1.86.24h11.95c1.62 0 2.8 0 3.73.07.93.07 1.57.19 2.11.42a4.75 4.75 0 0 1 2.57 2.57c.23.54.35 1.18.42 2.11.07.93.07 2.11.07 3.73s0 2.8-.07 3.73c-.07.93-.19 1.57-.42 2.11a4.75 4.75 0 0 1-2.57 2.57c-.54.23-1.18.35-2.11.42-.93.07-2.11.07-3.73.07H30.2c-1.62 0-2.8 0-3.73-.07-.93-.07-1.57-.19-2.11-.42a4.75 4.75 0 0 1-2.57-2.57c-.23-.54-.35-1.18-.42-2.11a50 50 0 0 1-.07-3.73c0-1.62 0-2.8.07-3.73.07-.93.19-1.57.42-2.11a4.75 4.75 0 0 1 2.57-2.57c.54-.23 1.18-.35 2.11-.42.93-.07 2.11-.07 3.73-.07h13.93c1.75 0 2.74 0 3.67-.24.81-.21 1.57-.55 2.26-1 .79-.54 1.45-1.28 2.6-2.6l9.26-10.57.65-.74a6.25 6.25 0 0 0 1.25-1.68c.34-.61.58-1.27.74-1.96.17-.79.17-1.62.17-3.08V28.2c0-1.53 0-2.37-.18-3.21a6.25 6.25 0 0 0-.82-2.14 6.25 6.25 0 0 0-1.55-1.49l-2.71-2.92C45.85 14.72 43.88 12.61 42.56 10.91c-1.33-1.69-1.91-2.88-1.97-3.88a6.25 6.25 0 0 1 2.17-4.98c.77-.65 2.04-1.03 4.2-1.22C49.03.63 51.91.63 55.8.63h10.54z" stroke="url(#hg-border)" strokeOpacity="0.25" strokeWidth="1.25" shapeRendering="crispEdges" />
         </g>
         <defs>
@@ -127,19 +127,19 @@ export default function WithdrawProcessingPage() {
           <div className="relative z-10 text-center max-w-[500px] 3xl:max-w-[700px] 4xl:max-w-[900px] w-full animate-[fadeInStep_0.5s_ease-out]">
             <HourglassIllustration />
 
-            <p className="text-[#A0A0A0] text-[24px] 3xl:text-[32px] 4xl:text-[44px] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
-            <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-[64px] 4xl:text-[84px] font-normal mt-2 leading-tight">
+            <p className="text-[#A0A0A0] text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
+            <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-[4rem] 4xl:text-[5.25rem] font-normal mt-2 leading-tight">
               {amount} {coin}
             </p>
 
             <div className="mt-8 3xl:mt-10 4xl:mt-14 space-y-1 3xl:space-y-2 4xl:space-y-3">
-              <p className="text-[#A0A0A0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 Estimated completion time: {estimatedTime}
               </p>
-              <p className="text-[#A0A0A0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 You will receive an email once withdrawal is completed.
               </p>
-              <p className="text-[#A0A0A0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 View History for the latest updates
               </p>
             </div>
