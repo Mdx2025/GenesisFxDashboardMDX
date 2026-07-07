@@ -23,10 +23,10 @@ export interface ChartConfig {
 export const defaultChartConfig: ChartConfig = {
   data: defaultWaveData,
   lineColor: '#00f0a0',
-  fillOpacity: 0.55,
+  fillOpacity: 0.35,
   tension: 0.45,
   lineWidth: 2,
-  glowIntensity: 14,
+  glowIntensity: 6,
   highlightIndex: DEFAULT_HIGHLIGHT_INDEX,
   gridOpacity: 0.04,
   waveHeight: 0.85,
@@ -59,12 +59,12 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
 
       const canvasH = canvasRef.current.height
       const greenGradient = ctx.createLinearGradient(0, 0, 0, canvasH)
-      greenGradient.addColorStop(0, config.lineColor + hexOpacity(config.fillOpacity))
-      greenGradient.addColorStop(0.2, config.lineColor + hexOpacity(config.fillOpacity * 0.75))
-      greenGradient.addColorStop(0.4, config.lineColor + hexOpacity(config.fillOpacity * 0.45))
-      greenGradient.addColorStop(0.6, config.lineColor + hexOpacity(config.fillOpacity * 0.22))
-      greenGradient.addColorStop(0.8, config.lineColor + hexOpacity(config.fillOpacity * 0.08))
-      greenGradient.addColorStop(1, config.lineColor + '00')
+      const steps = 16
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps
+        const ease = 1 - t * t
+        greenGradient.addColorStop(t, config.lineColor + hexOpacity(config.fillOpacity * ease))
+      }
 
       const highlightPlugin = {
         id: 'highlightPoint',
@@ -116,10 +116,9 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
           if (!meta.dataset) return
           const c = chart.ctx
           const passes = [
-            { blur: config.glowIntensity * 4, opacity: '25', offsetY: 12 },
-            { blur: config.glowIntensity * 2.5, opacity: '40', offsetY: 8 },
-            { blur: config.glowIntensity * 1.5, opacity: '60', offsetY: 4 },
-            { blur: config.glowIntensity, opacity: '90', offsetY: 2 },
+            { blur: config.glowIntensity * 3, opacity: '15', offsetY: 6 },
+            { blur: config.glowIntensity * 2, opacity: '25', offsetY: 3 },
+            { blur: config.glowIntensity, opacity: '50', offsetY: 1 },
           ]
           for (const pass of passes) {
             c.save()
@@ -159,9 +158,8 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
           c.translate(centerX, centerY)
           c.scale(radiusX / radiusY, 1)
           const radial = c.createRadialGradient(0, 0, 0, 0, 0, radiusY)
-          radial.addColorStop(0, config.lineColor + '30')
-          radial.addColorStop(0.3, config.lineColor + '1A')
-          radial.addColorStop(0.6, config.lineColor + '0A')
+          radial.addColorStop(0, config.lineColor + '14')
+          radial.addColorStop(0.4, config.lineColor + '0A')
           radial.addColorStop(1, config.lineColor + '00')
           c.fillStyle = radial
           c.beginPath()
