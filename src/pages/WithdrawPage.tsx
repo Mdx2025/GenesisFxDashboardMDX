@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassSelect, GlassSelectIcon, GlassInput, GlowButton, FloatingNavBar, DividerGlow } from '@/components/ui'
 import { WithdrawCodeModal } from '@/components/modals/WithdrawCodeModal'
-import { WithdrawProcessingModal } from '@/components/modals/WithdrawProcessingModal'
 import { ChevronDownIcon, SearchIcon } from '@/components/icons'
 
 function UsdtIcon({ size = 24 }: { size?: number }) {
@@ -124,6 +124,7 @@ function FaqTag({ label }: { label: string }) {
 }
 
 export default function WithdrawPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [currentStep, setCurrentStep] = useState(1)
   const [selectedCoin, setSelectedCoin] = useState('')
@@ -132,7 +133,6 @@ export default function WithdrawPage() {
   const [withdrawAmount, setWithdrawAmount] = useState('')
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
   const [codeModalOpen, setCodeModalOpen] = useState(false)
-  const [processingOpen, setProcessingOpen] = useState(false)
 
   const selectedCoinConfig = COINS.find(c => c.id === selectedCoin)
   const coinLabel = selectedCoinConfig?.label ?? 'USDT'
@@ -403,8 +403,7 @@ export default function WithdrawPage() {
         <FloatingNavBar />
       </div>
 
-      <WithdrawCodeModal open={codeModalOpen} onClose={() => setCodeModalOpen(false)} onSuccess={() => setProcessingOpen(true)} />
-      <WithdrawProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} amount={withdrawAmount || '60.00'} coin={coinLabel} />
+      <WithdrawCodeModal open={codeModalOpen} onClose={() => setCodeModalOpen(false)} onSuccess={() => navigate(`/withdraw-processing?amount=${encodeURIComponent(withdrawAmount || '60.00')}&coin=${encodeURIComponent(coinLabel)}`)} />
     </>
   )
 }
