@@ -144,20 +144,22 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           />
         </div>
 
-        <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
-          Enter your code
-        </h2>
+        <div className="flex flex-col gap-2">
+          <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
+            Enter your code
+          </h2>
 
-        <div className="text-center mt-3 sm:mt-4 px-6">
-          <p className="text-gfx-neutral-300 text-[14px] sm:text-[16px] leading-6">
-            We sent a 4-digit code to your email
-          </p>
-          <p className="text-gfx-neutral-300 text-[14px] sm:text-[16px] leading-6">
-            Enter it below to confirm your withdrawal
-          </p>
+          <div className="text-center px-6">
+            <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
+              We sent a 4-digit code to your email
+            </p>
+            <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
+              Enter it below to confirm your withdrawal
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-10 px-4 sm:px-8">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8">
           {code.map((digit, i) => (
             <input
               key={i}
@@ -187,8 +189,8 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </p>
         )}
 
-        <div className="flex items-center justify-center gap-1 mt-8 sm:mt-16 pb-10 sm:pb-20">
-          <span className="text-gfx-neutral-300 text-[16px] leading-6">
+        <div className="flex items-center justify-center gap-1 pb-10 sm:pb-20">
+          <span className="text-[#A0A0A0] text-[16px] leading-6">
             Didn't receive the code?
           </span>
           <button className="text-white text-[16px] leading-6 hover:underline cursor-pointer">
