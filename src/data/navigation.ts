@@ -9,7 +9,7 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', href: '/' },
+  { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', href: '/home' },
   { id: 'assets', label: 'Assets Management', icon: 'assets', href: '/assets-management', activeOn: ['/deposit', '/withdraw'] },
   { id: 'tradelocker', label: 'Tradelocker', icon: 'tradelocker', href: '#', submenu: [
     { label: 'Accounts', href: '/tradelocker/accounts' },

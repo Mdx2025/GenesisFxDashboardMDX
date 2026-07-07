@@ -22,7 +22,7 @@ export interface PageEntry {
 }
 
 export const PAGE_REGISTRY: PageEntry[] = [
-  { path: '/', label: 'Dashboard', description: 'Portfolio overview, charts, and trading accounts', icon: DashboardIcon, component: DashboardPage },
+  { path: '/home', label: 'Dashboard', description: 'Portfolio overview, charts, and trading accounts', icon: DashboardIcon, component: DashboardPage },
   { path: '/assets-management', label: 'Assets Management', description: 'Fiat wallet, funding, and transaction history', icon: AssetsIcon, component: AssetsManagementPage },
   { path: '/deposit', label: 'Deposit', description: 'Deposit crypto to your Genesis account', icon: DepositIcon, component: DepositPage },
   { path: '/withdraw', label: 'Withdraw', description: 'Withdraw funds to your external wallet', icon: WithdrawIcon, component: WithdrawPage },
