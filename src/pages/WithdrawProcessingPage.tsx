@@ -124,7 +124,7 @@ export default function WithdrawProcessingPage() {
         />
 
         <div className="flex items-center justify-center min-h-[calc(100vh-120px)]">
-          <div className="text-center max-w-[500px] w-full animate-[fadeInStep_0.5s_ease-out]">
+          <div className="relative z-10 text-center max-w-[500px] w-full animate-[fadeInStep_0.5s_ease-out]">
             <HourglassIllustration />
 
             <p className="text-[#A0A0A0] text-[24px] font-normal mt-4">Withdrawal Processing</p>
