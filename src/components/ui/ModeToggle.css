@@ -78,12 +78,3 @@
   pointer-events: none;
   opacity: 0.3;
 }
-.star { position: absolute; border-radius: 50%; pointer-events: none; z-index: 1; }
-.star-m1 { left: 78%; top: 60%; width: 2px; height: 2px; background: white; filter: blur(0.5px); }
-.star-m2 { left: 67%; top: 72%; width: 2px; height: 2px; background: white; opacity: 0.5; filter: blur(0.5px); }
-.star-m3 { left: 40%; top: 10%; width: 2px; height: 2px; background: #acacac; filter: blur(0.5px); }
-.star-m4 { left: 55%; top: 80%; width: 2px; height: 2px; background: #acacac; filter: blur(0.5px); }
-.star-m5 { left: 69%; top: 18%; width: 2px; height: 2px; background: #acacac; filter: blur(0.5px); }
-.star-m6 { left: 39%; top: 73%; width: 2px; height: 2px; background: #acacac; filter: blur(0.5px); }
-.star-m7 { left: 26%; top: 25%; width: 2px; height: 2px; background: #8c8c8c; filter: blur(0.5px); }
-.star-m8 { left: 10%; top: 64%; width: 2px; height: 2px; background: #8c8c8c; filter: blur(0.5px); }

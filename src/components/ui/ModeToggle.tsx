@@ -60,14 +60,37 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
       >
         <div className="glow-emerald-mode" aria-hidden="true" />
         <div className="fading-border" aria-hidden="true" />
-        <div className="star star-m1" aria-hidden="true" />
-        <div className="star star-m2" aria-hidden="true" />
-        <div className="star star-m3" aria-hidden="true" />
-        <div className="star star-m4" aria-hidden="true" />
-        <div className="star star-m5" aria-hidden="true" />
-        <div className="star star-m6" aria-hidden="true" />
-        <div className="star star-m7" aria-hidden="true" />
-        <div className="star star-m8" aria-hidden="true" />
+        <svg className="absolute" style={{ left: '78%', top: '60%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="white" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute opacity-50" style={{ left: '67%', top: '72%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="white" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute" style={{ left: '40%', top: '10%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute" style={{ left: '55%', top: '80%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute" style={{ left: '69%', top: '18%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute" style={{ left: '39%', top: '73%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute" style={{ left: '26%', top: '25%' }} width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+          <circle cx="1.5" cy="1.5" r="0.5" fill="#8C8C8C" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute" style={{ left: '10%', top: '64%' }} width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
+          <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#mt_sparkle)" />
+        </svg>
+        <svg className="absolute w-0 h-0" aria-hidden="true">
+          <defs>
+            <filter id="mt_sparkle" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">
+              <feGaussianBlur stdDeviation="0.5" />
+            </filter>
+          </defs>
+        </svg>
       </div>
       {options.map((option, i) => {
         const isActive = active === i
