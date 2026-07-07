@@ -71,7 +71,7 @@ export default function LoginPage() {
         </div>
 
         {/* Right: Login Form */}
-        <div className="flex-1 flex flex-col items-center justify-center">
+        <div className="flex-1 flex flex-col items-center justify-center relative">
           <div className="w-[546px] flex flex-col items-center">
             <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">
               Trader's Room Log In
@@ -151,21 +151,20 @@ export default function LoginPage() {
                 <span className="text-white text-[0.875rem] leading-[1.175rem]">Demo</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Footer */}
-      <div className="absolute bottom-[3.125rem] right-[3.125rem]">
-        <div className="bg-[#0c1311] rounded-[0.75rem] px-[1.4375rem] py-[1rem] flex items-center gap-[2.5rem]">
-          <span className="text-[#ececec] text-[0.75rem] leading-[1.175rem]">
-            2026 Genesis FX Markets. All rights reserved.
-          </span>
-          <div className="flex items-center gap-[1.5rem]">
-            <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Terms &amp; Conditions</a>
-            <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Risk Disclosure</a>
-            <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Anti-Money Laundering</a>
+          {/* Footer */}
+          <div className="w-full absolute bottom-0">
+            <div className="bg-[#0c1311] rounded-[0.75rem] px-[1.4375rem] py-[1rem] flex items-center gap-[2.5rem]">
+              <span className="text-[#ececec] text-[0.75rem] leading-[1.175rem]">
+                2026 Genesis FX Markets. All rights reserved.
+              </span>
+              <div className="flex items-center gap-[1.5rem]">
+                <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Terms &amp; Conditions</a>
+                <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Risk Disclosure</a>
+                <a href="#" className="text-[#a0a0a0] text-[0.75rem] leading-[1.175rem] hover:text-white transition-colors">Anti-Money Laundering</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
