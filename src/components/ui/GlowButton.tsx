@@ -15,6 +15,7 @@ interface GlowButtonProps {
   fontSize?: number
   fontWeight?: number
   onClick?: () => void
+  disabled?: boolean
 }
 
 export function GlowButton({
@@ -32,6 +33,7 @@ export function GlowButton({
   fontSize = 16,
   fontWeight = 500,
   onClick,
+  disabled = false,
 }: GlowButtonProps) {
   const stageRef = useRef<HTMLDivElement>(null)
   const glowRRef = useRef<HTMLDivElement>(null)
@@ -92,9 +94,10 @@ export function GlowButton({
       <div ref={glowLRef} className="absolute inset-0 pointer-events-none -scale-x-100" style={{ opacity: 0 }} /* dynamic */>{layers}</div>
       <button
         type="button"
-        onPointerMove={handleMove}
-        onClick={onClick}
-        className="relative w-full flex items-center justify-center cursor-pointer select-none border-none font-acid"
+        onPointerMove={disabled ? undefined : handleMove}
+        onClick={disabled ? undefined : onClick}
+        disabled={disabled}
+        className={`relative w-full flex items-center justify-center select-none border-none font-acid ${disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
         style={{
           height,
           borderRadius: radius,

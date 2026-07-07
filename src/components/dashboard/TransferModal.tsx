@@ -36,6 +36,11 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
+  const [fromAccount, setFromAccount] = useState('')
+  const [toAccount, setToAccount] = useState('')
+  const [amount, setAmount] = useState('')
+
+  const isValid = fromAccount !== '' && toAccount !== '' && amount !== '' && parseFloat(amount) > 0
 
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
@@ -50,7 +55,12 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
   }, [onClose])
 
   useEffect(() => {
-    if (open) setMounted(true)
+    if (open) {
+      setMounted(true)
+      setFromAccount('')
+      setToAccount('')
+      setAmount('')
+    }
   }, [open])
 
   useLayoutEffect(() => {
@@ -147,6 +157,8 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
               placeholder="Search  Coin"
               icon={<SearchCoinIcon />}
               options={COIN_OPTIONS}
+              value={fromAccount}
+              onChange={setFromAccount}
             />
           </div>
 
@@ -157,18 +169,21 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
               placeholder="Search  Coin"
               icon={<WalletCircleIcon />}
               options={COIN_OPTIONS}
+              value={toAccount}
+              onChange={setToAccount}
             />
           </div>
 
           {/* Amount */}
           <div className="mb-[40px]">
-            <GlassInput label="Amount(USD)" placeholder="0.00" type="number" />
+            <GlassInput label="Amount(USD)" placeholder="0.00" type="number" value={amount} onChange={setAmount} />
           </div>
 
           {/* Transfer Funds button */}
           <GlowButton
             label="Transfer Funds"
             width="100%"
+            disabled={!isValid}
             onClick={() => { handleClose(); onTransfer?.() }}
           />
           </div>
