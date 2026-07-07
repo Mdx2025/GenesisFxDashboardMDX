@@ -271,8 +271,8 @@ export default function DepositPage() {
                     {getStepStatus(3) === 'active' && (
                       <div className="mt-4 max-w-[34.125rem]">
                         <GlassCard rounded="20px">
-                          <div className="absolute w-[200px] h-[200px] top-0 right-0 rounded-full pointer-events-none bg-[#104030] opacity-30 [filter:url(#blur-120)]" aria-hidden="true" />
-                          <div className="absolute w-[120px] h-[120px] bottom-0 left-0 rounded-full pointer-events-none bg-[#104030] opacity-20 [filter:url(#blur-120)]" aria-hidden="true" />
+                          <div className="absolute w-[200px] h-[200px] -top-[30%] -right-[15%] rounded-full pointer-events-none bg-[#104030] opacity-40 blur-[60px]" aria-hidden="true" />
+                          <div className="absolute w-[120px] h-[120px] -bottom-[20%] -left-[10%] rounded-full pointer-events-none bg-[#104030] opacity-30 blur-[50px]" aria-hidden="true" />
                           <div className="relative z-10 p-5 flex flex-col sm:flex-row gap-5">
                             <div className="w-[9.8125rem] h-[9.9375rem] shrink-0 rounded-[0.3125rem] overflow-hidden">
                               <QrCodePlaceholder />
