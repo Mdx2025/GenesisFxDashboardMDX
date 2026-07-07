@@ -18,7 +18,9 @@ export function PortfolioEquity() {
           </div>
           <PeriodPill />
         </div>
-        <PortfolioChart config={defaultChartConfig} />
+        <div className="flex-1 min-h-0">
+          <PortfolioChart config={defaultChartConfig} />
+        </div>
       </div>
     </GlassCard>
   )
