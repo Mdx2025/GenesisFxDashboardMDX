@@ -5,7 +5,7 @@ import { FloatingNavBar, GlowButton } from '@/components/ui'
 
 function HourglassIllustration() {
   return (
-    <div className="relative w-[280px] h-[280px] mx-auto">
+    <div className="relative w-[280px] h-[280px] 3xl:w-[400px] 3xl:h-[400px] 4xl:w-[560px] 4xl:h-[560px] mx-auto [&>svg]:scale-100 3xl:[&>svg]:scale-[1.43] 4xl:[&>svg]:scale-[2]">
       <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" width="134" height="227" viewBox="0 0 134 227" fill="none">
         <g filter="url(#hg-frame)">
           <path d="M67.16 166.38H12.01V131.28c0-2.25.85-4.43 2.37-6.09l33.82-36.86c3.2-3.48 3.16-8.85-.09-12.28L14.47 40.51c-1.58-1.67-2.47-3.89-2.47-6.19V0h55.16v166.38zm54.42-166.38v34.36c0 2.28-.87 4.48-2.42 6.15L85.93 76.09c-3.2 3.42-3.24 8.72-.1 12.19l33.42 36.92c1.5 1.66 2.33 3.81 2.33 6.05v35.14H67.16V0h54.42z" fill="#F8F8F8" fillOpacity="0.025" style={{ mixBlendMode: 'luminosity' }} shapeRendering="crispEdges" />
@@ -73,8 +73,8 @@ function HourglassIllustration() {
         </defs>
       </svg>
 
-      <div className="absolute left-1/2 -translate-x-1/2 top-[32px] w-[110px] h-[12px] bg-[#3A3A3A]" />
-      <div className="absolute left-1/2 -translate-x-1/2 top-[187px] w-[110px] h-[12px] bg-[#3A3A3A]" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-[11%] w-[39%] h-[4%] bg-[#3A3A3A]" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-[67%] w-[39%] h-[4%] bg-[#3A3A3A]" />
 
       <div className="absolute left-[72%] top-[17%] w-[3px] h-[3px] rounded-full bg-white [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[19%] w-[3px] h-[3px] rounded-full bg-white opacity-50 [filter:url(#blur-2)]" />
@@ -124,27 +124,27 @@ export default function WithdrawProcessingPage() {
         />
 
         <div className="flex items-center justify-center min-h-[calc(100vh-120px)]">
-          <div className="relative z-10 text-center max-w-[500px] w-full animate-[fadeInStep_0.5s_ease-out]">
+          <div className="relative z-10 text-center max-w-[500px] 3xl:max-w-[700px] 4xl:max-w-[900px] w-full animate-[fadeInStep_0.5s_ease-out]">
             <HourglassIllustration />
 
-            <p className="text-[#A0A0A0] text-[24px] font-normal mt-4">Withdrawal Processing</p>
-            <p className="text-white text-[clamp(2rem,8vw,50px)] font-normal mt-2 leading-tight">
+            <p className="text-[#A0A0A0] text-[24px] 3xl:text-[32px] 4xl:text-[44px] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
+            <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-[64px] 4xl:text-[84px] font-normal mt-2 leading-tight">
               {amount} {coin}
             </p>
 
-            <div className="mt-8 space-y-1">
-              <p className="text-[#A0A0A0] text-[16px] font-medium leading-6">
+            <div className="mt-8 3xl:mt-10 4xl:mt-14 space-y-1 3xl:space-y-2 4xl:space-y-3">
+              <p className="text-[#A0A0A0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 Estimated completion time: {estimatedTime}
               </p>
-              <p className="text-[#A0A0A0] text-[16px] font-medium leading-6">
+              <p className="text-[#A0A0A0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 You will receive an email once withdrawal is completed.
               </p>
-              <p className="text-[#A0A0A0] text-[16px] font-medium leading-6">
+              <p className="text-[#A0A0A0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 View History for the latest updates
               </p>
             </div>
 
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8 3xl:mt-10 4xl:mt-14">
               <GlowButton label="View History" width={180} height={44} onClick={() => navigate('/assets-management')} />
             </div>
           </div>
