@@ -4,7 +4,7 @@ import { GlassCard, GlowButton, FloatingNavBar } from '@/components/ui'
 
 function KycIllustration() {
   return (
-    <div className="relative w-[286px] h-[286px] mx-auto">
+    <div className="relative w-auto h-fit">
       {/* Gradient ellipse behind the image */}
       <div
         className="absolute inset-0 rounded-full pointer-events-none"
@@ -68,7 +68,7 @@ export default function KycPage() {
               <div className="flex-1 flex flex-col items-center justify-center py-16 px-8 xl:border-r xl:border-white/[0.06]">
                 <KycIllustration />
 
-                <h2 className="text-white text-[28px] xl:text-[36px] font-normal mt-[69px] text-center">
+                <h2 className="text-white text-[28px] xl:text-[36px] font-normal text-center">
                   KYC Verification Required
                 </h2>
 
