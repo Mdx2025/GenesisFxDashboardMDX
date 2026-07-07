@@ -61,7 +61,7 @@ export function CourseCard({ image, title, description, lessons, duration, level
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
     >
-      <div className="relative aspect-[501/334] overflow-hidden">
+      <div className="relative aspect-[501/334] overflow-hidden rounded-[27px]">
         <img
           src={image}
           alt={title}
