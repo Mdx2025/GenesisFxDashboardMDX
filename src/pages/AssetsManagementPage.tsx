@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, Badge, GlassSelect, GreenPillButton, GlassBannerCard, EmptyState } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, Badge, GlassSelect, GreenPillButton, GlassBannerCard, EmptyState, SuccessSnackbar } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions, TAB_TO_TYPE } from '@/data/assets-history'
@@ -98,6 +98,7 @@ export default function AssetsManagementPage() {
   const { openTransfer } = useTransfer()
   const [activeTab, setActiveTab] = useState(0)
   const [balanceVisible, setBalanceVisible] = useState(true)
+  const [copied, setCopied] = useState(false)
   const [filterType, setFilterType] = useState('all')
   const [filterTime, setFilterTime] = useState('all')
   const [filterCoin, setFilterCoin] = useState('all')
@@ -135,6 +136,7 @@ export default function AssetsManagementPage() {
 
   return (
     <>
+      <SuccessSnackbar open={copied} message="Address copied to clipboard" duration={2000} onClose={() => setCopied(false)} />
       <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
         <TopBar
@@ -311,10 +313,14 @@ export default function AssetsManagementPage() {
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
-                            <div className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100">
+                            <button
+                              type="button"
+                              onClick={() => { navigator.clipboard.writeText(tx.address); setCopied(true) }}
+                              className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100"
+                            >
                               <span className="text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] text-white truncate">{tx.address}</span>
                               <CopyIcon />
-                            </div>
+                            </button>
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="flex items-center gap-2">

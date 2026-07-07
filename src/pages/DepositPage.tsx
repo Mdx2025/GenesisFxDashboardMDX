@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassSelect, GlassSelectIcon } from '@/components/ui'
+import { GlassCard, GlassSelect, GlassSelectIcon, SuccessSnackbar } from '@/components/ui'
 import { SearchIcon } from '@/components/icons'
 import { UsdtIcon, BtcIcon, EthIcon, UsdcIcon, CopyIcon } from '@/components/shared/CoinIcons'
 import { StepCircle, StepConnector } from '@/components/shared/StepFlow'
@@ -164,6 +164,7 @@ export default function DepositPage() {
 
   return (
     <>
+      <SuccessSnackbar open={copied} message="Address copied to clipboard" duration={2000} onClose={() => setCopied(false)} />
       <div className="absolute left-1/2 -translate-x-1/2 w-[37.5rem] h-[18.75rem] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
