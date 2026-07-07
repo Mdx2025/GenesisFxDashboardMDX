@@ -6,6 +6,7 @@ import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelec
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions, TAB_TO_TYPE } from '@/data/assets-history'
 import { STATUS_STYLES } from '@/constants/colors'
 import type { AssetTransaction, TransactionType, CoinType } from '@/data/assets-history'
@@ -165,25 +166,30 @@ export default function AssetsManagementPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 flex-wrap">
-                  <SparkleButton onClick={() => navigate('/deposit')}>
-                    <span className="flex items-center gap-2">
-                      <DepositIcon />
-                      <span>Deposit</span>
-                    </span>
-                  </SparkleButton>
-                  <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
-                    <span className="flex items-center gap-2">
-                      <WithdrawIcon />
-                      <span>Withdraw</span>
-                    </span>
-                  </SparkleButton>
-                  <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
-                    <span className="flex items-center gap-2">
-                      <TransferIcon />
-                      <span>Transfer</span>
-                    </span>
-                  </SparkleButton>
+                <div className="flex flex-col xl:shrink-0">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <SparkleButton onClick={() => navigate('/deposit')}>
+                      <span className="flex items-center gap-2">
+                        <DepositIcon />
+                        <span>Deposit</span>
+                      </span>
+                    </SparkleButton>
+                    <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
+                      <span className="flex items-center gap-2">
+                        <WithdrawIcon />
+                        <span>Withdraw</span>
+                      </span>
+                    </SparkleButton>
+                    <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
+                      <span className="flex items-center gap-2">
+                        <TransferIcon />
+                        <span>Transfer</span>
+                      </span>
+                    </SparkleButton>
+                  </div>
+                  <div className="h-[100px] w-full min-w-0 -mt-3 relative">
+                    <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
+                  </div>
                 </div>
               </div>
             </GlassBannerCard>
