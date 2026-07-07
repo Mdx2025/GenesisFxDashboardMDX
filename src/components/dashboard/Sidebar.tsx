@@ -212,12 +212,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
         <div className="relative z-10 flex flex-col gap-3 2xl:gap-6">
           <div className="flex flex-col gap-2 sidebar-hide">
-            <h3 className="text-sidebar-btn text-white font-normal">Switch Modes</h3>
+            <h3 className="text-sidebar-label text-[#A0A0A0] font-normal">Switch Modes</h3>
             <ModeToggle />
           </div>
           <NavButton>
             <LogoutIcon />
-            <span className="text-gfx-neutral-300 sidebar-hide">Logout</span>
+            <span className="text-[1rem] text-[#A0A0A0] sidebar-hide">Logout</span>
           </NavButton>
         </div>
       </aside>
