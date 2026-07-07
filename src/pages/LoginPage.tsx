@@ -161,7 +161,7 @@ export default function LoginPage() {
           </div>
 
           {/* Footer */}
-          <div className="w-full absolute bottom-0">
+          <div className="w-full absolute bottom-0 px-[1.5rem]">
             <div className="bg-[#0c1311] rounded-[0.75rem] px-[1.4375rem] py-[1rem] flex items-center gap-[2.5rem]">
               <span className="text-[#ececec] text-[0.75rem] leading-[1.175rem]">
                 2026 Genesis FX Markets. All rights reserved.
