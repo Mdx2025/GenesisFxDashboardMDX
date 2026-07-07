@@ -12,8 +12,8 @@ interface CourseCardProps {
 
 function PlayButton() {
   return (
-    <div className="absolute bottom-[36px] right-[27px] 3xl:bottom-[45px] 3xl:right-[34px] 4xl:bottom-[54px] 4xl:right-[40px]">
-      <svg width="61" height="61" viewBox="0 0 61 61" fill="none" className="3xl:w-[76px] 3xl:h-[76px] 4xl:w-[92px] 4xl:h-[92px] cursor-pointer hover:opacity-90 transition-opacity">
+    <button type="button" className="shrink-0 cursor-pointer hover:opacity-90 transition-opacity">
+      <svg width="61" height="61" viewBox="0 0 61 61" fill="none" className="3xl:w-[76px] 3xl:h-[76px] 4xl:w-[92px] 4xl:h-[92px]">
         <circle cx="30.1783" cy="30.1783" r="30.1783" fill="url(#coursecard_play_bg)" />
         <circle cx="30.1783" cy="30.1783" r="29.6836" stroke="url(#coursecard_play_border)" strokeOpacity="0.5" strokeWidth="0.989453" />
         <g transform="translate(21.7, 21.7)">
@@ -30,7 +30,7 @@ function PlayButton() {
           </linearGradient>
         </defs>
       </svg>
-    </div>
+    </button>
   )
 }
 
@@ -68,18 +68,20 @@ export function CourseCard({ image, title, description, lessons, duration, level
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        <PlayButton />
       </div>
 
       <div className="px-[27px] 3xl:px-[34px] 4xl:px-[40px] pt-[9px] 3xl:pt-[11px] 4xl:pt-[14px] pb-[27px] 3xl:pb-[34px] 4xl:pb-[40px]">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-white text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
-            {title}
-          </h3>
+        <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-col gap-2">
+            <h3 className="text-white text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
+              {title}
+            </h3>
 
-          <p className="text-[#808080] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] line-clamp-2">
-            {description}
-          </p>
+            <p className="text-[#808080] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] line-clamp-2">
+              {description}
+            </p>
+          </div>
+          <PlayButton />
         </div>
 
         <div className="flex items-center mt-[20px] 3xl:mt-[25px] 4xl:mt-[30px]">
