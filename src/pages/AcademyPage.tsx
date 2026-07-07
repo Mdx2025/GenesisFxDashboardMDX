@@ -52,8 +52,8 @@ function LearningJourneyCard() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 flex-1 min-w-0 xl:items-end">
-          <div className="flex items-center gap-3 w-full xl:max-w-[420px]">
+        <div className="flex flex-col gap-2 flex-1 min-w-0">
+          <div className="flex items-center gap-3 w-full xl:max-w-[420px] xl:ml-auto">
             <div className="flex-1 h-1 bg-[#0f1e19] rounded-full overflow-hidden">
               <div
                 className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
