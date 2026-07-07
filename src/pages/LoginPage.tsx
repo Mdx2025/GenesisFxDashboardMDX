@@ -51,22 +51,29 @@ export default function LoginPage() {
 
           {/* Top glow */}
           <div
-            className="absolute rounded-full pointer-events-none blur-[160px]"
+            className="absolute rounded-full pointer-events-none blur-[160px] opacity-40"
             style={{ width: 587, height: 332, top: -215, right: -270, background: '#00b38c' }}
           />
 
           {/* Bottom glow cluster */}
           <div
-            className="absolute rounded-full pointer-events-none blur-[160px]"
+            className="absolute rounded-full pointer-events-none blur-[160px] opacity-40"
             style={{ width: 587, height: 332, bottom: -150, left: -150, background: '#00b38c' }}
           />
           <div
-            className="absolute rounded-full pointer-events-none blur-[140px] mix-blend-plus-lighter"
+            className="absolute rounded-full pointer-events-none blur-[140px] opacity-30 mix-blend-plus-lighter"
             style={{ width: 295, height: 274, bottom: -100, left: -50, background: '#40c99c' }}
           />
           <div
-            className="absolute rounded-full pointer-events-none blur-[150px] mix-blend-plus-lighter"
+            className="absolute rounded-full pointer-events-none blur-[150px] opacity-30 mix-blend-plus-lighter"
             style={{ width: 295, height: 274, bottom: -80, left: 0, background: '#40c99c' }}
+          />
+
+          {/* Genesis FX Logo */}
+          <img
+            src="/images/genesis-logo.png"
+            alt="Genesis FX"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 h-[2.8125rem] w-auto z-10"
           />
         </div>
 
