@@ -32,7 +32,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[#000705] font-acid relative overflow-hidden">
+    <div className="h-screen bg-[#000705] font-acid relative overflow-hidden">
       {/* Top-right ambient glow */}
       <div
         className="absolute rounded-full pointer-events-none"
@@ -49,9 +49,9 @@ export default function LoginPage() {
         </defs>
       </svg>
 
-      <div className="flex min-h-screen p-[3.125rem]">
+      <div className="flex h-full p-[3.125rem]">
         {/* Left: Hero Image */}
-        <div className="relative w-[818px] h-[980px] shrink-0 rounded-[48px] overflow-hidden">
+        <div className="relative w-[818px] h-full shrink-0 rounded-[48px] overflow-hidden">
           <img
             src="/images/login-hero.png"
             alt=""
