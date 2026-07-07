@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassSelect, GlassSelectIcon, GlassInput, GlowButton, FloatingNavBar } from '@/components/ui'
+import { GlassCard, GlassSelect, GlassSelectIcon, GlassInput, GlowButton, FloatingNavBar, DividerGlow } from '@/components/ui'
 import { ChevronDownIcon, SearchIcon } from '@/components/icons'
 
 function UsdtIcon({ size = 24 }: { size?: number }) {
@@ -77,6 +77,14 @@ const FAQS = [
   { question: 'Is my money secure in a Genesis trading account?', tag: 'General' },
   { question: 'What is the minimum age to trade with Genesis?', tag: 'General' },
   { question: 'How does Genesis keep client funds safe?', tag: 'General' },
+]
+
+const TRANSACTIONS = [
+  { date: '04/30/2026 12', type: 'Withdraw' as const, amount: '-$170', status: 'Completed' },
+  { date: '04/30/2026 12', type: 'Deposit' as const, amount: '+$210', status: 'Completed' },
+  { date: '04/30/2026 12', type: 'Withdraw' as const, amount: '-$170', status: 'Completed' },
+  { date: '04/30/2026 12', type: 'Withdraw' as const, amount: '-$170', status: 'Completed' },
+  { date: '04/30/2026 12', type: 'Withdraw' as const, amount: '-$170', status: 'Completed' },
 ]
 
 function StepCircle({ stepNumber, status }: { stepNumber: number; status: 'completed' | 'active' | 'inactive' }) {
@@ -294,14 +302,17 @@ export default function WithdrawPage() {
 
                         <div className="h-px bg-[#404040] my-5" />
 
-                        <p className="text-white text-[36px] font-normal leading-none">
-                          {withdrawAmount || '0.00'} {coinLabel}
-                        </p>
-                        <p className="text-[#A0A0A0] text-[16px] mt-2">
-                          Network Fee 0.00 {coinLabel}
-                        </p>
+                        <p className="text-[#606060] text-[1rem] leading-none">Total Amount</p>
 
-                        <div className="mt-6 flex justify-end">
+                        <div className="mt-3 flex items-center justify-between">
+                          <div>
+                            <p className="text-white text-[36px] font-normal leading-none">
+                              {withdrawAmount || '0.00'} {coinLabel}
+                            </p>
+                            <p className="text-[#A0A0A0] text-[16px] mt-2">
+                              Network Fee 0.00 {coinLabel}
+                            </p>
+                          </div>
                           <GlowButton label="Withdraw" width={145} height={44} />
                         </div>
                       </div>
@@ -337,6 +348,42 @@ export default function WithdrawPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Recent Transactions */}
+        <div className="px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 mt-16 pb-32 xl:pb-16">
+          <div className="max-w-[700px]">
+            <h2 className="text-[24px] font-normal mb-6 leading-[30px]">Recent Transactions</h2>
+            <GlassCard variant="heavy" rounded="19px">
+              <div className="relative z-10">
+                <DividerGlow variant="green" />
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[500px]">
+                    <thead>
+                      <tr>
+                        <th className="px-6 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300 whitespace-nowrap">Time (UTC+)</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Type</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Coin</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Amount</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Remark</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {TRANSACTIONS.map((tx, i) => (
+                        <tr key={i} className={i > 0 ? 'border-t border-white/5' : ''}>
+                          <td className="px-6 py-5 text-[14px] text-white whitespace-nowrap">{tx.date}</td>
+                          <td className="px-4 py-5 text-[14px] text-white">{tx.type}</td>
+                          <td className="px-4 py-5"><UsdtIcon size={30} /></td>
+                          <td className={`px-4 py-5 text-[14px] font-medium ${tx.type === 'Deposit' ? 'text-gfx-green-500' : 'text-[#d46356]'}`}>{tx.amount}</td>
+                          <td className="px-4 py-5 text-[14px] text-white">{tx.status}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </GlassCard>
           </div>
         </div>
 
