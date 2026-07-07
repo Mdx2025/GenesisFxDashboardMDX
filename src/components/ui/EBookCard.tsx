@@ -1,3 +1,5 @@
+import { SparkleButton } from './SparkleButton'
+
 interface EBookCardProps {
   category: string
   image: string
@@ -33,19 +35,15 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
         <div className="absolute inset-0 bg-[#10BC83] mix-blend-color" />
       </div>
 
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
+
       <div className="absolute inset-0 flex flex-col justify-between p-[22px]">
         <h3 className="text-white text-[clamp(1.75rem,1rem+1.5vw,2.75rem)] font-normal leading-none text-center mt-[50px]">
           {category}
         </h3>
 
-        <div className="flex items-center justify-between">
-          <button
-            type="button"
-            className="h-8 px-5 rounded-[22px] text-white text-xs font-normal cursor-pointer hover:opacity-90 transition-opacity relative overflow-hidden"
-            style={{ background: 'linear-gradient(to bottom, #0B2B21, #111312)' }}
-          >
-            Read More
-          </button>
+        <div className="relative flex items-center justify-between">
+          <SparkleButton>Read More</SparkleButton>
 
           <div className="flex items-center gap-1.5">
             <ClockIcon />
