@@ -1,5 +1,5 @@
 import './Sidebar.css'
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useState, useRef, useLayoutEffect, useCallback, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
@@ -33,6 +33,37 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
   const submenuRef = useRef<HTMLDivElement>(null)
   const submenuFirstRender = useRef(true)
+  const navListRef = useRef<HTMLUListElement>(null)
+  const highlightRef = useRef<HTMLDivElement>(null)
+  const isFirstHighlight = useRef(true)
+
+  const updateHighlight = useCallback(() => {
+    const list = navListRef.current
+    const highlight = highlightRef.current
+    if (!list || !highlight) return
+    const activeEl = list.querySelector('.nav-btn.active') as HTMLElement | null
+    if (activeEl) {
+      const listRect = list.getBoundingClientRect()
+      const elRect = activeEl.getBoundingClientRect()
+      const top = elRect.top - listRect.top
+      const height = elRect.height
+      if (isFirstHighlight.current) {
+        highlight.style.transition = 'none'
+        isFirstHighlight.current = false
+      } else {
+        highlight.style.transition = 'top 0.35s cubic-bezier(0.4, 0, 0.2, 1), height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease'
+      }
+      highlight.style.top = `${top}px`
+      highlight.style.height = `${height}px`
+      highlight.style.opacity = '1'
+    } else {
+      highlight.style.opacity = '0'
+    }
+  }, [])
+
+  useEffect(() => {
+    updateHighlight()
+  }, [location.pathname, updateHighlight])
 
   useLayoutEffect(() => {
     const el = submenuRef.current
@@ -123,7 +154,13 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="relative z-10 flex-1 overflow-y-auto">
           <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
           <nav aria-label="Main menu">
-            <ul className="flex flex-col gap-1" role="list">
+            <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
+              <div
+                ref={highlightRef}
+                className="absolute left-0 right-0 rounded-sm bg-[#171717] outline outline-1 outline-[#171717] outline-offset-[-1px] pointer-events-none z-0"
+                style={{ opacity: 0, top: 0, height: 0 }}
+                aria-hidden="true"
+              />
               {navItems.map((item) => {
                 const Icon = iconMap[item.icon]
                 const isActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname)

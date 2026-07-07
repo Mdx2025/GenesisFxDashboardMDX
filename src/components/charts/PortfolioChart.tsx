@@ -196,7 +196,7 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
 
   return (
     <div className="relative w-full h-full">
-      <canvas ref={canvasRef} />
+      <canvas ref={canvasRef} className="!absolute inset-0 w-full h-full" />
     </div>
   )
 }

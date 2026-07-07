@@ -11,6 +11,7 @@
   background: transparent;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 .nav-btn:hover {
   background: rgba(255,255,255,0.03);
@@ -20,9 +21,8 @@
   outline-offset: -2px;
 }
 .nav-btn.active {
-  background: #171717;
-  outline: 1px solid #171717;
-  outline-offset: -1px;
+  background: transparent;
+  outline: none;
   color: #fff;
 }
 .glow-teal {
