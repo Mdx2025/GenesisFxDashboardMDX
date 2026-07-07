@@ -3,18 +3,23 @@ import { useState, useRef, useEffect } from 'react'
 interface WithdrawCodeModalProps {
   open: boolean
   onClose: () => void
+  onSuccess?: () => void
 }
 
-export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
+const VALID_CODE = '0000'
+
+export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModalProps) {
   const [code, setCode] = useState(['', '', '', ''])
   const [visible, setVisible] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [error, setError] = useState(false)
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
   useEffect(() => {
     if (open) {
       setMounted(true)
       setCode(['', '', '', ''])
+      setError(false)
       requestAnimationFrame(() => setVisible(true))
       setTimeout(() => inputRefs.current[0]?.focus(), 200)
     } else if (mounted) {
@@ -24,15 +29,29 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
     }
   }, [open])
 
+  const validateCode = (newCode: string[]) => {
+    const full = newCode.join('')
+    if (full.length !== 4) return
+    if (full === VALID_CODE) {
+      setError(false)
+      onClose()
+      onSuccess?.()
+    } else {
+      setError(true)
+    }
+  }
+
   const handleChange = (index: number, value: string) => {
     if (!/^\d*$/.test(value)) return
     const digit = value.slice(-1)
     const newCode = [...code]
     newCode[index] = digit
     setCode(newCode)
+    setError(false)
     if (digit && index < 3) {
       inputRefs.current[index + 1]?.focus()
     }
+    if (digit) validateCode(newCode)
   }
 
   const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
@@ -49,8 +68,10 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
       newCode[i] = pasted[i]
     }
     setCode(newCode)
+    setError(false)
     const focusIndex = Math.min(pasted.length, 3)
     inputRefs.current[focusIndex]?.focus()
+    if (pasted.length === 4) validateCode(newCode)
   }
 
   if (!mounted) return null
@@ -125,12 +146,23 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
               onKeyDown={e => handleKeyDown(i, e)}
               onPaste={i === 0 ? handlePaste : undefined}
               className={`w-[clamp(3.5rem,15vw,7rem)] h-[clamp(4rem,17vw,8rem)] rounded-xl sm:rounded-2xl border text-center text-white text-[clamp(1.5rem,5vw,3rem)] font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
-                digit ? 'border-gfx-green-500' : 'border-[#3d3d3d]'
+                error
+                  ? 'border-red-500'
+                  : digit
+                    ? 'border-gfx-green-500'
+                    : 'border-[#3d3d3d]'
               }`}
               aria-label={`Digit ${i + 1}`}
             />
           ))}
         </div>
+
+        {/* Error message */}
+        {error && (
+          <p className="text-center text-red-500 text-[14px] mt-4 animate-[fadeInStep_0.3s_ease-out]">
+            Invalid code. Please try again.
+          </p>
+        )}
 
         {/* Resend */}
         <div className="flex items-center justify-center gap-1 mt-8 sm:mt-16 pb-10 sm:pb-20">
