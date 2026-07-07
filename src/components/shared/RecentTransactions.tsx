@@ -19,7 +19,6 @@ export function RecentTransactions({ transactions, className = '' }: RecentTrans
       <h2 className="text-[1.5rem] font-normal mb-6 leading-[1.875rem]">Recent Transactions</h2>
       <GlassCard variant="heavy" rounded="19px">
         <div className="relative z-10">
-          <DividerGlow variant="green" />
           <div className="overflow-x-auto">
             <table className="w-full min-w-[31.25rem]">
               <thead>

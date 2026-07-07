@@ -150,10 +150,24 @@
 @layer components {
   .glass-card {
     background: rgba(255,255,255,0.03);
-    border: 1.16px solid rgba(255,255,255,0.06);
+    border: 1.16px solid transparent;
     backdrop-filter: url(#blur-23);
     -webkit-backdrop-filter: url(#blur-23);
     box-shadow: 0px 4.641px 23.204px rgba(0,0,0,0.2), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04);
+    position: relative;
+  }
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.16px;
+    background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   .glass-card-heavy {

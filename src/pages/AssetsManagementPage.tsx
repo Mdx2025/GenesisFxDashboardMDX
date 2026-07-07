@@ -255,7 +255,6 @@ export default function AssetsManagementPage() {
               </div>
             </div>
             <GlassCard variant="heavy" divider="white" rounded="26px">
-              <div className="divider-green absolute top-0 left-[10%] right-[10%]" aria-hidden="true" />
               <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">
                 <div className="flex items-center gap-3">

@@ -14,7 +14,6 @@ function Section({ id, title, children }: { id: string; title: string; children:
   return (
     <section id={id} className="mb-12 scroll-mt-6">
       <h2 className="text-h2 text-white mb-1">{title}</h2>
-      <div className="divider-green mb-6" aria-hidden="true" />
       {children}
     </section>
   )
@@ -284,7 +283,7 @@ export default function DesignSystemPage() {
               <GlassCard className="p-6">
                 <p className="text-gfx-neutral-500 text-sm">Light variant — default glass card with subtle blur and divider glow.</p>
               </GlassCard>
-              <GlassCard variant="heavy" divider="green" className="p-6">
+              <GlassCard variant="heavy" divider="none" className="p-6">
                 <p className="text-gfx-neutral-500 text-sm">Heavy variant — stronger blur, shadow, and green divider.</p>
               </GlassCard>
               <GlassCard divider="none" rounded="12px" className="p-6">
@@ -328,8 +327,7 @@ export default function DesignSystemPage() {
                 <DividerGlow />
               </div>
               <div>
-                <p className="text-caption text-gfx-neutral-300 mb-2">Green glow</p>
-                <DividerGlow variant="green" />
+                <p className="text-caption text-gfx-neutral-300 mb-2">Green glow (removed)</p>
               </div>
             </div>
           </Subsection>
@@ -428,7 +426,7 @@ export default function DesignSystemPage() {
         {/* Charts */}
         <Section id="charts" title="Charts">
           <Subsection title="Portfolio Line Chart">
-            <GlassCard variant="heavy" divider="green" className="p-6 h-[300px]">
+            <GlassCard variant="heavy" divider="none" className="p-6 h-[300px]">
               <PortfolioChart />
             </GlassCard>
           </Subsection>
