@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassSelect, GlassSelectIcon, FloatingNavBar } from '@/components/ui'
+import { GlassCard, GlassSelect, GlassSelectIcon } from '@/components/ui'
 import { SearchIcon } from '@/components/icons'
 import { UsdtIcon, BtcIcon, EthIcon, UsdcIcon, CopyIcon } from '@/components/shared/CoinIcons'
 import { StepCircle, StepConnector, FaqSection } from '@/components/shared/StepFlow'
@@ -307,9 +307,6 @@ export default function DepositPage() {
           <RecentTransactions transactions={TRANSACTIONS} className="mt-16 xl:max-w-[50%]" />
         </div>
 
-      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingNavBar />
-      </div>
     </>
   )
 }

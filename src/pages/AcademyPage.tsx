@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { FloatingNavBar, ModeToggle, GlassBannerCard, CourseCard, EBookCard } from '@/components/ui'
+import { ModeToggle, GlassBannerCard, CourseCard, EBookCard } from '@/components/ui'
 import { COURSES } from '@/data/academy-courses'
 import { EBOOKS } from '@/data/academy-ebooks'
 
@@ -156,9 +156,6 @@ export default function AcademyPage() {
         )}
       </div>
 
-      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingNavBar />
-      </div>
     </>
   )
 }

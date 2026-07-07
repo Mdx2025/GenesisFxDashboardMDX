@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassSelect, GlassSelectIcon, GlassInput, GlowButton, FloatingNavBar } from '@/components/ui'
+import { GlassSelect, GlassSelectIcon, GlassInput, GlowButton } from '@/components/ui'
 import { WithdrawCodeModal } from '@/components/modals/WithdrawCodeModal'
 import { SearchIcon } from '@/components/icons'
 import { UsdtIcon, BtcIcon, EthIcon, UsdcIcon } from '@/components/shared/CoinIcons'
@@ -245,10 +245,6 @@ export default function WithdrawPage() {
         <div className="px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 mt-16 pb-32 xl:pb-16">
           <RecentTransactions transactions={TRANSACTIONS} className="xl:max-w-[50%]" />
         </div>
-
-      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingNavBar />
-      </div>
 
       <WithdrawCodeModal open={codeModalOpen} onClose={() => setCodeModalOpen(false)} onSuccess={() => navigate(`/withdraw-processing?amount=${encodeURIComponent(withdrawAmount || '60.00')}&coin=${encodeURIComponent(coinLabel)}`)} />
     </>

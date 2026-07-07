@@ -1,7 +1,7 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { FloatingNavBar, GlowButton } from '@/components/ui'
+import { GlowButton } from '@/components/ui'
 
 function HourglassIllustration() {
   return (
@@ -153,9 +153,6 @@ export default function WithdrawProcessingPage() {
 
       <div className="absolute left-1/2 -translate-x-1/2 bottom-[-25%] w-[600px] h-[300px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
-      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingNavBar />
-      </div>
     </div>
   )
 }

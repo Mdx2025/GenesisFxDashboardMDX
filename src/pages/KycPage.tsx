@@ -1,6 +1,6 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowButton, FloatingNavBar } from '@/components/ui'
+import { GlassCard, GlowButton } from '@/components/ui'
 
 function KycIllustration() {
   return (
@@ -121,9 +121,6 @@ export default function KycPage() {
         </GlassCard>
       </div>
 
-      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingNavBar />
-      </div>
     </>
   )
 }

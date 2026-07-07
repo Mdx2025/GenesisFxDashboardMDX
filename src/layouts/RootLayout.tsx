@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, createContext, useContext } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Sidebar } from '@/components/dashboard/Sidebar'
+import { FloatingNavBar } from '@/components/ui'
 import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
 import Lenis from 'lenis'
@@ -69,6 +70,9 @@ export default function RootLayout() {
           <main ref={mainRef} className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
             <Outlet />
           </main>
+          <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+            <FloatingNavBar />
+          </div>
         </div>
         <TransferModal
           open={transferOpen}
