@@ -365,7 +365,7 @@ export default function WithdrawPage() {
 
         {/* Recent Transactions */}
         <div className="px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 mt-16 pb-32 xl:pb-16">
-          <div className="max-w-[700px]">
+          <div className="max-w-[700px] 3xl:max-w-none">
             <h2 className="text-[24px] font-normal mb-6 leading-[30px]">Recent Transactions</h2>
             <GlassCard variant="heavy" rounded="19px">
               <div className="relative z-10">

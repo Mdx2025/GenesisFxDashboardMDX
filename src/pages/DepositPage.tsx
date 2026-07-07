@@ -430,7 +430,7 @@ export default function DepositPage() {
           </div>
 
           {/* Recent Transactions */}
-          <div className="mt-16 max-w-[700px]">
+          <div className="mt-16 max-w-[700px] 3xl:max-w-none">
             <h2 className="text-[24px] font-normal mb-6 leading-[30px]">Recent Transactions</h2>
             <GlassCard variant="heavy" rounded="19px">
               <div className="relative z-10">
