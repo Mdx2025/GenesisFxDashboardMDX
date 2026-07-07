@@ -144,58 +144,60 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
-            Enter your code
-          </h2>
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
+              Enter your code
+            </h2>
 
-          <div className="text-center px-6">
-            <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
-              We sent a 4-digit code to your email
-            </p>
-            <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
-              Enter it below to confirm your withdrawal
-            </p>
+            <div className="text-center px-6">
+              <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
+                We sent a 4-digit code to your email
+              </p>
+              <p className="text-[#A0A0A0] text-[14px] sm:text-[16px] leading-6">
+                Enter it below to confirm your withdrawal
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8">
-          {code.map((digit, i) => (
-            <input
-              key={i}
-              ref={el => { inputRefs.current[i] = el }}
-              type="text"
-              inputMode="numeric"
-              maxLength={1}
-              value={digit}
-              onChange={e => handleChange(i, e.target.value)}
-              onKeyDown={e => handleKeyDown(i, e)}
-              onPaste={i === 0 ? handlePaste : undefined}
-              className={`w-[clamp(3.5rem,15vw,7rem)] h-[clamp(4rem,17vw,8rem)] rounded-xl sm:rounded-2xl border text-center text-white text-[clamp(1.5rem,5vw,3rem)] font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
-                error
-                  ? 'border-red-500'
-                  : digit
-                    ? 'border-gfx-green-500'
-                    : 'border-[#3d3d3d]'
-              }`}
-              aria-label={`Digit ${i + 1}`}
-            />
-          ))}
-        </div>
+          <div className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8">
+            {code.map((digit, i) => (
+              <input
+                key={i}
+                ref={el => { inputRefs.current[i] = el }}
+                type="text"
+                inputMode="numeric"
+                maxLength={1}
+                value={digit}
+                onChange={e => handleChange(i, e.target.value)}
+                onKeyDown={e => handleKeyDown(i, e)}
+                onPaste={i === 0 ? handlePaste : undefined}
+                className={`w-[clamp(3.5rem,15vw,7rem)] h-[clamp(4rem,17vw,8rem)] rounded-xl sm:rounded-2xl border text-center text-white text-[clamp(1.5rem,5vw,3rem)] font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
+                  error
+                    ? 'border-red-500'
+                    : digit
+                      ? 'border-gfx-green-500'
+                      : 'border-[#3d3d3d]'
+                }`}
+                aria-label={`Digit ${i + 1}`}
+              />
+            ))}
+          </div>
 
-        {error && (
-          <p className="text-center text-red-500 text-[14px] mt-4 animate-[fadeInStep_0.3s_ease-out]">
-            Invalid code. Please try again.
-          </p>
-        )}
+          {error && (
+            <p className="text-center text-red-500 text-[14px] animate-[fadeInStep_0.3s_ease-out]">
+              Invalid code. Please try again.
+            </p>
+          )}
 
-        <div className="flex items-center justify-center gap-1 pb-10 sm:pb-20">
-          <span className="text-[#A0A0A0] text-[16px] leading-6">
-            Didn't receive the code?
-          </span>
-          <button className="text-white text-[16px] leading-6 hover:underline cursor-pointer">
-            Resend
-          </button>
+          <div className="flex items-center justify-center gap-1 pb-10 sm:pb-20">
+            <span className="text-[#A0A0A0] text-[16px] leading-6">
+              Didn't receive the code?
+            </span>
+            <button className="text-white text-[16px] leading-6 hover:underline cursor-pointer">
+              Resend
+            </button>
+          </div>
         </div>
 
         <div
