@@ -94,7 +94,7 @@ function GlossarySection() {
 
   return (
     <div className="pt-10 xl:pt-[62px] pb-10">
-      <div className="flex items-center gap-[13px] flex-wrap mb-[41px]">
+      <div className="flex items-center justify-center gap-[13px] flex-wrap mb-[41px]">
         <button
           onClick={() => setActiveLetter('All')}
           className={`h-[33px] px-[11px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors ${
