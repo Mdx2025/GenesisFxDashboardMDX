@@ -273,9 +273,9 @@ export default function DepositPage() {
             </p>
           </div>
 
-          <div className="flex flex-col xl:flex-row gap-10 xl:gap-20 3xl:gap-14 4xl:gap-20">
+          <div className="flex flex-col xl:flex-row gap-10 xl:gap-14">
             {/* Steps column */}
-            <div className="flex-1 max-w-[650px] 3xl:max-w-none 3xl:basis-1/2 4xl:basis-1/2">
+            <div className="xl:basis-1/2 xl:min-w-0">
               {/* Step 1: Select Coin */}
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
@@ -391,7 +391,7 @@ export default function DepositPage() {
             </div>
 
             {/* FAQs column */}
-            <div className="w-full xl:flex-1 3xl:basis-1/2 4xl:basis-1/2">
+            <div className="w-full xl:basis-1/2 xl:min-w-0">
               <h2 className="text-[24px] font-normal mb-6 leading-[30px]">FAQs</h2>
               <div className="space-y-4">
                 {FAQS.map((faq, i) => (
