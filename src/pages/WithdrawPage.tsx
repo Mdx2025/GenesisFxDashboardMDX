@@ -229,7 +229,7 @@ export default function WithdrawPage() {
                               Network Fee 0.00 {coinLabel}
                             </p>
                           </div>
-                          <GlowButton label="Withdraw" width={145} height={44} onClick={() => setCodeModalOpen(true)} />
+                          <GlowButton label="Withdraw" width={145} height={44} onClick={() => setCodeModalOpen(true)} disabled={!withdrawAmount || parseFloat(withdrawAmount) <= 0} />
                         </div>
                       </div>
                     )}
