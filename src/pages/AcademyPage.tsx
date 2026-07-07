@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, FloatingNavBar } from '@/components/ui'
+import { GlassCard, FloatingNavBar, ModeToggle } from '@/components/ui'
 import { COURSES, ACADEMY_TABS } from '@/data/academy-courses'
 import type { Course } from '@/data/academy-courses'
 
@@ -167,39 +167,9 @@ function LearningJourneyCard() {
   )
 }
 
-function TabSwitcher({ activeTab, onTabChange }: { activeTab: string; onTabChange: (id: string) => void }) {
-  return (
-    <div className="inline-flex items-center h-[46px] 3xl:h-[58px] 4xl:h-[70px] rounded-full bg-white/[0.03] border border-white/[0.06] p-[1px] overflow-x-auto">
-      {ACADEMY_TABS.map(tab => {
-        const isActive = tab.id === activeTab
-        return (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => onTabChange(tab.id)}
-            className={`relative h-full px-5 3xl:px-7 4xl:px-9 rounded-full text-body2 font-medium whitespace-nowrap transition-colors cursor-pointer ${
-              isActive
-                ? 'text-white'
-                : 'text-[#606060] hover:text-white/70'
-            }`}
-          >
-            {isActive && (
-              <span className="absolute inset-0 rounded-full bg-[#00f0a0] opacity-100 overflow-hidden" aria-hidden="true">
-                <span className="absolute inset-0 bg-[#00f0a0]" />
-                <span className="absolute inset-[1px] rounded-full bg-[#00f0a0]" />
-              </span>
-            )}
-            <span className={`relative z-10 ${isActive ? 'text-black' : ''}`}>{tab.label}</span>
-          </button>
-        )
-      })}
-    </div>
-  )
-}
-
 export default function AcademyPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeTab, setActiveTab] = useState('video-courses')
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <>
@@ -220,8 +190,8 @@ export default function AcademyPage() {
           </h1>
         </div>
 
-        <div className="mb-8 3xl:mb-10 4xl:mb-14">
-          <TabSwitcher activeTab={activeTab} onTabChange={setActiveTab} />
+        <div className="mb-8 3xl:mb-10 4xl:mb-14 w-full max-w-xl">
+          <ModeToggle options={['Video Courses', 'E Books', 'Glossary', 'Calculators']} activeIndex={activeTab} onChange={setActiveTab} />
         </div>
 
         <div className="mb-10 3xl:mb-14 4xl:mb-18">
