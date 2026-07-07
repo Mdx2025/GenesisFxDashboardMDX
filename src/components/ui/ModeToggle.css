@@ -17,7 +17,7 @@
   cursor: pointer;
   z-index: 1;
   border-radius: 60px;
-  transition: all 0.3s;
+  transition: color 0.15s ease;
   position: relative;
   overflow: hidden;
   display: flex;

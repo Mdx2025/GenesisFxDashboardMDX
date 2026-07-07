@@ -44,8 +44,8 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
     } else {
       gsap.to(indicatorRef.current, {
         xPercent: xPct,
-        duration: 0.4,
-        ease: 'power2.inOut',
+        duration: 0.2,
+        ease: 'power2.out',
       })
     }
   }, [active])
