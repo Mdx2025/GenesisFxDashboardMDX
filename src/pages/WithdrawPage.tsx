@@ -335,7 +335,7 @@ export default function WithdrawPage() {
                       <button
                         type="button"
                         onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
-                        className={`w-11 h-11 rounded-[15px] bg-gradient-to-b from-[#011b12] to-[#08291e] flex items-center justify-center shrink-0 cursor-pointer transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`}
+                        className={`w-11 h-11 rounded-[15px] bg-gradient-to-b from-[#011b12] to-[#08291e] flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-300 ease-in-out ${expandedFaq === i ? 'rotate-180' : ''}`}
                       >
                         <ChevronDownIcon size={14} color="#00f0a0" />
                       </button>
@@ -343,9 +343,17 @@ export default function WithdrawPage() {
                     <div className="mt-3 flex items-center gap-3">
                       <FaqTag label={faq.tag} />
                     </div>
-                    {expandedFaq === i && (
-                      <p className="mt-4 text-gfx-neutral-300 text-[15px] leading-relaxed">{faq.answer}</p>
-                    )}
+                    <div
+                      className="grid transition-[grid-template-rows,opacity] duration-300 ease-in-out"
+                      style={{
+                        gridTemplateRows: expandedFaq === i ? '1fr' : '0fr',
+                        opacity: expandedFaq === i ? 1 : 0,
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="pt-4 text-gfx-neutral-300 text-[15px] leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
