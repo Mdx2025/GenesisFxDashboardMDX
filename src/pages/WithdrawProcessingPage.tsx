@@ -108,7 +108,7 @@ export default function WithdrawProcessingPage() {
   const estimatedTime = now.toISOString().replace('T', ' ').slice(0, 19)
 
   return (
-    <>
+    <div className="relative overflow-hidden">
       <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -156,6 +156,6 @@ export default function WithdrawProcessingPage() {
       <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <FloatingNavBar />
       </div>
-    </>
+    </div>
   )
 }
