@@ -129,7 +129,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
 
         <div className="flex justify-center pt-6 sm:pt-10 pb-2 sm:pb-4">
           <img
-            src="/images/withdraw-security.svg"
+            src="/images/withdraw-security-icon.png"
             alt=""
             aria-hidden="true"
             className="w-auto max-h-[120px] sm:max-h-[200px] object-contain"
@@ -189,7 +189,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
         </div>
 
         <div
-          className="absolute left-1/2 -translate-x-1/2 bottom-[-80px] w-[493px] h-72 bg-green-900 rounded-full pointer-events-none"
+          className="absolute left-1/2 -translate-x-1/2 bottom-[-30%] w-[493px] h-72 bg-green-900 rounded-full pointer-events-none"
           style={{ filter: 'blur(157px)' }}
           aria-hidden="true"
         />
