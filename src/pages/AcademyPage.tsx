@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { ModeToggle, GlassBannerCard, CourseCard, EBookCard, GlossaryCard } from '@/components/ui'
+import { ModeToggle, GlassBannerCard, CourseCard, EBookCard, GlossaryCard, EmptyState } from '@/components/ui'
 import { COURSES } from '@/data/academy-courses'
 import { EBOOKS } from '@/data/academy-ebooks'
 import { GLOSSARY_TERMS } from '@/data/academy-glossary'
@@ -127,7 +127,7 @@ function GlossarySection() {
           ))}
         </div>
       ) : (
-        <p className="text-gfx-neutral-500 text-body2">No terms found for "{activeLetter}".</p>
+        <EmptyState title="No terms found" description={`There are no glossary terms starting with "${activeLetter}".`} />
       )}
     </div>
   )
