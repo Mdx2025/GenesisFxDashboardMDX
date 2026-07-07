@@ -188,20 +188,20 @@ const DEPOSIT_ADDRESS = '0x0a3e23bf27c99b93d2ce8e6572d71188c7e75671'
 function StepCircle({ stepNumber, status }: { stepNumber: number; status: 'completed' | 'active' | 'inactive' }) {
   if (status === 'inactive') {
     return (
-      <div className="w-10 h-10 rounded-full bg-[#404040] flex items-center justify-center">
-        <span className="text-[#a0a0a0] text-[16px] font-medium">{stepNumber}</span>
+      <div className="w-10 h-10 3xl:w-14 3xl:h-14 4xl:w-18 4xl:h-18 rounded-full bg-[#404040] flex items-center justify-center">
+        <span className="text-[#a0a0a0] text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium">{stepNumber}</span>
       </div>
     )
   }
 
   return (
-    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-[0px_4px_15.7px_5px_rgba(255,255,255,0.25)]">
+    <div className="w-10 h-10 3xl:w-14 3xl:h-14 4xl:w-18 4xl:h-18 rounded-full bg-white flex items-center justify-center shadow-[0px_4px_15.7px_5px_rgba(255,255,255,0.25)]">
       {status === 'completed' ? (
-        <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
+        <svg className="w-[10px] h-[7px] 3xl:w-[14px] 3xl:h-[10px] 4xl:w-[18px] 4xl:h-[13px]" viewBox="0 0 10 7" fill="none" aria-hidden="true">
           <path d="M1 3.5L3.5 6L9 1" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ) : (
-        <span className="text-black text-[16px] font-medium">{stepNumber}</span>
+        <span className="text-black text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium">{stepNumber}</span>
       )}
     </div>
   )
@@ -268,14 +268,14 @@ export default function DepositPage() {
             <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
               Deposit Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-[16px] font-medium mt-1 max-w-[522px] leading-[24.44px]">
+            <p className="text-gfx-neutral-300 text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px]">
               All payments will be credited to your main wallet. You can then transfer funds to your trading accounts.
             </p>
           </div>
 
-          <div className="flex flex-col xl:flex-row gap-10 xl:gap-20">
+          <div className="flex flex-col xl:flex-row gap-10 xl:gap-20 3xl:gap-28 4xl:gap-36">
             {/* Steps column */}
-            <div className="flex-1 max-w-[650px]">
+            <div className="flex-1 max-w-[650px] 3xl:max-w-[900px] 4xl:max-w-[1200px]">
               {/* Step 1: Select Coin */}
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
@@ -285,7 +285,7 @@ export default function DepositPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-[24px] 3xl:text-[32px] 4xl:text-[42px] font-normal leading-[30px] 3xl:leading-[40px] 4xl:leading-[52px] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -304,7 +304,7 @@ export default function DepositPage() {
                         key={coin.id}
                         type="button"
                         onClick={() => handleCoinSelect(coin.id)}
-                        className={`h-[50px] px-4 rounded-[30px] flex items-center gap-2.5 cursor-pointer transition-colors ${
+                        className={`h-[50px] 3xl:h-[64px] 4xl:h-[80px] px-4 3xl:px-6 4xl:px-8 rounded-[30px] flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
                             ? 'bg-[#064b34] border border-[#0a714f]'
                             : 'bg-[#011b12] border border-transparent hover:bg-[#021B13]'
@@ -328,7 +328,7 @@ export default function DepositPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-[24px] 3xl:text-[32px] 4xl:text-[42px] font-normal leading-[30px] 3xl:leading-[40px] 4xl:leading-[52px] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Select Network
                     </h3>
 
@@ -351,7 +351,7 @@ export default function DepositPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-[24px] font-normal leading-[30px] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-[24px] 3xl:text-[32px] 4xl:text-[42px] font-normal leading-[30px] 3xl:leading-[40px] 4xl:leading-[52px] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Deposit Address
                     </h3>
 

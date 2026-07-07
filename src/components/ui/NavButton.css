@@ -3,15 +3,19 @@
   border: none;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(12px, 0.5rem + 0.3vw, 24px);
   cursor: pointer;
   transition: background 0.35s ease, color 0.35s ease, outline-color 0.35s ease;
   color: #A0A0A0;
-  font-size: clamp(0.7rem, 0.6rem + 0.25vw, 0.875rem);
+  font-size: clamp(0.7rem, 0.4rem + 0.45vw, 1.5rem);
   background: transparent;
   position: relative;
   overflow: hidden;
   z-index: 1;
+}
+.nav-btn > svg {
+  width: clamp(21px, 1rem + 0.4vw, 36px);
+  height: clamp(21px, 1rem + 0.4vw, 36px);
 }
 .nav-btn:hover {
   background: rgba(255,255,255,0.03);
