@@ -197,7 +197,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>
-                              <Link to={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-10 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-lg">
+                              <Link to={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-6 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-md border-l-2 border-transparent hover:border-[#00B38C]">
                                 {sub.label}
                               </Link>
                             </li>
