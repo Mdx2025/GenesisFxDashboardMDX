@@ -66,19 +66,21 @@ export default function KycPage() {
             <div className="relative z-10 flex flex-col xl:flex-row min-h-[730px] 3xl:min-h-[900px] 4xl:min-h-[1200px]">
               {/* Left panel — KYC Verification */}
               <div className="flex-1 flex flex-col items-center justify-center py-16 px-8 xl:border-r xl:border-white/[0.06]">
-                <KycIllustration />
+                <div className="w-full h-full border border-[rgba(255,255,255,0.04)] rounded-lg flex flex-col items-center justify-center py-12 px-6">
+                  <KycIllustration />
 
-                <div className="flex flex-col gap-6 3xl:gap-8 4xl:gap-12 items-center">
-                  <h2 className="text-white text-[28px] xl:text-[36px] 3xl:text-[48px] 4xl:text-[64px] font-normal text-center leading-none">
-                    KYC Verification Required
-                  </h2>
+                  <div className="flex flex-col gap-6 3xl:gap-8 4xl:gap-12 items-center">
+                    <h2 className="text-white text-[28px] xl:text-[36px] 3xl:text-[48px] 4xl:text-[64px] font-normal text-center leading-none">
+                      KYC Verification Required
+                    </h2>
 
-                  <p className="text-gfx-neutral-500 text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
-                    To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
-                  </p>
+                    <p className="text-gfx-neutral-500 text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[42px] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
+                      To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
+                    </p>
 
-                  <div>
-                    <GlowButton label="Complete KYC" width={193} height={44} />
+                    <div>
+                      <GlowButton label="Complete KYC" width={193} height={44} />
+                    </div>
                   </div>
                 </div>
               </div>
