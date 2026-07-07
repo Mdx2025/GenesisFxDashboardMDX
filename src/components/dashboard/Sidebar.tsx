@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
 import {
   DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
-  PammIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
+  GenSocialIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
   ChevronDownIcon,
 } from '@/components/icons'
 import { navItems } from '@/data/navigation'
@@ -17,7 +17,7 @@ const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> 
   assets: AssetsIcon,
   tradelocker: TradelockerIcon,
   challenges: ChallengesIcon,
-  pamm: PammIcon,
+  gensocial: GenSocialIcon,
   news: MarketNewsIcon,
   academy: AcademyIcon,
 }
@@ -29,10 +29,10 @@ interface SidebarProps {
 
 export function Sidebar({ open, onClose }: SidebarProps) {
   const location = useLocation()
-  const [tradelockerOpen, setTradelockerOpen] = useState(false)
+  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
   const [collapsed, setCollapsed] = useState(false)
-  const submenuRef = useRef<HTMLDivElement>(null)
-  const submenuFirstRender = useRef(true)
+  const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
+  const submenuFirstRender = useRef<Record<string, boolean>>({})
   const navListRef = useRef<HTMLUListElement>(null)
   const highlightRef = useRef<HTMLDivElement>(null)
   const isFirstHighlight = useRef(true)
@@ -66,19 +66,21 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   }, [location.pathname, updateHighlight])
 
   useLayoutEffect(() => {
-    const el = submenuRef.current
-    if (!el) return
-    if (submenuFirstRender.current) {
-      submenuFirstRender.current = false
-      return
+    for (const [id, isOpen] of Object.entries(openMenus)) {
+      const el = submenuRefs.current[id]
+      if (!el) continue
+      if (!submenuFirstRender.current[id]) {
+        submenuFirstRender.current[id] = true
+        continue
+      }
+      if (isOpen) {
+        gsap.set(el, { height: 'auto', opacity: 1 })
+        gsap.from(el, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.out' })
+      } else {
+        gsap.to(el, { height: 0, opacity: 0, duration: 0.25, ease: 'power2.in' })
+      }
     }
-    if (tradelockerOpen) {
-      gsap.set(el, { height: 'auto', opacity: 1 })
-      gsap.from(el, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.out' })
-    } else {
-      gsap.to(el, { height: 0, opacity: 0, duration: 0.25, ease: 'power2.in' })
-    }
-  }, [tradelockerOpen])
+  }, [openMenus])
 
   function handleToggleCollapse() {
     if (window.innerWidth < 1024) {
@@ -86,7 +88,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       return
     }
     const next = !collapsed
-    if (next) setTradelockerOpen(false)
+    if (next) setOpenMenus({})
     setCollapsed(next)
   }
 
@@ -167,15 +169,15 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                 const navContent = (
                   <NavButton
                     active={isActive}
-                    expanded={item.submenu ? tradelockerOpen : undefined}
-                    onClick={item.submenu ? () => !collapsed && setTradelockerOpen(!tradelockerOpen) : undefined}
+                    expanded={item.submenu ? !!openMenus[item.id] : undefined}
+                    onClick={item.submenu ? () => !collapsed && setOpenMenus(prev => ({ ...prev, [item.id]: !prev[item.id] })) : undefined}
                     as={item.submenu ? 'button' : 'div'}
                   >
                     {Icon && <Icon />}
                     <span className="sidebar-hide">{item.label}</span>
                     {item.submenu && (
                       <span
-                        className={`ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${tradelockerOpen ? 'rotate-180' : ''}`}
+                        className={`ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${openMenus[item.id] ? 'rotate-180' : ''}`}
                         aria-hidden="true"
                       >
                         <ChevronDownIcon />
@@ -191,7 +193,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                       </Link>
                     )}
                     {item.submenu && (
-                      <div ref={submenuRef} className="sidebar-hide overflow-hidden h-0 opacity-0">
+                      <div ref={el => { submenuRefs.current[item.id] = el }} className="sidebar-hide overflow-hidden h-0 opacity-0">
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>

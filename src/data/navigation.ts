@@ -17,7 +17,11 @@ export const navItems: NavItem[] = [
     { label: 'Platforms', href: '/tradelocker/platforms' },
   ]},
   { id: 'challenges', label: '10x Challenges', icon: 'challenges', href: '/challenges' },
-  { id: 'pamm', label: 'PAMM Portal', icon: 'pamm', href: '/pamm' },
+  { id: 'gensocial', label: 'GenSocial', icon: 'gensocial', href: '#', submenu: [
+    { label: 'PAMM', href: '/pamm' },
+    { label: 'Copy Trading', href: '/copy-trading' },
+    { label: 'Signals', href: '/signals' },
+  ]},
   { id: 'news', label: 'Market News', icon: 'news', href: '/news' },
   { id: 'academy', label: 'Genesis Academy', icon: 'academy', href: '/academy' },
 ]
