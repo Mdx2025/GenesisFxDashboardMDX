@@ -2,30 +2,9 @@ import { Link } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard } from '@/components/ui'
-import {
-  DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
-  PammIcon, MarketNewsIcon, AcademyIcon,
-} from '@/components/icons'
-import type { ComponentType } from 'react'
+import { PAGE_REGISTRY } from '@/data/pages'
 
-interface PageLink {
-  path: string
-  label: string
-  description: string
-  icon: ComponentType<{ size?: number; color?: string }>
-}
-
-const PAGES: PageLink[] = [
-  { path: '/', label: 'Dashboard', description: 'Portfolio overview, charts, and trading accounts', icon: DashboardIcon },
-  { path: '/assets-management', label: 'Assets Management', description: 'Fiat wallet, funding, and transaction history', icon: AssetsIcon },
-  { path: '/deposit', label: 'Deposit', description: 'Deposit crypto to your Genesis account', icon: AssetsIcon },
-  { path: '/withdraw', label: 'Withdraw', description: 'Withdraw funds to your external wallet', icon: AssetsIcon },
-  { path: '/challenges', label: '10x Challenges', description: 'Trading challenges and competitions', icon: ChallengesIcon },
-  { path: '/pamm', label: 'PAMM Portal', description: 'Managed accounts and PAMM investments', icon: PammIcon },
-  { path: '/news', label: 'Market News', description: 'Latest market updates and analysis', icon: MarketNewsIcon },
-  { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon },
-  { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon },
-]
+const DIRECTORY_PAGES = PAGE_REGISTRY.filter(p => p.showInDirectory !== false)
 
 export default function AllPagesPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
@@ -43,7 +22,7 @@ export default function AllPagesPage() {
         <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mb-8">All Pages</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 3xl:gap-6">
-          {PAGES.map((page) => {
+          {DIRECTORY_PAGES.map((page) => {
             const Icon = page.icon
             return (
               <Link key={page.path} to={page.path} className="group">
