@@ -67,7 +67,7 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
       />
 
       <div
-        className="relative w-[793px] max-w-[95vw] bg-[#0a0a0a] rounded-[40px] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
+        className="relative w-[793px] max-w-[95vw] max-h-[90vh] bg-[#0a0a0a] rounded-[40px] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
         style={{
           animation: visible
             ? 'modalFadeIn 0.3s ease-out forwards'
@@ -92,7 +92,7 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
             src="/images/withdraw-security.svg"
             alt=""
             aria-hidden="true"
-            className="w-auto h-auto"
+            className="w-auto max-h-[160px]"
           />
         </div>
 

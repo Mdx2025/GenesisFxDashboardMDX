@@ -23,13 +23,13 @@ export interface ChartConfig {
 export const defaultChartConfig: ChartConfig = {
   data: defaultWaveData,
   lineColor: '#00f0a0',
-  fillOpacity: 0.38,
+  fillOpacity: 0.55,
   tension: 0.45,
   lineWidth: 2,
-  glowIntensity: 12,
+  glowIntensity: 14,
   highlightIndex: DEFAULT_HIGHLIGHT_INDEX,
   gridOpacity: 0.04,
-  waveHeight: 0.75,
+  waveHeight: 0.85,
 }
 
 interface PortfolioChartProps {
@@ -60,10 +60,10 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
       const canvasH = canvasRef.current.height
       const greenGradient = ctx.createLinearGradient(0, 0, 0, canvasH)
       greenGradient.addColorStop(0, config.lineColor + hexOpacity(config.fillOpacity))
-      greenGradient.addColorStop(0.15, config.lineColor + hexOpacity(config.fillOpacity * 0.7))
-      greenGradient.addColorStop(0.35, config.lineColor + hexOpacity(config.fillOpacity * 0.35))
-      greenGradient.addColorStop(0.55, config.lineColor + hexOpacity(config.fillOpacity * 0.12))
-      greenGradient.addColorStop(0.75, config.lineColor + hexOpacity(config.fillOpacity * 0.04))
+      greenGradient.addColorStop(0.2, config.lineColor + hexOpacity(config.fillOpacity * 0.75))
+      greenGradient.addColorStop(0.4, config.lineColor + hexOpacity(config.fillOpacity * 0.45))
+      greenGradient.addColorStop(0.6, config.lineColor + hexOpacity(config.fillOpacity * 0.22))
+      greenGradient.addColorStop(0.8, config.lineColor + hexOpacity(config.fillOpacity * 0.08))
       greenGradient.addColorStop(1, config.lineColor + '00')
 
       const highlightPlugin = {
@@ -159,8 +159,9 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
           c.translate(centerX, centerY)
           c.scale(radiusX / radiusY, 1)
           const radial = c.createRadialGradient(0, 0, 0, 0, 0, radiusY)
-          radial.addColorStop(0, config.lineColor + '18')
-          radial.addColorStop(0.4, config.lineColor + '0D')
+          radial.addColorStop(0, config.lineColor + '30')
+          radial.addColorStop(0.3, config.lineColor + '1A')
+          radial.addColorStop(0.6, config.lineColor + '0A')
           radial.addColorStop(1, config.lineColor + '00')
           c.fillStyle = radial
           c.beginPath()
