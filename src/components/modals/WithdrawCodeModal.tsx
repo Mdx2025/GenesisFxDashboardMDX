@@ -7,12 +7,20 @@ interface WithdrawCodeModalProps {
 
 export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
   const [code, setCode] = useState(['', '', '', ''])
+  const [visible, setVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
   useEffect(() => {
     if (open) {
+      setMounted(true)
       setCode(['', '', '', ''])
-      setTimeout(() => inputRefs.current[0]?.focus(), 100)
+      requestAnimationFrame(() => setVisible(true))
+      setTimeout(() => inputRefs.current[0]?.focus(), 200)
+    } else if (mounted) {
+      setVisible(false)
+      const t = setTimeout(() => setMounted(false), 250)
+      return () => clearTimeout(t)
     }
   }, [open])
 
@@ -45,17 +53,27 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
     inputRefs.current[focusIndex]?.focus()
   }
 
-  if (!open) return null
+  if (!mounted) return null
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center">
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-250"
+      style={{ opacity: visible ? 1 : 0 }}
+    >
       <div
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={onClose}
         role="presentation"
       />
 
-      <div className="relative w-[793px] max-w-[95vw] bg-[#0a0a0a] rounded-[40px] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] outline outline-1 outline-offset-[-1px] outline-black/20 backdrop-blur-xl overflow-hidden">
+      <div
+        className="relative w-[793px] max-w-[95vw] bg-[#0a0a0a] rounded-[40px] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
+        style={{
+          animation: visible
+            ? 'modalFadeIn 0.3s ease-out forwards'
+            : 'modalFadeOut 0.25s ease-in forwards',
+        }}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
@@ -74,7 +92,7 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
             src="/images/withdraw-security.svg"
             alt=""
             aria-hidden="true"
-            className="w-60 h-auto"
+            className="w-auto h-auto"
           />
         </div>
 
