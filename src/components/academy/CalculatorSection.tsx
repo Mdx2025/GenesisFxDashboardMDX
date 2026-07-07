@@ -1,7 +1,16 @@
 import { useState, useCallback } from 'react'
+import { GlassSelect } from '@/components/ui/GlassSelect'
+import { GlowButton } from '@/components/ui/GlowButton'
 import './CalculatorSection.css'
 
-const CURRENCY_PAIRS = ['EURUSD', 'GBPUSD', 'USDJPY', 'AUDUSD', 'USDCHF', 'USDCAD']
+const CURRENCY_PAIRS = [
+  { value: 'EURUSD', label: 'EURUSD' },
+  { value: 'GBPUSD', label: 'GBPUSD' },
+  { value: 'USDJPY', label: 'USDJPY' },
+  { value: 'AUDUSD', label: 'AUDUSD' },
+  { value: 'USDCHF', label: 'USDCHF' },
+  { value: 'USDCAD', label: 'USDCAD' },
+]
 const RISK_OPTIONS = ['25%', '50%', '75%', 'MAX'] as const
 
 function CodeScanIcon() {
@@ -36,10 +45,10 @@ function RestartIcon() {
   )
 }
 
-function ChevronIcon() {
+function RefreshIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-      <path d="M3.617 5.425L7.234 9.041l3.617-3.616" stroke="#808080" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M10.5545 19.3487C15.4121 19.3487 19.3499 15.4109 19.3499 10.5533C19.3499 5.69567 15.4121 1.75781 10.5545 1.75781C5.69689 1.75781 1.75903 5.69567 1.75903 10.5533C1.75903 15.4109 5.69689 19.3487 10.5545 19.3487ZM14.0152 4.91677C14.2636 5.01796 14.426 5.25947 14.426 5.52768V7.91522C14.426 8.27954 14.1306 8.57488 13.7663 8.57488H11.4341C11.1686 8.57488 10.9291 8.41583 10.8261 8.17123C10.7231 7.92663 10.7767 7.64412 10.9622 7.45427L11.6319 6.76863C10.3605 6.37668 8.92446 6.69473 7.91671 7.72638C6.44966 9.22821 6.44966 11.6694 7.91671 13.1712C9.37532 14.6644 11.7337 14.6644 13.1923 13.1712C13.7884 12.5609 14.1435 11.7945 14.2546 10.997C14.3059 10.6294 14.5979 10.3201 14.9691 10.3201C15.3257 10.3201 15.6215 10.6056 15.587 10.9605C15.4762 12.1018 14.9936 13.2152 14.136 14.0932C12.1598 16.1162 8.94917 16.1162 6.97294 14.0932C5.00515 12.0787 5.00515 8.81891 6.97294 6.80447C8.5012 5.23998 10.7691 4.88429 12.6343 5.74248L13.2944 5.06673C13.4818 4.87486 13.7668 4.81558 14.0152 4.91677Z" fill="white"/>
     </svg>
   )
 }
@@ -54,7 +63,6 @@ export function CalculatorSection() {
   const [balance, setBalance] = useState('10000')
   const [riskIdx, setRiskIdx] = useState(1)
   const [stopLoss, setStopLoss] = useState('50')
-  const [showPairDropdown, setShowPairDropdown] = useState(false)
 
   const riskPct = RISK_OPTIONS[riskIdx] === 'MAX' ? 100 : parseInt(RISK_OPTIONS[riskIdx])
   const riskDecimal = riskPct / 100
@@ -113,30 +121,11 @@ export function CalculatorSection() {
           {/* Currency Pair */}
           <div className="flex flex-col gap-2">
             <label className="text-white text-[1rem] font-medium">Currency Pair</label>
-            <div className="relative">
-              <button
-                className="w-full h-[2.875rem] px-5 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center justify-between text-[#808080] text-[1rem] cursor-pointer"
-                onClick={() => setShowPairDropdown(!showPairDropdown)}
-              >
-                <span>{pair}</span>
-                <ChevronIcon />
-              </button>
-              {showPairDropdown && (
-                <ul className="absolute top-full mt-1 left-0 right-0 bg-[#0C1311] border border-[#064B34] rounded-2xl overflow-hidden z-10">
-                  {CURRENCY_PAIRS.map(p => (
-                    <li key={p}>
-                      <button
-                        className="w-full px-5 py-3 text-left text-[1rem] cursor-pointer hover:bg-white/5 transition-colors"
-                        style={{ color: p === pair ? '#00B38C' : '#808080' }}
-                        onClick={() => { setPair(p); setShowPairDropdown(false) }}
-                      >
-                        {p}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            <GlassSelect
+              options={CURRENCY_PAIRS}
+              value={pair}
+              onChange={(v) => setPair(v)}
+            />
           </div>
 
           {/* Account Balance */}
@@ -195,11 +184,11 @@ export function CalculatorSection() {
             onClick={() => { setBalance('10000'); setStopLoss('50'); setRiskIdx(1) }}
             aria-label="Reset"
           >
-            <RestartIcon />
+            <RefreshIcon />
           </button>
-          <button className="flex-1 h-[2.75rem] rounded-full bg-[#F1FFFA] text-black text-[1rem] font-medium cursor-pointer hover:opacity-90 transition-opacity">
-            Calculate
-          </button>
+          <div className="flex-1">
+            <GlowButton label="Calculate" width="100%" height={44} onClick={() => {}} />
+          </div>
         </div>
       </div>
 
