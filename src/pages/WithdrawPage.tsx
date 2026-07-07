@@ -243,7 +243,7 @@ export default function WithdrawPage() {
         </div>
 
         <div className="px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 mt-16 pb-32 xl:pb-16">
-          <RecentTransactions transactions={TRANSACTIONS} className="3xl:max-w-none" />
+          <RecentTransactions transactions={TRANSACTIONS} className="xl:max-w-[50%]" />
         </div>
 
       <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">

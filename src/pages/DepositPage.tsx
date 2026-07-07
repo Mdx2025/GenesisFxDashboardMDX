@@ -304,7 +304,7 @@ export default function DepositPage() {
             <FaqSection faqs={FAQS} expandedFaq={expandedFaq} onToggle={(i) => setExpandedFaq(expandedFaq === i ? null : i)} />
           </div>
 
-          <RecentTransactions transactions={TRANSACTIONS} className="mt-16 3xl:max-w-none" />
+          <RecentTransactions transactions={TRANSACTIONS} className="mt-16 xl:max-w-[50%]" />
         </div>
 
       <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
