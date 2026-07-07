@@ -79,83 +79,87 @@ export default function LoginPage() {
 
         {/* Right: Login Form */}
         <div className="flex-1 flex flex-col items-center justify-center relative">
-          <div className="w-[546px] flex flex-col items-center">
-            <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">
-              Trader's Room Log In
-            </h1>
-
-            <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center mt-[2.6875rem]">
-              Welcome back! Sign in to your account below.
-            </p>
+          <div className="w-[546px] flex flex-col items-center gap-[2.6875rem]">
+            {/* Header */}
+            <div className="flex flex-col items-center gap-[2.6875rem]">
+              <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">
+                Trader's Room Log In
+              </h1>
+              <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">
+                Welcome back! Sign in to your account below.
+              </p>
+            </div>
 
             {/* Google Sign-In */}
-            <button
-              type="button"
-              className="w-full h-[3rem] rounded-[2rem] border border-[#2f2f2f] bg-transparent flex items-center justify-center gap-[1.0625rem] mt-[1.75rem] cursor-pointer hover:border-[#404040] transition-colors"
-            >
-              <GoogleIcon />
-              <span className="text-white text-[0.875rem] leading-[1.175rem]">Sign In with Google</span>
-            </button>
-
-            {/* Or Divider */}
-            <div className="w-full flex items-center mt-[2.6875rem]">
-              <div className="flex-1 h-px bg-[#09241c]" />
-              <span className="text-white text-[0.875rem] leading-[1.175rem] px-[1.625rem]">Or</span>
-              <div className="flex-1 h-px bg-[#09241c]" />
-            </div>
-
-            {/* Email Input */}
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none mt-[2.9375rem] focus:border-gfx-green-500/50 transition-colors"
-            />
-
-            {/* Password Input */}
-            <div className="w-full relative mt-[1.125rem]">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] pr-[3.25rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-              />
+            <div className="w-full flex flex-col items-center gap-[1.75rem]">
               <button
                 type="button"
-                onClick={() => setShowPassword(v => !v)}
-                className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                className="w-full h-[3rem] rounded-[2rem] border border-[#2f2f2f] bg-transparent flex items-center justify-center gap-[1.0625rem] cursor-pointer hover:border-[#404040] transition-colors"
               >
-                <EyeIcon open={showPassword} />
+                <GoogleIcon />
+                <span className="text-white text-[0.875rem] leading-[1.175rem]">Sign In with Google</span>
               </button>
-            </div>
 
-            {/* Sign In Button */}
-            <div className="w-full mt-[1.6875rem]">
-              <GlowButton label="Sign In" width="100%" />
-            </div>
-
-            {/* Forgot Password */}
-            <Link
-              to="/forgot-password"
-              className="text-[#00b38c] text-[1rem] leading-[1.2] mt-[1.25rem] hover:underline"
-            >
-              Forgot Password?
-            </Link>
-
-            {/* Register */}
-            <p className="text-[1rem] leading-[1.2] mt-[1.25rem]">
-              <span className="text-[#808080]">New to Genesis? </span>
-              <Link to="/register" className="text-white hover:underline">Register Now</Link>
-            </p>
-
-            {/* Live / Demo Badges */}
-            <div className="flex items-center gap-[0.875rem] mt-[1.25rem]">
-              <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-[0.875rem] rounded-[2rem] border border-[#2f2f2f]">
-                <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#00b38c]" />
-                <span className="text-white text-[0.875rem] leading-[1.175rem]">Live</span>
+              {/* Or Divider */}
+              <div className="w-full flex items-center">
+                <div className="flex-1 h-px bg-[#09241c]" />
+                <span className="text-white text-[0.875rem] leading-[1.175rem] px-[1.625rem]">Or</span>
+                <div className="flex-1 h-px bg-[#09241c]" />
               </div>
-              <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-[0.875rem] rounded-[2rem] border border-[#2f2f2f]">
-                <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#9a4dff]" />
-                <span className="text-white text-[0.875rem] leading-[1.175rem]">Demo</span>
+            </div>
+
+            {/* Form Fields */}
+            <div className="w-full flex flex-col gap-[1.125rem]">
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+              />
+
+              <div className="w-full relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] pr-[3.25rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(v => !v)}
+                  className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <EyeIcon open={showPassword} />
+                </button>
+              </div>
+
+              <div className="w-full pt-[0.5625rem]">
+                <GlowButton label="Sign In" width="100%" />
+              </div>
+            </div>
+
+            {/* Links & Badges */}
+            <div className="flex flex-col items-center gap-[1.25rem]">
+              <Link
+                to="/forgot-password"
+                className="text-[#00b38c] text-[1rem] leading-[1.2] hover:underline"
+              >
+                Forgot Password?
+              </Link>
+
+              <p className="text-[1rem] leading-[1.2]">
+                <span className="text-[#808080]">New to Genesis? </span>
+                <Link to="/register" className="text-white hover:underline">Register Now</Link>
+              </p>
+
+              <div className="flex items-center gap-[0.875rem]">
+                <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-[0.875rem] rounded-[2rem] border border-[#2f2f2f]">
+                  <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#00b38c]" />
+                  <span className="text-white text-[0.875rem] leading-[1.175rem]">Live</span>
+                </div>
+                <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-[0.875rem] rounded-[2rem] border border-[#2f2f2f]">
+                  <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#9a4dff]" />
+                  <span className="text-white text-[0.875rem] leading-[1.175rem]">Demo</span>
+                </div>
               </div>
             </div>
           </div>
