@@ -85,7 +85,7 @@ export default function LoginPage() {
             </h1>
 
             <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center mt-[2.6875rem]">
-              Welcome back! Sign in to access your trading dashboard, manage your portfolio, and stay ahead of the markets.
+              Welcome back! Sign in to your account below.
             </p>
 
             {/* Google Sign-In */}
@@ -136,19 +136,19 @@ export default function LoginPage() {
             {/* Forgot Password */}
             <Link
               to="/forgot-password"
-              className="text-[#00b38c] text-[1rem] leading-[1.2] mt-[2rem] hover:underline"
+              className="text-[#00b38c] text-[1rem] leading-[1.2] mt-[1.25rem] hover:underline"
             >
               Forgot Password?
             </Link>
 
             {/* Register */}
-            <p className="text-[1rem] leading-[1.2] mt-[1.4375rem]">
+            <p className="text-[1rem] leading-[1.2] mt-[1.25rem]">
               <span className="text-[#808080]">New to Genesis? </span>
               <Link to="/register" className="text-white hover:underline">Register Now</Link>
             </p>
 
             {/* Live / Demo Badges */}
-            <div className="flex items-center gap-[0.875rem] mt-[1.9375rem]">
+            <div className="flex items-center gap-[0.875rem] mt-[1.25rem]">
               <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-[0.875rem] rounded-[2rem] border border-[#2f2f2f]">
                 <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#00b38c]" />
                 <span className="text-white text-[0.875rem] leading-[1.175rem]">Live</span>
