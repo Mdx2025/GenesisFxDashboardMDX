@@ -84,7 +84,7 @@ export function LanguageDropdown() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 h-12 px-3 rounded-[30px] hover:opacity-90 transition-opacity cursor-pointer bg-[rgba(0,27,18,0.30)]"
+        className="flex items-center gap-1.5 h-9 px-3 rounded-lg hover:opacity-90 transition-opacity cursor-pointer bg-[#0C1311]"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={`Language: ${selected.label}`}
