@@ -99,19 +99,19 @@ export default function KycPage() {
                   </div>
                 </div>
 
-                <h3 className="text-gfx-neutral-500 text-[28px] xl:text-[32px] font-normal text-center">
+                <h3 className="text-[#606060] text-[28px] xl:text-[32px] font-normal text-center">
                   Choose Withdrawal Method
                 </h3>
 
-                <p className="text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center mt-2">
+                <p className="text-[#606060] text-[16px] font-medium leading-[24.44px] text-center mt-2">
                   Select your preferred withdrawal method to get started
                 </p>
 
-                <h4 className="text-white text-[24px] font-normal text-center mt-8">
+                <h4 className="text-[#606060] text-[24px] font-normal text-center mt-8">
                   Cryptocurrency
                 </h4>
 
-                <p className="text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center mt-2">
+                <p className="text-[#606060] text-[16px] font-medium leading-[24.44px] text-center mt-2">
                   Bitcoin, Ethereum, USDT, USDC, and more
                 </p>
 
@@ -120,7 +120,7 @@ export default function KycPage() {
                     <circle cx="9" cy="9" r="8" stroke="#606060" strokeWidth="1.5"/>
                     <path d="M9 5v4l2.5 2.5" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-gfx-neutral-500 text-[14px] font-medium">Avrg 4 hours</span>
+                  <span className="text-[#606060] text-[14px] font-medium">Avrg 4 hours</span>
                 </div>
               </div>
             </div>
