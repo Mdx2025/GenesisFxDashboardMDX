@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, Badge, GlassSelect, GreenPillButton, GlassBannerCard } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, Badge, GlassSelect, GreenPillButton, GlassBannerCard, EmptyState } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions, TAB_TO_TYPE } from '@/data/assets-history'
@@ -318,6 +318,11 @@ export default function AssetsManagementPage() {
                   </tbody>
                 </table>
               </div>
+              {filteredTransactions.length === 0 && (
+                <div className="py-8 px-6">
+                  <EmptyState title="No records found" description="There are no transactions matching your current filters." />
+                </div>
+              )}
 
               <div className="h-6" />
             </GlassCard>
