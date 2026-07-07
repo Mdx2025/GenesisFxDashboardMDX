@@ -223,7 +223,7 @@ export default function WithdrawPage() {
                         <div className="h-px bg-[#404040] my-5" />
 
                         <div className="flex items-center justify-between">
-                          <div className="flex flex-col gap-2">
+                          <div className="flex flex-col gap-3">
                             <p className="text-[#606060] text-[1rem] leading-none">Total Amount</p>
                             <p className="text-white text-[2.25rem] font-normal leading-none">
                               {withdrawAmount || '0.00'} {coinLabel}
