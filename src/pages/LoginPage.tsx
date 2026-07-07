@@ -151,6 +151,7 @@ export default function LoginPage() {
                 <span className="text-white text-[0.875rem] leading-[1.175rem]">Demo</span>
               </div>
             </div>
+          </div>
 
           {/* Footer */}
           <div className="w-full absolute bottom-0">
