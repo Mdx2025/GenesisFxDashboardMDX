@@ -185,17 +185,6 @@ export function UserIcon({ size = 18, color = '#BEBEBE', className }: IconProps)
   )
 }
 
-export function UsersIcon({ size = 18, color = '#BEBEBE', className }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 18 18" fill="none" className={className}>
-      <circle cx="6.75" cy="4.5" r="2.5" fill={color}/>
-      <ellipse cx="6.75" cy="12" rx="4.25" ry="2.5" fill={color}/>
-      <circle cx="12.5" cy="5.5" r="2" fill={color} opacity="0.6"/>
-      <ellipse cx="12.5" cy="12.5" rx="3" ry="2" fill={color} opacity="0.6"/>
-    </svg>
-  )
-}
-
 export function BookIcon({ size = 24, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
