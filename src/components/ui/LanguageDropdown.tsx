@@ -107,19 +107,8 @@ export function LanguageDropdown() {
         ref={dropdownRef}
         role="listbox"
         aria-label="Select language"
-        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(255,255,255,0.03)]"
+        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] backdrop-blur-[23px]"
       >
-          <svg className="absolute w-0 h-0" aria-hidden="true">
-            <defs>
-              <filter id="lang-blur" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="23" />
-              </filter>
-            </defs>
-          </svg>
-          <div
-            className="absolute inset-0 -z-10 backdrop-[url(#blur-23)]"
-            aria-hidden="true"
-          />
           {languages.map((lang) => (
             <li key={lang.code} role="option" aria-selected={selected.code === lang.code}>
               <button

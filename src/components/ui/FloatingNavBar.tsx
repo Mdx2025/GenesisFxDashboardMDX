@@ -76,7 +76,7 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0, onTran
         </defs>
       </svg>
       <nav
-        className="inline-flex items-center gap-1 rounded-full p-1.5 bg-[rgba(255,255,255,0.03)] border-[1.16px] border-[rgba(255,255,255,0.06)] backdrop-[url(#blur-23)] shadow-[0px_4.641px_23.204px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)]"
+        className="inline-flex items-center gap-1 rounded-full p-1.5 bg-[rgba(10,14,12,0.85)] border-[1.16px] border-[rgba(255,255,255,0.06)] backdrop-blur-[23px] shadow-[0px_4.641px_23.204px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)]"
       >
         {items.map((item, i) => {
           const isActive = i === active
