@@ -8,7 +8,7 @@ interface GlassBannerCardProps {
   glowSrc?: string
 }
 
-const defaultPadding = 'py-10 px-5 xl:py-23 xl:px-8 3xl:py-29 3xl:px-10 4xl:py-36 4xl:px-14'
+const defaultPadding = 'py-10 px-5 xl:py-23 xl:px-12 3xl:py-29 3xl:px-10 4xl:py-36 4xl:px-14'
 
 export function GlassBannerCard({ children, className = '', contentClassName, glowSrc = '/images/fiat-wallet-glow.svg' }: GlassBannerCardProps) {
   return (
