@@ -72,13 +72,15 @@ export function CourseCard({ image, title, description, lessons, duration, level
       </div>
 
       <div className="px-[27px] 3xl:px-[34px] 4xl:px-[40px] pt-[9px] 3xl:pt-[11px] 4xl:pt-[14px] pb-[27px] 3xl:pb-[34px] 4xl:pb-[40px]">
-        <h3 className="text-white text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
-          {title}
-        </h3>
+        <div className="flex flex-col gap-2">
+          <h3 className="text-white text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
+            {title}
+          </h3>
 
-        <p className="text-[#808080] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] mt-[13px] 3xl:mt-[16px] 4xl:mt-[20px] line-clamp-2">
-          {description}
-        </p>
+          <p className="text-[#808080] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] line-clamp-2">
+            {description}
+          </p>
+        </div>
 
         <div className="flex items-center mt-[20px] 3xl:mt-[25px] 4xl:mt-[30px]">
           <span
