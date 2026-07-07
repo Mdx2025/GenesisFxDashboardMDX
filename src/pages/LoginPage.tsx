@@ -40,15 +40,6 @@ export default function LoginPage() {
         aria-hidden="true"
       />
 
-      {/* SVG filters for hero glows */}
-      <svg className="absolute w-0 h-0" aria-hidden="true">
-        <defs>
-          <filter id="login-glow-lg"><feGaussianBlur stdDeviation="158" /></filter>
-          <filter id="login-glow-md"><feGaussianBlur stdDeviation="140" /></filter>
-          <filter id="login-glow-sm"><feGaussianBlur stdDeviation="151" /></filter>
-        </defs>
-      </svg>
-
       <div className="flex h-full p-[3.125rem]">
         {/* Left: Hero Image */}
         <div className="relative w-[818px] h-full shrink-0 rounded-[48px] overflow-hidden">
@@ -60,22 +51,22 @@ export default function LoginPage() {
 
           {/* Top glow */}
           <div
-            className="absolute rounded-full pointer-events-none"
-            style={{ width: 587, height: 332, top: -215, right: -270, background: '#00b38c', filter: 'url(#login-glow-lg)' }}
+            className="absolute rounded-full pointer-events-none blur-[160px]"
+            style={{ width: 587, height: 332, top: -215, right: -270, background: '#00b38c' }}
           />
 
           {/* Bottom glow cluster */}
           <div
-            className="absolute rounded-full pointer-events-none"
-            style={{ width: 587, height: 332, bottom: -150, left: -150, background: '#00b38c', filter: 'url(#login-glow-lg)' }}
+            className="absolute rounded-full pointer-events-none blur-[160px]"
+            style={{ width: 587, height: 332, bottom: -150, left: -150, background: '#00b38c' }}
           />
           <div
-            className="absolute rounded-full pointer-events-none mix-blend-plus-lighter"
-            style={{ width: 295, height: 274, bottom: -100, left: -50, background: '#40c99c', filter: 'url(#login-glow-md)' }}
+            className="absolute rounded-full pointer-events-none blur-[140px] mix-blend-plus-lighter"
+            style={{ width: 295, height: 274, bottom: -100, left: -50, background: '#40c99c' }}
           />
           <div
-            className="absolute rounded-full pointer-events-none mix-blend-plus-lighter"
-            style={{ width: 295, height: 274, bottom: -80, left: 0, background: '#40c99c', filter: 'url(#login-glow-sm)' }}
+            className="absolute rounded-full pointer-events-none blur-[150px] mix-blend-plus-lighter"
+            style={{ width: 295, height: 274, bottom: -80, left: 0, background: '#40c99c' }}
           />
         </div>
 
