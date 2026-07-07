@@ -1,7 +1,7 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { FloatingNavBar } from '@/components/ui'
+import { FloatingNavBar, GlowButton } from '@/components/ui'
 
 function HourglassIllustration() {
   return (
@@ -145,16 +145,7 @@ export default function WithdrawProcessingPage() {
             </div>
 
             <div className="flex justify-center mt-8">
-              <button
-                onClick={() => navigate('/assets-management')}
-                className="relative h-[44px] px-8 rounded-full cursor-pointer overflow-hidden group"
-              >
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent to-[#38846B] opacity-60 [filter:url(#blur-24)]" />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#D1D1D1] via-[#D2F5ED] to-[#D5FFF1]" />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-l from-[#D1D1D1] to-transparent opacity-80 [filter:url(#blur-5)]" />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-l from-[#F0FEFE] to-transparent opacity-80 [filter:url(#blur-5)]" />
-                <span className="relative z-10 text-black text-[16px] font-medium">View History</span>
-              </button>
+              <GlowButton label="View History" width={180} height={44} onClick={() => navigate('/assets-management')} />
             </div>
           </div>
         </div>
