@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { ModeToggle, GlassBannerCard, CourseCard, EBookCard } from '@/components/ui'
+import { ModeToggle, GlassBannerCard, CourseCard, EBookCard, GlossaryCard } from '@/components/ui'
 import { COURSES } from '@/data/academy-courses'
 import { EBOOKS } from '@/data/academy-ebooks'
+import { GLOSSARY_TERMS } from '@/data/academy-glossary'
 
 function AcademyCapIcon({ size = 30 }: { size?: number }) {
   return (
@@ -81,6 +82,57 @@ function LearningJourneyCard() {
   )
 }
 
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
+function GlossarySection() {
+  const [activeLetter, setActiveLetter] = useState<string>('All')
+
+  const filtered = useMemo(() => {
+    if (activeLetter === 'All') return GLOSSARY_TERMS
+    return GLOSSARY_TERMS.filter(t => t.term[0].toUpperCase() === activeLetter)
+  }, [activeLetter])
+
+  return (
+    <div className="pt-10 xl:pt-[62px] pb-10">
+      <div className="flex items-center gap-[13px] flex-wrap mb-[41px]">
+        <button
+          onClick={() => setActiveLetter('All')}
+          className={`h-[33px] px-[11px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors ${
+            activeLetter === 'All'
+              ? 'bg-[#00b38c] text-[#021b13]'
+              : 'bg-[#011b12] text-[#808080] border border-[rgba(107,107,107,0.5)] hover:text-white'
+          }`}
+        >
+          All
+        </button>
+        {ALPHABET.map(letter => (
+          <button
+            key={letter}
+            onClick={() => setActiveLetter(letter)}
+            className={`w-[33px] h-[33px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors flex items-center justify-center ${
+              activeLetter === letter
+                ? 'bg-[#00b38c] text-[#021b13]'
+                : 'bg-[#011b12] text-[#808080] border border-[rgba(107,107,107,0.5)] hover:text-white'
+            }`}
+          >
+            {letter}
+          </button>
+        ))}
+      </div>
+
+      {filtered.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[18px]">
+          {filtered.map(term => (
+            <GlossaryCard key={term.id} term={term.term} definition={term.definition} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-gfx-neutral-500 text-body2">No terms found for "{activeLetter}".</p>
+      )}
+    </div>
+  )
+}
+
 export default function AcademyPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
@@ -143,11 +195,7 @@ export default function AcademyPage() {
           </div>
         )}
 
-        {activeTab === 2 && (
-          <div className="pt-10 xl:pt-16 pb-10 text-gfx-neutral-500 text-body2">
-            Glossary coming soon.
-          </div>
-        )}
+        {activeTab === 2 && <GlossarySection />}
 
         {activeTab === 3 && (
           <div className="pt-10 xl:pt-16 pb-10 text-gfx-neutral-500 text-body2">
