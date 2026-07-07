@@ -209,18 +209,20 @@ export default function WithdrawPage() {
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-between mt-4">
-                          <span className="text-gfx-neutral-300 text-[1rem]">Available Withdraw</span>
-                          <span className="text-white text-[1rem]">$60.00</span>
-                        </div>
-                        <div className="flex items-center justify-between mt-2">
-                          <span className="text-gfx-neutral-300 text-[1rem]">24h remaining limit</span>
-                          <span className="text-white text-[1rem]">7,996,320 {coinLabel}</span>
+                        <div className="flex flex-col gap-3">
+                          <div className="flex items-center justify-between">
+                            <span className="text-gfx-neutral-300 text-[1rem]">Available Withdraw</span>
+                            <span className="text-white text-[1rem]">$60.00</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-gfx-neutral-300 text-[1rem]">24h remaining limit</span>
+                            <span className="text-white text-[1rem]">7,996,320 {coinLabel}</span>
+                          </div>
                         </div>
 
                         <div className="h-px bg-[#404040] my-5" />
 
-                        <div className="mt-3 flex items-center justify-between">
+                        <div className="flex items-center justify-between">
                           <div className="flex flex-col gap-2">
                             <p className="text-[#606060] text-[1rem] leading-none">Total Amount</p>
                             <p className="text-white text-[2.25rem] font-normal leading-none">
