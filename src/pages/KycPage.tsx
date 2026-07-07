@@ -72,11 +72,11 @@ export default function KycPage() {
                   KYC Verification Required
                 </h2>
 
-                <p className="text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center max-w-[609px] mt-[13px]">
+                <p className="text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center max-w-[609px]">
                   To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
                 </p>
 
-                <div className="mt-[37px]">
+                <div>
                   <GlowButton label="Complete KYC" width={193} height={44} />
                 </div>
               </div>
