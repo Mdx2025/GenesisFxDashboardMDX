@@ -6,7 +6,7 @@ import { NavButton, ModeToggle } from '@/components/ui'
 import {
   DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
   PammIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
-  ChevronDownIcon,
+  ChevronDownIcon, UserIcon, UsersIcon,
 } from '@/components/icons'
 import { navItems } from '@/data/navigation'
 import { GLOW_GREEN } from '@/constants/colors'
@@ -213,7 +213,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="relative z-10 flex flex-col gap-3 2xl:gap-6">
           <div className="flex flex-col gap-2 sidebar-hide">
             <h3 className="text-sidebar-btn text-white font-normal">Switch Modes</h3>
-            <ModeToggle />
+            <ModeToggle icons={[<UserIcon size={16} color="currentColor" />, <UsersIcon size={16} color="currentColor" />]} />
           </div>
           <NavButton>
             <LogoutIcon />

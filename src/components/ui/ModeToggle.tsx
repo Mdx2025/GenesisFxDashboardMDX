@@ -1,15 +1,17 @@
 import { useState, useRef, useLayoutEffect } from 'react'
+import type { ReactNode } from 'react'
 import gsap from 'gsap'
 import './ModeToggle.css'
 
 interface ModeToggleProps {
   options?: string[]
+  icons?: ReactNode[]
   defaultIndex?: number
   activeIndex?: number
   onChange?: (index: number) => void
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange }: ModeToggleProps) {
+export function ModeToggle({ options = ['Client', 'Partner'], icons, defaultIndex = 0, activeIndex, onChange }: ModeToggleProps) {
   const [internalActive, setInternalActive] = useState(defaultIndex)
   const active = activeIndex ?? internalActive
   const indicatorRef = useRef<HTMLDivElement>(null)
@@ -58,6 +60,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
           onClick={() => { setInternalActive(i); onChange?.(i) }}
           aria-pressed={active === i}
         >
+          {icons?.[i] && <span className="btn-icon">{icons[i]}</span>}
           <span className="btn-label">{option}</span>
         </button>
       ))}
