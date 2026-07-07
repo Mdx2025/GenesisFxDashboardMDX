@@ -159,7 +159,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
               <div
                 ref={highlightRef}
-                className="absolute left-0 right-0 rounded-sm bg-[#171717] outline outline-1 outline-[#171717] outline-offset-[-1px] pointer-events-none z-0"
+                className="absolute left-0 right-0 rounded-md bg-[#171717] outline outline-1 outline-[#171717] outline-offset-[-1px] pointer-events-none z-0"
                 style={{ opacity: 0, top: 0, height: 0 }}
                 aria-hidden="true"
               />
