@@ -97,6 +97,7 @@ export default function AssetsManagementPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const { openTransfer } = useTransfer()
   const [activeTab, setActiveTab] = useState(0)
+  const [balanceVisible, setBalanceVisible] = useState(true)
   const [filterType, setFilterType] = useState('all')
   const [filterTime, setFilterTime] = useState('all')
   const [filterCoin, setFilterCoin] = useState('all')
@@ -149,30 +150,36 @@ export default function AssetsManagementPage() {
               <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8">
                 <div className="flex flex-col gap-4 shrink-0">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-gfx-green-500 text-[clamp(0.875rem,0.6rem+0.5vw,1.125rem)] font-normal leading-none">
+                    <h2 className="text-[#808080] text-[1.5rem] font-normal leading-none">
                       Fiat Wallet
                     </h2>
-                    <button className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="Toggle balance visibility">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
-                      </svg>
+                    <button className="text-[#808080] hover:text-white transition-colors cursor-pointer" aria-label="Toggle balance visibility" onClick={() => setBalanceVisible(v => !v)}>
+                      {balanceVisible ? (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                        </svg>
+                      ) : (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M3.98 8.223A10.477 10.477 0 001.934 12.1c1.292 4.338 5.31 7.5 10.066 7.5 1.79 0 3.483-.45 4.95-1.238M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65a3 3 0 01-4.243-4.243m4.242 4.242L10.878 9.879" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
                     </button>
                   </div>
 
                   <div className="flex items-baseline gap-2">
-                    <span className="text-white text-[clamp(2rem,1.25rem+1.5vw,3.5rem)] font-normal leading-none">$100.00</span>
-                    <span className="text-gfx-neutral-500 text-[clamp(0.875rem,0.6rem+0.5vw,1.25rem)] font-normal">USD</span>
+                    <span className="text-white text-[3.125rem] font-normal leading-none">{balanceVisible ? '$100.00' : '****'}</span>
+                    <span className="text-[#A0A0A0] text-[1.5rem] font-normal">{balanceVisible ? 'USD' : ''}</span>
                   </div>
 
-                  <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 mt-1" style={{ background: 'linear-gradient(135deg, #064B34 0%, #0C1311 100%)' }}>
+                  <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 bg-[#0C1311] border border-[#064B34]">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
                       <rect x="1" y="5" width="18" height="13" rx="2" stroke="#00B38C" strokeWidth="1.4" fill="none"/>
                       <path d="M5 5V4a3 3 0 013-3h4a3 3 0 013 3v1" stroke="#00B38C" strokeWidth="1.4" strokeLinecap="round"/>
                       <rect x="7" y="9" width="6" height="4" rx="1" fill="#00B38C"/>
                     </svg>
                     <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
-                    <span className="text-white text-sm font-medium">$0.00</span>
+                    <span className="text-white text-sm font-medium">{balanceVisible ? '$0.00' : '****'}</span>
                     <button className="ml-auto text-gfx-green-500 text-sm font-medium hover:text-white transition-colors cursor-pointer">Redeem</button>
                   </div>
                 </div>
