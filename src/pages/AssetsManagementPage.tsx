@@ -146,19 +146,34 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Fiat Wallet" className="py-7 md:py-15">
             <GlassBannerCard contentClassName="py-8 px-5 xl:py-17 xl:px-8 3xl:py-21 3xl:px-10 4xl:py-26 4xl:px-14">
-              <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
-                <div className="flex items-center gap-4 shrink-0">
-                  <div className="w-[54px] h-[54px] rounded-[16px] bg-[#011b12] flex items-center justify-center shrink-0">
-                    <WalletIcon />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h2 className="text-white text-[clamp(1.25rem,0.75rem+1vw,2.25rem)] font-normal leading-none">
+              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8">
+                <div className="flex flex-col gap-4 shrink-0">
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-gfx-green-500 text-[clamp(0.875rem,0.6rem+0.5vw,1.125rem)] font-normal leading-none">
                       Fiat Wallet
                     </h2>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-white text-[clamp(1.25rem,0.75rem+1vw,2.25rem)] font-normal">$100.00</span>
-                      <span className="text-gfx-neutral-500 text-[clamp(0.75rem,0.5rem+0.4vw,1.125rem)]">USD</span>
-                    </div>
+                    <button className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="Toggle balance visibility">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-white text-[clamp(2rem,1.25rem+1.5vw,3.5rem)] font-normal leading-none">$100.00</span>
+                    <span className="text-gfx-neutral-500 text-[clamp(0.875rem,0.6rem+0.5vw,1.25rem)] font-normal">USD</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 mt-1" style={{ background: 'linear-gradient(135deg, #064B34 0%, #0C1311 100%)' }}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
+                      <rect x="1" y="5" width="18" height="13" rx="2" stroke="#00B38C" strokeWidth="1.4" fill="none"/>
+                      <path d="M5 5V4a3 3 0 013-3h4a3 3 0 013 3v1" stroke="#00B38C" strokeWidth="1.4" strokeLinecap="round"/>
+                      <rect x="7" y="9" width="6" height="4" rx="1" fill="#00B38C"/>
+                    </svg>
+                    <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
+                    <span className="text-white text-sm font-medium">$0.00</span>
+                    <button className="ml-auto text-gfx-green-500 text-sm font-medium hover:text-white transition-colors cursor-pointer">Redeem</button>
                   </div>
                 </div>
 
