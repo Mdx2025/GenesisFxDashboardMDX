@@ -65,7 +65,7 @@ export default function KycPage() {
             {/* Two-panel layout */}
             <div className="relative z-10 flex flex-col xl:flex-row min-h-[730px] 3xl:min-h-[900px] 4xl:min-h-[1200px]">
               {/* Left panel — KYC Verification */}
-              <div className="flex-1 flex flex-col items-center justify-center py-16 px-8 xl:border-r xl:border-white/[0.06]">
+              <div className="flex-1 flex flex-col items-center justify-center p-8">
                 <div className="w-full h-full border border-[rgba(255,255,255,0.04)] rounded-lg flex flex-col items-center justify-center py-12 px-6">
                   <KycIllustration />
 
