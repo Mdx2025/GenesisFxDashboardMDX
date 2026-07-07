@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { FloatingNavBar, ModeToggle, GlassBannerCard, CourseCard } from '@/components/ui'
+import { FloatingNavBar, ModeToggle, GlassBannerCard, CourseCard, EBookCard } from '@/components/ui'
 import { COURSES } from '@/data/academy-courses'
+import { EBOOKS } from '@/data/academy-ebooks'
 
 function AcademyCapIcon({ size = 30 }: { size?: number }) {
   return (
@@ -107,23 +108,52 @@ export default function AcademyPage() {
           <ModeToggle options={['Video Courses', 'E Books', 'Glossary', 'Calculators']} activeIndex={activeTab} onChange={setActiveTab} />
         </div>
 
-        <div className="py-7 xl:py-15">
-          <LearningJourneyCard />
-        </div>
+        {activeTab === 0 && (
+          <>
+            <div className="py-7 xl:py-15">
+              <LearningJourneyCard />
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 3xl:gap-8 4xl:gap-10 pb-10 3xl:pb-14 4xl:pb-18">
-          {COURSES.map(course => (
-            <CourseCard
-              key={course.id}
-              image={course.image}
-              title={course.title}
-              description={course.description}
-              lessons={course.lessons}
-              duration={course.duration}
-              level={course.level}
-            />
-          ))}
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 3xl:gap-8 4xl:gap-10 pb-10 3xl:pb-14 4xl:pb-18">
+              {COURSES.map(course => (
+                <CourseCard
+                  key={course.id}
+                  image={course.image}
+                  title={course.title}
+                  description={course.description}
+                  lessons={course.lessons}
+                  duration={course.duration}
+                  level={course.level}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
+        {activeTab === 1 && (
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 3xl:gap-5 4xl:gap-6 pt-10 xl:pt-16 pb-10 3xl:pb-14 4xl:pb-18">
+            {EBOOKS.map(ebook => (
+              <EBookCard
+                key={ebook.id}
+                category={ebook.category}
+                image={ebook.image}
+                readTime={ebook.readTime}
+              />
+            ))}
+          </div>
+        )}
+
+        {activeTab === 2 && (
+          <div className="pt-10 xl:pt-16 pb-10 text-gfx-neutral-500 text-body2">
+            Glossary coming soon.
+          </div>
+        )}
+
+        {activeTab === 3 && (
+          <div className="pt-10 xl:pt-16 pb-10 text-gfx-neutral-500 text-body2">
+            Calculators coming soon.
+          </div>
+        )}
       </div>
 
       <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
