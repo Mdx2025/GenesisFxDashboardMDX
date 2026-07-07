@@ -5,6 +5,7 @@ import { ModeToggle, GlassBannerCard, CourseCard, EBookCard, GlossaryCard, Empty
 import { COURSES } from '@/data/academy-courses'
 import { EBOOKS } from '@/data/academy-ebooks'
 import { GLOSSARY_TERMS } from '@/data/academy-glossary'
+import { CalculatorSection } from '@/components/academy/CalculatorSection'
 
 function AcademyCapIcon({ size = 30 }: { size?: number }) {
   return (
@@ -197,11 +198,7 @@ export default function AcademyPage() {
 
         {activeTab === 2 && <GlossarySection />}
 
-        {activeTab === 3 && (
-          <div className="pt-10 xl:pt-16 pb-10 text-gfx-neutral-500 text-body2">
-            Calculators coming soon.
-          </div>
-        )}
+        {activeTab === 3 && <CalculatorSection />}
       </div>
 
     </>

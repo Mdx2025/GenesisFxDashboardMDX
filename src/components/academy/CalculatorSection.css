@@ -1,0 +1,18 @@
+.calc-card {
+  background: #0C1311;
+  border: 0.88px solid transparent;
+  position: relative;
+}
+.calc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 0.88px;
+  background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
