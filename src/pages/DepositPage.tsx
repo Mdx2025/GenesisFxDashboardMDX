@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { Sidebar } from '@/components/dashboard/Sidebar'
+import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassSelect, GlassSelectIcon, FloatingNavBar, DividerGlow } from '@/components/ui'
 import { ChevronDownIcon, SearchIcon } from '@/components/icons'
@@ -169,10 +169,10 @@ const NETWORK_OPTIONS: NetworkConfig[] = [
 ]
 
 const FAQS = [
-  { question: 'What is TradeLocker and how does it work?', tag: 'General' },
-  { question: 'Is my money secure in a Genesis trading account?', tag: 'General' },
-  { question: 'What is the minimum age to trade with Genesis?', tag: 'General' },
-  { question: 'How does Genesis keep client funds safe?', tag: 'General' },
+  { question: 'How do I deposit funds?', tag: 'Deposits', answer: 'Select your preferred cryptocurrency, copy the deposit address, and send funds from your external wallet. The deposit will appear once confirmed on the blockchain.' },
+  { question: 'What is the minimum deposit amount?', tag: 'Deposits', answer: 'Minimum deposits vary by asset: USDT requires $10, BTC requires 0.0001 BTC, and ETH requires 0.005 ETH. Amounts below the minimum will not be credited.' },
+  { question: 'How long does a deposit take to confirm?', tag: 'Deposits', answer: 'Confirmation times depend on the network. Bitcoin takes 10–60 minutes, Ethereum 2–5 minutes, and Tron under 1 minute on average.' },
+  { question: 'Are there fees for depositing?', tag: 'Deposits', answer: 'Genesis does not charge deposit fees. However, the sending network may charge a gas or miner fee which is outside our control.' },
 ]
 
 const TRANSACTIONS = [
@@ -220,7 +220,7 @@ function FaqTag({ label }: { label: string }) {
 }
 
 export default function DepositPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [currentStep, setCurrentStep] = useState(1)
   const [selectedCoin, setSelectedCoin] = useState('')
   const [selectedNetwork, setSelectedNetwork] = useState('')
@@ -250,15 +250,13 @@ export default function DepositPage() {
   }
 
   return (
-    <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
-        <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+    <>
+      <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
-        <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
-          <TopBar
-            menuOpen={sidebarOpen}
-            onMenuClick={() => setSidebarOpen(!sidebarOpen)}
+      <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+        <TopBar
+          menuOpen={sidebarOpen}
+          onMenuClick={() => setSidebarOpen(v => !v)}
             breadcrumbItems={[
               { label: 'Assets Management', href: '/assets-management' },
               { label: 'Funding', href: '/assets-management' },
@@ -411,9 +409,12 @@ export default function DepositPage() {
                         <ChevronDownIcon size={14} color="#00f0a0" />
                       </button>
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-3 flex items-center gap-3">
                       <FaqTag label={faq.tag} />
                     </div>
+                    {expandedFaq === i && (
+                      <p className="mt-4 text-gfx-neutral-300 text-[15px] leading-relaxed">{faq.answer}</p>
+                    )}
                   </div>
                 ))}
               </div>
@@ -455,10 +456,9 @@ export default function DepositPage() {
           </div>
         </div>
 
-        <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-          <FloatingNavBar />
-        </div>
-      </main>
-    </div>
+      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <FloatingNavBar />
+      </div>
+    </>
   )
 }

@@ -61,7 +61,7 @@ export default function DesignSystemPage() {
   const [searchValue, setSearchValue] = useState('')
 
   return (
-    <div className="min-h-screen bg-gfx-main text-white font-acid">
+    <div className="min-h-0">
       <div className="max-w-7xl mx-auto px-6 py-10 flex gap-10">
         <nav className="hidden lg:block w-52 shrink-0 sticky top-10 self-start" aria-label="Page sections">
           <p className="text-eyebrow text-gfx-green-500 mb-4">Contents</p>

@@ -1,13 +1,30 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, createContext, useContext } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { Sidebar } from '@/components/dashboard/Sidebar'
 import Lenis from 'lenis'
 
+interface SidebarContextValue {
+  sidebarOpen: boolean
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const SidebarContext = createContext<SidebarContextValue>({
+  sidebarOpen: false,
+  setSidebarOpen: () => {},
+})
+
+export function useSidebar() {
+  return useContext(SidebarContext)
+}
+
 export default function RootLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const lenisRef = useRef<Lenis | null>(null)
+  const mainRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const wrapper = document.querySelector('main')
+    const wrapper = mainRef.current
     if (!wrapper) return
 
     const lenis = new Lenis({
@@ -34,5 +51,14 @@ export default function RootLayout() {
     }
   }, [pathname])
 
-  return <Outlet />
+  return (
+    <SidebarContext.Provider value={{ sidebarOpen, setSidebarOpen }}>
+      <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <main ref={mainRef} className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
+          <Outlet />
+        </main>
+      </div>
+    </SidebarContext.Provider>
+  )
 }

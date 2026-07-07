@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { Sidebar } from '@/components/dashboard/Sidebar'
+import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassSelect, GlassSelectIcon, GlassInput, GlowButton, FloatingNavBar, DividerGlow } from '@/components/ui'
 import { WithdrawCodeModal } from '@/components/modals/WithdrawCodeModal'
@@ -74,10 +74,10 @@ const NETWORK_OPTIONS: NetworkConfig[] = [
 ]
 
 const FAQS = [
-  { question: 'What is TradeLocker and how does it work?', tag: 'General' },
-  { question: 'Is my money secure in a Genesis trading account?', tag: 'General' },
-  { question: 'What is the minimum age to trade with Genesis?', tag: 'General' },
-  { question: 'How does Genesis keep client funds safe?', tag: 'General' },
+  { question: 'How long does a withdrawal take?', tag: 'Withdrawals', answer: 'Withdrawals are typically processed within 1–3 business days depending on the network and verification status of your account.' },
+  { question: 'Is there a minimum withdrawal amount?', tag: 'Withdrawals', answer: 'Yes, the minimum withdrawal varies by asset. For USDT it is $10, for BTC it is 0.0005 BTC, and for ETH it is 0.01 ETH.' },
+  { question: 'Why is my withdrawal pending?', tag: 'Withdrawals', answer: 'Pending withdrawals may require additional verification for security purposes. Check your email for any confirmation requests.' },
+  { question: 'Can I cancel a withdrawal request?', tag: 'Withdrawals', answer: 'You can cancel a withdrawal while it is still in "Pending" status. Once approved and sent to the blockchain, it cannot be reversed.' },
 ]
 
 const TRANSACTIONS = [
@@ -123,7 +123,7 @@ function FaqTag({ label }: { label: string }) {
 }
 
 export default function WithdrawPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [currentStep, setCurrentStep] = useState(1)
   const [selectedCoin, setSelectedCoin] = useState('')
   const [walletAddress, setWalletAddress] = useState('')
@@ -167,15 +167,13 @@ export default function WithdrawPage() {
   }
 
   return (
-    <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
-        <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+    <>
+      <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
-        <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
-          <TopBar
-            menuOpen={sidebarOpen}
-            onMenuClick={() => setSidebarOpen(!sidebarOpen)}
+      <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+        <TopBar
+          menuOpen={sidebarOpen}
+          onMenuClick={() => setSidebarOpen(v => !v)}
             breadcrumbItems={[
               { label: 'Assets Management', href: '/assets-management' },
               { label: 'Funding', href: '/assets-management' },
@@ -342,9 +340,12 @@ export default function WithdrawPage() {
                         <ChevronDownIcon size={14} color="#00f0a0" />
                       </button>
                     </div>
-                    <div className="mt-3">
+                    <div className="mt-3 flex items-center gap-3">
                       <FaqTag label={faq.tag} />
                     </div>
+                    {expandedFaq === i && (
+                      <p className="mt-4 text-gfx-neutral-300 text-[15px] leading-relaxed">{faq.answer}</p>
+                    )}
                   </div>
                 ))}
               </div>
@@ -388,12 +389,11 @@ export default function WithdrawPage() {
           </div>
         </div>
 
-        <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-          <FloatingNavBar />
-        </div>
-      </main>
+      <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <FloatingNavBar />
+      </div>
 
       <WithdrawCodeModal open={codeModalOpen} onClose={() => setCodeModalOpen(false)} />
-    </div>
+    </>
   )
 }
