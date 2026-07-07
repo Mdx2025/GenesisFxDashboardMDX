@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard,
+  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard, FaqCard,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -646,6 +646,14 @@ export default function DesignSystemPage() {
             <h3 className="text-h4 text-gfx-neutral-500 mb-4">Glossary Card — GlossaryCard</h3>
             <div className="max-w-md">
               <GlossaryCard term="Address" definition="A unique identifier used to send and receive cryptocurrency, similar to a bank account number in traditional finance." />
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-h4 text-gfx-neutral-500 mb-4">FAQ Card — FaqCard</h3>
+            <div className="max-w-xl space-y-4">
+              <FaqCard question="How do I deposit funds?" answer="Select your preferred cryptocurrency, copy the deposit address, and send funds from your external wallet." />
+              <FaqCard question="What is the minimum amount?" answer="Minimum deposits vary by asset: USDT requires $10, BTC requires 0.0001 BTC." expanded />
             </div>
           </div>
 

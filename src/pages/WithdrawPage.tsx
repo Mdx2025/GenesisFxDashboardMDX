@@ -6,7 +6,8 @@ import { GlassSelect, GlassSelectIcon, GlassInput, GlowButton } from '@/componen
 import { WithdrawCodeModal } from '@/components/modals/WithdrawCodeModal'
 import { SearchIcon } from '@/components/icons'
 import { UsdtIcon, BtcIcon, EthIcon, UsdcIcon } from '@/components/shared/CoinIcons'
-import { StepCircle, StepConnector, FaqSection } from '@/components/shared/StepFlow'
+import { StepCircle, StepConnector } from '@/components/shared/StepFlow'
+import { FaqSection } from '@/components/ui/FaqCard'
 import { RecentTransactions } from '@/components/shared/RecentTransactions'
 
 interface CoinConfig {
@@ -31,10 +32,10 @@ const NETWORK_OPTIONS = [
 ]
 
 const FAQS = [
-  { question: 'How long does a withdrawal take?', tag: 'Withdrawals', answer: 'Withdrawals are typically processed within 1–3 business days depending on the network and verification status of your account.' },
-  { question: 'Is there a minimum withdrawal amount?', tag: 'Withdrawals', answer: 'Yes, the minimum withdrawal varies by asset. For USDT it is $10, for BTC it is 0.0005 BTC, and for ETH it is 0.01 ETH.' },
-  { question: 'Why is my withdrawal pending?', tag: 'Withdrawals', answer: 'Pending withdrawals may require additional verification for security purposes. Check your email for any confirmation requests.' },
-  { question: 'Can I cancel a withdrawal request?', tag: 'Withdrawals', answer: 'You can cancel a withdrawal while it is still in "Pending" status. Once approved and sent to the blockchain, it cannot be reversed.' },
+  { question: 'How long does a withdrawal take?', answer: 'Withdrawals are typically processed within 1–3 business days depending on the network and verification status of your account.' },
+  { question: 'Is there a minimum withdrawal amount?', answer: 'Yes, the minimum withdrawal varies by asset. For USDT it is $10, for BTC it is 0.0005 BTC, and for ETH it is 0.01 ETH.' },
+  { question: 'Why is my withdrawal pending?', answer: 'Pending withdrawals may require additional verification for security purposes. Check your email for any confirmation requests.' },
+  { question: 'Can I cancel a withdrawal request?', answer: 'You can cancel a withdrawal while it is still in "Pending" status. Once approved and sent to the blockchain, it cannot be reversed.' },
 ]
 
 const TRANSACTIONS = [

@@ -4,7 +4,8 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassSelect, GlassSelectIcon } from '@/components/ui'
 import { SearchIcon } from '@/components/icons'
 import { UsdtIcon, BtcIcon, EthIcon, UsdcIcon, CopyIcon } from '@/components/shared/CoinIcons'
-import { StepCircle, StepConnector, FaqSection } from '@/components/shared/StepFlow'
+import { StepCircle, StepConnector } from '@/components/shared/StepFlow'
+import { FaqSection } from '@/components/ui/FaqCard'
 import { RecentTransactions } from '@/components/shared/RecentTransactions'
 
 function QrCodePlaceholder() {
@@ -115,10 +116,10 @@ const NETWORK_OPTIONS = [
 ]
 
 const FAQS = [
-  { question: 'How do I deposit funds?', tag: 'Deposits', answer: 'Select your preferred cryptocurrency, copy the deposit address, and send funds from your external wallet. The deposit will appear once confirmed on the blockchain.' },
-  { question: 'What is the minimum deposit amount?', tag: 'Deposits', answer: 'Minimum deposits vary by asset: USDT requires $10, BTC requires 0.0001 BTC, and ETH requires 0.005 ETH. Amounts below the minimum will not be credited.' },
-  { question: 'How long does a deposit take to confirm?', tag: 'Deposits', answer: 'Confirmation times depend on the network. Bitcoin takes 10–60 minutes, Ethereum 2–5 minutes, and Tron under 1 minute on average.' },
-  { question: 'Are there fees for depositing?', tag: 'Deposits', answer: 'Genesis does not charge deposit fees. However, the sending network may charge a gas or miner fee which is outside our control.' },
+  { question: 'How do I deposit funds?', answer: 'Select your preferred cryptocurrency, copy the deposit address, and send funds from your external wallet. The deposit will appear once confirmed on the blockchain.' },
+  { question: 'What is the minimum deposit amount?', answer: 'Minimum deposits vary by asset: USDT requires $10, BTC requires 0.0001 BTC, and ETH requires 0.005 ETH. Amounts below the minimum will not be credited.' },
+  { question: 'How long does a deposit take to confirm?', answer: 'Confirmation times depend on the network. Bitcoin takes 10–60 minutes, Ethereum 2–5 minutes, and Tron under 1 minute on average.' },
+  { question: 'Are there fees for depositing?', answer: 'Genesis does not charge deposit fees. However, the sending network may charge a gas or miner fee which is outside our control.' },
 ]
 
 const TRANSACTIONS = [
