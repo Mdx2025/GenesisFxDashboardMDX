@@ -26,10 +26,13 @@
 }
 .nav-btn.active {
   background: #000705;
-  border: 1px solid transparent;
-  border-image: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%) 1;
+  border: 1px solid #064B34;
   outline: none;
   color: #fff;
+}
+.nav-btn.active > svg {
+  color: #00B38C;
+  fill: #00B38C;
 }
 .active-indicator {
   position: absolute;
@@ -44,3 +47,19 @@
   transition: opacity 0.35s ease;
 }
 .nav-btn.active .active-indicator { opacity: 1; }
+.nav-btn.active .star { opacity: 1; }
+.star {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.star-1 { right: 4px; top: 5px; background: white; filter: blur(0.5px); }
+.star-2 { right: 19px; top: 10px; background: white; opacity: 0.5; filter: blur(0.5px); }
+.star-3 { left: 177px; top: 6px; background: #a3a3a3; filter: blur(0.5px); }
+.star-4 { left: 198px; bottom: 5px; background: #a3a3a3; filter: blur(0.5px); }
+.star-5 { left: 216px; top: 10px; background: #a3a3a3; filter: blur(0.5px); }
+.star-6 { left: 159px; top: 13px; background: #a3a3a3; filter: blur(0.5px); }
