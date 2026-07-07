@@ -26,9 +26,22 @@
 }
 .nav-btn.active {
   background: #000705;
-  border: 1px solid #064B34;
+  border: 1px solid transparent;
   outline: none;
   color: #fff;
+}
+.nav-btn.active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 .nav-btn.active > svg {
   color: #00B38C;
