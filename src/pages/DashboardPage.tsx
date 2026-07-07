@@ -1,27 +1,22 @@
-import { useState } from 'react'
-import { useSidebar } from '@/layouts/RootLayout'
+import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GreetingRow } from '@/components/dashboard/GreetingRow'
 import { SummaryCards } from '@/components/dashboard/SummaryCards'
 import { PortfolioEquity } from '@/components/dashboard/PortfolioEquity'
 import { QuickActions } from '@/components/dashboard/QuickActions'
 import { TradingAccountsTable } from '@/components/dashboard/TradingAccountsTable'
-import { TransferModal } from '@/components/dashboard/TransferModal'
-import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
-import { FloatingNavBar, SuccessSnackbar } from '@/components/ui'
+import { FloatingNavBar } from '@/components/ui'
 
 export default function DashboardPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [transferOpen, setTransferOpen] = useState(false)
-  const [processingOpen, setProcessingOpen] = useState(false)
-  const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const { openTransfer } = useTransfer()
 
   return (
     <>
       <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
         <TopBar menuOpen={sidebarOpen} onMenuClick={() => setSidebarOpen(v => !v)} />
-        <GreetingRow onTransferClick={() => setTransferOpen(true)} />
+        <GreetingRow onTransferClick={openTransfer} />
         <SummaryCards />
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8 mb-4 4xl:mb-6">
           <div className="xl:col-span-3 flex flex-col">
@@ -34,30 +29,8 @@ export default function DashboardPage() {
         <TradingAccountsTable />
       </div>
       <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <FloatingNavBar onTransferClick={() => setTransferOpen(true)} />
+        <FloatingNavBar />
       </div>
-
-      <TransferModal
-        open={transferOpen}
-        onClose={() => setTransferOpen(false)}
-        onTransfer={() => {
-          setTransferOpen(false)
-          setProcessingOpen(true)
-        }}
-      />
-      <TransferProcessingModal
-        open={processingOpen}
-        onClose={() => setProcessingOpen(false)}
-        onComplete={() => {
-          setProcessingOpen(false)
-          setSnackbarOpen(true)
-        }}
-      />
-      <SuccessSnackbar
-        open={snackbarOpen}
-        message="Transfer completed successfully"
-        onClose={() => setSnackbarOpen(false)}
-      />
     </>
   )
 }

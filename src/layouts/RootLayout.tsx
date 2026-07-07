@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, createContext, useContext } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Sidebar } from '@/components/dashboard/Sidebar'
+import { TransferModal } from '@/components/dashboard/TransferModal'
+import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
 import Lenis from 'lenis'
 
 interface SidebarContextValue {
@@ -17,8 +19,16 @@ export function useSidebar() {
   return useContext(SidebarContext)
 }
 
+const TransferContext = createContext<{ openTransfer: () => void }>({ openTransfer: () => {} })
+
+export function useTransfer() {
+  return useContext(TransferContext)
+}
+
 export default function RootLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [transferOpen, setTransferOpen] = useState(false)
+  const [transferProcessing, setTransferProcessing] = useState(false)
   const lenisRef = useRef<Lenis | null>(null)
   const mainRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
@@ -53,12 +63,24 @@ export default function RootLayout() {
 
   return (
     <SidebarContext.Provider value={{ sidebarOpen, setSidebarOpen }}>
-      <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
-        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main ref={mainRef} className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
-          <Outlet />
-        </main>
-      </div>
+      <TransferContext.Provider value={{ openTransfer: () => setTransferOpen(true) }}>
+        <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
+          <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+          <main ref={mainRef} className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
+            <Outlet />
+          </main>
+        </div>
+        <TransferModal
+          open={transferOpen}
+          onClose={() => setTransferOpen(false)}
+          onTransfer={() => { setTransferOpen(false); setTransferProcessing(true) }}
+        />
+        <TransferProcessingModal
+          open={transferProcessing}
+          onClose={() => setTransferProcessing(false)}
+          onComplete={() => setTransferProcessing(false)}
+        />
+      </TransferContext.Provider>
     </SidebarContext.Provider>
   )
 }

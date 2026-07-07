@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useTransfer } from '@/layouts/RootLayout'
 
 interface FloatingNavItem {
   icon: React.ReactNode
@@ -51,15 +51,21 @@ const NAV_ROUTES: Record<string, string> = {
   Withdraw: '/withdraw',
 }
 
-interface FloatingNavBarProps {
-  items?: FloatingNavItem[]
-  defaultActive?: number
-  onTransferClick?: () => void
+const ROUTE_TO_INDEX: Record<string, number> = {
+  '/': 0,
+  '/deposit': 1,
+  '/withdraw': 2,
 }
 
-export function FloatingNavBar({ items = defaultItems, defaultActive = 0, onTransferClick }: FloatingNavBarProps) {
+interface FloatingNavBarProps {
+  items?: FloatingNavItem[]
+}
+
+export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
   const navigate = useNavigate()
-  const [active, setActive] = useState(defaultActive)
+  const { pathname } = useLocation()
+  const { openTransfer } = useTransfer()
+  const active = ROUTE_TO_INDEX[pathname] ?? -1
 
   return (
     <>
@@ -84,9 +90,8 @@ export function FloatingNavBar({ items = defaultItems, defaultActive = 0, onTran
             <button
               key={item.label}
               onClick={() => {
-                setActive(i)
-                if (item.label === 'Transfer' && onTransferClick) {
-                  onTransferClick()
+                if (item.label === 'Transfer') {
+                  openTransfer()
                 } else if (NAV_ROUTES[item.label]) {
                   navigate(NAV_ROUTES[item.label])
                 }

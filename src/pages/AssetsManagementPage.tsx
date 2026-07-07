@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSidebar } from '@/layouts/RootLayout'
+import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton, SuccessSnackbar, GlassBannerCard } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton, GlassBannerCard } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
-import { TransferModal } from '@/components/dashboard/TransferModal'
-import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions, TAB_TO_TYPE } from '@/data/assets-history'
 import { STATUS_STYLES } from '@/constants/colors'
@@ -97,9 +95,7 @@ function parseDate(dateStr: string): Date {
 export default function AssetsManagementPage() {
   const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [transferOpen, setTransferOpen] = useState(false)
-  const [processingOpen, setProcessingOpen] = useState(false)
-  const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const { openTransfer } = useTransfer()
   const [activeTab, setActiveTab] = useState(0)
   const [filterType, setFilterType] = useState('all')
   const [filterTime, setFilterTime] = useState('all')
@@ -180,7 +176,7 @@ export default function AssetsManagementPage() {
                         <span>Withdraw</span>
                       </span>
                     </SparkleButton>
-                    <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
+                    <SparkleButton aria-label="Transfer funds" onClick={openTransfer}>
                       <span className="flex items-center gap-2">
                         <TransferIcon />
                         <span>Transfer</span>
@@ -331,9 +327,6 @@ export default function AssetsManagementPage() {
       <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <FloatingNavBar />
       </div>
-      <TransferModal open={transferOpen} onClose={() => setTransferOpen(false)} onTransfer={() => setProcessingOpen(true)} />
-      <TransferProcessingModal open={processingOpen} onClose={() => setProcessingOpen(false)} onComplete={() => setSnackbarOpen(true)} />
-      <SuccessSnackbar open={snackbarOpen} onClose={() => setSnackbarOpen(false)} />
     </>
   )
 }
