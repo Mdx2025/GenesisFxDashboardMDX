@@ -1,6 +1,6 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowButton, FloatingNavBar, DividerGlow } from '@/components/ui'
+import { GlassCard, GlowButton, FloatingNavBar } from '@/components/ui'
 
 function KycIllustration() {
   return (
@@ -179,30 +179,37 @@ export default function KycPage() {
         </div>
 
         {/* Main KYC Card */}
-        <GlassCard variant="heavy" divider="white" rounded="20.05px" className="max-w-[1549px]">
-          <div className="relative z-10 min-h-[730px] flex flex-col items-center justify-center">
+        <GlassCard variant="heavy" divider="none" rounded="20.05px" className="max-w-[1549px]">
+          <div className="relative z-10 h-[730px] overflow-hidden">
+            {/* Horizontal divider at top */}
+            <div
+              className="absolute left-[157.64px] top-[0.84px] h-[1.25px] w-[1233.72px] pointer-events-none"
+              style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)' }}
+              aria-hidden="true"
+            />
+
             {/* Internal glow ellipses */}
-            <div className="absolute w-[587px] h-[435px] left-[392px] -top-[235px] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left" style={{ background: '#00110B' }} aria-hidden="true" />
+            <div className="absolute w-[587px] h-[435px] left-[392.47px] -top-[235px] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left" style={{ background: '#00110B' }} aria-hidden="true" />
             <div className="absolute w-[493px] h-[278px] left-[124px] top-[70px] rounded-full [filter:url(#blur-157)] pointer-events-none" style={{ background: '#114131' }} aria-hidden="true" />
             <div className="absolute w-[493px] h-[278px] left-[848px] -top-[466px] rounded-full [filter:url(#blur-157)] pointer-events-none" style={{ background: '#114131' }} aria-hidden="true" />
 
             {/* Illustration */}
-            <div className="relative z-10 mt-[120px] xl:mt-0">
+            <div className="absolute z-10 left-[243.62px] top-[120px]">
               <KycIllustration />
             </div>
 
             {/* Title */}
-            <h2 className="relative z-10 text-white text-[28px] xl:text-[36px] font-normal mt-[69px] text-center px-4">
+            <h2 className="absolute z-10 left-[169px] top-[355.38px] text-white text-[36px] font-normal">
               KYC Verification Required
             </h2>
 
             {/* Description */}
-            <p className="relative z-10 text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center max-w-[609px] mt-[13px] px-4">
+            <p className="absolute z-10 left-[96px] top-[404.38px] w-[609px] text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center">
               To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
             </p>
 
             {/* CTA Button */}
-            <div className="relative z-10 mt-[37px] mb-[120px] xl:mb-0">
+            <div className="absolute z-10 left-[303px] top-[485.38px]">
               <GlowButton label="Complete KYC" width={193} height={44} />
             </div>
           </div>
