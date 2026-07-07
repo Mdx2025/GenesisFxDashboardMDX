@@ -19,20 +19,16 @@ export function NavButton({ active = false, expanded, children, onClick, as = 'b
       onClick={onClick}
     >
       {children}
-      {active && (
-        <>
-          <div className="active-indicator" aria-hidden="true" />
-          <div className="glow-teal" aria-hidden="true" />
-          <div className="glow-emerald-bottom" aria-hidden="true" />
-          <div className="glow-emerald-top" aria-hidden="true" />
-          <div className="star star-1" aria-hidden="true" />
-          <div className="star star-2" aria-hidden="true" />
-          <div className="star star-3" aria-hidden="true" />
-          <div className="star star-4" aria-hidden="true" />
-          <div className="star star-5" aria-hidden="true" />
-          <div className="star star-6" aria-hidden="true" />
-        </>
-      )}
+      <div className="active-indicator" aria-hidden="true" />
+      <div className="glow-teal" aria-hidden="true" />
+      <div className="glow-emerald-bottom" aria-hidden="true" />
+      <div className="glow-emerald-top" aria-hidden="true" />
+      <div className="star star-1" aria-hidden="true" />
+      <div className="star star-2" aria-hidden="true" />
+      <div className="star star-3" aria-hidden="true" />
+      <div className="star star-4" aria-hidden="true" />
+      <div className="star star-5" aria-hidden="true" />
+      <div className="star star-6" aria-hidden="true" />
     </Tag>
   )
 }

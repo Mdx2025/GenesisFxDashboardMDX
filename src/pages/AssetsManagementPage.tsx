@@ -150,7 +150,7 @@ export default function AssetsManagementPage() {
                         </span>
                       </SparkleButton>
                     </div>
-                    <div className="h-[100px] w-full -mt-3">
+                    <div className="h-[100px] w-full min-w-0 -mt-3 relative">
                       <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
                     </div>
                   </div>

@@ -302,14 +302,13 @@ export default function WithdrawPage() {
 
                         <div className="h-px bg-[#404040] my-5" />
 
-                        <p className="text-[#606060] text-[1rem] leading-none">Total Amount</p>
-
                         <div className="mt-3 flex items-center justify-between">
-                          <div>
+                          <div className="flex flex-col gap-2">
+                            <p className="text-[#606060] text-[1rem] leading-none">Total Amount</p>
                             <p className="text-white text-[36px] font-normal leading-none">
                               {withdrawAmount || '0.00'} {coinLabel}
                             </p>
-                            <p className="text-[#A0A0A0] text-[16px] mt-2">
+                            <p className="text-[#A0A0A0] text-[16px]">
                               Network Fee 0.00 {coinLabel}
                             </p>
                           </div>

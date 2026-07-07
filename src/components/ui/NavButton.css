@@ -5,7 +5,7 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.35s ease, color 0.35s ease, outline-color 0.35s ease;
   color: #A0A0A0;
   font-size: clamp(0.7rem, 0.6rem + 0.25vw, 0.875rem);
   background: transparent;
@@ -37,6 +37,8 @@
   border-radius: 50%;
   filter: url(#blur-161);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 .glow-emerald-bottom {
   position: absolute;
@@ -50,6 +52,8 @@
   border-radius: 50%;
   filter: url(#blur-77);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 .glow-emerald-top {
   position: absolute;
@@ -61,6 +65,8 @@
   border-radius: 50%;
   filter: url(#blur-50);
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 .active-indicator {
   position: absolute;
@@ -71,13 +77,22 @@
   height: 1.2rem;
   background: white;
   border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
+.nav-btn.active .active-indicator { opacity: 1; }
+.nav-btn.active .glow-teal { opacity: 1; }
+.nav-btn.active .glow-emerald-bottom { opacity: 1; }
+.nav-btn.active .glow-emerald-top { opacity: 1; }
+.nav-btn.active .star { opacity: 1; }
 .star {
   position: absolute;
   width: 1px;
   height: 1px;
   border-radius: 50%;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 .star-1 { right: 4px; top: 5px; background: white; filter: blur(0.5px); }
 .star-2 { right: 19px; top: 10px; background: white; opacity: 0.5; filter: blur(0.5px); }
