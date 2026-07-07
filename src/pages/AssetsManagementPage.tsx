@@ -6,7 +6,6 @@ import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelec
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
-import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { assetTransactions, TAB_TO_TYPE } from '@/data/assets-history'
 import { STATUS_STYLES } from '@/constants/colors'
 import type { AssetTransaction, TransactionType, CoinType } from '@/data/assets-history'
@@ -150,46 +149,41 @@ export default function AssetsManagementPage() {
 
           <section aria-label="Fiat Wallet" className="py-7 md:py-15">
             <GlassBannerCard>
-              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-gfx-neutral-300 text-body2">Fiat Wallet</span>
+              <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
+                <div className="flex items-center gap-4 shrink-0">
+                  <div className="w-[54px] h-[54px] rounded-[16px] bg-[#011b12] flex items-center justify-center shrink-0">
                     <WalletIcon />
                   </div>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-white font-normal text-[clamp(2rem,1.5rem+1.5vw,3.5rem)]">$100.00</span>
-                    <span className="text-gfx-neutral-300 text-body2">USD</span>
-                  </div>
-                  <div className="flex items-center gap-3 border border-gfx-green-100 rounded-lg p-3">
-                    <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
-                    <span className="text-white text-sm font-semibold">$0.00</span>
-                    <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
+                  <div className="flex flex-col gap-1">
+                    <h2 className="text-white text-[clamp(1.25rem,0.75rem+1vw,2.25rem)] font-normal leading-none">
+                      Fiat Wallet
+                    </h2>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-white text-[clamp(1.25rem,0.75rem+1vw,2.25rem)] font-normal">$100.00</span>
+                      <span className="text-gfx-neutral-500 text-[clamp(0.75rem,0.5rem+0.4vw,1.125rem)]">USD</span>
+                    </div>
                   </div>
                 </div>
-                <div className="flex flex-col w-full xl:w-auto xl:shrink-0">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <SparkleButton onClick={() => navigate('/deposit')}>
-                      <span className="flex items-center gap-2">
-                        <DepositIcon />
-                        <span>Deposit</span>
-                      </span>
-                    </SparkleButton>
-                    <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
-                      <span className="flex items-center gap-2">
-                        <WithdrawIcon />
-                        <span>Withdraw</span>
-                      </span>
-                    </SparkleButton>
-                    <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
-                      <span className="flex items-center gap-2">
-                        <TransferIcon />
-                        <span>Transfer</span>
-                      </span>
-                    </SparkleButton>
-                  </div>
-                  <div className="h-[100px] w-full min-w-0 -mt-3 relative">
-                    <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
-                  </div>
+
+                <div className="flex items-center gap-3 flex-wrap">
+                  <SparkleButton onClick={() => navigate('/deposit')}>
+                    <span className="flex items-center gap-2">
+                      <DepositIcon />
+                      <span>Deposit</span>
+                    </span>
+                  </SparkleButton>
+                  <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
+                    <span className="flex items-center gap-2">
+                      <WithdrawIcon />
+                      <span>Withdraw</span>
+                    </span>
+                  </SparkleButton>
+                  <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
+                    <span className="flex items-center gap-2">
+                      <TransferIcon />
+                      <span>Transfer</span>
+                    </span>
+                  </SparkleButton>
                 </div>
               </div>
             </GlassBannerCard>

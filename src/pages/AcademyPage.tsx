@@ -35,24 +35,24 @@ function LearningJourneyCard() {
 
   return (
     <GlassBannerCard className="w-full">
-      <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 3xl:gap-10">
-        <div className="flex items-center gap-4 3xl:gap-5 4xl:gap-7 shrink-0">
-          <div className="w-[72px] h-[72px] 3xl:w-[90px] 3xl:h-[90px] 4xl:w-[110px] 4xl:h-[110px] rounded-[20px] 3xl:rounded-[24px] 4xl:rounded-[28px] bg-[#011b12] flex items-center justify-center shrink-0">
-            <AcademyCapIcon size={30} />
+      <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
+        <div className="flex items-center gap-4 shrink-0">
+          <div className="w-[54px] h-[54px] rounded-[16px] bg-[#011b12] flex items-center justify-center shrink-0">
+            <AcademyCapIcon size={26} />
           </div>
           <div className="flex flex-col gap-1">
-            <h2 className="text-white text-[clamp(1.5rem,0.75rem+1.5vw,3.125rem)] font-normal leading-none">
+            <h2 className="text-white text-[clamp(1.25rem,0.75rem+1vw,2.25rem)] font-normal leading-none">
               Your Learning Journey
             </h2>
-            <p className="text-gfx-neutral-500 text-[clamp(0.875rem,0.6rem+0.5vw,1.5rem)] font-normal">
+            <p className="text-gfx-neutral-500 text-[clamp(0.75rem,0.5rem+0.4vw,1.125rem)] font-normal">
               {completed} of {total} courses completed
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 3xl:gap-4 flex-1 min-w-0 xl:items-end">
-          <div className="flex items-center gap-3 w-full xl:max-w-[492px] 3xl:xl:max-w-[615px] 4xl:xl:max-w-[740px]">
-            <div className="flex-1 h-1 3xl:h-1.5 bg-[#0f1e19] rounded-full overflow-hidden">
+        <div className="flex flex-col gap-2 flex-1 min-w-0 xl:items-end">
+          <div className="flex items-center gap-3 w-full xl:max-w-[420px]">
+            <div className="flex-1 h-1 bg-[#0f1e19] rounded-full overflow-hidden">
               <div
                 className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                 style={{ width: `${Math.max(pct, 2)}%` }}
@@ -60,17 +60,17 @@ function LearningJourneyCard() {
             </div>
             <span className="text-white text-body2 font-medium shrink-0">{pct}%</span>
           </div>
-          <div className="flex items-center gap-5 3xl:gap-7 4xl:gap-9 flex-wrap">
+          <div className="flex items-center gap-5 flex-wrap">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 rounded-full bg-gfx-green-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-500" />
               <span className="text-white text-body2 font-medium">{completed} done</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 rounded-full bg-gfx-green-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-500" />
               <span className="text-white text-body2 font-medium">{inProgress} in progress</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 3xl:w-2 3xl:h-2 rounded-full bg-[#606060]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]" />
               <span className="text-white text-body2 font-medium">{notStarted} not started</span>
             </div>
           </div>
