@@ -196,7 +196,7 @@ export default function WithdrawPage() {
                     </h3>
 
                     {getStepStatus(3) === 'active' && (
-                      <div className="mt-4 max-w-[34.125rem]">
+                      <div className="mt-6 max-w-[34.125rem] flex flex-col gap-6">
                         <div className="relative">
                           <GlassInput
                             type="number"
