@@ -41,7 +41,7 @@
   left: 0;
   bottom: 0;
   border-radius: 60px;
-  background: rgba(20,184,166,0.2);
+  background: #064B34;
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
@@ -50,7 +50,7 @@
   position: absolute;
   inset: 0;
   border-radius: 60px;
-  border: 1px solid #14b8a6;
+  border: 1px solid #00B38C;
   pointer-events: none;
   mask-image: linear-gradient(to bottom, white 0%, transparent 80%);
   -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent 80%);
