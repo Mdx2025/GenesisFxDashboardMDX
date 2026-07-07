@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { FloatingNavBar, ModeToggle, GlassBannerCard } from '@/components/ui'
-import { COURSES, ACADEMY_TABS } from '@/data/academy-courses'
-import type { Course } from '@/data/academy-courses'
+import { FloatingNavBar, ModeToggle, GlassBannerCard, CourseCard } from '@/components/ui'
+import { COURSES } from '@/data/academy-courses'
 
 function AcademyCapIcon({ size = 30 }: { size?: number }) {
   return (
@@ -24,80 +23,6 @@ function CupIcon({ size = 32 }: { size?: number }) {
       <path d="M10.667 26.667h10.666" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
       <path d="M16 24v2.667" stroke="white" strokeWidth="1.5" />
     </svg>
-  )
-}
-
-function VideoLibraryIcon({ size = 22 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 22 22" fill="none">
-      <path fillRule="evenodd" clipRule="evenodd" d="M3.667 4.583A2.75 2.75 0 0 1 6.417 1.833h9.166a2.75 2.75 0 0 1 2.75 2.75v12.834a2.75 2.75 0 0 1-2.75 2.75H6.417a2.75 2.75 0 0 1-2.75-2.75V4.583Zm5.958 2.75a.917.917 0 0 0-.917.917v5.5a.917.917 0 0 0 1.375.794l4.583-2.75a.917.917 0 0 0 0-1.588l-4.583-2.75a.917.917 0 0 0-.458-.123Z" fill="#404040" />
-    </svg>
-  )
-}
-
-function ClockIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 18 18" fill="none">
-      <circle cx="9" cy="9" r="7.5" stroke="#808080" strokeWidth="1.2" />
-      <path d="M9 5v4l2.5 2.5" stroke="#808080" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function PlayButton() {
-  return (
-    <div className="w-[60px] h-[60px] 3xl:w-[75px] 3xl:h-[75px] 4xl:w-[90px] 4xl:h-[90px] rounded-full bg-[rgba(0,0,0,0.5)] backdrop-blur-sm flex items-center justify-center cursor-pointer hover:bg-[rgba(0,0,0,0.7)] transition-colors group">
-      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" className="ml-0.5 3xl:scale-125 4xl:scale-150">
-        <path d="M3 2.5L14 8.5L3 14.5V2.5Z" fill="#00b38c" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  )
-}
-
-function LevelBadge({ level }: { level: string }) {
-  return (
-    <span className="inline-flex items-center px-[13px] 3xl:px-[16px] 4xl:px-[20px] h-[37px] 3xl:h-[46px] 4xl:h-[56px] rounded-full border border-white/10 text-white text-body2 font-medium">
-      {level}
-    </span>
-  )
-}
-
-function CourseCard({ course }: { course: Course }) {
-  return (
-    <div className="group rounded-[27px] overflow-hidden bg-[rgba(255,255,255,0.02)] border border-white/[0.04] hover:border-white/[0.08] transition-colors cursor-pointer">
-      <div className="relative aspect-[501/334] overflow-hidden rounded-t-[27px]">
-        <img
-          src={course.image}
-          alt={course.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
-        <div className="absolute bottom-4 right-4 3xl:bottom-5 3xl:right-5 4xl:bottom-6 4xl:right-6">
-          <PlayButton />
-        </div>
-      </div>
-      <div className="p-5 3xl:p-7 4xl:p-9 flex flex-col gap-3 3xl:gap-4 4xl:gap-5">
-        <h3 className="text-white text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
-          {course.title}
-        </h3>
-        <p className="text-[#808080] text-body2 leading-relaxed line-clamp-2">
-          {course.description}
-        </p>
-        <div className="flex items-center justify-between mt-1">
-          <div className="flex items-center gap-4 3xl:gap-5 4xl:gap-6">
-            <div className="flex items-center gap-1.5 3xl:gap-2">
-              <VideoLibraryIcon />
-              <span className="text-[#808080] text-body2 font-medium">{course.lessons} Lessons</span>
-            </div>
-            <div className="flex items-center gap-1.5 3xl:gap-2">
-              <ClockIcon />
-              <span className="text-[#808080] text-body2 font-medium">{course.duration}</span>
-            </div>
-          </div>
-          <LevelBadge level={course.level} />
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -188,7 +113,15 @@ export default function AcademyPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 3xl:gap-8 4xl:gap-10 pb-10 3xl:pb-14 4xl:pb-18">
           {COURSES.map(course => (
-            <CourseCard key={course.id} course={course} />
+            <CourseCard
+              key={course.id}
+              image={course.image}
+              title={course.title}
+              description={course.description}
+              lessons={course.lessons}
+              duration={course.duration}
+              level={course.level}
+            />
           ))}
         </div>
       </div>

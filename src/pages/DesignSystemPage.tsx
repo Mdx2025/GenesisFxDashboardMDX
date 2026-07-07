@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard,
+  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -293,6 +293,19 @@ export default function DesignSystemPage() {
               <GlassCard variant="heavy" rounded="30px" className="p-6">
                 <p className="text-gfx-neutral-500 text-sm">Heavy variant, 30px radius (pill-like).</p>
               </GlassCard>
+            </div>
+          </Subsection>
+
+          <Subsection title="Course Card">
+            <div className="max-w-[501px]">
+              <CourseCard
+                image="/images/course-crypto.png"
+                title="Crypto Trading"
+                description="In this course, you will learn all the basics to start trading in the world of cryptocurrencies"
+                lessons={22}
+                duration="00:19:09"
+                level="Beginner"
+              />
             </div>
           </Subsection>
 
