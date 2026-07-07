@@ -97,17 +97,17 @@ export default function AcademyPage() {
           ]}
         />
 
-        <div className="mt-6 3xl:mt-8 4xl:mt-10 mb-6 3xl:mb-8 4xl:mb-10">
+        <div className="mt-6 3xl:mt-8 4xl:mt-10">
           <h1 className="text-white font-normal leading-none text-[clamp(1.75rem,1rem+1.5vw,3.125rem)]">
             Genesis Academy
           </h1>
         </div>
 
-        <div className="mb-8 3xl:mb-10 4xl:mb-14 w-full max-w-xl">
+        <div className="w-full max-w-xl">
           <ModeToggle options={['Video Courses', 'E Books', 'Glossary', 'Calculators']} activeIndex={activeTab} onChange={setActiveTab} />
         </div>
 
-        <div className="mb-10 3xl:mb-14 4xl:mb-18">
+        <div className="py-7 xl:py-15">
           <LearningJourneyCard />
         </div>
 
