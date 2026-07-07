@@ -68,16 +68,18 @@ export default function KycPage() {
               <div className="flex-1 flex flex-col items-center justify-center py-16 px-8 xl:border-r xl:border-white/[0.06]">
                 <KycIllustration />
 
-                <h2 className="text-white text-[28px] xl:text-[36px] font-normal text-center">
-                  KYC Verification Required
-                </h2>
+                <div className="flex flex-col gap-4 items-center">
+                  <h2 className="text-white text-[28px] xl:text-[36px] font-normal text-center">
+                    KYC Verification Required
+                  </h2>
 
-                <p className="text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center max-w-[609px]">
-                  To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
-                </p>
+                  <p className="text-gfx-neutral-500 text-[16px] font-medium leading-[24.44px] text-center max-w-[609px]">
+                    To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
+                  </p>
 
-                <div>
-                  <GlowButton label="Complete KYC" width={193} height={44} />
+                  <div>
+                    <GlowButton label="Complete KYC" width={193} height={44} />
+                  </div>
                 </div>
               </div>
 
