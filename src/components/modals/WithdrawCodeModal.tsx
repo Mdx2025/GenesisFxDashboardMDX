@@ -87,32 +87,32 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
         </button>
 
         {/* Security illustration */}
-        <div className="flex justify-center pt-16 pb-6">
+        <div className="flex justify-center pt-6 sm:pt-10 pb-2 sm:pb-4">
           <img
             src="/images/withdraw-security.svg"
             alt=""
             aria-hidden="true"
-            className="w-auto max-h-[160px]"
+            className="w-auto max-h-[120px] sm:max-h-[200px] object-contain"
           />
         </div>
 
         {/* Title */}
-        <h2 className="text-center text-white text-[48px] font-normal font-acid leading-none">
+        <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
           Enter your code
         </h2>
 
         {/* Subtitle */}
-        <div className="text-center mt-4">
-          <p className="text-gfx-neutral-300 text-[16px] leading-6">
+        <div className="text-center mt-3 sm:mt-4 px-6">
+          <p className="text-gfx-neutral-300 text-[14px] sm:text-[16px] leading-6">
             We sent a 4-digit code to your email
           </p>
-          <p className="text-gfx-neutral-300 text-[16px] leading-6">
+          <p className="text-gfx-neutral-300 text-[14px] sm:text-[16px] leading-6">
             Enter it below to confirm your withdrawal
           </p>
         </div>
 
         {/* Code inputs */}
-        <div className="flex items-center justify-center gap-3 mt-10 px-8">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-10 px-4 sm:px-8">
           {code.map((digit, i) => (
             <input
               key={i}
@@ -124,7 +124,7 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
               onChange={e => handleChange(i, e.target.value)}
               onKeyDown={e => handleKeyDown(i, e)}
               onPaste={i === 0 ? handlePaste : undefined}
-              className={`w-28 h-32 rounded-2xl border text-center text-white text-[48px] font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
+              className={`w-[clamp(3.5rem,15vw,7rem)] h-[clamp(4rem,17vw,8rem)] rounded-xl sm:rounded-2xl border text-center text-white text-[clamp(1.5rem,5vw,3rem)] font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
                 digit ? 'border-gfx-green-500' : 'border-[#3d3d3d]'
               }`}
               aria-label={`Digit ${i + 1}`}
@@ -133,7 +133,7 @@ export function WithdrawCodeModal({ open, onClose }: WithdrawCodeModalProps) {
         </div>
 
         {/* Resend */}
-        <div className="flex items-center justify-center gap-1 mt-16 pb-20">
+        <div className="flex items-center justify-center gap-1 mt-8 sm:mt-16 pb-10 sm:pb-20">
           <span className="text-gfx-neutral-300 text-[16px] leading-6">
             Didn't receive the code?
           </span>
