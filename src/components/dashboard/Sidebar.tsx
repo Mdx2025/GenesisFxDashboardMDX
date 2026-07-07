@@ -98,7 +98,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         role="presentation"
       />
       <aside
-        className={`sidebar w-[260px] 2xl:w-xs 3xl:w-sm 4xl:w-md h-dvh bg-black border-r border-zinc-900 flex flex-col shrink-0 overflow-hidden p-3.5 lg:p-4 2xl:p-6 3xl:p-8 4xl:p-10 fixed inset-y-0 left-0 z-[60] lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
+        className={`sidebar w-[260px] 2xl:w-xs 3xl:w-[var(--width-sidebar-3xl)] 4xl:w-[var(--width-sidebar-4xl)] h-dvh bg-black border-r border-zinc-900 flex flex-col shrink-0 overflow-hidden p-3.5 lg:p-4 2xl:p-6 3xl:p-8 4xl:p-10 fixed inset-y-0 left-0 z-[60] lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
         aria-label="Main navigation"
       >
         <div className="sidebar-top-glow" aria-hidden="true" />

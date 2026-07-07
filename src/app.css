@@ -12,6 +12,9 @@
   --breakpoint-3xl: 2200px;
   --breakpoint-4xl: 3200px;
 
+  --width-sidebar-3xl: 26rem;
+  --width-sidebar-4xl: 34rem;
+
   --font-acid: "Acid Grotesk", sans-serif;
 
   /* Palette — raw color scale */

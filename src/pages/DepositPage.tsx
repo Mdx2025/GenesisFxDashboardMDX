@@ -213,7 +213,7 @@ function StepConnector({ status }: { status: 'completed' | 'inactive' }) {
 
 function FaqTag({ label }: { label: string }) {
   return (
-    <span className="inline-block px-3 py-[5px] rounded-[60px] border border-[#3d3d3d] bg-[linear-gradient(38deg,#1e1e1e_24%,#3f4341_128%)] text-[12px] text-[#bebebe] leading-[20px]">
+    <span className="inline-block px-3 py-[5px] rounded-[60px] border border-[#3d3d3d] bg-[linear-gradient(38deg,#1e1e1e_24%,#3f4341_128%)] text-[12px] 3xl:text-[16px] 4xl:text-[20px] text-[#bebebe] leading-[20px] 3xl:leading-[24px] 4xl:leading-[28px]">
       {label}
     </span>
   )
@@ -273,9 +273,9 @@ export default function DepositPage() {
             </p>
           </div>
 
-          <div className="flex flex-col xl:flex-row gap-10 xl:gap-20 3xl:gap-28 4xl:gap-36">
+          <div className="flex flex-col xl:flex-row gap-10 xl:gap-20 3xl:gap-14 4xl:gap-20">
             {/* Steps column */}
-            <div className="flex-1 max-w-[650px] 3xl:max-w-[900px] 4xl:max-w-[1200px]">
+            <div className="flex-1 max-w-[650px] 3xl:max-w-none 3xl:basis-1/2 4xl:basis-1/2">
               {/* Step 1: Select Coin */}
               <div className="flex gap-5">
                 <div className="flex flex-col items-center shrink-0">
@@ -311,7 +311,7 @@ export default function DepositPage() {
                         }`}
                       >
                         {coin.icon}
-                        <span className="text-white text-[16px] font-medium">{coin.label}</span>
+                        <span className="text-white text-[16px] 3xl:text-[20px] 4xl:text-[28px] font-medium">{coin.label}</span>
                       </button>
                     ))}
                   </div>
@@ -363,7 +363,7 @@ export default function DepositPage() {
                               <QrCodePlaceholder />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <span className="text-[14px] text-gfx-neutral-300 leading-[18.8px]">Address</span>
+                              <span className="text-[14px] 3xl:text-[18px] 4xl:text-[24px] text-gfx-neutral-300 leading-[18.8px] 3xl:leading-[24px] 4xl:leading-[32px]">Address</span>
                               <div className="flex items-start gap-2 mt-3">
                                 <p className="text-[16px] text-white leading-[24.44px] break-all">
                                   {DEPOSIT_ADDRESS}
@@ -377,7 +377,7 @@ export default function DepositPage() {
                                   <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
                                 </button>
                               </div>
-                              <p className="text-[14px] text-gfx-neutral-300 leading-[18.8px] mt-3">
+                              <p className="text-[14px] 3xl:text-[18px] 4xl:text-[24px] text-gfx-neutral-300 leading-[18.8px] 3xl:leading-[24px] 4xl:leading-[32px] mt-3">
                                 Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
                               </p>
                             </div>
@@ -391,7 +391,7 @@ export default function DepositPage() {
             </div>
 
             {/* FAQs column */}
-            <div className="w-full xl:flex-1">
+            <div className="w-full xl:flex-1 3xl:basis-1/2 4xl:basis-1/2">
               <h2 className="text-[24px] font-normal mb-6 leading-[30px]">FAQs</h2>
               <div className="space-y-4">
                 {FAQS.map((faq, i) => (
@@ -400,7 +400,7 @@ export default function DepositPage() {
                     className="rounded-[30px] border border-[#00422c] px-8 py-7"
                   >
                     <div className="flex items-center justify-between gap-6">
-                      <span className="text-[18px] text-white font-normal leading-[22.5px]">{faq.question}</span>
+                      <span className="text-[18px] 3xl:text-[24px] 4xl:text-[32px] text-white font-normal leading-[22.5px] 3xl:leading-[30px] 4xl:leading-[40px]">{faq.question}</span>
                       <button
                         type="button"
                         onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
@@ -439,21 +439,21 @@ export default function DepositPage() {
                   <table className="w-full min-w-[500px]">
                     <thead>
                       <tr>
-                        <th className="px-6 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300 whitespace-nowrap">Time (UTC+)</th>
-                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Type</th>
-                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Coin</th>
-                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Amount</th>
-                        <th className="px-4 pt-6 pb-4 text-left text-[12px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Remark</th>
+                        <th className="px-6 pt-6 pb-4 text-left text-[12px] 3xl:text-[16px] 4xl:text-[20px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300 whitespace-nowrap">Time (UTC+)</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] 3xl:text-[16px] 4xl:text-[20px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Type</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] 3xl:text-[16px] 4xl:text-[20px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Coin</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] 3xl:text-[16px] 4xl:text-[20px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Amount</th>
+                        <th className="px-4 pt-6 pb-4 text-left text-[12px] 3xl:text-[16px] 4xl:text-[20px] font-bold uppercase tracking-[2.32px] text-gfx-neutral-300">Remark</th>
                       </tr>
                     </thead>
                     <tbody>
                       {TRANSACTIONS.map((tx, i) => (
                         <tr key={i} className={i > 0 ? 'border-t border-white/5' : ''}>
-                          <td className="px-6 py-5 text-[14px] text-white whitespace-nowrap">{tx.date}</td>
-                          <td className="px-4 py-5 text-[14px] text-white">{tx.type}</td>
+                          <td className="px-6 py-5 text-[14px] 3xl:text-[18px] 4xl:text-[24px] text-white whitespace-nowrap">{tx.date}</td>
+                          <td className="px-4 py-5 text-[14px] 3xl:text-[18px] 4xl:text-[24px] text-white">{tx.type}</td>
                           <td className="px-4 py-5"><UsdtIcon size={30} /></td>
-                          <td className={`px-4 py-5 text-[14px] font-medium ${tx.type === 'Deposit' ? 'text-gfx-green-500' : 'text-[#d46356]'}`}>{tx.amount}</td>
-                          <td className="px-4 py-5 text-[14px] text-white">{tx.status}</td>
+                          <td className={`px-4 py-5 text-[14px] 3xl:text-[18px] 4xl:text-[24px] font-medium ${tx.type === 'Deposit' ? 'text-gfx-green-500' : 'text-[#d46356]'}`}>{tx.amount}</td>
+                          <td className="px-4 py-5 text-[14px] 3xl:text-[18px] 4xl:text-[24px] text-white">{tx.status}</td>
                         </tr>
                       ))}
                     </tbody>
