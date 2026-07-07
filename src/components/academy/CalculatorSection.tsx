@@ -107,12 +107,12 @@ export function CalculatorSection() {
         </div>
 
         {/* Recommended Position Result */}
-        <div className="mt-14 rounded-[1.25rem] px-8 py-6 flex items-center justify-between"
+        <div className="mt-14 rounded-[1.25rem] px-8 py-6 flex flex-col gap-2"
           style={{ background: 'linear-gradient(to right, #0C1311, #09241C)' }}>
-          <span className="text-[#A0A0A0] text-[1rem] font-medium">Recommended Position</span>
+          <span className="text-[#A0A0A0] text-[1rem] font-normal">Recommended Position</span>
           <div className="flex items-baseline gap-2">
             <span className="text-[#00B38C] text-[2.25rem] font-normal">{result.positionSize.toFixed(2)}</span>
-            <span className="text-[#A0A0A0] text-[1rem] font-medium">lots</span>
+            <span className="text-[#A0A0A0] text-[1rem] font-normal">lots</span>
           </div>
         </div>
 
