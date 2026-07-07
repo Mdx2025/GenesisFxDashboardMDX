@@ -137,7 +137,7 @@ export default function AssetsManagementPage() {
                           <span>Deposit</span>
                         </span>
                       </SparkleButton>
-                      <SparkleButton aria-label="Withdraw funds">
+                      <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
                         <span className="flex items-center gap-2">
                           <WithdrawIcon />
                           <span>Withdraw</span>

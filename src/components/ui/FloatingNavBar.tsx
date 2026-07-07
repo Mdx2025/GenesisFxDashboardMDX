@@ -48,6 +48,7 @@ const defaultItems: FloatingNavItem[] = [
 const NAV_ROUTES: Record<string, string> = {
   Home: '/',
   Deposit: '/deposit',
+  Withdraw: '/withdraw',
 }
 
 interface FloatingNavBarProps {

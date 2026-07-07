@@ -25,7 +25,7 @@ export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagl
             <span className="hidden sm:inline">Deposit</span>
           </span>
         </SparkleButton>
-        <SparkleButton>
+        <SparkleButton onClick={() => navigate('/withdraw')}>
           <span className="flex items-center gap-2">
             <WithdrawIcon />
             <span className="hidden sm:inline">Withdraw</span>

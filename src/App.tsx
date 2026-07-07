@@ -4,6 +4,7 @@ import DashboardPage from './pages/DashboardPage'
 import AssetsManagementPage from './pages/AssetsManagementPage'
 import DesignSystemPage from './pages/DesignSystemPage'
 import DepositPage from './pages/DepositPage'
+import WithdrawPage from './pages/WithdrawPage'
 import { SvgFilters } from './components/SvgFilters'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/assets-management" element={<AssetsManagementPage />} />
           <Route path="/deposit" element={<DepositPage />} />
+          <Route path="/withdraw" element={<WithdrawPage />} />
           <Route path="/design-system" element={<DesignSystemPage />} />
         </Route>
       </Routes>
