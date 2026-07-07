@@ -62,7 +62,7 @@ function LearningJourneyCard() {
             </div>
             <span className="text-white text-body2 font-medium shrink-0">{pct}%</span>
           </div>
-          <div className="flex items-center gap-5 flex-wrap">
+          <div className="flex items-center gap-5 flex-wrap w-full xl:max-w-[420px] xl:ml-auto">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-500" />
               <span className="text-white text-body2 font-medium">{completed} done</span>
