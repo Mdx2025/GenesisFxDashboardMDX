@@ -32,7 +32,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
   const [collapsed, setCollapsed] = useState(false)
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
-  const submenuFirstRender = useRef<Record<string, boolean>>({})
+  const submenuInitialized = useRef<Set<string>>(new Set())
   const navListRef = useRef<HTMLUListElement>(null)
   const highlightRef = useRef<HTMLDivElement>(null)
   const isFirstHighlight = useRef(true)
@@ -69,9 +69,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
     for (const [id, isOpen] of Object.entries(openMenus)) {
       const el = submenuRefs.current[id]
       if (!el) continue
-      if (!submenuFirstRender.current[id]) {
-        submenuFirstRender.current[id] = true
-        continue
+      if (!submenuInitialized.current.has(id)) {
+        submenuInitialized.current.add(id)
       }
       if (isOpen) {
         gsap.set(el, { height: 'auto', opacity: 1 })
@@ -186,7 +185,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   </NavButton>
                 )
                 return (
-                  <li key={item.id}>
+                  <li key={item.id} className="relative z-[1]">
                     {item.submenu ? navContent : (
                       <Link to={item.href} aria-current={isActive ? 'page' : undefined}>
                         {navContent}
