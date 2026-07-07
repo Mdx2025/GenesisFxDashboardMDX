@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton, SuccessSnackbar } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, FloatingNavBar, Badge, GlassSelect, GreenPillButton, SuccessSnackbar, GlassBannerCard } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/components/icons'
 import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
@@ -149,53 +149,50 @@ export default function AssetsManagementPage() {
           <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">Funding</h1>
 
           <section aria-label="Fiat Wallet" className="py-7 md:py-15">
-            <GlassCard variant="heavy" divider="green" rounded="26px">
-              <img src="/images/fiat-wallet-glow.svg" alt="" aria-hidden="true" className="absolute top-0 left-0 w-[50%] pointer-events-none z-[1]" />
-              <div className="relative z-10 p-6 xl:p-8">
-                <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
-                  <div>
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-gfx-neutral-300 text-body2">Fiat Wallet</span>
-                      <WalletIcon />
-                    </div>
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-white font-normal text-[clamp(2rem,1.5rem+1.5vw,3.5rem)]">$100.00</span>
-                      <span className="text-gfx-neutral-300 text-body2">USD</span>
-                    </div>
-                    <div className="flex items-center gap-3 border border-gfx-green-100 rounded-lg p-3">
-                      <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
-                      <span className="text-white text-sm font-semibold">$0.00</span>
-                      <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
-                    </div>
+            <GlassBannerCard>
+              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-gfx-neutral-300 text-body2">Fiat Wallet</span>
+                    <WalletIcon />
                   </div>
-                  <div className="flex flex-col w-full xl:w-auto xl:shrink-0">
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <SparkleButton onClick={() => navigate('/deposit')}>
-                        <span className="flex items-center gap-2">
-                          <DepositIcon />
-                          <span>Deposit</span>
-                        </span>
-                      </SparkleButton>
-                      <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
-                        <span className="flex items-center gap-2">
-                          <WithdrawIcon />
-                          <span>Withdraw</span>
-                        </span>
-                      </SparkleButton>
-                      <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
-                        <span className="flex items-center gap-2">
-                          <TransferIcon />
-                          <span>Transfer</span>
-                        </span>
-                      </SparkleButton>
-                    </div>
-                    <div className="h-[100px] w-full min-w-0 -mt-3 relative">
-                      <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
-                    </div>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="text-white font-normal text-[clamp(2rem,1.5rem+1.5vw,3.5rem)]">$100.00</span>
+                    <span className="text-gfx-neutral-300 text-body2">USD</span>
+                  </div>
+                  <div className="flex items-center gap-3 border border-gfx-green-100 rounded-lg p-3">
+                    <span className="text-gfx-neutral-500 text-sm">Trade Credit</span>
+                    <span className="text-white text-sm font-semibold">$0.00</span>
+                    <button className="text-gfx-green-500 text-sm hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded">Redeem</button>
+                  </div>
+                </div>
+                <div className="flex flex-col w-full xl:w-auto xl:shrink-0">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <SparkleButton onClick={() => navigate('/deposit')}>
+                      <span className="flex items-center gap-2">
+                        <DepositIcon />
+                        <span>Deposit</span>
+                      </span>
+                    </SparkleButton>
+                    <SparkleButton aria-label="Withdraw funds" onClick={() => navigate('/withdraw')}>
+                      <span className="flex items-center gap-2">
+                        <WithdrawIcon />
+                        <span>Withdraw</span>
+                      </span>
+                    </SparkleButton>
+                    <SparkleButton aria-label="Transfer funds" onClick={() => setTransferOpen(true)}>
+                      <span className="flex items-center gap-2">
+                        <TransferIcon />
+                        <span>Transfer</span>
+                      </span>
+                    </SparkleButton>
+                  </div>
+                  <div className="h-[100px] w-full min-w-0 -mt-3 relative">
+                    <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </GlassBannerCard>
           </section>
 
           <div className="mb-4 md:mb-8 w-full max-w-xl">

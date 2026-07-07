@@ -2,7 +2,7 @@ import { useState } from 'react'
 import {
   SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
-  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton,
+  FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -294,6 +294,18 @@ export default function DesignSystemPage() {
                 <p className="text-gfx-neutral-500 text-sm">Heavy variant, 30px radius (pill-like).</p>
               </GlassCard>
             </div>
+          </Subsection>
+
+          <Subsection title="Glass Banner Card">
+            <GlassBannerCard>
+              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
+                <div>
+                  <p className="text-gfx-neutral-300 text-body2 mb-2">Reusable banner card</p>
+                  <p className="text-white text-h2 font-normal">GlassBannerCard</p>
+                  <p className="text-gfx-neutral-500 text-body2 mt-2">Heavy glass card with green divider, SVG glow overlay, and internal glow ellipses. Used in Fiat Wallet and Learning Journey.</p>
+                </div>
+              </div>
+            </GlassBannerCard>
           </Subsection>
 
           <Subsection title="Dividers">
