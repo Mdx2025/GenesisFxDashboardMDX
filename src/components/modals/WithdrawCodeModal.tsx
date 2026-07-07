@@ -137,7 +137,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
             <ellipse cx="50%" cy="50%" rx="40%" ry="45%" fill="#0D4532" opacity="0.3" style={{ mixBlendMode: 'color' }} filter="url(#ellipse-blur)" />
           </svg>
           <img
-            src="/images/withdraw-briefcase-icon.png"
+            src="/images/withdraw-security-icon.png"
             alt=""
             aria-hidden="true"
             className="relative z-10 w-auto max-h-[120px] sm:max-h-[200px] object-contain"
