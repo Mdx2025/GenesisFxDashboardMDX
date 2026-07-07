@@ -5,10 +5,13 @@ import './ModeToggle.css'
 interface ModeToggleProps {
   options?: string[]
   defaultIndex?: number
+  activeIndex?: number
+  onChange?: (index: number) => void
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0 }: ModeToggleProps) {
-  const [active, setActive] = useState(defaultIndex)
+export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange }: ModeToggleProps) {
+  const [internalActive, setInternalActive] = useState(defaultIndex)
+  const active = activeIndex ?? internalActive
   const indicatorRef = useRef<HTMLDivElement>(null)
   const isFirst = useRef(true)
 
@@ -52,7 +55,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0 }
         <button
           key={option}
           className={active === i ? 'active' : ''}
-          onClick={() => setActive(i)}
+          onClick={() => { setInternalActive(i); onChange?.(i) }}
           aria-pressed={active === i}
         >
           <span className="btn-label">{option}</span>

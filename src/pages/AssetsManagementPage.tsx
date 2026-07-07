@@ -7,14 +7,16 @@ import { DepositIcon, WithdrawIcon, TransferIcon, ChevronDownIcon } from '@/comp
 import { TransferModal } from '@/components/dashboard/TransferModal'
 import { TransferProcessingModal } from '@/components/dashboard/TransferProcessingModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
-import { assetTransactions } from '@/data/assets-history'
+import { assetTransactions, TAB_TO_TYPE } from '@/data/assets-history'
 import { STATUS_STYLES } from '@/constants/colors'
-import type { AssetTransaction } from '@/data/assets-history'
+import type { AssetTransaction, TransactionType, CoinType } from '@/data/assets-history'
+import { useMemo } from 'react'
 
-const TYPE_CONFIG: Record<AssetTransaction['type'], { icon: typeof DepositIcon; label: string }> = {
+const TYPE_CONFIG: Record<TransactionType, { icon: typeof DepositIcon; label: string }> = {
   deposit: { icon: DepositIcon, label: 'Deposit' },
   withdraw: { icon: WithdrawIcon, label: 'Withdraw' },
   transfer: { icon: TransferIcon, label: 'Transfer' },
+  credit: { icon: DepositIcon, label: 'Credit' },
 }
 
 const COIN_ICON_COLORS: Record<string, string> = {
@@ -88,12 +90,51 @@ function FilterDropdown({ label, wide }: { label: string; wide?: boolean }) {
   )
 }
 
+function parseDate(dateStr: string): Date {
+  return new Date(dateStr.replace(/,/, ''))
+}
+
 export default function AssetsManagementPage() {
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [transferOpen, setTransferOpen] = useState(false)
   const [processingOpen, setProcessingOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState(0)
+  const [filterType, setFilterType] = useState('all')
+  const [filterTime, setFilterTime] = useState('all')
+  const [filterCoin, setFilterCoin] = useState('all')
+
+  const filteredTransactions = useMemo(() => {
+    const tabType = TAB_TO_TYPE[activeTab]
+    let filtered = assetTransactions.filter(tx => tx.type === tabType)
+
+    if (filterType !== 'all') {
+      filtered = filtered.filter(tx => tx.status === filterType)
+    }
+
+    if (filterCoin !== 'all') {
+      filtered = filtered.filter(tx => tx.coin.toLowerCase() === filterCoin)
+    }
+
+    if (filterTime !== 'all') {
+      const now = new Date()
+      const cutoff = new Date()
+      if (filterTime === '24h') cutoff.setDate(now.getDate() - 1)
+      else if (filterTime === '7d') cutoff.setDate(now.getDate() - 7)
+      else if (filterTime === '30d') cutoff.setDate(now.getDate() - 30)
+      else if (filterTime === '90d') cutoff.setDate(now.getDate() - 90)
+      filtered = filtered.filter(tx => parseDate(tx.date) >= cutoff)
+    }
+
+    return filtered
+  }, [activeTab, filterType, filterTime, filterCoin])
+
+  function resetFilters() {
+    setFilterType('all')
+    setFilterTime('all')
+    setFilterCoin('all')
+  }
 
   return (
     <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
@@ -160,7 +201,7 @@ export default function AssetsManagementPage() {
           </section>
 
           <div className="mb-4 md:mb-8 w-full max-w-xl">
-            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} />
+            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} activeIndex={activeTab} onChange={(i) => { setActiveTab(i); resetFilters() }} />
           </div>
 
           <section aria-label="Assets History">
@@ -169,11 +210,14 @@ export default function AssetsManagementPage() {
                 <GlassSelect
                   size="sm"
                   placeholder="Type"
+                  value={filterType}
+                  onChange={setFilterType}
                   options={[
-                    { value: 'all', label: 'All Types' },
-                    { value: 'deposit', label: 'Deposit' },
-                    { value: 'withdraw', label: 'Withdraw' },
-                    { value: 'transfer', label: 'Transfer' },
+                    { value: 'all', label: 'All Status' },
+                    { value: 'pending', label: 'Pending' },
+                    { value: 'approved', label: 'Approved' },
+                    { value: 'expired', label: 'Expired' },
+                    { value: 'rejected', label: 'Rejected' },
                   ]}
                 />
               </div>
@@ -181,6 +225,8 @@ export default function AssetsManagementPage() {
                 <GlassSelect
                   size="sm"
                   placeholder="Time"
+                  value={filterTime}
+                  onChange={setFilterTime}
                   options={[
                     { value: 'all', label: 'All Time' },
                     { value: '24h', label: 'Last 24h' },
@@ -194,6 +240,8 @@ export default function AssetsManagementPage() {
                 <GlassSelect
                   size="sm"
                   placeholder="Coin"
+                  value={filterCoin}
+                  onChange={setFilterCoin}
                   options={[
                     { value: 'all', label: 'All Coins' },
                     { value: 'usdt', label: 'USDT' },
@@ -203,7 +251,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <GreenPillButton>Reset</GreenPillButton>
+              <GreenPillButton onClick={resetFilters}>Reset</GreenPillButton>
               <div className="ml-auto">
                 <button className="p-2 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-500 hover:text-white hover:border-white/10 transition-colors cursor-pointer" aria-label="Export table">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -221,7 +269,7 @@ export default function AssetsManagementPage() {
               <div className="relative z-10 p-6">
                 <div className="flex items-center gap-3">
                   <h2 className="text-[19px] font-bold tracking-tight text-white">Assets History</h2>
-                  <Badge variant="status">Total ({assetTransactions.length} records)</Badge>
+                  <Badge variant="status">Total ({filteredTransactions.length} records)</Badge>
                 </div>
               </div>
 
@@ -239,7 +287,7 @@ export default function AssetsManagementPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {assetTransactions.map((tx, i) => {
+                    {filteredTransactions.map((tx, i) => {
                       const { icon: Icon, label } = TYPE_CONFIG[tx.type]
                       const status = STATUS_STYLES[tx.status]
                       return (
