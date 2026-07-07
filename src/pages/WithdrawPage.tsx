@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassSelect, GlassSelectIcon, GlassInput, GlowButton, FloatingNavBar, DividerGlow } from '@/components/ui'
+import { WithdrawCodeModal } from '@/components/modals/WithdrawCodeModal'
 import { ChevronDownIcon, SearchIcon } from '@/components/icons'
 
 function UsdtIcon({ size = 24 }: { size?: number }) {
@@ -129,6 +130,7 @@ export default function WithdrawPage() {
   const [selectedNetwork, setSelectedNetwork] = useState('')
   const [withdrawAmount, setWithdrawAmount] = useState('')
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [codeModalOpen, setCodeModalOpen] = useState(false)
 
   const selectedCoinConfig = COINS.find(c => c.id === selectedCoin)
   const coinLabel = selectedCoinConfig?.label ?? 'USDT'
@@ -312,7 +314,7 @@ export default function WithdrawPage() {
                               Network Fee 0.00 {coinLabel}
                             </p>
                           </div>
-                          <GlowButton label="Withdraw" width={145} height={44} />
+                          <GlowButton label="Withdraw" width={145} height={44} onClick={() => setCodeModalOpen(true)} />
                         </div>
                       </div>
                     )}
@@ -390,6 +392,8 @@ export default function WithdrawPage() {
           <FloatingNavBar />
         </div>
       </main>
+
+      <WithdrawCodeModal open={codeModalOpen} onClose={() => setCodeModalOpen(false)} />
     </div>
   )
 }
