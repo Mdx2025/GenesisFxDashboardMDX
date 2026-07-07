@@ -150,7 +150,7 @@ export default function AcademyPage() {
           ]}
         />
 
-        <div className="mt-6 3xl:mt-8 4xl:mt-10 mb-20">
+        <div className="mt-6 3xl:mt-8 4xl:mt-10 mb-10 xl:mb-20">
           <h1 className="text-white font-normal leading-none text-[clamp(1.75rem,1rem+1.5vw,3.125rem)]">
             Genesis Academy
           </h1>
