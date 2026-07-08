@@ -221,6 +221,10 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 }) {
   const title = accountType === 'corporate' ? 'Corporate Account' : 'Personal Account'
   const fadeRef = useFadeIn()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const isValid = email.trim() !== '' && password.trim() !== '' && confirmPassword.trim() !== ''
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
@@ -235,13 +239,15 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
         </div>
 
         <div className="w-full flex flex-col gap-[1.0625rem]">
-          <input type="email" placeholder="Email" className={INPUT_CLASS} />
+          <input type="email" placeholder="Email" className={INPUT_CLASS} value={email} onChange={e => setEmail(e.target.value)} />
 
           <div className="w-full relative">
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
               className={`${INPUT_CLASS} pr-[3.25rem]`}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
             <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
               <EyeIcon open={showPassword} />
@@ -253,6 +259,8 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
               type={showConfirmPassword ? 'text' : 'password'}
               placeholder="Confirm Password"
               className={`${INPUT_CLASS} pr-[3.25rem]`}
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
             />
             <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
               <EyeIcon open={showConfirmPassword} />
@@ -263,7 +271,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
         </div>
 
         <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Continue" width="100%" onClick={onContinue} />
+          <GlowButton label="Continue" width="100%" onClick={onContinue} disabled={!isValid} />
           <div className="w-full [&>button]:w-full">
             <SparkleButton onClick={onBack}>
               <ChevronRight className="rotate-180" />
@@ -283,6 +291,12 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 
 function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
   const fadeRef = useFadeIn()
+  const [companyName, setCompanyName] = useState('')
+  const [regNumber, setRegNumber] = useState('')
+  const [businessType, setBusinessType] = useState('')
+  const [address, setAddress] = useState('')
+  const [country, setCountry] = useState('')
+  const isValid = companyName.trim() !== '' && regNumber.trim() !== '' && businessType !== '' && address.trim() !== '' && country !== ''
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
@@ -297,15 +311,15 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
         </div>
 
         <div className="w-full flex flex-col gap-[1.0625rem]">
-          <input type="text" placeholder="Company Name" className={INPUT_CLASS} />
-          <input type="text" placeholder="Registration Number" className={INPUT_CLASS} />
-          <GlassSelect options={BUSINESS_TYPE_OPTIONS} placeholder="Business Type" />
-          <input type="text" placeholder="Business Address" className={INPUT_CLASS} />
-          <GlassSelect options={COUNTRY_OPTIONS} placeholder="Country of Incorporation" />
+          <input type="text" placeholder="Company Name" className={INPUT_CLASS} value={companyName} onChange={e => setCompanyName(e.target.value)} />
+          <input type="text" placeholder="Registration Number" className={INPUT_CLASS} value={regNumber} onChange={e => setRegNumber(e.target.value)} />
+          <GlassSelect options={BUSINESS_TYPE_OPTIONS} placeholder="Business Type" onChange={setBusinessType} />
+          <input type="text" placeholder="Business Address" className={INPUT_CLASS} value={address} onChange={e => setAddress(e.target.value)} />
+          <GlassSelect options={COUNTRY_OPTIONS} placeholder="Country of Incorporation" onChange={setCountry} />
         </div>
 
         <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Create Account" width="100%" />
+          <GlowButton label="Create Account" width="100%" disabled={!isValid} />
           <div className="w-full [&>button]:w-full">
             <SparkleButton onClick={onBack}>
               <ChevronRight className="rotate-180" />
@@ -325,6 +339,12 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
 
 function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
   const fadeRef = useFadeIn()
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [address, setAddress] = useState('')
+  const [country, setCountry] = useState('')
+  const isValid = firstName.trim() !== '' && lastName.trim() !== '' && phone.trim() !== '' && address.trim() !== '' && country.trim() !== ''
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
@@ -340,16 +360,16 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
 
         <div className="w-full flex flex-col gap-[1.0625rem]">
           <div className="flex gap-[0.375rem]">
-            <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
-            <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
+            <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} value={firstName} onChange={e => setFirstName(e.target.value)} />
+            <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} value={lastName} onChange={e => setLastName(e.target.value)} />
           </div>
-          <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
-          <input type="text" placeholder="Address*" className={INPUT_CLASS} />
-          <input type="text" placeholder="Country*" className={INPUT_CLASS} />
+          <input type="tel" placeholder="Phone*" className={INPUT_CLASS} value={phone} onChange={e => setPhone(e.target.value)} />
+          <input type="text" placeholder="Address*" className={INPUT_CLASS} value={address} onChange={e => setAddress(e.target.value)} />
+          <input type="text" placeholder="Country*" className={INPUT_CLASS} value={country} onChange={e => setCountry(e.target.value)} />
         </div>
 
         <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Create Account" width="100%" />
+          <GlowButton label="Create Account" width="100%" disabled={!isValid} />
           <div className="w-full [&>button]:w-full">
             <SparkleButton onClick={onBack}>
               <ChevronRight className="rotate-180" />
