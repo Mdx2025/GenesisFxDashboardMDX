@@ -8,7 +8,6 @@ import { tradingAccounts } from '@/data/trading-accounts'
 import { CreateAccountModal } from '@/components/accounts/CreateAccountModal'
 import { AccountProcessingModal } from '@/components/accounts/AccountProcessingModal'
 import { PlatformsView } from '@/components/accounts/PlatformsView'
-import './AccountsPage.css'
 
 const FILTER_TABS = ['All Accounts', 'Live', 'Demo', 'Platforms'] as const
 
@@ -72,79 +71,67 @@ export default function AccountsPage() {
             </div>
 
             <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
-
-              <div className="flex flex-col gap-3 px-4 sm:px-6 xl:px-10 pt-5 sm:pt-6 xl:pt-8 pb-3 sm:pb-4 xl:pb-6">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <h2 className="text-[1rem] sm:text-[1.1875rem] font-bold tracking-tight text-white">Trading Accounts</h2>
+              <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
+              <div className="relative z-10 p-6">
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Trading Accounts</h2>
                     <Badge variant="status">{filteredAccounts.length} ACTIVE</Badge>
                   </div>
-                  <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
                     <div className="flex-1 sm:flex-none min-w-0">
                       <SearchInput />
                     </div>
                     <SparkleButton onClick={() => setCreateModalOpen(true)}>
                       <span className="flex items-center gap-2">
                         <UserIcon size={18} color="#A0A0A0" />
-                        <span className="hidden sm:inline">New Account</span>
-                        <span className="inline sm:hidden">New</span>
+                        <span>New Account</span>
                       </span>
                     </SparkleButton>
                   </div>
                 </div>
               </div>
 
-              <div className="overflow-x-auto" role="region" aria-label="Trading accounts table">
-                <table className="accounts-table w-full">
+              <div className="overflow-x-auto" role="region" aria-label="Trading accounts table, scrollable">
+                <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left">Account</th>
-                      <th className="text-left">Platform</th>
-                      <th className="text-left">Type</th>
-                      <th className="text-left">Balance</th>
-                      <th className="text-left">Equity</th>
-                      <th className="text-left">Closed P&L</th>
-                      <th className="text-left">Open P&L</th>
-                      <th className="text-left">Status</th>
-                      <th />
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Platform</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[8%]">Type</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Balance</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Equity</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Closed P&L</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Open P&L</th>
+                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[7%]">Status</th>
+                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" />
                     </tr>
                   </thead>
                   <tbody>
                     {filteredAccounts.map((acc, i) => (
                       <tr key={acc.account} className={i > 0 ? 'border-t border-white/5' : ''}>
-                        <td data-label="Account">
+                        <td className="px-4 sm:px-6 py-4 xl:py-5">
                           <div>
-                            <p className="text-white text-[0.9375rem] font-bold leading-tight">{acc.account}</p>
+                            <p className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-bold leading-tight">{acc.account}</p>
                             <p className="text-gfx-neutral-300 text-[0.8125rem] mt-0.5">{acc.username}</p>
                           </div>
                         </td>
-                        <td data-label="Platform">
-                          <span className="text-[0.9375rem] text-white/60">{acc.platform}</span>
-                        </td>
-                        <td data-label="Type">
+                        <td className="text-white/60 text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{acc.platform}</td>
+                        <td className="py-4 xl:py-5">
                           <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
                         </td>
-                        <td data-label="Balance">
-                          <span className="text-white text-[0.9375rem] font-semibold">{acc.balance}</span>
-                        </td>
-                        <td data-label="Equity">
-                          <span className="text-white text-[0.9375rem] font-semibold">{acc.equity}</span>
-                        </td>
-                        <td data-label="Closed P&L">
-                          <span className={`text-[0.9375rem] font-semibold ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</span>
-                        </td>
-                        <td data-label="Open P&L">
-                          <span className={`text-[0.9375rem] font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</span>
-                        </td>
-                        <td data-label="Status">
+                        <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.balance}</td>
+                        <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.equity}</td>
+                        <td className={`text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
+                        <td className={`text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
+                        <td className="py-4 xl:py-5">
                           <div className="flex items-center gap-2">
                             <GreenDot size={8} />
-                            <span className="text-gfx-neutral-300 text-[0.875rem]">{acc.status}</span>
+                            <span className="text-gfx-neutral-300 text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{acc.status}</span>
                           </div>
                         </td>
-                        <td className="actions-cell">
-                          <div className="flex items-center justify-end gap-4 lg:gap-6">
+                        <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
+                          <div className="flex items-center justify-end gap-6">
                             <button className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
                             <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                             <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
