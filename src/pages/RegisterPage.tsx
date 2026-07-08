@@ -175,19 +175,15 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
             title="Individual"
             description="Personal trading account"
             selected={accountType === 'individual'}
-            onClick={() => setAccountType('individual')}
+            onClick={() => { setAccountType('individual'); onContinue() }}
           />
           <AccountTypeCard
             icon={<BuildingIcon />}
             title="Corporate"
             description="Business trading account"
             selected={accountType === 'corporate'}
-            onClick={() => setAccountType('corporate')}
+            onClick={() => { setAccountType('corporate'); onContinue() }}
           />
-        </div>
-
-        <div className="w-full">
-          <GlowButton label="Continue" width="100%" onClick={onContinue} />
         </div>
 
         <p className="text-[1rem] leading-[1.2]">
