@@ -194,11 +194,11 @@ export function TradingCalendar() {
 
                       return (
                         <td key={dayIdx} className="p-1">
-                          <div className={`${cellBg} rounded-[1.2rem] h-[6.8rem] px-3 py-3 flex flex-col justify-between`}>
-                            <span className="text-gfx-neutral-300 text-[0.875rem]">{dayData.day}</span>
+                          <div className={`${cellBg} rounded-[1.2rem] h-[6.8rem] px-3 py-3 flex flex-col justify-between border ${hasTradeData ? (isProfitable ? 'border-[#00B38C]' : 'border-[#D46356]') : 'border-transparent'}`}>
+                            <span className="text-gfx-neutral-300 text-[0.875rem] text-center">{dayData.day}</span>
                             {hasTradeData && (
-                              <div>
-                                <div className="flex items-center gap-1">
+                              <div className="text-center">
+                                <div className="flex items-center justify-center gap-1">
                                   <span className={`text-[0.6875rem] font-bold ${isProfitable ? 'text-gfx-green-500' : 'text-gfx-red'}`}>
                                     {isProfitable ? '▲' : '▲'}
                                   </span>
@@ -206,7 +206,7 @@ export function TradingCalendar() {
                                     {dayData.profit! >= 0 ? '+' : ''}{dayData.profit! >= 0 ? `$${dayData.profit!.toFixed(2)}` : `-$${Math.abs(dayData.profit!).toFixed(2)}`}
                                   </span>
                                 </div>
-                                <span className="text-gfx-neutral-300 text-[0.875rem]"> ({dayData.trades} trades)</span>
+                                <span className="text-gfx-neutral-300 text-[0.875rem]">({dayData.trades} trades)</span>
                               </div>
                             )}
                           </div>
