@@ -5,6 +5,7 @@ import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton, Gla
 import type { GlassSelectOption } from '@/components/ui/GlassSelect'
 import { UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
+import { CreateAccountModal } from '@/components/accounts/CreateAccountModal'
 
 const FILTER_TABS = ['All Accounts', 'Live', 'Demo', 'Platforms'] as const
 
@@ -19,6 +20,7 @@ const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 export default function AccountsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
+  const [createModalOpen, setCreateModalOpen] = useState(false)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -68,7 +70,7 @@ export default function AccountsPage() {
             <div className="flex-1 sm:flex-none min-w-0">
               <SearchInput />
             </div>
-            <SparkleButton>
+            <SparkleButton onClick={() => setCreateModalOpen(true)}>
               <span className="flex items-center gap-2">
                 <UserIcon size={18} color="#A0A0A0" />
                 <span>New Account</span>
@@ -132,6 +134,8 @@ export default function AccountsPage() {
       </GlassCard>
         </div>
       </div>
+
+      <CreateAccountModal open={createModalOpen} onClose={() => setCreateModalOpen(false)} />
     </div>
   )
 }
