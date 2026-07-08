@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard } from '@/components/ui'
+import { GlassCard, ModeToggle } from '@/components/ui'
 
 const TABS = ['Open Positions', 'Closed Trades', 'Transactions']
 
@@ -60,22 +60,7 @@ export function TransactionsPanel() {
       {/* Top bar: Tabs + Search + Actions */}
       <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
         {/* Tab bar */}
-        <div className="relative bg-[#111312] rounded-full p-[2px] flex items-center">
-          {TABS.map((tab, i) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(i)}
-              className={`relative z-10 px-6 py-2.5 rounded-full text-[1rem] font-medium transition-colors cursor-pointer ${
-                i === activeTab ? 'text-white' : 'text-[#A0A0A0] hover:text-white'
-              }`}
-            >
-              {i === activeTab && (
-                <span className="absolute inset-0 rounded-full bg-[#064B34] border border-[#00B38C]" />
-              )}
-              <span className="relative z-10">{tab}</span>
-            </button>
-          ))}
-        </div>
+        <ModeToggle options={TABS} activeIndex={activeTab} onChange={setActiveTab} />
 
         <div className="flex items-center gap-4">
           {/* Search field */}
