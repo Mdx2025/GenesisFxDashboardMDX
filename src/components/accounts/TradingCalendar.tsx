@@ -169,9 +169,9 @@ export function TradingCalendar() {
             <thead>
               <tr>
                 {DAYS_OF_WEEK.map(day => (
-                  <th key={day} className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-left pl-3 w-[12%]">{day}</th>
+                  <th key={day} className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-center w-[12%]">{day}</th>
                 ))}
-                <th className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-left pl-3 w-[16%]">Week Total</th>
+                <th className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-center w-[16%]">Week Total</th>
               </tr>
             </thead>
             <tbody>
