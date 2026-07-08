@@ -147,10 +147,12 @@ export default function AccountDetailsPage() {
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <div className="relative z-10">
             <p className="text-gfx-neutral-300 text-body2">Portfolio Equity</p>
-            <p className="text-white text-h2 font-normal mt-1">$17,897.30</p>
-            <div className="flex items-center gap-1.5 mt-1">
-              <span className="text-gfx-green-500 text-body2">▲</span>
-              <span className="text-gfx-green-500 text-body2">+$6,437.21 (56.1%)</span>
+            <div className="flex items-center gap-3 mt-1">
+              <p className="text-white text-h2 font-normal">$17,897.30</p>
+              <div className="flex items-center gap-1.5">
+                <span className="text-gfx-green-500 text-body2">▲</span>
+                <span className="text-gfx-green-500 text-body2">+$6,437.21 (56.1%)</span>
+              </div>
             </div>
             <div className="h-[280px] mt-6">
               <PortfolioChart config={{ ...defaultChartConfig, highlightIndex: -1 }} />
