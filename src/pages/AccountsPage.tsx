@@ -24,6 +24,11 @@ export default function AccountsPage() {
   const [createModalOpen, setCreateModalOpen] = useState(false)
   const [processingOpen, setProcessingOpen] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [typeFilter, setTypeFilter] = useState('')
+
+  const filteredAccounts = typeFilter && typeFilter !== 'all'
+    ? tradingAccounts.filter(acc => acc.type === typeFilter)
+    : tradingAccounts
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -57,6 +62,8 @@ export default function AccountsPage() {
             options={TYPE_OPTIONS}
             placeholder="Type"
             size="sm"
+            value={typeFilter}
+            onChange={setTypeFilter}
           />
         </div>
 
@@ -67,7 +74,7 @@ export default function AccountsPage() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4 xl:pb-6">
           <div className="flex items-center gap-4">
             <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Trading Accounts</h2>
-            <Badge variant="status">2 ACTIVE</Badge>
+            <Badge variant="status">{filteredAccounts.length} ACTIVE</Badge>
           </div>
           <div className="flex items-center gap-4 w-full sm:w-auto">
             <div className="flex-1 sm:flex-none min-w-0">
@@ -99,7 +106,7 @@ export default function AccountsPage() {
               <span />
             </div>
 
-            {tradingAccounts.map((acc, i) => (
+            {filteredAccounts.map((acc, i) => (
               <div
                 key={acc.account}
                 className={`grid items-center px-4 sm:px-6 xl:px-10 py-4 xl:py-6 ${i > 0 ? 'border-t border-white/5' : ''}`}
