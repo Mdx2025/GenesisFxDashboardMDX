@@ -14,7 +14,7 @@ interface SummaryCardProps {
 
 const colorMap = {
   green: 'text-gfx-green-500',
-  red: 'text-gfx-red',
+  red: 'text-[#D46356]',
   amber: 'text-gfx-amber',
 }
 

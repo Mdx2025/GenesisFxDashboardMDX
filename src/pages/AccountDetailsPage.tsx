@@ -161,10 +161,10 @@ export default function AccountDetailsPage() {
         {/* Stat Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <SummaryCard title="Balance" value="$1,200.00" changeText="+12.4% this month" changeColor="green" />
-        <SummaryCard title="Credit" value="$5,000.00" changeText="+$3,517.30" changeColor="green" />
+        <SummaryCard title="Credit" value="$5,000.00" changeText="+$3,517.30" changeColor="red" />
         <SummaryCard title="Equity" value="$200.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Open P&L" value="$1,500.00" changeText="+12.4% this month" changeColor="green" />
-        <SummaryCard title="Closed P&L" value="$700.00" changeText="+$3,517.30" changeColor="green" />
+        <SummaryCard title="Closed P&L" value="$700.00" changeText="+$3,517.30" changeColor="red" />
         </div>
       </div>
 
