@@ -12,7 +12,7 @@ interface GlassCardProps {
 export function GlassCard({ variant = 'light', divider = 'white', rounded = '19px', className = '', children }: GlassCardProps) {
   return (
     <div
-      className={`${variant === 'heavy' ? 'glass-card-heavy' : 'glass-card'} relative overflow-hidden ${className}`}
+      className={`${variant === 'heavy' ? 'glass-card-heavy' : 'glass-card'} relative ${className}`}
       style={{ borderRadius: rounded }} /* dynamic */
     >
       {divider !== 'none' && <DividerGlow variant={divider} />}
