@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GlowButton } from '@/components/ui'
+import { GlowButton, GlassCard, GlassSelect } from '@/components/ui'
 
 function UserIcon() {
   return (
@@ -65,18 +65,43 @@ function AccountTypeCard({ icon, title, description, selected, onClick }: {
     <button
       type="button"
       onClick={onClick}
-      className={`flex-1 flex flex-col items-center gap-[0.75rem] p-[1.25rem] rounded-[1.25rem] bg-[#0c1311] cursor-pointer transition-all border ${
+      className={`group relative flex-1 flex flex-col items-center gap-[0.75rem] p-[1.25rem] rounded-[1.25rem] bg-[#0c1311] cursor-pointer transition-all border overflow-hidden ${
         selected ? 'border-gfx-green-500/50' : 'border-transparent hover:border-[#2f2f2f]'
       }`}
     >
-      <div className="w-[4.125rem] h-[4.125rem] rounded-[1.25rem] bg-[#09241c] flex items-center justify-center">
+      <div className="absolute bottom-0 left-0 right-0 h-0 group-hover:h-full transition-all duration-500 bg-gradient-to-t from-[#064B34]/40 via-[#064B34]/10 to-transparent pointer-events-none" />
+      <div className="w-[4.125rem] h-[4.125rem] rounded-[1.25rem] bg-[#09241c] flex items-center justify-center relative z-10">
         {icon}
       </div>
-      <span className="text-white text-[1rem]">{title}</span>
-      <span className="text-[#808080] text-[1rem] text-center leading-[1.2]">{description}</span>
+      <span className="text-white text-[1rem] relative z-10">{title}</span>
+      <span className="text-[#808080] text-[1rem] text-center leading-[1.2] relative z-10">{description}</span>
     </button>
   )
 }
+
+const BUSINESS_TYPE_OPTIONS = [
+  { value: 'llc', label: 'LLC' },
+  { value: 'corporation', label: 'Corporation' },
+  { value: 'partnership', label: 'Partnership' },
+  { value: 'sole_proprietorship', label: 'Sole Proprietorship' },
+  { value: 'trust', label: 'Trust' },
+  { value: 'other', label: 'Other' },
+]
+
+const COUNTRY_OPTIONS = [
+  { value: 'us', label: 'United States' },
+  { value: 'uk', label: 'United Kingdom' },
+  { value: 'ca', label: 'Canada' },
+  { value: 'au', label: 'Australia' },
+  { value: 'de', label: 'Germany' },
+  { value: 'fr', label: 'France' },
+  { value: 'ae', label: 'United Arab Emirates' },
+  { value: 'sg', label: 'Singapore' },
+  { value: 'jp', label: 'Japan' },
+  { value: 'other', label: 'Other' },
+]
+
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
 
 export default function RegisterPage() {
   const [step, setStep] = useState(1)
@@ -108,8 +133,10 @@ export default function RegisterPage() {
         {/* Right: Form */}
         <div className="flex-1 flex flex-col items-center justify-center relative">
           {step === 1 && <Step1 accountType={accountType} setAccountType={setAccountType} onContinue={() => setStep(2)} totalSteps={totalSteps} />}
-          {step === 2 && <Step2 showPassword={showPassword} setShowPassword={setShowPassword} showConfirmPassword={showConfirmPassword} setShowConfirmPassword={setShowConfirmPassword} onContinue={() => setStep(3)} onBack={() => setStep(1)} totalSteps={totalSteps} />}
-          {step === 3 && <Step3 onBack={() => setStep(2)} totalSteps={totalSteps} />}
+          {step === 2 && <Step2 accountType={accountType} showPassword={showPassword} setShowPassword={setShowPassword} showConfirmPassword={showConfirmPassword} setShowConfirmPassword={setShowConfirmPassword} onContinue={() => setStep(3)} onBack={() => setStep(1)} totalSteps={totalSteps} />}
+          {step === 3 && accountType === 'corporate' && <Step3Corporate onContinue={() => setStep(4)} onBack={() => setStep(2)} totalSteps={totalSteps} />}
+          {step === 3 && accountType === 'individual' && <Step3Personal onBack={() => setStep(2)} totalSteps={totalSteps} />}
+          {step === 4 && accountType === 'corporate' && <Step4Personal onBack={() => setStep(3)} totalSteps={totalSteps} />}
 
           {/* Footer */}
           <div className="w-full absolute bottom-0 pl-15">
@@ -136,7 +163,7 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
   totalSteps: number
 }) {
   return (
-    <div className="w-[400px] flex flex-col items-center gap-[1.5rem]">
+    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</h1>
 
       <div className="w-full flex items-center justify-between">
@@ -169,11 +196,12 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
         <span className="text-[#808080]">Already have an account? </span>
         <Link to="/" className="text-white hover:underline">Sign In</Link>
       </p>
-    </div>
+    </GlassCard>
   )
 }
 
-function Step2({ showPassword, setShowPassword, showConfirmPassword, setShowConfirmPassword, onContinue, onBack, totalSteps }: {
+function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword, setShowConfirmPassword, onContinue, onBack, totalSteps }: {
+  accountType: 'individual' | 'corporate'
   showPassword: boolean
   setShowPassword: (v: boolean) => void
   showConfirmPassword: boolean
@@ -182,9 +210,11 @@ function Step2({ showPassword, setShowPassword, showConfirmPassword, setShowConf
   onBack: () => void
   totalSteps: number
 }) {
+  const title = accountType === 'corporate' ? 'Corporate Account' : 'Personal Account'
+
   return (
-    <div className="w-[400px] flex flex-col items-center gap-[1.5rem]">
-      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</h1>
+    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</h1>
       <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Enter your account credentials</p>
 
       <div className="w-full flex items-center justify-between">
@@ -193,17 +223,13 @@ function Step2({ showPassword, setShowPassword, showConfirmPassword, setShowConf
       </div>
 
       <div className="w-full flex flex-col gap-[1.0625rem]">
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-        />
+        <input type="email" placeholder="Email" className={INPUT_CLASS} />
 
         <div className="w-full relative">
           <input
             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
-            className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] pr-[3.25rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+            className={`${INPUT_CLASS} pr-[3.25rem]`}
           />
           <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
             <EyeIcon open={showPassword} />
@@ -214,18 +240,14 @@ function Step2({ showPassword, setShowPassword, showConfirmPassword, setShowConf
           <input
             type={showConfirmPassword ? 'text' : 'password'}
             placeholder="Confirm Password"
-            className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] pr-[3.25rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+            className={`${INPUT_CLASS} pr-[3.25rem]`}
           />
           <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
             <EyeIcon open={showConfirmPassword} />
           </button>
         </div>
 
-        <input
-          type="text"
-          placeholder="Referral Code (Optional)"
-          className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-        />
+        <input type="text" placeholder="Referral Code (Optional)" className={INPUT_CLASS} />
       </div>
 
       <div className="w-full flex flex-col gap-[0.5rem]">
@@ -240,13 +262,48 @@ function Step2({ showPassword, setShowPassword, showConfirmPassword, setShowConf
         <span className="text-[#808080]">Already have an account? </span>
         <Link to="/" className="text-white hover:underline">Sign In</Link>
       </p>
-    </div>
+    </GlassCard>
   )
 }
 
-function Step3({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+function Step3Corporate({ onContinue, onBack, totalSteps }: { onContinue: () => void; onBack: () => void; totalSteps: number }) {
   return (
-    <div className="w-[400px] flex flex-col items-center gap-[1.5rem]">
+    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
+      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your company information</p>
+
+      <div className="w-full flex items-center justify-between">
+        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Company Info</span>
+        <StepBadge step={3} total={totalSteps} />
+      </div>
+
+      <div className="w-full flex flex-col gap-[1.0625rem]">
+        <input type="text" placeholder="Company Name" className={INPUT_CLASS} />
+        <input type="text" placeholder="Registration Number" className={INPUT_CLASS} />
+        <GlassSelect options={BUSINESS_TYPE_OPTIONS} placeholder="Business Type" />
+        <input type="text" placeholder="Business Address" className={INPUT_CLASS} />
+        <GlassSelect options={COUNTRY_OPTIONS} placeholder="Country of Incorporation" />
+      </div>
+
+      <div className="w-full flex flex-col gap-[0.5rem]">
+        <GlowButton label="Continue" width="100%" onClick={onContinue} />
+        <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
+          <ChevronRight className="rotate-180" />
+          Back
+        </button>
+      </div>
+
+      <p className="text-[1rem] leading-[1.2]">
+        <span className="text-[#808080]">Already have an account? </span>
+        <Link to="/" className="text-white hover:underline">Sign In</Link>
+      </p>
+    </GlassCard>
+  )
+}
+
+function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+  return (
+    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</h1>
       <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
 
@@ -257,35 +314,12 @@ function Step3({ onBack, totalSteps }: { onBack: () => void; totalSteps: number 
 
       <div className="w-full flex flex-col gap-[1.0625rem]">
         <div className="flex gap-[0.375rem]">
-          <input
-            type="text"
-            placeholder="First Name"
-            className="flex-1 h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            className="flex-1 h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-          />
+          <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
+          <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
         </div>
-
-        <input
-          type="tel"
-          placeholder="Phone*"
-          className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-        />
-
-        <input
-          type="text"
-          placeholder="Address*"
-          className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-        />
-
-        <input
-          type="text"
-          placeholder="Country*"
-          className="w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-[1rem] placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
-        />
+        <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
+        <input type="text" placeholder="Address*" className={INPUT_CLASS} />
+        <input type="text" placeholder="Country*" className={INPUT_CLASS} />
       </div>
 
       <div className="w-full flex flex-col gap-[0.5rem]">
@@ -300,6 +334,43 @@ function Step3({ onBack, totalSteps }: { onBack: () => void; totalSteps: number 
         <span className="text-[#808080]">Already have an account? </span>
         <Link to="/" className="text-white hover:underline">Sign In</Link>
       </p>
-    </div>
+    </GlassCard>
+  )
+}
+
+function Step4Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+  return (
+    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
+      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
+
+      <div className="w-full flex items-center justify-between">
+        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
+        <StepBadge step={4} total={totalSteps} />
+      </div>
+
+      <div className="w-full flex flex-col gap-[1.0625rem]">
+        <div className="flex gap-[0.375rem]">
+          <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
+          <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
+        </div>
+        <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
+        <input type="text" placeholder="Address*" className={INPUT_CLASS} />
+        <input type="text" placeholder="Country*" className={INPUT_CLASS} />
+      </div>
+
+      <div className="w-full flex flex-col gap-[0.5rem]">
+        <GlowButton label="Create Account" width="100%" />
+        <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
+          <ChevronRight className="rotate-180" />
+          Back
+        </button>
+      </div>
+
+      <p className="text-[1rem] leading-[1.2]">
+        <span className="text-[#808080]">Already have an account? </span>
+        <Link to="/" className="text-white hover:underline">Sign In</Link>
+      </p>
+    </GlassCard>
   )
 }
