@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, Badge, GreenDot, SparkleButton, GlowButton, GlassSelect, GlassInput, ModeToggle } from '@/components/ui'
+import { GlassCard, Badge, GreenDot, SparkleButton, GlowButton, GlassSelect, GlassInput } from '@/components/ui'
 import { DepositIcon, ChevronDownIcon } from '@/components/icons'
 import { SummaryCard } from '@/components/dashboard/SummaryCard'
 import { TradingCalendar } from '@/components/accounts/TradingCalendar'
+import { TransactionsPanel } from '@/components/accounts/TransactionsPanel'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { tradingAccounts } from '@/data/trading-accounts'
 import { GLOW_GREEN, GLOW_RED } from '@/constants/colors'
@@ -22,15 +23,6 @@ const ACCOUNT_DETAILS_FIELDS = [
   { label: 'Created Date', key: 'createdDate' },
 ] as const
 
-const ORDER_COLS = ['Open Time', 'Symbol', 'Type', 'Volume', 'Open Price', 'S/L', 'T/P', 'Close Time', 'Close Price', 'Profit']
-
-const MOCK_ORDERS = [
-  { openTime: 'Apr 15, 2026', symbol: 'EURUSD', type: 'Buy', volume: '0.10', openPrice: '1.08450', sl: '1.08200', tp: '1.08900', closeTime: 'Apr 15, 2026', closePrice: '1.08720', profit: '+$27.00', profitColor: 'green' as const },
-  { openTime: 'Apr 14, 2026', symbol: 'GBPJPY', type: 'Sell', volume: '0.05', openPrice: '191.350', sl: '191.800', tp: '190.500', closeTime: 'Apr 14, 2026', closePrice: '190.680', profit: '+$33.50', profitColor: 'green' as const },
-  { openTime: 'Apr 13, 2026', symbol: 'XAUUSD', type: 'Buy', volume: '0.02', openPrice: '2345.50', sl: '2340.00', tp: '2360.00', closeTime: 'Apr 13, 2026', closePrice: '2338.20', profit: '-$14.60', profitColor: 'red' as const },
-  { openTime: 'Apr 12, 2026', symbol: 'USDJPY', type: 'Sell', volume: '0.08', openPrice: '154.200', sl: '154.600', tp: '153.500', closeTime: 'Apr 12, 2026', closePrice: '153.750', profit: '+$36.00', profitColor: 'green' as const },
-  { openTime: 'Apr 11, 2026', symbol: 'EURUSD', type: 'Buy', volume: '0.15', openPrice: '1.07980', sl: '1.07700', tp: '1.08400', closeTime: 'Apr 11, 2026', closePrice: '1.07850', profit: '-$19.50', profitColor: 'red' as const },
-]
 
 function SettingsIcon() {
   return (
@@ -101,7 +93,6 @@ export default function AccountDetailsPage() {
   const [editModal, setEditModal] = useState(false)
   const [passwordModal, setPasswordModal] = useState(false)
   const [leverageModal, setLeverageModal] = useState(false)
-  const [ordersTab, setOrdersTab] = useState(0)
 
   const account = tradingAccounts.find(a => a.account === accountId) ?? tradingAccounts[0]
 
@@ -242,55 +233,9 @@ export default function AccountDetailsPage() {
         <TradingCalendar />
       </div>
 
-      {/* Orders Table */}
+      {/* Transactions Panel */}
       <div className="mt-6 3xl:mt-8">
-        <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-          <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
-          <div className="relative z-10 p-6">
-            <div className="flex items-center justify-between flex-wrap gap-3">
-              <div className="flex items-center gap-3">
-                <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Orders</h2>
-                <Badge variant="status">{MOCK_ORDERS.length} records</Badge>
-              </div>
-              <div className="w-full max-w-xs">
-                <ModeToggle options={['Open', 'Closed', 'Pending']} activeIndex={ordersTab} onChange={setOrdersTab} />
-              </div>
-            </div>
-          </div>
-
-          <div className="overflow-x-auto" role="region" aria-label="Orders table, scrollable">
-            <table className="w-full min-w-[900px]">
-              <thead>
-                <tr className="border-y border-white/5">
-                  {ORDER_COLS.map((col, i) => (
-                    <th key={col} className={`text-${i === ORDER_COLS.length - 1 ? 'right' : 'left'} text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase ${i === 0 ? 'px-4 sm:px-6' : ''} ${i === ORDER_COLS.length - 1 ? 'pr-4 sm:pr-6' : ''} py-4`}>
-                      {col}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {MOCK_ORDERS.map((order, i) => (
-                  <tr key={i} className={i > 0 ? 'border-t border-white/5' : ''}>
-                    <td className="px-4 sm:px-6 py-4 xl:py-5 text-white text-[0.875rem]">{order.openTime}</td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem] font-semibold">{order.symbol}</td>
-                    <td className="py-4 xl:py-5">
-                      <span className={`text-[0.875rem] ${order.type === 'Buy' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{order.type}</span>
-                    </td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem]">{order.volume}</td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem]">{order.openPrice}</td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem]">{order.sl}</td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem]">{order.tp}</td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem]">{order.closeTime}</td>
-                    <td className="py-4 xl:py-5 text-white text-[0.875rem]">{order.closePrice}</td>
-                    <td className={`text-right pr-4 sm:pr-6 py-4 xl:py-5 text-[0.875rem] font-semibold ${order.profitColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{order.profit}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="h-6" />
-        </GlassCard>
+        <TransactionsPanel />
       </div>
 
       {/* Edit Account Modal */}
