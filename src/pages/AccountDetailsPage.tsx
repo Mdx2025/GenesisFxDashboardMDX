@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
@@ -50,14 +50,40 @@ function BackArrow() {
 }
 
 function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () => void; children: React.ReactNode }) {
-  if (!open) return null
+  const [mounted, setMounted] = useState(false)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    if (open) {
+      setMounted(true)
+      requestAnimationFrame(() => setVisible(true))
+    } else if (mounted) {
+      setVisible(false)
+      const t = setTimeout(() => setMounted(false), 250)
+      return () => clearTimeout(t)
+    }
+  }, [open])
+
+  if (!mounted) return null
+
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="relative z-10 w-full max-w-[50rem] mx-4" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center transition-opacity duration-250"
+      style={{ opacity: visible ? 1 : 0 }}
+    >
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div
+        className="relative z-10 w-full max-w-[50rem] mx-4 transition-transform duration-300"
+        style={{ transform: visible ? 'scale(1)' : 'scale(0.95)' }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="relative bg-[#0a0a0a] rounded-[2.5rem] glass-card shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[400px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
-          <button onClick={onClose} className="absolute top-6 right-6 text-white hover:text-gfx-neutral-300 transition-colors cursor-pointer z-10" aria-label="Close">
+          <button
+            onClick={(e) => { e.stopPropagation(); onClose() }}
+            className="absolute top-6 right-6 text-white hover:text-gfx-neutral-300 transition-colors cursor-pointer z-20"
+            aria-label="Close"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
           {children}
