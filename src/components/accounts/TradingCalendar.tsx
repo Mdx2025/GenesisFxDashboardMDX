@@ -241,15 +241,15 @@ export function TradingCalendar() {
         {/* Legend */}
         <div className="flex items-center gap-6 mt-4 justify-center">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-lg bg-[#0C1311]" />
+            <div className="w-5 h-5 rounded-md border-2 border-[#00B38C]" />
             <span className="text-gfx-neutral-300 text-[0.875rem]">Profitable</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-lg bg-[#2A1411]" />
+            <div className="w-5 h-5 rounded-md border-2 border-[#D46356] bg-[#D46356]" />
             <span className="text-gfx-neutral-300 text-[0.875rem]">Loss</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-lg bg-[#09241C]" />
+            <div className="w-5 h-5 rounded-md border-2 border-gfx-neutral-500" />
             <span className="text-gfx-neutral-300 text-[0.875rem]">No Trade</span>
           </div>
         </div>
