@@ -286,13 +286,15 @@ export default function AccountDetailsPage() {
       <ModalOverlay open={passwordModal} onClose={() => setPasswordModal(false)}>
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
           <div className="w-[59px] h-[59px] rounded-full bg-[#09241C] flex items-center justify-center mb-6">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke="#A0A0A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+              <path fillRule="evenodd" clipRule="evenodd" d="M4.48773 8.59889V6.84205C4.48773 3.65441 7.07182 1.07031 10.2595 1.07031C13.4471 1.07031 16.0312 3.65441 16.0312 6.84205V8.59889C16.9844 8.67008 17.6051 8.8498 18.0589 9.30353C18.8102 10.0549 18.8102 11.2641 18.8102 13.6826C18.8102 16.1011 18.8102 17.3104 18.0589 18.0617C17.3075 18.8131 16.0983 18.8131 13.6798 18.8131H6.83918C4.42066 18.8131 3.21141 18.8131 2.46008 18.0617C1.70874 17.3104 1.70874 16.1011 1.70874 13.6826C1.70874 11.2641 1.70874 10.0549 2.46008 9.30353C2.9138 8.8498 3.53453 8.67008 4.48773 8.59889ZM5.77033 6.84205C5.77033 4.36277 7.78019 2.35292 10.2595 2.35292C12.7387 2.35292 14.7486 4.36277 14.7486 6.84205V8.55525C14.4211 8.5522 14.0658 8.5522 13.6798 8.5522H6.83918C6.4531 8.5522 6.09784 8.5522 5.77033 8.55525V6.84205Z" fill="#00B38C"/>
+            </svg>
           </div>
           <h2 className="text-white text-h2 font-normal mb-2">Change Password</h2>
           <p className="text-gfx-neutral-300 text-body2 mb-8 text-center">Create a secure new password for your Tradelocker account.</p>
           <div className="w-full max-w-[34rem] flex flex-col gap-4">
-            <GlassInput label="New password" placeholder="Enter new password" />
-            <GlassInput label="Confirm Password" placeholder="Confirm new password" />
+            <GlassInput label="New password" placeholder="Enter new password" type="password" />
+            <GlassInput label="Confirm Password" placeholder="Confirm new password" type="password" />
           </div>
           <div className="w-full max-w-[34rem] mt-6">
             <p className="text-white text-[0.875rem] font-medium mb-2">Password requirements:</p>
