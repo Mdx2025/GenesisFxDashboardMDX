@@ -1,5 +1,6 @@
 export const GLOW_GREEN = '#104030'
 export const GLOW_GREEN_SEMI = '#1040308f'
+export const GLOW_RED = '#241B1C'
 
 export const STATUS_STYLES = {
   pending: { bg: 'rgba(226,157,88,0.10)', border: '1px solid rgba(226,157,88,0.25)', color: '#e29d58' },

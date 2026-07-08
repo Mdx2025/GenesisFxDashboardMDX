@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton, GlassSelect, ModeToggle, SuccessSnackbar } from '@/components/ui'
@@ -18,6 +19,7 @@ const TYPE_OPTIONS: GlassSelectOption[] = [
 ]
 
 export default function AccountsPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [createModalOpen, setCreateModalOpen] = useState(false)
@@ -132,7 +134,7 @@ export default function AccountsPage() {
                         </td>
                         <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
                           <div className="flex items-center justify-end gap-6">
-                            <button className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
+                            <button onClick={() => navigate(`/tradelocker/accounts/${acc.account}`)} className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
                             <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                             <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

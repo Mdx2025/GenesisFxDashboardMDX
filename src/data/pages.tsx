@@ -9,6 +9,7 @@ import AcademyPage from '@/pages/AcademyPage'
 import DesignSystemPage from '@/pages/DesignSystemPage'
 import NewsPage from '@/pages/NewsPage'
 import AccountsPage from '@/pages/AccountsPage'
+import AccountDetailsPage from '@/pages/AccountDetailsPage'
 import {
   DashboardIcon, AssetsIcon, DepositIcon, WithdrawIcon,
   UserIcon, AcademyIcon, TradelockerIcon, MarketNewsIcon,
@@ -32,6 +33,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/kyc', label: 'KYC Verification', description: 'Identity verification and compliance', icon: UserIcon, component: KycPage },
   { path: '/news', label: 'Market News', description: 'Latest financial news and market analysis', icon: MarketNewsIcon, component: NewsPage },
   { path: '/tradelocker/accounts', label: 'Accounts', description: 'TradeLocker trading accounts overview', icon: TradelockerIcon, component: AccountsPage },
+  { path: '/tradelocker/accounts/:accountId', label: 'Account Details', description: 'Individual trading account details', icon: TradelockerIcon, component: AccountDetailsPage, showInDirectory: false },
   { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon, component: AcademyPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
 ]
