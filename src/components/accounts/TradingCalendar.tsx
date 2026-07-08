@@ -169,9 +169,9 @@ export function TradingCalendar() {
             <thead>
               <tr>
                 {DAYS_OF_WEEK.map(day => (
-                  <th key={day} className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-center w-[12%]">{day}</th>
+                  <th key={day} className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-center" style={{ width: '12.5%' }}>{day}</th>
                 ))}
-                <th className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-center w-[16%]">Week Total</th>
+                <th className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-center" style={{ width: '12.5%' }}>Week Total</th>
               </tr>
             </thead>
             <tbody>
@@ -228,7 +228,7 @@ export function TradingCalendar() {
                     })}
                     {/* Week Total cell */}
                     <td className="p-[5px]">
-                      <div className="bg-[#0C1311] rounded-[19px] h-[109px] px-3 py-3 flex flex-col justify-center border border-[#2F2F2F]">
+                      <div className="bg-[#0C1311] rounded-[19px] h-[109px] px-3 py-3 flex flex-col items-center justify-center border border-[#2F2F2F]">
                         <span className="text-[#ECECEC] text-[0.875rem]">Week {weekIdx + 1}</span>
                         <span className="text-[#A0A0A0] text-[0.875rem]">
                           {weekHasTrades ? `${weekTotal >= 0 ? '+' : ''}$${Math.abs(weekTotal).toFixed(2)}` : ''}
