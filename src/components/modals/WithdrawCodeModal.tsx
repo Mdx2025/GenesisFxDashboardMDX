@@ -109,7 +109,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
       />
 
       <div
-        className="relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] bg-[#0a0a0a] rounded-[2.5rem] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
+        className="relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] bg-[#0a0a0a] rounded-[2.5rem] glass-card shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
         style={{
           animation: visible
             ? 'modalFadeIn 0.3s ease-out forwards'
