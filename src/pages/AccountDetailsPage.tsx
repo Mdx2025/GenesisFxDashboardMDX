@@ -113,8 +113,7 @@ export default function AccountDetailsPage() {
             <BackArrow />
           </button>
           <h1 className="text-white text-h1 font-normal">{account.account}</h1>
-          <span className="text-gfx-neutral-300 text-body2">Born To Outperform</span>
-          <Badge variant={account.type}>{account.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
+<Badge variant={account.type}>{account.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
           <div className="flex items-center gap-2">
             <GreenDot size={7} />
             <span className="text-white text-body2">{account.status}</span>
