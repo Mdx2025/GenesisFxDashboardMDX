@@ -6,8 +6,8 @@ interface AuthLayoutProps {
 
 function AuthFooter() {
   return (
-    <footer className="w-full absolute bottom-0 px-4 lg:pl-15 lg:pr-0">
-      <div className="bg-[#0c1311] rounded-xl px-4 lg:px-[1.4375rem] py-3 lg:py-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-[2.5rem]">
+    <footer className="w-full relative lg:absolute lg:bottom-0 mt-6 lg:mt-0 px-4 lg:pl-15 lg:pr-0">
+      <div className="bg-[#0c1311] rounded-xl px-4 lg:px-[1.4375rem] py-3 lg:py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
         <span className="text-[#ececec] text-xs leading-[1.175rem] whitespace-nowrap">
           2026 Genesis FX Markets. All rights reserved.
         </span>
@@ -24,7 +24,7 @@ function AuthFooter() {
 
 export function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="h-screen bg-[#000705] font-acid relative overflow-hidden">
+    <div className="min-h-screen lg:h-screen bg-[#000705] font-acid relative overflow-hidden">
       <div
         className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-[#064b34] blur-[406px] pointer-events-none"
         aria-hidden="true"
@@ -32,7 +32,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
 
       <div className="flex flex-col lg:flex-row h-full p-4 sm:p-8 lg:p-[3.125rem] gap-6 lg:gap-0">
         {/* Left: Hero Image — hidden on mobile */}
-        <div className="relative hidden lg:block lg:w-[45%] h-full shrink-0 rounded-[3rem] overflow-hidden">
+        <div className="relative hidden lg:block lg:w-[38%] xl:w-[42%] h-full shrink-0 rounded-[3rem] overflow-hidden">
           <img
             src="/images/login-hero.png"
             alt="Genesis FX trading platform"
