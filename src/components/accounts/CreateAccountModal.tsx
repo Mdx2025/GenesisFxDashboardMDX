@@ -181,6 +181,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
             <GlowButton
               label="Create Account"
               width="100%"
+              disabled={!fromAccount || !accountType || !leverage || !demoSize}
               onClick={() => {
                 handleClose()
                 setTimeout(() => onCreateAccount?.(), 300)
