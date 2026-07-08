@@ -8,7 +8,7 @@ import { PAGE_REGISTRY } from './data/pages'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/GenesisFxDashboardMDX">
       <SvgFilters />
       <Routes>
         <Route path="/" element={<LoginPage />} />
