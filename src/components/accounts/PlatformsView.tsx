@@ -72,7 +72,7 @@ export function PlatformsView() {
       {PLATFORMS.map((platform) => (
         <div
           key={platform.name}
-          className="relative flex items-center gap-5 px-6 xl:px-8 py-6 xl:py-8 rounded-[19px] bg-[#0C1311] shadow-[0px_9.08px_23.2px_rgba(0,0,0,0.2)]"
+          className="relative flex items-center gap-5 px-6 xl:px-8 py-6 xl:py-8 rounded-[19px] bg-[#0C1311] shadow-[0px_9.08px_23.2px_rgba(0,0,0,0.2)] border border-[rgba(255,255,255,0.06)]"
         >
           <div className="flex-shrink-0 w-[3.6875rem] h-[3.6875rem] rounded-[0.75rem] bg-[#09241C] flex items-center justify-center">
             {platform.icon}
