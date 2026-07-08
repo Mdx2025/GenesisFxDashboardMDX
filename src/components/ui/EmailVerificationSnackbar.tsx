@@ -55,8 +55,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
       aria-live="polite"
     >
       <div
-        className="relative w-[25.9375rem] overflow-hidden rounded-[1.16rem] bg-[#0C1311] font-acid"
-        style={{ boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311', outlineOffset: '-1.16px' }}
+        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden rounded-[1.16rem] bg-[#0C1311] font-acid shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] -outline-offset-[1.16px] outline-[#0C1311]"
       >
         {/* Decorative glows */}
         <div className="absolute pointer-events-none w-[587px] h-[435px] left-[477px] top-[-281px] rotate-[48deg] origin-top-left bg-[#064B34] rounded-full blur-[157px]" aria-hidden="true" />
@@ -64,7 +63,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
         <div className="absolute pointer-events-none w-[237px] h-[237px] left-[502px] top-[-61px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px]" aria-hidden="true" />
 
         {/* Divider glow */}
-        <div className="absolute left-[1rem] top-0 w-[calc(100%-2rem)] h-[1.25px]" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)' }} aria-hidden="true" />
+        <div className="absolute left-4 top-0 w-[calc(100%-2rem)] h-[1.25px] bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)]" aria-hidden="true" />
 
         {/* Content */}
         <div className="relative z-10 px-[1.4375rem] py-[2rem] flex flex-col gap-[0.25rem]">
