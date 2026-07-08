@@ -104,7 +104,7 @@ export function GlassSelect({ options, defaultValue, value, placeholder = 'Selec
       <ul
         ref={dropdownRef}
         role="listbox"
-        className={`absolute left-0 right-0 top-full mt-2 ${s.dropdown} overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] backdrop-blur-[24px]`}
+        className={`absolute left-0 right-0 top-full mt-2 ${s.dropdown} overflow-y-auto max-h-[15rem] z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] backdrop-blur-[24px]`}
       >
         {options.map((option) => {
           const isSelected = selected?.value === option.value
