@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
+import gsap from 'gsap'
 import { GlowButton } from '@/components/ui'
 
 function GoogleIcon() {
@@ -30,6 +31,15 @@ function EyeIcon({ open }: { open: boolean }) {
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const el = contentRef.current
+    if (!el) return
+    const children = el.children
+    gsap.set(children, { autoAlpha: 0, y: 24 })
+    gsap.to(children, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out', delay: 0.15 })
+  }, [])
 
   return (
     <div className="h-screen bg-[#000705] font-acid relative overflow-hidden">
@@ -79,7 +89,7 @@ export default function LoginPage() {
 
         {/* Right: Login Form */}
         <div className="flex-1 flex flex-col items-center justify-center relative">
-          <div className="w-[546px] flex flex-col items-center gap-[2.6875rem]">
+          <div ref={contentRef} className="w-[546px] flex flex-col items-center gap-[2.6875rem]">
             {/* Header */}
             <div className="flex flex-col items-center gap-[2.6875rem]">
               <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">

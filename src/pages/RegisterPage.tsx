@@ -1,6 +1,20 @@
-import { useState } from 'react'
+import { useState, useRef, useLayoutEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import gsap from 'gsap'
 import { GlowButton, GlassCard, GlassSelect, SparkleButton } from '@/components/ui'
+
+function useFadeIn() {
+  const ref = useRef<HTMLDivElement>(null)
+  const animate = useCallback(() => {
+    const el = ref.current
+    if (!el) return
+    const children = el.children
+    gsap.set(children, { autoAlpha: 0, y: 24 })
+    gsap.to(children, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out', delay: 0.15 })
+  }, [])
+  useLayoutEffect(() => { animate() }, [animate])
+  return ref
+}
 
 function UserIcon() {
   return (
@@ -157,8 +171,10 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
   onContinue: () => void
   totalSteps: number
 }) {
+  const fadeRef = useFadeIn()
+
   return (
-    <div className="flex flex-col items-center gap-[1.5rem]">
+    <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</h1>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-12 px-25 py-10 bg-transparent">
@@ -204,9 +220,10 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
   totalSteps: number
 }) {
   const title = accountType === 'corporate' ? 'Corporate Account' : 'Personal Account'
+  const fadeRef = useFadeIn()
 
   return (
-    <div className="flex flex-col items-center gap-[1.5rem]">
+    <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</h1>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
@@ -265,8 +282,10 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 }
 
 function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+  const fadeRef = useFadeIn()
+
   return (
-    <div className="flex flex-col items-center gap-[1.5rem]">
+    <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
@@ -305,8 +324,10 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
 }
 
 function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+  const fadeRef = useFadeIn()
+
   return (
-    <div className="flex flex-col items-center gap-[1.5rem]">
+    <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</h1>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
