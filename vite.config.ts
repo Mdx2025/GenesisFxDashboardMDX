@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  base: '/GenesisFxDashboardMDX/',
+  base: process.env.GITHUB_ACTIONS ? '/GenesisFxDashboardMDX/' : '/',
   plugins: [tailwindcss(), react()],
   resolve: {
     alias: {
