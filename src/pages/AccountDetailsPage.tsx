@@ -5,6 +5,7 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, Badge, GreenDot, SparkleButton, GlowButton, GlassSelect, GlassInput, ModeToggle } from '@/components/ui'
 import { DepositIcon, ChevronDownIcon } from '@/components/icons'
 import { SummaryCard } from '@/components/dashboard/SummaryCard'
+import { TradingCalendar } from '@/components/accounts/TradingCalendar'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { tradingAccounts } from '@/data/trading-accounts'
 import { GLOW_GREEN, GLOW_RED } from '@/constants/colors'
@@ -206,6 +207,11 @@ export default function AccountDetailsPage() {
             </div>
           </div>
         </GlassCard>
+      </div>
+
+      {/* Trading Calendar */}
+      <div className="mt-6 3xl:mt-8">
+        <TradingCalendar />
       </div>
 
       {/* Orders Table */}
