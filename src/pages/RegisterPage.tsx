@@ -163,7 +163,7 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
     <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</h1>
 
-      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit max-w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Type</span>
           <StepBadge step={1} total={totalSteps} />
@@ -211,7 +211,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
     <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</h1>
 
-      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit max-w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
         <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Enter your account credentials</p>
 
         <div className="w-full flex items-center justify-between">
@@ -269,7 +269,7 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
     <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
 
-      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit max-w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
         <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your company information</p>
 
         <div className="w-full flex items-center justify-between">
@@ -307,7 +307,7 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
     <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</h1>
 
-      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit max-w-xs flex flex-col items-center gap-2 px-25 py-10 bg-transparent">
         <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
 
         <div className="w-full flex items-center justify-between">
