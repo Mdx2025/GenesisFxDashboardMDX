@@ -207,8 +207,8 @@ export function TradingCalendar() {
 
                       return (
                         <td key={dayIdx} className="p-[5px]">
-                          <div className={`${cellBg} rounded-[19px] h-[109px] px-3 py-3 flex flex-col justify-between border ${cellBorder}`}>
-                            <span className={`text-[#A0A0A0] text-[0.875rem] ${isOverflow ? '' : 'text-right'}`}>{dayData.day}</span>
+                          <div className={`${cellBg} rounded-[19px] h-[109px] px-3 py-3 relative flex items-center justify-center border ${cellBorder}`}>
+                            <span className={`absolute top-3 right-3 text-[#A0A0A0] text-[0.875rem]`}>{dayData.day}</span>
                             {hasTradeData && (
                               <div className="text-center">
                                 <div className="flex items-center justify-center gap-1">
