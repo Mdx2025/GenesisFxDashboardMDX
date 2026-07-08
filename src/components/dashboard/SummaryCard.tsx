@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { GlassCard } from '@/components/ui'
 import { GLOW_GREEN } from '@/constants/colors'
 
 interface SummaryCardProps {
@@ -21,11 +22,10 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', g
   const arrow = changeColor === 'red' ? '▼' : '▲'
 
   return (
-    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 aspect-[1.6/1] isolate [backdrop-filter:url(#blur-24)] [-webkit-backdrop-filter:url(#blur-24)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
-      <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
+    <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden aspect-[1.6/1] isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none [filter:url(#blur-157)] will-change-transform"
-        style={{ background: glowColor }} /* dynamic value */
+        style={{ background: glowColor }}
         aria-hidden="true"
       />
       <div className="relative z-10 px-4 pt-4 sm:px-6 sm:pt-6">
@@ -41,6 +41,6 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', g
           {children}
         </div>
       )}
-    </div>
+    </GlassCard>
   )
 }

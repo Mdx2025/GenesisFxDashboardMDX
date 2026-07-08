@@ -1,4 +1,4 @@
-import { GLOW_GREEN } from '@/constants/colors'
+import { GlassCard } from '@/components/ui'
 
 interface LiveAccount {
   label: string
@@ -19,8 +19,7 @@ export function LiveAccountsCard({
   totalBalance = '$90.254,58',
 }: LiveAccountsCardProps) {
   return (
-    <div className="relative overflow-hidden bg-white/5 rounded-2xl shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)] outline outline-1 outline-offset-[-1.16px] outline-white/5 aspect-[1.6/1] isolate [backdrop-filter:url(#blur-24)] [-webkit-backdrop-filter:url(#blur-24)] [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
-      <div className="absolute top-0 left-[10%] right-[10%] h-px divider-glow" aria-hidden="true" />
+    <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden aspect-[1.6/1] isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform"
         aria-hidden="true"
@@ -55,6 +54,6 @@ export function LiveAccountsCard({
           )
         })}
       </div>
-    </div>
+    </GlassCard>
   )
 }
