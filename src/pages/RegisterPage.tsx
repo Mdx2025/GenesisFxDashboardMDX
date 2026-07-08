@@ -61,9 +61,7 @@ function AccountTypeCard({ icon, title, description, selected, onClick }: {
     <button
       type="button"
       onClick={onClick}
-      className={`group relative w-[10.8125rem] h-[13.864rem] flex flex-col items-center rounded-[2rem] bg-[#0c1311] cursor-pointer transition-all overflow-hidden ${
-        selected ? 'border border-gfx-green-500/50' : 'border-[0.7px] border-[#0C1311] hover:border-[#2f2f2f]'
-      }`}
+      className="glass-card group relative w-[10.8125rem] h-[13.864rem] flex flex-col items-center rounded-[2rem] bg-[#0c1311] cursor-pointer transition-all overflow-hidden"
       style={{ boxShadow: '0px 2.8px 14px rgba(0,0,0,0.03)' }}
     >
       <div className="absolute -bottom-[3rem] left-1/2 -translate-x-1/2 w-[9rem] h-[8.4rem] rounded-full bg-[#40C99C] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ filter: 'blur(68px)' }} />
