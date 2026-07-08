@@ -229,10 +229,9 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</WaveText>
+      <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
-        <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
-
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Info</span>
           <StepBadge step={2} total={totalSteps} />
@@ -301,10 +300,9 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</WaveText>
+      <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
-        <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
-
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Company Info</span>
           <StepBadge step={3} total={totalSteps} />
@@ -349,10 +347,9 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
       <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</WaveText>
+      <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
-        <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
-
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
           <StepBadge step={3} total={totalSteps} />
