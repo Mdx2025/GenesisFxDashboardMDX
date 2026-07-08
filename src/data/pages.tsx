@@ -31,7 +31,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/withdraw-processing', label: 'Withdraw Processing', description: 'Withdrawal confirmation and transaction tracking', icon: WithdrawIcon, component: WithdrawProcessingPage, showInDirectory: false },
   { path: '/kyc', label: 'KYC Verification', description: 'Identity verification and compliance', icon: UserIcon, component: KycPage },
   { path: '/news', label: 'Market News', description: 'Latest financial news and market analysis', icon: MarketNewsIcon, component: NewsPage },
-  { path: '/accounts', label: 'Accounts', description: 'TradeLocker trading accounts overview', icon: TradelockerIcon, component: AccountsPage },
+  { path: '/tradelocker/accounts', label: 'Accounts', description: 'TradeLocker trading accounts overview', icon: TradelockerIcon, component: AccountsPage },
   { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon, component: AcademyPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
 ]
