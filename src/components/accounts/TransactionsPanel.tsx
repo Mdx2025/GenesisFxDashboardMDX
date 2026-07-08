@@ -57,7 +57,9 @@ export function TransactionsPanel() {
       {/* Top bar: Tabs + Search + Actions */}
       <div className="flex flex-row justify-between items-center mb-6">
         {/* Tab bar */}
-        <ModeToggle options={TABS} activeIndex={activeTab} onChange={setActiveTab} />
+        <div className="w-lg">
+          <ModeToggle options={TABS} activeIndex={activeTab} onChange={setActiveTab} />
+        </div>
 
         <div className="flex items-center gap-4">
           {/* Search field */}
