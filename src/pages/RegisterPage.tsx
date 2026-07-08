@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GlowButton, GlassCard, GlassSelect } from '@/components/ui'
+import { GlowButton, GlassCard, GlassSelect, SparkleButton } from '@/components/ui'
 
 function UserIcon() {
   return (
@@ -249,10 +249,12 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 
         <div className="w-full flex flex-col gap-[0.5rem]">
           <GlowButton label="Continue" width="100%" onClick={onContinue} />
-          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-            <ChevronRight className="rotate-180" />
-            Back
-          </button>
+          <div className="w-full [&>button]:w-full">
+            <SparkleButton onClick={onBack}>
+              <ChevronRight className="rotate-180" />
+              Back
+            </SparkleButton>
+          </div>
         </div>
 
         <p className="text-[1rem] leading-[1.2]">
@@ -287,10 +289,12 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
 
         <div className="w-full flex flex-col gap-[0.5rem]">
           <GlowButton label="Create Account" width="100%" />
-          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-            <ChevronRight className="rotate-180" />
-            Back
-          </button>
+          <div className="w-full [&>button]:w-full">
+            <SparkleButton onClick={onBack}>
+              <ChevronRight className="rotate-180" />
+              Back
+            </SparkleButton>
+          </div>
         </div>
 
         <p className="text-[1rem] leading-[1.2]">
@@ -327,10 +331,12 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
 
         <div className="w-full flex flex-col gap-[0.5rem]">
           <GlowButton label="Create Account" width="100%" />
-          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-            <ChevronRight className="rotate-180" />
-            Back
-          </button>
+          <div className="w-full [&>button]:w-full">
+            <SparkleButton onClick={onBack}>
+              <ChevronRight className="rotate-180" />
+              Back
+            </SparkleButton>
+          </div>
         </div>
 
         <p className="text-[1rem] leading-[1.2]">
