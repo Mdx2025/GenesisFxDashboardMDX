@@ -1,6 +1,8 @@
 .glass-banner-card {
   border: 1px solid transparent;
   position: relative;
+  box-shadow: none;
+  overflow: hidden;
 }
 .glass-banner-card::before {
   content: '';
