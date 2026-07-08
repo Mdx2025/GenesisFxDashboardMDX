@@ -56,7 +56,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
   useEffect(() => {
     if (open) {
       setMounted(true)
-      requestAnimationFrame(() => setVisible(true))
+      requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)))
     } else if (mounted) {
       setVisible(false)
       const t = setTimeout(() => setMounted(false), 250)
@@ -346,8 +346,14 @@ export default function AccountDetailsPage() {
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
           <h2 className="text-white text-h2 font-normal mb-6">Change Leverage</h2>
           <div className="flex items-center gap-8 mb-8 text-[0.875rem]">
-            <div><span className="text-gfx-neutral-300">Account: </span><span className="text-white">{account.account}</span></div>
-            <div><span className="text-gfx-neutral-300">Current: </span><span className="text-white">1200</span></div>
+            <div className="flex flex-col items-center">
+              <span className="text-[#A0A0A0]">Account</span>
+              <span className="text-white font-medium">{account.account}</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-[#A0A0A0]">Current</span>
+              <span className="text-white font-medium">1200</span>
+            </div>
           </div>
           <div className="w-full max-w-[34rem]">
             <GlassSelect
