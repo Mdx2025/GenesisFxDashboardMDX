@@ -134,7 +134,7 @@ export default function AccountsPage() {
                         </td>
                         <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
                           <div className="flex items-center justify-end gap-6">
-                            <button onClick={() => navigate(`/tradelocker/accounts/${acc.account}`)} className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
+                            <button onClick={() => navigate(`/tradelocker/accounts/${encodeURIComponent(acc.account)}`)} className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
                             <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                             <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
