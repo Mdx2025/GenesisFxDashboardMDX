@@ -31,15 +31,17 @@ export default function AccountsPage() {
         ]}
       />
 
-      {/* Title + Subtitle */}
-      <div>
-        <h1 className="text-white text-h1 font-normal">TradeLocker Accounts</h1>
-        <p className="text-gfx-neutral-300 text-body2 mt-2">Choose yor preferred withdrawal  method to get started</p>
-      </div>
+      <div className="flex flex-col gap-8">
+        {/* Title + Subtitle */}
+        <div>
+          <h1 className="text-white text-h1 font-normal">TradeLocker Accounts</h1>
+          <p className="text-gfx-neutral-300 text-body2 mt-2">Choose yor preferred withdrawal  method to get started</p>
+        </div>
 
-      {/* Filter Tabs */}
-      <div className="w-full max-w-lg mt-6">
-        <ModeToggle options={[...FILTER_TABS]} activeIndex={activeTab} onChange={setActiveTab} />
+        {/* Filter Tabs */}
+        <div className="w-full max-w-lg">
+          <ModeToggle options={[...FILTER_TABS]} activeIndex={activeTab} onChange={setActiveTab} />
+        </div>
       </div>
 
       {/* Type Dropdown */}
