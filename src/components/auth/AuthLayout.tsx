@@ -7,7 +7,7 @@ interface AuthLayoutProps {
 function AuthFooter() {
   return (
     <footer className="w-full relative lg:absolute lg:bottom-0 mt-6 lg:mt-0 px-4 lg:pl-15 lg:pr-0">
-      <div className="bg-[#0c1311] rounded-xl px-4 lg:px-[1.4375rem] py-3 lg:py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div className="bg-[#0c1311] rounded-sm px-4 lg:px-[1.4375rem] py-3 lg:py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
         <span className="text-[#ececec] text-xs leading-[1.175rem] whitespace-nowrap">
           2026 Genesis FX Markets. All rights reserved.
         </span>
