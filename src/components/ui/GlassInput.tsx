@@ -53,7 +53,7 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className={`w-full bg-[#101E1A] font-acid text-white placeholder:text-[#808080] h-[3.125rem] rounded-[1.875rem] px-[1rem] ${isPassword ? 'pr-[3rem]' : ''} text-[1rem] outline-none transition-[border-color] duration-200 ${
+          className={`w-full bg-[#0C1311] font-acid text-white placeholder:text-[#808080] h-[3.125rem] rounded-[1.875rem] px-[1rem] ${isPassword ? 'pr-[3rem]' : ''} text-[1rem] outline-none transition-[border-color] duration-200 ${
             focused ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#064B34]'
           }`}
         />
