@@ -163,40 +163,42 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
   totalSteps: number
 }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+    <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</h1>
 
-      <div className="w-full flex items-center justify-between">
-        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Type</span>
-        <StepBadge step={1} total={totalSteps} />
-      </div>
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit flex flex-col items-center gap-[1.5rem] p-25 bg-transparent">
+        <div className="w-full flex items-center justify-between">
+          <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Type</span>
+          <StepBadge step={1} total={totalSteps} />
+        </div>
 
-      <div className="w-full flex gap-[0.625rem]">
-        <AccountTypeCard
-          icon={<UserIcon />}
-          title="Individual"
-          description="Personal trading account"
-          selected={accountType === 'individual'}
-          onClick={() => setAccountType('individual')}
-        />
-        <AccountTypeCard
-          icon={<BuildingIcon />}
-          title="Corporate"
-          description="Business trading account"
-          selected={accountType === 'corporate'}
-          onClick={() => setAccountType('corporate')}
-        />
-      </div>
+        <div className="w-full flex gap-[0.625rem]">
+          <AccountTypeCard
+            icon={<UserIcon />}
+            title="Individual"
+            description="Personal trading account"
+            selected={accountType === 'individual'}
+            onClick={() => setAccountType('individual')}
+          />
+          <AccountTypeCard
+            icon={<BuildingIcon />}
+            title="Corporate"
+            description="Business trading account"
+            selected={accountType === 'corporate'}
+            onClick={() => setAccountType('corporate')}
+          />
+        </div>
 
-      <div className="w-full">
-        <GlowButton label="Continue" width="100%" onClick={onContinue} />
-      </div>
+        <div className="w-full">
+          <GlowButton label="Continue" width="100%" onClick={onContinue} />
+        </div>
 
-      <p className="text-[1rem] leading-[1.2]">
-        <span className="text-[#808080]">Already have an account? </span>
-        <Link to="/" className="text-white hover:underline">Sign In</Link>
-      </p>
-    </GlassCard>
+        <p className="text-[1rem] leading-[1.2]">
+          <span className="text-[#808080]">Already have an account? </span>
+          <Link to="/" className="text-white hover:underline">Sign In</Link>
+        </p>
+      </GlassCard>
+    </div>
   )
 }
 
@@ -213,164 +215,176 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
   const title = accountType === 'corporate' ? 'Corporate Account' : 'Personal Account'
 
   return (
-    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+    <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</h1>
-      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Enter your account credentials</p>
 
-      <div className="w-full flex items-center justify-between">
-        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Info</span>
-        <StepBadge step={2} total={totalSteps} />
-      </div>
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit flex flex-col items-center gap-[1.5rem] p-25 bg-transparent">
+        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Enter your account credentials</p>
 
-      <div className="w-full flex flex-col gap-[1.0625rem]">
-        <input type="email" placeholder="Email" className={INPUT_CLASS} />
+        <div className="w-full flex items-center justify-between">
+          <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Info</span>
+          <StepBadge step={2} total={totalSteps} />
+        </div>
 
-        <div className="w-full relative">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            className={`${INPUT_CLASS} pr-[3.25rem]`}
-          />
-          <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
-            <EyeIcon open={showPassword} />
+        <div className="w-full flex flex-col gap-[1.0625rem]">
+          <input type="email" placeholder="Email" className={INPUT_CLASS} />
+
+          <div className="w-full relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              className={`${INPUT_CLASS} pr-[3.25rem]`}
+            />
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
+              <EyeIcon open={showPassword} />
+            </button>
+          </div>
+
+          <div className="w-full relative">
+            <input
+              type={showConfirmPassword ? 'text' : 'password'}
+              placeholder="Confirm Password"
+              className={`${INPUT_CLASS} pr-[3.25rem]`}
+            />
+            <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
+              <EyeIcon open={showConfirmPassword} />
+            </button>
+          </div>
+
+          <input type="text" placeholder="Referral Code (Optional)" className={INPUT_CLASS} />
+        </div>
+
+        <div className="w-full flex flex-col gap-[0.5rem]">
+          <GlowButton label="Continue" width="100%" onClick={onContinue} />
+          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
+            <ChevronRight className="rotate-180" />
+            Back
           </button>
         </div>
 
-        <div className="w-full relative">
-          <input
-            type={showConfirmPassword ? 'text' : 'password'}
-            placeholder="Confirm Password"
-            className={`${INPUT_CLASS} pr-[3.25rem]`}
-          />
-          <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-[1.25rem] top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">
-            <EyeIcon open={showConfirmPassword} />
-          </button>
-        </div>
-
-        <input type="text" placeholder="Referral Code (Optional)" className={INPUT_CLASS} />
-      </div>
-
-      <div className="w-full flex flex-col gap-[0.5rem]">
-        <GlowButton label="Continue" width="100%" onClick={onContinue} />
-        <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-          <ChevronRight className="rotate-180" />
-          Back
-        </button>
-      </div>
-
-      <p className="text-[1rem] leading-[1.2]">
-        <span className="text-[#808080]">Already have an account? </span>
-        <Link to="/" className="text-white hover:underline">Sign In</Link>
-      </p>
-    </GlassCard>
+        <p className="text-[1rem] leading-[1.2]">
+          <span className="text-[#808080]">Already have an account? </span>
+          <Link to="/" className="text-white hover:underline">Sign In</Link>
+        </p>
+      </GlassCard>
+    </div>
   )
 }
 
 function Step3Corporate({ onContinue, onBack, totalSteps }: { onContinue: () => void; onBack: () => void; totalSteps: number }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+    <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
-      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your company information</p>
 
-      <div className="w-full flex items-center justify-between">
-        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Company Info</span>
-        <StepBadge step={3} total={totalSteps} />
-      </div>
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit flex flex-col items-center gap-[1.5rem] p-25 bg-transparent">
+        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your company information</p>
 
-      <div className="w-full flex flex-col gap-[1.0625rem]">
-        <input type="text" placeholder="Company Name" className={INPUT_CLASS} />
-        <input type="text" placeholder="Registration Number" className={INPUT_CLASS} />
-        <GlassSelect options={BUSINESS_TYPE_OPTIONS} placeholder="Business Type" />
-        <input type="text" placeholder="Business Address" className={INPUT_CLASS} />
-        <GlassSelect options={COUNTRY_OPTIONS} placeholder="Country of Incorporation" />
-      </div>
+        <div className="w-full flex items-center justify-between">
+          <span className="text-[#ececec] text-[1rem] leading-[1.2]">Company Info</span>
+          <StepBadge step={3} total={totalSteps} />
+        </div>
 
-      <div className="w-full flex flex-col gap-[0.5rem]">
-        <GlowButton label="Continue" width="100%" onClick={onContinue} />
-        <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-          <ChevronRight className="rotate-180" />
-          Back
-        </button>
-      </div>
+        <div className="w-full flex flex-col gap-[1.0625rem]">
+          <input type="text" placeholder="Company Name" className={INPUT_CLASS} />
+          <input type="text" placeholder="Registration Number" className={INPUT_CLASS} />
+          <GlassSelect options={BUSINESS_TYPE_OPTIONS} placeholder="Business Type" />
+          <input type="text" placeholder="Business Address" className={INPUT_CLASS} />
+          <GlassSelect options={COUNTRY_OPTIONS} placeholder="Country of Incorporation" />
+        </div>
 
-      <p className="text-[1rem] leading-[1.2]">
-        <span className="text-[#808080]">Already have an account? </span>
-        <Link to="/" className="text-white hover:underline">Sign In</Link>
-      </p>
-    </GlassCard>
+        <div className="w-full flex flex-col gap-[0.5rem]">
+          <GlowButton label="Continue" width="100%" onClick={onContinue} />
+          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
+            <ChevronRight className="rotate-180" />
+            Back
+          </button>
+        </div>
+
+        <p className="text-[1rem] leading-[1.2]">
+          <span className="text-[#808080]">Already have an account? </span>
+          <Link to="/" className="text-white hover:underline">Sign In</Link>
+        </p>
+      </GlassCard>
+    </div>
   )
 }
 
 function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+    <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</h1>
-      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
 
-      <div className="w-full flex items-center justify-between">
-        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
-        <StepBadge step={3} total={totalSteps} />
-      </div>
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit flex flex-col items-center gap-[1.5rem] p-25 bg-transparent">
+        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
 
-      <div className="w-full flex flex-col gap-[1.0625rem]">
-        <div className="flex gap-[0.375rem]">
-          <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
-          <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
+        <div className="w-full flex items-center justify-between">
+          <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
+          <StepBadge step={3} total={totalSteps} />
         </div>
-        <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
-        <input type="text" placeholder="Address*" className={INPUT_CLASS} />
-        <input type="text" placeholder="Country*" className={INPUT_CLASS} />
-      </div>
 
-      <div className="w-full flex flex-col gap-[0.5rem]">
-        <GlowButton label="Create Account" width="100%" />
-        <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-          <ChevronRight className="rotate-180" />
-          Back
-        </button>
-      </div>
+        <div className="w-full flex flex-col gap-[1.0625rem]">
+          <div className="flex gap-[0.375rem]">
+            <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
+            <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
+          </div>
+          <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
+          <input type="text" placeholder="Address*" className={INPUT_CLASS} />
+          <input type="text" placeholder="Country*" className={INPUT_CLASS} />
+        </div>
 
-      <p className="text-[1rem] leading-[1.2]">
-        <span className="text-[#808080]">Already have an account? </span>
-        <Link to="/" className="text-white hover:underline">Sign In</Link>
-      </p>
-    </GlassCard>
+        <div className="w-full flex flex-col gap-[0.5rem]">
+          <GlowButton label="Create Account" width="100%" />
+          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
+            <ChevronRight className="rotate-180" />
+            Back
+          </button>
+        </div>
+
+        <p className="text-[1rem] leading-[1.2]">
+          <span className="text-[#808080]">Already have an account? </span>
+          <Link to="/" className="text-white hover:underline">Sign In</Link>
+        </p>
+      </GlassCard>
+    </div>
   )
 }
 
 function Step4Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-[400px] flex flex-col items-center gap-[1.5rem] p-[2rem]">
+    <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
-      <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
 
-      <div className="w-full flex items-center justify-between">
-        <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
-        <StepBadge step={4} total={totalSteps} />
-      </div>
+      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit flex flex-col items-center gap-[1.5rem] p-25 bg-transparent">
+        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
 
-      <div className="w-full flex flex-col gap-[1.0625rem]">
-        <div className="flex gap-[0.375rem]">
-          <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
-          <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
+        <div className="w-full flex items-center justify-between">
+          <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
+          <StepBadge step={4} total={totalSteps} />
         </div>
-        <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
-        <input type="text" placeholder="Address*" className={INPUT_CLASS} />
-        <input type="text" placeholder="Country*" className={INPUT_CLASS} />
-      </div>
 
-      <div className="w-full flex flex-col gap-[0.5rem]">
-        <GlowButton label="Create Account" width="100%" />
-        <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-          <ChevronRight className="rotate-180" />
-          Back
-        </button>
-      </div>
+        <div className="w-full flex flex-col gap-[1.0625rem]">
+          <div className="flex gap-[0.375rem]">
+            <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
+            <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
+          </div>
+          <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
+          <input type="text" placeholder="Address*" className={INPUT_CLASS} />
+          <input type="text" placeholder="Country*" className={INPUT_CLASS} />
+        </div>
 
-      <p className="text-[1rem] leading-[1.2]">
-        <span className="text-[#808080]">Already have an account? </span>
-        <Link to="/" className="text-white hover:underline">Sign In</Link>
-      </p>
-    </GlassCard>
+        <div className="w-full flex flex-col gap-[0.5rem]">
+          <GlowButton label="Create Account" width="100%" />
+          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
+            <ChevronRight className="rotate-180" />
+            Back
+          </button>
+        </div>
+
+        <p className="text-[1rem] leading-[1.2]">
+          <span className="text-[#808080]">Already have an account? </span>
+          <Link to="/" className="text-white hover:underline">Sign In</Link>
+        </p>
+      </GlassCard>
+    </div>
   )
 }
