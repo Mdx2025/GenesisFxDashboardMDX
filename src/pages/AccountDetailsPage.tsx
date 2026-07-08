@@ -178,8 +178,8 @@ export default function AccountDetailsPage() {
             <div className="flex items-center gap-3 mt-1">
               <p className="text-white text-h2 font-normal">$17,897.30</p>
               <div className="flex items-center gap-1.5">
-                <span className="text-gfx-green-500 text-body2">▲</span>
-                <span className="text-gfx-green-500 text-body2">+$6,437.21 (56.1%)</span>
+                <span className="text-[#37C92E] text-body2">▲</span>
+                <span className="text-[#37C92E] text-body2">+$6,437.21 (56.1%)</span>
               </div>
             </div>
             <div className="h-full mt-6">

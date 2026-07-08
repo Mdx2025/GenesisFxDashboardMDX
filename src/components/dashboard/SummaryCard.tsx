@@ -13,13 +13,14 @@ interface SummaryCardProps {
 }
 
 const colorMap = {
-  green: 'text-gfx-green-500',
+  green: 'text-[#37C92E]',
   red: 'text-[#D46356]',
   amber: 'text-gfx-amber',
 }
 
 export function SummaryCard({ title, value, changeText, changeColor = 'green', glowColor = GLOW_GREEN, chartClassName, children }: SummaryCardProps) {
   const arrow = changeColor === 'red' ? '▼' : '▲'
+  const valueColor = changeColor === 'red' ? 'text-[#D46356]' : 'text-white'
 
   return (
     <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden aspect-[1.6/1] isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
@@ -30,7 +31,7 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', g
       />
       <div className="relative z-10 px-4 pt-4 sm:px-6 sm:pt-6">
         <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">{title}</h3>
-        <p className="text-card-value text-white mb-2">{value}</p>
+        <p className={`text-card-value ${valueColor} mb-2`}>{value}</p>
         <div className="flex items-center gap-1.5">
           <span className={`text-card-change ${colorMap[changeColor]}`}>{arrow}</span>
           <span className={`text-card-change ${colorMap[changeColor]}`}>{changeText}</span>
