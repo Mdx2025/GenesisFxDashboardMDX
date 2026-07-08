@@ -7,6 +7,7 @@ interface DayTrade {
   day: number
   profit?: number
   trades?: number
+  overflow?: boolean
 }
 
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -21,16 +22,10 @@ function getFirstDayOfMonth(year: number, month: number) {
 
 const MOCK_TRADES: Record<string, { profit: number; trades: number }> = {
   '2026-3-1': { profit: 12.50, trades: 3 },
-  '2026-3-4': { profit: -8.25, trades: 2 },
-  '2026-3-7': { profit: 15.00, trades: 4 },
-  '2026-3-8': { profit: 4.50, trades: 1 },
-  '2026-3-9': { profit: -16.00, trades: 3 },
-  '2026-3-10': { profit: 22.00, trades: 5 },
-  '2026-3-14': { profit: -12.75, trades: 2 },
+  '2026-3-4': { profit: -8.00, trades: 3 },
+  '2026-3-8': { profit: -16.00, trades: 3 },
   '2026-3-15': { profit: -16.00, trades: 3 },
-  '2026-3-16': { profit: 8.00, trades: 2 },
-  '2026-3-21': { profit: 12.50, trades: 3 },
-  '2026-3-22': { profit: -5.50, trades: 1 },
+  '2026-3-22': { profit: -16.00, trades: 3 },
   '2026-3-24': { profit: 12.50, trades: 3 },
   '2026-3-29': { profit: 12.50, trades: 3 },
 }
@@ -38,8 +33,8 @@ const MOCK_TRADES: Record<string, { profit: number; trades: number }> = {
 function InfoIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" stroke="#A0A0A0" strokeWidth="1.5"/>
-      <path d="M12 16v-4M12 8h.01" stroke="#A0A0A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="12" cy="12" r="10" stroke="#808080" strokeWidth="2"/>
+      <path d="M12 16v-4M12 8h.01" stroke="#808080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -47,7 +42,7 @@ function InfoIcon() {
 function ChevronLeft() {
   return (
     <svg width="10" height="19" viewBox="0 0 10 19" fill="none">
-      <path d="M9 1L1 9.5L9 18" stroke="#A0A0A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 1L1 9.5L9 18" stroke="#808080" strokeWidth="2.38" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -55,20 +50,27 @@ function ChevronLeft() {
 function ChevronRight() {
   return (
     <svg width="10" height="19" viewBox="0 0 10 19" fill="none">
-      <path d="M1 1L9 9.5L1 18" stroke="#A0A0A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M1 1L9 9.5L1 18" stroke="#808080" strokeWidth="2.38" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
 
-function getWeeklyTotal(year: number, month: number, weekDays: (number | null)[]): number {
+function getWeeklyTotal(year: number, month: number, weekDays: (DayTrade | null)[]): number {
   let total = 0
-  for (const day of weekDays) {
-    if (day === null) continue
-    const key = `${year}-${month}-${day}`
+  for (const d of weekDays) {
+    if (!d || d.overflow) continue
+    const key = `${year}-${month}-${d.day}`
     const trade = MOCK_TRADES[key]
     if (trade) total += trade.profit
   }
   return total
+}
+
+function hasWeekTrades(year: number, month: number, weekDays: (DayTrade | null)[]): boolean {
+  return weekDays.some(d => {
+    if (!d || d.overflow) return false
+    return MOCK_TRADES[`${year}-${month}-${d.day}`] !== undefined
+  })
 }
 
 export function TradingCalendar() {
@@ -81,8 +83,9 @@ export function TradingCalendar() {
   const weeks: (DayTrade | null)[][] = []
   let currentWeek: (DayTrade | null)[] = []
 
+  const prevMonthDays = getDaysInMonth(year, month === 0 ? 11 : month - 1)
   for (let i = 0; i < firstDay; i++) {
-    currentWeek.push(null)
+    currentWeek.push({ day: prevMonthDays - firstDay + 1 + i, overflow: true })
   }
 
   for (let day = 1; day <= daysInMonth; day++) {
@@ -101,8 +104,9 @@ export function TradingCalendar() {
   }
 
   if (currentWeek.length > 0) {
+    let nextDay = 1
     while (currentWeek.length < 7) {
-      currentWeek.push(null)
+      currentWeek.push({ day: nextDay++, overflow: true })
     }
     weeks.push(currentWeek)
   }
@@ -130,29 +134,29 @@ export function TradingCalendar() {
       <div className="relative z-10 p-5 xl:p-8">
         {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
-          <div className="flex items-center gap-3">
-            <button onClick={prevMonth} className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
+          <div className="flex items-center gap-4">
+            <button onClick={prevMonth} className="text-[#808080] hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
               <ChevronLeft />
             </button>
-            <h2 className="text-white text-[1.5rem] font-normal">{MONTH_NAMES[month]} {year}</h2>
-            <button onClick={nextMonth} className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
+            <h2 className="text-[#ECECEC] text-[1.5rem] font-normal">{MONTH_NAMES[month]} {year}</h2>
+            <button onClick={nextMonth} className="text-[#808080] hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
               <ChevronRight />
             </button>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="px-4 py-2.5 rounded-lg border border-white/10 text-gfx-neutral-300 text-[0.875rem]">
+            <div className="px-3.5 py-2.5 rounded-lg border border-[#A0A0A0] text-[#A0A0A0] text-[0.875rem] font-medium">
               This month
             </div>
-            <span className="text-gfx-neutral-300 text-[0.875rem]">Monthly stats:</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="text-[#A0A0A0] text-[0.875rem] font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
-              <div className="px-3 py-1.5 rounded-full bg-[#0C1311] border border-white/10">
-                <span className={`text-[0.75rem] ${monthTotal >= 0 ? 'text-gfx-green-500' : 'text-gfx-red'}`}>
+              <div className="px-[18px] py-1 rounded-full bg-[#0C1311] border border-[#064B34]">
+                <span className={`text-[0.75rem] ${monthTotal >= 0 ? 'text-[#00B38C]' : 'text-[#D46356]'}`}>
                   {monthTotal >= 0 ? '+' : ''}${Math.abs(monthTotal).toFixed(2)}
                 </span>
               </div>
-              <div className="px-3 py-1.5 rounded-full bg-[#0C1311] border border-white/10">
-                <span className="text-[0.75rem] text-white">{tradingDays} days</span>
+              <div className="px-[18px] py-1 rounded-full bg-[#0C1311] border border-[#064B34]">
+                <span className="text-[0.75rem] text-[#ECECEC]">{tradingDays} days</span>
               </div>
             </div>
             <InfoIcon />
@@ -165,48 +169,57 @@ export function TradingCalendar() {
             <thead>
               <tr>
                 {DAYS_OF_WEEK.map(day => (
-                  <th key={day} className="text-gfx-neutral-300 text-[0.875rem] font-medium pb-3 text-left pl-3 w-[12%]">{day}</th>
+                  <th key={day} className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-left pl-3 w-[12%]">{day}</th>
                 ))}
-                <th className="text-gfx-neutral-300 text-[0.875rem] font-medium pb-3 text-left pl-3 w-[16%]">Week Total</th>
+                <th className="text-[#A0A0A0] text-[0.96rem] font-medium pb-3 text-left pl-3 w-[16%]">Week Total</th>
               </tr>
             </thead>
             <tbody>
               {weeks.map((week, weekIdx) => {
-                const weekDayNums = week.map(d => d?.day ?? null)
-                const weekTotal = getWeeklyTotal(year, month, weekDayNums)
-                const hasWeekTrades = week.some(d => d?.profit !== undefined)
+                const weekTotal = getWeeklyTotal(year, month, week)
+                const weekHasTrades = hasWeekTrades(year, month, week)
 
                 return (
                   <tr key={weekIdx}>
                     {week.map((dayData, dayIdx) => {
                       if (!dayData) {
-                        return <td key={dayIdx} className="p-1"><div className="h-[6.8rem] rounded-[1.2rem]" /></td>
+                        return <td key={dayIdx} className="p-[5px]"><div className="h-[109px] rounded-[19px]" /></td>
                       }
 
-                      const isProfitable = dayData.profit !== undefined && dayData.profit > 0
-                      const isLoss = dayData.profit !== undefined && dayData.profit < 0
-                      const hasTradeData = dayData.profit !== undefined
+                      const isOverflow = dayData.overflow
+                      const hasTradeData = !isOverflow && dayData.profit !== undefined
+                      const isProfitable = hasTradeData && dayData.profit! > 0
+                      const isLoss = hasTradeData && dayData.profit! < 0
 
                       let cellBg = ''
-                      if (isLoss) cellBg = 'bg-[#2A1411]'
-                      else if (isProfitable) cellBg = 'bg-[#0C1311]'
-                      else cellBg = 'bg-[#09241C]'
+                      let cellBorder = 'border-[#064B34]'
+
+                      if (isOverflow) {
+                        cellBg = 'bg-[#09241C]'
+                        cellBorder = 'border-[#064B34]'
+                      } else if (isLoss) {
+                        cellBg = 'bg-[#2A1411]'
+                        cellBorder = 'border-[#D46356]'
+                      } else if (isProfitable) {
+                        cellBg = 'bg-[#0C1311]'
+                        cellBorder = 'border-[#00B38C]'
+                      }
 
                       return (
-                        <td key={dayIdx} className="p-1">
-                          <div className={`${cellBg} rounded-[1.2rem] h-[6.8rem] px-3 py-3 flex flex-col justify-between border ${hasTradeData ? (isProfitable ? 'border-[#00B38C]' : 'border-[#D46356]') : 'border-transparent'}`}>
-                            <span className="text-gfx-neutral-300 text-[0.875rem] text-center">{dayData.day}</span>
+                        <td key={dayIdx} className="p-[5px]">
+                          <div className={`${cellBg} rounded-[19px] h-[109px] px-3 py-3 flex flex-col justify-between border ${cellBorder}`}>
+                            <span className={`text-[#A0A0A0] text-[0.875rem] ${isOverflow ? '' : 'text-right'}`}>{dayData.day}</span>
                             {hasTradeData && (
                               <div className="text-center">
                                 <div className="flex items-center justify-center gap-1">
-                                  <span className={`text-[0.6875rem] font-bold ${isProfitable ? 'text-gfx-green-500' : 'text-gfx-red'}`}>
-                                    {isProfitable ? '▲' : '▲'}
+                                  <span className={`text-[0.6875rem] font-bold ${isProfitable ? 'text-[#00B38C]' : 'text-[#D46356]'}`}>
+                                    {isProfitable ? '▲' : '▼'}
                                   </span>
-                                  <span className={`text-[0.875rem] ${isProfitable ? 'text-gfx-green-500' : 'text-gfx-red'}`}>
+                                  <span className={`text-[0.875rem] ${isProfitable ? 'text-[#00B38C]' : 'text-[#D46356]'}`}>
                                     {dayData.profit! >= 0 ? '+' : ''}{dayData.profit! >= 0 ? `$${dayData.profit!.toFixed(2)}` : `-$${Math.abs(dayData.profit!).toFixed(2)}`}
                                   </span>
                                 </div>
-                                <span className="text-gfx-neutral-300 text-[0.875rem]">({dayData.trades} trades)</span>
+                                <span className="text-[#A0A0A0] text-[0.875rem]">({dayData.trades} trades)</span>
                               </div>
                             )}
                           </div>
@@ -214,21 +227,12 @@ export function TradingCalendar() {
                       )
                     })}
                     {/* Week Total cell */}
-                    <td className="p-1">
-                      <div className={`${hasWeekTrades ? 'bg-[#0C1311]' : 'bg-[#09241C]'} rounded-[1.2rem] h-[6.8rem] px-3 py-3 flex flex-col justify-between`}>
-                        <span className="text-gfx-neutral-300 text-[0.875rem]">Week {weekIdx + 1}</span>
-                        {hasWeekTrades && (
-                          <div>
-                            <div className="flex items-center gap-1">
-                              <span className={`text-[0.6875rem] font-bold ${weekTotal >= 0 ? 'text-gfx-green-500' : 'text-gfx-red'}`}>
-                                {weekTotal >= 0 ? '▲' : '▲'}
-                              </span>
-                              <span className={`text-[0.875rem] ${weekTotal >= 0 ? 'text-gfx-green-500' : 'text-gfx-red'}`}>
-                                {weekTotal >= 0 ? '+' : ''}${Math.abs(weekTotal).toFixed(2)}
-                              </span>
-                            </div>
-                          </div>
-                        )}
+                    <td className="p-[5px]">
+                      <div className="bg-[#0C1311] rounded-[19px] h-[109px] px-3 py-3 flex flex-col justify-center border border-[#2F2F2F]">
+                        <span className="text-[#ECECEC] text-[0.875rem]">Week {weekIdx + 1}</span>
+                        <span className="text-[#A0A0A0] text-[0.875rem]">
+                          {weekHasTrades ? `${weekTotal >= 0 ? '+' : ''}$${Math.abs(weekTotal).toFixed(2)}` : ''}
+                        </span>
                       </div>
                     </td>
                   </tr>
@@ -239,18 +243,18 @@ export function TradingCalendar() {
         </div>
 
         {/* Legend */}
-        <div className="flex items-center gap-6 mt-4 justify-center">
+        <div className="flex items-center gap-10 mt-4 justify-center">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-md border-2 border-[#00B38C]" />
-            <span className="text-gfx-neutral-300 text-[0.875rem]">Profitable</span>
+            <div className="w-5 h-5 rounded-lg bg-[#0C1311] border border-[#00B38C]" />
+            <span className="text-[#A0A0A0] text-[1rem] font-medium">Profitable</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-md border-2 border-[#D46356] bg-[#D46356]" />
-            <span className="text-gfx-neutral-300 text-[0.875rem]">Loss</span>
+            <div className="w-5 h-5 rounded-lg bg-[#2A1411] border border-[#D46356]" />
+            <span className="text-[#A0A0A0] text-[1rem] font-medium">Loss</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-md border-2 border-gfx-neutral-500" />
-            <span className="text-gfx-neutral-300 text-[0.875rem]">No Trade</span>
+            <div className="w-5 h-5 rounded-lg bg-[#0C1311] border border-[#2F2F2F]" />
+            <span className="text-[#A0A0A0] text-[1rem] font-medium">No Trade</span>
           </div>
         </div>
       </div>
