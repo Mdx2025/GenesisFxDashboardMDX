@@ -32,7 +32,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
 
       <div className="flex flex-col lg:flex-row h-full p-4 sm:p-8 lg:p-[3.125rem] gap-6 lg:gap-0">
         {/* Left: Hero Image — hidden on mobile */}
-        <div className="relative hidden lg:block w-full max-w-[51.125rem] h-full shrink-0 rounded-[3rem] overflow-hidden">
+        <div className="relative hidden lg:block lg:w-[45%] h-full shrink-0 rounded-[3rem] overflow-hidden">
           <img
             src="/images/login-hero.png"
             alt="Genesis FX trading platform"
