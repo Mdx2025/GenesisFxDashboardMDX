@@ -138,7 +138,7 @@ export function CreateAccountModal({ open, onClose }: CreateAccountModalProps) {
           {/* Subtitle with info icon + hover tooltip */}
           <div className="flex justify-center mt-[12px] mb-[24px]">
             <div className="flex items-center gap-1.5">
-              <div className="relative group">
+              <div className="relative group flex items-center">
                 <span className="cursor-pointer"><InfoIcon /></span>
                 {/* Tooltip on hover */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-50">
