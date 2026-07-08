@@ -143,7 +143,7 @@ export default function AccountDetailsPage() {
       </div>
 
       {/* Chart + Account Details */}
-      <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-5">
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-5 mt-6">
         {/* Portfolio Chart */}
         <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden p-5 xl:p-8">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
