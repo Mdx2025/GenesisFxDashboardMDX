@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { GlassCard } from '@/components/ui'
 
 interface WithdrawCodeModalProps {
   open: boolean
@@ -109,13 +110,14 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
       />
 
       <div
-        className="relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] bg-[#0a0a0a] rounded-[2.5rem] border border-[#064B34] shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden"
+        className="relative w-[49.5625rem] max-w-[95vw] max-h-[90vh]"
         style={{
           animation: visible
             ? 'modalFadeIn 0.3s ease-out forwards'
             : 'modalFadeOut 0.25s ease-in forwards',
         }}
       >
+      <GlassCard variant="light" divider="none" rounded="2.5rem" className="overflow-hidden">
         <button
           onClick={onClose}
           className="absolute right-7 top-7 z-10 cursor-pointer hover:opacity-70 transition-opacity"
@@ -204,6 +206,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           className="absolute left-1/2 -translate-x-1/2 bottom-[-30%] w-[30.8125rem] h-72 bg-green-900 rounded-full pointer-events-none [filter:url(#blur-157)]"
           aria-hidden="true"
         />
+      </GlassCard>
       </div>
     </div>
   )
