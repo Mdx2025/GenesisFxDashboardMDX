@@ -407,7 +407,7 @@ export default function NewsPage() {
         ]}
       />
 
-      <div className="flex flex-col gap-6 pb-12">
+      <div className="flex flex-col gap-6 pb-12 mt-6 3xl:mt-8 4xl:mt-10">
         {/* Title */}
         <div className="flex items-center gap-4">
           <h1 className="text-white text-h1 font-normal">Daily analysis</h1>

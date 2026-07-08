@@ -42,7 +42,7 @@ export default function AccountsPage() {
         ]}
       />
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mt-6 3xl:mt-8 4xl:mt-10">
         <div className="flex flex-col gap-8">
           {/* Title + Subtitle */}
           <div>

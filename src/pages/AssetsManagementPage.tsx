@@ -145,7 +145,7 @@ export default function AssetsManagementPage() {
           breadcrumbItems={[{ label: 'Assets Management', href: '/assets-management' }, { label: 'Funding', current: true }]}
         />
 
-          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">Funding</h1>
+          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mt-6 3xl:mt-8 4xl:mt-10">Funding</h1>
 
           <section aria-label="Fiat Wallet" className="py-7 md:py-15">
             <GlassBannerCard contentClassName="py-8 px-5 xl:py-17 xl:px-13 3xl:py-21 3xl:px-10 4xl:py-26 4xl:px-14">
