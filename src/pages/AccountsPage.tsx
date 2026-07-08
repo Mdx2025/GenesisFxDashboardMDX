@@ -6,6 +6,7 @@ import type { GlassSelectOption } from '@/components/ui/GlassSelect'
 import { UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
 import { CreateAccountModal } from '@/components/accounts/CreateAccountModal'
+import { AccountProcessingModal } from '@/components/accounts/AccountProcessingModal'
 
 const FILTER_TABS = ['All Accounts', 'Live', 'Demo', 'Platforms'] as const
 
@@ -21,6 +22,7 @@ export default function AccountsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [createModalOpen, setCreateModalOpen] = useState(false)
+  const [processingOpen, setProcessingOpen] = useState(false)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -42,7 +44,7 @@ export default function AccountsPage() {
           </div>
 
           {/* Filter Tabs */}
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-2xl">
             <ModeToggle options={[...FILTER_TABS]} activeIndex={activeTab} onChange={setActiveTab} />
           </div>
         </div>
@@ -135,7 +137,15 @@ export default function AccountsPage() {
         </div>
       </div>
 
-      <CreateAccountModal open={createModalOpen} onClose={() => setCreateModalOpen(false)} />
+      <CreateAccountModal
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
+        onCreateAccount={() => setProcessingOpen(true)}
+      />
+      <AccountProcessingModal
+        open={processingOpen}
+        onClose={() => setProcessingOpen(false)}
+      />
     </div>
   )
 }

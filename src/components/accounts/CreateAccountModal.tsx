@@ -37,9 +37,10 @@ function InfoIcon() {
 interface CreateAccountModalProps {
   open: boolean
   onClose: () => void
+  onCreateAccount?: () => void
 }
 
-export function CreateAccountModal({ open, onClose }: CreateAccountModalProps) {
+export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAccountModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
@@ -180,7 +181,10 @@ export function CreateAccountModal({ open, onClose }: CreateAccountModalProps) {
             <GlowButton
               label="Create Account"
               width="100%"
-              onClick={handleClose}
+              onClick={() => {
+                handleClose()
+                setTimeout(() => onCreateAccount?.(), 300)
+              }}
             />
           </div>
         </div>
