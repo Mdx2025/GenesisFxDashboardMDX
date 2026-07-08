@@ -31,20 +31,21 @@ export default function AccountsPage() {
         ]}
       />
 
-      <div className="flex flex-col gap-8">
-        {/* Title + Subtitle */}
-        <div>
-          <h1 className="text-white text-h1 font-normal">TradeLocker Accounts</h1>
-          <p className="text-gfx-neutral-300 text-body2 mt-2">Choose yor preferred withdrawal  method to get started</p>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-8">
+          {/* Title + Subtitle */}
+          <div>
+            <h1 className="text-white text-h1 font-normal">TradeLocker Accounts</h1>
+            <p className="text-gfx-neutral-300 text-body2 mt-2">Choose yor preferred withdrawal  method to get started</p>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="w-full max-w-lg">
+            <ModeToggle options={[...FILTER_TABS]} activeIndex={activeTab} onChange={setActiveTab} />
+          </div>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="w-full max-w-lg">
-          <ModeToggle options={[...FILTER_TABS]} activeIndex={activeTab} onChange={setActiveTab} />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-6">
         {/* Type Dropdown */}
         <div className="w-[10.5rem]">
           <GlassSelect
@@ -129,6 +130,7 @@ export default function AccountsPage() {
 
         <div className="h-6" />
       </GlassCard>
+        </div>
       </div>
     </div>
   )
