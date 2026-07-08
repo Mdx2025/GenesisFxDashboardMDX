@@ -21,47 +21,39 @@ const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 
 function AccountCard({ acc }: { acc: TradingAccount }) {
   return (
-    <div className="flex flex-col gap-4 px-4 py-5 border-b border-white/5 last:border-b-0">
+    <div className="flex flex-col gap-2.5 px-4 sm:px-6 py-4 border-b border-white/5 last:border-b-0">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div>
-            <p className="text-white text-[0.9375rem] font-bold leading-tight">{acc.account}</p>
-            <p className="text-gfx-neutral-300 text-[0.75rem] mt-0.5">{acc.username}</p>
-          </div>
+        <div className="flex items-center gap-2.5">
           <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
+          <span className="text-white text-[0.875rem] font-bold">{acc.account}</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem]">{acc.username}</span>
         </div>
-        <div className="flex items-center gap-2">
-          <GreenDot size={8} />
-          <span className="text-gfx-neutral-300 text-[0.8125rem]">{acc.status}</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <p className="text-gfx-neutral-300 text-[0.6875rem] uppercase tracking-wider mb-1">Balance</p>
-          <p className="text-white text-[0.875rem] font-semibold">{acc.balance}</p>
-        </div>
-        <div>
-          <p className="text-gfx-neutral-300 text-[0.6875rem] uppercase tracking-wider mb-1">Equity</p>
-          <p className="text-white text-[0.875rem] font-semibold">{acc.equity}</p>
-        </div>
-        <div>
-          <p className="text-gfx-neutral-300 text-[0.6875rem] uppercase tracking-wider mb-1">Closed P&L</p>
-          <p className={`text-[0.875rem] font-semibold ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</p>
-        </div>
-        <div>
-          <p className="text-gfx-neutral-300 text-[0.6875rem] uppercase tracking-wider mb-1">Open P&L</p>
-          <p className={`text-[0.875rem] font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</p>
+        <div className="flex items-center gap-1.5">
+          <GreenDot size={6} />
+          <span className="text-gfx-neutral-300 text-[0.75rem]">{acc.status}</span>
         </div>
       </div>
 
-      <div className="flex items-center justify-between pt-1">
-        <p className="text-white/60 text-[0.8125rem]">{acc.platform}</p>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <span className="text-white text-[1rem] font-semibold">{acc.balance}</span>
+          <span className="text-white/40 text-[0.75rem]">/</span>
+          <span className="text-white/60 text-[0.8125rem]">{acc.equity}</span>
+        </div>
+        <span className="text-white/40 text-[0.75rem]">{acc.platform}</span>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <span className={`text-[0.8125rem] font-semibold ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</span>
+          <span className="text-white/40 text-[0.75rem]">/</span>
+          <span className={`text-[0.8125rem] font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</span>
+        </div>
         <div className="flex items-center gap-3">
           <button className="text-gfx-neutral-300 text-[0.8125rem] hover:text-white transition-colors cursor-pointer">View</button>
-          <GlowButton label="Trade" width={88} height={34} fontSize={13} />
+          <GlowButton label="Trade" width={80} height={32} fontSize={12} />
           <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none">
               <path d="M4.66667 7.99935C4.66667 8.73573 4.06971 9.33268 3.33333 9.33268C2.59695 9.33268 2 8.73573 2 7.99935C2 7.26297 2.59695 6.66602 3.33333 6.66602C4.06971 6.66602 4.66667 7.26297 4.66667 7.99935Z" fill="white"/>
               <path d="M9.33333 7.99935C9.33333 8.73573 8.73638 9.33268 8 9.33268C7.26362 9.33268 6.66667 8.73573 6.66667 7.99935C6.66667 7.26297 7.26362 6.66602 8 6.66602C8.73638 6.66602 9.33333 7.26297 9.33333 7.99935Z" fill="white"/>
               <path d="M14 7.99935C14 8.73573 13.403 9.33268 12.6667 9.33268C11.9303 9.33268 11.3333 8.73573 11.3333 7.99935C11.3333 7.26297 11.9303 6.66602 12.6667 6.66602C13.403 6.66602 14 7.26297 14 7.99935Z" fill="white"/>
