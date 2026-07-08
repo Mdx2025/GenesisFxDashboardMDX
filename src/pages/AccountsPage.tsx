@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton, GlassSelect } from '@/components/ui'
+import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton, GlassSelect, ModeToggle } from '@/components/ui'
 import type { GlassSelectOption } from '@/components/ui/GlassSelect'
 import { UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
@@ -39,20 +39,8 @@ export default function AccountsPage() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-1">
-          {FILTER_TABS.map((tab, i) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(i)}
-              className={`px-5 py-2 rounded-full text-sm font-normal cursor-pointer transition-colors ${
-                activeTab === i
-                  ? 'bg-gfx-green-500 text-white'
-                  : 'text-gfx-neutral-500 hover:text-white'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+        <div className="w-full max-w-lg">
+          <ModeToggle options={[...FILTER_TABS]} activeIndex={activeTab} onChange={setActiveTab} />
         </div>
 
         {/* Type Dropdown */}
