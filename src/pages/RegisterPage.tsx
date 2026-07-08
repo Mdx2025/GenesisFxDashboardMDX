@@ -4,21 +4,17 @@ import { GlowButton, GlassCard, GlassSelect } from '@/components/ui'
 
 function UserIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="8" r="4" fill="#10BC83" />
-      <path d="M4 20c0-3.31 3.58-6 8-6s8 2.69 8 6" fill="#10BC83" />
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <circle cx="15.6473" cy="7.82311" r="5.21569" fill="#00B38C" />
+      <ellipse cx="15.647" cy="22.1669" rx="9.12745" ry="5.21569" fill="#00B38C" />
     </svg>
   )
 }
 
 function BuildingIcon() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-      <path d="M3 21V7l9-4 9 4v14H3z" fill="#10BC83" />
-      <rect x="7" y="10" width="3" height="3" rx="0.5" fill="#09241c" />
-      <rect x="14" y="10" width="3" height="3" rx="0.5" fill="#09241c" />
-      <rect x="7" y="15" width="3" height="3" rx="0.5" fill="#09241c" />
-      <rect x="14" y="15" width="3" height="3" rx="0.5" fill="#09241c" />
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M17.3278 2.31055H19.6382C21.8165 2.31055 22.9057 2.31055 23.5824 2.98726C24.2591 3.66398 24.2591 4.75314 24.2591 6.93146V24.5487H25.4144C25.8929 24.5487 26.2808 24.9366 26.2808 25.4151C26.2808 25.8936 25.8929 26.2815 25.4144 26.2815H2.30978C1.83127 26.2815 1.44336 25.8936 1.44336 25.4151C1.44336 24.9366 1.83127 24.5487 2.30978 24.5487H3.46501V10.3971C3.46501 8.21883 3.46501 7.12967 4.14173 6.45295C4.81844 5.77623 5.9076 5.77623 8.08592 5.77623H12.7068C14.8852 5.77623 15.9743 5.77623 16.651 6.45295C17.3278 7.12967 17.3278 8.21883 17.3278 10.3971V24.5487H19.0606V10.3971L19.0606 10.2938C19.0607 9.29376 19.0608 8.3769 18.9606 7.63105C18.8501 6.80973 18.5903 5.94163 17.8763 5.22765C17.1624 4.51366 16.2943 4.25386 15.4729 4.14343C14.7376 4.04457 13.836 4.04328 12.8524 4.04338C12.9498 3.59602 13.1123 3.25851 13.3836 2.98726C14.0603 2.31055 15.1494 2.31055 17.3278 2.31055ZM6.06427 9.24192C6.06427 8.76341 6.45218 8.3755 6.9307 8.3755H13.8621C14.3406 8.3755 14.7285 8.76341 14.7285 9.24192C14.7285 9.72043 14.3406 10.1083 13.8621 10.1083H6.9307C6.45218 10.1083 6.06427 9.72043 6.06427 9.24192ZM6.06427 12.7076C6.06427 12.2291 6.45218 11.8412 6.9307 11.8412H13.8621C14.3406 11.8412 14.7285 12.2291 14.7285 12.7076C14.7285 13.1861 14.3406 13.574 13.8621 13.574H6.9307C6.45218 13.574 6.06427 13.1861 6.06427 12.7076ZM6.06427 16.1733C6.06427 15.6948 6.45218 15.3069 6.9307 15.3069H13.8621C14.3406 15.3069 14.7285 15.6948 14.7285 16.1733C14.7285 16.6518 14.3406 17.0397 13.8621 17.0397H6.9307C6.45218 17.0397 6.06427 16.6518 6.06427 16.1733ZM10.3964 21.083C10.8749 21.083 11.2628 21.4709 11.2628 21.9494V24.5487H9.52996V21.9494C9.52996 21.4709 9.91787 21.083 10.3964 21.083Z" fill="#00B38C" />
     </svg>
   )
 }
@@ -65,16 +61,18 @@ function AccountTypeCard({ icon, title, description, selected, onClick }: {
     <button
       type="button"
       onClick={onClick}
-      className={`group relative flex-1 flex flex-col items-center gap-[0.75rem] p-[1.25rem] rounded-[1.25rem] bg-[#0c1311] cursor-pointer transition-all border overflow-hidden ${
-        selected ? 'border-gfx-green-500/50' : 'border-transparent hover:border-[#2f2f2f]'
+      className={`group relative w-[10.8125rem] h-[13.864rem] flex flex-col items-center rounded-[2rem] bg-[#0c1311] cursor-pointer transition-all overflow-hidden ${
+        selected ? 'border border-gfx-green-500/50' : 'border-[0.7px] border-[#0C1311] hover:border-[#2f2f2f]'
       }`}
+      style={{ boxShadow: '0px 2.8px 14px rgba(0,0,0,0.03)' }}
     >
-      <div className="absolute bottom-0 left-0 right-0 h-0 group-hover:h-full transition-all duration-500 bg-gradient-to-t from-[#064B34]/40 via-[#064B34]/10 to-transparent pointer-events-none" />
-      <div className="w-[4.125rem] h-[4.125rem] rounded-[1.25rem] bg-[#09241c] flex items-center justify-center relative z-10">
+      <div className="absolute -bottom-[3rem] left-1/2 -translate-x-1/2 w-[9rem] h-[8.4rem] rounded-full bg-[#40C99C] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ filter: 'blur(68px)' }} />
+      <div className="absolute -bottom-[3rem] left-1/2 -translate-x-1/2 w-[9rem] h-[8.4rem] rounded-full bg-[#40C99C] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ filter: 'blur(74px)' }} />
+      <div className="w-[4.125rem] h-[4.125rem] rounded-full bg-[#09241c] flex items-center justify-center relative z-10 mt-[2.5rem]">
         {icon}
       </div>
-      <span className="text-white text-[1rem] relative z-10">{title}</span>
-      <span className="text-[#808080] text-[1rem] text-center leading-[1.2] relative z-10">{description}</span>
+      <span className="text-white text-[1rem] leading-[1.2] relative z-10 mt-[0.75rem]">{title}</span>
+      <span className="text-[#808080] text-[1rem] text-center leading-[1.2] relative z-10 mt-[0.25rem]">{description}</span>
     </button>
   )
 }
