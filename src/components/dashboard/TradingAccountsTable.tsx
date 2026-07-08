@@ -7,7 +7,7 @@ const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 
 export function TradingAccountsTable() {
   return (
-    <GlassCard variant="heavy" divider="white" rounded="26px">
+    <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
       <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 xl:px-10 pt-6 xl:pt-8 pb-4 xl:pb-6">
