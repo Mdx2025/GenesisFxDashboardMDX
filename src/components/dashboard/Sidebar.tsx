@@ -128,7 +128,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
               {navItems.map((item) => {
                 const Icon = iconMap[item.icon]
-                const isActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname)
+                const isActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname) || !!item.submenu?.some(sub => location.pathname === sub.href || location.pathname.startsWith(sub.href + '/'))
                 const navContent = (
                   <NavButton
                     active={isActive}
