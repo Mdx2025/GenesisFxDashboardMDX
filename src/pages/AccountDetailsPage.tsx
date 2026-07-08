@@ -103,41 +103,43 @@ export default function AccountDetailsPage() {
         ]}
       />
 
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 3xl:mt-8 4xl:mt-10">
-        <div className="flex items-center gap-4 flex-wrap">
-          <button
-            onClick={() => navigate('/tradelocker/accounts')}
-            className="w-[38px] h-[38px] rounded-[10px] bg-[#09241C] flex items-center justify-center hover:bg-[#0C3126] transition-colors cursor-pointer shrink-0"
-            aria-label="Go back"
-          >
-            <BackArrow />
-          </button>
-          <h1 className="text-white text-h1 font-normal">{account.account}</h1>
-<Badge variant={account.type}>{account.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
-          <div className="flex items-center gap-2">
-            <GreenDot size={7} />
-            <span className="text-white text-body2">{account.status}</span>
+      <div className="flex flex-col gap-20">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 3xl:mt-8 4xl:mt-10">
+          <div className="flex items-center gap-4 flex-wrap">
+            <button
+              onClick={() => navigate('/tradelocker/accounts')}
+              className="w-[38px] h-[38px] rounded-[10px] bg-[#09241C] flex items-center justify-center hover:bg-[#0C3126] transition-colors cursor-pointer shrink-0"
+              aria-label="Go back"
+            >
+              <BackArrow />
+            </button>
+            <h1 className="text-white text-h1 font-normal">{account.account}</h1>
+            <Badge variant={account.type}>{account.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
+            <div className="flex items-center gap-2">
+              <GreenDot size={7} />
+              <span className="text-white text-body2">{account.status}</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <SparkleButton>
+              <span className="flex items-center gap-2">
+                <DepositIcon size={16} color="#A0A0A0" />
+                <span>Deposit</span>
+              </span>
+            </SparkleButton>
+            <GlowButton label="Trade" width={106} height={44} fontSize={16} />
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <SparkleButton>
-            <span className="flex items-center gap-2">
-              <DepositIcon size={16} color="#A0A0A0" />
-              <span>Deposit</span>
-            </span>
-          </SparkleButton>
-          <GlowButton label="Trade" width={106} height={44} fontSize={16} />
-        </div>
-      </div>
 
-      {/* Stat Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        {/* Stat Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <SummaryCard title="Balance" value="$1,200.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Credit" value="$5,000.00" changeText="+$3,517.30" changeColor="green" />
         <SummaryCard title="Equity" value="$200.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Open P&L" value="$1,500.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Closed P&L" value="$700.00" changeText="+$3,517.30" changeColor="green" />
+        </div>
       </div>
 
       {/* Chart + Account Details */}
