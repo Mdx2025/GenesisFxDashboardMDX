@@ -70,7 +70,7 @@ export default function RootLayout() {
           <main ref={mainRef} className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
             <Outlet />
           </main>
-          <div className="xl:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+          <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
             <FloatingNavBar />
           </div>
         </div>

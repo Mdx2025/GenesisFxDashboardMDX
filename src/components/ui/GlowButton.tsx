@@ -105,6 +105,7 @@ export function GlowButton({
           fontSize,
           fontWeight,
           lineHeight: '24.44px',
+          paddingInline: typeof width === 'string' ? '1.25rem' : undefined,
           background: `linear-gradient(${surfaceAngle}deg, ${surface[0]} 18%, ${surface[1]} 64%, ${surface[2]} 80%)`,
         }} /* dynamic */
       >
