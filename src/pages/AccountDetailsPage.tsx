@@ -234,7 +234,7 @@ export default function AccountDetailsPage() {
       </div>
 
       {/* Transactions Panel */}
-      <div className="mt-6 3xl:mt-8">
+      <div className="mt-20">
         <TransactionsPanel />
       </div>
 
