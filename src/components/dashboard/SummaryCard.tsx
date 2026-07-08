@@ -20,7 +20,7 @@ const colorMap = {
 
 export function SummaryCard({ title, value, changeText, changeColor = 'green', glowColor = GLOW_GREEN, chartClassName, children }: SummaryCardProps) {
   const arrow = changeColor === 'red' ? '▼' : '▲'
-  const valueColor = changeColor === 'red' ? 'text-[#D46356]' : 'text-white'
+  const valueColor = changeColor === 'red' ? 'text-white' : 'text-[#37C92E]'
 
   return (
     <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden aspect-[1.6/1] isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
