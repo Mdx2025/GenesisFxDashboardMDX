@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard, ModeToggle } from '@/components/ui'
+import { GlassCard, ModeToggle, SearchInput } from '@/components/ui'
 
 const TABS = ['Open Positions', 'Closed Trades', 'Transactions']
 
@@ -7,15 +7,6 @@ const MOCK_TRANSACTIONS = [
   { type: 'Transfer In', direction: 'To Wallet', date: 'Apr 21, 2026 12:36', amount: '-$5.00', amountColor: 'green' as const, status: 'Completed', icon: 'in' as const },
   { type: 'Transfer Out', direction: 'From Wallet', date: 'Apr 21, 2026 12:36', amount: '+$5.00', amountColor: 'red' as const, status: 'Completed', icon: 'out' as const },
 ]
-
-function SearchIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <circle cx="8" cy="8" r="6.5" stroke="#808080" strokeWidth="1.5"/>
-      <path d="M13 13L16 16" stroke="#808080" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  )
-}
 
 function ArchiveIcon() {
   return (
@@ -63,10 +54,7 @@ export function TransactionsPanel() {
 
         <div className="flex items-center gap-4">
           {/* Search field */}
-          <div className="flex items-center gap-2.5 bg-[#0C1311] border border-[#064B34] rounded-full px-4 py-2.5 w-[287px]">
-            <SearchIcon />
-            <span className="text-[#808080] text-[1rem]">Search transactions</span>
-          </div>
+          <SearchInput placeholder="Search transactions" />
 
           {/* Action buttons */}
           <button className="w-11 h-11 rounded-full border border-[#2F2F2F] flex items-center justify-center hover:border-[#808080] transition-colors cursor-pointer">
