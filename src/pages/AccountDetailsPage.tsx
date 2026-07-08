@@ -153,7 +153,7 @@ export default function AccountDetailsPage() {
                 <span className="text-gfx-green-500 text-body2">+$6,437.21 (56.1%)</span>
               </div>
             </div>
-            <div className="h-[280px] mt-6">
+            <div className="h-full mt-6">
               <PortfolioChart config={{ ...defaultChartConfig, highlightIndex: -1 }} />
             </div>
           </div>
