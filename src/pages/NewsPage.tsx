@@ -416,7 +416,7 @@ export default function NewsPage() {
 
         {/* Tabs + Trade Now */}
         <div className="flex items-center justify-between gap-4">
-          <div className="flex-1 min-w-0">
+          <div className="w-4xl">
             <ModeToggle
               options={[...TABS]}
               defaultIndex={0}
