@@ -55,7 +55,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
     <div className="fixed inset-0 z-[200] flex items-center justify-center" onClick={onClose}>
       <div className="absolute inset-0 bg-black/70" />
       <div className="relative z-10 w-full max-w-[50rem] mx-4" onClick={(e) => e.stopPropagation()}>
-        <GlassCard variant="light" divider="none" rounded="30px" className="overflow-hidden">
+        <GlassCard variant="light" divider="none" rounded="30px" className="overflow-hidden border border-[#064B34]">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[400px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <button onClick={onClose} className="absolute top-6 right-6 text-white hover:text-gfx-neutral-300 transition-colors cursor-pointer z-10" aria-label="Close">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
