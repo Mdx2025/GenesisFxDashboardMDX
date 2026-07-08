@@ -109,7 +109,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const totalSteps = accountType === 'individual' ? 3 : 4
+  const totalSteps = 3
 
   return (
     <div className="h-screen bg-[#000705] font-acid relative overflow-hidden">
@@ -134,9 +134,8 @@ export default function RegisterPage() {
         <div className="flex-1 flex flex-col items-center justify-center relative">
           {step === 1 && <Step1 accountType={accountType} setAccountType={setAccountType} onContinue={() => setStep(2)} totalSteps={totalSteps} />}
           {step === 2 && <Step2 accountType={accountType} showPassword={showPassword} setShowPassword={setShowPassword} showConfirmPassword={showConfirmPassword} setShowConfirmPassword={setShowConfirmPassword} onContinue={() => setStep(3)} onBack={() => setStep(1)} totalSteps={totalSteps} />}
-          {step === 3 && accountType === 'corporate' && <Step3Corporate onContinue={() => setStep(4)} onBack={() => setStep(2)} totalSteps={totalSteps} />}
+          {step === 3 && accountType === 'corporate' && <Step3Corporate onBack={() => setStep(2)} totalSteps={totalSteps} />}
           {step === 3 && accountType === 'individual' && <Step3Personal onBack={() => setStep(2)} totalSteps={totalSteps} />}
-          {step === 4 && accountType === 'corporate' && <Step4Personal onBack={() => setStep(3)} totalSteps={totalSteps} />}
 
           {/* Footer */}
           <div className="w-full absolute bottom-0 pl-15">
@@ -271,7 +270,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
   )
 }
 
-function Step3Corporate({ onContinue, onBack, totalSteps }: { onContinue: () => void; onBack: () => void; totalSteps: number }) {
+function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
   return (
     <div className="flex flex-col items-center gap-[1.5rem]">
       <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
@@ -293,7 +292,7 @@ function Step3Corporate({ onContinue, onBack, totalSteps }: { onContinue: () => 
         </div>
 
         <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Continue" width="100%" onClick={onContinue} />
+          <GlowButton label="Create Account" width="100%" />
           <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
             <ChevronRight className="rotate-180" />
             Back
@@ -320,46 +319,6 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
           <StepBadge step={3} total={totalSteps} />
-        </div>
-
-        <div className="w-full flex flex-col gap-[1.0625rem]">
-          <div className="flex gap-[0.375rem]">
-            <input type="text" placeholder="First Name" className={`flex-1 ${INPUT_CLASS}`} />
-            <input type="text" placeholder="Last Name" className={`flex-1 ${INPUT_CLASS}`} />
-          </div>
-          <input type="tel" placeholder="Phone*" className={INPUT_CLASS} />
-          <input type="text" placeholder="Address*" className={INPUT_CLASS} />
-          <input type="text" placeholder="Country*" className={INPUT_CLASS} />
-        </div>
-
-        <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Create Account" width="100%" />
-          <button type="button" onClick={onBack} className="w-full h-[2.875rem] rounded-[1.875rem] border border-[#2f2f2f] bg-transparent text-[#c6c6c6] text-[1rem] font-medium cursor-pointer hover:border-[#404040] transition-colors flex items-center justify-center gap-[0.5rem]">
-            <ChevronRight className="rotate-180" />
-            Back
-          </button>
-        </div>
-
-        <p className="text-[1rem] leading-[1.2]">
-          <span className="text-[#808080]">Already have an account? </span>
-          <Link to="/" className="text-white hover:underline">Sign In</Link>
-        </p>
-      </GlassCard>
-    </div>
-  )
-}
-
-function Step4Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
-  return (
-    <div className="flex flex-col items-center gap-[1.5rem]">
-      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
-
-      <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-fit flex flex-col items-center gap-[1.5rem] px-25 py-10 bg-transparent">
-        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
-
-        <div className="w-full flex items-center justify-between">
-          <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>
-          <StepBadge step={4} total={totalSteps} />
         </div>
 
         <div className="w-full flex flex-col gap-[1.0625rem]">
