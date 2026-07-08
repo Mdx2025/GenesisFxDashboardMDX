@@ -132,7 +132,7 @@ export default function AccountDetailsPage() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-6 3xl:mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <SummaryCard title="Balance" value="$1,200.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Credit" value="$5,000.00" changeText="+$3,517.30" changeColor="green" />
         <SummaryCard title="Equity" value="$200.00" changeText="+12.4% this month" changeColor="green" />
@@ -141,7 +141,7 @@ export default function AccountDetailsPage() {
       </div>
 
       {/* Chart + Account Details */}
-      <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-5 mt-6 3xl:mt-8">
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-5">
         {/* Portfolio Chart */}
         <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden p-5 xl:p-8">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
