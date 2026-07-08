@@ -1,7 +1,7 @@
 import { useState, useRef, useLayoutEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
-import { GlowButton, GlassCard, GlassSelect, SparkleButton } from '@/components/ui'
+import { GlowButton, GlassCard, GlassSelect, SparkleButton, WaveText } from '@/components/ui'
 
 function useFadeIn() {
   const ref = useRef<HTMLDivElement>(null)
@@ -175,7 +175,7 @@ function Step1({ accountType, setAccountType, onContinue, totalSteps }: {
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
-      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</h1>
+      <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Create Account</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-12 px-25 py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
@@ -224,10 +224,10 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
-      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</h1>
+      <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">{title}</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
-        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Enter your account credentials</p>
+        <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
 
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Account Info</span>
@@ -286,10 +286,10 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
-      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</h1>
+      <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Corporate Account</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
-        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your company information</p>
+        <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
 
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Company Info</span>
@@ -328,10 +328,10 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center gap-[1.5rem]">
-      <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</h1>
+      <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Personal Account</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-xl flex flex-col items-center gap-3 px-25 py-10 bg-transparent">
-        <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">Complete your personal information</p>
+        <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
 
         <div className="w-full flex items-center justify-between">
           <span className="text-[#ececec] text-[1rem] leading-[1.2]">Personal Info</span>

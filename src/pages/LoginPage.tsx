@@ -1,7 +1,7 @@
 import { useState, useRef, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
-import { GlowButton } from '@/components/ui'
+import { GlowButton, WaveText } from '@/components/ui'
 
 function GoogleIcon() {
   return (
@@ -92,12 +92,8 @@ export default function LoginPage() {
           <div ref={contentRef} className="w-[546px] flex flex-col items-center gap-[2.6875rem]">
             {/* Header */}
             <div className="flex flex-col items-center gap-[2.6875rem]">
-              <h1 className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">
-                Trader's Room Log In
-              </h1>
-              <p className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center">
-                Welcome back! Sign in to your account below.
-              </p>
+              <WaveText as="h1" className="text-white text-[3.125rem] font-normal leading-[1.17] text-center">Trader's Room Log In</WaveText>
+              <WaveText as="p" className="text-[#a0a0a0] text-[0.875rem] leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Welcome back! Sign in to your account below.</WaveText>
             </div>
 
             {/* Google Sign-In */}
