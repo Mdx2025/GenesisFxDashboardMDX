@@ -13,28 +13,28 @@ export function SparkleButton({ children, onClick }: SparkleButtonProps) {
         className="absolute inset-0 rounded-[30px] border border-zinc-300/60 pointer-events-none [mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)]"
         aria-hidden="true"
       />
-      <svg className="absolute left-[139.89px] top-[27.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[75%] top-[58%]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="white" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[124.89px] top-[32.87px] opacity-50" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[65%] top-[68%] opacity-50" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="white" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[88.89px] top-[5.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[42%] top-[12%]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[109.89px] top-[36.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[55%] top-[77%]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[127.89px] top-[9.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[68%] top-[20%]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[87.89px] top-[33.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[30%] top-[70%]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="#ACACAC" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[70.89px] top-[12.87px]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[18%] top-[26%]" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="#8C8C8C" filter="url(#sparkle_blur)" />
       </svg>
-      <svg className="absolute left-[12.89px] top-[29.87px]" width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
+      <svg className="absolute left-[85%] top-[62%]" width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
         <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#sparkle_blur)" />
       </svg>
       <span className="relative flex items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
