@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton, GlassSelect, ModeToggle } from '@/components/ui'
+import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton, GlassSelect, ModeToggle, SuccessSnackbar } from '@/components/ui'
 import type { GlassSelectOption } from '@/components/ui/GlassSelect'
 import { UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
@@ -23,6 +23,7 @@ export default function AccountsPage() {
   const [activeTab, setActiveTab] = useState(0)
   const [createModalOpen, setCreateModalOpen] = useState(false)
   const [processingOpen, setProcessingOpen] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -145,6 +146,12 @@ export default function AccountsPage() {
       <AccountProcessingModal
         open={processingOpen}
         onClose={() => setProcessingOpen(false)}
+        onComplete={() => setShowSuccess(true)}
+      />
+      <SuccessSnackbar
+        open={showSuccess}
+        message="Account created successfully"
+        onClose={() => setShowSuccess(false)}
       />
     </div>
   )

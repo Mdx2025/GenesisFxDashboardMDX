@@ -132,7 +132,7 @@ export function AccountProcessingModal({ open, onClose, onComplete }: AccountPro
         </div>
 
         <div className="absolute font-acid font-normal text-center left-0 right-0 top-[33%] text-[clamp(0.875rem,3.2vw,1.5rem)] text-gfx-neutral-500">
-          Processing Account Creation
+          Please wait while we set up your trading account
         </div>
 
         <div className="absolute left-[5.4%] right-[5.4%] top-[56.2%] h-[10px]">
@@ -155,7 +155,7 @@ export function AccountProcessingModal({ open, onClose, onComplete }: AccountPro
         </div>
 
         <div className="absolute font-acid font-normal text-center left-0 right-0 top-[74%] text-[clamp(0.625rem,2vw,1rem)] text-gfx-neutral-300 leading-normal">
-          Your account is being created. Please do<br/>not close this window or navigate away.
+          Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
       </div>
     </div>
