@@ -1,7 +1,7 @@
 import { useState, useRef, useLayoutEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
-import { GlowButton, GlassCard, GlassSelect, SparkleButton, WaveText } from '@/components/ui'
+import { GlowButton, GlassCard, GlassSelect, SparkleButton, WaveText, EmailVerificationSnackbar } from '@/components/ui'
 
 function useFadeIn() {
   const ref = useRef<HTMLDivElement>(null)
@@ -118,11 +118,20 @@ export default function RegisterPage() {
   const [accountType, setAccountType] = useState<'individual' | 'corporate'>('individual')
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [showEmailSnackbar, setShowEmailSnackbar] = useState(false)
+  const navigate = useNavigate()
 
   const totalSteps = 3
 
+  const handleCreateAccount = () => {
+    setShowEmailSnackbar(true)
+    setTimeout(() => navigate('/'), 5000)
+  }
+
   return (
     <div className="h-screen bg-[#000705] font-acid relative overflow-hidden">
+      <EmailVerificationSnackbar open={showEmailSnackbar} onClose={() => setShowEmailSnackbar(false)} />
+
       <div
         className="absolute rounded-full pointer-events-none"
         style={{ width: 699, height: 699, top: -311, right: -668, background: '#064b34', filter: 'blur(406px)' }}
@@ -144,8 +153,8 @@ export default function RegisterPage() {
         <div className="flex-1 flex flex-col items-center justify-center relative">
           {step === 1 && <Step1 accountType={accountType} setAccountType={setAccountType} onContinue={() => setStep(2)} totalSteps={totalSteps} />}
           {step === 2 && <Step2 accountType={accountType} showPassword={showPassword} setShowPassword={setShowPassword} showConfirmPassword={showConfirmPassword} setShowConfirmPassword={setShowConfirmPassword} onContinue={() => setStep(3)} onBack={() => setStep(1)} totalSteps={totalSteps} />}
-          {step === 3 && accountType === 'corporate' && <Step3Corporate onBack={() => setStep(2)} totalSteps={totalSteps} />}
-          {step === 3 && accountType === 'individual' && <Step3Personal onBack={() => setStep(2)} totalSteps={totalSteps} />}
+          {step === 3 && accountType === 'corporate' && <Step3Corporate onBack={() => setStep(2)} totalSteps={totalSteps} onCreateAccount={handleCreateAccount} />}
+          {step === 3 && accountType === 'individual' && <Step3Personal onBack={() => setStep(2)} totalSteps={totalSteps} onCreateAccount={handleCreateAccount} />}
 
           {/* Footer */}
           <div className="w-full absolute bottom-0 pl-15">
@@ -288,7 +297,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
   )
 }
 
-function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+function Step3Corporate({ onBack, totalSteps, onCreateAccount }: { onBack: () => void; totalSteps: number; onCreateAccount: () => void }) {
   const fadeRef = useFadeIn()
   const [companyName, setCompanyName] = useState('')
   const [regNumber, setRegNumber] = useState('')
@@ -317,7 +326,7 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
         </div>
 
         <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Create Account" width="100%" disabled={!isValid} />
+          <GlowButton label="Create Account" width="100%" disabled={!isValid} onClick={onCreateAccount} />
           <div className="w-full [&>button]:w-full">
             <SparkleButton onClick={onBack}>
               <ChevronRight className="rotate-180" />
@@ -335,7 +344,7 @@ function Step3Corporate({ onBack, totalSteps }: { onBack: () => void; totalSteps
   )
 }
 
-function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps: number }) {
+function Step3Personal({ onBack, totalSteps, onCreateAccount }: { onBack: () => void; totalSteps: number; onCreateAccount: () => void }) {
   const fadeRef = useFadeIn()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -366,7 +375,7 @@ function Step3Personal({ onBack, totalSteps }: { onBack: () => void; totalSteps:
         </div>
 
         <div className="w-full flex flex-col gap-[0.5rem]">
-          <GlowButton label="Create Account" width="100%" disabled={!isValid} />
+          <GlowButton label="Create Account" width="100%" disabled={!isValid} onClick={onCreateAccount} />
           <div className="w-full [&>button]:w-full">
             <SparkleButton onClick={onBack}>
               <ChevronRight className="rotate-180" />
