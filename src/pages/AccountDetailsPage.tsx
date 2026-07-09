@@ -219,7 +219,11 @@ export default function AccountDetailsPage() {
                   {i > 0 && <div className="h-px bg-[#09241C]" />}
                   <div className="flex items-center justify-between py-3.5">
                     <span className="text-gfx-neutral-300 text-[0.875rem]">{field.label}</span>
-                    <span className="text-white text-[0.875rem]">{details[field.key]}</span>
+                    {field.key === 'status' ? (
+                      <Badge variant="active">Active</Badge>
+                    ) : (
+                      <span className="text-white text-[0.875rem]">{details[field.key]}</span>
+                    )}
                   </div>
                 </div>
               ))}
