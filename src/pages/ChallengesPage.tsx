@@ -87,25 +87,24 @@ export default function ChallengesPage() {
           </div>
         </GlassBannerCard>
 
-        {/* Tabs + Actions Row */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="w-full max-w-[31rem]">
-            <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
-          </div>
+        {/* Tabs */}
+        <div className="w-full max-w-[31rem]">
+          <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
+        </div>
 
-          <div className="flex items-center gap-3 flex-wrap">
-            <SearchInput placeholder="Search for" />
-            <div className="flex items-center gap-3 ml-auto">
-              <GlowButton label="New Account" width={192} height={44} fontSize={16} />
-              <SparkleButton className="px-4">
-                <ShareIcon />
-                <span>Prize Pool</span>
-                <ChevronRightIcon />
-              </SparkleButton>
-              <button className="h-11 w-12 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors" aria-label="Filter">
-                <FilterIcon />
-              </button>
-            </div>
+        {/* Actions Row */}
+        <div className="flex items-center justify-between gap-4">
+          <SearchInput placeholder="Search for" />
+          <div className="flex items-center gap-3">
+            <GlowButton label="New Account" width={192} height={44} fontSize={16} />
+            <SparkleButton className="px-4">
+              <ShareIcon />
+              <span>Prize Pool</span>
+              <ChevronRightIcon />
+            </SparkleButton>
+            <button className="h-11 w-12 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors" aria-label="Filter">
+              <FilterIcon />
+            </button>
           </div>
         </div>
 
