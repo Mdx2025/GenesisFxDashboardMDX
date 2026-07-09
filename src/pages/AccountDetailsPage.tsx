@@ -69,7 +69,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
         style={{ transform: visible ? 'scale(1)' : 'scale(0.95)' }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] glass-card shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl overflow-hidden">
+        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] glass-card shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[400px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <button
             onClick={(e) => { e.stopPropagation(); onClose() }}
@@ -154,8 +154,8 @@ export default function AccountDetailsPage() {
         <SummaryCard title="Balance" value="$1,200.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Credit" value="$5,000.00" changeText="+$3,517.30" changeColor="red" />
         <SummaryCard title="Equity" value="$200.00" changeText="+12.4% this month" changeColor="green" />
-        <SummaryCard title="Open P&L" value="$1,500.00" changeText="+12.4% this month" changeColor="green" />
-        <SummaryCard title="Closed P&L" value="$700.00" changeText="+$3,517.30" changeColor="red" />
+        <SummaryCard title="Open P&L" value="$1,500.00" valueColor="green" changeText="+12.4% this month" changeColor="green" />
+        <SummaryCard title="Closed P&L" value="$700.00" valueColor="red" changeText="+$3,517.30" changeColor="red" />
         </div>
       </div>
 
@@ -249,7 +249,7 @@ export default function AccountDetailsPage() {
             <GlassInput label="Account Name" placeholder={account.username} />
           </div>
           <div className="flex items-center gap-4 mt-8">
-            <SparkleButton onClick={() => setEditModal(false)}>Cancel</SparkleButton>
+            <SparkleButton className="px-12" onClick={() => setEditModal(false)}>Cancel</SparkleButton>
             <GlowButton label="Save Changes" width={171} height={44} fontSize={16} onClick={() => setEditModal(false)} />
           </div>
         </div>
@@ -280,7 +280,7 @@ export default function AccountDetailsPage() {
             </ul>
           </div>
           <div className="flex items-center gap-4 mt-8">
-            <SparkleButton onClick={() => setPasswordModal(false)}>Cancel</SparkleButton>
+            <SparkleButton className="px-12" onClick={() => setPasswordModal(false)}>Cancel</SparkleButton>
             <GlowButton label="Save Changes" width={171} height={44} fontSize={16} onClick={() => setPasswordModal(false)} />
           </div>
         </div>
@@ -315,7 +315,7 @@ export default function AccountDetailsPage() {
             />
           </div>
           <div className="flex items-center gap-4 mt-8">
-            <SparkleButton onClick={() => setLeverageModal(false)}>Cancel</SparkleButton>
+            <SparkleButton className="px-12" onClick={() => setLeverageModal(false)}>Cancel</SparkleButton>
             <GlowButton label="Save Changes" width={171} height={44} fontSize={16} onClick={() => setLeverageModal(false)} />
           </div>
         </div>
