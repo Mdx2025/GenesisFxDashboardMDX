@@ -11,6 +11,7 @@ import NewsPage from '@/pages/NewsPage'
 import AccountsPage from '@/pages/AccountsPage'
 import AccountDetailsPage from '@/pages/AccountDetailsPage'
 import ChallengesPage from '@/pages/ChallengesPage'
+import JournalPage from '@/pages/JournalPage'
 import {
   DashboardIcon, AssetsIcon, DepositIcon, WithdrawIcon,
   UserIcon, AcademyIcon, TradelockerIcon, MarketNewsIcon, ChallengesIcon,
@@ -35,6 +36,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/news', label: 'Market News', description: 'Latest financial news and market analysis', icon: MarketNewsIcon, component: NewsPage },
   { path: '/tradelocker/accounts', label: 'Accounts', description: 'TradeLocker trading accounts overview', icon: TradelockerIcon, component: AccountsPage },
   { path: '/tradelocker/accounts/:accountId', label: 'Account Details', description: 'Individual trading account details', icon: TradelockerIcon, component: AccountDetailsPage, showInDirectory: false },
+  { path: '/tradelocker/journal', label: 'Journal', description: 'Track and analyze your trading performance', icon: TradelockerIcon, component: JournalPage },
   { path: '/challenges', label: '10X Challenges', description: 'Prove your skill and level up your capital', icon: ChallengesIcon, component: ChallengesPage },
   { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon, component: AcademyPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
