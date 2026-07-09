@@ -147,18 +147,26 @@ export function TradingCalendar() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="text-[#A0A0A0] text-[0.875rem] font-medium">Monthly stats:</span>
+          <div className="flex items-center gap-4">
+            <span className="text-white text-[1.125rem] font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
-              <div className="px-[18px] py-1 rounded-full bg-[#0C1311] border border-[#064B34]">
-                <span className={`text-[0.75rem] ${monthTotal >= 0 ? 'text-[#00B38C]' : 'text-[#D46356]'}`}>
+              <div className="px-5 py-2 rounded-full bg-[#0C1311] border border-[#064B34]">
+                <span className={`text-[0.875rem] ${monthTotal >= 0 ? 'text-[#00B38C]' : 'text-[#D46356]'}`}>
                   {monthTotal >= 0 ? '+' : ''}${Math.abs(monthTotal).toFixed(2)}
                 </span>
               </div>
-              <div className="px-[18px] py-1 rounded-full bg-[#0C1311] border border-[#064B34]">
-                <span className="text-[0.75rem] text-[#ECECEC]">{tradingDays} days</span>
+              <div className="px-5 py-2 rounded-full bg-[#0C1311] border border-[#064B34]">
+                <span className="text-[0.875rem] text-[#ECECEC]">{tradingDays} days</span>
               </div>
             </div>
+            <button className="w-12 h-12 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center justify-center cursor-pointer hover:border-[#00B38C] transition-colors" aria-label="Share">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <circle cx="18" cy="5" r="3" stroke="white" strokeWidth="2"/>
+                <circle cx="6" cy="12" r="3" stroke="white" strokeWidth="2"/>
+                <circle cx="18" cy="19" r="3" stroke="white" strokeWidth="2"/>
+                <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="white" strokeWidth="2"/>
+              </svg>
+            </button>
             <InfoIcon />
           </div>
         </div>
