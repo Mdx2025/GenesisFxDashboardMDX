@@ -1,6 +1,15 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
+
+function UserRoundedSmallIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+      <ellipse cx="16" cy="10" rx="5.5" ry="5.5" fill="white"/>
+      <ellipse cx="16" cy="25" rx="9.5" ry="5.5" fill="white"/>
+    </svg>
+  )
+}
 import { ChallengesIcon } from '@/components/icons'
 
 function TrophyIcon() {
@@ -87,24 +96,22 @@ export default function ChallengesPage() {
           </div>
         </GlassBannerCard>
 
-        {/* Tabs */}
-        <div className="w-full max-w-[31rem]">
-          <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
-        </div>
-
-        {/* Actions Row */}
+        {/* Tabs + Actions Row */}
         <div className="flex items-center justify-between gap-4">
-          <SearchInput placeholder="Search for" />
+          <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
           <div className="flex items-center gap-3">
-            <GlowButton label="New Account" width={192} height={44} fontSize={16} />
-            <SparkleButton className="px-4">
-              <ShareIcon />
-              <span>Prize Pool</span>
-              <ChevronRightIcon />
-            </SparkleButton>
-            <button className="h-11 w-12 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors" aria-label="Filter">
+            <SearchInput placeholder="Search for" />
+            <button className="h-11 w-11 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
               <FilterIcon />
             </button>
+            <SparkleButton className="px-4">
+              <ChallengesIcon size={16} color="white" />
+              <span>Prize Pool</span>
+            </SparkleButton>
+            <SparkleButton className="px-4">
+              <UserRoundedSmallIcon />
+              <span>New Account</span>
+            </SparkleButton>
           </div>
         </div>
 
