@@ -98,7 +98,9 @@ export default function ChallengesPage() {
 
         {/* Tabs + Actions Row */}
         <div className="flex items-center justify-between gap-4">
-          <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
+          <div className="w-md">
+            <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
+          </div>
           <div className="flex items-center gap-3">
             <SearchInput placeholder="Search for" />
             <button className="h-11 w-11 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
@@ -108,10 +110,7 @@ export default function ChallengesPage() {
               <ChallengesIcon size={16} color="white" />
               <span>Prize Pool</span>
             </SparkleButton>
-            <SparkleButton className="px-4">
-              <UserRoundedSmallIcon />
-              <span>New Account</span>
-            </SparkleButton>
+            <GlowButton label="New Account" width={192} height={44} fontSize={16} />
           </div>
         </div>
 
