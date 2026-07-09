@@ -150,12 +150,12 @@ export function TradingCalendar() {
           <div className="flex items-center gap-4">
             <span className="text-white text-[1.125rem] font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
-              <div className="px-5 py-2 rounded-full bg-[#0C1311] border border-[#064B34]">
+              <div className="px-5 py-1 rounded-full bg-[#0C1311] border border-[#064B34]">
                 <span className={`text-[0.875rem] ${monthTotal >= 0 ? 'text-[#00B38C]' : 'text-[#D46356]'}`}>
                   {monthTotal >= 0 ? '+' : ''}${Math.abs(monthTotal).toFixed(2)}
                 </span>
               </div>
-              <div className="px-5 py-2 rounded-full bg-[#0C1311] border border-[#064B34]">
+              <div className="px-5 py-1 rounded-full bg-[#0C1311] border border-[#064B34]">
                 <span className="text-[0.875rem] text-[#ECECEC]">{tradingDays} days</span>
               </div>
             </div>
