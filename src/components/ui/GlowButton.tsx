@@ -1,7 +1,8 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, type ReactNode } from 'react'
 
 interface GlowButtonProps {
   label?: string
+  icon?: ReactNode
   width?: number | string
   height?: number
   radius?: number
@@ -32,6 +33,7 @@ export function GlowButton({
   textColor = '#000000',
   fontSize = 16,
   fontWeight = 500,
+  icon,
   onClick,
   disabled = false,
 }: GlowButtonProps) {
@@ -109,6 +111,7 @@ export function GlowButton({
           background: `linear-gradient(${surfaceAngle}deg, ${surface[0]} 18%, ${surface[1]} 64%, ${surface[2]} 80%)`,
         }} /* dynamic */
       >
+        {icon && <span className="flex items-center mr-2">{icon}</span>}
         {label}
       </button>
     </div>
