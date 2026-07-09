@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard } from '@/components/ui'
+import { GlassCard, SparkleButton } from '@/components/ui'
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -159,14 +159,14 @@ export function TradingCalendar() {
                 <span className="text-[0.875rem] text-[#ECECEC]">{tradingDays} days</span>
               </div>
             </div>
-            <button className="w-12 h-12 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center justify-center cursor-pointer hover:border-[#00B38C] transition-colors" aria-label="Share">
+            <SparkleButton className="px-4">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <circle cx="18" cy="5" r="3" stroke="white" strokeWidth="2"/>
                 <circle cx="6" cy="12" r="3" stroke="white" strokeWidth="2"/>
                 <circle cx="18" cy="19" r="3" stroke="white" strokeWidth="2"/>
                 <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="white" strokeWidth="2"/>
               </svg>
-            </button>
+            </SparkleButton>
             <InfoIcon />
           </div>
         </div>
