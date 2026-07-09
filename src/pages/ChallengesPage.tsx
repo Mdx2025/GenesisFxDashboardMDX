@@ -95,15 +95,17 @@ export default function ChallengesPage() {
 
           <div className="flex items-center gap-3 flex-wrap">
             <SearchInput placeholder="Search for" />
-            <GlowButton label="New Account" width={192} height={44} fontSize={16} />
-            <SparkleButton className="px-4">
-              <ShareIcon />
-              <span>Prize Pool</span>
-              <ChevronRightIcon />
-            </SparkleButton>
-            <button className="h-11 w-12 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors" aria-label="Filter">
-              <FilterIcon />
-            </button>
+            <div className="flex items-center gap-3 ml-auto">
+              <GlowButton label="New Account" width={192} height={44} fontSize={16} />
+              <SparkleButton className="px-4">
+                <ShareIcon />
+                <span>Prize Pool</span>
+                <ChevronRightIcon />
+              </SparkleButton>
+              <button className="h-11 w-12 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors" aria-label="Filter">
+                <FilterIcon />
+              </button>
+            </div>
           </div>
         </div>
 
