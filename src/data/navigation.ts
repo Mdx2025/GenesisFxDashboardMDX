@@ -14,7 +14,7 @@ export const navItems: NavItem[] = [
   { id: 'tradelocker', label: 'Tradelocker', icon: 'tradelocker', href: '#', submenu: [
     { label: 'Accounts', href: '/tradelocker/accounts' },
     { label: 'Journal', href: '/tradelocker/journal' },
-    { label: 'Platforms', href: '/tradelocker/platforms' },
+    { label: 'Platforms', href: '/tradelocker/accounts?tab=platforms' },
   ]},
   { id: 'challenges', label: '10x Challenges', icon: 'challenges', href: '/challenges' },
   { id: 'gensocial', label: 'GenSocial', icon: 'gensocial', href: '#', submenu: [
