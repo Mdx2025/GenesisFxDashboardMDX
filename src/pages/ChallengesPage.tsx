@@ -1,6 +1,6 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
 import { ChallengesIcon } from '@/components/icons'
 
 function TrophyIcon() {
@@ -68,35 +68,24 @@ export default function ChallengesPage() {
         <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
 
         {/* Hero Banner */}
-        <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-          <div className="absolute -left-[72px] top-[60%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)] will-change-transform opacity-60" aria-hidden="true" />
-          <div className="absolute right-0 top-0 w-[493px] h-[278px] rounded-full pointer-events-none bg-[#0C1311] [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+        <GlassBannerCard contentClassName="flex items-center justify-between p-6 xl:p-8 min-h-[16rem]">
+          <div className="flex flex-col gap-3">
+            <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
+            <p className="text-[#808080] text-body2">
+              Turn $125 into $1,000,000 — prove your skill, level up your capital
+            </p>
+          </div>
 
-          <div className="relative z-10 flex items-center justify-between p-6 xl:p-8 min-h-[16rem]">
-            <div className="flex flex-col gap-3">
-              <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
-              <p className="text-[#808080] text-body2">
-                Turn $125 into $1,000,000 — prove your skill, level up your capital
-              </p>
+          <div className="flex items-center gap-4 bg-[#09241C] rounded-[30px] px-6 py-4">
+            <div className="w-[98px] h-[98px] rounded-xl bg-[#064B34] flex items-center justify-center">
+              <TrophyIcon />
             </div>
-
-            <div className="flex items-center gap-6">
-              {/* Decorative texture area */}
-              <div className="hidden xl:block w-[300px] h-[180px] rounded-full opacity-20 bg-gradient-to-br from-[#064B34] to-transparent" aria-hidden="true" />
-
-              {/* Counter card */}
-              <div className="flex items-center gap-4 bg-[#09241C] rounded-[30px] px-6 py-4">
-                <div className="w-[98px] h-[98px] rounded-xl bg-[#064B34] flex items-center justify-center">
-                  <TrophyIcon />
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <span className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">0</span>
-                  <span className="text-[#808080] text-[1rem] font-medium">My challenges</span>
-                </div>
-              </div>
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">0</span>
+              <span className="text-[#808080] text-[1rem] font-medium">My challenges</span>
             </div>
           </div>
-        </GlassCard>
+        </GlassBannerCard>
 
         {/* Tabs + Actions Row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
