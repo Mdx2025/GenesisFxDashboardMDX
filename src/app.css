@@ -239,6 +239,10 @@
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
 
+.modal-scroll-green::-webkit-scrollbar { width: 4px; }
+.modal-scroll-green::-webkit-scrollbar-track { background: #09241c; border-radius: 60px; }
+.modal-scroll-green::-webkit-scrollbar-thumb { background: #00b38c; border-radius: 60px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

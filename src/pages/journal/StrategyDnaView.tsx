@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { GlassCard } from '@/components/ui'
 import {
   traderPassport,
   dnaStats,
@@ -271,20 +272,22 @@ function StatCard({ stat }: { stat: DnaStat }) {
   const valueColor = stat.color === 'purple' ? '#c8afff' : '#ffb400'
 
   return (
-    <div className="bg-[#090414] border border-[#2d1f4b] rounded-[20px] h-[133px] p-[22px] flex flex-col justify-between">
-      <span className="text-[12px] text-[#808080] uppercase tracking-[2.3px] font-acid font-bold">
-        {stat.label}
-      </span>
-      <div className="flex items-baseline gap-0.5">
-        <span className="text-[36px] font-acid" style={{ color: valueColor }}>
-          {stat.value}
+    <GlassCard variant="light" divider="none" rounded="20px" className="h-[133px] overflow-hidden">
+      <div className="p-[22px] h-full flex flex-col justify-between">
+        <span className="text-[12px] text-[#808080] uppercase tracking-[2.3px] font-acid font-bold">
+          {stat.label}
         </span>
-        {stat.unit && (
-          <span className="text-[16px] text-[#808080] font-acid">{stat.unit}</span>
-        )}
+        <div className="flex items-baseline gap-0.5">
+          <span className="text-[36px] font-acid" style={{ color: valueColor }}>
+            {stat.value}
+          </span>
+          {stat.unit && (
+            <span className="text-[16px] text-[#808080] font-acid">{stat.unit}</span>
+          )}
+        </div>
+        <span className="text-[12px] text-[#808080] font-acid">{stat.peer}</span>
       </div>
-      <span className="text-[12px] text-[#808080] font-acid">{stat.peer}</span>
-    </div>
+    </GlassCard>
   )
 }
 
@@ -309,48 +312,52 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
   else if (trait.barColor === 'orange') barBg = '#f2994a'
 
   return (
-    <div className="bg-[#090414] border border-[#2d1f4b] rounded-[14px] h-[104px] p-4 flex flex-col justify-between">
-      <div className="flex items-center gap-2">
-        <Icon />
-        <span className="text-[12px] text-[#948aa3] uppercase tracking-wider font-acid">{trait.name}</span>
+    <GlassCard variant="light" divider="none" rounded="14px" className="h-[104px] overflow-hidden">
+      <div className="p-4 h-full flex flex-col justify-between">
+        <div className="flex items-center gap-2">
+          <Icon />
+          <span className="text-[12px] text-[#948aa3] uppercase tracking-wider font-acid">{trait.name}</span>
+        </div>
+        <div className="flex items-baseline gap-0.5">
+          <span className="text-[24px] text-white font-acid">{trait.value}</span>
+          <span className="text-[12px] text-[#808080] font-acid">/100</span>
+        </div>
+        <div className="w-full h-[5px] rounded-full bg-[#2d1f4b] overflow-hidden">
+          {trait.barColor !== 'none' && (
+            <div
+              className="h-full rounded-full"
+              style={{ width: `${pct}%`, background: barBg }}
+            />
+          )}
+        </div>
       </div>
-      <div className="flex items-baseline gap-0.5">
-        <span className="text-[24px] text-white font-acid">{trait.value}</span>
-        <span className="text-[12px] text-[#808080] font-acid">/100</span>
-      </div>
-      <div className="w-full h-[5px] rounded-full bg-[#2d1f4b] overflow-hidden">
-        {trait.barColor !== 'none' && (
-          <div
-            className="h-full rounded-full"
-            style={{ width: `${pct}%`, background: barBg }}
-          />
-        )}
-      </div>
-    </div>
+    </GlassCard>
   )
 }
 
 function TraderTraitsCard() {
   return (
-    <div className="bg-[#090414] border border-[#2d1f4b] rounded-[20px] p-6 flex flex-col gap-5">
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <SectionPillIcon>
-          <TraitPillIcon />
-        </SectionPillIcon>
-        <div className="flex flex-col">
-          <span className="text-[16px] text-white font-acid font-medium">Trader Traits</span>
-          <span className="text-[12px] text-[#808080] font-acid">Core strengths &amp; weaknesses</span>
+    <GlassCard variant="light" divider="none" rounded="20px" className="overflow-hidden">
+      <div className="p-6 flex flex-col gap-5">
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <SectionPillIcon>
+            <TraitPillIcon />
+          </SectionPillIcon>
+          <div className="flex flex-col">
+            <span className="text-[16px] text-white font-acid font-medium">Trader Traits</span>
+            <span className="text-[12px] text-[#808080] font-acid">Core strengths &amp; weaknesses</span>
+          </div>
+        </div>
+
+        {/* 4 trait cards */}
+        <div className="grid grid-cols-4 gap-4">
+          {traderTraits.map((trait, i) => (
+            <TraitBar key={i} trait={trait} />
+          ))}
         </div>
       </div>
-
-      {/* 4 trait cards */}
-      <div className="grid grid-cols-4 gap-4">
-        {traderTraits.map((trait, i) => (
-          <TraitBar key={i} trait={trait} />
-        ))}
-      </div>
-    </div>
+    </GlassCard>
   )
 }
 
@@ -387,7 +394,8 @@ function StyleProgressRow({ row, variant }: { row: StyleRow; variant: 'purple' |
 
 function StyleCompositionCard() {
   return (
-    <div className="bg-[#090414] border border-[#2d1f4b] rounded-[20px] p-6 flex flex-col gap-5">
+    <GlassCard variant="light" divider="none" rounded="20px" className="overflow-hidden">
+      <div className="p-6 flex flex-col gap-5">
       {/* Header */}
       <div className="flex items-center gap-3">
         <SectionPillIcon>
@@ -417,7 +425,8 @@ function StyleCompositionCard() {
           ))}
         </div>
       </div>
-    </div>
+      </div>
+    </GlassCard>
   )
 }
 
@@ -425,37 +434,39 @@ function StyleCompositionCard() {
 
 function AiStrategySummaryCard() {
   return (
-    <div className="bg-[#090414] border border-[#2d1f4b] rounded-[20px] p-6 flex flex-col gap-5">
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <SectionPillIcon>
-          <SubtitlesIcon />
-        </SectionPillIcon>
-        <div className="flex flex-col flex-1">
-          <span className="text-[16px] text-white font-acid font-medium">AI Strategy Summary</span>
-          <span className="text-[12px] text-[#808080] font-acid">Personalized analysis of your trading DNA</span>
+    <GlassCard variant="light" divider="none" rounded="20px" className="overflow-hidden">
+      <div className="p-6 flex flex-col gap-5">
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <SectionPillIcon>
+            <SubtitlesIcon />
+          </SectionPillIcon>
+          <div className="flex flex-col flex-1">
+            <span className="text-[16px] text-white font-acid font-medium">AI Strategy Summary</span>
+            <span className="text-[12px] text-[#808080] font-acid">Personalized analysis of your trading DNA</span>
+          </div>
+          <span className="px-3 py-1 rounded-full bg-[#422e6d] border border-[#8163c5] text-[#c8afff] text-[12px] font-acid font-bold">
+            AI
+          </span>
         </div>
-        <span className="px-3 py-1 rounded-full bg-[#422e6d] border border-[#8163c5] text-[#c8afff] text-[12px] font-acid font-bold">
-          AI
-        </span>
-      </div>
 
-      {/* Body */}
-      <p
-        className="text-[#808080] leading-[24px]"
-        style={{ fontSize: '14.5px', fontFamily: 'Inter, sans-serif' }}
-      >
-        {aiStrategySummary}
-      </p>
+        {/* Body */}
+        <p
+          className="text-[#808080] leading-[24px]"
+          style={{ fontSize: '14.5px', fontFamily: 'Inter, sans-serif' }}
+        >
+          {aiStrategySummary}
+        </p>
 
-      {/* AI Coach button */}
-      <div className="flex justify-end">
-        <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(168,85,247,0.16)] border border-[rgba(168,85,247,0.4)] cursor-pointer hover:opacity-90 transition-opacity">
-          <AiCoachSmallIcon />
-          <span className="text-[12px] text-[#c8afff] font-acid">AI Coach</span>
-        </button>
+        {/* AI Coach button */}
+        <div className="flex justify-end">
+          <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(168,85,247,0.16)] border border-[rgba(168,85,247,0.4)] cursor-pointer hover:opacity-90 transition-opacity">
+            <AiCoachSmallIcon />
+            <span className="text-[12px] text-[#c8afff] font-acid">AI Coach</span>
+          </button>
+        </div>
       </div>
-    </div>
+    </GlassCard>
   )
 }
 

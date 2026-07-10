@@ -83,8 +83,11 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           <CloseIcon />
         </button>
 
-        {/* Scrollable content */}
-        <div className="relative overflow-y-auto max-h-[90vh] scrollbar-hide px-[123px] pt-[35px] pb-[50px]">
+        {/* Scrollable content with custom green scrollbar */}
+        <div
+          className="relative overflow-y-auto max-h-[90vh] modal-scroll-green px-[123px] pt-[35px] pb-[50px]"
+          style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
+        >
           {/* Title */}
           <h2 className="text-white text-[50px] font-acid font-normal text-center mt-[40px]">
             New Note
