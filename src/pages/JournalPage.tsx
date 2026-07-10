@@ -6,6 +6,7 @@ import { ChevronRightIcon } from '@/components/icons'
 import { weeklyStats, recentTrades, highImpactNews, journalStats, journalTabs } from '@/data/journal'
 import type { DayStatCard, RecentTrade, NewsEvent } from '@/data/journal'
 import StatisticsView from '@/pages/journal/StatisticsView'
+import StrategyDnaView from '@/pages/journal/StrategyDnaView'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -413,6 +414,7 @@ export default function JournalPage() {
         )}
 
         {activeTab === 1 && <StatisticsView />}
+        {activeTab === 2 && <StrategyDnaView />}
 
       </div>
     </div>
