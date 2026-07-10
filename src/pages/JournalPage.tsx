@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, GreenDot } from '@/components/ui'
+import { GlassCard, SparkleButton, GreenDot, ModeToggle } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { weeklyStats, recentTrades, highImpactNews, journalStats, journalTabs } from '@/data/journal'
 import type { DayStatCard, RecentTrade, NewsEvent } from '@/data/journal'
@@ -293,7 +293,7 @@ function StatCard({ label, children }: { label: string; children: React.ReactNod
 
 export default function JournalPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeTab, setActiveTab] = useState<string>('Overview')
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -335,20 +335,13 @@ export default function JournalPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-1">
-          {journalTabs.map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`h-10 px-5 rounded-full text-[14px] font-acid font-medium transition-colors cursor-pointer ${
-                activeTab === tab
-                  ? 'bg-gfx-green-500 text-white'
-                  : 'bg-transparent text-gfx-neutral-500 hover:text-white'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+        <div className="max-w-3xl">
+          <ModeToggle
+            options={[...journalTabs]}
+            defaultIndex={0}
+            activeIndex={activeTab}
+            onChange={setActiveTab}
+          />
         </div>
 
         {/* Weekly Stats Carousel */}
