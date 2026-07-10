@@ -27,8 +27,18 @@
   --color-gfx-neutral-300: #606060;
   --color-gfx-neutral-500: #A0A0A0;
 
+  --color-gfx-green-300: #00B38C;
+  --color-gfx-green-800: #0C1311;
+  --color-gfx-green-900: #09241C;
+
+  --color-gfx-neutral-200: #2F2F2F;
+  --color-gfx-neutral-400: #808080;
+  --color-gfx-neutral-600: #ECECEC;
+
   --color-gfx-red: #ff717e;
   --color-gfx-red-dark: #ff4d6a;
+  --color-gfx-red-muted: #D46356;
+  --color-gfx-red-surface: #2A1411;
   --color-gfx-amber: #e29d58;
 
   /* Semantic surface tokens */

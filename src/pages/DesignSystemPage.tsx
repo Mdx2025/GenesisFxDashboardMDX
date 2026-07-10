@@ -3,6 +3,7 @@ import {
   SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
   FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard, FaqCard,
+  TradingCalendar,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -28,6 +29,7 @@ const sections = [
   { id: 'navigation', label: 'Navigation' },
   { id: 'forms', label: 'Form Components' },
   { id: 'charts', label: 'Charts' },
+  { id: 'calendar', label: 'Calendar' },
   { id: 'data-display', label: 'Data Display' },
   { id: 'feedback', label: 'Feedback States' },
   { id: 'accessibility', label: 'Accessibility' },
@@ -548,6 +550,30 @@ export default function DesignSystemPage() {
                 <AreaChart color="#5b9cf5" />
               </GlassCard>
             </div>
+          </Subsection>
+        </Section>
+
+        {/* Calendar */}
+        <Section id="calendar" title="Calendar">
+          <Subsection title="Trading Calendar — TradingCalendar">
+            <TradingCalendar
+              trades={{
+                '2026-6-1': { profit: 12.50, trades: 3 },
+                '2026-6-4': { profit: -8.00, trades: 3 },
+                '2026-6-8': { profit: -16.00, trades: 3 },
+                '2026-6-10': { profit: 25.00, trades: 5 },
+                '2026-6-15': { profit: -16.00, trades: 3 },
+                '2026-6-18': { profit: 45.75, trades: 7 },
+                '2026-6-22': { profit: -16.00, trades: 3 },
+                '2026-6-24': { profit: 12.50, trades: 3 },
+                '2026-6-29': { profit: 12.50, trades: 3 },
+              }}
+              initialYear={2026}
+              initialMonth={6}
+            />
+            <p className="text-caption text-gfx-neutral-300 mt-3">
+              Monthly calendar with daily P&amp;L indicators. Accepts trade data via props. Navigate months with arrows.
+            </p>
           </Subsection>
         </Section>
 

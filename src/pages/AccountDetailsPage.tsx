@@ -2,14 +2,23 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, Badge, GreenDot, SparkleButton, GlowButton, GlassSelect, GlassInput } from '@/components/ui'
+import { GlassCard, Badge, GreenDot, SparkleButton, GlowButton, GlassSelect, GlassInput, TradingCalendar } from '@/components/ui'
 import { DepositIcon, ChevronDownIcon } from '@/components/icons'
 import { SummaryCard } from '@/components/dashboard/SummaryCard'
-import { TradingCalendar } from '@/components/accounts/TradingCalendar'
 import { TransactionsPanel } from '@/components/accounts/TransactionsPanel'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { tradingAccounts } from '@/data/trading-accounts'
 import { GLOW_GREEN, GLOW_RED } from '@/constants/colors'
+
+const MOCK_CALENDAR_TRADES: Record<string, { profit: number; trades: number }> = {
+  '2026-3-1': { profit: 12.50, trades: 3 },
+  '2026-3-4': { profit: -8.00, trades: 3 },
+  '2026-3-8': { profit: -16.00, trades: 3 },
+  '2026-3-15': { profit: -16.00, trades: 3 },
+  '2026-3-22': { profit: -16.00, trades: 3 },
+  '2026-3-24': { profit: 12.50, trades: 3 },
+  '2026-3-29': { profit: 12.50, trades: 3 },
+}
 
 const ACCOUNT_DETAILS_FIELDS = [
   { label: 'Account Number', key: 'account' },
@@ -234,7 +243,7 @@ export default function AccountDetailsPage() {
 
       {/* Trading Calendar */}
       <div className="mt-6 3xl:mt-8">
-        <TradingCalendar />
+        <TradingCalendar trades={MOCK_CALENDAR_TRADES} initialYear={2026} initialMonth={3} />
       </div>
 
       {/* Transactions Panel */}
