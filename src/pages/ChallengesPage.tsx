@@ -676,7 +676,7 @@ export default function ChallengesPage() {
               <PrizePoolTrophyIcon />
               <span>Prize Pool</span>
             </SparkleButton>
-            <GlowButton label="New Account" width={192} height={44} fontSize={16} icon={<NewAccountUserIconDark />} />
+            <GlowButton label="New Account" width={192} height={44} fontSize={16} icon={<NewAccountUserIconDark />} onClick={() => setStartChallengeOpen(true)} />
           </div>
         </div>
         </div>
