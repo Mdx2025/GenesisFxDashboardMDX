@@ -4,6 +4,7 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { ModeToggle } from '@/components/ui'
 import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
+import TradeSessionsView from '@/pages/news/TradeSessionsView'
 
 const TABS = ['Terminal', 'Market News', 'Daily News', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
 const NEWS_CHANNELS = ['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
@@ -466,6 +467,9 @@ export default function NewsPage() {
 
         {/* Economic Calendar Tab (index 3) */}
         {activeTab === 3 && <EconomicCalendarView />}
+
+        {/* Trade Sessions Tab (index 4) */}
+        {activeTab === 4 && <TradeSessionsView />}
       </div>
     </div>
   )
