@@ -519,7 +519,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[85%]">
+      <div ref={modalRef} className="relative w-[75%]">
         {/* Background layer */}
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-[18.56px] bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
@@ -528,31 +528,31 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
           <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-[#064B34] rounded-full blur-[157px]" />
         </div>
 
-        {/* Close button */}
-        <button
-          onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[1.5rem] top-[1.5rem] w-[1.5rem] h-[1.5rem]"
-          aria-label="Close modal"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-
         <div className="relative z-10 px-8 pt-8 pb-10">
           {/* Header row */}
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-white font-acid font-normal text-[2.25rem] leading-none">
               Start your 10x Challenge
             </h2>
-            <button
-              type="button"
-              className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
-            >
-              <NotebookIcon />
-              <span>Rules</span>
-            </button>
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
+              >
+                <NotebookIcon />
+                <span>Rules</span>
+              </button>
+              <button
+                onClick={handleClose}
+                className="cursor-pointer hover:opacity-70 transition-opacity w-[1.5rem] h-[1.5rem]"
+                aria-label="Close modal"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Two panels */}
