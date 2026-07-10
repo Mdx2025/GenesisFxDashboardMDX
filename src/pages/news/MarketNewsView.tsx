@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { GlassCard } from '@/components/ui'
 import { heroArticle, secondaryArticles, listArticles } from '@/data/marketNews'
 import type { NewsArticle } from '@/data/marketNews'
@@ -151,32 +150,9 @@ function ListCard({ article }: { article: NewsArticle }) {
   )
 }
 
-/* ─── Pagination ─── */
-
-function Pagination({ current, total }: { current: number; total: number }) {
-  return (
-    <div className="flex items-center justify-center gap-4 mt-2">
-      {Array.from({ length: total }, (_, i) => i + 1).map(page => (
-        <button
-          key={page}
-          className={`w-[45px] h-[45px] rounded-full flex items-center justify-center text-[24px] font-acid cursor-pointer transition-colors ${
-            page === current
-              ? 'bg-[#09241c] text-[#ececec]'
-              : 'text-[#ececec] hover:bg-white/5'
-          }`}
-        >
-          {page}
-        </button>
-      ))}
-    </div>
-  )
-}
-
 /* ─── Main Component ─── */
 
 export default function MarketNewsView() {
-  const [currentPage] = useState(1)
-
   return (
     <div className="flex flex-col gap-4">
       {/* Hero Article */}
@@ -189,11 +165,8 @@ export default function MarketNewsView() {
         ))}
       </div>
 
-      {/* Pagination for featured */}
-      <Pagination current={1} total={3} />
-
       {/* More Stories */}
-      <h3 className="text-white text-[24px] font-acid font-normal mt-4 ml-[70px]">More stories</h3>
+      <h3 className="text-white text-[24px] font-acid font-normal mt-4">More stories</h3>
 
       {/* List Articles */}
       <div className="flex flex-col gap-4">
@@ -201,9 +174,6 @@ export default function MarketNewsView() {
           <ListCard key={article.id} article={article} />
         ))}
       </div>
-
-      {/* List Pagination */}
-      <Pagination current={currentPage} total={3} />
     </div>
   )
 }
