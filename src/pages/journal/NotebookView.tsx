@@ -132,12 +132,14 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
       </GlassCard>
 
       {/* Folder Tabs — ModeToggle */}
-      <ModeToggle
-        options={[...notebookFolders]}
-        defaultIndex={0}
-        activeIndex={activeFolder}
-        onChange={setActiveFolder}
-      />
+      <div className="max-w-3xl">
+        <ModeToggle
+          options={[...notebookFolders]}
+          defaultIndex={0}
+          activeIndex={activeFolder}
+          onChange={setActiveFolder}
+        />
+      </div>
 
       {/* Notes Grid */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
