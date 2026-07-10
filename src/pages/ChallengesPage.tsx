@@ -354,7 +354,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           </svg>
         </button>
 
-        <div className="relative z-10 px-15 pt-12 pb-10">
+        <div className="relative z-10 px-15 py-20">
           {/* Header: Title + April 2026 badge + How it works */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
