@@ -467,7 +467,9 @@ export default function StrategyDnaView() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[520px_1fr] gap-6">
       {/* LEFT — Trader Passport */}
-      <TraderPassportCard />
+      <div className="h-fit">
+        <TraderPassportCard />
+      </div>
 
       {/* RIGHT — Stats, Traits, Composition, AI Summary */}
       <div className="flex flex-col gap-6">
