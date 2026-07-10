@@ -119,31 +119,33 @@ function SecondaryCard({ article }: { article: NewsArticle }) {
 function ListCard({ article }: { article: NewsArticle }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="relative p-6 h-[245px] flex flex-col justify-center">
-        {/* Date + icon top-right */}
-        <div className="absolute top-6 right-6 flex items-center gap-2">
-          <span className="text-[#a0a0a0] text-[16px] font-acid font-medium">{article.date}</span>
+      <div className="flex justify-between items-start p-6 h-[245px]">
+        {/* Left content */}
+        <div className="flex flex-col justify-center h-full flex-1 min-w-0 pr-6">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-[#00b38c] text-[16px] font-acid font-medium">{article.category}</span>
+            {article.countryCode && (
+              <>
+                <span className="text-[#ececec] text-[16px] font-acid">{article.countryCode}</span>
+                <span className="text-[#ececec] text-[16px] font-acid">{article.countryName}</span>
+              </>
+            )}
+          </div>
+
+          <h4 className="text-white text-[24px] font-acid font-normal leading-[1.2]">{article.title}</h4>
+
+          <p className="text-[#808080] text-[16px] font-acid font-medium mt-3 leading-[1.5] max-w-[1115px]">
+            {article.description}
+          </p>
+        </div>
+
+        {/* Date + icon right */}
+        <div className="shrink-0 flex items-center gap-2">
+          <span className="text-[#a0a0a0] text-[16px] font-acid font-medium whitespace-nowrap">{article.date}</span>
           <button className="hover:opacity-80 transition-opacity cursor-pointer">
             <CornerArrowIcon />
           </button>
         </div>
-
-        {/* Category + Country */}
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-[#00b38c] text-[16px] font-acid font-medium">{article.category}</span>
-          {article.countryCode && (
-            <>
-              <span className="text-[#ececec] text-[16px] font-acid">{article.countryCode}</span>
-              <span className="text-[#ececec] text-[16px] font-acid">{article.countryName}</span>
-            </>
-          )}
-        </div>
-
-        <h4 className="text-white text-[24px] font-acid font-normal leading-[1.2]">{article.title}</h4>
-
-        <p className="text-[#808080] text-[16px] font-acid font-medium mt-3 leading-[1.5] max-w-[1115px]">
-          {article.description}
-        </p>
       </div>
     </GlassCard>
   )
