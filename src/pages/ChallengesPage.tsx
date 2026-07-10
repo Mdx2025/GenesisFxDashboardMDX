@@ -266,20 +266,20 @@ function MyChallengesContent() {
   )
 }
 
-const prizePoolTiers = [
-  { tier: 'Tier 1', deposit: '$125', prize: '$1,250', maxDrawdown: '10%', payout: '90%' },
-  { tier: 'Tier 2', deposit: '$250', prize: '$2,500', maxDrawdown: '10%', payout: '90%' },
-  { tier: 'Tier 3', deposit: '$500', prize: '$5,000', maxDrawdown: '10%', payout: '90%' },
-  { tier: 'Tier 4', deposit: '$1,000', prize: '$10,000', maxDrawdown: '10%', payout: '90%' },
-  { tier: 'Tier 5', deposit: '$2,500', prize: '$25,000', maxDrawdown: '10%', payout: '90%' },
+const leaderboardPrizes = [
+  { rank: '#1', prize: '$500' },
+  { rank: '#2', prize: '$250' },
+  { rank: '#3', prize: '$150' },
+  { rank: '#4-18', prize: '$100' },
+  { rank: '#11-25', prize: '$50' },
 ]
 
-function TrophyLargeIcon() {
+function QuestionIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 32 32" fill="none">
-      <path d="M28.5 10.5V10.6c0 1.1 0 1.65-.27 2.1-.27.3-.73.57-1.7 1.1l-1-.01c.7-2.37.93-4.91 1.01-7.1l.01-.28c.83.29 1.3.5 1.6.9.35.5.35 1.17.35 2.5z" fill="#10BC83"/>
-      <path d="M3.5 10.5V10.6c0 1.1 0 1.65.27 2.1.27.3.73.57 1.7 1.1l1-.01c-.7-2.37-.93-4.91-1.01-7.1l-.01-.28c-.83.29-1.3.5-1.6.9-.35.5-.35 1.17-.35 2.5z" fill="#10BC83"/>
-      <path fillRule="evenodd" clipRule="evenodd" d="M21.5 3.2c-1.44-.24-3.32-.44-5.6-.44-2.28 0-4.17.2-5.6.44-1.46.25-2.19.37-2.8 1.12-.6.75-.57 1.56-.51 3.18.22 5.56 1.42 12.5 7.95 13.11v4.52h-1.83c-.6 0-1.13.43-1.25 1.02l-.24 1.21h-3.39c-.53 0-.96.43-.96.96s.43.96.96.96h15.36c.53 0 .96-.43.96-.96s-.43-.96-.96-.96h-3.39l-.24-1.21c-.12-.6-.65-1.02-1.25-1.02h-1.83v-4.52c6.53-.61 7.73-7.55 7.95-13.11.06-1.62.1-2.43-.51-3.18-.61-.75-1.34-.87-2.8-1.12z" fill="#10BC83"/>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M6.8175 6.75C6.99383 6.24875 7.34186 5.82608 7.79997 5.55685C8.25808 5.28762 8.79667 5.18891 9.31873 5.27809C9.84079 5.36727 10.3125 5.63849 10.6518 6.04254C10.9911 6.44659 11.1761 6.95765 11.175 7.485C11.175 9 8.925 9.75 8.925 9.75" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 12.75H9.0075" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -334,72 +334,67 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
       aria-label="Prize Pool"
     >
       <div ref={modalRef} className="relative w-[793px] max-w-[95vw]">
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
-          aria-hidden="true"
-        >
-          <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-[#064B34] rounded-full blur-[157px]" />
-          <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-[#064B34] rounded-full blur-[157px]" />
-          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-[#0C1311] rounded-full blur-[157px]" />
-        </div>
+        <GlassCard variant="light" divider="white" rounded="30px" className="overflow-hidden">
+          <div className="relative z-10 px-10 pt-10 pb-8">
+            {/* Close button */}
+            <button
+              onClick={handleClose}
+              className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[26px] w-[24px] h-[24px]"
+              aria-label="Close modal"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
 
-        <button
-          onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[31px] w-[24px] h-[24px]"
-          aria-label="Close modal"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-
-        <div className="relative z-10 px-10 py-10">
-          <div className="flex flex-col items-center mb-8">
-            <div className="w-[5rem] h-[5rem] rounded-xl bg-[#064B34] flex items-center justify-center mb-4">
-              <TrophyLargeIcon />
-            </div>
-            <h2 className="text-white font-acid font-normal text-[clamp(1.75rem,4vw,2.5rem)] leading-none text-center">
-              10X Challenge Prize Pool
-            </h2>
-            <p className="text-[#808080] text-base font-acid mt-3 text-center">
-              Turn your deposit into 10X equity — prove your skill, level up your capital
-            </p>
-          </div>
-
-          <div className="w-full">
-            <div className="flex items-center border-b border-white/[0.06] pb-3 mb-1">
-              <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Tier</div>
-              <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Deposit</div>
-              <div className="w-[22%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">10x Prize</div>
-              <div className="w-[22%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Max Drawdown</div>
-              <div className="w-[22%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em] text-right">Profit Split</div>
-            </div>
-            {prizePoolTiers.map((row, i) => (
-              <div key={i} className="flex items-center py-3.5 border-b border-white/[0.04] last:border-b-0">
-                <div className="w-[16%]">
-                  <span className="text-white text-sm">{row.tier}</span>
-                </div>
-                <div className="w-[18%]">
-                  <span className="text-white text-sm">{row.deposit}</span>
-                </div>
-                <div className="w-[22%]">
-                  <span className="text-[#10BC83] text-sm font-medium">{row.prize}</span>
-                </div>
-                <div className="w-[22%]">
-                  <span className="text-[#a0a0a0] text-sm">{row.maxDrawdown}</span>
-                </div>
-                <div className="w-[22%] text-right">
-                  <span className="text-[#10BC83] text-sm font-medium">{row.payout}</span>
-                </div>
+            {/* Header: Title + April 2026 badge + How it works */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <h2 className="text-white font-acid font-normal text-[1.75rem] leading-none">
+                  Current Month Prize Pool
+                </h2>
+                <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
+                  April 2026
+                </span>
               </div>
-            ))}
-          </div>
+              <button
+                type="button"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors"
+              >
+                <QuestionIcon />
+                <span>How it works</span>
+              </button>
+            </div>
 
-          <div className="mt-8">
-            <GlowButton label="Start Challenge" width="100%" />
+            {/* Tier Leaderboard header + Top Prize */}
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-white font-acid font-normal text-[1.25rem]">Tier Leaderboard</h3>
+              <div className="flex flex-col items-center px-5 py-2.5 rounded-[0.875rem] border border-[#10BC83]/30">
+                <span className="text-[#10BC83] text-[1.5rem] font-acid font-medium leading-tight">$500</span>
+                <span className="text-[#10BC83] text-xs font-acid">Top Prize</span>
+              </div>
+            </div>
+
+            {/* Rank / Prize table */}
+            <div className="w-full">
+              <div className="flex items-center pb-3 mb-1">
+                <div className="w-[30%] text-[#606060] text-xs font-medium tracking-[0.08em]">Rank</div>
+                <div className="w-[70%] text-[#606060] text-xs font-medium tracking-[0.08em] text-right">Prize</div>
+              </div>
+              {leaderboardPrizes.map((row, i) => (
+                <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
+                  <div className="w-[30%]">
+                    <span className="text-[#a0a0a0] text-sm font-acid">{row.rank}</span>
+                  </div>
+                  <div className="w-[70%] text-right">
+                    <span className="text-white text-base font-acid font-medium">{row.prize}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </GlassCard>
       </div>
     </div>
   )
