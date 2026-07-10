@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard, SecondaryButton } from '@/components/ui'
+import { GlassCard, SecondaryButton, GlowButton } from '@/components/ui'
 import { notebookFolders, notebookNotes } from '@/data/notebook'
 import type { NotebookNote } from '@/data/notebook'
 
@@ -16,15 +16,8 @@ function FolderIcon({ active }: { active?: boolean }) {
   )
 }
 
-function PlusIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <path d="M12 5V19M5 12H19" stroke="#0c1311" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  )
-}
 
-function NewAccountIcon() {
+function NewFolderIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
       <path d="M2 6C2 4.89543 2.89543 4 4 4H9L11 6H20C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6Z" stroke="#c6c6c6" strokeWidth="1.5" />
@@ -33,10 +26,10 @@ function NewAccountIcon() {
   )
 }
 
-function ChevronRightSmall() {
+function NoteIcon() {
   return (
-    <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-      <path d="M1 1L7 7L1 13" stroke="#c6c6c6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 5V19M5 12H19" stroke="#0c1311" strokeWidth="2" strokeLinecap="round" />
     </svg>
   )
 }
@@ -113,7 +106,12 @@ function NoteCard({ note }: { note: NotebookNote }) {
 
 /* ─── Main Component ─── */
 
-export default function NotebookView() {
+interface NotebookViewProps {
+  onNewNote?: () => void
+  onNewFolder?: () => void
+}
+
+export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewProps) {
   const [activeFolder, setActiveFolder] = useState(0)
 
   return (
@@ -128,18 +126,17 @@ export default function NotebookView() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <SecondaryButton className="h-[46px]">
-              <NewAccountIcon />
-              <span>New Account</span>
-              <ChevronRightSmall />
+            <SecondaryButton className="h-[46px]" onClick={() => onNewFolder?.()}>
+              <NewFolderIcon />
+              <span>New folder</span>
             </SecondaryButton>
-            <button
-              className="h-[44px] px-[31px] rounded-[300px] flex items-center gap-[10px] cursor-pointer font-acid font-medium text-[16px] text-[#0c1311]"
-              style={{ background: 'linear-gradient(54deg, #D1D1D1 18%, #D2F5ED 64%, #D5FFF1 80%)' }}
-            >
-              <PlusIcon />
-              Trade
-            </button>
+            <GlowButton
+              label="New Note"
+              icon={<NoteIcon />}
+              height={44}
+              radius={300}
+              onClick={() => onNewNote?.()}
+            />
           </div>
         </div>
       </GlassCard>

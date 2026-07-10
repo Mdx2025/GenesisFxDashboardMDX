@@ -11,6 +11,8 @@ import CalendarView from '@/pages/journal/CalendarView'
 import TradesView from '@/pages/journal/TradesView'
 import NotebookView from '@/pages/journal/NotebookView'
 import ReplayView from '@/pages/journal/ReplayView'
+import NewNoteModal from '@/pages/journal/NewNoteModal'
+import NewFolderModal from '@/pages/journal/NewFolderModal'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -284,6 +286,8 @@ function StatCard({ label, children }: { label: string; children: React.ReactNod
 export default function JournalPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
+  const [newNoteOpen, setNewNoteOpen] = useState(false)
+  const [newFolderOpen, setNewFolderOpen] = useState(false)
 
   return (
     <div className="journal-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -421,10 +425,18 @@ export default function JournalPage() {
         {activeTab === 2 && <StrategyDnaView />}
         {activeTab === 3 && <CalendarView />}
         {activeTab === 4 && <TradesView />}
-        {activeTab === 5 && <NotebookView />}
+        {activeTab === 5 && (
+          <NotebookView
+            onNewNote={() => setNewNoteOpen(true)}
+            onNewFolder={() => setNewFolderOpen(true)}
+          />
+        )}
         {activeTab === 6 && <ReplayView />}
 
       </div>
+
+      <NewNoteModal open={newNoteOpen} onClose={() => setNewNoteOpen(false)} />
+      <NewFolderModal open={newFolderOpen} onClose={() => setNewFolderOpen(false)} />
     </div>
   )
 }
