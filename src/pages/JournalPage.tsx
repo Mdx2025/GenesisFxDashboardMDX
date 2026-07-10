@@ -8,6 +8,7 @@ import type { DayStatCard, RecentTrade, NewsEvent } from '@/data/journal'
 import StatisticsView from '@/pages/journal/StatisticsView'
 import StrategyDnaView from '@/pages/journal/StrategyDnaView'
 import CalendarView from '@/pages/journal/CalendarView'
+import TradesView from '@/pages/journal/TradesView'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -417,6 +418,7 @@ export default function JournalPage() {
         {activeTab === 1 && <StatisticsView />}
         {activeTab === 2 && <StrategyDnaView />}
         {activeTab === 3 && <CalendarView />}
+        {activeTab === 4 && <TradesView />}
 
       </div>
     </div>
