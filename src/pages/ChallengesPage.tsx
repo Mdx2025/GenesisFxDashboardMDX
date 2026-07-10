@@ -406,34 +406,60 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
   )
 }
 
-function RulesIcon() {
+function NotebookIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-      <path d="M6 1.5H4.5C3.67157 1.5 3 2.17157 3 3V15C3 15.8284 3.67157 16.5 4.5 16.5H13.5C14.3284 16.5 15 15.8284 15 15V3C15 2.17157 14.3284 1.5 13.5 1.5H12" stroke="#808080" strokeWidth="1.2" strokeLinecap="round"/>
-      <path d="M6 1.5C6 2.32843 6.67157 3 7.5 3H10.5C11.3284 3 12 2.32843 12 1.5C12 0.671573 11.3284 0 10.5 0H7.5C6.67157 0 6 0.671573 6 1.5Z" stroke="#808080" strokeWidth="1.2"/>
-      <path d="M6 7.5H12M6 10.5H12M6 13.5H9" stroke="#808080" strokeWidth="1.2" strokeLinecap="round"/>
+      <path d="M1.5 12.107V3.74762C1.5 2.92399 2.16473 2.25491 2.9868 2.30543C3.71908 2.35044 4.58512 2.4394 5.25 2.61485C6.03691 2.8225 6.97208 3.26477 7.71169 3.65586C7.94198 3.77763 8.18687 3.8621 8.4375 3.90972L8.4375 15.2937C8.21029 15.2436 7.98863 15.1628 7.77931 15.0512C7.0297 14.6516 6.06109 14.1883 5.25 13.9743C4.59247 13.8008 3.73821 13.7119 3.01114 13.6664C2.17953 13.6144 1.5 12.9402 1.5 12.107Z" fill="#808080"/>
+      <path d="M9.5625 15.2937C9.78971 15.2436 10.0114 15.1628 10.2207 15.0512C10.9703 14.6516 11.9389 14.1883 12.75 13.9743C13.4075 13.8008 14.2618 13.7119 14.9889 13.6664C15.8205 13.6144 16.5 12.9402 16.5 12.107V3.69916C16.5 2.89483 15.8653 2.23458 15.0615 2.26258C14.215 2.29206 13.1602 2.37979 12.375 2.61485C11.6943 2.81864 10.9015 3.22741 10.2554 3.60133C10.0368 3.72785 9.80312 3.82078 9.5625 3.8797L9.5625 15.2937Z" fill="#808080"/>
     </svg>
   )
 }
 
-function CheckboxIcon({ checked }: { checked: boolean }) {
-  if (!checked) {
-    return (
-      <div className="w-[1.125rem] h-[1.125rem] rounded-[0.25rem] border border-[#303030] shrink-0" />
-    )
-  }
+function ChallengeCheckbox({ checked, onChange }: { checked: boolean; onChange: () => void }) {
   return (
-    <div className="w-[1.125rem] h-[1.125rem] rounded-[0.25rem] bg-[#10BC83] flex items-center justify-center shrink-0">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-        <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <button type="button" onClick={onChange} className="shrink-0 cursor-pointer">
+      {checked ? (
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
+          <circle cx="10.19" cy="10.19" r="10.19" fill="#064B34"/>
+          <path d="M14.35 5.7L7.56 12.5L4.47 9.41" stroke="white" strokeWidth="1.24" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ) : (
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
+          <circle cx="10.19" cy="10.19" r="9.69" stroke="#303030" strokeWidth="1"/>
+        </svg>
+      )}
+    </button>
+  )
+}
+
+function LiveBadge() {
+  return (
+    <div className="inline-flex items-center gap-[7px] px-3 py-2.5 rounded-[60px] border border-[#303030]">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <defs>
+          <filter id="live_glow" x="0" y="0" width="25.56" height="25.56" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="bg"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="ha"/>
+            <feOffset/>
+            <feGaussianBlur stdDeviation="4.65"/>
+            <feComposite in2="ha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.941 0 0 0 0 0.627 0 0 0 0.6 0"/>
+            <feBlend in2="bg" result="shadow"/>
+            <feBlend in="SourceGraphic" in2="shadow" result="shape"/>
+          </filter>
+        </defs>
+        <g filter="url(#live_glow)">
+          <rect x="9.29" y="9.29" width="6.97" height="6.97" rx="3.48" fill="#00B38C"/>
+        </g>
       </svg>
+      <span className="text-[#A0A0A0] font-acid text-[0.875rem]">Live</span>
     </div>
   )
 }
 
-const accountPreviewRows = [
+const accountPreviewRows: { label: string; value: string; special?: 'live' }[] = [
   { label: 'Account Name', value: 'Your Account Name' },
-  { label: 'Account Mode', value: 'Live', valueColor: '#10BC83', dot: true },
+  { label: 'Account Mode', value: 'Live', special: 'live' },
   { label: 'Deposit', value: '$125' },
   { label: '10x Leverage', value: '$1,250' },
   { label: 'Account Type', value: '10x Account' },
@@ -493,20 +519,19 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[680px] max-w-[95vw]">
+      <div ref={modalRef} className="relative w-[1100px] max-w-[95vw]">
+        {/* Background layer */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.25rem] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[18.56px] bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
           aria-hidden="true"
         >
-          <div className="absolute w-[400px] h-[220px] -left-[150px] bottom-[80px] bg-[#064B34] rounded-full blur-[140px]" />
-          <div className="absolute w-[400px] h-[220px] right-[-250px] -top-[18px] bg-[#064B34] rounded-full blur-[140px]" />
-          <div className="absolute w-[450px] h-[350px] left-[300px] -top-[100px] rotate-[48deg] origin-top-left bg-[#0C1311] rounded-full blur-[140px]" />
+          <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-[#064B34] rounded-full blur-[157px]" />
         </div>
 
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[1.25rem] top-[1.25rem] w-[1.5rem] h-[1.5rem]"
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[1.5rem] top-[1.5rem] w-[1.5rem] h-[1.5rem]"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -515,82 +540,94 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
           </svg>
         </button>
 
-        <div className="relative z-10 p-8">
-          {/* Header */}
+        <div className="relative z-10 px-8 pt-8 pb-10">
+          {/* Header row */}
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-white font-acid font-normal text-[1.5rem] leading-none">
+            <h2 className="text-white font-acid font-normal text-[2.25rem] leading-none">
               Start your 10x Challenge
             </h2>
             <button
               type="button"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors"
+              className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
             >
-              <RulesIcon />
+              <NotebookIcon />
               <span>Rules</span>
             </button>
           </div>
 
-          {/* Two columns */}
-          <div className="flex gap-6">
+          {/* Two panels */}
+          <div className="flex gap-5">
             {/* Left — Challenge Details */}
-            <div className="flex-1 bg-[#0A0E0C] rounded-[1rem] p-6 border border-white/[0.04]">
-              <h3 className="text-white font-acid font-medium text-[1.125rem] mb-6">Challenge Details</h3>
+            <div className="relative w-[48%] overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+              <div className="absolute w-[493px] h-[278px] left-[36px] -top-[220px] bg-[#064B34] rounded-full blur-[157px] pointer-events-none" aria-hidden="true" />
+              <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
-              <div className="flex flex-col gap-5">
-                <GlassSelect
-                  label="Starting Equity"
-                  placeholder="Enter your preferred account name"
-                  options={[
-                    { value: '125', label: '$125' },
-                    { value: '250', label: '$250' },
-                    { value: '500', label: '$500' },
-                    { value: '1000', label: '$1,000' },
-                  ]}
-                />
+              <div className="relative z-10 px-8 py-10">
+                <h3 className="text-white font-acid font-normal text-[1.5rem] mb-6">Challenge Details</h3>
 
-                <div>
-                  <div className="flex items-baseline gap-2 mb-[0.125rem]">
-                    <span className="text-white font-acid font-medium text-[1rem]">Username</span>
-                    <span className="text-[#808080] font-acid text-[0.8125rem]">(On Leaderboard)</span>
-                  </div>
-                  <GlassInput
+                <div className="flex flex-col gap-5">
+                  <GlassSelect
+                    label="Starting Equity"
                     placeholder="Enter your preferred account name"
-                    value={username}
-                    onChange={setUsername}
+                    options={[
+                      { value: '125', label: '$125' },
+                      { value: '250', label: '$250' },
+                      { value: '500', label: '$500' },
+                      { value: '1000', label: '$1,000' },
+                    ]}
                   />
-                  <span className="text-[#808080] text-[0.75rem] font-acid mt-1.5 block">
-                    0/25 characters
-                  </span>
+
+                  <div>
+                    <div className="flex items-baseline gap-2 mb-[0.125rem]">
+                      <span className="text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem]">Username</span>
+                      <span className="text-[#A0A0A0] font-acid font-medium text-[1rem] leading-[1.528rem]">(On Leaderboard)</span>
+                    </div>
+                    <GlassInput
+                      placeholder="Enter your preferred account name"
+                      value={username}
+                      onChange={setUsername}
+                    />
+                    <span className="text-[#808080] text-[1rem] font-acid mt-2 block leading-[1.2rem]">
+                      0/25 characters
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 mt-1">
+                    <ChallengeCheckbox checked={agreed} onChange={() => setAgreed(v => !v)} />
+                    <span className="text-[#808080] text-[1rem] font-acid leading-[1.2rem]">
+                      I agree to the <span className="text-[#00B38C]">Terms & Conditions</span>
+                    </span>
+                  </div>
+
+                  <GlowButton label="Create Account" height={44} fontSize={16} />
                 </div>
-
-                <label className="flex items-center gap-2.5 cursor-pointer select-none" onClick={() => setAgreed(v => !v)}>
-                  <CheckboxIcon checked={agreed} />
-                  <span className="text-[#808080] text-[0.8125rem] font-acid">
-                    I agree to the <span className="text-[#10BC83] underline">Terms & Conditions</span>
-                  </span>
-                </label>
-
-                <GlowButton label="Create Account" height={48} fontSize={15} />
               </div>
             </div>
 
             {/* Right — Account Preview */}
-            <div className="flex-1 bg-[#0A0E0C] rounded-[1rem] p-6 border border-white/[0.04]">
-              <h3 className="text-white font-acid font-medium text-[1.125rem] mb-2">Account Preview</h3>
-              <p className="text-[#808080] font-acid text-[0.8125rem] mb-5">Trading Account Details</p>
+            <div className="relative flex-1 overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+              <div className="relative z-10 px-8 py-10">
+                <h3 className="text-white font-acid font-normal text-[1.5rem] mb-2">Account Preview</h3>
 
-              <div className="flex flex-col">
-                {accountPreviewRows.map((row) => (
-                  <div key={row.label} className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-b-0">
-                    <span className="text-[#808080] font-acid text-[0.8125rem]">{row.label}</span>
-                    <span className="flex items-center gap-1.5">
-                      {row.dot && <span className="w-2 h-2 rounded-full bg-[#10BC83]" />}
-                      <span className={`font-acid text-[0.875rem] font-medium ${row.valueColor ? '' : 'text-white'}`} style={row.valueColor ? { color: row.valueColor } : undefined}>
-                        {row.value}
-                      </span>
-                    </span>
-                  </div>
-                ))}
+                {/* Divider */}
+                <div className="h-[1.25px] my-4" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)' }} />
+
+                <p className="text-white font-acid font-medium text-[1rem] leading-[1.528rem] mb-4">Trading Account Details</p>
+
+                <div className="flex flex-col">
+                  {accountPreviewRows.map((row) => (
+                    <div key={row.label} className="flex items-center justify-between py-3 border-b border-[#09241C] last:border-b-0">
+                      <span className="text-[#A0A0A0] font-acid font-medium text-[1rem] leading-[1.528rem]">{row.label}</span>
+                      {row.special === 'live' ? (
+                        <LiveBadge />
+                      ) : (
+                        <span className="text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem]">
+                          {row.value}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
