@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { GlassCard, GlowButton, SecondaryButton } from '@/components/ui'
+import { GlowButton, SecondaryButton } from '@/components/ui'
 
 function CloseIcon() {
   return (
@@ -42,10 +42,10 @@ interface NewNoteModalProps {
 }
 
 export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
-  const [noteType, setNoteType] = useState('Day note')
+  const [noteType] = useState('Day note')
   const [date, setDate] = useState('04/21/2026')
-  const [account, setAccount] = useState('L#716445')
-  const [folder, setFolder] = useState('L#716445')
+  const [account] = useState('L#716445')
+  const [folder] = useState('L#716445')
   const [note, setNote] = useState('')
   const [tags, setTags] = useState('')
 
@@ -68,23 +68,23 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]" />
 
       <div
-        className="relative w-[793px] max-h-[90vh] overflow-y-auto rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]"
+        className="relative w-[793px] max-h-[90vh] rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-[#064b34] blur-[100px] opacity-15 pointer-events-none" />
 
-        {/* Content */}
-        <div className="relative px-[123px] pt-[35px] pb-[50px]">
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-[35px] right-[30px] cursor-pointer hover:opacity-80 transition-opacity"
-          >
-            <CloseIcon />
-          </button>
+        {/* Close button — fixed above scroll */}
+        <button
+          onClick={onClose}
+          className="absolute top-[35px] right-[30px] z-20 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <CloseIcon />
+        </button>
 
+        {/* Scrollable content */}
+        <div className="relative overflow-y-auto max-h-[90vh] scrollbar-hide px-[123px] pt-[35px] pb-[50px]">
           {/* Title */}
           <h2 className="text-white text-[50px] font-acid font-normal text-center mt-[40px]">
             New Note
@@ -183,7 +183,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
               </label>
               <div className="h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] flex items-center justify-center gap-[10px] cursor-pointer hover:border-[#00b38c] transition-colors">
                 <UploadIcon />
-                <span className="text-[#808080] text-[16px] font-acid">Add a tag</span>
+                <span className="text-[#808080] text-[16px] font-acid">Upload file</span>
               </div>
             </div>
           </div>
@@ -200,12 +200,6 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
               radius={300}
             />
           </div>
-        </div>
-
-        {/* Scrollbar indicator */}
-        <div className="absolute top-[82px] right-[4px] w-[4px] h-full max-h-[971px] pointer-events-none">
-          <div className="w-full h-full rounded-[60px] bg-[#09241c]" />
-          <div className="absolute top-0 w-full h-[147px] rounded-[60px] bg-[#00b38c]" />
         </div>
       </div>
     </div>

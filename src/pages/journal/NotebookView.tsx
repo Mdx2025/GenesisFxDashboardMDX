@@ -1,21 +1,9 @@
 import { useState } from 'react'
-import { GlassCard, SecondaryButton, GlowButton } from '@/components/ui'
+import { GlassCard, SecondaryButton, GlowButton, ModeToggle } from '@/components/ui'
 import { notebookFolders, notebookNotes } from '@/data/notebook'
 import type { NotebookNote } from '@/data/notebook'
 
 /* ─── Icons ─── */
-
-function FolderIcon({ active }: { active?: boolean }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M2 6C2 4.89543 2.89543 4 4 4H9L11 6H20C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6Z"
-        fill={active ? '#00b38c' : '#606060'}
-      />
-    </svg>
-  )
-}
-
 
 function NewFolderIcon() {
   return (
@@ -62,45 +50,47 @@ function BookmarkIcon() {
   )
 }
 
-/* ─── Note Card ─── */
+/* ─── Note Card (using GlassCard) ─── */
 
 function NoteCard({ note }: { note: NotebookNote }) {
   return (
-    <div className="border border-[#09241c] rounded-[15px] p-[18px] flex flex-col gap-3 min-w-[420px] flex-1">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-2">
-          <BookmarkIcon />
-          <span className="text-white text-[16px] font-acid font-medium">{note.label}</span>
+    <GlassCard variant="light" divider="none" rounded="15px" className="min-w-[420px] flex-1 overflow-hidden">
+      <div className="p-[18px] flex flex-col gap-3 h-full">
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-2">
+            <BookmarkIcon />
+            <span className="text-white text-[16px] font-acid font-medium">{note.label}</span>
+          </div>
+          <button className="hover:opacity-80 transition-opacity cursor-pointer">
+            <TrashIcon />
+          </button>
         </div>
-        <button className="hover:opacity-80 transition-opacity cursor-pointer">
-          <TrashIcon />
-        </button>
-      </div>
 
-      <div className="flex items-center gap-3">
-        <span className="text-white text-[16px] font-acid font-medium">{note.date}</span>
-        <span className="text-[#808080] text-[14px] font-acid">Account: {note.account}</span>
-      </div>
+        <div className="flex items-center gap-3">
+          <span className="text-white text-[16px] font-acid font-medium">{note.date}</span>
+          <span className="text-[#808080] text-[14px] font-acid">Account: {note.account}</span>
+        </div>
 
-      <p className="text-[#a0a0a0] text-[16px] font-acid font-medium">{note.preview}</p>
+        <p className="text-[#a0a0a0] text-[16px] font-acid font-medium">{note.preview}</p>
 
-      <div className="flex items-center gap-3 mt-auto">
-        {note.tags.map(tag => (
-          <div
-            key={tag}
-            className="h-[24px] px-[18px] rounded-full border border-[#064b34] bg-[#0c1311] flex items-center justify-center"
-          >
-            <span className="text-[#00b38c] text-[12px] font-acid">{tag}</span>
-          </div>
-        ))}
-        {note.attachments > 0 && (
-          <div className="flex items-center gap-1.5">
-            <GalleryIcon />
-            <span className="text-white text-[16px] font-acid font-medium">{note.attachments}</span>
-          </div>
-        )}
+        <div className="flex items-center gap-3 mt-auto">
+          {note.tags.map(tag => (
+            <div
+              key={tag}
+              className="h-[24px] px-[18px] rounded-full border border-[#064b34] bg-[#0c1311] flex items-center justify-center"
+            >
+              <span className="text-[#00b38c] text-[12px] font-acid">{tag}</span>
+            </div>
+          ))}
+          {note.attachments > 0 && (
+            <div className="flex items-center gap-1.5">
+              <GalleryIcon />
+              <span className="text-white text-[16px] font-acid font-medium">{note.attachments}</span>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </GlassCard>
   )
 }
 
@@ -141,26 +131,13 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
         </div>
       </GlassCard>
 
-      {/* Folder Tabs */}
-      <div className="relative h-[46px] rounded-[60px] bg-[#111312] flex items-center overflow-hidden">
-        {notebookFolders.map((folder, i) => {
-          const isActive = activeFolder === i
-          return (
-            <button
-              key={folder}
-              onClick={() => setActiveFolder(i)}
-              className={`relative flex-1 h-full flex items-center justify-center gap-[10px] rounded-[60px] cursor-pointer transition-colors font-acid font-medium text-[16px] ${
-                isActive
-                  ? 'bg-[#064b34] border border-[#00b38c] text-white z-10'
-                  : 'text-[#606060] hover:text-[#808080]'
-              }`}
-            >
-              <FolderIcon active={isActive} />
-              <span>{folder}</span>
-            </button>
-          )
-        })}
-      </div>
+      {/* Folder Tabs — ModeToggle */}
+      <ModeToggle
+        options={[...notebookFolders]}
+        defaultIndex={0}
+        activeIndex={activeFolder}
+        onChange={setActiveFolder}
+      />
 
       {/* Notes Grid */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
