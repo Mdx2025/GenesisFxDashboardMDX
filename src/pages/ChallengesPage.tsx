@@ -519,7 +519,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[1100px] max-w-[95vw]">
+      <div ref={modalRef} className="relative w-[85%]">
         {/* Background layer */}
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-[18.56px] bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
