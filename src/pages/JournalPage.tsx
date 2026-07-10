@@ -149,28 +149,31 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
   const isZero = stat.pnl === 0
 
   return (
-    <div
-      className={`relative flex-1 min-w-0 h-[114px] rounded-[19px] flex flex-col justify-between px-[22px] py-[14px] overflow-hidden ${
-        stat.active
-          ? 'bg-[#0c1311] border border-[#00b38c]'
-          : 'bg-[#09241c]'
+    <GlassCard
+      variant="light"
+      divider="none"
+      rounded="19px"
+      className={`flex-1 min-w-0 h-[114px] overflow-hidden ${
+        stat.active ? 'border border-[#00b38c]' : ''
       }`}
     >
-      {stat.active && (
-        <div className="absolute top-[25px] right-[25px]">
-          <GreenDot size={5} />
+      <div className="relative h-full flex flex-col justify-between px-[22px] py-[14px]">
+        {stat.active && (
+          <div className="absolute top-[11px] right-[11px]">
+            <GreenDot size={5} />
+          </div>
+        )}
+        <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
+        <div>
+          <p className={`text-[16px] font-acid font-medium ${
+            isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-[#ececec]'
+          }`}>
+            {isZero ? '$0.00' : `${isPositive ? '+' : '-'}$${Math.abs(stat.pnl).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}
+          </p>
+          <p className="text-[#808080] text-[16px] font-acid mt-0.5">{stat.trades} trades</p>
         </div>
-      )}
-      <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
-      <div>
-        <p className={`text-[16px] font-acid font-medium ${
-          isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-[#ececec]'
-        }`}>
-          {isZero ? '$0.00' : `${isPositive ? '+' : '-'}$${Math.abs(stat.pnl).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}
-        </p>
-        <p className="text-[#808080] text-[16px] font-acid mt-0.5">{stat.trades} trades</p>
       </div>
-    </div>
+    </GlassCard>
   )
 }
 
