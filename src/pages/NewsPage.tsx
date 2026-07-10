@@ -6,6 +6,7 @@ import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
 import TradeSessionsView from '@/pages/news/TradeSessionsView'
 import PodcastView from '@/pages/news/PodcastView'
+import DailyNewsView from '@/pages/news/DailyNewsView'
 
 const TABS = ['Terminal', 'Market News', 'Daily News', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
 const NEWS_CHANNELS = ['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
@@ -465,6 +466,9 @@ export default function NewsPage() {
 
         {/* Market News Tab (index 1) */}
         {activeTab === 1 && <MarketNewsView />}
+
+        {/* Daily News Tab (index 2) */}
+        {activeTab === 2 && <DailyNewsView />}
 
         {/* Economic Calendar Tab (index 3) */}
         {activeTab === 3 && <EconomicCalendarView />}
