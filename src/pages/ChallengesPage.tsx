@@ -150,6 +150,85 @@ function LeaderboardContent() {
   )
 }
 
+function ChevronRightTinyIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M5 3l4 4-4 4" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+const tiersData = [
+  { tier: 'Tier 1', deposit: '$125', equity: '$1,250', maxDrawdown: '10%', status: 'Active' as const },
+  { tier: 'Tier 1', deposit: '$125', equity: '$1,250', maxDrawdown: '10%', status: 'Active' as const },
+  { tier: 'Tier 1', deposit: '$125', equity: '$1,250', maxDrawdown: '10%', status: 'Active' as const },
+  { tier: 'Tier 1', deposit: '$125', equity: '$1,250', maxDrawdown: '10%', status: 'Active' as const },
+  { tier: 'Tier 1', deposit: '$125', equity: '$1,250', maxDrawdown: '10%', status: 'Coming Soon' as const },
+]
+
+function TiersContent() {
+  return (
+    <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
+      <div className="relative z-10 p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <h3 className="text-white text-base font-medium">10X Challenge Tiers</h3>
+          <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
+            April 2026
+          </span>
+        </div>
+
+        <div className="w-full">
+          {/* Header */}
+          <div className="flex items-center border-b border-white/[0.04] pb-3 mb-1">
+            <div className="w-[12%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Tier</div>
+            <div className="w-[14%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Deposit</div>
+            <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">10x Equity</div>
+            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Max Drawdown</div>
+            <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Status</div>
+            <div className="w-[24%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em] text-right">Action</div>
+          </div>
+
+          {/* Rows */}
+          {tiersData.map((row, i) => (
+            <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
+              <div className="w-[12%]">
+                <span className="text-white text-sm">{row.tier}</span>
+              </div>
+              <div className="w-[14%] flex items-center gap-1">
+                <span className="text-white text-sm">{row.deposit}</span>
+                <ChevronRightTinyIcon />
+              </div>
+              <div className="w-[16%]">
+                <span className="text-[#10BC83] text-sm">{row.equity}</span>
+              </div>
+              <div className="w-[18%]">
+                <span className="text-[#a0a0a0] text-sm">{row.maxDrawdown}</span>
+              </div>
+              <div className="w-[16%]">
+                {row.status === 'Active' ? (
+                  <span className="inline-flex items-center px-3 py-1 rounded-full border border-[#10BC83] text-[#10BC83] text-xs">
+                    Active
+                  </span>
+                ) : (
+                  <span className="text-[#808080] text-xs italic">Coming Soon</span>
+                )}
+              </div>
+              <div className="w-[24%] flex justify-end">
+                <button
+                  type="button"
+                  className="px-6 py-2 rounded-full border border-white/80 text-white text-sm font-medium cursor-pointer hover:bg-white/5 transition-colors bg-transparent"
+                >
+                  Purchase
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </GlassCard>
+  )
+}
+
 function MyChallengesContent() {
   return (
     <>
@@ -234,21 +313,7 @@ export default function ChallengesPage() {
         {/* Tab Content */}
         {activeTab === 0 && <MyChallengesContent />}
         {activeTab === 1 && <LeaderboardContent />}
-        {activeTab === 2 && (
-          <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-            <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
-              <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-[#09241C] flex items-center justify-center">
-                <TrophyIcon />
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <h3 className="text-white text-[1.5rem] font-normal">Tiers Coming Soon</h3>
-                <p className="text-[#808080] text-body2 text-center max-w-lg">
-                  Tier information will be available here
-                </p>
-              </div>
-            </div>
-          </GlassCard>
-        )}
+        {activeTab === 2 && <TiersContent />}
       </div>
     </div>
   )
