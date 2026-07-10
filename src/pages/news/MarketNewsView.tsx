@@ -23,10 +23,11 @@ function ClockIcon() {
   )
 }
 
-function ExternalLinkIcon() {
+function CornerArrowIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M7 17L17 7M17 7H7M17 7V17" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M15 14L20 9L15 4" stroke="#808080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 20V13C4 11.9391 4.42143 10.9217 5.17157 10.1716C5.92172 9.42143 6.93913 9 8 9H20" stroke="#808080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -118,33 +119,31 @@ function SecondaryCard({ article }: { article: NewsArticle }) {
 function ListCard({ article }: { article: NewsArticle }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="flex items-start justify-between p-6 h-[245px]">
-        <div className="flex flex-col justify-center h-full flex-1 min-w-0 pr-6">
-          {/* Category + Country */}
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-[#00b38c] text-[16px] font-acid font-medium">{article.category}</span>
-            {article.countryCode && (
-              <>
-                <span className="text-[#ececec] text-[16px] font-acid">{article.countryCode}</span>
-                <span className="text-[#ececec] text-[16px] font-acid">{article.countryName}</span>
-              </>
-            )}
-          </div>
-
-          <h4 className="text-white text-[24px] font-acid font-normal leading-[1.2]">{article.title}</h4>
-
-          <p className="text-[#808080] text-[16px] font-acid font-medium mt-3 leading-[1.5] max-w-[1115px]">
-            {article.description}
-          </p>
-
-          <div className="flex items-center gap-2 mt-4">
-            <span className="text-[#a0a0a0] text-[16px] font-acid font-medium">{article.date}</span>
-          </div>
+      <div className="relative p-6 h-[245px] flex flex-col justify-center">
+        {/* Date + icon top-right */}
+        <div className="absolute top-6 right-6 flex items-center gap-2">
+          <span className="text-[#a0a0a0] text-[16px] font-acid font-medium">{article.date}</span>
+          <button className="hover:opacity-80 transition-opacity cursor-pointer">
+            <CornerArrowIcon />
+          </button>
         </div>
 
-        <button className="shrink-0 mt-2 hover:opacity-80 transition-opacity cursor-pointer">
-          <ExternalLinkIcon />
-        </button>
+        {/* Category + Country */}
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-[#00b38c] text-[16px] font-acid font-medium">{article.category}</span>
+          {article.countryCode && (
+            <>
+              <span className="text-[#ececec] text-[16px] font-acid">{article.countryCode}</span>
+              <span className="text-[#ececec] text-[16px] font-acid">{article.countryName}</span>
+            </>
+          )}
+        </div>
+
+        <h4 className="text-white text-[24px] font-acid font-normal leading-[1.2]">{article.title}</h4>
+
+        <p className="text-[#808080] text-[16px] font-acid font-medium mt-3 leading-[1.5] max-w-[1115px]">
+          {article.description}
+        </p>
       </div>
     </GlassCard>
   )
