@@ -110,7 +110,7 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
 
 function PlayerBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0d1512] border-t border-[rgba(16,185,129,0.12)] px-8 py-5 flex items-center gap-6">
+    <div className="fixed bottom-0 left-0 lg:left-[260px] 2xl:left-xs 3xl:left-[var(--width-sidebar-3xl)] 4xl:left-[var(--width-sidebar-4xl)] right-0 z-50 bg-[#0d1512] border-t border-[rgba(16,185,129,0.12)] px-8 py-5 flex items-center gap-6">
       <div className="flex items-center gap-3 shrink-0">
         <div className="w-[52px] h-[52px] rounded-[10px] bg-[#09241c] flex items-center justify-center">
           <span className="text-white text-[16px] font-acid">1</span>
