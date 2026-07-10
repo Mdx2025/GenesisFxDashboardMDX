@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -165,7 +165,7 @@ const tiersData = [
   { tier: 'Tier 1', deposit: '$125', equity: '$1,250', maxDrawdown: '10%', status: 'Coming Soon' as const },
 ]
 
-function TiersContent() {
+function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
   return (
     <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
       <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
@@ -212,7 +212,7 @@ function TiersContent() {
                 </td>
                 <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
                   <div className="flex justify-end">
-                    <GlowButton label="Purchase" width={135} height={44} fontSize={14} />
+                    <GlowButton label="Purchase" width={135} height={44} fontSize={14} onClick={onPurchase} />
                   </div>
                 </td>
               </tr>
@@ -225,7 +225,7 @@ function TiersContent() {
   )
 }
 
-function MyChallengesContent() {
+function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void }) {
   return (
     <>
       {/* Hero Banner */}
@@ -259,7 +259,7 @@ function MyChallengesContent() {
               Create your first 10X account to start trading with enhanced leverage
             </p>
           </div>
-          <GlowButton label="Trade" width={183} height={44} fontSize={16} />
+          <GlowButton label="Create account" width={210} height={44} fontSize={16} onClick={onCreateAccount} />
         </div>
       </GlassCard>
     </>
@@ -406,10 +406,205 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
   )
 }
 
+function RulesIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M6 1.5H4.5C3.67157 1.5 3 2.17157 3 3V15C3 15.8284 3.67157 16.5 4.5 16.5H13.5C14.3284 16.5 15 15.8284 15 15V3C15 2.17157 14.3284 1.5 13.5 1.5H12" stroke="#808080" strokeWidth="1.2" strokeLinecap="round"/>
+      <path d="M6 1.5C6 2.32843 6.67157 3 7.5 3H10.5C11.3284 3 12 2.32843 12 1.5C12 0.671573 11.3284 0 10.5 0H7.5C6.67157 0 6 0.671573 6 1.5Z" stroke="#808080" strokeWidth="1.2"/>
+      <path d="M6 7.5H12M6 10.5H12M6 13.5H9" stroke="#808080" strokeWidth="1.2" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function CheckboxIcon({ checked }: { checked: boolean }) {
+  if (!checked) {
+    return (
+      <div className="w-[1.125rem] h-[1.125rem] rounded-[0.25rem] border border-[#303030] shrink-0" />
+    )
+  }
+  return (
+    <div className="w-[1.125rem] h-[1.125rem] rounded-[0.25rem] bg-[#10BC83] flex items-center justify-center shrink-0">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </div>
+  )
+}
+
+const accountPreviewRows = [
+  { label: 'Account Name', value: 'Your Account Name' },
+  { label: 'Account Mode', value: 'Live', valueColor: '#10BC83', dot: true },
+  { label: 'Deposit', value: '$125' },
+  { label: '10x Leverage', value: '$1,250' },
+  { label: 'Account Type', value: '10x Account' },
+  { label: 'Max Leverage', value: '1:500' },
+  { label: 'Platform', value: 'TradeLocker' },
+  { label: 'Server', value: 'GenFX' },
+]
+
+function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+  const [agreed, setAgreed] = useState(false)
+  const [username, setUsername] = useState('')
+
+  const handleClose = useCallback(() => {
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) { onClose(); return }
+    gsap.to(modal, { opacity: 0, scale: 0.96, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlay, {
+      opacity: 0, duration: 0.2, ease: 'power2.in',
+      onComplete: () => { setMounted(false); onClose() },
+    })
+  }, [onClose])
+
+  useEffect(() => {
+    if (open) setMounted(true)
+  }, [open])
+
+  useLayoutEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) return
+    gsap.set(overlay, { opacity: 0 })
+    gsap.set(modal, { opacity: 0, scale: 0.96 })
+    gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
+  }, [mounted])
+
+  useEffect(() => {
+    if (!mounted) return
+    function handleKey(e: KeyboardEvent) { if (e.key === 'Escape') handleClose() }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [mounted, handleClose])
+
+  if (!mounted) return null
+
+  return (
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Start your 10x Challenge"
+    >
+      <div ref={modalRef} className="relative w-[680px] max-w-[95vw]">
+        <div
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.25rem] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          aria-hidden="true"
+        >
+          <div className="absolute w-[400px] h-[220px] -left-[150px] bottom-[80px] bg-[#064B34] rounded-full blur-[140px]" />
+          <div className="absolute w-[400px] h-[220px] right-[-250px] -top-[18px] bg-[#064B34] rounded-full blur-[140px]" />
+          <div className="absolute w-[450px] h-[350px] left-[300px] -top-[100px] rotate-[48deg] origin-top-left bg-[#0C1311] rounded-full blur-[140px]" />
+        </div>
+
+        {/* Close button */}
+        <button
+          onClick={handleClose}
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[1.25rem] top-[1.25rem] w-[1.5rem] h-[1.5rem]"
+          aria-label="Close modal"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        <div className="relative z-10 p-8">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-white font-acid font-normal text-[1.5rem] leading-none">
+              Start your 10x Challenge
+            </h2>
+            <button
+              type="button"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors"
+            >
+              <RulesIcon />
+              <span>Rules</span>
+            </button>
+          </div>
+
+          {/* Two columns */}
+          <div className="flex gap-6">
+            {/* Left — Challenge Details */}
+            <div className="flex-1 bg-[#0A0E0C] rounded-[1rem] p-6 border border-white/[0.04]">
+              <h3 className="text-white font-acid font-medium text-[1.125rem] mb-6">Challenge Details</h3>
+
+              <div className="flex flex-col gap-5">
+                <GlassSelect
+                  label="Starting Equity"
+                  placeholder="Enter your preferred account name"
+                  options={[
+                    { value: '125', label: '$125' },
+                    { value: '250', label: '$250' },
+                    { value: '500', label: '$500' },
+                    { value: '1000', label: '$1,000' },
+                  ]}
+                />
+
+                <div>
+                  <div className="flex items-baseline gap-2 mb-[0.125rem]">
+                    <span className="text-white font-acid font-medium text-[1rem]">Username</span>
+                    <span className="text-[#808080] font-acid text-[0.8125rem]">(On Leaderboard)</span>
+                  </div>
+                  <GlassInput
+                    placeholder="Enter your preferred account name"
+                    value={username}
+                    onChange={setUsername}
+                  />
+                  <span className="text-[#808080] text-[0.75rem] font-acid mt-1.5 block">
+                    0/25 characters
+                  </span>
+                </div>
+
+                <label className="flex items-center gap-2.5 cursor-pointer select-none" onClick={() => setAgreed(v => !v)}>
+                  <CheckboxIcon checked={agreed} />
+                  <span className="text-[#808080] text-[0.8125rem] font-acid">
+                    I agree to the <span className="text-[#10BC83] underline">Terms & Conditions</span>
+                  </span>
+                </label>
+
+                <GlowButton label="Create Account" height={48} fontSize={15} />
+              </div>
+            </div>
+
+            {/* Right — Account Preview */}
+            <div className="flex-1 bg-[#0A0E0C] rounded-[1rem] p-6 border border-white/[0.04]">
+              <h3 className="text-white font-acid font-medium text-[1.125rem] mb-2">Account Preview</h3>
+              <p className="text-[#808080] font-acid text-[0.8125rem] mb-5">Trading Account Details</p>
+
+              <div className="flex flex-col">
+                {accountPreviewRows.map((row) => (
+                  <div key={row.label} className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-b-0">
+                    <span className="text-[#808080] font-acid text-[0.8125rem]">{row.label}</span>
+                    <span className="flex items-center gap-1.5">
+                      {row.dot && <span className="w-2 h-2 rounded-full bg-[#10BC83]" />}
+                      <span className={`font-acid text-[0.875rem] font-medium ${row.valueColor ? '' : 'text-white'}`} style={row.valueColor ? { color: row.valueColor } : undefined}>
+                        {row.value}
+                      </span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function ChallengesPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [prizePoolOpen, setPrizePoolOpen] = useState(false)
+  const [startChallengeOpen, setStartChallengeOpen] = useState(false)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -448,12 +643,13 @@ export default function ChallengesPage() {
         </div>
 
         {/* Tab Content */}
-        {activeTab === 0 && <MyChallengesContent />}
+        {activeTab === 0 && <MyChallengesContent onCreateAccount={() => setStartChallengeOpen(true)} />}
         {activeTab === 1 && <LeaderboardContent />}
-        {activeTab === 2 && <TiersContent />}
+        {activeTab === 2 && <TiersContent onPurchase={() => setStartChallengeOpen(true)} />}
       </div>
 
       <PrizePoolModal open={prizePoolOpen} onClose={() => setPrizePoolOpen(false)} />
+      <StartChallengeModal open={startChallengeOpen} onClose={() => setStartChallengeOpen(false)} />
     </div>
   )
 }
