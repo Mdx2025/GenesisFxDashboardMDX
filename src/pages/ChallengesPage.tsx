@@ -1,6 +1,6 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, ModeToggle, SecondaryButton } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -48,14 +48,6 @@ function NewAccountUserIcon() {
   )
 }
 
-function ChevronRightSmallIcon() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-      <path d="M10 7l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
 export default function ChallengesPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
 
@@ -84,12 +76,11 @@ export default function ChallengesPage() {
             <button className="h-11 w-[2.9375rem] rounded-full border border-[#303030] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
               <FilterIcon />
             </button>
-            <GlowButton label="Prize Pool" width={192} height={44} fontSize={16} icon={<PrizePoolTrophyIconDark />} />
-            <SecondaryButton>
+            <SparkleButton className="px-4">
               <NewAccountUserIcon />
               <span>New Account</span>
-              <ChevronRightSmallIcon />
-            </SecondaryButton>
+            </SparkleButton>
+            <GlowButton label="Prize Pool" width={192} height={44} fontSize={16} icon={<PrizePoolTrophyIconDark />} />
           </div>
         </div>
 
