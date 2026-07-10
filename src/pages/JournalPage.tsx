@@ -310,9 +310,9 @@ export default function JournalPage() {
 
         {/* Header */}
         <div className="flex items-start justify-between flex-wrap gap-4">
-          <div>
+          <div className="flex flex-col gap-2">
             <h1 className="text-white text-h1 font-normal">Trading Journal</h1>
-            <p className="text-[#808080] text-[14px] font-acid mt-1">Track and analyze your trading performance</p>
+            <p className="text-[#808080] text-[14px] font-acid">Track and analyze your trading performance</p>
           </div>
           <div className="flex items-center gap-3">
             {/* AI Coach */}
