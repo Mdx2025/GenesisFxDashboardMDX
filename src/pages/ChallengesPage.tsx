@@ -531,14 +531,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
         <div className="relative z-10 px-8 pt-8 pb-10">
           <div className="flex flex-col gap-8">
             {/* Close row */}
-            <div className="flex justify-end items-center gap-4">
-              <button
-                type="button"
-                className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
-              >
-                <NotebookIcon />
-                <span>Rules</span>
-              </button>
+            <div className="flex justify-end">
               <button
                 onClick={handleClose}
                 className="cursor-pointer hover:opacity-70 transition-opacity w-[1.5rem] h-[1.5rem]"
@@ -551,10 +544,19 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
               </button>
             </div>
 
-            {/* Title */}
-            <h2 className="text-white font-acid font-normal text-[2.25rem] leading-none">
-              Start your 10x Challenge
-            </h2>
+            {/* Title + Rules */}
+            <div className="flex justify-between items-center">
+              <h2 className="text-white font-acid font-normal text-[2.25rem] leading-none">
+                Start your 10x Challenge
+              </h2>
+              <button
+                type="button"
+                className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
+              >
+                <NotebookIcon />
+                <span>Rules</span>
+              </button>
+            </div>
           </div>
 
           {/* Two panels */}
