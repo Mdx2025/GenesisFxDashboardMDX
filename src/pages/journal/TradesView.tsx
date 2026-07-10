@@ -87,47 +87,49 @@ export default function TradesView() {
         </div>
       </GlassCard>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full" style={{ minWidth: '800px' }}>
-          <thead>
-            <tr className="bg-[#0a2e22]/60">
-              {COLUMNS.map(col => (
-                <th
-                  key={col}
-                  className="text-[#5a6b63] text-[11px] font-acid font-bold uppercase tracking-wider text-left py-3 px-6 first:rounded-l-[12px] last:rounded-r-[12px]"
-                >
-                  {col}
-                </th>
+      {/* Table Card */}
+      <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full" style={{ minWidth: '800px' }}>
+            <thead>
+              <tr className="bg-[#0a2e22]/60">
+                {COLUMNS.map(col => (
+                  <th
+                    key={col}
+                    className="text-[#5a6b63] text-[11px] font-acid font-bold uppercase tracking-wider text-left py-3 px-6"
+                  >
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((trade, i) => (
+                <tr key={i}>
+                  <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.dateTime}</td>
+                  <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.instrument}</td>
+                  <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.side}</td>
+                  <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.size}</td>
+                  <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.entry}</td>
+                  <td className={`text-[14px] font-acid px-6 h-[64px] ${trade.exitPositive ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
+                    {trade.exit}
+                  </td>
+                  <td className={`text-[14px] font-acid px-6 h-[64px] ${trade.netPnlPositive ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
+                    {trade.netPnl}
+                  </td>
+                </tr>
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((trade, i) => (
-              <tr key={i}>
-                <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.dateTime}</td>
-                <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.instrument}</td>
-                <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.side}</td>
-                <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.size}</td>
-                <td className="text-white/90 text-[14px] font-acid px-6 h-[64px]">{trade.entry}</td>
-                <td className={`text-[14px] font-acid px-6 h-[64px] ${trade.exitPositive ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
-                  {trade.exit}
-                </td>
-                <td className={`text-[14px] font-acid px-6 h-[64px] ${trade.netPnlPositive ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
-                  {trade.netPnl}
-                </td>
-              </tr>
-            ))}
-            {filtered.length === 0 && (
-              <tr>
-                <td colSpan={7} className="text-center text-[#808080] text-[14px] font-acid py-12">
-                  No trades found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+              {filtered.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="text-center text-[#808080] text-[14px] font-acid py-12">
+                    No trades found
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </GlassCard>
     </div>
   )
 }
