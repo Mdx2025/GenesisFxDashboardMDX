@@ -297,7 +297,7 @@ export default function JournalPage() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+    <div className="journal-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
       <TopBar
         onMenuClick={() => setSidebarOpen(prev => !prev)}
         menuOpen={sidebarOpen}
