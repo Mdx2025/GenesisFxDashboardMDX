@@ -438,7 +438,7 @@ export default function ChallengesPage() {
             <button className="h-11 w-[2.9375rem] rounded-full border border-[#303030] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
               <FilterIcon />
             </button>
-            <SparkleButton className="px-4" onClick={() => setPrizePoolOpen(true)}>
+            <SparkleButton className="px-10" onClick={() => setPrizePoolOpen(true)}>
               <PrizePoolTrophyIcon />
               <span>Prize Pool</span>
             </SparkleButton>
