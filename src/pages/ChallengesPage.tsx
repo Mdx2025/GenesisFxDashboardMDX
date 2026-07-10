@@ -1,16 +1,6 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
-
-function UserRoundedSmallIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
-      <ellipse cx="16" cy="10" rx="5.5" ry="5.5" fill="white"/>
-      <ellipse cx="16" cy="25" rx="9.5" ry="5.5" fill="white"/>
-    </svg>
-  )
-}
-import { ChallengesIcon } from '@/components/icons'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, ModeToggle, SecondaryButton } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -39,12 +29,12 @@ function FilterIcon() {
   )
 }
 
-function PrizePoolTrophyIcon() {
+function PrizePoolTrophyIconDark() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M16.5 6.12176L16.5 6.17615C16.4999 6.82171 16.4999 7.14449 16.3445 7.40857C16.1891 7.67266 15.907 7.82942 15.3427 8.14293L14.7477 8.47349C15.1577 7.08738 15.2945 5.59811 15.345 4.32448C15.3472 4.26987 15.3497 4.21459 15.3521 4.15872L15.3538 4.11959C15.8423 4.28922 16.1165 4.41568 16.2876 4.65306C16.5 4.94769 16.5 5.33905 16.5 6.12176Z" fill="#C6C6C6"/>
-      <path d="M1.5 6.12176L1.5 6.17615C1.50002 6.82171 1.50003 7.14449 1.65542 7.40857C1.81081 7.67266 2.09297 7.82942 2.65729 8.14293L3.2526 8.47367C2.84255 7.08751 2.70575 5.59816 2.65519 4.32448C2.65302 4.26987 2.65058 4.21459 2.64811 4.15872L2.64638 4.1195C2.15775 4.28917 1.88344 4.41564 1.71232 4.65306C1.49997 4.94769 1.49998 5.33905 1.5 6.12176Z" fill="#C6C6C6"/>
-      <path fillRule="evenodd" clipRule="evenodd" d="M12.2828 1.76006C11.4398 1.61782 10.3378 1.5 9.00012 1.5C7.66246 1.5 6.56043 1.61782 5.71738 1.76006C4.86334 1.90415 4.43631 1.9762 4.07952 2.41562C3.72274 2.85505 3.74159 3.32998 3.7793 4.27985C3.90877 7.54078 4.61247 11.6138 8.4375 11.9742V14.625H7.36485C7.00734 14.625 6.69953 14.8773 6.62942 15.2279L6.4875 15.9375H4.5C4.18934 15.9375 3.9375 16.1893 3.9375 16.5C3.9375 16.8107 4.18934 17.0625 4.5 17.0625H13.5C13.8107 17.0625 14.0625 16.8107 14.0625 16.5C14.0625 16.1893 13.8107 15.9375 13.5 15.9375H11.5125L11.3706 15.2279C11.3005 14.8773 10.9927 14.625 10.6351 14.625H9.5625V11.9743C13.3877 11.614 14.0915 7.54084 14.2209 4.27985C14.2586 3.32998 14.2775 2.85505 13.9207 2.41562C13.5639 1.9762 13.1369 1.90415 12.2828 1.76006Z" fill="#C6C6C6"/>
+      <path d="M16.5 6.12176L16.5 6.17615C16.4999 6.82171 16.4999 7.14449 16.3445 7.40857C16.1891 7.67266 15.907 7.82942 15.3427 8.14293L14.7477 8.47349C15.1577 7.08738 15.2945 5.59811 15.345 4.32448C15.3472 4.26987 15.3497 4.21459 15.3521 4.15872L15.3538 4.11959C15.8423 4.28922 16.1165 4.41568 16.2876 4.65306C16.5 4.94769 16.5 5.33905 16.5 6.12176Z" fill="black"/>
+      <path d="M1.5 6.12176L1.5 6.17615C1.50002 6.82171 1.50003 7.14449 1.65542 7.40857C1.81081 7.67266 2.09297 7.82942 2.65729 8.14293L3.2526 8.47367C2.84255 7.08751 2.70575 5.59816 2.65519 4.32448C2.65302 4.26987 2.65058 4.21459 2.64811 4.15872L2.64638 4.1195C2.15775 4.28917 1.88344 4.41564 1.71232 4.65306C1.49997 4.94769 1.49998 5.33905 1.5 6.12176Z" fill="black"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M12.2828 1.76006C11.4398 1.61782 10.3378 1.5 9.00012 1.5C7.66246 1.5 6.56043 1.61782 5.71738 1.76006C4.86334 1.90415 4.43631 1.9762 4.07952 2.41562C3.72274 2.85505 3.74159 3.32998 3.7793 4.27985C3.90877 7.54078 4.61247 11.6138 8.4375 11.9742V14.625H7.36485C7.00734 14.625 6.69953 14.8773 6.62942 15.2279L6.4875 15.9375H4.5C4.18934 15.9375 3.9375 16.1893 3.9375 16.5C3.9375 16.8107 4.18934 17.0625 4.5 17.0625H13.5C13.8107 17.0625 14.0625 16.8107 14.0625 16.5C14.0625 16.1893 13.8107 15.9375 13.5 15.9375H11.5125L11.3706 15.2279C11.3005 14.8773 10.9927 14.625 10.6351 14.625H9.5625V11.9743C13.3877 11.614 14.0915 7.54084 14.2209 4.27985C14.2586 3.32998 14.2775 2.85505 13.9207 2.41562C13.5639 1.9762 13.1369 1.90415 12.2828 1.76006Z" fill="black"/>
     </svg>
   )
 }
@@ -52,8 +42,16 @@ function PrizePoolTrophyIcon() {
 function NewAccountUserIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <circle cx="9" cy="4.5" r="3" fill="black"/>
-      <ellipse cx="9" cy="12.75" rx="5.25" ry="3" fill="black"/>
+      <circle cx="9" cy="4.5" r="3" fill="currentColor"/>
+      <ellipse cx="9" cy="12.75" rx="5.25" ry="3" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function ChevronRightSmallIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+      <path d="M10 7l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -76,8 +74,27 @@ export default function ChallengesPage() {
         {/* Page Title */}
         <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
 
+        {/* Tabs + Actions Row */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div className="w-full lg:w-auto">
+            <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
+          </div>
+          <div className="flex items-center gap-3 flex-wrap">
+            <SearchInput placeholder="Search for" />
+            <button className="h-11 w-[2.9375rem] rounded-full border border-[#303030] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
+              <FilterIcon />
+            </button>
+            <GlowButton label="Prize Pool" width={192} height={44} fontSize={16} icon={<PrizePoolTrophyIconDark />} />
+            <SecondaryButton>
+              <NewAccountUserIcon />
+              <span>New Account</span>
+              <ChevronRightSmallIcon />
+            </SecondaryButton>
+          </div>
+        </div>
+
         {/* Hero Banner */}
-        <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[16rem]">
+        <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
           <div className="flex flex-col">
             <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
             <p className="text-[#808080] text-body2">
@@ -86,7 +103,7 @@ export default function ChallengesPage() {
           </div>
 
           <div className="flex items-center gap-4 bg-[#09241C] rounded-[1.875rem] px-6 py-4 shrink-0">
-            <div className="w-[98px] h-[98px] rounded-xl bg-[#064B34] flex items-center justify-center">
+            <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-[#064B34] flex items-center justify-center">
               <TrophyIcon />
             </div>
             <div className="flex flex-col items-center gap-1">
@@ -96,28 +113,10 @@ export default function ChallengesPage() {
           </div>
         </GlassBannerCard>
 
-        {/* Tabs + Actions Row */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="w-full lg:w-md">
-            <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
-          </div>
-          <div className="flex items-center gap-3 flex-wrap">
-            <SearchInput placeholder="Search for" />
-            <button className="h-11 w-11 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
-              <FilterIcon />
-            </button>
-            <SparkleButton className="px-4">
-              <PrizePoolTrophyIcon />
-              <span>Prize Pool</span>
-            </SparkleButton>
-            <GlowButton label="New Account" width={192} height={44} fontSize={16} icon={<NewAccountUserIcon />} />
-          </div>
-        </div>
-
         {/* Empty State */}
         <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
           <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
-            <div className="w-[70px] h-[70px] rounded-full bg-[#09241C] flex items-center justify-center">
+            <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-[#09241C] flex items-center justify-center">
               <UserRoundedIcon />
             </div>
             <div className="flex flex-col items-center gap-2">
@@ -126,7 +125,7 @@ export default function ChallengesPage() {
                 Create your first 10X account to start trading with enhanced leverage
               </p>
             </div>
-            <GlowButton label="Create Account" width={183} height={44} fontSize={16} />
+            <GlowButton label="Trade" width={183} height={44} fontSize={16} />
           </div>
         </GlassCard>
       </div>
