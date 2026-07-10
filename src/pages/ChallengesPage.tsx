@@ -334,67 +334,73 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
       aria-label="Prize Pool"
     >
       <div ref={modalRef} className="relative w-[793px] max-w-[95vw]">
-        <GlassCard variant="light" divider="white" rounded="30px" className="overflow-hidden">
-          <div className="relative z-10 px-10 pt-10 pb-8">
-            {/* Close button */}
+        <div
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          aria-hidden="true"
+        >
+          <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-[#064B34] rounded-full blur-[157px]" />
+          <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-[#064B34] rounded-full blur-[157px]" />
+          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-[#0C1311] rounded-full blur-[157px]" />
+        </div>
+
+        <button
+          onClick={handleClose}
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[31px] w-[24px] h-[24px]"
+          aria-label="Close modal"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        <div className="relative z-10 px-10 pt-10 pb-8">
+          {/* Header: Title + April 2026 badge + How it works */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <h2 className="text-white font-acid font-normal text-[1.75rem] leading-none">
+                Current Month Prize Pool
+              </h2>
+              <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
+                April 2026
+              </span>
+            </div>
             <button
-              onClick={handleClose}
-              className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[26px] w-[24px] h-[24px]"
-              aria-label="Close modal"
+              type="button"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <QuestionIcon />
+              <span>How it works</span>
             </button>
+          </div>
 
-            {/* Header: Title + April 2026 badge + How it works */}
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-3">
-                <h2 className="text-white font-acid font-normal text-[1.75rem] leading-none">
-                  Current Month Prize Pool
-                </h2>
-                <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
-                  April 2026
-                </span>
-              </div>
-              <button
-                type="button"
-                className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors"
-              >
-                <QuestionIcon />
-                <span>How it works</span>
-              </button>
-            </div>
-
-            {/* Tier Leaderboard header + Top Prize */}
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-white font-acid font-normal text-[1.25rem]">Tier Leaderboard</h3>
-              <div className="flex flex-col items-center px-5 py-2.5 rounded-[0.875rem] border border-[#10BC83]/30">
-                <span className="text-[#10BC83] text-[1.5rem] font-acid font-medium leading-tight">$500</span>
-                <span className="text-[#10BC83] text-xs font-acid">Top Prize</span>
-              </div>
-            </div>
-
-            {/* Rank / Prize table */}
-            <div className="w-full">
-              <div className="flex items-center pb-3 mb-1">
-                <div className="w-[30%] text-[#606060] text-xs font-medium tracking-[0.08em]">Rank</div>
-                <div className="w-[70%] text-[#606060] text-xs font-medium tracking-[0.08em] text-right">Prize</div>
-              </div>
-              {leaderboardPrizes.map((row, i) => (
-                <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
-                  <div className="w-[30%]">
-                    <span className="text-[#a0a0a0] text-sm font-acid">{row.rank}</span>
-                  </div>
-                  <div className="w-[70%] text-right">
-                    <span className="text-white text-base font-acid font-medium">{row.prize}</span>
-                  </div>
-                </div>
-              ))}
+          {/* Tier Leaderboard header + Top Prize */}
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-white font-acid font-normal text-[1.25rem]">Tier Leaderboard</h3>
+            <div className="flex flex-col items-center px-5 py-2.5 rounded-[0.875rem] border border-[#10BC83]/30">
+              <span className="text-[#10BC83] text-[1.5rem] font-acid font-medium leading-tight">$500</span>
+              <span className="text-[#10BC83] text-xs font-acid">Top Prize</span>
             </div>
           </div>
-        </GlassCard>
+
+          {/* Rank / Prize table */}
+          <div className="w-full">
+            <div className="flex items-center pb-3 mb-1">
+              <div className="w-[30%] text-[#606060] text-xs font-medium tracking-[0.08em]">Rank</div>
+              <div className="w-[70%] text-[#606060] text-xs font-medium tracking-[0.08em] text-right">Prize</div>
+            </div>
+            {leaderboardPrizes.map((row, i) => (
+              <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
+                <div className="w-[30%]">
+                  <span className="text-[#a0a0a0] text-sm font-acid">{row.rank}</span>
+                </div>
+                <div className="w-[70%] text-right">
+                  <span className="text-white text-base font-acid font-medium">{row.prize}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
