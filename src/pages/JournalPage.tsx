@@ -179,8 +179,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
 function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[30%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-6 pb-5">
+      <div className="p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal">Recent Trades</h3>
@@ -236,8 +235,7 @@ function ImpactDots({ level }: { level: number }) {
 function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[30%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-6 pb-5">
+      <div className="p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal">High Impact News</h3>
@@ -276,8 +274,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 function StatCard({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[182px]">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[40%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-5 h-full flex flex-col">
+      <div className="p-5 h-full flex flex-col">
         <div className="flex items-center justify-between">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>
           <InfoIcon />
@@ -350,8 +347,7 @@ export default function JournalPage() {
           <>
             {/* Weekly Stats Carousel */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-              <div className="relative z-10 p-[30px]">
+              <div className="p-[30px]">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <p className="text-white text-[24px] font-acid">Welcome back, marcelo</p>
@@ -380,8 +376,7 @@ export default function JournalPage() {
             {/* Stats Row: Net P&L + 2x2 grid */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
               <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-                <div className="relative z-10 p-6 h-full flex flex-col min-h-[340px]">
+                <div className="p-6 h-full flex flex-col min-h-[340px]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">Net P&L</span>

@@ -79,8 +79,7 @@ function MetricCard({ label, value, color }: { label: string; value: string; col
 
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[147px]">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[40%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-5 h-full flex flex-col">
+      <div className="p-5 h-full flex flex-col">
         <div className="flex items-center justify-between">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>
           <InfoIcon />
@@ -208,8 +207,7 @@ function ScoreBar({ score }: { score: number }) {
 function SessionAnalysis() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-6">
+      <div className="p-6">
         <h3 className="text-white text-[16px] font-acid font-medium mb-5">Session & Time Analysis</h3>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
@@ -248,8 +246,7 @@ function SessionAnalysis() {
 function SymbolExposure() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-6">
+      <div className="p-6">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-white text-[16px] font-acid font-medium">Symbol Exposure</h3>
           <button className="cursor-pointer hover:opacity-80 transition-opacity">
@@ -283,8 +280,7 @@ function SymbolExposure() {
 function TechnicalStatistics() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-      <div className="relative z-10 p-6">
+      <div className="p-6">
         <h3 className="text-white text-[16px] font-acid font-medium mb-5">Technical Statistics</h3>
 
         <div className="flex flex-col">
@@ -311,8 +307,7 @@ export default function StatisticsView() {
     <div className="flex flex-col gap-6">
       {/* Header */}
       <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-        <div className="absolute left-1/2 -translate-x-1/2 -top-[40%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-        <div className="relative z-10 px-[30px] py-5 flex items-center justify-between">
+        <div className="px-[30px] py-5 flex items-center justify-between">
           <div>
             <h2 className="text-white text-[24px] font-acid">Trading Statistics</h2>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">All time</p>
@@ -325,8 +320,7 @@ export default function StatisticsView() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6">
         {/* Genesis Score */}
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-          <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-          <div className="relative z-10 p-6">
+          <div className="p-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-white text-[24px] font-acid">Genesis Score</h3>
               <div className="flex items-center gap-2 h-[30px] px-3 rounded-full border border-[rgba(0,240,160,0.15)] bg-[rgba(0,240,160,0.1)]">
