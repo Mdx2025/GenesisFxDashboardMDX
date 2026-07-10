@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { ModeToggle } from '@/components/ui'
+import MarketNewsView from '@/pages/news/MarketNewsView'
 
 const TABS = ['Terminal', 'Market News', 'Daily News', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
 const NEWS_CHANNELS = ['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
@@ -410,8 +411,8 @@ export default function NewsPage() {
       <div className="flex flex-col gap-6 pb-12 mt-6 3xl:mt-8 4xl:mt-10">
         {/* Title */}
         <div className="flex items-center gap-4">
-          <h1 className="text-white text-h1 font-normal">Daily analysis</h1>
-          <BullishBadge />
+          <h1 className="text-white text-h1 font-normal">{activeTab === 1 ? 'Market News' : 'Daily analysis'}</h1>
+          {activeTab === 0 && <BullishBadge />}
         </div>
 
         {/* Tabs + Trade Now */}
@@ -424,33 +425,43 @@ export default function NewsPage() {
               onChange={setActiveTab}
             />
           </div>
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            <SignalIcon />
-            <button className="px-6 py-2.5 rounded-full border border-gfx-green-500 text-gfx-green-500 text-sm font-normal cursor-pointer hover:bg-gfx-green-500/10 transition-colors">
-              Trade Now
-            </button>
-          </div>
+          {activeTab === 0 && (
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
+              <SignalIcon />
+              <button className="px-6 py-2.5 rounded-full border border-gfx-green-500 text-gfx-green-500 text-sm font-normal cursor-pointer hover:bg-gfx-green-500/10 transition-colors">
+                Trade Now
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Top Row: Live News + Live Webcams + AI Insights */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.75fr] gap-4">
-          <LiveNewsCard />
-          <WebcamCard />
-          <AIInsightsCard />
-        </div>
+        {/* Terminal Tab (index 0) */}
+        {activeTab === 0 && (
+          <>
+            {/* Top Row: Live News + Live Webcams + AI Insights */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.75fr] gap-4">
+              <LiveNewsCard />
+              <WebcamCard />
+              <AIInsightsCard />
+            </div>
 
-        {/* Bottom Row: Live Quotes + News Feed + Top Movers */}
-        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr_0.8fr] gap-4">
-          <LiveQuotesCard />
-          <div className="flex flex-col gap-4">
-            <NewsFeedCard />
-            <EconomicCalendarCard />
-          </div>
-          <div className="flex flex-col gap-4">
-            <TopMoversCard />
-            <TradeSessionsCard />
-          </div>
-        </div>
+            {/* Bottom Row: Live Quotes + News Feed + Top Movers */}
+            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr_0.8fr] gap-4">
+              <LiveQuotesCard />
+              <div className="flex flex-col gap-4">
+                <NewsFeedCard />
+                <EconomicCalendarCard />
+              </div>
+              <div className="flex flex-col gap-4">
+                <TopMoversCard />
+                <TradeSessionsCard />
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Market News Tab (index 1) */}
+        {activeTab === 1 && <MarketNewsView />}
       </div>
     </div>
   )
