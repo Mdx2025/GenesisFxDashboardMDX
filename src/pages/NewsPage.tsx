@@ -3,6 +3,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { ModeToggle } from '@/components/ui'
 import MarketNewsView from '@/pages/news/MarketNewsView'
+import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
 
 const TABS = ['Terminal', 'Market News', 'Daily News', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
 const NEWS_CHANNELS = ['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
@@ -411,7 +412,7 @@ export default function NewsPage() {
       <div className="flex flex-col gap-6 pb-12 mt-6 3xl:mt-8 4xl:mt-10">
         {/* Title */}
         <div className="flex items-center gap-4">
-          <h1 className="text-white text-h1 font-normal">{activeTab === 1 ? 'Market News' : 'Daily analysis'}</h1>
+          <h1 className="text-white text-h1 font-normal">{activeTab === 1 || activeTab === 3 ? 'Market News' : 'Daily analysis'}</h1>
           {activeTab === 0 && <BullishBadge />}
         </div>
 
@@ -462,6 +463,9 @@ export default function NewsPage() {
 
         {/* Market News Tab (index 1) */}
         {activeTab === 1 && <MarketNewsView />}
+
+        {/* Economic Calendar Tab (index 3) */}
+        {activeTab === 3 && <EconomicCalendarView />}
       </div>
     </div>
   )
