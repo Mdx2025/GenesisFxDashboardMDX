@@ -5,6 +5,7 @@ import { GlassCard, SparkleButton, GreenDot, ModeToggle } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { weeklyStats, recentTrades, highImpactNews, journalStats, journalTabs } from '@/data/journal'
 import type { DayStatCard, RecentTrade, NewsEvent } from '@/data/journal'
+import StatisticsView from '@/pages/journal/StatisticsView'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -344,98 +345,96 @@ export default function JournalPage() {
           />
         </div>
 
-        {/* Weekly Stats Carousel */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-          <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-          <div className="relative z-10 p-[30px]">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <p className="text-white text-[24px] font-acid">Welcome back, marcelo</p>
-                <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">This week</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <SparkleButton className="px-[22px]">
-                  <ShareIcon />
-                </SparkleButton>
-                <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
-                  <ChevronLeftSmall />
-                </button>
-                <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
-                  <ChevronRightSmall />
-                </button>
-              </div>
-            </div>
-            <div className="flex gap-[13px] overflow-x-auto pb-2 scrollbar-hide">
-              {weeklyStats.map((stat, i) => (
-                <WeeklyStatCard key={i} stat={stat} />
-              ))}
-            </div>
-          </div>
-        </GlassCard>
-
-        {/* Stats Row: Net P&L + 2x2 grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
-          {/* Net P&L Card */}
-          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-            <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-            <div className="relative z-10 p-6 h-full flex flex-col min-h-[340px]">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">Net P&L</span>
-                  <InfoIcon />
+        {/* Tab Content */}
+        {activeTab === 0 && (
+          <>
+            {/* Weekly Stats Carousel */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
+              <div className="relative z-10 p-[30px]">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <p className="text-white text-[24px] font-acid">Welcome back, marcelo</p>
+                    <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">This week</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <SparkleButton className="px-[22px]">
+                      <ShareIcon />
+                    </SparkleButton>
+                    <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
+                      <ChevronLeftSmall />
+                    </button>
+                    <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
+                      <ChevronRightSmall />
+                    </button>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 h-[30px] px-3 rounded-full border border-gfx-green-500/30 bg-gfx-green-500/5">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-gfx-green-500 text-[12px] font-acid">24H +$0.00(0.0%)</span>
+                <div className="flex gap-[13px] overflow-x-auto pb-2 scrollbar-hide">
+                  {weeklyStats.map((stat, i) => (
+                    <WeeklyStatCard key={i} stat={stat} />
+                  ))}
                 </div>
               </div>
-              <p className="text-[#37c92e] text-[36px] font-acid mt-3">
-                +${journalStats.totalPnl.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-              </p>
-              <p className="text-gfx-neutral-500 text-[14px] font-acid mt-1">Last 30 days</p>
-              <div className="flex-1 flex items-end mt-4">
-                <PnlAreaChart />
+            </GlassCard>
+
+            {/* Stats Row: Net P&L + 2x2 grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
+              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+                <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
+                <div className="relative z-10 p-6 h-full flex flex-col min-h-[340px]">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">Net P&L</span>
+                      <InfoIcon />
+                    </div>
+                    <div className="flex items-center gap-2 h-[30px] px-3 rounded-full border border-gfx-green-500/30 bg-gfx-green-500/5">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="text-gfx-green-500 text-[12px] font-acid">24H +$0.00(0.0%)</span>
+                    </div>
+                  </div>
+                  <p className="text-[#37c92e] text-[36px] font-acid mt-3">
+                    +${journalStats.totalPnl.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                  </p>
+                  <p className="text-gfx-neutral-500 text-[14px] font-acid mt-1">Last 30 days</p>
+                  <div className="flex-1 flex items-end mt-4">
+                    <PnlAreaChart />
+                  </div>
+                </div>
+              </GlassCard>
+
+              <div className="grid grid-cols-2 gap-4">
+                <StatCard label="Most Traded Asset">
+                  <div className="flex items-center gap-3">
+                    <XauusdIcon />
+                    <span className="text-white text-[22px] font-acid">XAUUSD</span>
+                  </div>
+                </StatCard>
+                <StatCard label="Total Trades">
+                  <div className="flex items-center gap-3">
+                    <DiagramUpIcon />
+                    <span className="text-white text-[24px] font-acid">{journalStats.totalTrades}</span>
+                  </div>
+                </StatCard>
+                <StatCard label="Win rate">
+                  <DonutChart value={journalStats.winRate} label={`${journalStats.winRate}%`} />
+                </StatCard>
+                <StatCard label="Profit Factor">
+                  <DonutChart value={(journalStats.profitFactor / 3) * 100} label={`${journalStats.profitFactor}`} />
+                </StatCard>
               </div>
             </div>
-          </GlassCard>
 
-          {/* Right: 2x2 stat grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {/* Most Traded Asset */}
-            <StatCard label="Most Traded Asset">
-              <div className="flex items-center gap-3">
-                <XauusdIcon />
-                <span className="text-white text-[22px] font-acid">XAUUSD</span>
-              </div>
-            </StatCard>
+            {/* Bottom: Recent Trades + High Impact News */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <RecentTradesCard trades={recentTrades} />
+              <HighImpactNewsCard news={highImpactNews} />
+            </div>
+          </>
+        )}
 
-            {/* Total Trades */}
-            <StatCard label="Total Trades">
-              <div className="flex items-center gap-3">
-                <DiagramUpIcon />
-                <span className="text-white text-[24px] font-acid">{journalStats.totalTrades}</span>
-              </div>
-            </StatCard>
-
-            {/* Win Rate */}
-            <StatCard label="Win rate">
-              <DonutChart value={journalStats.winRate} label={`${journalStats.winRate}%`} />
-            </StatCard>
-
-            {/* Profit Factor */}
-            <StatCard label="Profit Factor">
-              <DonutChart value={(journalStats.profitFactor / 3) * 100} label={`${journalStats.profitFactor}`} />
-            </StatCard>
-          </div>
-        </div>
-
-        {/* Bottom: Recent Trades + High Impact News */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <RecentTradesCard trades={recentTrades} />
-          <HighImpactNewsCard news={highImpactNews} />
-        </div>
+        {activeTab === 1 && <StatisticsView />}
 
       </div>
     </div>
