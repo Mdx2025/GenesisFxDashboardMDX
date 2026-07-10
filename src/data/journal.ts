@@ -48,6 +48,7 @@ export const weeklyStats: DayStatCard[] = [
   { day: 'Sun 19', pnl: 0, trades: 0 },
   { day: 'Sun 19', pnl: 0, trades: 0 },
   { day: 'Sun 19', pnl: 0, trades: 0 },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
 ]
 
 export const recentTrades: RecentTrade[] = [
