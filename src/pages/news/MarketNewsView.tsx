@@ -121,7 +121,7 @@ function ListCard({ article }: { article: NewsArticle }) {
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="flex justify-between items-start p-6 h-[245px]">
         {/* Left content */}
-        <div className="flex flex-col justify-center h-full flex-1 min-w-0 pr-6">
+        <div className="flex flex-col h-full flex-1 min-w-0 pr-6">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-[#00b38c] text-[16px] font-acid font-medium">{article.category}</span>
             {article.countryCode && (
