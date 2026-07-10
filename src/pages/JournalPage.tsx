@@ -1,31 +1,13 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, GreenDot, ModeToggle } from '@/components/ui'
+import { GlassCard, SparkleButton, GreenDot, ModeToggle, AiCoachButton, ChatButton } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { weeklyStats, recentTrades, highImpactNews, journalStats, journalTabs } from '@/data/journal'
 import type { DayStatCard, RecentTrade, NewsEvent } from '@/data/journal'
 import StatisticsView from '@/pages/journal/StatisticsView'
 
 /* ─── Inline SVG Icons ─── */
-
-function AiCoachIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M15.9811 0.353163C16.1668 -0.117721 16.8332 -0.117721 17.0189 0.353163L17.6733 2.01242C17.73 2.15618 17.8438 2.26998 17.9876 2.32668L19.6468 2.98108C20.1177 3.16679 20.1177 3.83321 19.6468 4.01892L17.9876 4.67332C17.8438 4.73002 17.73 4.84382 17.6733 4.98758L17.0189 6.64684C16.8332 7.11772 16.1668 7.11772 15.9811 6.64684L15.3267 4.98758C15.27 4.84382 15.1562 4.73002 15.0124 4.67332L13.3532 4.01892C12.8823 3.83321 12.8823 3.16679 13.3532 2.98108L15.0124 2.32668C15.1562 2.26998 15.27 2.15618 15.3267 2.01242L15.9811 0.353163Z" fill="#B08DFF" />
-      <path fillRule="evenodd" clipRule="evenodd" d="M15 12.5C15 16.6421 11.6421 20 7.5 20C3.35786 20 0 16.6421 0 12.5C0 8.35786 3.35786 5 7.5 5C11.6421 5 15 8.35786 15 12.5ZM10 14.75C10.4142 14.75 10.75 14.4142 10.75 14C10.75 13.5858 10.4142 13.25 10 13.25H8C7.58579 13.25 7.25 13.5858 7.25 14C7.25 14.4142 7.58579 14.75 8 14.75H10ZM12 10.5C12 11.3284 11.5523 12 11 12C10.4477 12 10 11.3284 10 10.5C10 9.67157 10.4477 9 11 9C11.5523 9 12 9.67157 12 10.5ZM7 12C7.55228 12 8 11.3284 8 10.5C8 9.67157 7.55228 9 7 9C6.44772 9 6 9.67157 6 10.5C6 11.3284 6.44772 12 7 12Z" fill="#B08DFF" />
-      <path d="M14.7669 6.29386L14.0175 7.04328C13.6957 6.6594 13.3407 6.30436 12.9568 5.98261L13.7063 5.23315L14.4669 5.53312L14.7669 6.29386Z" fill="#B08DFF" />
-    </svg>
-  )
-}
-
-function ChatIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 13.2797 4.30049 14.4893 4.83477 15.562C4.97675 15.847 5.02401 16.1729 4.94169 16.4805L4.46521 18.2613C4.25836 19.0344 4.96561 19.7416 5.73868 19.5348L7.51951 19.0583C7.82715 18.976 8.15297 19.0232 8.43802 19.1652C9.51069 19.6995 10.7203 20 12 20Z" fill="#B08DFF" />
-    </svg>
-  )
-}
 
 function InfoIcon() {
   return (
@@ -318,13 +300,8 @@ export default function JournalPage() {
             <p className="text-[#808080] text-[14px] font-acid">Track and analyze your trading performance</p>
           </div>
           <div className="flex items-center gap-3">
-            <button className="flex items-center gap-[14px] px-[19px] py-[14px] rounded-full bg-[linear-gradient(241deg,#100919_0%,#1D0E2F_100%)] hover:opacity-90 transition-opacity cursor-pointer">
-              <AiCoachIcon />
-              <span className="text-white text-[16px] font-acid font-medium leading-[24px]">AI Coach</span>
-            </button>
-            <button className="flex items-center justify-center px-[19px] py-[14px] rounded-full bg-[linear-gradient(241deg,#100919_0%,#1D0E2F_100%)] hover:opacity-90 transition-opacity cursor-pointer">
-              <ChatIcon />
-            </button>
+            <AiCoachButton />
+            <ChatButton />
             <button className="flex items-center gap-3 h-[72px] px-[19px] rounded-[20px] border border-[#303030] hover:border-[#404040] transition-colors cursor-pointer">
               <div className="relative w-[18px] h-[18px] flex items-center justify-center">
                 <div className="w-[10px] h-[10px] rounded-full bg-[#37C92E] shadow-[0_0_4px_rgba(12,145,4,1)]" />
