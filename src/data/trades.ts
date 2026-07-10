@@ -19,7 +19,7 @@ export const tradeHistory: Trade[] = [
     entry: '$13,102.50',
     exit: '+$2,841.71',
     exitPositive: true,
-    netPnl: '$-155.20',
+    netPnl: '$-156.20',
     netPnlPositive: false,
   },
 ]
