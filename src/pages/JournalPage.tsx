@@ -9,6 +9,7 @@ import StatisticsView from '@/pages/journal/StatisticsView'
 import StrategyDnaView from '@/pages/journal/StrategyDnaView'
 import CalendarView from '@/pages/journal/CalendarView'
 import TradesView from '@/pages/journal/TradesView'
+import NotebookView from '@/pages/journal/NotebookView'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -419,6 +420,7 @@ export default function JournalPage() {
         {activeTab === 2 && <StrategyDnaView />}
         {activeTab === 3 && <CalendarView />}
         {activeTab === 4 && <TradesView />}
+        {activeTab === 5 && <NotebookView />}
 
       </div>
     </div>
