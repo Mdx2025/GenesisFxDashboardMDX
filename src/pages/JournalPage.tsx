@@ -335,7 +335,7 @@ export default function JournalPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="max-w-3xl">
+        <div className="w-4xl">
           <ModeToggle
             options={[...journalTabs]}
             defaultIndex={0}
