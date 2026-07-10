@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard, SecondaryButton, GlowButton, ModeToggle } from '@/components/ui'
+import { GlassCard, SparkleButton, GlowButton, ModeToggle } from '@/components/ui'
 import { notebookFolders, notebookNotes } from '@/data/notebook'
 import type { NotebookNote } from '@/data/notebook'
 
@@ -116,10 +116,10 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <SecondaryButton className="h-[46px]" onClick={() => onNewFolder?.()}>
+            <SparkleButton className="px-6" onClick={() => onNewFolder?.()}>
               <NewFolderIcon />
               <span>New folder</span>
-            </SecondaryButton>
+            </SparkleButton>
             <GlowButton
               label="New Note"
               icon={<NoteIcon />}
