@@ -227,7 +227,7 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
 
 function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void }) {
   return (
-    <>
+    <div className="flex flex-col gap-8">
       {/* Hero Banner */}
       <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
         <div className="flex flex-col">
@@ -262,7 +262,7 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
           <GlowButton label="Create account" width={210} height={44} fontSize={16} onClick={onCreateAccount} />
         </div>
       </GlassCard>
-    </>
+    </div>
   )
 }
 
