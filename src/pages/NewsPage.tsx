@@ -5,6 +5,7 @@ import { ModeToggle } from '@/components/ui'
 import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
 import TradeSessionsView from '@/pages/news/TradeSessionsView'
+import PodcastView from '@/pages/news/PodcastView'
 
 const TABS = ['Terminal', 'Market News', 'Daily News', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
 const NEWS_CHANNELS = ['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
@@ -470,6 +471,9 @@ export default function NewsPage() {
 
         {/* Trade Sessions Tab (index 4) */}
         {activeTab === 4 && <TradeSessionsView />}
+
+        {/* Podcast Tab (index 5) */}
+        {activeTab === 5 && <PodcastView />}
       </div>
     </div>
   )
