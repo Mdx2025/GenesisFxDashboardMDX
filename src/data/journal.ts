@@ -1,6 +1,5 @@
 export interface DayStatCard {
   day: string
-  label: string
   pnl: number
   trades: number
   active?: boolean
@@ -31,15 +30,24 @@ export interface JournalStats {
   totalTrades: number
 }
 
+export const journalTabs = [
+  'Overview',
+  'Statistics',
+  'Strategy DNA',
+  'Calendar',
+  'Trades',
+  'Notebook',
+  'Replay',
+] as const
+
 export const weeklyStats: DayStatCard[] = [
-  { day: 'Mon', label: 'Apr 21', pnl: 1240.50, trades: 5 },
-  { day: 'Tue', label: 'Apr 22', pnl: -320.00, trades: 3 },
-  { day: 'Wed', label: 'Apr 23', pnl: 4285.40, trades: 8, active: true },
-  { day: 'Thu', label: 'Apr 24', pnl: 0, trades: 0 },
-  { day: 'Fri', label: 'Apr 25', pnl: 890.20, trades: 4 },
-  { day: 'Sat', label: 'Apr 26', pnl: 0, trades: 0 },
-  { day: 'Sun', label: 'Apr 27', pnl: 0, trades: 0 },
-  { day: 'Mon', label: 'Apr 28', pnl: 150.00, trades: 2 },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
+  { day: 'Sun 19', pnl: 0, trades: 0, active: true },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
+  { day: 'Sun 19', pnl: 0, trades: 0 },
 ]
 
 export const recentTrades: RecentTrade[] = [
