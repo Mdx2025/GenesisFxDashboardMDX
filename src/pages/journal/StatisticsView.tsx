@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import { GlassCard } from '@/components/ui'
+import { GlassCard, PeriodPill } from '@/components/ui'
 import {
-  periodOptions,
   statsGrid,
   sessionPerformance,
   symbolExposure,
@@ -21,47 +19,11 @@ function InfoIcon() {
   )
 }
 
-function CalendarIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M16.5 10.5V9C16.5 8.37 16.5 7.81 16.49 7.31H1.51C1.5 7.81 1.5 8.37 1.5 9V10.5C1.5 13.33 1.5 14.74 2.38 15.62C3.26 16.5 4.67 16.5 7.5 16.5H10.5C13.33 16.5 14.74 16.5 15.62 15.62C16.5 14.74 16.5 13.33 16.5 10.5Z" fill="white" fillOpacity={0.35}/>
-      <path d="M5.81 1.88C5.81 1.56 5.56 1.31 5.25 1.31C4.94 1.31 4.69 1.56 4.69 1.88V3.06C3.61 3.15 2.9 3.36 2.38 3.88C1.86 4.4 1.65 5.11 1.56 6.19H16.44C16.35 5.11 16.14 4.4 15.62 3.88C15.1 3.36 14.39 3.15 13.31 3.06V1.88C13.31 1.56 13.06 1.31 12.75 1.31C12.44 1.31 12.19 1.56 12.19 1.88V3.01C11.69 3 11.13 3 10.5 3H7.5C6.87 3 6.31 3 5.81 3.01V1.88Z" fill="white" fillOpacity={0.35}/>
-    </svg>
-  )
-}
-
 function ExpandIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path d="M3 3H8M3 3V8M3 3L8 8M17 17H12M17 17V12M17 17L12 12" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
-  )
-}
-
-/* ─── Period Selector ─── */
-
-function PeriodSelector({ active, onChange }: { active: string; onChange: (v: string) => void }) {
-  return (
-    <div className="flex items-center gap-2">
-      <div className="flex items-center h-[39px] rounded-full bg-[#09241c] overflow-hidden">
-        {periodOptions.map(p => (
-          <button
-            key={p}
-            onClick={() => onChange(p)}
-            className={`h-full px-3.5 text-[12px] font-acid font-medium rounded-full transition-colors cursor-pointer ${
-              active === p
-                ? 'bg-[#064b34] text-white border border-[#00b38c]'
-                : 'text-gfx-neutral-300 hover:text-white'
-            }`}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
-      <button className="w-[39px] h-[39px] rounded-full bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
-        <CalendarIcon />
-      </button>
-    </div>
   )
 }
 
@@ -301,8 +263,6 @@ function TechnicalStatistics() {
 /* ─── Main Statistics View ─── */
 
 export default function StatisticsView() {
-  const [period, setPeriod] = useState('ALL')
-
   return (
     <div className="flex flex-col gap-6">
       {/* Header */}
@@ -312,7 +272,7 @@ export default function StatisticsView() {
             <h2 className="text-white text-[24px] font-acid">Trading Statistics</h2>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">All time</p>
           </div>
-          <PeriodSelector active={period} onChange={setPeriod} />
+          <PeriodPill />
         </div>
       </GlassCard>
 
