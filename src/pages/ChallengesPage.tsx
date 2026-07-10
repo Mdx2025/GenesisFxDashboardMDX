@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
@@ -48,8 +49,151 @@ function NewAccountUserIconDark() {
   )
 }
 
+function TrophySmallIcon({ variant }: { variant: 'gold' | 'silver' | 'bronze' | 'none' }) {
+  if (variant === 'none') return null
+  const colors: Record<string, string> = { gold: '#FFD700', silver: '#C0C0C0', bronze: '#CD7F32' }
+  return (
+    <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+      <path d="M28.5 10.5V10.6c0 1.1 0 1.65-.27 2.1-.27.3-.73.57-1.7 1.1l-1-.01c.7-2.37.93-4.91 1.01-7.1l.01-.28c.83.29 1.3.5 1.6.9.35.5.35 1.17.35 2.5z" fill={colors[variant]}/>
+      <path d="M3.5 10.5V10.6c0 1.1 0 1.65.27 2.1.27.3.73.57 1.7 1.1l1-.01c-.7-2.37-.93-4.91-1.01-7.1l-.01-.28c-.83.29-1.3.5-1.6.9-.35.5-.35 1.17-.35 2.5z" fill={colors[variant]}/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M21.5 3.2c-1.44-.24-3.32-.44-5.6-.44-2.28 0-4.17.2-5.6.44-1.46.25-2.19.37-2.8 1.12-.6.75-.57 1.56-.51 3.18.22 5.56 1.42 12.5 7.95 13.11v4.52h-1.83c-.6 0-1.13.43-1.25 1.02l-.24 1.21h-3.39c-.53 0-.96.43-.96.96s.43.96.96.96h15.36c.53 0 .96-.43.96-.96s-.43-.96-.96-.96h-3.39l-.24-1.21c-.12-.6-.65-1.02-1.25-1.02h-1.83v-4.52c6.53-.61 7.73-7.55 7.95-13.11.06-1.62.1-2.43-.51-3.18-.61-.75-1.34-.87-2.8-1.12z" fill={colors[variant]}/>
+    </svg>
+  )
+}
+
+function UserAvatarIcon() {
+  return (
+    <div className="w-[2rem] h-[2rem] rounded-full bg-[#064B34] flex items-center justify-center shrink-0">
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="4.5" r="3" fill="#00B38C"/>
+        <ellipse cx="9" cy="12.75" rx="5.25" ry="3" fill="#00B38C"/>
+      </svg>
+    </div>
+  )
+}
+
+function Sparkline() {
+  return (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none">
+      <path d="M2 28 L12 22 L22 24 L32 18 L42 16 L52 12 L62 8 L72 4 L78 2" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      <defs>
+        <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#10BC83" stopOpacity="0.3"/>
+          <stop offset="100%" stopColor="#10BC83" stopOpacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M2 28 L12 22 L22 24 L32 18 L42 16 L52 12 L62 8 L72 4 L78 2 V32 H2 Z" fill="url(#sparkGrad)"/>
+    </svg>
+  )
+}
+
+const leaderboardData = [
+  { rank: 1, user: 'GAB1', tier: 'Tier 3', returnPct: '+112.45%', reward: '$500.00', trophy: 'gold' as const },
+  { rank: 2, user: 'GAB1', tier: 'Tier 2', returnPct: '+112.45%', reward: '$250.00', trophy: 'silver' as const },
+  { rank: 3, user: 'GAB1', tier: 'Tier 3', returnPct: '+112.45%', reward: '$100.00', trophy: 'bronze' as const },
+  { rank: 4, user: 'GAB1', tier: 'Tier 1', returnPct: '+112.45%', reward: '$50.00', trophy: 'none' as const },
+  { rank: 5, user: 'GAB1', tier: 'Tier 3', returnPct: '+112.45%', reward: '$50.00', trophy: 'none' as const },
+  { rank: 6, user: 'GAB1', tier: 'Tier 3', returnPct: '+112.45%', reward: '$50.00', trophy: 'none' as const },
+  { rank: 7, user: 'GAB1', tier: 'Tier 3', returnPct: '+112.45%', reward: '$50.00', trophy: 'none' as const },
+]
+
+function LeaderboardContent() {
+  return (
+    <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
+      <div className="relative z-10 p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <h3 className="text-white text-base font-medium">Monthly Tier Leaderboard</h3>
+          <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
+            April 2026
+          </span>
+        </div>
+
+        <div className="w-full">
+          {/* Header */}
+          <div className="flex items-center border-b border-white/[0.04] pb-3 mb-1">
+            <div className="w-[10%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Rank</div>
+            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">User</div>
+            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Current Tier</div>
+            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Return %</div>
+            <div className="w-[20%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Chart</div>
+            <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em] text-right">Reward</div>
+          </div>
+
+          {/* Rows */}
+          {leaderboardData.map((row) => (
+            <div key={row.rank} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
+              <div className="w-[10%] flex items-center gap-2">
+                <TrophySmallIcon variant={row.trophy} />
+                <span className="text-white text-sm">{row.rank}</span>
+              </div>
+              <div className="w-[18%] flex items-center gap-3">
+                <UserAvatarIcon />
+                <span className="text-white text-sm">{row.user}</span>
+              </div>
+              <div className="w-[18%]">
+                <span className="text-[#a0a0a0] text-sm">{row.tier}</span>
+              </div>
+              <div className="w-[18%]">
+                <span className="text-[#10BC83] text-sm">{row.returnPct}</span>
+              </div>
+              <div className="w-[20%]">
+                <Sparkline />
+              </div>
+              <div className="w-[16%] text-right">
+                <span className="text-white text-sm">{row.reward}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </GlassCard>
+  )
+}
+
+function MyChallengesContent() {
+  return (
+    <>
+      {/* Hero Banner */}
+      <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
+        <div className="flex flex-col">
+          <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
+          <p className="text-[#808080] text-body2">
+            Turn $125 into $1,000,000 — prove your skill, level up your capital
+          </p>
+        </div>
+        <div className="flex items-center gap-4 bg-[#09241C] rounded-[1.875rem] px-6 py-4 shrink-0">
+          <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-[#064B34] flex items-center justify-center">
+            <TrophyIcon />
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">0</span>
+            <span className="text-[#808080] text-[1rem] font-medium">My challenges</span>
+          </div>
+        </div>
+      </GlassBannerCard>
+
+      {/* Empty State */}
+      <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
+        <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
+          <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-[#09241C] flex items-center justify-center">
+            <UserRoundedIcon />
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <h3 className="text-white text-[1.5rem] font-normal">No 10x Accounts Yet</h3>
+            <p className="text-[#808080] text-body2 text-center max-w-lg">
+              Create your first 10X account to start trading with enhanced leverage
+            </p>
+          </div>
+          <GlowButton label="Trade" width={183} height={44} fontSize={16} />
+        </div>
+      </GlassCard>
+    </>
+  )
+}
+
 export default function ChallengesPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -63,13 +207,16 @@ export default function ChallengesPage() {
       />
 
       <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
-        {/* Page Title */}
         <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
 
         {/* Tabs + Actions Row */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="w-md">
-            <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
+            <ModeToggle
+              options={['My Challenges', 'Leaderboard', 'Tiers']}
+              activeIndex={activeTab}
+              onChange={setActiveTab}
+            />
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <SearchInput placeholder="Search for" />
@@ -84,41 +231,24 @@ export default function ChallengesPage() {
           </div>
         </div>
 
-        {/* Hero Banner */}
-        <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
-          <div className="flex flex-col">
-            <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
-            <p className="text-[#808080] text-body2">
-              Turn $125 into $1,000,000 — prove your skill, level up your capital
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4 bg-[#09241C] rounded-[1.875rem] px-6 py-4 shrink-0">
-            <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-[#064B34] flex items-center justify-center">
-              <TrophyIcon />
+        {/* Tab Content */}
+        {activeTab === 0 && <MyChallengesContent />}
+        {activeTab === 1 && <LeaderboardContent />}
+        {activeTab === 2 && (
+          <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
+            <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
+              <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-[#09241C] flex items-center justify-center">
+                <TrophyIcon />
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <h3 className="text-white text-[1.5rem] font-normal">Tiers Coming Soon</h3>
+                <p className="text-[#808080] text-body2 text-center max-w-lg">
+                  Tier information will be available here
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">0</span>
-              <span className="text-[#808080] text-[1rem] font-medium">My challenges</span>
-            </div>
-          </div>
-        </GlassBannerCard>
-
-        {/* Empty State */}
-        <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-          <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
-            <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-[#09241C] flex items-center justify-center">
-              <UserRoundedIcon />
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <h3 className="text-white text-[1.5rem] font-normal">No 10x Accounts Yet</h3>
-              <p className="text-[#808080] text-body2 text-center max-w-lg">
-                Create your first 10X account to start trading with enhanced leverage
-              </p>
-            </div>
-            <GlowButton label="Trade" width={183} height={44} fontSize={16} />
-          </div>
-        </GlassCard>
+          </GlassCard>
+        )}
       </div>
     </div>
   )
