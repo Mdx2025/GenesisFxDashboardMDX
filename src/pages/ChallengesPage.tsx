@@ -654,11 +654,12 @@ export default function ChallengesPage() {
         ]}
       />
 
-      <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
-        <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-20">
+          <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
 
-        {/* Tabs + Actions Row */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          {/* Tabs + Actions Row */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="w-md">
             <ModeToggle
               options={['My Challenges', 'Leaderboard', 'Tiers']}
@@ -677,6 +678,7 @@ export default function ChallengesPage() {
             </SparkleButton>
             <GlowButton label="New Account" width={192} height={44} fontSize={16} icon={<NewAccountUserIconDark />} />
           </div>
+        </div>
         </div>
 
         {/* Tab Content */}
