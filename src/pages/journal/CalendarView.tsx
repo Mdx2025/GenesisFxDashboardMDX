@@ -66,7 +66,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
 
 function StatCard({ stat }: { stat: CalendarStat }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden h-[133px]">
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden h-[182px]">
       <div className="p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{stat.label}</span>
