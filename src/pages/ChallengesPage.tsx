@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -100,53 +100,51 @@ const leaderboardData = [
 
 function LeaderboardContent() {
   return (
-    <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
+    <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
       <div className="relative z-10 p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <h3 className="text-white text-base font-medium">Monthly Tier Leaderboard</h3>
-          <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
-            April 2026
-          </span>
-        </div>
-
-        <div className="w-full">
-          {/* Header */}
-          <div className="flex items-center border-b border-white/[0.04] pb-3 mb-1">
-            <div className="w-[10%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Rank</div>
-            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">User</div>
-            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Current Tier</div>
-            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Return %</div>
-            <div className="w-[20%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Chart</div>
-            <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em] text-right">Reward</div>
-          </div>
-
-          {/* Rows */}
-          {leaderboardData.map((row) => (
-            <div key={row.rank} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
-              <div className="w-[10%] flex items-center gap-2">
-                <TrophySmallIcon variant={row.trophy} />
-                <span className="text-white text-sm">{row.rank}</span>
-              </div>
-              <div className="w-[18%] flex items-center gap-3">
-                <UserAvatarIcon />
-                <span className="text-white text-sm">{row.user}</span>
-              </div>
-              <div className="w-[18%]">
-                <span className="text-[#a0a0a0] text-sm">{row.tier}</span>
-              </div>
-              <div className="w-[18%]">
-                <span className="text-[#10BC83] text-sm">{row.returnPct}</span>
-              </div>
-              <div className="w-[20%]">
-                <Sparkline />
-              </div>
-              <div className="w-[16%] text-right">
-                <span className="text-white text-sm">{row.reward}</span>
-              </div>
-            </div>
-          ))}
+        <div className="flex items-center gap-3">
+          <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Monthly Tier Leaderboard</h2>
+          <Badge variant="status">April 2026</Badge>
         </div>
       </div>
+      <div className="overflow-x-auto" role="region" aria-label="Leaderboard table, scrollable">
+        <table className="w-full min-w-[900px]">
+          <thead>
+            <tr className="border-y border-white/5">
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">User</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Current Tier</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Return %</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Chart</th>
+              <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboardData.map((row, i) => (
+              <tr key={row.rank} className={i > 0 ? 'border-t border-white/5' : ''}>
+                <td className="px-4 sm:px-6 py-4 xl:py-5">
+                  <div className="flex items-center gap-2">
+                    <TrophySmallIcon variant={row.trophy} />
+                    <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.rank}</span>
+                  </div>
+                </td>
+                <td className="py-4 xl:py-5">
+                  <div className="flex items-center gap-3">
+                    <UserAvatarIcon />
+                    <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.user}</span>
+                  </div>
+                </td>
+                <td className="text-[#a0a0a0] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{row.tier}</td>
+                <td className="text-[#10BC83] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{row.returnPct}</td>
+                <td className="py-4 xl:py-5"><Sparkline /></td>
+                <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{row.reward}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="h-6" />
     </GlassCard>
   )
 }
@@ -169,58 +167,60 @@ const tiersData = [
 
 function TiersContent() {
   return (
-    <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
+    <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
       <div className="relative z-10 p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <h3 className="text-white text-base font-medium">10X Challenge Tiers</h3>
-          <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
-            April 2026
-          </span>
-        </div>
-
-        <div className="w-full">
-          {/* Header */}
-          <div className="flex items-center border-b border-white/[0.04] pb-3 mb-1">
-            <div className="w-[12%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Tier</div>
-            <div className="w-[14%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Deposit</div>
-            <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">10x Equity</div>
-            <div className="w-[18%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Max Drawdown</div>
-            <div className="w-[16%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em]">Status</div>
-            <div className="w-[24%] text-[#606060] text-xs font-bold uppercase tracking-[0.15em] text-right">Action</div>
-          </div>
-
-          {/* Rows */}
-          {tiersData.map((row, i) => (
-            <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
-              <div className="w-[12%]">
-                <span className="text-white text-sm">{row.tier}</span>
-              </div>
-              <div className="w-[14%] flex items-center gap-1">
-                <span className="text-white text-sm">{row.deposit}</span>
-                <ChevronRightTinyIcon />
-              </div>
-              <div className="w-[16%]">
-                <span className="text-[#10BC83] text-sm">{row.equity}</span>
-              </div>
-              <div className="w-[18%]">
-                <span className="text-[#a0a0a0] text-sm">{row.maxDrawdown}</span>
-              </div>
-              <div className="w-[16%]">
-                {row.status === 'Active' ? (
-                  <span className="inline-flex items-center px-3 py-1 rounded-full border border-[#10BC83] text-[#10BC83] text-xs">
-                    Active
-                  </span>
-                ) : (
-                  <span className="text-[#808080] text-xs italic">Coming Soon</span>
-                )}
-              </div>
-              <div className="w-[24%] flex justify-end">
-                <GlowButton label="Purchase" width={135} height={44} fontSize={14} />
-              </div>
-            </div>
-          ))}
+        <div className="flex items-center gap-3">
+          <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">10X Challenge Tiers</h2>
+          <Badge variant="status">April 2026</Badge>
         </div>
       </div>
+      <div className="overflow-x-auto" role="region" aria-label="Tiers table, scrollable">
+        <table className="w-full min-w-[900px]">
+          <thead>
+            <tr className="border-y border-white/5">
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[14%]">Deposit</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">10x Equity</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Max Drawdown</th>
+              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">Status</th>
+              <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tiersData.map((row, i) => (
+              <tr key={i} className={i > 0 ? 'border-t border-white/5' : ''}>
+                <td className="px-4 sm:px-6 py-4 xl:py-5">
+                  <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.tier}</span>
+                </td>
+                <td className="py-4 xl:py-5">
+                  <div className="flex items-center gap-1">
+                    <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.deposit}</span>
+                    <ChevronRightTinyIcon />
+                  </div>
+                </td>
+                <td className="text-[#10BC83] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{row.equity}</td>
+                <td className="text-[#a0a0a0] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{row.maxDrawdown}</td>
+                <td className="py-4 xl:py-5">
+                  {row.status === 'Active' ? (
+                    <span className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1 bg-gfx-green-100 border border-gfx-green-200 text-gfx-green-500">
+                      Active
+                    </span>
+                  ) : (
+                    <span className="text-[#808080] text-[0.875rem] italic">Coming Soon</span>
+                  )}
+                </td>
+                <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
+                  <div className="flex justify-end">
+                    <GlowButton label="Purchase" width={135} height={44} fontSize={14} />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="h-6" />
     </GlassCard>
   )
 }
