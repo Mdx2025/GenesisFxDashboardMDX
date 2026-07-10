@@ -151,23 +151,25 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
 
   return (
     <div
-      className={`relative flex-shrink-0 w-[148px] h-[100px] rounded-[16px] flex flex-col justify-between p-3.5 overflow-hidden ${
-        stat.active ? 'bg-[#0c1311] border border-white/10' : 'bg-[#09241c]'
+      className={`relative flex-shrink-0 w-[174px] h-[114px] rounded-[19px] flex flex-col justify-between px-[22px] py-[14px] overflow-hidden ${
+        stat.active
+          ? 'bg-[#0c1311] border border-[#00b38c]'
+          : 'bg-[#09241c]'
       }`}
     >
       {stat.active && (
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-[25px] right-[25px]">
           <GreenDot size={5} />
         </div>
       )}
-      <p className="text-gfx-neutral-500 text-[12px] font-acid">{stat.day}</p>
+      <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
       <div>
-        <p className={`text-[14px] font-acid ${
-          isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-white'
+        <p className={`text-[16px] font-acid font-medium ${
+          isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-[#ececec]'
         }`}>
           {isZero ? '$0.00' : `${isPositive ? '+' : '-'}$${Math.abs(stat.pnl).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}
         </p>
-        <p className="text-gfx-neutral-300 text-[10px] font-acid">{stat.trades} trades</p>
+        <p className="text-[#808080] text-[16px] font-acid mt-0.5">{stat.trades} trades</p>
       </div>
     </div>
   )
@@ -347,25 +349,25 @@ export default function JournalPage() {
         {/* Weekly Stats Carousel */}
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064b34] [filter:blur(314px)] will-change-transform" aria-hidden="true" />
-          <div className="relative z-10 p-6">
-            <div className="flex items-center justify-between mb-5">
+          <div className="relative z-10 p-[30px]">
+            <div className="flex items-center justify-between mb-6">
               <div>
                 <p className="text-white text-[24px] font-acid">Welcome back, marcelo</p>
                 <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">This week</p>
               </div>
               <div className="flex items-center gap-3">
-                <button className="w-[44px] h-[44px] rounded-[13px] border border-white/10 bg-transparent flex items-center justify-center hover:border-white/20 transition-colors cursor-pointer">
+                <SparkleButton className="px-[22px]">
                   <ShareIcon />
-                </button>
-                <button className="w-[44px] h-[44px] rounded-[13px] border border-white/10 bg-transparent flex items-center justify-center hover:border-white/20 transition-colors cursor-pointer">
+                </SparkleButton>
+                <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
                   <ChevronLeftSmall />
                 </button>
-                <button className="w-[44px] h-[44px] rounded-[13px] border border-white/10 bg-transparent flex items-center justify-center hover:border-white/20 transition-colors cursor-pointer">
+                <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
                   <ChevronRightSmall />
                 </button>
               </div>
             </div>
-            <div className="flex gap-[10px] overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex gap-[13px] overflow-x-auto pb-2 scrollbar-hide">
               {weeklyStats.map((stat, i) => (
                 <WeeklyStatCard key={i} stat={stat} />
               ))}
