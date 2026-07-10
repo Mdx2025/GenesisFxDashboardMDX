@@ -186,7 +186,7 @@ function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
             <h3 className="text-white text-[24px] font-acid font-normal">Recent Trades</h3>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">Last 4 registed trades</p>
           </div>
-          <SparkleButton className="px-5">
+          <SparkleButton className="px-10">
             <span className="flex items-center gap-2">
               <span>See all</span>
             </span>
@@ -243,7 +243,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
             <h3 className="text-white text-[24px] font-acid font-normal">High Impact News</h3>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">Last 4 registed trades</p>
           </div>
-          <SparkleButton className="px-5">
+          <SparkleButton className="px-10">
             <span className="flex items-center gap-2">
               <span>See all</span>
             </span>
