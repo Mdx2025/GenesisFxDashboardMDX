@@ -119,7 +119,7 @@ function SecondaryCard({ article }: { article: NewsArticle }) {
 function ListCard({ article }: { article: NewsArticle }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="flex justify-between items-start p-6 h-[245px]">
+      <div className="flex justify-between items-start p-6 h-fit">
         {/* Left content */}
         <div className="flex flex-col h-full flex-1 min-w-0 pr-6">
           <div className="flex items-center gap-3 mb-3">
