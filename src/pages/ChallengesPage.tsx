@@ -77,15 +77,15 @@ export default function ChallengesPage() {
         <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
 
         {/* Hero Banner */}
-        <GlassBannerCard contentClassName="flex items-center justify-between p-6 xl:p-8 min-h-[16rem]">
-          <div className="flex flex-col gap-3">
+        <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[16rem]">
+          <div className="flex flex-col">
             <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
             <p className="text-[#808080] text-body2">
               Turn $125 into $1,000,000 — prove your skill, level up your capital
             </p>
           </div>
 
-          <div className="flex items-center gap-4 bg-[#09241C] rounded-[30px] px-6 py-4">
+          <div className="flex items-center gap-4 bg-[#09241C] rounded-[1.875rem] px-6 py-4 shrink-0">
             <div className="w-[98px] h-[98px] rounded-xl bg-[#064B34] flex items-center justify-center">
               <TrophyIcon />
             </div>
@@ -97,11 +97,11 @@ export default function ChallengesPage() {
         </GlassBannerCard>
 
         {/* Tabs + Actions Row */}
-        <div className="flex items-center justify-between gap-4">
-          <div className="w-md">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div className="w-full lg:w-md">
             <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <SearchInput placeholder="Search for" />
             <button className="h-11 w-11 rounded-full border border-[#064B34] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
               <FilterIcon />
@@ -116,7 +116,7 @@ export default function ChallengesPage() {
 
         {/* Empty State */}
         <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-          <div className="relative z-10 flex flex-col items-center justify-center py-20 gap-6">
+          <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
             <div className="w-[70px] h-[70px] rounded-full bg-[#09241C] flex items-center justify-center">
               <UserRoundedIcon />
             </div>
