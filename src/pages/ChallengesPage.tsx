@@ -76,7 +76,7 @@ export default function ChallengesPage() {
 
         {/* Tabs + Actions Row */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="w-full lg:w-auto">
+          <div className="w-md">
             <ModeToggle options={['My Challenges', 'Leaderboard', 'Tiers']} />
           </div>
           <div className="flex items-center gap-3 flex-wrap">
