@@ -354,7 +354,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           </svg>
         </button>
 
-        <div className="relative z-10 px-10 pt-10 pb-8">
+        <div className="relative z-10 px-15 pt-12 pb-10">
           {/* Header: Title + April 2026 badge + How it works */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
@@ -412,7 +412,7 @@ export default function ChallengesPage() {
   const [prizePoolOpen, setPrizePoolOpen] = useState(false)
 
   return (
-    <div className="relative px-15 py-20">
+    <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
       <TopBar
         onMenuClick={() => setSidebarOpen(prev => !prev)}
         menuOpen={sidebarOpen}
