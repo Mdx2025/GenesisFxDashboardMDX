@@ -80,7 +80,7 @@ export default function ReplayView() {
               Relive and analyze your trading sessions with interactive playback
             </p>
           </div>
-          <button className="flex items-center gap-3 h-[44px] px-3 pr-5 rounded-[12px] bg-[#0c1311] hover:bg-[#111816] transition-colors cursor-pointer border-0">
+          <button className="flex items-center gap-3 h-[44px] px-3 pr-5 rounded-sm bg-transparent transition-colors cursor-pointer border border-[#303030]">
             <QuestionIcon />
             <span className="text-white text-[14px] font-acid">How it works</span>
           </button>
