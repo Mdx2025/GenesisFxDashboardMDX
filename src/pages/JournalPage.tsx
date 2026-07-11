@@ -148,20 +148,20 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
         stat.active ? 'border border-[#00b38c]' : 'weekly-stat-inactive'
       }`}
     >
-      <div className="relative h-full flex flex-col justify-between px-[22px] py-[14px]">
+      <div className="relative h-full px-[22px] py-[14px]">
         {stat.active && (
           <div className="absolute top-[11px] right-[11px]">
             <GreenDot size={5} />
           </div>
         )}
-        <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
-        <div>
+        <div className="flex flex-col gap-2">
+          <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
           <p className={`text-[16px] font-acid font-medium ${
             isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-[#ececec]'
           }`}>
             {isZero ? '$0.00' : `${isPositive ? '+' : '-'}$${Math.abs(stat.pnl).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}
           </p>
-          <p className="text-[#808080] text-[16px] font-acid mt-0.5">{stat.trades} trades</p>
+          <p className="text-[#808080] text-[16px] font-acid">{stat.trades} trades</p>
         </div>
       </div>
     </GlassCard>
