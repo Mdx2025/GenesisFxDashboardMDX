@@ -529,38 +529,39 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
         </div>
 
         <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:pt-8 lg:pb-10">
-          <div className="flex flex-col gap-4 sm:gap-8">
-            {/* Close row */}
-            <div className="flex justify-end">
-              <button
-                onClick={handleClose}
-                className="cursor-pointer hover:opacity-70 transition-opacity w-[1.5rem] h-[1.5rem]"
-                aria-label="Close modal"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 sm:gap-8">
+              {/* Close row */}
+              <div className="flex justify-end">
+                <button
+                  onClick={handleClose}
+                  className="cursor-pointer hover:opacity-70 transition-opacity w-[1.5rem] h-[1.5rem]"
+                  aria-label="Close modal"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Title + Rules */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h2 className="text-white font-acid font-normal text-[1.5rem] sm:text-[2.25rem] leading-none">
+                  Start your 10x Challenge
+                </h2>
+                <button
+                  type="button"
+                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
+                >
+                  <NotebookIcon />
+                  <span>Rules</span>
+                </button>
+              </div>
             </div>
 
-            {/* Title + Rules */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <h2 className="text-white font-acid font-normal text-[1.5rem] sm:text-[2.25rem] leading-none">
-                Start your 10x Challenge
-              </h2>
-              <button
-                type="button"
-                className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
-              >
-                <NotebookIcon />
-                <span>Rules</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Two panels */}
-          <div className="flex flex-col lg:flex-row gap-5">
+            {/* Two panels */}
+            <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
             <div className="relative w-full lg:w-[48%] overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
               <GlowEllipse className="left-[36px] -top-[220px]" />
@@ -633,6 +634,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
                   ))}
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
