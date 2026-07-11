@@ -282,14 +282,13 @@ function TraderPassportCard() {
 
 function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' | 'top-right' }) {
   const valueColor = stat.color === 'purple' ? '#c8afff' : '#ffb400'
-  const ellipseClass = glowCorner === 'top-left'
-    ? '-left-[296px] -top-[66px]'
-    : 'right-[-296px] -top-[66px]'
+  const ellipsePos = glowCorner === 'top-left'
+    ? 'left-[-40px] top-[-30px]'
+    : 'right-[-40px] top-[-30px]'
 
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" className="h-[133px]" glow={false}>
-      <div className={`absolute ${ellipseClass} w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]`} aria-hidden="true" />
-      <div className={`absolute ${ellipseClass} w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]`} aria-hidden="true" />
+      <div className={`absolute ${ellipsePos} w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]`} aria-hidden="true" />
       <div className="relative p-[22px] h-full flex flex-col justify-between">
         <span className="text-[12px] text-[#808080] uppercase tracking-[2.3px] font-acid font-bold">
           {stat.label}
