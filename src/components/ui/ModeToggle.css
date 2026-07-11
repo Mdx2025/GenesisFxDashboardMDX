@@ -15,7 +15,7 @@
   border: none;
   background: transparent;
   color: #606060;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 400;
   cursor: pointer;
   z-index: 1;
@@ -28,12 +28,6 @@
   justify-content: center;
   gap: 4px;
   white-space: nowrap;
-}
-@media (min-width: 640px) {
-  .mode-toggle button { font-size: 14px; gap: 6px; }
-}
-@media (min-width: 1280px) {
-  .mode-toggle button { font-size: 16px; }
 }
 .mode-toggle button:focus-visible {
   outline: 2px solid #10BC83;
