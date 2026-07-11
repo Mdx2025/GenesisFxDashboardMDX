@@ -146,10 +146,10 @@ function TraderPassportCard() {
       {/* Header */}
       <div className="flex items-center gap-2 self-start">
         <SparkleIcon />
-        <span className="text-[12px] text-[#c8afff] uppercase tracking-[2.3px] font-acid font-bold">
+        <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
           Trader Passport
         </span>
-        <span className="ml-auto px-3 py-0.5 rounded-full bg-[#422e6d] border border-[#8163c5] text-white text-[12px] font-acid font-bold">
+        <span className="ml-auto px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-[12px] font-acid font-bold">
           LVL {p.level}
         </span>
       </div>
@@ -176,8 +176,8 @@ function TraderPassportCard() {
       </span>
 
       {/* Archetype box */}
-      <div className="w-full rounded-[20px] bg-[#090414] border border-[#2d1f4b] p-5 flex flex-col gap-1">
-        <span className="text-[12px] text-[#c8afff] uppercase tracking-[2.3px] font-acid font-bold">
+      <div className="w-full rounded-[20px] bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
+        <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
           &#10022; ARCHETYPE
         </span>
         <span className="text-[24px] text-white font-acid">{p.archetype}</span>
@@ -204,14 +204,14 @@ function TraderPassportCard() {
       {/* XP Progress */}
       <div className="w-full flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <span className="text-[12px] text-[#c9a6fb] font-acid font-bold uppercase tracking-[2.3px]">
+          <span className="text-[12px] text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.3px]">
             XP Progress
           </span>
           <span className="text-[12px] text-[#808080] font-acid">
             {p.xpCurrent} / {p.xpMax} XP
           </span>
         </div>
-        <div className="w-full h-[7px] rounded-full bg-[#2d1f4b] overflow-hidden">
+        <div className="w-full h-[7px] rounded-full bg-gfx-purple-surface overflow-hidden">
           <div
             className="h-full rounded-full"
             style={{

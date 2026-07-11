@@ -106,6 +106,13 @@ export default function DesignSystemPage() {
               <TokenSwatch name="Amber (Warning)" value="#e29d58" />
               <TokenSwatch name="Info" value="#5b9cf5" />
               <TokenSwatch name="Bullish" value="#0c9104" />
+              <TokenSwatch name="Purple BG" value="#090414" />
+              <TokenSwatch name="Purple Surface" value="#2D1F4B" />
+              <TokenSwatch name="Purple Accent" value="#C8AFFF" />
+              <TokenSwatch name="Purple Glow" value="#D760FF" />
+              <TokenSwatch name="Purple Badge" value="#422E6D" />
+              <TokenSwatch name="Purple Badge Start" value="#9877E2" />
+              <TokenSwatch name="Purple Border HL" value="#8163C5" />
             </div>
           </Subsection>
 
@@ -117,6 +124,7 @@ export default function DesignSystemPage() {
               <TokenSwatch name="Card Border" value="rgba(255,255,255,0.06)" className="bg-gfx-card-border" />
               <TokenSwatch name="Glow Green" value="#104030" />
               <TokenSwatch name="Glow Red" value="#241B1C" />
+              <TokenSwatch name="Glow Purple" value="#D760FF" />
             </div>
           </Subsection>
 

@@ -24,10 +24,10 @@ export function GlassCard({ variant = 'light', divider = 'white', rounded = '19p
       {divider !== 'none' && <DividerGlow variant={divider} />}
       {variant === 'purple' && (
         <>
-          <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
-          <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
-          <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
-          <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
+          <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+          <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+          <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+          <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
         </>
       )}
       {children}
