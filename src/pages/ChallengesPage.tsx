@@ -660,7 +660,7 @@ export default function ChallengesPage() {
 
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-8 lg:gap-20">
-          <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
+          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mt-6 3xl:mt-8 4xl:mt-10">10X Challenges</h1>
 
           {/* Tabs + Actions Row */}
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
