@@ -42,7 +42,7 @@ function SignalIcon() {
 function Card({ title, titleRight, children, className = '' }: { title: string; titleRight?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
     <div className={`glass-card rounded-[1.16rem] overflow-hidden ${className}`}>
-      <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.04]">
+      <div className="flex items-center justify-between px-[18px] py-5 border-b border-white/[0.04]">
         <h3 className="text-white text-body1 font-normal">{title}</h3>
         {titleRight}
       </div>
@@ -443,14 +443,14 @@ export default function NewsPage() {
         {activeTab === 0 && (
           <>
             {/* Top Row: Live News + Live Webcams + AI Insights */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.75fr] gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr_0.74fr] gap-5">
               <LiveNewsCard />
               <WebcamCard />
               <AIInsightsCard />
             </div>
 
             {/* Bottom Row: Live Quotes + News Feed + Top Movers */}
-            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr_0.8fr] gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.76fr_1fr_0.58fr] gap-5">
               <LiveQuotesCard />
               <div className="flex flex-col gap-4">
                 <NewsFeedCard />
