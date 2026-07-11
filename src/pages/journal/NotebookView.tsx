@@ -48,7 +48,7 @@ function GalleryIcon() {
 
 function NoteCard({ note }: { note: NotebookNote }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="15px" className="flex-1 min-w-0 overflow-hidden !bg-[#09241C] !border-[#09241C]/50">
+    <div className="flex-1 min-w-0 rounded-[15px] border border-[#09241C] bg-transparent">
       <div className="p-[18px] flex flex-col gap-3 h-full">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
@@ -83,7 +83,7 @@ function NoteCard({ note }: { note: NotebookNote }) {
           )}
         </div>
       </div>
-    </GlassCard>
+    </div>
   )
 }
 
