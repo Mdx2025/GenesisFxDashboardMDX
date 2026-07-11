@@ -126,25 +126,27 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
         </div>
       </GlassCard>
 
-      {/* Folder Tabs — ModeToggle */}
-      <div className="max-w-3xl">
-        <ModeToggle
-          options={[...notebookFolders]}
-          defaultIndex={0}
-          activeIndex={activeFolder}
-          onChange={setActiveFolder}
-        />
-      </div>
-
-      {/* Notes Grid */}
-      <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-80px]" />
-        <div className="relative p-5 grid grid-cols-4 gap-5">
-          {notebookNotes.map(note => (
-            <NoteCard key={note.id} note={note} />
-          ))}
+      <div className="flex flex-col gap-6">
+        {/* Folder Tabs — ModeToggle */}
+        <div className="max-w-3xl">
+          <ModeToggle
+            options={[...notebookFolders]}
+            defaultIndex={0}
+            activeIndex={activeFolder}
+            onChange={setActiveFolder}
+          />
         </div>
-      </GlassCard>
+
+        {/* Notes Grid */}
+        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+          <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-80px]" />
+          <div className="relative p-5 grid grid-cols-4 gap-5">
+            {notebookNotes.map(note => (
+              <NoteCard key={note.id} note={note} />
+            ))}
+          </div>
+        </GlassCard>
+      </div>
     </div>
   )
 }
