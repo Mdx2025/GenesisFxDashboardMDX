@@ -13,9 +13,11 @@ import AccountsPage from '@/pages/AccountsPage'
 import AccountDetailsPage from '@/pages/AccountDetailsPage'
 import ChallengesPage from '@/pages/ChallengesPage'
 import JournalPage from '@/pages/JournalPage'
+import PammPage from '@/pages/PammPage'
 import {
   DashboardIcon, AssetsIcon, DepositIcon, WithdrawIcon,
   UserIcon, AcademyIcon, TradelockerIcon, MarketNewsIcon, ChallengesIcon,
+  GenSocialIcon,
 } from '@/components/icons'
 
 export interface PageEntry {
@@ -41,5 +43,6 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/tradelocker/journal', label: 'Journal', description: 'Track and analyze your trading performance', icon: TradelockerIcon, component: JournalPage },
   { path: '/challenges', label: '10X Challenges', description: 'Prove your skill and level up your capital', icon: ChallengesIcon, component: ChallengesPage },
   { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon, component: AcademyPage },
+  { path: '/gensocial/pamm', label: 'PAMM Strategies', description: 'Browse and invest in PAMM strategies', icon: GenSocialIcon, component: PammPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
 ]

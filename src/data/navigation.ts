@@ -18,9 +18,9 @@ export const navItems: NavItem[] = [
   ]},
   { id: 'challenges', label: '10x Challenges', icon: 'challenges', href: '/challenges' },
   { id: 'gensocial', label: 'GenSocial', icon: 'gensocial', href: '#', submenu: [
-    { label: 'PAMM', href: '/pamm' },
-    { label: 'Copy Trading', href: '/copy-trading' },
-    { label: 'Signals', href: '/signals' },
+    { label: 'PAMM', href: '/gensocial/pamm' },
+    { label: 'Copy Trading', href: '/gensocial/copy-trading' },
+    { label: 'Signals', href: '/gensocial/signals' },
   ]},
   { id: 'news', label: 'Market News', icon: 'news', href: '/news' },
   { id: 'academy', label: 'Genesis Academy', icon: 'academy', href: '/academy' },
