@@ -63,10 +63,10 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{stat.label}</span>
           <InfoIcon />
         </div>
-        <div className="flex-1 flex items-center mt-2">
+        <div className="flex-1 flex items-center justify-center mt-2">
           {stat.type === 'asset' && (
             <div
-              className="inline-flex items-center gap-4 px-5 py-2.5 rounded-full"
+              className="flex items-center gap-4 px-5 py-2.5 rounded-full"
               style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
             >
               <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
@@ -85,7 +85,7 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
           )}
           {stat.type === 'number' && (
             <div
-              className="inline-flex items-center gap-4 px-5 py-2.5 rounded-full"
+              className="flex items-center gap-4 px-5 py-2.5 rounded-full"
               style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
             >
               <DiagramUpIcon />
