@@ -403,7 +403,7 @@ export default function JournalPage() {
               <div className="grid grid-cols-2 gap-4">
                 <StatCard label="Most Traded Asset">
                   <div
-                    className="inline-flex items-center gap-4 rounded-[300px] px-5 py-2.5"
+                    className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5"
                     style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
                   >
                     <XauusdIcon />
@@ -412,7 +412,7 @@ export default function JournalPage() {
                 </StatCard>
                 <StatCard label="Total Trades">
                   <div
-                    className="inline-flex items-center gap-4 rounded-[300px] px-5 py-2.5 h-[58px]"
+                    className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5 h-[58px]"
                     style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
                   >
                     <DiagramUpIcon />
