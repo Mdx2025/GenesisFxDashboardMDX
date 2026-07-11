@@ -232,7 +232,8 @@ function ImpactDots({ level }: { level: number }) {
 function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="p-6 pb-5">
+      <div className="absolute -left-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+      <div className="relative p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal">High Impact News</h3>
