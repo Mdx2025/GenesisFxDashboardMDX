@@ -175,8 +175,8 @@ export default function PodcastView() {
     <div className="flex flex-col gap-5">
       {/* Hero Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <div className="flex items-center h-[397px] relative">
-          <div className="w-[400px] h-full flex items-center justify-center shrink-0">
+        <div className="flex items-center h-[397px] p-8 relative">
+          <div className="w-auto h-full flex items-center justify-center shrink-0">
             <img src="/images/news/podcast-mic.png" alt="Microphone" className="w-auto h-full" />
           </div>
 
