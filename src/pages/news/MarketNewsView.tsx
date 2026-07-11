@@ -1,4 +1,4 @@
-import { GlassCard } from '@/components/ui'
+import { GlassCard, GlowEllipse } from '@/components/ui'
 import { heroArticle, secondaryArticles, listArticles } from '@/data/marketNews'
 import type { NewsArticle } from '@/data/marketNews'
 
@@ -38,24 +38,29 @@ function HeroCard({ article }: { article: NewsArticle }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative h-[510px] flex">
-        {/* Background image */}
-        <div className="absolute inset-0 w-[55%]">
+        {/* Left image — 100% height */}
+        <div className="relative w-[50%] shrink-0">
           <img
-            src={article.imageUrl}
+            src="/images/news/trading-globe.png"
             alt={article.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0c1311]/70 to-[#0c1311]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0c1311]" />
         </div>
 
-        {/* Decorative glow */}
-        <div className="absolute right-[20%] top-[10%] w-[400px] h-[400px] rounded-full bg-[#064b34] blur-[120px] opacity-20" aria-hidden="true" />
+        {/* Pixels pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true">
+          <img src="/images/news/pixels-pattern.png" alt="" className="w-full h-full object-cover" />
+        </div>
+
+        {/* GlowEllipse bottom-center */}
+        <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[250px]" />
 
         {/* Content */}
-        <div className="relative ml-auto w-[50%] flex flex-col justify-center px-12 py-10">
-          {/* Region badge */}
+        <div className="relative flex-1 flex flex-col justify-center px-12 py-10">
+          {/* Region badge — right aligned, no border */}
           {article.region && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 w-fit mb-6">
+            <div className="absolute top-8 right-8 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5">
               <GlobeIcon />
               <span className="text-white text-[14px] font-acid">{article.region}</span>
             </div>

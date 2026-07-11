@@ -41,7 +41,7 @@ function SignalIcon() {
 
 function Card({ title, titleRight, children, className = '' }: { title: string; titleRight?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <div className={`glass-card rounded-[1.16rem] overflow-hidden relative flex flex-col ${className}`}>
+    <div className={`glass-card rounded-[1.16rem] overflow-hidden relative flex flex-col min-h-0 ${className}`}>
       <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[250px]" />
       <div className="flex items-center justify-between px-[18px] py-5 border-b border-white/[0.04] relative z-[1] shrink-0">
         <h3 className="text-white text-body1 font-normal">{title}</h3>
