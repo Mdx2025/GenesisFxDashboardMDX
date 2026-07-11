@@ -169,6 +169,7 @@ function ScoreBar({ score }: { score: number }) {
 function SessionAnalysis() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+      <GlowEllipse className="right-[10%] top-[-20%]" />
       <div className="p-6">
         <h3 className="text-white text-[16px] font-acid font-medium mb-5">Session & Time Analysis</h3>
 
@@ -208,6 +209,7 @@ function SessionAnalysis() {
 function SymbolExposure() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+      <GlowEllipse className="right-[10%] top-[-20%]" />
       <div className="p-6">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-white text-[16px] font-acid font-medium">Symbol Exposure</h3>
@@ -244,6 +246,7 @@ function SymbolExposure() {
 function TechnicalStatistics() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+      <GlowEllipse className="left-[10%] top-[-20%]" />
       <div className="p-6">
         <h3 className="text-white text-[16px] font-acid font-medium mb-5">Technical Statistics</h3>
 
