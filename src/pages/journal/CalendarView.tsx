@@ -57,7 +57,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
 function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden h-[182px]">
-      <GlowEllipse className={`${glowPos} !w-[200px] !h-[120px] !blur-[60px]`} />
+      <GlowEllipse className={`${glowPos} !w-[120px] !h-[70px] !blur-[50px]`} />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{stat.label}</span>
@@ -119,10 +119,10 @@ export default function CalendarView() {
             stat={stat}
             glowPos={
               [
-                'left-[-40px] top-[-30px]',
-                'left-[-40px] bottom-[-30px]',
-                'left-[-40px] top-[-30px]',
-                'left-[-40px] top-1/2 -translate-y-1/2',
+                'left-[-60px] top-[-50px]',
+                'left-[-60px] bottom-[-50px]',
+                'left-[-60px] top-[-50px]',
+                'left-[-60px] top-[-50px]',
               ][i]
             }
           />
