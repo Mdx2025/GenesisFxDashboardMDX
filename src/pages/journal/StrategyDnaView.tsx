@@ -143,12 +143,19 @@ function TraderPassportCard() {
 
   return (
     <div
-      className="rounded-[20px] border border-[#2d1f4b] p-8 flex flex-col items-center gap-6"
+      className="relative rounded-[20px] border border-[#2d1f4b] p-8 flex flex-col items-center gap-6 overflow-hidden"
       style={{
         background:
-          'radial-gradient(circle at center, rgba(45,31,75,1) 16%, rgba(27,18,48,1) 58%, rgba(18,11,34,1) 79%, rgba(9,4,20,1) 100%)',
+          'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, #2D1F4B 16%, #090414 100%)',
       }}
     >
+      {/* Purple glow ellipses — top-left */}
+      <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
+      <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
+      {/* Purple glow ellipses — bottom-right */}
+      <div className="absolute left-[513px] top-[384px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
+      <div className="absolute left-[513px] top-[384px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-[#D760FF] blur-[80px]" aria-hidden="true" />
+
       {/* Header */}
       <div className="flex items-center gap-2 self-start">
         <SparkleIcon />
