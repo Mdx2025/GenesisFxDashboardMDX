@@ -344,7 +344,7 @@ export default function JournalPage() {
           <>
             {/* Weekly Stats Carousel */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full bg-gfx-green-200 opacity-45 blur-[80px] pointer-events-none" aria-hidden="true" />
+              <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full bg-gfx-green-200 opacity-45 blur-[80px] pointer-events-none" aria-hidden="true" />
               <div className="relative p-[30px]">
                 <div className="flex items-center justify-between mb-6">
                   <div>
