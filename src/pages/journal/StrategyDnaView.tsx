@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { GlassCard, GlowEllipse } from '@/components/ui'
+import { GlassCard } from '@/components/ui'
 import {
   traderPassport,
   dnaStats,
@@ -306,7 +306,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
   else if (trait.barColor === 'orange') barBg = '#f2994a'
 
   return (
-    <GlassCard variant="purple" divider="none" rounded="14px" className="h-[104px]">
+    <GlassCard variant="purple" divider="none" rounded="14px" className="h-[104px]" glow={false}>
       <div className="p-4 h-full flex flex-col justify-between">
         <div className="flex items-center gap-2">
           <Icon />
@@ -332,7 +332,6 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
 function TraderTraitsCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
-      <GlowEllipse className="top-[-20%] left-1/2 -translate-x-1/2" />
       <div className="relative p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">
