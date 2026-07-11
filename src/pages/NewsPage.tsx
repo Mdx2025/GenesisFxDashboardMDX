@@ -92,7 +92,7 @@ function LiveNewsCard() {
       className="row-span-1"
     >
       <div className="px-5 py-3 max-w-md">
-        <ModeToggle options={[...NEWS_CHANNELS]} activeIndex={channel} onChange={setChannel} />
+        <ModeToggle options={[...NEWS_CHANNELS]} activeIndex={channel} onChange={setChannel} size="sm" />
       </div>
       <div className="relative mx-5 mb-4 rounded-xl bg-[#0a0f0d] aspect-video flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a14] to-[#080d0b]" />
@@ -130,7 +130,7 @@ function WebcamCard() {
     <Card title="Live Webcams">
       <div className="px-5 py-3 flex justify-between items-center gap-6">
         <div className="max-w-md flex-1">
-          <ModeToggle options={[...WEBCAM_REGIONS]} activeIndex={region} onChange={setRegion} />
+          <ModeToggle options={[...WEBCAM_REGIONS]} activeIndex={region} onChange={setRegion} size="sm" />
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <button className="w-8 h-8 rounded-md bg-white/5 flex items-center justify-center cursor-pointer" aria-label="Grid view">

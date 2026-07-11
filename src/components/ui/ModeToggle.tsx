@@ -25,9 +25,10 @@ interface ModeToggleProps {
   defaultIndex?: number
   activeIndex?: number
   onChange?: (index: number) => void
+  size?: 'default' | 'sm'
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange }: ModeToggleProps) {
+export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default' }: ModeToggleProps) {
   const [internalActive, setInternalActive] = useState(defaultIndex)
   const active = activeIndex ?? internalActive
   const indicatorRef = useRef<HTMLDivElement>(null)
@@ -51,7 +52,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
   }, [active])
 
   return (
-    <div className="mode-toggle" role="group" aria-label="Mode selection">
+    <div className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}`} role="group" aria-label="Mode selection">
       <div
         ref={indicatorRef}
         className="mode-indicator"
