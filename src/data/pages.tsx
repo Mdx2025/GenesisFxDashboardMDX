@@ -8,6 +8,7 @@ import KycPage from '@/pages/KycPage'
 import AcademyPage from '@/pages/AcademyPage'
 import DesignSystemPage from '@/pages/DesignSystemPage'
 import NewsPage from '@/pages/NewsPage'
+import DailySinglePage from '@/pages/news/DailySinglePage'
 import AccountsPage from '@/pages/AccountsPage'
 import AccountDetailsPage from '@/pages/AccountDetailsPage'
 import ChallengesPage from '@/pages/ChallengesPage'
@@ -34,6 +35,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/withdraw-processing', label: 'Withdraw Processing', description: 'Withdrawal confirmation and transaction tracking', icon: WithdrawIcon, component: WithdrawProcessingPage, showInDirectory: false },
   { path: '/kyc', label: 'KYC Verification', description: 'Identity verification and compliance', icon: UserIcon, component: KycPage },
   { path: '/news', label: 'Market News', description: 'Latest financial news and market analysis', icon: MarketNewsIcon, component: NewsPage },
+  { path: '/news/daily-single-page', label: 'Daily News', description: 'Single daily news episode view', icon: MarketNewsIcon, component: DailySinglePage, showInDirectory: false },
   { path: '/tradelocker/accounts', label: 'Accounts', description: 'TradeLocker trading accounts overview', icon: TradelockerIcon, component: AccountsPage },
   { path: '/tradelocker/accounts/:accountId', label: 'Account Details', description: 'Individual trading account details', icon: TradelockerIcon, component: AccountDetailsPage, showInDirectory: false },
   { path: '/tradelocker/journal', label: 'Journal', description: 'Track and analyze your trading performance', icon: TradelockerIcon, component: JournalPage },

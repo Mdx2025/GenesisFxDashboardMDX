@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { GlassCard } from '@/components/ui'
 import { featuredEpisode, episodes } from '@/data/dailyNews'
 
@@ -100,9 +101,12 @@ function HeroCard() {
 
 /* ─── Episode Card ─── */
 
-function EpisodeCard({ episode }: { episode: typeof episodes[0] }) {
+function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClick: () => void }) {
   return (
-    <div className="shrink-0 w-[440px] relative rounded-md overflow-hidden h-[310px]">
+    <div
+      className="shrink-0 w-[440px] relative rounded-md overflow-hidden h-[310px] cursor-pointer group"
+      onClick={onClick}
+    >
       <img
         src={episode.imageUrl}
         alt={episode.title}
@@ -111,11 +115,11 @@ function EpisodeCard({ episode }: { episode: typeof episodes[0] }) {
       <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(182deg, rgba(0,0,0,0) 30%, rgb(0,0,0) 98%)' }} />
 
       {/* Play button */}
-      <button className="absolute inset-0 flex items-center justify-center cursor-pointer group" aria-label="Play episode">
+      <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-[76px] h-[76px] rounded-full bg-black/40 border-2 border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:bg-black/60 transition-colors">
           <PlayIcon size={32} />
         </div>
-      </button>
+      </div>
 
       {/* Info overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-8">
@@ -131,7 +135,7 @@ function EpisodeCard({ episode }: { episode: typeof episodes[0] }) {
 
 /* ─── Episodes Carousel ─── */
 
-function EpisodesCarousel() {
+function EpisodesCarousel({ onEpisodeClick }: { onEpisodeClick: () => void }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
 
@@ -166,7 +170,7 @@ function EpisodesCarousel() {
         style={{ scrollbarWidth: 'none' }}
       >
         {episodes.map(ep => (
-          <EpisodeCard key={ep.id} episode={ep} />
+          <EpisodeCard key={ep.id} episode={ep} onClick={onEpisodeClick} />
         ))}
       </div>
 
@@ -205,10 +209,15 @@ function EpisodesCarousel() {
 /* ─── Main Component ─── */
 
 export default function DailyNewsView() {
+  const navigate = useNavigate()
+  const goToSingle = () => navigate('/news/daily-single-page')
+
   return (
     <div className="flex flex-col gap-8">
-      <HeroCard />
-      <EpisodesCarousel />
+      <div className="cursor-pointer" onClick={goToSingle}>
+        <HeroCard />
+      </div>
+      <EpisodesCarousel onEpisodeClick={goToSingle} />
     </div>
   )
 }
