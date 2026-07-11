@@ -274,7 +274,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 function StatCard({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[182px]">
-      <GlowEllipse className="-left-[50px] -top-[50px] !w-[180px] !h-[100px] !blur-[70px]" />
+      <GlowEllipse className="-left-[3.125rem] -top-[3.125rem] !w-[11.25rem] !h-[6.25rem] !blur-[4.375rem]" />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>

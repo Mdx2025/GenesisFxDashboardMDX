@@ -4,8 +4,8 @@ interface GlowEllipseProps {
 }
 
 const VARIANT_STYLES = {
-  green: 'w-[520px] h-[300px] bg-gfx-green-200 blur-[157px]',
-  purple: 'w-[120px] h-[80px] bg-gfx-purple-glow blur-[40px] opacity-50 mix-blend-lighten',
+  green: 'w-[20rem] h-[12rem] bg-gfx-green-200 blur-[6rem]',
+  purple: 'w-[7.5rem] h-[5rem] bg-gfx-purple-glow blur-[2.5rem] opacity-50 mix-blend-lighten',
 } as const
 
 export function GlowEllipse({ className = '', variant = 'green' }: GlowEllipseProps) {
