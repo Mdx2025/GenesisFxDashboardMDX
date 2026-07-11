@@ -143,15 +143,9 @@ function WebcamCard() {
           <div key={cam.id} className="relative rounded-xl overflow-hidden bg-[#0a0f0d] aspect-[16/10]">
             <img src="/images/news/nyc-webcam.png" alt={cam.label} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
-            <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
-              <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-[#1a1a1a]/80">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d6a]" />
-                <span className="text-white text-[0.625rem] font-normal">{cam.label}</span>
-              </div>
-            </div>
-            <div className="absolute bottom-3 left-3 z-10 flex flex-col gap-1.5">
-              <span className="text-white text-[0.625rem] font-normal">{cam.label}</span>
-              <span className="text-gfx-neutral-500 text-[0.625rem]">{cam.source}</span>
+            <div className="absolute top-3 left-3 z-10 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff4d6a]" />
+              <span className="text-white text-[0.625rem] font-normal">{cam.source}</span>
             </div>
           </div>
         ))}
