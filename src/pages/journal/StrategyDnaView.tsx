@@ -331,8 +331,9 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
 
 function TraderTraitsCard() {
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px">
-      <div className="p-6 flex flex-col gap-5">
+    <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
+      <GlowEllipse className="top-[-20%] left-1/2 -translate-x-1/2" />
+      <div className="relative p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">
           <SectionPillIcon>
