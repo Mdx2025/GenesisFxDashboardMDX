@@ -29,8 +29,8 @@ function InfoIcon() {
 function DiagramUpIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M15 7H21V13" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2.75 2C2.75 1.586 2.414 1.25 2 1.25C1.586 1.25 1.25 1.586 1.25 2V12.057C1.25 14.366 1.25 16.175 1.44 17.586C1.634 19.031 2.039 20.171 2.934 21.066C3.829 21.961 4.969 22.366 6.414 22.56C7.825 22.75 9.634 22.75 11.943 22.75H22C22.414 22.75 22.75 22.414 22.75 22C22.75 21.586 22.414 21.25 22 21.25H12C9.622 21.25 7.914 21.248 6.614 21.074C5.335 20.902 4.564 20.575 3.995 20.005C3.425 19.436 3.098 18.665 2.926 17.386C2.752 16.086 2.75 14.378 2.75 12V2Z" fill="#10BC83" />
+      <path d="M19.588 7.466C19.845 7.142 19.791 6.67 19.467 6.413C19.142 6.155 18.67 6.209 18.413 6.534L15.295 10.46C15.05 10.769 14.889 10.971 14.756 11.116C14.627 11.259 14.566 11.299 14.538 11.314C14.327 11.426 14.075 11.432 13.86 11.329C13.832 11.315 13.769 11.277 13.633 11.141C13.495 11.001 13.325 10.806 13.067 10.509L13.051 10.49C12.813 10.216 12.61 9.982 12.431 9.802C12.245 9.615 12.041 9.44 11.789 9.319C11.143 9.009 10.388 9.025 9.755 9.363C9.509 9.495 9.313 9.678 9.135 9.874C8.964 10.061 8.772 10.304 8.546 10.588L5.413 14.534C5.155 14.858 5.209 15.33 5.534 15.587C5.858 15.845 6.33 15.791 6.587 15.466L9.706 11.54C9.951 11.231 10.112 11.029 10.244 10.884C10.374 10.741 10.435 10.701 10.462 10.686C10.673 10.574 10.925 10.568 11.14 10.672C11.169 10.685 11.231 10.723 11.367 10.859C11.506 10.999 11.675 11.194 11.934 11.492L11.95 11.51C12.188 11.784 12.391 12.018 12.57 12.198C12.756 12.385 12.959 12.56 13.211 12.681C13.857 12.991 14.613 12.975 15.245 12.637C15.492 12.505 15.687 12.322 15.865 12.126C16.036 11.939 16.228 11.696 16.454 11.412L19.588 7.466Z" fill="#10BC83" />
     </svg>
   )
 }
@@ -92,11 +92,15 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
 
 function XauusdIcon() {
   return (
-    <div className="w-[38px] h-[38px] rounded-full bg-[#d69a00] flex items-center justify-center overflow-hidden">
-      <svg width="27" height="17" viewBox="0 0 27 17" fill="none">
-        <path d="M13.5 0L16.5 6H10.5L13.5 0ZM4 17L0 7H8L4 17ZM23 17L19 7H27L23 17ZM13.5 17L9 7H18L13.5 17Z" fill="white" />
-      </svg>
-    </div>
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+      <g clipPath="url(#xauClip)">
+        <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
+        <path d="M14.42 14.63H23.77L22.41 10.97C22.36 10.82 22.26 10.69 22.13 10.59L14.42 14.63ZM14.39 10.28C14.73 9.39 15.45 8.82 16.26 8.82H21.79C22.59 8.82 23.32 9.39 23.65 10.28L25.02 13.94C25.42 15.04 24.76 16.28 23.77 16.28H14.27C13.28 16.28 12.62 15.04 13.03 13.94L14.39 10.28ZM6.95 24.13H16.28L14.92 20.47C14.86 20.32 14.77 20.19 14.64 20.09L6.95 24.13ZM6.92 19.78C7.25 18.89 7.98 18.32 8.78 18.32H14.3C15.1 18.32 15.83 18.89 16.16 19.78L17.52 23.44C17.93 24.54 17.27 25.78 16.28 25.78H6.8C5.81 25.78 5.15 24.54 5.56 23.44L6.92 19.78ZM31.27 24.13H21.88L29.63 20.09C29.75 20.18 29.85 20.31 29.91 20.47L31.27 24.13ZM23.71 18.32C22.91 18.32 22.18 18.89 21.85 19.78L20.49 23.44C20.08 24.54 20.74 25.78 21.73 25.78H31.27C32.27 25.78 32.93 24.54 32.52 23.44L31.15 19.78C30.82 18.89 30.09 18.32 29.29 18.32H23.71Z" fill="white" />
+      </g>
+      <defs>
+        <clipPath id="xauClip"><rect width="38" height="38" rx="19" fill="white" /></clipPath>
+      </defs>
+    </svg>
   )
 }
 
@@ -270,7 +274,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 function StatCard({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[182px]">
-      <GlowEllipse className="-left-[100px] -top-[100px]" />
+      <GlowEllipse className="-left-[60px] -top-[60px] !w-[200px] !h-[120px] !blur-[80px]" />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>
@@ -398,13 +402,19 @@ export default function JournalPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <StatCard label="Most Traded Asset">
-                  <div className="flex items-center gap-3">
+                  <div
+                    className="inline-flex items-center gap-4 rounded-[300px] px-5 py-2.5"
+                    style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
+                  >
                     <XauusdIcon />
-                    <span className="text-white text-[22px] font-acid">XAUUSD</span>
+                    <span className="text-white text-[24px] font-acid">XAAUSD</span>
                   </div>
                 </StatCard>
                 <StatCard label="Total Trades">
-                  <div className="flex items-center gap-3">
+                  <div
+                    className="inline-flex items-center gap-4 rounded-[300px] px-5 py-2.5 h-[58px]"
+                    style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
+                  >
                     <DiagramUpIcon />
                     <span className="text-white text-[24px] font-acid">{journalStats.totalTrades}</span>
                   </div>
