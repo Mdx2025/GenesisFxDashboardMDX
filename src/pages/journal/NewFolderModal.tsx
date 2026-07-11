@@ -22,6 +22,15 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
   const [mounted, setMounted] = useState(false)
   const [folderName, setFolderName] = useState('')
 
+  useEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    if (!overlay) return
+    const blockLenis = (e: WheelEvent) => { e.stopPropagation() }
+    overlay.addEventListener('wheel', blockLenis, true)
+    return () => overlay.removeEventListener('wheel', blockLenis, true)
+  }, [mounted])
+
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
     const modal = modalRef.current
@@ -67,6 +76,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
       ref={overlayRef}
       className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
+      onWheel={(e) => e.stopPropagation()}
     >
       <div
         ref={modalRef}

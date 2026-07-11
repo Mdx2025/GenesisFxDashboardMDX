@@ -54,6 +54,14 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    if (!overlay) return
+    const blockLenis = (e: WheelEvent) => { e.stopPropagation() }
+    overlay.addEventListener('wheel', blockLenis, true)
+    return () => overlay.removeEventListener('wheel', blockLenis, true)
+  }, [mounted])
   const [noteType] = useState('Day note')
   const [date, setDate] = useState('04/21/2026')
   const [account] = useState('L#716445')
@@ -103,6 +111,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
       ref={overlayRef}
       className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
+      onWheel={(e) => e.stopPropagation()}
     >
       <div
         ref={modalRef}
