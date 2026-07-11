@@ -36,7 +36,7 @@ export default function TradesView() {
     <div className="flex flex-col gap-4">
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <GlowEllipse className="left-[-20px] top-[-20px]" />
+        <GlowEllipse className="left-[10%] top-[-20%]" />
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-10">
           <div>
             <h3 className="text-white text-[22px] font-acid font-normal leading-tight">Trade History</h3>
