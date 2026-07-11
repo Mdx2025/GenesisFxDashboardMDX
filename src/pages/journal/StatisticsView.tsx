@@ -308,15 +308,13 @@ export default function StatisticsView() {
         </div>
       </div>
 
-      {/* Session Analysis + (placeholder for right card) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <SessionAnalysis />
+      {/* Session Analysis + Symbol Exposure (left) | Technical Statistics (right, spans full height) */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
+        <div className="flex flex-col gap-6">
+          <SessionAnalysis />
+          <SymbolExposure />
+        </div>
         <TechnicalStatistics />
-      </div>
-
-      {/* Symbol Exposure + Technical Statistics */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <SymbolExposure />
       </div>
     </div>
   )
