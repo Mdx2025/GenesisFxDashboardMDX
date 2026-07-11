@@ -173,7 +173,8 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
 function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="p-6 pb-5">
+      <div className="absolute -right-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+      <div className="relative p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal">Recent Trades</h3>
@@ -372,7 +373,8 @@ export default function JournalPage() {
             {/* Stats Row: Net P&L + 2x2 grid */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
               <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <div className="p-6 h-full flex flex-col min-h-[340px]">
+                <div className="absolute -right-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+                <div className="relative p-6 h-full flex flex-col min-h-[340px]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">Net P&L</span>
