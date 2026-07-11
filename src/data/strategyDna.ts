@@ -50,7 +50,7 @@ export const traderPassport: TraderPassport = {
   trades: 5,
   winRate: '0%',
   pctl: '1th',
-  xpCurrent: 0,
+  xpCurrent: 100,
   xpMax: 200,
   accounts: 5,
   greenDays: 0,

@@ -219,16 +219,25 @@ function TraderPassportCard() {
               {p.xpCurrent} / {p.xpMax} XP
             </span>
           </div>
-          <div className="w-full h-[7px] rounded-full bg-gfx-purple-surface overflow-hidden">
+          <div className="relative w-full h-[7px] rounded-full bg-gfx-purple-surface overflow-visible">
             <div
-              className="h-full rounded-full"
+              className="absolute inset-y-0 left-0 rounded-full"
               style={{
                 width: `${xpPct}%`,
                 background: 'linear-gradient(90deg, #d760ff, #9877e2)',
               }}
             />
+            <div
+              className="absolute top-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+              style={{
+                width: `${xpPct}%`,
+                height: '14px',
+                background: 'linear-gradient(270deg, #D760FF 50%, #D760FF 58.39%, rgba(152, 119, 226, 0.00) 77.98%)',
+                filter: 'blur(2.7px)',
+              }}
+            />
           </div>
-          <span className="text-[12px] text-[#808080] font-acid text-center">
+          <span className="text-[12px] text-[#808080] font-acid text-left">
             ALL ACCOUNTS &middot; {p.trades} TRADES &middot; {p.greenDays} GREEN DAYS &middot; {p.streak}-STREAK
           </span>
         </div>
