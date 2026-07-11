@@ -310,51 +310,58 @@ function TopMoversCard() {
 function EconomicCalendarCard() {
   return (
     <Card title="Economic Calendar" className="flex-1">
-      <div className="px-5 py-3">
-        <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#0a0f0d] mb-3">
-          <span className="text-white text-xs">10:00</span>
-          <span className="text-base">🇺🇸</span>
-          <span className="text-xs">US</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <rect x="2" y="4" width="2.5" height="8" rx="0.5" fill="#ff4d6a"/><rect x="5.75" y="2" width="2.5" height="10" rx="0.5" fill="#e29d58"/><rect x="9.5" y="6" width="2.5" height="6" rx="0.5" fill="#10BC83"/>
-          </svg>
-          <span className="text-white text-xs">Riyad Bank PMI</span>
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 2l5 4 5-4" stroke="#A0A0A0" strokeWidth="1.2" strokeLinecap="round"/></svg>
-          <span className="text-white text-xs ml-auto">53.3</span>
-          <span className="text-gfx-neutral-500 text-xs">—</span>
-          <span className="text-white text-xs">52.8</span>
-        </div>
-
-        <div className="flex items-center gap-2 mb-4">
-          <span className="w-2 h-2 rounded-full bg-gfx-green-500" />
-          <span className="text-white text-body2 font-normal">Today, April 28</span>
-        </div>
-
-        <div className="grid grid-cols-[3rem_1fr_2.5rem_2.5rem_2.5rem] gap-x-3 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider pb-2 border-b border-white/[0.04]">
-          <span>Time</span>
-          <span>Event</span>
-          <span className="text-right">Act</span>
-          <span className="text-right">FCST</span>
-          <span className="text-right">PREV</span>
-        </div>
-
-        {[1, 2, 3].map(i => (
-          <div key={i} className="grid grid-cols-[3rem_1fr_2.5rem_2.5rem_2.5rem] gap-x-3 items-center py-3 border-b border-white/[0.04] last:border-0">
-            <span className="text-white text-xs">10:00</span>
-            <div className="flex items-center gap-2 min-w-0">
-              <span className="text-sm shrink-0">🇺🇸</span>
-              <span className="text-xs shrink-0">US</span>
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="shrink-0" aria-hidden="true">
-                <rect x="2" y="4" width="2.5" height="8" rx="0.5" fill="#ff4d6a"/><rect x="5.75" y="2" width="2.5" height="10" rx="0.5" fill="#e29d58"/><rect x="9.5" y="6" width="2.5" height="6" rx="0.5" fill="#10BC83"/>
-              </svg>
-              <span className="text-white text-xs truncate">Riyad Bank PMI</span>
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="shrink-0"><path d="M1 1l4 4 4-4" stroke="#A0A0A0" strokeWidth="1" strokeLinecap="round"/></svg>
-            </div>
-            <span className="text-white text-xs text-right">53.3</span>
-            <span className="text-gfx-neutral-500 text-xs text-right">—</span>
-            <span className="text-white text-xs text-right">52.8</span>
+      <div className="flex flex-col h-full">
+        {/* Preview row */}
+        <div className="px-5 pt-3">
+          <div className="flex items-center gap-3 py-3 px-4 rounded-lg bg-[#0a0f0d]">
+            <span className="text-white text-xs font-medium">10:00</span>
+            <span className="text-base">🇺🇸</span>
+            <span className="text-gfx-neutral-500 text-xs">US</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <rect x="2" y="4" width="2.5" height="8" rx="0.5" fill="#ff4d6a"/><rect x="5.75" y="2" width="2.5" height="10" rx="0.5" fill="#e29d58"/><rect x="9.5" y="6" width="2.5" height="6" rx="0.5" fill="#10BC83"/>
+            </svg>
+            <span className="text-white text-xs">Riyad Bank PMI</span>
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 2l5 4 5-4" stroke="#A0A0A0" strokeWidth="1.2" strokeLinecap="round"/></svg>
+            <span className="text-white text-xs font-medium ml-auto">53.3</span>
+            <span className="text-gfx-neutral-500 text-xs">—</span>
+            <span className="text-gfx-neutral-500 text-xs">52.8</span>
           </div>
-        ))}
+        </div>
+
+        {/* Date label */}
+        <div className="flex items-center gap-2 px-5 py-3">
+          <span className="w-2 h-2 rounded-full bg-gfx-green-500" />
+          <span className="text-white text-sm font-medium">Today, April 28</span>
+        </div>
+
+        {/* Table */}
+        <div className="px-5 pb-4 flex-1 min-h-0 overflow-y-auto econ-calendar-scroll">
+          <div className="grid grid-cols-[3.5rem_1fr_3rem_3rem_3rem] gap-x-4 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider pb-2 border-b border-white/[0.06]">
+            <span>Time</span>
+            <span>Event</span>
+            <span className="text-right">Act</span>
+            <span className="text-right">FCST</span>
+            <span className="text-right">PREV</span>
+          </div>
+
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="grid grid-cols-[3.5rem_1fr_3rem_3rem_3rem] gap-x-4 items-center py-3.5 border-b border-white/[0.04] last:border-0">
+              <span className="text-white text-xs">10:00</span>
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="text-sm shrink-0">🇺🇸</span>
+                <span className="text-gfx-neutral-500 text-xs shrink-0">US</span>
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="shrink-0" aria-hidden="true">
+                  <rect x="2" y="4" width="2.5" height="8" rx="0.5" fill="#ff4d6a"/><rect x="5.75" y="2" width="2.5" height="10" rx="0.5" fill="#e29d58"/><rect x="9.5" y="6" width="2.5" height="6" rx="0.5" fill="#10BC83"/>
+                </svg>
+                <span className="text-white text-xs truncate">Riyad Bank PMI</span>
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="shrink-0"><path d="M1 1l4 4 4-4" stroke="#A0A0A0" strokeWidth="1" strokeLinecap="round"/></svg>
+              </div>
+              <span className="text-white text-xs text-right font-medium">53.3</span>
+              <span className="text-gfx-neutral-500 text-xs text-right">—</span>
+              <span className="text-gfx-neutral-500 text-xs text-right">52.8</span>
+            </div>
+          ))}
+        </div>
       </div>
     </Card>
   )
