@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlowButton, SparkleButton } from '@/components/ui'
+import { GlowButton, SparkleButton, GlassSelect } from '@/components/ui'
 
 function CloseIcon() {
   return (
@@ -14,24 +14,6 @@ function TriangleDownIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
       <path d="M5.03524 7.10653L0.432468 2.50376C-0.491481 1.57981 0.162899 0 1.46956 0L10.6751 0C11.9818 0 12.6361 1.57981 11.7122 2.50376L7.10942 7.10653C6.53665 7.6793 5.60801 7.6793 5.03524 7.10653Z" fill="#606060"/>
-    </svg>
-  )
-}
-
-function ChevronDownIcon() {
-  return (
-    <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
-      <path d="M1 1L8 7L15 1" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function CalendarIcon() {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-      <rect x="3" y="4" width="18" height="18" rx="3" stroke="#808080" strokeWidth="1.5" />
-      <path d="M3 10H21" stroke="#808080" strokeWidth="1.5" />
-      <path d="M8 2V6M16 2V6" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   )
 }
@@ -62,11 +44,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     overlay.addEventListener('wheel', blockLenis, true)
     return () => overlay.removeEventListener('wheel', blockLenis, true)
   }, [mounted])
-  const [noteType] = useState('Day note')
   const [date, setDate] = useState('04/21/2026')
-  const [account] = useState('L#716445')
-  const [folder] = useState('L#716445')
-  const [note, setNote] = useState('')
   const [tags, setTags] = useState('')
 
   const handleClose = useCallback(() => {
@@ -145,16 +123,16 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           {/* Form fields */}
           <div className="flex flex-col gap-[18px] mt-[24px]">
             {/* Note Type */}
-            <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
-                Note Type
-              </label>
-              <div className="relative h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] flex items-center px-[26px]">
-                <CalendarIcon />
-                <span className="text-[#808080] text-[16px] font-acid ml-[10px] flex-1">{noteType}</span>
-                <ChevronDownIcon />
-              </div>
-            </div>
+            <GlassSelect
+              label="Note Type"
+              options={[
+                { value: 'day', label: 'Day note' },
+                { value: 'week', label: 'Week note' },
+                { value: 'trade', label: 'Trade note' },
+                { value: 'general', label: 'General note' },
+              ]}
+              defaultValue="day"
+            />
 
             {/* Date */}
             <div>
@@ -170,43 +148,38 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
             </div>
 
             {/* Account (Optional) */}
-            <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
-                Account (Optional)
-              </label>
-              <div className="relative h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] flex items-center px-[26px]">
-                <span className="text-[#808080] text-[16px] font-acid flex-1">{account}</span>
-                <ChevronDownIcon />
-              </div>
-            </div>
+            <GlassSelect
+              label="Account (Optional)"
+              options={[
+                { value: 'L#716445', label: 'L#716445' },
+                { value: 'L#716446', label: 'L#716446' },
+                { value: 'L#716447', label: 'L#716447' },
+              ]}
+              defaultValue="L#716445"
+            />
 
             {/* Folder (Optional) */}
-            <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
-                Folder (Optional)
-              </label>
-              <div className="relative h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] flex items-center px-[26px]">
-                <span className="text-[#808080] text-[16px] font-acid flex-1">{folder}</span>
-                <ChevronDownIcon />
-              </div>
-            </div>
+            <GlassSelect
+              label="Folder (Optional)"
+              options={[
+                { value: 'L#716445', label: 'L#716445' },
+                { value: 'L#716446', label: 'L#716446' },
+                { value: 'L#716447', label: 'L#716447' },
+              ]}
+              defaultValue="L#716445"
+            />
 
             {/* Note */}
-            <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
-                Note
-              </label>
-              <div className="relative h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] flex items-center px-[26px]">
-                <input
-                  type="text"
-                  value={note}
-                  onChange={e => setNote(e.target.value)}
-                  placeholder="example of a note"
-                  className="w-full bg-transparent text-[#808080] text-[16px] font-acid outline-none placeholder:text-[#808080]"
-                />
-                <ChevronDownIcon />
-              </div>
-            </div>
+            <GlassSelect
+              label="Note"
+              options={[
+                { value: 'example', label: 'example of a note' },
+                { value: 'trade-review', label: 'Trade review' },
+                { value: 'market-analysis', label: 'Market analysis' },
+                { value: 'strategy', label: 'Strategy notes' },
+              ]}
+              placeholder="Select a note template"
+            />
 
             {/* Tags */}
             <div>
