@@ -77,8 +77,8 @@ function VolumeIcon() {
 
 function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () => void }) {
   return (
-    <div className="relative h-[198px] rounded-[18.56px] bg-[#0C1311] border border-[#0C1311]" style={{ boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)' }}>
-      <div className="flex items-start p-8 h-full">
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+      <div className="flex items-start p-8 h-[198px]">
         <div className="shrink-0 w-[70px] h-[70px] rounded-full border border-[#00b38c] flex items-center justify-center">
           <span className="text-[#10bc83] text-[35px] font-acid">{episode.id}</span>
         </div>
@@ -90,14 +90,14 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
           </p>
         </div>
 
-        <div className="shrink-0 flex flex-col items-end gap-3">
+        <div className="shrink-0 flex items-center gap-4">
           <span className="text-[#808080] text-[16px] font-acid">{episode.duration}</span>
           <button
             onClick={onPlay}
-            className="w-[58px] h-[58px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+            className="relative w-[58px] h-[58px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
             aria-label="Play episode"
           >
-            <svg width="58" height="58" viewBox="0 0 58 58" fill="none" className="absolute">
+            <svg width="58" height="58" viewBox="0 0 58 58" fill="none" className="absolute inset-0">
               <circle cx="29" cy="29" r="28.4" fill="url(#epPlayGrad)" stroke="#09241C" />
               <defs>
                 <radialGradient id="epPlayGrad" cx="0" cy="0" r="1" gradientTransform="matrix(-13.96 49.11 -73.75 -161.35 37.98 1.74)" gradientUnits="userSpaceOnUse">
@@ -112,7 +112,7 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
           </button>
         </div>
       </div>
-    </div>
+    </GlassCard>
   )
 }
 
@@ -178,7 +178,7 @@ export default function PodcastView() {
         <div className="flex items-center h-[397px] relative">
           <div className="w-[400px] h-full flex items-center justify-center shrink-0 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0c1311]/50" />
-            <MicrophoneIcon />
+            <img src="/images/news/podcast-mic.png" alt="Microphone" className="relative z-0 w-[200px] h-auto" />
           </div>
 
           <div className="flex flex-col gap-4 px-8 py-10 relative z-10">
