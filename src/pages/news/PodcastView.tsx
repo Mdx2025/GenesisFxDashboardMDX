@@ -77,17 +77,15 @@ function VolumeIcon() {
 
 function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () => void }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="flex items-start gap-6 p-8 h-[198px]">
+    <div className="relative h-[198px] rounded-[18.56px] bg-[#0C1311] border border-[#0C1311]" style={{ boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)' }}>
+      <div className="flex items-start p-8 h-full">
         <div className="shrink-0 w-[70px] h-[70px] rounded-full border border-[#00b38c] flex items-center justify-center">
           <span className="text-[#10bc83] text-[35px] font-acid">{episode.id}</span>
         </div>
 
-        <div className="flex flex-col gap-2 flex-1 min-w-0">
-          <div className="flex items-center gap-4">
-            <span className="text-white text-[21px] font-acid">{episode.date}</span>
-          </div>
-          <p className="text-[#808080] text-[16px] font-acid leading-[24px]">
+        <div className="flex flex-col gap-2 flex-1 min-w-0 ml-6">
+          <span className="text-white text-[21px] font-acid">{episode.date}</span>
+          <p className="text-[#808080] text-[16px] font-acid font-medium leading-[24.44px] max-w-[362px]">
             {episode.description}
           </p>
         </div>
@@ -96,13 +94,25 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
           <span className="text-[#808080] text-[16px] font-acid">{episode.duration}</span>
           <button
             onClick={onPlay}
-            className="w-[58px] h-[58px] rounded-full bg-[#0c1311] border border-[#0c1311] flex items-center justify-center cursor-pointer hover:bg-[#09241c] transition-colors text-[#808080] hover:text-white"
+            className="w-[58px] h-[58px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Play episode"
           >
-            <PlayIcon size={20} />
+            <svg width="58" height="58" viewBox="0 0 58 58" fill="none" className="absolute">
+              <circle cx="29" cy="29" r="28.4" fill="url(#epPlayGrad)" stroke="#09241C" />
+              <defs>
+                <radialGradient id="epPlayGrad" cx="0" cy="0" r="1" gradientTransform="matrix(-13.96 49.11 -73.75 -161.35 37.98 1.74)" gradientUnits="userSpaceOnUse">
+                  <stop offset="0.19" stopColor="#0C1311" />
+                  <stop offset="0.73" stopColor="#09241C" />
+                </radialGradient>
+              </defs>
+            </svg>
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" className="relative z-10">
+              <path d="M14.36 6.28C15.79 7.05 15.79 9.06 14.36 9.83L5.77 14.51C4.38 15.26 2.68 14.28 2.68 12.73V3.38C2.68 1.83 4.38 0.85 5.77 1.6L14.36 6.28Z" fill="#00B38C" />
+            </svg>
           </button>
         </div>
       </div>
-    </GlassCard>
+    </div>
   )
 }
 
