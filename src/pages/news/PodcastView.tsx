@@ -176,9 +176,8 @@ export default function PodcastView() {
       {/* Hero Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
         <div className="flex items-center h-[397px] relative">
-          <div className="w-[400px] h-full flex items-center justify-center shrink-0 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0c1311]/50" />
-            <img src="/images/news/podcast-mic.png" alt="Microphone" className="relative z-0 w-[200px] h-auto" />
+          <div className="w-[400px] h-full flex items-center justify-center shrink-0">
+            <img src="/images/news/podcast-mic.png" alt="Microphone" className="w-auto h-full" />
           </div>
 
           <div className="flex flex-col gap-4 px-8 py-10 relative z-10">
