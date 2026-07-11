@@ -348,7 +348,7 @@ export default function JournalPage() {
                     <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">This week</p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <SparkleButton className="px-[22px]">
+                    <SparkleButton className="!w-[52px] !h-[52px] !rounded-full px-0">
                       <ShareIcon />
                     </SparkleButton>
                     <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
