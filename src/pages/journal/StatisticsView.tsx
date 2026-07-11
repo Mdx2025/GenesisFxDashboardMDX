@@ -36,11 +36,27 @@ const COLOR_MAP = {
   white: '#ffffff',
 } as const
 
-function MetricCard({ label, value, color }: { label: string; value: string; color: keyof typeof COLOR_MAP }) {
+const GLOW_POSITIONS = [
+  'left-[10%] top-[-20%]',
+  'right-[10%] bottom-[-30%]',
+  'right-[10%] top-[-20%]',
+  'left-[10%] bottom-[-30%]',
+  'right-[10%] top-[-20%]',
+  'left-[10%] top-[-20%]',
+  'left-[10%] bottom-[-30%]',
+  'right-[10%] top-[-20%]',
+  'right-[10%] bottom-[-30%]',
+  'left-[10%] top-[-20%]',
+  'left-[10%] bottom-[-30%]',
+  'right-[10%] top-[-20%]',
+] as const
+
+function MetricCard({ label, value, color, index }: { label: string; value: string; color: keyof typeof COLOR_MAP; index: number }) {
   const isPill = label === 'Most Profitable Asset'
 
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[147px]">
+      <GlowEllipse className={GLOW_POSITIONS[index % GLOW_POSITIONS.length]} />
       <div className="p-5 h-full flex flex-col">
         <div className="flex items-center justify-between">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>
@@ -385,7 +401,7 @@ export default function StatisticsView() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {statsGrid.flatMap((row, ri) =>
             row.map((stat, ci) => (
-              <MetricCard key={`${ri}-${ci}`} label={stat.label} value={stat.value} color={stat.color} />
+              <MetricCard key={`${ri}-${ci}`} label={stat.label} value={stat.value} color={stat.color} index={ri * row.length + ci} />
             ))
           )}
         </div>
