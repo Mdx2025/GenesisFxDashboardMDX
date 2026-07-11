@@ -105,15 +105,13 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
 
         {/* Category + Commodity icon */}
         <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[#ececec] text-[14px] font-acid">
-              {article.category}
-            </span>
-            <span className="flex items-center gap-2">
-              <CommodityIcon />
-              <span className="text-white text-[14px] font-acid">{article.category}</span>
-            </span>
-          </div>
+          <span className="text-[#ececec] text-[14px] font-acid">
+            {article.category}
+          </span>
+          <span className="flex items-center gap-2">
+            <CommodityIcon />
+            <span className="text-white text-[14px] font-acid">{article.category}</span>
+          </span>
         </div>
 
         <h3 className="text-white text-[36px] font-acid font-normal leading-[1.1] max-w-[535px]">
