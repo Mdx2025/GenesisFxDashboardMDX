@@ -42,10 +42,11 @@ function ChevronRightIcon() {
 
 function HeroCard() {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden p-8">
       <div className="relative flex flex-col lg:flex-row min-h-[441px]">
+        <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" />
         {/* Video thumbnail */}
-        <div className="relative w-full lg:w-[55%] min-h-[280px] lg:min-h-0">
+        <div className="relative w-full lg:w-[55%] min-h-[280px] lg:min-h-0 rounded-3xl overflow-hidden">
           <img
             src={featuredEpisode.imageUrl}
             alt={featuredEpisode.title}
