@@ -153,7 +153,7 @@ function WebcamCard() {
                 </svg>
               </div>
               {/* Red glow dot + texts */}
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row items-center gap-1">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" className="shrink-0">
                   <g filter="url(#webcamLive)">
                     <rect x="8" y="8" width="6" height="6" rx="3" fill="#D46356" />
