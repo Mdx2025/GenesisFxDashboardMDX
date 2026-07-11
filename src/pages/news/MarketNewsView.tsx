@@ -16,9 +16,9 @@ function GlobeIcon() {
 
 function ClockIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="9" stroke="#808080" strokeWidth="1.5" />
-      <path d="M12 7V12L15 15" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M17.5808 8.7904C17.5808 13.6452 13.6452 17.5808 8.7904 17.5808C3.93559 17.5808 0 13.6452 0 8.7904C0 3.93559 3.93559 0 8.7904 0C13.6452 0 17.5808 3.93559 17.5808 8.7904Z" fill="#808080"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M8.7904 4.61496C9.15451 4.61496 9.44968 4.91013 9.44968 5.27424V8.51731L11.4542 10.5218C11.7116 10.7793 11.7116 11.1967 11.4542 11.4542C11.1967 11.7116 10.7793 11.7116 10.5218 11.4542L8.32422 9.25658C8.20058 9.13294 8.13112 8.96525 8.13112 8.7904V5.27424C8.13112 4.91013 8.42629 4.61496 8.7904 4.61496Z" fill="black"/>
     </svg>
   )
 }
@@ -104,28 +104,30 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
         <GlowEllipse className={index === 0 ? '-top-[6rem] -right-[4rem]' : '-top-[6rem] -left-[4rem]'} />
         <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 right-0 pointer-events-none" aria-hidden="true" />
 
-        {/* Category + Commodity icon */}
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-[#ececec] text-[14px] font-acid">
-            {article.category}
-          </span>
-          <span className="flex items-center gap-2">
-            <CommodityIcon />
-            <span className="text-white text-[14px] font-acid">{article.category}</span>
-          </span>
-        </div>
+        <div className="relative z-10">
+          {/* Category + Commodity icon */}
+          <div className="flex justify-between items-center mb-4">
+            <span className="text-[#ececec] text-[14px] font-acid">
+              {article.category}
+            </span>
+            <span className="flex items-center gap-2">
+              <CommodityIcon />
+              <span className="text-white text-[14px] font-acid">{article.category}</span>
+            </span>
+          </div>
 
-        <h3 className="text-white text-[36px] font-acid font-normal leading-[1.1] max-w-[535px]">
-          {article.title}
-        </h3>
+          <h3 className="text-white text-[36px] font-acid font-normal leading-[1.1] max-w-[535px]">
+            {article.title}
+          </h3>
 
-        <p className="text-[#808080] text-[16px] font-acid mt-3 leading-[1.5] max-w-[465px]">
-          {article.description}
-        </p>
+          <p className="text-[#808080] text-[16px] font-acid mt-3 leading-[1.5] max-w-[465px]">
+            {article.description}
+          </p>
 
-        <div className="flex items-center gap-2 mt-4">
-          <ClockIcon />
-          <span className="text-[#808080] text-[14px] font-acid">{article.date}</span>
+          <div className="flex items-center gap-2 mt-4">
+            <ClockIcon />
+            <span className="text-[#808080] text-[14px] font-acid">{article.date}</span>
+          </div>
         </div>
       </div>
     </GlassCard>
