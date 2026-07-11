@@ -1,4 +1,4 @@
-import { GlassCard, GlowEllipse } from '@/components/ui'
+import { GlassCard } from '@/components/ui'
 import { heroArticle, secondaryArticles, listArticles } from '@/data/marketNews'
 import type { NewsArticle } from '@/data/marketNews'
 
@@ -48,13 +48,10 @@ function HeroCard({ article }: { article: NewsArticle }) {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0c1311]" />
         </div>
 
-        {/* Pixels pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true">
-          <img src="/images/news/pixels-pattern.png" alt="" className="w-full h-full object-cover" />
+        {/* Glow background */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <img src="/images/news/hero-glow-bg.png" alt="" className="w-full h-full object-cover" />
         </div>
-
-        {/* GlowEllipse bottom-center */}
-        <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[250px]" />
 
         {/* Content */}
         <div className="relative flex-1 flex flex-col justify-center px-12 py-10">
