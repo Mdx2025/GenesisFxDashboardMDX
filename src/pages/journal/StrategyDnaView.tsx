@@ -142,125 +142,127 @@ function TraderPassportCard() {
   const daysRemaining = p.dailyStreakTarget - p.dailyStreakDays
 
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px" className="p-8 flex flex-col items-center gap-6">
+    <GlassCard variant="purple" divider="none" rounded="20px">
       <div
         className="absolute inset-0 rounded-[20px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%)' }}
         aria-hidden="true"
       />
-      {/* Header */}
-      <div className="flex justify-between items-center w-full">
-        <div className="flex items-center gap-2">
-          <SparkleIcon />
-          <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
-            Trader Passport
-          </span>
-        </div>
-        <span className="px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-[12px] font-acid font-bold">
-          LVL {p.level}
-        </span>
-      </div>
-
-      {/* Avatar */}
-      <div
-        className="w-[112px] h-[112px] rounded-full flex items-center justify-center"
-        style={{
-          background: 'radial-gradient(circle, #d760ff, #9877e2)',
-          boxShadow: '0 0 0 6px rgba(168,85,247,0.12), 0 0 40px rgba(168,85,247,0.35)',
-        }}
-      >
-        <span className="text-white text-[46px] font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
-          T
-        </span>
-      </div>
-
-      {/* Name */}
-      <span className="text-[24px] text-[#f3eef9] font-acid text-center">{p.name}</span>
-
-      {/* Location badge */}
-      <span className="px-4 py-1 rounded-full bg-white/5 border border-white/8 text-[12px] text-[#f3eef9] font-acid">
-        &#127487;&#127462; {p.location}
-      </span>
-
-      {/* Archetype box */}
-      <div className="w-full rounded-[20px] bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
-        <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
-          &#10022; ARCHETYPE
-        </span>
-        <span className="text-[24px] text-white font-acid">{p.archetype}</span>
-        <span className="text-[12px] text-[#808080] font-acid">{p.archetypeDescription}</span>
-      </div>
-
-      {/* Three stat pills */}
-      <div className="grid grid-cols-3 gap-3 w-full">
-        {[
-          { value: p.pctl, label: 'PCTL' },
-          { value: p.winRate, label: 'WIN RATE' },
-          { value: String(p.trades), label: 'TRADES' },
-        ].map((s, i) => (
-          <div
-            key={i}
-            className="h-[73px] rounded-[14px] bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
-          >
-            <span className="text-[24px] text-[#f3eef9] font-acid">{s.value}</span>
-            <span className="text-[12px] text-[#808080] font-acid">{s.label}</span>
+      <div className="relative p-8 flex flex-col items-center gap-6">
+        {/* Header */}
+        <div className="flex justify-between items-center w-full">
+          <div className="flex items-center gap-2">
+            <SparkleIcon />
+            <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+              Trader Passport
+            </span>
           </div>
-        ))}
-      </div>
+          <span className="px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-[12px] font-acid font-bold">
+            LVL {p.level}
+          </span>
+        </div>
 
-      {/* XP Progress */}
-      <div className="w-full flex flex-col gap-2">
-        <div className="flex items-center justify-between">
-          <span className="text-[12px] text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.3px]">
-            XP Progress
-          </span>
-          <span className="text-[12px] text-[#808080] font-acid">
-            {p.xpCurrent} / {p.xpMax} XP
+        {/* Avatar */}
+        <div
+          className="w-[112px] h-[112px] rounded-full flex items-center justify-center"
+          style={{
+            background: 'radial-gradient(circle, #d760ff, #9877e2)',
+            boxShadow: '0 0 0 6px rgba(168,85,247,0.12), 0 0 40px rgba(168,85,247,0.35)',
+          }}
+        >
+          <span className="text-white text-[46px] font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
+            T
           </span>
         </div>
-        <div className="w-full h-[7px] rounded-full bg-gfx-purple-surface overflow-hidden">
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: `${xpPct}%`,
-              background: 'linear-gradient(90deg, #d760ff, #9877e2)',
-            }}
-          />
-        </div>
-        <span className="text-[12px] text-[#808080] font-acid text-center">
-          ALL ACCOUNTS &middot; {p.trades} TRADES &middot; {p.greenDays} GREEN DAYS &middot; {p.streak}-STREAK
+
+        {/* Name */}
+        <span className="text-[24px] text-[#f3eef9] font-acid text-center">{p.name}</span>
+
+        {/* Location badge */}
+        <span className="px-4 py-1 rounded-full bg-white/5 border border-white/8 text-[12px] text-[#f3eef9] font-acid">
+          &#127487;&#127462; {p.location}
         </span>
-      </div>
 
-      {/* Daily Streak */}
-      <div
-        className="w-full rounded-[14px] p-4 flex flex-col gap-3"
-        style={{
-          background: 'linear-gradient(135deg, rgba(242,153,74,0.14), rgba(242,153,74,0.03))',
-          border: '1px solid rgba(242,153,74,0.3)',
-        }}
-      >
-        <div className="flex items-center justify-between">
-          <span className="text-[12px] text-[#f2994a] font-acid font-bold uppercase tracking-[2.3px]">
-            &#128293; Daily Streak
+        {/* Archetype box */}
+        <div className="w-full rounded-[20px] bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
+          <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+            &#10022; ARCHETYPE
+          </span>
+          <span className="text-[24px] text-white font-acid">{p.archetype}</span>
+          <span className="text-[12px] text-[#808080] font-acid">{p.archetypeDescription}</span>
+        </div>
+
+        {/* Three stat pills */}
+        <div className="grid grid-cols-3 gap-3 w-full">
+          {[
+            { value: p.pctl, label: 'PCTL' },
+            { value: p.winRate, label: 'WIN RATE' },
+            { value: String(p.trades), label: 'TRADES' },
+          ].map((s, i) => (
+            <div
+              key={i}
+              className="h-[73px] rounded-[14px] bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
+            >
+              <span className="text-[24px] text-[#f3eef9] font-acid">{s.value}</span>
+              <span className="text-[12px] text-[#808080] font-acid">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* XP Progress */}
+        <div className="w-full flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <span className="text-[12px] text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.3px]">
+              XP Progress
+            </span>
+            <span className="text-[12px] text-[#808080] font-acid">
+              {p.xpCurrent} / {p.xpMax} XP
+            </span>
+          </div>
+          <div className="w-full h-[7px] rounded-full bg-gfx-purple-surface overflow-hidden">
+            <div
+              className="h-full rounded-full"
+              style={{
+                width: `${xpPct}%`,
+                background: 'linear-gradient(90deg, #d760ff, #9877e2)',
+              }}
+            />
+          </div>
+          <span className="text-[12px] text-[#808080] font-acid text-center">
+            ALL ACCOUNTS &middot; {p.trades} TRADES &middot; {p.greenDays} GREEN DAYS &middot; {p.streak}-STREAK
           </span>
         </div>
-        <div className="flex items-baseline gap-2">
-          <span className="text-[24px] text-[#f3eef9] font-acid">{p.dailyStreakDays}</span>
-          <span className="text-[12px] text-[#808080] font-acid">days</span>
-        </div>
-        <div className="w-full h-[6px] rounded-full bg-white/8 overflow-hidden">
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: `${streakPct}%`,
-              background: 'linear-gradient(90deg, #f2994a, #f2c94c)',
-            }}
-          />
-        </div>
-        <div className="flex items-center justify-between">
-          <span className="text-[12px] text-[#f2994a] font-acid font-semibold">{daysRemaining}d to</span>
-          <span className="text-[12px] text-[#f2994a] font-acid font-semibold">{p.dailyStreakReward}</span>
+
+        {/* Daily Streak */}
+        <div
+          className="w-full rounded-[14px] p-4 flex flex-col gap-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(242,153,74,0.14), rgba(242,153,74,0.03))',
+            border: '1px solid rgba(242,153,74,0.3)',
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-[12px] text-[#f2994a] font-acid font-bold uppercase tracking-[2.3px]">
+              &#128293; Daily Streak
+            </span>
+          </div>
+          <div className="flex items-baseline gap-2">
+            <span className="text-[24px] text-[#f3eef9] font-acid">{p.dailyStreakDays}</span>
+            <span className="text-[12px] text-[#808080] font-acid">days</span>
+          </div>
+          <div className="w-full h-[6px] rounded-full bg-white/8 overflow-hidden">
+            <div
+              className="h-full rounded-full"
+              style={{
+                width: `${streakPct}%`,
+                background: 'linear-gradient(90deg, #f2994a, #f2c94c)',
+              }}
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-[12px] text-[#f2994a] font-acid font-semibold">{daysRemaining}d to</span>
+            <span className="text-[12px] text-[#f2994a] font-acid font-semibold">{p.dailyStreakReward}</span>
+          </div>
         </div>
       </div>
     </GlassCard>
