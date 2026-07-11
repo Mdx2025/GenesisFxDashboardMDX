@@ -101,7 +101,8 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden flex-1 min-w-0">
       <div className="relative h-fit flex flex-col justify-center px-7 py-10">
-        <GlowEllipse className={index === 0 ? '-bottom-[6rem] -right-[4rem]' : '-bottom-[6rem] -left-[4rem]'} />
+        <GlowEllipse className={index === 0 ? '-top-[6rem] -right-[4rem]' : '-top-[6rem] -left-[4rem]'} />
+        <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 right-0 pointer-events-none" aria-hidden="true" />
 
         {/* Category + Commodity icon */}
         <div className="flex justify-between items-center mb-4">
