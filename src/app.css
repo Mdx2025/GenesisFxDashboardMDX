@@ -193,6 +193,7 @@
 
   .weekly-stat-active.glass-card {
     background: #0C1311;
+    box-shadow: none;
   }
 
   .weekly-stat-inactive.glass-card {

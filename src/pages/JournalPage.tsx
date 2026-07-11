@@ -342,7 +342,7 @@ export default function JournalPage() {
           <>
             {/* Weekly Stats Carousel */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <GlowEllipse className="bottom-[-30%] left-1/2 -translate-x-1/2" />
+              <GlowEllipse className="bottom-[-60%] left-1/2 -translate-x-1/2" />
               <div className="relative p-[30px]">
                 <div className="flex items-center justify-between mb-6">
                   <div>
