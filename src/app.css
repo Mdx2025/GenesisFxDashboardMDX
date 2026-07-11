@@ -180,6 +180,10 @@
     pointer-events: none;
   }
 
+  .weekly-stat-active.glass-card {
+    background: #0C1311;
+  }
+
   .weekly-stat-inactive.glass-card {
     background: #09241C;
     box-shadow: none;

@@ -145,15 +145,10 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
       divider="none"
       rounded="19px"
       className={`flex-1 min-w-0 h-[114px] overflow-hidden ${
-        stat.active ? 'border border-[#00b38c]' : 'weekly-stat-inactive'
+        stat.active ? 'border border-[#00b38c] weekly-stat-active' : 'weekly-stat-inactive'
       }`}
     >
-      <div className="relative h-full px-[22px] py-[14px]">
-        {stat.active && (
-          <div className="absolute top-[11px] right-[11px]">
-            <GreenDot size={5} />
-          </div>
-        )}
+      <div className="h-full px-[22px] py-[14px] flex justify-between items-start">
         <div className="flex flex-col gap-1.5">
           <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
           <p className={`text-[16px] font-acid font-medium ${
@@ -163,6 +158,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
           </p>
           <p className="text-[#808080] text-[16px] font-acid">{stat.trades} trades</p>
         </div>
+        {stat.active && <GreenDot size={5} />}
       </div>
     </GlassCard>
   )
@@ -173,7 +169,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
 function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute -right-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute -right-[30px] -top-[30px] w-[220px] h-[220px] rounded-full bg-gfx-green-200 opacity-70 blur-[60px] pointer-events-none" aria-hidden="true" />
       <div className="relative p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
@@ -232,7 +228,7 @@ function ImpactDots({ level }: { level: number }) {
 function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute -left-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute -left-[30px] -top-[30px] w-[220px] h-[220px] rounded-full bg-gfx-green-200 opacity-70 blur-[60px] pointer-events-none" aria-hidden="true" />
       <div className="relative p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
@@ -272,7 +268,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 function StatCard({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[182px]">
-      <div className="absolute -left-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute -left-[30px] -top-[30px] w-[220px] h-[220px] rounded-full bg-gfx-green-200 opacity-70 blur-[60px] pointer-events-none" aria-hidden="true" />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>
@@ -374,7 +370,7 @@ export default function JournalPage() {
             {/* Stats Row: Net P&L + 2x2 grid */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
               <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <div className="absolute -right-[30px] -top-[30px] w-[180px] h-[180px] rounded-full bg-gfx-green-200 opacity-50 blur-[60px] pointer-events-none" aria-hidden="true" />
+                <div className="absolute -right-[30px] -top-[30px] w-[220px] h-[220px] rounded-full bg-gfx-green-200 opacity-70 blur-[60px] pointer-events-none" aria-hidden="true" />
                 <div className="relative p-6 h-full flex flex-col min-h-[340px]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
