@@ -91,7 +91,7 @@ function LiveNewsCard() {
       }
       className="row-span-1"
     >
-      <div className="px-5 py-3 max-w-md">
+      <div className="px-5 py-3 max-w-lg">
         <ModeToggle options={[...NEWS_CHANNELS]} activeIndex={channel} onChange={setChannel} size="sm" />
       </div>
       <div className="relative mx-5 mb-4 rounded-xl bg-[#0a0f0d] aspect-video flex items-center justify-center overflow-hidden">
@@ -129,7 +129,7 @@ function WebcamCard() {
   return (
     <Card title="Live Webcams">
       <div className="px-5 py-3 flex justify-between items-center gap-6">
-        <div className="max-w-md flex-1">
+        <div className="max-w-lg flex-1">
           <ModeToggle options={[...WEBCAM_REGIONS]} activeIndex={region} onChange={setRegion} size="sm" />
         </div>
         <div className="flex items-center gap-2 shrink-0">
