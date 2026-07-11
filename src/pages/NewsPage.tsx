@@ -92,7 +92,7 @@ function LiveNewsCard() {
       className="row-span-1"
     >
       <div className="px-5 py-3">
-        <PillTabs options={NEWS_CHANNELS} active={channel} onChange={setChannel} />
+        <ModeToggle options={[...NEWS_CHANNELS]} activeIndex={channel} onChange={setChannel} />
       </div>
       <div className="relative mx-5 mb-4 rounded-xl bg-[#0a0f0d] aspect-video flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a14] to-[#080d0b]" />
@@ -106,14 +106,14 @@ function LiveNewsCard() {
             <text x="28" y="11.5" fill="white" fontSize="8" fontFamily="sans-serif">YouTube</text>
           </svg>
         </div>
-      </div>
-      <div className="px-5 pb-4">
-        <div className="flex items-center gap-2 mb-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-gfx-green-500" />
-          <span className="text-gfx-neutral-500 text-xs">Bloomberg Television</span>
+        <div className="absolute bottom-0 left-0 right-0 z-10 px-4 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-2.5 h-2.5 rounded-full bg-gfx-green-500" />
+            <span className="text-gfx-neutral-500 text-xs">Bloomberg Television</span>
+          </div>
+          <p className="text-white text-body2 font-normal mb-0.5">Bloomberg Business News Live</p>
+          <p className="text-gfx-neutral-500 text-xs">SK Hynix Seeks Access to AI Investors in $20B Raise</p>
         </div>
-        <p className="text-white text-body2 font-normal mb-0.5">Bloomberg Business News Live</p>
-        <p className="text-gfx-neutral-500 text-xs">SK Hynix Seeks Access to AI Investors in $20B Raise</p>
       </div>
     </Card>
   )
@@ -141,7 +141,7 @@ function WebcamCard() {
       }
     >
       <div className="px-5 py-3">
-        <PillTabs options={WEBCAM_REGIONS} active={region} onChange={setRegion} />
+        <ModeToggle options={[...WEBCAM_REGIONS]} activeIndex={region} onChange={setRegion} />
       </div>
       <div className="grid grid-cols-2 gap-3 px-5 pb-5">
         {webcams.map(cam => (
