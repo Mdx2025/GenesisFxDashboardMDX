@@ -389,8 +389,10 @@ function StyleProgressRow({ row, variant }: { row: StyleRow; variant: 'purple' |
 
 function StyleCompositionCard() {
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px">
-      <div className="p-6 flex flex-col gap-5">
+    <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
+      <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+      <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+      <div className="relative p-6 flex flex-col gap-5">
       {/* Header */}
       <div className="flex items-center gap-3">
         <SectionPillIcon>
@@ -429,8 +431,10 @@ function StyleCompositionCard() {
 
 function AiStrategySummaryCard() {
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px">
-      <div className="p-6 flex flex-col gap-5">
+    <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
+      <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+      <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+      <div className="relative p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">
           <SectionPillIcon>
