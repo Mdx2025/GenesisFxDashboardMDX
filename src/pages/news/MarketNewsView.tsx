@@ -54,15 +54,18 @@ function HeroCard({ article }: { article: NewsArticle }) {
         </div>
 
         {/* Content */}
-        <div className="relative flex-1 flex flex-col justify-center px-12 py-10">
-          {/* Region badge — right aligned, no border */}
+        <div className="relative flex-1 flex flex-col px-12 py-10">
+          {/* Region badge — in-flow, right aligned */}
           {article.region && (
-            <div className="absolute top-8 right-8 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5">
-              <GlobeIcon />
-              <span className="text-white text-[14px] font-acid">{article.region}</span>
+            <div className="flex justify-end mb-4">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5">
+                <GlobeIcon />
+                <span className="text-white text-[14px] font-acid">{article.region}</span>
+              </div>
             </div>
           )}
 
+          <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-white text-[50px] font-acid font-normal leading-[1.05]">{article.title}</h2>
 
           <p className="text-[#808080] text-[16px] font-acid mt-4 leading-[1.5] max-w-[470px]">
@@ -72,6 +75,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
           <div className="flex items-center gap-2 mt-6">
             <ClockIcon />
             <span className="text-[#808080] text-[14px] font-acid">{article.date}</span>
+          </div>
           </div>
         </div>
       </div>
