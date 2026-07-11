@@ -142,12 +142,14 @@ function TraderPassportCard() {
   const daysRemaining = p.dailyStreakTarget - p.dailyStreakDays
 
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px">
+    <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
       <div
         className="absolute inset-0 rounded-[20px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%)' }}
         aria-hidden="true"
       />
+      <div className="absolute left-[-40px] top-[-30px] w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]" aria-hidden="true" />
+      <div className="absolute right-[-40px] bottom-[-30px] w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]" aria-hidden="true" />
       <div className="relative p-8 flex flex-col items-center gap-6">
         {/* Header */}
         <div className="flex justify-between items-center w-full">
