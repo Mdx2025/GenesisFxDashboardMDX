@@ -1,11 +1,19 @@
 import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlowButton, SecondaryButton } from '@/components/ui'
+import { GlowButton, SparkleButton } from '@/components/ui'
 
 function CloseIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M18 6L6 18M6 6L18 18" stroke="#808080" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function TriangleDownIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+      <path d="M5.03524 7.10653L0.432468 2.50376C-0.491481 1.57981 0.162899 0 1.46956 0L10.6751 0C11.9818 0 12.6361 1.57981 11.7122 2.50376L7.10942 7.10653C6.53665 7.6793 5.60801 7.6793 5.03524 7.10653Z" fill="#606060"/>
     </svg>
   )
 }
@@ -98,13 +106,14 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] overflow-clip flex flex-col"
+        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] overflow-y-auto modal-scroll-green"
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
         <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-[#064b34] blur-[100px] opacity-15 pointer-events-none" />
 
-        {/* Close button — fixed above scroll */}
+        {/* Close button */}
         <button
           onClick={handleClose}
           className="absolute top-[35px] right-[30px] z-20 cursor-pointer hover:opacity-80 transition-opacity"
@@ -112,20 +121,16 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           <CloseIcon />
         </button>
 
-        {/* Scrollable content with custom green scrollbar */}
-        <div
-          className="relative overflow-y-auto flex-1 min-h-0 modal-scroll-green pl-[123px] pr-[100px] pt-[35px] pb-[50px]"
-          style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
-        >
+        <div className="relative pl-[123px] pr-[100px] pt-[35px] pb-[50px]">
           {/* Title */}
-          <h2 className="text-white text-[50px] font-acid font-normal text-center mt-[40px]">
+          <h2 className="text-white text-[50px] font-acid font-normal text-center leading-none">
             New Note
           </h2>
 
           {/* DEMO selector */}
-          <div className="flex items-center gap-2 mt-[20px]">
+          <div className="flex justify-between items-center">
             <span className="text-[#808080] text-[16px] font-acid">DEMO</span>
-            <ChevronDownIcon />
+            <TriangleDownIcon />
           </div>
 
           {/* Form fields */}
@@ -221,12 +226,12 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           </div>
 
           {/* Bottom actions */}
-          <div className="flex items-center justify-end gap-3 mt-[30px]">
-            <SecondaryButton className="h-[44px]" onClick={handleClose}>
-              <span>New Account</span>
-            </SecondaryButton>
+          <div className="flex items-center justify-center gap-3 mt-[30px]">
+            <SparkleButton onClick={handleClose}>
+              Cancel
+            </SparkleButton>
             <GlowButton
-              label="Trade"
+              label="Create"
               width={115}
               height={44}
               radius={300}
