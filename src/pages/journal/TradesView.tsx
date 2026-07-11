@@ -58,17 +58,16 @@ export default function TradesView() {
       </GlassCard>
 
       {/* Table Card */}
-      <div className="relative overflow-hidden rounded-[19px] bg-[#0C1311]" style={{ boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)' }}>
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-252px] w-[493px] h-[278px] rounded-full bg-[#064B34]" style={{ filter: 'blur(157px)' }} />
+      <div className="relative overflow-hidden rounded-[19px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[-252px] w-[493px] h-[278px] rounded-full bg-[#064B34] blur-[157px]" />
         <div className="relative overflow-x-auto">
-          <table className="w-full" style={{ minWidth: '800px' }}>
+          <table className="w-full min-w-[800px]">
             <thead>
               <tr className="border-b border-[#09241C]">
                 {COLUMNS.map(col => (
                   <th
                     key={col}
-                    className="text-[#606060] text-[12px] font-acid font-bold uppercase text-left h-[58px] px-7"
-                    style={{ letterSpacing: '2.32px' }}
+                    className="text-[#606060] text-[12px] font-acid font-bold uppercase text-left h-[58px] px-4 sm:px-7 tracking-[2.32px]"
                   >
                     {col}
                   </th>
@@ -78,15 +77,15 @@ export default function TradesView() {
             <tbody>
               {filtered.map((trade, i) => (
                 <tr key={i} className="border-b border-[#09241C]">
-                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-7 h-[76px]">{trade.dateTime}</td>
-                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-7 h-[76px]">{trade.instrument}</td>
-                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-7 h-[76px]">{trade.side}</td>
-                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-7 h-[76px]">{trade.size}</td>
-                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-7 h-[76px]">{trade.entry}</td>
-                  <td className={`text-[14px] font-acid px-7 h-[76px] ${trade.exitPositive ? 'text-[#37C92E]' : 'text-[#D46356]'}`}>
+                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.dateTime}</td>
+                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.instrument}</td>
+                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.side}</td>
+                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.size}</td>
+                  <td className="text-[#ECECEC] text-[16px] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.entry}</td>
+                  <td className={`text-[14px] font-acid px-4 sm:px-7 h-[76px] ${trade.exitPositive ? 'text-[#37C92E]' : 'text-[#D46356]'}`}>
                     {trade.exit}
                   </td>
-                  <td className={`text-[14px] font-acid px-7 h-[76px] ${trade.netPnlPositive ? 'text-[#37C92E]' : 'text-[#D46356]'}`}>
+                  <td className={`text-[14px] font-acid px-4 sm:px-7 h-[76px] ${trade.netPnlPositive ? 'text-[#37C92E]' : 'text-[#D46356]'}`}>
                     {trade.netPnl}
                   </td>
                 </tr>

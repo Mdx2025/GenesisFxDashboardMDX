@@ -318,7 +318,7 @@ export default function JournalPage() {
           <div className="flex items-center gap-3 flex-wrap">
             <AiCoachButton />
             <ChatButton />
-            <button className="flex items-center gap-3 h-[72px] px-[19px] rounded-[20px] border border-[#303030] hover:border-[#404040] transition-colors cursor-pointer">
+            <button className="flex items-center gap-3 h-12 lg:h-[72px] px-3 lg:px-[19px] rounded-2xl lg:rounded-[20px] border border-[#303030] hover:border-[#404040] transition-colors cursor-pointer">
               <div className="relative w-[18px] h-[18px] flex items-center justify-center">
                 <div className="w-[10px] h-[10px] rounded-full bg-[#37C92E] shadow-[0_0_4px_rgba(12,145,4,1)]" />
               </div>
@@ -402,19 +402,13 @@ export default function JournalPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <StatCard label="Most Traded Asset">
-                  <div
-                    className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5"
-                    style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
-                  >
+                  <div className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5 bg-stat-pill">
                     <XauusdIcon />
-                    <span className="text-white text-[24px] font-acid">XAAUSD</span>
+                    <span className="text-white text-xl sm:text-2xl font-acid">XAAUSD</span>
                   </div>
                 </StatCard>
                 <StatCard label="Total Trades">
-                  <div
-                    className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5 h-[58px]"
-                    style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
-                  >
+                  <div className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5 h-[58px] bg-stat-pill">
                     <DiagramUpIcon />
                     <span className="text-white text-[24px] font-acid">{journalStats.totalTrades}</span>
                   </div>

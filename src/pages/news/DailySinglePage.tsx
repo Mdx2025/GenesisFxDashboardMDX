@@ -76,7 +76,7 @@ export default function DailySinglePage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/news')}
-            className="w-[38px] h-[38px] rounded-[10px] bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0a714f] transition-colors shrink-0"
+            className="w-10 h-10 rounded-[10px] bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0a714f] transition-colors shrink-0"
             aria-label="Back to news"
           >
             <BackArrow />

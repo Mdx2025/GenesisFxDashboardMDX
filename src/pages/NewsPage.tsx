@@ -352,7 +352,7 @@ function ChevronDownIcon() {
 
 function EconEventRow() {
   return (
-    <div className="flex items-center gap-0 py-3 border-b border-[#09241C] last:border-0" style={{ paddingLeft: 23, paddingRight: 20 }}>
+    <div className="flex items-center gap-0 py-3 border-b border-[#09241C] last:border-0 pl-[23px] pr-5">
       <span className="text-white text-[14px] font-acid w-[86px] shrink-0">10:00</span>
       <span className="text-[20px] shrink-0 leading-[20px]">🇺🇸</span>
       <span className="text-white text-[14px] font-acid ml-[10px] shrink-0">US</span>
@@ -382,7 +382,7 @@ function EconomicCalendarCard() {
         </div>
 
         {/* Column headers */}
-        <div className="flex items-center border-b border-[#09241C]" style={{ paddingLeft: 24, paddingRight: 20, paddingTop: 14, paddingBottom: 14 }}>
+        <div className="flex items-center border-b border-[#09241C] pl-6 pr-5 py-3.5">
           <span className="text-[#606060] text-[14px] font-acid w-[85px] shrink-0">Time</span>
           <span className="text-[#606060] text-[14px] font-acid flex-1">Event</span>
           <span className="text-[#606060] text-[14px] font-acid w-[55px] shrink-0">Act</span>

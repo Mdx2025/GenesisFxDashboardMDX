@@ -72,7 +72,7 @@ function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
 
         {/* Content */}
         <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-12 py-8 lg:py-10">
-          <h2 className="text-white text-[36px] font-acid font-normal leading-[1.05] relative">
+          <h2 className="text-white text-xl sm:text-2xl lg:text-[36px] font-acid font-normal leading-[1.05] relative">
             {featuredEpisode.title}
           </h2>
 
@@ -100,7 +100,7 @@ function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
 function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClick: () => void }) {
   return (
     <div
-      className="shrink-0 w-[440px] relative rounded-md overflow-hidden h-[310px] cursor-pointer group"
+      className="shrink-0 w-[280px] sm:w-[340px] lg:w-[440px] relative rounded-md overflow-hidden h-[220px] sm:h-[260px] lg:h-[310px] cursor-pointer group"
       onClick={onClick}
     >
       <img
@@ -108,7 +108,7 @@ function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClic
         alt={episode.title}
         className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(182deg, rgba(0,0,0,0) 30%, rgb(0,0,0) 98%)' }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
 
       {/* Play button */}
       <div className="absolute inset-0 flex items-center justify-center">

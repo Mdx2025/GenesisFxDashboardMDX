@@ -30,18 +30,20 @@ function DashLine() {
   )
 }
 
+const GRID_COLS = 'grid-cols-[80px_160px_80px_1fr_120px_120px_100px]'
+
 /* ─── Calendar Row ─── */
 
 function CalendarRow({ event }: { event: EconomicEvent }) {
   const actualColorClass = event.actualColor === 'red' ? 'text-[#d46356]' : 'text-[#37c92e]'
 
   return (
-    <div className="grid grid-cols-[80px_160px_80px_1fr_120px_120px_100px] items-center px-[60px] h-[62px] border-b border-white/[0.04]">
-      <span className="text-white text-[20px] font-acid">{event.time}</span>
+    <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[62px] border-b border-white/[0.04]`}>
+      <span className="text-white text-sm lg:text-[20px] font-acid">{event.time}</span>
 
-      <div className="flex items-center gap-3">
-        <span className="text-[#808080] text-[20px]">{event.flag}</span>
-        <span className="text-white text-[20px] font-acid">{event.country}</span>
+      <div className="flex items-center gap-2 lg:gap-3">
+        <span className="text-[#808080] text-sm lg:text-[20px]">{event.flag}</span>
+        <span className="text-white text-sm lg:text-[20px] font-acid">{event.country}</span>
         <ImpactIcon />
       </div>
 
@@ -49,21 +51,21 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
         <FolderIcon />
       </div>
 
-      <span className="text-white text-[20px] font-acid">{event.event}</span>
+      <span className="text-white text-sm lg:text-[20px] font-acid truncate">{event.event}</span>
 
-      <span className={`text-[20px] font-acid ${actualColorClass}`}>
+      <span className={`text-sm lg:text-[20px] font-acid ${actualColorClass}`}>
         {event.actual ?? ''}
       </span>
 
       <div className="flex items-center">
         {event.forecast ? (
-          <span className="text-[#606060] text-[20px] font-acid">{event.forecast}</span>
+          <span className="text-[#606060] text-sm lg:text-[20px] font-acid">{event.forecast}</span>
         ) : (
           <DashLine />
         )}
       </div>
 
-      <span className="text-[#606060] text-[20px] font-acid">
+      <span className="text-[#606060] text-sm lg:text-[20px] font-acid">
         {event.prior ?? ''}
       </span>
     </div>
@@ -74,9 +76,9 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
 
 function DateHeader({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-4 px-[60px] h-[68px] bg-[#09241c]">
+    <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-[60px] h-[56px] lg:h-[68px] bg-[#09241c]">
       <GreenDot size={10} />
-      <span className="text-white text-[20px] font-acid">{label}</span>
+      <span className="text-white text-sm lg:text-[20px] font-acid">{label}</span>
     </div>
   )
 }
@@ -85,14 +87,10 @@ function DateHeader({ label }: { label: string }) {
 
 function ColumnHeaders() {
   return (
-    <div className="grid grid-cols-[80px_160px_80px_1fr_120px_120px_100px] items-center px-[60px] h-[56px] border-b border-white/[0.04]">
-      <span className="text-[#606060] text-[20px] font-acid">Time</span>
-      <span className="text-[#606060] text-[20px] font-acid">Country</span>
-      <span className="text-[#606060] text-[20px] font-acid">Impact</span>
-      <span className="text-[#606060] text-[20px] font-acid">Event</span>
-      <span className="text-[#606060] text-[20px] font-acid">Actual</span>
-      <span className="text-[#606060] text-[20px] font-acid">Forecast</span>
-      <span className="text-[#606060] text-[20px] font-acid">Prior</span>
+    <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[48px] lg:h-[56px] border-b border-white/[0.04]`}>
+      {['Time', 'Country', 'Impact', 'Event', 'Actual', 'Forecast', 'Prior'].map(col => (
+        <span key={col} className="text-[#606060] text-xs lg:text-[20px] font-acid">{col}</span>
+      ))}
     </div>
   )
 }
@@ -102,17 +100,21 @@ function ColumnHeaders() {
 export default function EconomicCalendarView() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      {economicCalendarDays.map((day, dayIdx) => (
-        <div key={day.label}>
-          <DateHeader label={day.label} />
+      <div className="overflow-x-auto">
+        <div className="min-w-[700px]">
+          {economicCalendarDays.map((day, dayIdx) => (
+            <div key={day.label}>
+              <DateHeader label={day.label} />
 
-          {dayIdx === 0 && <ColumnHeaders />}
+              {dayIdx === 0 && <ColumnHeaders />}
 
-          {day.events.map(event => (
-            <CalendarRow key={event.id} event={event} />
+              {day.events.map(event => (
+                <CalendarRow key={event.id} event={event} />
+              ))}
+            </div>
           ))}
         </div>
-      ))}
+      </div>
     </GlassCard>
   )
 }

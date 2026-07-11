@@ -52,7 +52,7 @@ function NoteCard({ note }: { note: NotebookNote }) {
       <div className="p-[18px] flex flex-col gap-3 h-full">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-white text-[16px] font-acid font-medium">{note.label}</span>
+            <span className="text-white text-sm sm:text-base font-acid font-medium">{note.label}</span>
           </div>
           <button className="hover:opacity-80 transition-opacity cursor-pointer">
             <TrashIcon />
@@ -60,11 +60,11 @@ function NoteCard({ note }: { note: NotebookNote }) {
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-white text-[16px] font-acid font-medium">{note.date}</span>
-          <span className="text-[#808080] text-[14px] font-acid">Account: {note.account}</span>
+          <span className="text-white text-sm sm:text-base font-acid font-medium">{note.date}</span>
+          <span className="text-[#808080] text-xs sm:text-sm font-acid">Account: {note.account}</span>
         </div>
 
-        <p className="text-[#a0a0a0] text-[16px] font-acid font-medium">{note.preview}</p>
+        <p className="text-[#a0a0a0] text-sm sm:text-base font-acid font-medium">{note.preview}</p>
 
         <div className="flex items-center gap-3 mt-auto">
           {note.tags.map(tag => (
@@ -102,10 +102,10 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
         <GlowEllipse className="left-[10%] top-[-20%]" />
-        <div className="relative flex items-center justify-between px-6 py-10">
+        <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 py-6 sm:py-10">
           <div>
-            <h3 className="text-white text-[24px] font-acid font-normal leading-tight">Notebook</h3>
-            <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">
+            <h3 className="text-white text-xl sm:text-2xl font-acid font-normal leading-tight">Notebook</h3>
+            <p className="text-[#808080] text-sm sm:text-base font-acid font-medium mt-1">
               All your trading notes in one place
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
         {/* Notes Grid */}
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-80px]" />
-          <div className="relative p-5 grid grid-cols-4 gap-5">
+          <div className="relative p-3 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
             {notebookNotes.map(note => (
               <NoteCard key={note.id} note={note} />
             ))}

@@ -615,7 +615,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
                 <h3 className="text-white font-acid font-normal text-[1.5rem] mb-2">Account Preview</h3>
 
                 {/* Divider */}
-                <div className="h-[1.25px] my-4" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)' }} />
+                <div className="divider-glow my-4" />
 
                 <p className="text-white font-acid font-medium text-[1rem] leading-[1.528rem] mb-4">Trading Account Details</p>
 

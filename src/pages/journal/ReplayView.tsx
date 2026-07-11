@@ -71,9 +71,9 @@ export default function ReplayView() {
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
         <GlowEllipse className="left-[10%] top-[-20%]" />
-        <div className="relative flex items-center justify-between px-6 py-10">
+        <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 py-6 sm:py-10">
           <div>
-            <h3 className="text-white text-[24px] font-acid font-normal leading-tight">
+            <h3 className="text-white text-xl sm:text-2xl font-acid font-normal leading-tight">
               Replay Your Trades
             </h3>
             <p className="text-[#808080] text-[14px] font-acid mt-1">
@@ -88,7 +88,7 @@ export default function ReplayView() {
       </GlassCard>
 
       {/* Feature Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <ReplayCard
           title="Trade Replay"
           description="Replay individual trades candle-by-candle with entry/exit markers and P&L tracking"

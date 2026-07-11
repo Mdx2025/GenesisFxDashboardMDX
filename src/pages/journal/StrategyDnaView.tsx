@@ -436,7 +436,7 @@ function StyleCompositionCard() {
       </div>
 
       {/* Two columns */}
-      <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
         <div className="flex flex-col gap-4">
           {styleCompositionLeft.map((row, i) => (
             <StyleProgressRow key={i} row={row} variant="purple" />

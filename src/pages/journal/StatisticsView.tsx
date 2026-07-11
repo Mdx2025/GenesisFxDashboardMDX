@@ -201,13 +201,14 @@ function SessionAnalysis() {
         </div>
 
         <p className="text-gfx-neutral-500 text-[16px] font-acid font-medium mb-3">Session Performance</p>
-        <div className="grid grid-cols-3 px-4 mb-3">
+        <div className="overflow-x-auto">
+        <div className="grid grid-cols-3 px-4 mb-3 min-w-[350px]">
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Date / Time</span>
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Win Rate</span>
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider text-right">Net P&L</span>
         </div>
         {sessionPerformance.map((row, i) => (
-          <div key={i} className="grid grid-cols-3 items-center px-4 h-[68px] border-t border-[#09241c]">
+          <div key={i} className="grid grid-cols-3 items-center px-4 h-[68px] border-t border-[#09241c] min-w-[350px]">
             <span className="text-white text-[14px] font-acid">{row.session}</span>
             <span className="text-white text-[14px] font-acid">{row.winRate}</span>
             <span className={`text-[14px] font-acid text-right ${row.pnl >= 0 ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
@@ -215,6 +216,7 @@ function SessionAnalysis() {
             </span>
           </div>
         ))}
+        </div>
       </div>
     </GlassCard>
   )
@@ -302,11 +304,11 @@ function AvgPnlByDayChart() {
         </div>
 
         <div className="flex">
-          <div className="flex flex-col justify-between pr-3 text-[#606060] text-[12px] font-acid font-bold uppercase tracking-[2.3px]" style={{ height: '258px' }}>
+          <div className="flex flex-col justify-between pr-3 text-[#606060] text-[12px] font-acid font-bold uppercase tracking-[2.3px] h-[258px]">
             {Y_LABELS.map(l => <span key={l}>{l}</span>)}
           </div>
 
-          <div className="flex-1 relative" style={{ height: '310px' }}>
+          <div className="flex-1 relative h-[310px]">
             <svg className="absolute inset-0" width="100%" height="258" viewBox="0 0 621 258" preserveAspectRatio="none" fill="none">
               {[0, 51.6, 103.2, 154.8, 206.4].map((y, i) => (
                 <line key={`h${i}`} x1="0" y1={y} x2="621" y2={y} stroke="#09241C" strokeWidth="1.29" strokeDasharray={i === 4 ? 'none' : '4.69 4.69'} />
@@ -334,7 +336,7 @@ function AvgPnlByDayChart() {
               <path d={lossPath} stroke="#D46356" strokeWidth="0.58" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
 
-            <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3" style={{ top: '268px' }}>
+            <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3 top-[268px]">
               {DAYS.map(d => (
                 <span key={d} className="text-[#A0A0A0] text-[16px] font-acid font-medium">{d}</span>
               ))}

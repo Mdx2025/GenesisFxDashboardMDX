@@ -37,9 +37,9 @@ function CornerArrowIcon() {
 function HeroCard({ article }: { article: NewsArticle }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="relative h-[510px] flex">
-        {/* Left image — 100% height */}
-        <div className="relative w-[50%] shrink-0">
+      <div className="relative min-h-[300px] lg:h-[510px] flex flex-col lg:flex-row">
+        {/* Left image */}
+        <div className="relative w-full lg:w-[50%] h-[200px] lg:h-auto shrink-0">
           <img
             src="/images/news/trading-globe.png"
             alt={article.title}
@@ -54,7 +54,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
         </div>
 
         {/* Content */}
-        <div className="relative flex-1 flex flex-col px-12 py-10">
+        <div className="relative flex-1 flex flex-col px-4 sm:px-8 lg:px-12 py-6 lg:py-10">
           {/* Region badge — in-flow, right aligned */}
           {article.region && (
             <div className="flex justify-end">
@@ -66,9 +66,9 @@ function HeroCard({ article }: { article: NewsArticle }) {
           )}
 
           <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-white text-[50px] font-acid font-normal leading-[1.05]">{article.title}</h2>
+          <h2 className="text-white text-2xl sm:text-3xl lg:text-[50px] font-acid font-normal leading-[1.05]">{article.title}</h2>
 
-          <p className="text-[#808080] text-[16px] font-acid mt-4 leading-[1.5] max-w-[470px]">
+          <p className="text-[#808080] text-sm sm:text-base font-acid mt-4 leading-[1.5] max-w-full lg:max-w-[470px]">
             {article.description}
           </p>
 
@@ -116,7 +116,7 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
             </span>
           </div>
 
-          <h3 className="text-white text-[36px] font-acid font-normal leading-[1.1] max-w-[535px]">
+          <h3 className="text-white text-xl sm:text-2xl lg:text-[36px] font-acid font-normal leading-[1.1] max-w-full lg:max-w-[535px]">
             {article.title}
           </h3>
 
@@ -152,9 +152,9 @@ function ListCard({ article }: { article: NewsArticle }) {
             )}
           </div>
 
-          <h4 className="text-white text-[24px] font-acid font-normal leading-[1.2]">{article.title}</h4>
+          <h4 className="text-white text-lg sm:text-xl lg:text-2xl font-acid font-normal leading-[1.2]">{article.title}</h4>
 
-          <p className="text-[#808080] text-[16px] font-acid font-medium mt-3 leading-[1.5] max-w-[1115px]">
+          <p className="text-[#808080] text-sm sm:text-base font-acid font-medium mt-3 leading-[1.5]">
             {article.description}
           </p>
         </div>

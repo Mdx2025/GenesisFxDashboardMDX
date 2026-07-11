@@ -108,11 +108,11 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
         </button>
 
         <div
-          className="relative pl-[123px] pr-[100px] pt-[35px] pb-[50px] overflow-y-auto modal-scroll-green"
+          className="relative px-4 sm:px-8 lg:pl-[123px] lg:pr-[100px] pt-6 sm:pt-[35px] pb-8 sm:pb-[50px] overflow-y-auto modal-scroll-green"
           style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
         >
           {/* Title */}
-          <h2 className="text-white text-[50px] font-acid font-normal text-center leading-none">
+          <h2 className="text-white text-3xl sm:text-4xl lg:text-[50px] font-acid font-normal text-center leading-none">
             New Note
           </h2>
 

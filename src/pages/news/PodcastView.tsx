@@ -177,7 +177,7 @@ export default function PodcastView() {
     <div className="flex flex-col gap-5">
       {/* Hero Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <div className="flex items-center h-[397px] p-8 relative">
+        <div className="flex flex-col sm:flex-row items-center h-auto sm:min-h-[300px] lg:h-[397px] p-4 sm:p-8 relative">
           <div className="w-auto h-full flex items-center justify-center shrink-0">
             <img src="/images/news/podcast-mic.png" alt="Microphone" className="w-auto h-full" />
           </div>
@@ -195,9 +195,9 @@ export default function PodcastView() {
               <span className="text-[#ececec] text-[16px] font-acid">5 episodes</span>
             </div>
 
-            <h2 className="text-white text-[52px] font-acid leading-none">Deep Dive Podcast</h2>
+            <h2 className="text-white text-2xl sm:text-3xl lg:text-[52px] font-acid leading-none">Deep Dive Podcast</h2>
 
-            <p className="text-[#808080] text-[16px] font-acid leading-[24px] max-w-[725px]">
+            <p className="text-[#808080] text-sm sm:text-base font-acid leading-relaxed max-w-full lg:max-w-[725px]">
               Your daily dose of market clarity. The Deep Dive delivers sharp insights on stocks, crypto, commodities, and global trends—cutting through the noise to bring you what matters.
             </p>
 

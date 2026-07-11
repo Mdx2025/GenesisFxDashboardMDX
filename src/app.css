@@ -238,6 +238,10 @@
     background: #00f0a0;
     box-shadow: 0 0 5px rgba(0,240,160,0.8);
   }
+
+  .bg-stat-pill {
+    background: radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%);
+  }
 }
 
 @layer utilities {

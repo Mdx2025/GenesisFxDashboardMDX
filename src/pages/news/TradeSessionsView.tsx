@@ -46,9 +46,9 @@ function SessionCard({ session }: { session: TradeSession }) {
       {isOpen && (
         <div className="absolute inset-0 bg-gradient-to-br from-[#064b34]/30 to-transparent pointer-events-none" />
       )}
-      <div className="relative p-10 flex flex-col gap-4 h-[218px]">
+      <div className="relative p-5 sm:p-8 lg:p-10 flex flex-col gap-3 sm:gap-4 min-h-[180px] lg:h-[218px]">
         <div className="flex items-start justify-between">
-          <h3 className="text-white text-[36px] font-acid leading-none">{session.city}</h3>
+          <h3 className="text-white text-2xl sm:text-3xl lg:text-[36px] font-acid leading-none">{session.city}</h3>
           <div className="flex items-center">
             {isOpen ? (
               <span className="px-4 py-2.5 rounded-full bg-[#09241c] text-[#ececec] text-[16px] font-acid">
@@ -82,8 +82,8 @@ export default function TradeSessionsView() {
     <div className="flex flex-col items-center gap-8 relative">
       {/* Header */}
       <div className="flex flex-col items-center gap-4 text-center">
-        <h2 className="text-white text-[60px] font-acid leading-none">Trading Sessions</h2>
-        <p className="text-[#808080] text-[16px] font-acid">
+        <h2 className="text-white text-3xl sm:text-4xl lg:text-[60px] font-acid leading-none">Trading Sessions</h2>
+        <p className="text-[#808080] text-sm sm:text-base font-acid">
           Real-time market session status with liquidity flow visualization
         </p>
 
@@ -101,14 +101,14 @@ export default function TradeSessionsView() {
       </div>
 
       {/* Session Cards Grid */}
-      <div className="grid grid-cols-2 gap-5 w-full max-w-[900px] relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full max-w-[900px] relative z-10">
         {tradeSessions.map(session => (
           <SessionCard key={session.city} session={session} />
         ))}
       </div>
 
       {/* Globe background */}
-      <div className="absolute top-[200px] left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] pointer-events-none z-0 opacity-80">
+      <div className="absolute top-[200px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-square pointer-events-none z-0 opacity-80">
         <img
           src="/images/sessions/globe.png"
           alt=""
