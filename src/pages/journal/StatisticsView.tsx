@@ -388,17 +388,17 @@ export default function StatisticsView() {
         </div>
       </div>
 
-      {/* Session Analysis + Symbol Exposure (left) | Technical Statistics (right, spans full height) */}
+      {/* Session & Time Analysis | Avg P&L by Day of Week */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
-        <div className="flex flex-col gap-6">
-          <SessionAnalysis />
-          <SymbolExposure />
-        </div>
-        <TechnicalStatistics />
+        <SessionAnalysis />
+        <AvgPnlByDayChart />
       </div>
 
-      {/* Avg P&L by Day of Week */}
-      <AvgPnlByDayChart />
+      {/* Symbol Exposure | Technical Statistics */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
+        <SymbolExposure />
+        <TechnicalStatistics />
+      </div>
     </div>
   )
 }
