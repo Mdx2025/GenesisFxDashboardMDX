@@ -304,60 +304,73 @@ function TopMoversCard() {
   )
 }
 
+function ChartBarsIcon({ size = 24 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M17.2929 2.29289C17 2.58579 17 3.05719 17 4V17C17 17.9428 17 18.4142 17.2929 18.7071C17.5858 19 18.0572 19 19 19C19.9428 19 20.4142 19 20.7071 18.7071C21 18.4142 21 17.9428 21 17V4C21 3.05719 21 2.58579 20.7071 2.29289C20.4142 2 19.9428 2 19 2C18.0572 2 17.5858 2 17.2929 2.29289Z" fill="#00B38C"/>
+      <path d="M10 7C10 6.05719 10 5.58579 10.2929 5.29289C10.5858 5 11.0572 5 12 5C12.9428 5 13.4142 5 13.7071 5.29289C14 5.58579 14 6.05719 14 7V17C14 17.9428 14 18.4142 13.7071 18.7071C13.4142 19 12.9428 19 12 19C11.0572 19 10.5858 19 10.2929 18.7071C10 18.4142 10 17.9428 10 17V7Z" fill="#00B38C"/>
+      <path d="M3.29289 9.29289C3 9.58579 3 10.0572 3 11V17C3 17.9428 3 18.4142 3.29289 18.7071C3.58579 19 4.05719 19 5 19C5.94281 19 6.41421 19 6.70711 18.7071C7 18.4142 7 17.9428 7 17V11C7 10.0572 7 9.58579 6.70711 9.29289C6.41421 9 5.94281 9 5 9C4.05719 9 3.58579 9 3.29289 9.29289Z" fill="#00B38C"/>
+      <path d="M3 21.25C2.58579 21.25 2.25 21.5858 2.25 22C2.25 22.4142 2.58579 22.75 3 22.75H21C21.4142 22.75 21.75 22.4142 21.75 22C21.75 21.5858 21.4142 21.25 21 21.25H3Z" fill="#00B38C"/>
+    </svg>
+  )
+}
+
+function ChevronDownIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 9L12 15L18 9" stroke="#A0A0A0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function EconEventRow() {
+  return (
+    <div className="flex items-center gap-0 py-3 border-b border-[#09241C] last:border-0" style={{ paddingLeft: 23, paddingRight: 20 }}>
+      <span className="text-white text-[14px] font-acid w-[86px] shrink-0">10:00</span>
+      <span className="text-[20px] shrink-0 leading-[20px]">🇺🇸</span>
+      <span className="text-white text-[14px] font-acid ml-[10px] shrink-0">US</span>
+      <span className="shrink-0 ml-[14px]"><ChartBarsIcon /></span>
+      <span className="text-white text-[14px] font-acid ml-[22px] shrink-0">Riyad Bank  PMI</span>
+      <span className="shrink-0 ml-[4px]"><ChevronDownIcon /></span>
+      <span className="text-white text-[14px] font-acid ml-auto shrink-0">53.3</span>
+      <span className="shrink-0 ml-[32px]">
+        <svg width="19" height="1" viewBox="0 0 19 1" fill="none"><path d="M0 0.5H19" stroke="#A0A0A0"/></svg>
+      </span>
+      <span className="text-[#606060] text-[14px] font-acid ml-[26px] shrink-0">52.8</span>
+    </div>
+  )
+}
+
 function EconomicCalendarCard() {
   return (
     <Card title="Economic Calendar" className="flex-1">
-      <div className="flex flex-col h-full">
-        {/* Preview row */}
-        <div className="px-5 pt-3">
-          <div className="flex items-center gap-3 py-3 px-4 rounded-lg bg-[#0a0f0d]">
-            <span className="text-white text-xs font-medium">10:00</span>
-            <span className="text-base">🇺🇸</span>
-            <span className="text-gfx-neutral-500 text-xs">US</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <rect x="2" y="4" width="2.5" height="8" rx="0.5" fill="#ff4d6a"/><rect x="5.75" y="2" width="2.5" height="10" rx="0.5" fill="#e29d58"/><rect x="9.5" y="6" width="2.5" height="6" rx="0.5" fill="#10BC83"/>
-            </svg>
-            <span className="text-white text-xs">Riyad Bank PMI</span>
-            <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 2l5 4 5-4" stroke="#A0A0A0" strokeWidth="1.2" strokeLinecap="round"/></svg>
-            <span className="text-white text-xs font-medium ml-auto">53.3</span>
-            <span className="text-gfx-neutral-500 text-xs">—</span>
-            <span className="text-gfx-neutral-500 text-xs">52.8</span>
-          </div>
+      <div className="relative flex flex-col h-full">
+        {/* Top preview row */}
+        <EconEventRow />
+
+        {/* Date bar */}
+        <div className="flex items-center gap-[21px] px-[35px] py-[14px] bg-[#09241C]">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="#00B38C"/></svg>
+          <span className="text-white text-[16px] font-acid">Today, April 28</span>
         </div>
 
-        {/* Date label */}
-        <div className="flex items-center gap-2 px-5 py-3">
-          <span className="w-2 h-2 rounded-full bg-gfx-green-500" />
-          <span className="text-white text-sm font-medium">Today, April 28</span>
+        {/* Column headers */}
+        <div className="flex items-center border-b border-[#09241C]" style={{ paddingLeft: 24, paddingRight: 20, paddingTop: 14, paddingBottom: 14 }}>
+          <span className="text-[#606060] text-[14px] font-acid w-[85px] shrink-0">Time</span>
+          <span className="text-[#606060] text-[14px] font-acid flex-1">Event</span>
+          <span className="text-[#606060] text-[14px] font-acid w-[55px] shrink-0">Act</span>
+          <span className="text-[#606060] text-[14px] font-acid w-[67px] shrink-0">FCST</span>
+          <span className="text-[#606060] text-[14px] font-acid shrink-0">PREV</span>
         </div>
 
-        {/* Table */}
-        <div className="px-5 pb-4 flex-1 min-h-0 overflow-y-auto econ-calendar-scroll">
-          <div className="grid grid-cols-[3.5rem_1fr_3rem_3rem_3rem] gap-x-4 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider pb-2 border-b border-white/[0.06]">
-            <span>Time</span>
-            <span>Event</span>
-            <span className="text-right">Act</span>
-            <span className="text-right">FCST</span>
-            <span className="text-right">PREV</span>
-          </div>
-
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} className="grid grid-cols-[3.5rem_1fr_3rem_3rem_3rem] gap-x-4 items-center py-3.5 border-b border-white/[0.04] last:border-0">
-              <span className="text-white text-xs">10:00</span>
-              <div className="flex items-center gap-2 min-w-0">
-                <span className="text-sm shrink-0">🇺🇸</span>
-                <span className="text-gfx-neutral-500 text-xs shrink-0">US</span>
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="shrink-0" aria-hidden="true">
-                  <rect x="2" y="4" width="2.5" height="8" rx="0.5" fill="#ff4d6a"/><rect x="5.75" y="2" width="2.5" height="10" rx="0.5" fill="#e29d58"/><rect x="9.5" y="6" width="2.5" height="6" rx="0.5" fill="#10BC83"/>
-                </svg>
-                <span className="text-white text-xs truncate">Riyad Bank PMI</span>
-                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="shrink-0"><path d="M1 1l4 4 4-4" stroke="#A0A0A0" strokeWidth="1" strokeLinecap="round"/></svg>
-              </div>
-              <span className="text-white text-xs text-right font-medium">53.3</span>
-              <span className="text-gfx-neutral-500 text-xs text-right">—</span>
-              <span className="text-gfx-neutral-500 text-xs text-right">52.8</span>
-            </div>
+        {/* Scrollable data rows */}
+        <div className="flex-1 min-h-0 overflow-y-auto econ-calendar-scroll relative">
+          {[1, 2, 3, 4, 5].map(i => (
+            <EconEventRow key={i} />
           ))}
+
+          {/* Custom scrollbar track bg */}
+          <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#09241C] rounded-full pointer-events-none" />
         </div>
       </div>
     </Card>
