@@ -109,7 +109,7 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
         <GlowEllipse className="left-[-20px] top-[-20px]" />
-        <div className="relative flex items-center justify-between px-6 py-6">
+        <div className="relative flex items-center justify-between px-6 py-10">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal leading-tight">Notebook</h3>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">
