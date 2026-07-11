@@ -213,7 +213,7 @@
   }
 
   .glass-card-purple {
-    background: radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%);
+    background: #090414;
     border: 1px solid var(--color-gfx-purple-border);
     position: relative;
     overflow: hidden;

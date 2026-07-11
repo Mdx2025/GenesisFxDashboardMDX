@@ -143,13 +143,20 @@ function TraderPassportCard() {
 
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" className="p-8 flex flex-col items-center gap-6">
+      <div
+        className="absolute inset-0 rounded-[20px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%)' }}
+        aria-hidden="true"
+      />
       {/* Header */}
-      <div className="flex items-center gap-2 self-start">
-        <SparkleIcon />
-        <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
-          Trader Passport
-        </span>
-        <span className="ml-auto px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-[12px] font-acid font-bold">
+      <div className="flex justify-between items-center w-full">
+        <div className="flex items-center gap-2">
+          <SparkleIcon />
+          <span className="text-[12px] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+            Trader Passport
+          </span>
+        </div>
+        <span className="px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-[12px] font-acid font-bold">
           LVL {p.level}
         </span>
       </div>
