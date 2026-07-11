@@ -262,6 +262,86 @@ function TechnicalStatistics() {
   )
 }
 
+/* ─── Avg P&L by Day of Week Chart ─── */
+
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const Y_LABELS = ['$4.00', '$3.00', '$2.00', '$1.00', '$0.00']
+
+function AvgPnlByDayChart() {
+  const profitPath = 'M0 120 L40 20 L93 100 L145 60 L186 30 L248 80 L290 40 L341 100 L393 60 L434 80 L496 20 L538 80 L579 60 L621 20'
+  const profitArea = `${profitPath} L621 258 L0 258 Z`
+  const lossPath = 'M0 60 L62 100 L124 40 L186 80 L207 80 L248 120 L310 60 L372 100 L434 80 L496 140 L558 80 L621 60'
+  const lossArea = `${lossPath} L621 258 L0 258 Z`
+
+  return (
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+      <div className="absolute -left-[229px] -top-[121px] w-[456px] h-[257px] rounded-full bg-[#064B34] blur-[157px] pointer-events-none" aria-hidden="true" />
+      <div className="relative p-7">
+        <div className="flex items-center gap-2 mb-8">
+          <h3 className="text-white text-[16px] font-acid font-medium">Avg P&L by Day of Week</h3>
+          <InfoIcon />
+        </div>
+
+        <div className="flex">
+          <div className="flex flex-col justify-between pr-3 text-[#606060] text-[12px] font-acid font-bold uppercase tracking-[2.3px]" style={{ height: '258px' }}>
+            {Y_LABELS.map(l => <span key={l}>{l}</span>)}
+          </div>
+
+          <div className="flex-1 relative" style={{ height: '310px' }}>
+            <svg className="absolute inset-0" width="100%" height="258" viewBox="0 0 621 258" preserveAspectRatio="none" fill="none">
+              {[0, 51.6, 103.2, 154.8, 206.4].map((y, i) => (
+                <line key={`h${i}`} x1="0" y1={y} x2="621" y2={y} stroke="#09241C" strokeWidth="1.29" strokeDasharray={i === 4 ? 'none' : '4.69 4.69'} />
+              ))}
+              <line x1="0" y1="0" x2="0" y2="258" stroke="#09241C" strokeWidth="1.29" />
+              {[93, 186, 279, 372, 465, 558].map(x => (
+                <line key={`v${x}`} x1={x} y1="0" x2={x} y2="258" stroke="#09241C" strokeWidth="1.29" strokeDasharray="4.69 4.69" />
+              ))}
+            </svg>
+
+            <svg className="absolute inset-0" width="100%" height="258" viewBox="0 0 621 258" preserveAspectRatio="none" fill="none">
+              <defs>
+                <linearGradient id="profitGrad" x1="621" y1="-9" x2="621" y2="176" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#064B34" />
+                  <stop offset="0.92" stopColor="#0C1311" />
+                </linearGradient>
+                <linearGradient id="lossGrad" x1="0" y1="-11" x2="0" y2="163" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#D46356" stopOpacity="0.2" />
+                  <stop offset="0.8" stopColor="#D46356" stopOpacity="0.02" />
+                </linearGradient>
+              </defs>
+              <path d={profitArea} fill="url(#profitGrad)" />
+              <path d={lossArea} fill="url(#lossGrad)" />
+              <path d={profitPath} stroke="#00B38C" strokeWidth="0.86" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              <path d={lossPath} stroke="#D46356" strokeWidth="0.58" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+
+            <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3" style={{ top: '268px' }}>
+              {DAYS.map(d => (
+                <span key={d} className="text-[#A0A0A0] text-[16px] font-acid font-medium">{d}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-10 mt-6">
+          <div className="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="0.48" y="0.48" width="19.04" height="19.04" rx="8" fill="#0C1311" stroke="#00B38C" strokeWidth="0.96" />
+            </svg>
+            <span className="text-[#A0A0A0] text-[16px] font-acid font-medium">Profitable</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="0.48" y="0.48" width="19.04" height="19.04" rx="8" fill="#2A1411" stroke="#D46356" strokeWidth="0.96" />
+            </svg>
+            <span className="text-[#A0A0A0] text-[16px] font-acid font-medium">Loss</span>
+          </div>
+        </div>
+      </div>
+    </GlassCard>
+  )
+}
+
 /* ─── Main Statistics View ─── */
 
 export default function StatisticsView() {
@@ -316,6 +396,9 @@ export default function StatisticsView() {
         </div>
         <TechnicalStatistics />
       </div>
+
+      {/* Avg P&L by Day of Week */}
+      <AvgPnlByDayChart />
     </div>
   )
 }
