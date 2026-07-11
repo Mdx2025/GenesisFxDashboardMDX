@@ -275,7 +275,7 @@ function AvgPnlByDayChart() {
 
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="absolute -left-[229px] -top-[121px] w-[456px] h-[257px] rounded-full bg-[#064B34] blur-[157px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute -left-[260px] -top-[150px] w-[520px] h-[300px] rounded-full bg-[#064B34] blur-[157px] pointer-events-none" aria-hidden="true" />
       <div className="relative p-7">
         <div className="flex items-center gap-2 mb-8">
           <h3 className="text-white text-[16px] font-acid font-medium">Avg P&L by Day of Week</h3>
@@ -349,7 +349,7 @@ export default function StatisticsView() {
     <div className="flex flex-col gap-6">
       {/* Header */}
       <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-        <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full bg-gfx-green-200 opacity-45 blur-[80px] pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-[600px] h-[280px] rounded-full bg-gfx-green-200 opacity-45 blur-[80px] pointer-events-none" aria-hidden="true" />
         <div className="relative px-[30px] py-5 flex items-center justify-between">
           <div>
             <h2 className="text-white text-[24px] font-acid">Trading Statistics</h2>
