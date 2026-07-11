@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { GlassCard } from '@/components/ui'
+import { GlassCard, GlowEllipse } from '@/components/ui'
 import { featuredEpisode, episodes } from '@/data/dailyNews'
 
 /* ─── Icons ─── */
@@ -74,7 +74,7 @@ function HeroCard() {
         {/* Content */}
         <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-12 py-8 lg:py-10">
           {/* Decorative glow */}
-          <div className="absolute right-[10%] top-[20%] w-[370px] h-[210px] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" aria-hidden="true" />
+          <GlowEllipse className="right-[10%] top-[20%]" />
 
           <h2 className="text-white text-[36px] font-acid font-normal leading-[1.05] relative">
             {featuredEpisode.title}

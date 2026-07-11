@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { GlassCard } from '@/components/ui'
+import { GlassCard, GlowEllipse } from '@/components/ui'
 import {
   traderPassport,
   dnaStats,
@@ -266,8 +266,8 @@ function StatCard({ stat }: { stat: DnaStat }) {
   const valueColor = stat.color === 'purple' ? '#c8afff' : '#ffb400'
 
   return (
-    <GlassCard variant="light" divider="none" rounded="20px" className="h-[133px] overflow-hidden">
-      <div className="p-[22px] h-full flex flex-col justify-between">
+    <GlassCard variant="purple" divider="none" rounded="20px" className="h-[133px]">
+      <div className="relative p-[22px] h-full flex flex-col justify-between">
         <span className="text-[12px] text-[#808080] uppercase tracking-[2.3px] font-acid font-bold">
           {stat.label}
         </span>
@@ -306,7 +306,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
   else if (trait.barColor === 'orange') barBg = '#f2994a'
 
   return (
-    <GlassCard variant="light" divider="none" rounded="14px" className="h-[104px] overflow-hidden">
+    <GlassCard variant="purple" divider="none" rounded="14px" className="h-[104px]">
       <div className="p-4 h-full flex flex-col justify-between">
         <div className="flex items-center gap-2">
           <Icon />
@@ -331,7 +331,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
 
 function TraderTraitsCard() {
   return (
-    <GlassCard variant="light" divider="none" rounded="20px" className="overflow-hidden">
+    <GlassCard variant="purple" divider="none" rounded="20px">
       <div className="p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">
@@ -388,7 +388,7 @@ function StyleProgressRow({ row, variant }: { row: StyleRow; variant: 'purple' |
 
 function StyleCompositionCard() {
   return (
-    <GlassCard variant="light" divider="none" rounded="20px" className="overflow-hidden">
+    <GlassCard variant="purple" divider="none" rounded="20px">
       <div className="p-6 flex flex-col gap-5">
       {/* Header */}
       <div className="flex items-center gap-3">
@@ -428,7 +428,7 @@ function StyleCompositionCard() {
 
 function AiStrategySummaryCard() {
   return (
-    <GlassCard variant="light" divider="none" rounded="20px" className="overflow-hidden">
+    <GlassCard variant="purple" divider="none" rounded="20px">
       <div className="p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">

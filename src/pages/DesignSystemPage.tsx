@@ -3,7 +3,7 @@ import {
   SparkleButton, Badge, GreenDot, ModeToggle, PeriodPill,
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
   FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard, FaqCard,
-  TradingCalendar,
+  TradingCalendar, GlowEllipse,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -396,6 +396,17 @@ export default function DesignSystemPage() {
                 </div>
               </div>
             </GlassBannerCard>
+          </Subsection>
+
+          <Subsection title="Glow Ellipse — GlowEllipse">
+            <div className="relative h-[200px] rounded-2xl bg-gfx-main border border-white/5 overflow-hidden">
+              <GlowEllipse className="-left-[120px] -top-[60px]" />
+              <GlowEllipse className="right-[-120px] bottom-[-60px]" />
+              <div className="relative z-10 p-6">
+                <p className="text-gfx-neutral-500 text-sm">Reusable gradient ellipse glow. Pass position via <code className="text-gfx-green-500/80">className</code>.</p>
+                <p className="text-caption text-gfx-neutral-300 mt-2">{'<GlowEllipse className="-left-[120px] -top-[60px]" />'}</p>
+              </div>
+            </div>
           </Subsection>
 
           <Subsection title="Dividers — DividerGlow">

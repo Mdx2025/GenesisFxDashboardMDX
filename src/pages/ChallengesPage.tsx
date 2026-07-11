@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -563,7 +563,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
           <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
             <div className="relative w-full lg:w-[48%] overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
-              <div className="absolute w-[493px] h-[278px] left-[36px] -top-[220px] bg-[#064B34] rounded-full blur-[157px] pointer-events-none" aria-hidden="true" />
+              <GlowEllipse className="left-[36px] -top-[220px]" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
