@@ -98,7 +98,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
+        className="relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col"
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
@@ -114,7 +114,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
         {/* Scrollable content with custom green scrollbar */}
         <div
-          className="relative overflow-y-auto max-h-[90vh] modal-scroll-green px-[123px] pt-[35px] pb-[50px]"
+          className="relative overflow-y-auto flex-1 min-h-0 modal-scroll-green px-[123px] pt-[35px] pb-[50px]"
           style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
         >
           {/* Title */}

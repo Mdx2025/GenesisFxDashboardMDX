@@ -294,7 +294,7 @@ function AvgPnlByDayChart() {
 
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-left-[260px] -top-[150px]" />
+      <GlowEllipse className="-left-[80px] -top-[60px]" />
       <div className="relative p-7">
         <div className="flex items-center gap-2 mb-8">
           <h3 className="text-white text-[16px] font-acid font-medium">Avg P&L by Day of Week</h3>
