@@ -127,10 +127,12 @@ function WebcamCard() {
     source: 'Fox 5 New York',
   }))
   return (
-    <Card
-      title="Live Webcams"
-      titleRight={
-        <div className="flex items-center gap-2">
+    <Card title="Live Webcams">
+      <div className="px-5 py-3 flex justify-between items-center gap-6">
+        <div className="max-w-md flex-1">
+          <ModeToggle options={[...WEBCAM_REGIONS]} activeIndex={region} onChange={setRegion} />
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
           <button className="w-8 h-8 rounded-md bg-white/5 flex items-center justify-center cursor-pointer" aria-label="Grid view">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="#10BC83"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#10BC83"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#10BC83"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#10BC83"/></svg>
           </button>
@@ -138,10 +140,6 @@ function WebcamCard() {
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="3" rx="1" stroke="#606060" strokeWidth="1"/><rect x="1" y="6" width="12" height="3" rx="1" stroke="#606060" strokeWidth="1"/><rect x="1" y="11" width="12" height="3" rx="1" stroke="#606060" strokeWidth="1"/></svg>
           </button>
         </div>
-      }
-    >
-      <div className="px-5 py-3 max-w-md">
-        <ModeToggle options={[...WEBCAM_REGIONS]} activeIndex={region} onChange={setRegion} />
       </div>
       <div className="grid grid-cols-2 gap-3 px-5 pb-5">
         {webcams.map(cam => (
