@@ -253,7 +253,7 @@ function NewsFeedCard() {
     age: '2h',
   }))
   return (
-    <Card title="News Feed">
+    <Card title="News Feed" className="flex-1">
       <div className="px-5">
         <div className="grid grid-cols-[3.5rem_1fr_4.5rem_2.5rem] gap-x-3 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider py-3 border-b border-white/[0.04]">
           <span>Bias</span>
@@ -285,7 +285,7 @@ function TopMoversCard() {
     { symbol: 'USDHUF', change: '+0.54%', price: '311.763', positive: true, flag: '🇭🇺' },
   ]
   return (
-    <Card title="Top movers">
+    <Card title="Top movers" className="flex-1">
       <div className="grid grid-cols-2 gap-3 p-5">
         {movers.map((m, i) => (
           <div key={i} className="bg-[#0a0f0d] rounded-xl p-4 flex flex-col gap-2">
@@ -310,7 +310,7 @@ function TopMoversCard() {
 
 function EconomicCalendarCard() {
   return (
-    <Card title="Economic Calendar">
+    <Card title="Economic Calendar" className="flex-1">
       <div className="px-5 py-3">
         <div className="flex items-center gap-3 py-2.5 px-3 rounded-lg bg-[#0a0f0d] mb-3">
           <span className="text-white text-xs">10:00</span>
@@ -372,6 +372,7 @@ function TradeSessionsCard() {
     <Card
       title="Trade Sessions"
       titleRight={<span className="text-gfx-neutral-500 text-xs">0/4 Open</span>}
+      className="flex-1"
     >
       <div className="px-5 pb-2">
         {sessions.map((s, i) => (
