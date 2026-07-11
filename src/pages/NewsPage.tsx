@@ -436,7 +436,7 @@ export default function NewsPage() {
           {activeTab === 0 && (
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <LiveStreamIcon />
-              <GlowButton>Trade Now</GlowButton>
+              <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} />
             </div>
           )}
         </div>
