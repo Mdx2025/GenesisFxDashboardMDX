@@ -98,7 +98,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] overflow-hidden flex flex-col"
+        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] overflow-clip flex flex-col"
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
