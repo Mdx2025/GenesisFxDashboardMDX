@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { GlassCard } from './GlassCard'
 import { GlowEllipse } from './GlowEllipse'
-import { SparkleButton } from './SparkleButton'
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -160,22 +159,14 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
             <span className="text-white text-[1.125rem] font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
-                <span className={`text-[0.875rem] ${monthTotal >= 0 ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>
-                  {monthTotal >= 0 ? '+' : ''}${Math.abs(monthTotal).toFixed(2)}
+                <span className="text-[0.875rem]" style={{ color: '#00B38C' }}>
+                  +$0.00
                 </span>
               </div>
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
-                <span className="text-[0.875rem] text-gfx-neutral-600">{tradingDays} days</span>
+                <span className="text-[0.875rem] text-gfx-neutral-600">0 days</span>
               </div>
             </div>
-            <SparkleButton className="px-4">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <circle cx="18" cy="5" r="3" stroke="white" strokeWidth="2"/>
-                <circle cx="6" cy="12" r="3" stroke="white" strokeWidth="2"/>
-                <circle cx="18" cy="19" r="3" stroke="white" strokeWidth="2"/>
-                <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke="white" strokeWidth="2"/>
-              </svg>
-            </SparkleButton>
             <InfoIcon />
           </div>
         </div>
