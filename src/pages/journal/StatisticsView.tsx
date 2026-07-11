@@ -269,7 +269,8 @@ export default function StatisticsView() {
     <div className="flex flex-col gap-6">
       {/* Header */}
       <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-        <div className="px-[30px] py-5 flex items-center justify-between">
+        <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full bg-gfx-green-200 opacity-45 blur-[80px] pointer-events-none" aria-hidden="true" />
+        <div className="relative px-[30px] py-5 flex items-center justify-between">
           <div>
             <h2 className="text-white text-[24px] font-acid">Trading Statistics</h2>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">All time</p>
