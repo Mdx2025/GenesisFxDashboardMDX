@@ -102,7 +102,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
         className={`flex items-center justify-between gap-2 ${
           isMobile
             ? 'fixed top-0 left-0 right-0 z-40 px-4 py-3'
-            : 'sticky top-0 z-40 py-4'
+            : 'sticky top-0 z-40 py-4 -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14'
         }`}
         style={{
           background: scrolled ? 'rgba(10, 14, 12, 0.85)' : 'transparent',
