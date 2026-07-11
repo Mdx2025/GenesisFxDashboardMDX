@@ -1,4 +1,4 @@
-import { GlassCard, GlowButton } from '@/components/ui'
+import { GlassCard, GlowEllipse, GlowButton } from '@/components/ui'
 
 /* ─── Icons ─── */
 
@@ -70,7 +70,8 @@ export default function ReplayView() {
     <div className="flex flex-col gap-4">
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-7">
+        <GlowEllipse variant="purple" className="left-[-20px] top-[-20px]" />
+        <div className="relative flex items-center justify-between px-6 py-7">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal leading-tight">
               Replay Your Trades

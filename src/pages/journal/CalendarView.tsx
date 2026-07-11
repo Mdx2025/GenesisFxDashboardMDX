@@ -1,4 +1,4 @@
-import { GlassCard, TradingCalendar } from '@/components/ui'
+import { GlassCard, GlowEllipse, TradingCalendar } from '@/components/ui'
 import { calendarStats, calendarTrades } from '@/data/calendar'
 import type { CalendarStat } from '@/data/calendar'
 
@@ -64,10 +64,11 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
 
 /* ─── Stat Card ─── */
 
-function StatCard({ stat }: { stat: CalendarStat }) {
+function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden h-[182px]">
-      <div className="p-5 h-full flex flex-col">
+      <GlowEllipse variant="purple" className={glowPos} />
+      <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{stat.label}</span>
           <InfoIcon />
@@ -107,7 +108,18 @@ export default function CalendarView() {
     <div className="flex flex-col gap-6">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {calendarStats.map((stat, i) => (
-          <StatCard key={i} stat={stat} />
+          <StatCard
+            key={i}
+            stat={stat}
+            glowPos={
+              [
+                'left-[-40px] top-[-30px]',
+                'left-[-40px] bottom-[-30px]',
+                'left-[-40px] top-[-30px]',
+                'left-[-40px] top-1/2 -translate-y-1/2',
+              ][i]
+            }
+          />
         ))}
       </div>
 

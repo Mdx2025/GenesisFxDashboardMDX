@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard, SparkleButton, GlowButton, ModeToggle } from '@/components/ui'
+import { GlassCard, GlowEllipse, SparkleButton, GlowButton, ModeToggle } from '@/components/ui'
 import { notebookFolders, notebookNotes } from '@/data/notebook'
 import type { NotebookNote } from '@/data/notebook'
 
@@ -108,7 +108,8 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
     <div className="flex flex-col gap-4">
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-6">
+        <GlowEllipse variant="purple" className="left-[-20px] top-[-20px]" />
+        <div className="relative flex items-center justify-between px-6 py-6">
           <div>
             <h3 className="text-white text-[24px] font-acid font-normal leading-tight">Notebook</h3>
             <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">
