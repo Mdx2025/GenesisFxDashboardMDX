@@ -1,4 +1,4 @@
-import { GlassCard, GlowEllipse } from '@/components/ui'
+import { GlassCard } from '@/components/ui'
 import { heroArticle, secondaryArticles, listArticles } from '@/data/marketNews'
 import type { NewsArticle } from '@/data/marketNews'
 
@@ -97,11 +97,11 @@ function CommodityIcon() {
 
 /* ─── Secondary Card ─── */
 
-function SecondaryCard({ article, index }: { article: NewsArticle; index: number }) {
+function SecondaryCard({ article }: { article: NewsArticle }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden flex-1 min-w-0">
       <div className="relative h-fit flex flex-col justify-center px-7 py-10">
-        <GlowEllipse className={index === 0 ? 'right-[5%] -top-[200px]' : 'left-[5%] -top-[200px]'} />
+        <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 right-0 w-[60%] pointer-events-none" aria-hidden="true" />
 
         {/* Category + Commodity icon */}
         <div className="flex justify-between items-center mb-4">
@@ -178,8 +178,8 @@ export default function MarketNewsView() {
 
       {/* Secondary Articles */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {secondaryArticles.map((article, i) => (
-          <SecondaryCard key={article.id} article={article} index={i} />
+        {secondaryArticles.map(article => (
+          <SecondaryCard key={article.id} article={article} />
         ))}
       </div>
 
