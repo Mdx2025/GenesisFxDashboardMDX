@@ -49,6 +49,20 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
   const [note, setNote] = useState('')
   const [tags, setTags] = useState('')
 
+  const [mounted, setMounted] = useState(false)
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    if (open) {
+      setMounted(true)
+      requestAnimationFrame(() => requestAnimationFrame(() => setShow(true)))
+    } else {
+      setShow(false)
+      const t = setTimeout(() => setMounted(false), 200)
+      return () => clearTimeout(t)
+    }
+  }, [open])
+
   useEffect(() => {
     if (!open) return
     const handler = (e: KeyboardEvent) => {
@@ -58,11 +72,11 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     return () => window.removeEventListener('keydown', handler)
   }, [open, onClose])
 
-  if (!open) return null
+  if (!mounted) return null
 
   return (
     <div
-      className="fixed inset-0 z-[300] flex items-center justify-center"
+      className={`fixed inset-0 z-[300] flex items-center justify-center transition-opacity duration-200 ${show ? 'opacity-100' : 'opacity-0'}`}
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]" />
