@@ -356,6 +356,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
 function TraderTraitsCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
+      <div className="absolute left-1/2 -translate-x-1/2 top-[-30px] w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]" aria-hidden="true" />
       <div className="relative p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">
