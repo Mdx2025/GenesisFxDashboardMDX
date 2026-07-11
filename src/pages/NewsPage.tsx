@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { ModeToggle, GlowEllipse, GlowButton } from '@/components/ui'
+import { ModeToggle, GlowEllipse, GlowButton, SearchInput } from '@/components/ui'
 import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
 import TradeSessionsView from '@/pages/news/TradeSessionsView'
@@ -200,13 +200,7 @@ function LiveQuotesCard() {
       }
     >
       <div className="px-5 py-3">
-        <div className="relative">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true">
-            <circle cx="6" cy="6" r="4.5" stroke="#606060" strokeWidth="1.2"/>
-            <path d="M10 10l3 3" stroke="#606060" strokeWidth="1.2" strokeLinecap="round"/>
-          </svg>
-          <input type="search" placeholder="Search for" className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#0a0f0d] border border-gfx-card-border text-white text-xs placeholder:text-gfx-neutral-300 outline-none focus:border-gfx-green-500/30 transition-colors" />
-        </div>
+        <SearchInput placeholder="Search for" />
       </div>
       <div className="px-5">
         <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_auto] gap-x-3 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider pb-2 border-b border-white/[0.04]">

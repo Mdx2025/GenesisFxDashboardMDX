@@ -1,17 +1,8 @@
 import { useState } from 'react'
-import { GlassCard, GlowEllipse, SparkleButton } from '@/components/ui'
+import { GlassCard, GlowEllipse, SparkleButton, SearchInput } from '@/components/ui'
 import { tradeHistory } from '@/data/trades'
 
 /* ─── Icons ─── */
-
-function SearchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <circle cx="11" cy="11" r="7" stroke="#606060" strokeWidth="2" />
-      <path d="M20 20L16.65 16.65" stroke="#606060" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  )
-}
 
 function CameraIcon() {
   return (
@@ -65,16 +56,7 @@ export default function TradesView() {
             </p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="flex items-center gap-2 h-[38px] px-4 rounded-[12px] border border-white/10 bg-transparent min-w-[180px]">
-              <SearchIcon />
-              <input
-                type="text"
-                placeholder="Search for"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                className="bg-transparent text-white text-[13px] font-acid outline-none flex-1 placeholder:text-[#606060]"
-              />
-            </div>
+            <SearchInput placeholder="Search for" value={search} onChange={setSearch} />
             <SparkleButton className="!h-[38px] !w-[38px] !min-w-0 !p-0 flex items-center justify-center">
               <CameraIcon />
             </SparkleButton>
