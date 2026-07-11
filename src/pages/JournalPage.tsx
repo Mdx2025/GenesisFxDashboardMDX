@@ -154,7 +154,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
             <GreenDot size={5} />
           </div>
         )}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1.5">
           <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
           <p className={`text-[16px] font-acid font-medium ${
             isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-[#ececec]'
@@ -342,7 +342,8 @@ export default function JournalPage() {
           <>
             {/* Weekly Stats Carousel */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <div className="p-[30px]">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[150px] rounded-full bg-gfx-green-200 opacity-25 blur-[80px] pointer-events-none" aria-hidden="true" />
+              <div className="relative p-[30px]">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <p className="text-white text-[24px] font-acid">Welcome back, marcelo</p>
