@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { GlassCard } from '@/components/ui'
+import { GlassCard, GlowEllipse } from '@/components/ui'
 import {
   traderPassport,
   dnaStats,
@@ -148,8 +148,8 @@ function TraderPassportCard() {
         style={{ background: 'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%)' }}
         aria-hidden="true"
       />
-      <div className="absolute left-[-40px] top-[-30px] w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]" aria-hidden="true" />
-      <div className="absolute right-[-40px] bottom-[-30px] w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]" aria-hidden="true" />
+      <GlowEllipse variant="purple" className="left-[-40px] top-[-30px]" />
+      <GlowEllipse variant="purple" className="right-[-40px] bottom-[-30px]" />
       <div className="relative p-8 flex flex-col items-center gap-6">
         {/* Header */}
         <div className="flex justify-between items-center w-full">
@@ -290,7 +290,7 @@ function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' 
 
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" className="h-[133px]" glow={false}>
-      <div className={`absolute ${ellipsePos} w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]`} aria-hidden="true" />
+      <GlowEllipse variant="purple" className={ellipsePos} />
       <div className="relative p-[22px] h-full flex flex-col justify-between">
         <span className="text-[12px] text-[#808080] uppercase tracking-[2.3px] font-acid font-bold">
           {stat.label}
@@ -358,7 +358,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
 function TraderTraitsCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
-      <div className="absolute left-1/2 -translate-x-1/2 top-[-30px] w-[120px] h-[80px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[40px]" aria-hidden="true" />
+      <GlowEllipse variant="purple" className="left-1/2 -translate-x-1/2 top-[-30px]" />
       <div className="relative p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">
@@ -416,8 +416,8 @@ function StyleProgressRow({ row, variant }: { row: StyleRow; variant: 'purple' |
 function StyleCompositionCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
-      <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
-      <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+      <GlowEllipse variant="purple" className="left-[-40px] top-[-30px]" />
+      <GlowEllipse variant="purple" className="left-[-40px] top-[-30px]" />
       <div className="relative p-6 flex flex-col gap-5">
       {/* Header */}
       <div className="flex items-center gap-3">
@@ -458,8 +458,8 @@ function StyleCompositionCard() {
 function AiStrategySummaryCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
-      <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
-      <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+      <GlowEllipse variant="purple" className="right-[-40px] bottom-[-30px]" />
+      <GlowEllipse variant="purple" className="right-[-40px] bottom-[-30px]" />
       <div className="relative p-6 flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center gap-3">

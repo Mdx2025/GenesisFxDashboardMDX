@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { DividerGlow } from './DividerGlow'
+import { GlowEllipse } from './GlowEllipse'
 
 interface GlassCardProps {
   variant?: 'light' | 'heavy' | 'purple'
@@ -25,10 +26,8 @@ export function GlassCard({ variant = 'light', divider = 'white', glow = true, r
       {divider !== 'none' && <DividerGlow variant={divider} />}
       {variant === 'purple' && glow && (
         <>
-          <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
-          <div className="absolute -left-[296px] -top-[66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
-          <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
-          <div className="absolute right-[-296px] bottom-[-66px] w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]" aria-hidden="true" />
+          <GlowEllipse variant="purple" className="left-[-40px] top-[-30px]" />
+          <GlowEllipse variant="purple" className="right-[-40px] bottom-[-30px]" />
         </>
       )}
       {children}
