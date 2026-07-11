@@ -180,6 +180,15 @@
     pointer-events: none;
   }
 
+  .weekly-stat-inactive.glass-card {
+    background: #09241C;
+    box-shadow: none;
+    border: 1.16px solid transparent;
+  }
+  .weekly-stat-inactive.glass-card::after {
+    display: none;
+  }
+
   .glass-card-heavy {
     background: rgba(255,255,255,0.03);
     border: 1.16px solid rgba(255,255,255,0.06);

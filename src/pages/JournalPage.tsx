@@ -145,7 +145,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
       divider="none"
       rounded="19px"
       className={`flex-1 min-w-0 h-[114px] overflow-hidden ${
-        stat.active ? 'border border-[#00b38c]' : ''
+        stat.active ? 'border border-[#00b38c]' : 'weekly-stat-inactive'
       }`}
     >
       <div className="relative h-full flex flex-col justify-between px-[22px] py-[14px]">
