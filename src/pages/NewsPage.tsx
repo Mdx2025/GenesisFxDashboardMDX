@@ -191,7 +191,14 @@ function LiveQuotesCard() {
       title="Live Quotes"
       titleRight={
         <div className="flex items-center gap-3">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2l1.5 3.5L13 7l-3 2.5.5 4L8 11.5 5.5 13.5l.5-4L3 7l3.5-1.5L8 2z" stroke="#A0A0A0" strokeWidth="1" fill="none"/></svg>
+          <div className="relative w-[31px] h-[29px]">
+            <svg width="31" height="29" viewBox="0 0 31 29" fill="none" className="absolute inset-0">
+              <path d="M14.3408 0.390625H16.2959C23.9999 0.390625 30.2451 6.63682 30.2451 14.3408C30.2449 22.0446 23.9998 28.29 16.2959 28.29H14.3408C6.63695 28.29 0.390838 22.0446 0.390625 14.3408C0.390625 6.63682 6.63682 0.390625 14.3408 0.390625Z" stroke="#303030" strokeWidth="0.782205"/>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="absolute left-[7.82px] top-[6.52px]">
+              <path d="M7.82209 1.30469L9.83626 5.38519L14.3405 6.04355L11.0813 9.218L11.8504 13.7026L7.82209 11.5842L3.79373 13.7026L4.5629 9.218L1.30371 6.04355L5.80791 5.38519L7.82209 1.30469Z" stroke="#808080" strokeWidth="1.19504" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+          </div>
           <div className="flex items-center gap-1 text-gfx-neutral-500 text-xs">
             ALL
             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
