@@ -187,13 +187,14 @@ function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
         </div>
 
         <div className="mt-5">
-          <div className="grid grid-cols-4 px-4 mb-3">
+          <div className="overflow-x-auto">
+          <div className="grid grid-cols-4 px-4 mb-3 min-w-[500px]">
             <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Date / Time</span>
             <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Instrument</span>
             <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Side</span>
             <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider text-right">P&L</span>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-[500px]">
             {trades.map((trade, i) => (
               <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-white/5">
                 <span className="text-white text-[14px] font-acid">{trade.date}</span>
@@ -204,6 +205,7 @@ function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
                 </span>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
@@ -303,12 +305,12 @@ export default function JournalPage() {
       <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
 
         {/* Header */}
-        <div className="flex items-start justify-between flex-wrap gap-4">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex flex-col gap-2">
             <h1 className="text-white text-h1 font-normal">Trading Journal</h1>
             <p className="text-[#808080] text-[14px] font-acid">Track and analyze your trading performance</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <AiCoachButton />
             <ChatButton />
             <button className="flex items-center gap-3 h-[72px] px-[19px] rounded-[20px] border border-[#303030] hover:border-[#404040] transition-colors cursor-pointer">
@@ -325,7 +327,7 @@ export default function JournalPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="w-4xl">
+        <div className="w-full overflow-x-auto max-w-4xl">
           <ModeToggle
             options={[...journalTabs]}
             defaultIndex={0}

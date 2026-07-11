@@ -519,7 +519,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[75%]">
+      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px]">
         {/* Background layer */}
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-[18.56px] bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
@@ -545,8 +545,8 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             </div>
 
             {/* Title + Rules */}
-            <div className="flex justify-between items-center">
-              <h2 className="text-white font-acid font-normal text-[2.25rem] leading-none">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h2 className="text-white font-acid font-normal text-[1.5rem] sm:text-[2.25rem] leading-none">
                 Start your 10x Challenge
               </h2>
               <button
@@ -560,9 +560,9 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
           </div>
 
           {/* Two panels */}
-          <div className="flex gap-5">
+          <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
-            <div className="relative w-[48%] overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
               <div className="absolute w-[493px] h-[278px] left-[36px] -top-[220px] bg-[#064B34] rounded-full blur-[157px] pointer-events-none" aria-hidden="true" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
@@ -659,12 +659,12 @@ export default function ChallengesPage() {
       />
 
       <div className="flex flex-col gap-6">
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-8 lg:gap-20">
           <h1 className="text-white text-h1 font-normal">10X Challenges</h1>
 
           {/* Tabs + Actions Row */}
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="w-md">
+          <div className="w-full max-w-md">
             <ModeToggle
               options={['My Challenges', 'Leaderboard', 'Tiers']}
               activeIndex={activeTab}
