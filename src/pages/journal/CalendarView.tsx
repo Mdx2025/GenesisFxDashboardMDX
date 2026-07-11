@@ -23,28 +23,6 @@ function DiagramUpIcon() {
   )
 }
 
-function XauusdPill() {
-  return (
-    <div
-      className="inline-flex items-center gap-4 px-5 py-2.5 rounded-full"
-      style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
-    >
-      <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-        <g clipPath="url(#xauusd-clip)">
-          <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
-          <path d="M14.4196 14.6255H23.773L22.4091 10.966C22.3561 10.8158 22.2592 10.6851 22.1309 10.5907L14.4196 14.6255ZM14.3938 10.282C14.725 9.39167 15.4537 8.82031 16.2572 8.82031H21.7882C22.5916 8.82031 23.3204 9.39167 23.6522 10.282L25.0155 13.9415C25.4247 15.0394 24.7637 16.2846 23.773 16.2846H14.273C13.2823 16.2846 12.6221 15.0394 13.0306 13.9415L14.3945 10.282H14.3938ZM6.94649 24.1255H16.2816L14.9177 20.466C14.8646 20.3158 14.7677 20.1851 14.6395 20.0907L6.94649 24.1255ZM6.92003 19.782C7.25185 18.8917 7.98131 18.3203 8.78407 18.3203H14.2968C15.1002 18.3203 15.8297 18.8917 16.1608 19.782L17.5241 23.4415C17.9332 24.5394 17.273 25.7846 16.2816 25.7846H6.79856C5.80785 25.7846 5.1476 24.5394 5.55678 23.4415L6.92003 19.782ZM31.274 24.1255H21.8757L29.6318 20.0914C29.7533 20.1769 29.851 20.3058 29.9121 20.4666L31.2746 24.1255H31.274ZM23.714 18.3203C22.9106 18.3203 22.1811 18.8917 21.85 19.782L20.4867 23.4415C20.0775 24.5394 20.7378 25.7846 21.7292 25.7846H31.2746C32.2654 25.7846 32.9256 24.5394 32.5164 23.4415L31.1525 19.782C30.8234 18.8917 30.0946 18.3203 29.2912 18.3203H23.714Z" fill="white" />
-        </g>
-        <defs>
-          <clipPath id="xauusd-clip">
-            <rect width="38" height="38" rx="19" fill="white" />
-          </clipPath>
-        </defs>
-      </svg>
-      <span className="text-white text-[24px] font-acid">XAAUSD</span>
-    </div>
-  )
-}
-
 /* ─── Donut Chart ─── */
 
 function DonutChart({ value, label, color = '#10BC83' }: { value: number; label: string; color?: string }) {
@@ -86,9 +64,30 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
           <InfoIcon />
         </div>
         <div className="flex-1 flex items-center mt-2">
-          {stat.type === 'asset' && <XauusdPill />}
+          {stat.type === 'asset' && (
+            <div
+              className="inline-flex items-center gap-4 px-5 py-2.5 rounded-full"
+              style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
+            >
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <g clipPath="url(#xauusd-clip)">
+                  <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
+                  <path d="M14.4196 14.6255H23.773L22.4091 10.966C22.3561 10.8158 22.2592 10.6851 22.1309 10.5907L14.4196 14.6255ZM14.3938 10.282C14.725 9.39167 15.4537 8.82031 16.2572 8.82031H21.7882C22.5916 8.82031 23.3204 9.39167 23.6522 10.282L25.0155 13.9415C25.4247 15.0394 24.7637 16.2846 23.773 16.2846H14.273C13.2823 16.2846 12.6221 15.0394 13.0306 13.9415L14.3945 10.282H14.3938ZM6.94649 24.1255H16.2816L14.9177 20.466C14.8646 20.3158 14.7677 20.1851 14.6395 20.0907L6.94649 24.1255ZM6.92003 19.782C7.25185 18.8917 7.98131 18.3203 8.78407 18.3203H14.2968C15.1002 18.3203 15.8297 18.8917 16.1608 19.782L17.5241 23.4415C17.9332 24.5394 17.273 25.7846 16.2816 25.7846H6.79856C5.80785 25.7846 5.1476 24.5394 5.55678 23.4415L6.92003 19.782ZM31.274 24.1255H21.8757L29.6318 20.0914C29.7533 20.1769 29.851 20.3058 29.9121 20.4666L31.2746 24.1255H31.274ZM23.714 18.3203C22.9106 18.3203 22.1811 18.8917 21.85 19.782L20.4867 23.4415C20.0775 24.5394 20.7378 25.7846 21.7292 25.7846H31.2746C32.2654 25.7846 32.9256 24.5394 32.5164 23.4415L31.1525 19.782C30.8234 18.8917 30.0946 18.3203 29.2912 18.3203H23.714Z" fill="white" />
+                </g>
+                <defs>
+                  <clipPath id="xauusd-clip">
+                    <rect width="38" height="38" rx="19" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span className="text-white text-[24px] font-acid">XAUUSD</span>
+            </div>
+          )}
           {stat.type === 'number' && (
-            <div className="flex items-center gap-3">
+            <div
+              className="inline-flex items-center gap-4 px-5 py-2.5 rounded-full"
+              style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
+            >
               <DiagramUpIcon />
               <span className="text-white text-[24px] font-acid">{stat.value}</span>
             </div>
