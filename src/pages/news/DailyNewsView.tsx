@@ -102,33 +102,28 @@ function HeroCard() {
 
 function EpisodeCard({ episode }: { episode: typeof episodes[0] }) {
   return (
-    <div className="flex flex-col gap-3 shrink-0 w-[440px]">
-      {/* Thumbnail */}
-      <div className="relative rounded-md overflow-hidden h-[254px]">
-        <img
-          src={episode.imageUrl}
-          alt={episode.title}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(182deg, rgba(0,0,0,0) 47%, rgb(0,0,0) 98%)' }} />
+    <div className="shrink-0 w-[440px] relative rounded-md overflow-hidden h-[310px]">
+      <img
+        src={episode.imageUrl}
+        alt={episode.title}
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(182deg, rgba(0,0,0,0) 30%, rgb(0,0,0) 98%)' }} />
 
-        {/* Play button */}
-        <button className="absolute inset-0 flex items-center justify-center cursor-pointer group" aria-label="Play episode">
-          <div className="w-[76px] h-[76px] rounded-full bg-black/40 border-2 border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:bg-black/60 transition-colors">
-            <PlayIcon size={32} />
-          </div>
-        </button>
-      </div>
+      {/* Play button */}
+      <button className="absolute inset-0 flex items-center justify-center cursor-pointer group" aria-label="Play episode">
+        <div className="w-[76px] h-[76px] rounded-full bg-black/40 border-2 border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:bg-black/60 transition-colors">
+          <PlayIcon size={32} />
+        </div>
+      </button>
 
-      {/* Info */}
-      <div className="flex items-center justify-between">
+      {/* Info overlay at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-8">
         <h4 className="text-white text-[24px] font-acid font-normal leading-[1]">{episode.title}</h4>
-        <span className="text-[#00b38c] text-[24px] font-acid font-normal">{episode.duration}</span>
-      </div>
-
-      <div className="flex items-center gap-1.5">
-        <CalendarIcon />
-        <span className="text-[#606060] text-[16px] font-acid font-medium">{episode.date}</span>
+        <div className="flex items-center gap-1.5 mt-2">
+          <CalendarIcon />
+          <span className="text-[#606060] text-[16px] font-acid font-medium">{episode.date}</span>
+        </div>
       </div>
     </div>
   )
