@@ -148,9 +148,12 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
         stat.active ? 'border border-[#00b38c] weekly-stat-active' : 'weekly-stat-inactive'
       }`}
     >
-      <div className="h-full px-[22px] py-[14px] flex justify-between items-start">
+      <div className="h-full px-[22px] py-[14px]">
         <div className="flex flex-col gap-1.5">
-          <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
+          <div className="flex justify-between items-center">
+            <p className="text-[#808080] text-[16px] font-acid font-medium">{stat.day}</p>
+            {stat.active && <GreenDot size={5} />}
+          </div>
           <p className={`text-[16px] font-acid font-medium ${
             isPositive ? 'text-[#37c92e]' : isNegative ? 'text-[#d46356]' : 'text-[#ececec]'
           }`}>
@@ -158,7 +161,6 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
           </p>
           <p className="text-[#808080] text-[16px] font-acid">{stat.trades} trades</p>
         </div>
-        {stat.active && <GreenDot size={5} />}
       </div>
     </GlassCard>
   )
