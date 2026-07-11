@@ -92,7 +92,7 @@ export default function ReplayView() {
         <ReplayCard
           title="Trade Replay"
           description="Replay individual trades candle-by-candle with entry/exit markers and P&L tracking"
-          illustration="/images/replay/trade-replay.png"
+          illustration="/images/replay/trade-replay-v2.png"
           active
         />
         <ReplayCard
