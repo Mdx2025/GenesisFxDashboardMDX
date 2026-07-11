@@ -45,7 +45,7 @@ export default function TradesView() {
               Trade{filtered.length !== 1 ? 's' : ''} Found
             </p>
           </div>
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-6 flex-wrap">
             <SearchInput placeholder="Search for" value={search} onChange={setSearch} />
             <button className="p-2.5 rounded-full border border-[#303030] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors">
               <ArchiveDownIcon />
