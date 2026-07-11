@@ -289,6 +289,15 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
 
+  useEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    if (!overlay) return
+    const blockLenis = (e: WheelEvent) => { e.stopPropagation() }
+    overlay.addEventListener('wheel', blockLenis, true)
+    return () => overlay.removeEventListener('wheel', blockLenis, true)
+  }, [mounted])
+
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
     const modal = modalRef.current
@@ -329,11 +338,12 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
       ref={overlayRef}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
+      onWheel={(e) => e.stopPropagation()}
       role="dialog"
       aria-modal="true"
       aria-label="Prize Pool"
     >
-      <div ref={modalRef} className="relative w-[793px] max-w-[95vw]">
+      <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-[30px] overflow-hidden">
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
           aria-hidden="true"
@@ -354,7 +364,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           </svg>
         </button>
 
-        <div className="relative z-10 px-5 py-8 sm:px-10 sm:py-12 lg:px-15 lg:py-20">
+        <div className="relative z-10 px-5 py-8 sm:px-10 sm:py-12 lg:px-15 lg:py-20 overflow-y-auto">
           {/* Header: Title + April 2026 badge + How it works */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <div className="flex flex-wrap items-center gap-3">
@@ -475,6 +485,15 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
   const [agreed, setAgreed] = useState(false)
   const [username, setUsername] = useState('')
 
+  useEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    if (!overlay) return
+    const blockLenis = (e: WheelEvent) => { e.stopPropagation() }
+    overlay.addEventListener('wheel', blockLenis, true)
+    return () => overlay.removeEventListener('wheel', blockLenis, true)
+  }, [mounted])
+
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
     const modal = modalRef.current
@@ -515,20 +534,21 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       ref={overlayRef}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
+      onWheel={(e) => e.stopPropagation()}
       role="dialog"
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px]">
+      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-[18.56px] overflow-hidden">
         {/* Background layer */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[18.56px] bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          className="absolute inset-0 pointer-events-none bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-[#064B34] rounded-full blur-[157px]" />
         </div>
 
-        <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:pt-8 lg:pb-10">
+        <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:pt-8 lg:pb-10 overflow-y-auto">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4 sm:gap-8">
               {/* Close row */}
