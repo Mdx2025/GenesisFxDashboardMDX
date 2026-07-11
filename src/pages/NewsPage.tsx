@@ -441,7 +441,7 @@ export default function NewsPage() {
 
         {/* Terminal Tab (index 0) */}
         {activeTab === 0 && (
-          <>
+          <div className="flex flex-col gap-5">
             {/* Top Row: Live News + Live Webcams + AI Insights */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr_0.74fr] gap-5">
               <LiveNewsCard />
@@ -452,16 +452,16 @@ export default function NewsPage() {
             {/* Bottom Row: Live Quotes + News Feed + Top Movers */}
             <div className="grid grid-cols-1 lg:grid-cols-[0.76fr_1fr_0.58fr] gap-5">
               <LiveQuotesCard />
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 <NewsFeedCard />
                 <EconomicCalendarCard />
               </div>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 <TopMoversCard />
                 <TradeSessionsCard />
               </div>
             </div>
-          </>
+          </div>
         )}
 
         {/* Market News Tab (index 1) */}
