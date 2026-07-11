@@ -43,7 +43,7 @@ function ChevronRightIcon() {
 function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden p-8">
-      <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none z-0" aria-hidden="true" />
+      <img src="/images/news/daily-hero-glow.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none z-0" aria-hidden="true" />
       <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-25 min-h-[441px]">
         {/* Video thumbnail */}
         <div className="relative w-full lg:w-[45%] min-h-[280px] lg:min-h-0 rounded-3xl overflow-hidden cursor-pointer" onClick={onVideoClick}>
