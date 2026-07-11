@@ -271,11 +271,16 @@ function TraderPassportCard() {
 
 /* ── Top Stats Row ── */
 
-function StatCard({ stat }: { stat: DnaStat }) {
+function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' | 'top-right' }) {
   const valueColor = stat.color === 'purple' ? '#c8afff' : '#ffb400'
+  const ellipseClass = glowCorner === 'top-left'
+    ? '-left-[296px] -top-[66px]'
+    : 'right-[-296px] -top-[66px]'
 
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px" className="h-[133px]">
+    <GlassCard variant="purple" divider="none" rounded="20px" className="h-[133px]" glow={false}>
+      <div className={`absolute ${ellipseClass} w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]`} aria-hidden="true" />
+      <div className={`absolute ${ellipseClass} w-[300px] h-[194px] rounded-full opacity-50 mix-blend-lighten pointer-events-none bg-gfx-purple-glow blur-[80px]`} aria-hidden="true" />
       <div className="relative p-[22px] h-full flex flex-col justify-between">
         <span className="text-[12px] text-[#808080] uppercase tracking-[2.3px] font-acid font-bold">
           {stat.label}
@@ -294,11 +299,13 @@ function StatCard({ stat }: { stat: DnaStat }) {
   )
 }
 
+const STAT_GLOW_CORNERS: Array<'top-right' | 'top-left'> = ['top-right', 'top-left', 'top-right', 'top-left']
+
 function StatsRow() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {dnaStats.map((stat, i) => (
-        <StatCard key={i} stat={stat} />
+        <StatCard key={i} stat={stat} glowCorner={STAT_GLOW_CORNERS[i]} />
       ))}
     </div>
   )
