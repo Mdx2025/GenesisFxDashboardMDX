@@ -55,7 +55,7 @@ export default function TradesView() {
     <div className="flex flex-col gap-4">
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-5">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-5">
           <div>
             <h3 className="text-white text-[22px] font-acid font-normal leading-tight">Trade History</h3>
             <p className="text-[#808080] text-[13px] font-acid mt-0.5">
@@ -63,7 +63,7 @@ export default function TradesView() {
               Trade{filtered.length !== 1 ? 's' : ''} Found
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <div className="flex items-center gap-2 h-[38px] px-4 rounded-[12px] border border-white/10 bg-transparent min-w-[180px]">
               <SearchIcon />
               <input

@@ -216,14 +216,15 @@ function SymbolExposure() {
           </button>
         </div>
 
-        <div className="grid grid-cols-4 px-4 mb-3">
+        <div className="overflow-x-auto">
+        <div className="grid grid-cols-4 px-4 mb-3 min-w-[450px]">
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Symbol</span>
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Trades</span>
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Volume</span>
           <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider text-right">P&L</span>
         </div>
         {symbolExposure.map((row, i) => (
-          <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-[#09241c]">
+          <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-[#09241c] min-w-[450px]">
             <span className="text-white text-[14px] font-acid">{row.symbol}</span>
             <span className="text-white text-[14px] font-acid">{row.trades}</span>
             <span className="text-gfx-neutral-500 text-[14px] font-acid">{row.volume}</span>
@@ -232,6 +233,7 @@ function SymbolExposure() {
             </span>
           </div>
         ))}
+        </div>
       </div>
     </GlassCard>
   )
@@ -296,7 +298,7 @@ export default function StatisticsView() {
         </GlassCard>
 
         {/* Stats Grid: 3 cols × 4 rows */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {statsGrid.flatMap((row, ri) =>
             row.map((stat, ci) => (
               <MetricCard key={`${ri}-${ci}`} label={stat.label} value={stat.value} color={stat.color} />

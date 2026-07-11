@@ -40,7 +40,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]" />
 
       <div
-        className="relative w-[500px] rounded-[30px] bg-[#0c1311] border border-white/6 p-[40px] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2)]"
+        className="relative w-[500px] max-w-[95vw] rounded-[30px] bg-[#0c1311] border border-white/6 p-6 sm:p-[40px] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2)]"
         onClick={e => e.stopPropagation()}
       >
         {/* Close button */}

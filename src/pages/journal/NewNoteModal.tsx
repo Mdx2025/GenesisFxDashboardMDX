@@ -68,7 +68,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]" />
 
       <div
-        className="relative w-[793px] max-h-[90vh] rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
+        className="relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         {/* Background glow effects */}

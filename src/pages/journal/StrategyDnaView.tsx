@@ -293,7 +293,7 @@ function StatCard({ stat }: { stat: DnaStat }) {
 
 function StatsRow() {
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {dnaStats.map((stat, i) => (
         <StatCard key={i} stat={stat} />
       ))}
@@ -351,7 +351,7 @@ function TraderTraitsCard() {
         </div>
 
         {/* 4 trait cards */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {traderTraits.map((trait, i) => (
             <TraitBar key={i} trait={trait} />
           ))}

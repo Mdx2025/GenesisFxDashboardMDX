@@ -354,11 +354,11 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           </svg>
         </button>
 
-        <div className="relative z-10 px-15 py-20">
+        <div className="relative z-10 px-5 py-8 sm:px-10 sm:py-12 lg:px-15 lg:py-20">
           {/* Header: Title + April 2026 badge + How it works */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <h2 className="text-white font-acid font-normal text-[1.75rem] leading-none">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <h2 className="text-white font-acid font-normal text-[1.25rem] sm:text-[1.75rem] leading-none">
                 Current Month Prize Pool
               </h2>
               <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
@@ -367,7 +367,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
             </div>
             <button
               type="button"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors shrink-0"
             >
               <QuestionIcon />
               <span>How it works</span>
@@ -375,7 +375,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           </div>
 
           {/* Tier Leaderboard header + Top Prize */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between gap-4 mb-6">
             <h3 className="text-white font-acid font-normal text-[1.25rem]">Tier Leaderboard</h3>
             <div className="flex flex-col items-center px-5 py-2.5 rounded-[0.875rem] border border-[#10BC83]/30">
               <span className="text-[#10BC83] text-[1.5rem] font-acid font-medium leading-tight">$500</span>
@@ -528,8 +528,8 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
           <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-[#064B34] rounded-full blur-[157px]" />
         </div>
 
-        <div className="relative z-10 px-8 pt-8 pb-10">
-          <div className="flex flex-col gap-8">
+        <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:pt-8 lg:pb-10">
+          <div className="flex flex-col gap-4 sm:gap-8">
             {/* Close row */}
             <div className="flex justify-end">
               <button
@@ -566,7 +566,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
               <div className="absolute w-[493px] h-[278px] left-[36px] -top-[220px] bg-[#064B34] rounded-full blur-[157px] pointer-events-none" aria-hidden="true" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
-              <div className="relative z-10 px-8 py-10">
+              <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-[1.5rem] mb-6">Challenge Details</h3>
 
                 <div className="flex flex-col gap-5">
@@ -610,7 +610,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
             {/* Right — Account Preview */}
             <div className="relative flex-1 overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
-              <div className="relative z-10 px-8 py-10">
+              <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-[1.5rem] mb-2">Account Preview</h3>
 
                 {/* Divider */}
