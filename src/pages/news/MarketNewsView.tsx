@@ -1,4 +1,4 @@
-import { GlassCard } from '@/components/ui'
+import { GlassCard, GlowEllipse } from '@/components/ui'
 import { heroArticle, secondaryArticles, listArticles } from '@/data/marketNews'
 import type { NewsArticle } from '@/data/marketNews'
 
@@ -83,24 +83,37 @@ function HeroCard({ article }: { article: NewsArticle }) {
   )
 }
 
+/* ─── Icons ─── */
+
+function CommodityIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8.85819 12.0508C9.50962 10.8232 11.6811 10.8232 11.6811 10.8232C13.9437 10.7996 14.2494 9.42578 14.4537 8.73141C14.088 11.6859 11.7676 14.0345 8.82658 14.443C8.61388 13.9954 8.36193 12.986 8.85819 12.0508Z" fill="white"/>
+      <path d="M3.30017 3.84792L3.02878 3.61582C3.00619 3.59649 2.98458 3.57625 2.96399 3.55517C1.93974 4.71701 1.31836 6.24249 1.31836 7.91311C1.31836 11.5133 4.20407 14.4395 7.78864 14.5048C7.55567 13.8094 7.40368 12.6823 7.9847 11.5874C8.5188 10.5809 9.59339 10.1847 10.2779 10.0164C10.6516 9.92458 10.9951 9.8798 11.2433 9.85753C11.3685 9.84629 11.4725 9.84053 11.5475 9.83756C11.5851 9.83608 11.6156 9.83528 11.6381 9.83486L11.6659 9.83447L11.6733 9.83442C12.5836 9.82444 12.9369 9.55577 13.0999 9.37224C13.3016 9.1452 13.3807 8.87595 13.4908 8.50099L13.505 8.4524C13.6357 8.0085 14.0527 7.72144 14.5018 7.74371C14.4604 6.10241 13.8192 4.61014 12.7891 3.47791C12.7683 3.59507 12.7434 3.70398 12.7187 3.80041C12.6069 4.23657 12.4192 4.70713 12.1889 5.0567C11.9634 5.39881 11.563 5.70449 11.2969 5.89573C11.096 6.04005 10.8907 6.15994 10.7216 6.25744L10.6608 6.29239C10.5081 6.38027 10.3866 6.45026 10.271 6.52664C10.0363 6.6817 9.89549 6.81942 9.8001 7.00602C9.85817 7.21849 9.89937 7.46267 9.90003 7.71803C9.9016 8.32555 9.59063 8.80557 9.21891 9.10515C8.85323 9.39986 8.38003 9.56648 7.90059 9.56125C5.95584 9.54002 4.81516 7.95355 4.66828 6.31871C4.62557 5.84337 4.41173 5.33119 4.11291 4.85397C3.8223 4.38986 3.49382 4.02648 3.30017 3.84792Z" fill="white"/>
+      <path d="M5.65323 6.23021C5.52977 4.85613 4.47011 3.57574 3.95571 3.10731L3.67155 2.86427C4.81776 1.90072 6.29679 1.32031 7.91139 1.32031C9.37063 1.32031 10.7191 1.7944 11.8113 2.59696C11.9656 3.06539 11.6717 4.04418 11.3631 4.51261C11.2513 4.68229 10.9977 4.89294 10.7198 5.09262C10.0932 5.54284 9.30239 5.76553 8.90031 6.59455C8.78537 6.83153 8.79028 7.06319 8.84557 7.26455C8.88531 7.40932 8.91072 7.56668 8.91112 7.72058C8.9124 8.21829 8.40907 8.57782 7.91139 8.57239C6.61637 8.55825 5.76863 7.5146 5.65323 6.23021Z" fill="white"/>
+    </svg>
+  )
+}
+
 /* ─── Secondary Card ─── */
 
-function SecondaryCard({ article }: { article: NewsArticle }) {
+function SecondaryCard({ article, index }: { article: NewsArticle; index: number }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden flex-1 min-w-0">
-      <div className="relative h-[315px] flex flex-col justify-end p-7">
-        {/* Decorative glow */}
-        <div className="absolute right-[10%] top-[10%] w-[300px] h-[200px] rounded-full bg-[#064b34] blur-[100px] opacity-25" aria-hidden="true" />
+      <div className="relative h-fit flex flex-col justify-center px-7 py-10">
+        <GlowEllipse className={index === 0 ? 'right-[5%] -top-[200px]' : 'left-[5%] -top-[200px]'} />
 
-        {/* Category pills */}
-        <div className="flex items-center gap-2 mb-4">
-          <span className="px-4 py-1 rounded-full bg-[#09241c] text-[#ececec] text-[14px] font-acid">
-            {article.category}
-          </span>
-          <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10">
-            <GlobeIcon />
-            <span className="text-white text-[14px] font-acid">{article.category}</span>
-          </span>
+        {/* Category + Commodity icon */}
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex items-center gap-2">
+            <span className="text-[#ececec] text-[14px] font-acid">
+              {article.category}
+            </span>
+            <span className="flex items-center gap-2">
+              <CommodityIcon />
+              <span className="text-white text-[14px] font-acid">{article.category}</span>
+            </span>
+          </div>
         </div>
 
         <h3 className="text-white text-[36px] font-acid font-normal leading-[1.1] max-w-[535px]">
@@ -167,8 +180,8 @@ export default function MarketNewsView() {
 
       {/* Secondary Articles */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {secondaryArticles.map(article => (
-          <SecondaryCard key={article.id} article={article} />
+        {secondaryArticles.map((article, i) => (
+          <SecondaryCard key={article.id} article={article} index={i} />
         ))}
       </div>
 
