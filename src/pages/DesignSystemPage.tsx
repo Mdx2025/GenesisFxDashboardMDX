@@ -354,6 +354,14 @@ export default function DesignSystemPage() {
                 <p className="text-gfx-neutral-500 text-sm mb-2">Heavy variant, 30px radius (pill-like).</p>
                 <p className="text-caption text-gfx-neutral-300">GlassCard (heavy, rounded: 30px)</p>
               </GlassCard>
+              <GlassCard variant="purple" divider="none" className="p-6">
+                <p className="text-[#c8afff] text-sm mb-2">Purple variant — radial gradient with pink glow ellipses. Used for AI Coach / Trader Passport cards.</p>
+                <p className="text-caption text-gfx-neutral-300">GlassCard (purple, divider: none)</p>
+              </GlassCard>
+              <GlassCard variant="purple" divider="none" rounded="14px" className="p-6">
+                <p className="text-[#c8afff] text-sm mb-2">Purple variant, 14px radius — compact.</p>
+                <p className="text-caption text-gfx-neutral-300">GlassCard (purple, rounded: 14px)</p>
+              </GlassCard>
             </div>
           </Subsection>
 

@@ -201,6 +201,13 @@
     box-shadow: 0px 9.08px 36.321px rgba(0,0,0,0.3), inset 0px 1.16px 0px 1.16px rgba(255,255,255,0.04);
   }
 
+  .glass-card-purple {
+    background: radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, #2D1F4B 16%, #090414 100%);
+    border: 1px solid #2D1F4B;
+    position: relative;
+    overflow: hidden;
+  }
+
 
   .divider-glow {
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
