@@ -57,7 +57,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
         <div className="relative flex-1 flex flex-col px-12 py-10">
           {/* Region badge — in-flow, right aligned */}
           {article.region && (
-            <div className="flex justify-end mb-4">
+            <div className="flex justify-end">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5">
                 <GlobeIcon />
                 <span className="text-white text-[14px] font-acid">{article.region}</span>
