@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, GreenDot, ModeToggle, AiCoachButton, ChatButton, GlowEllipse } from '@/components/ui'
@@ -13,6 +13,9 @@ import NotebookView from '@/pages/journal/NotebookView'
 import ReplayView from '@/pages/journal/ReplayView'
 import NewNoteModal from '@/pages/journal/NewNoteModal'
 import NewFolderModal from '@/pages/journal/NewFolderModal'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import type { Swiper as SwiperType } from 'swiper'
+import 'swiper/css'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -148,7 +151,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
       variant="light"
       divider="none"
       rounded="19px"
-      className={`flex-1 min-w-0 h-[114px] overflow-hidden ${
+      className={`h-[114px] overflow-hidden ${
         stat.active ? 'border border-[#00b38c] weekly-stat-active' : 'weekly-stat-inactive'
       }`}
     >
@@ -295,6 +298,7 @@ export default function JournalPage() {
   const [activeTab, setActiveTab] = useState(0)
   const [newNoteOpen, setNewNoteOpen] = useState(false)
   const [newFolderOpen, setNewFolderOpen] = useState(false)
+  const swiperRef = useRef<SwiperType | null>(null)
 
   return (
     <div className="journal-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -357,19 +361,39 @@ export default function JournalPage() {
                     <SparkleButton className="!w-[52px] !h-[52px] !rounded-full px-0">
                       <ShareIcon />
                     </SparkleButton>
-                    <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
+                    <button
+                      onClick={() => swiperRef.current?.slidePrev()}
+                      className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                    >
                       <ChevronLeftSmall />
                     </button>
-                    <button className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer">
+                    <button
+                      onClick={() => swiperRef.current?.slideNext()}
+                      className="w-[52px] h-[52px] rounded-[15px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                    >
                       <ChevronRightSmall />
                     </button>
                   </div>
                 </div>
-                <div className="flex gap-[13px] overflow-x-auto pb-2 scrollbar-hide">
+                <Swiper
+                  onSwiper={(swiper) => { swiperRef.current = swiper }}
+                  spaceBetween={13}
+                  slidesPerView={1.2}
+                  grabCursor
+                  breakpoints={{
+                    480: { slidesPerView: 2.2 },
+                    640: { slidesPerView: 3.2 },
+                    768: { slidesPerView: 4 },
+                    1024: { slidesPerView: 5 },
+                    1280: { slidesPerView: 7 },
+                  }}
+                >
                   {weeklyStats.map((stat, i) => (
-                    <WeeklyStatCard key={i} stat={stat} />
+                    <SwiperSlide key={i}>
+                      <WeeklyStatCard stat={stat} />
+                    </SwiperSlide>
                   ))}
-                </div>
+                </Swiper>
               </div>
             </GlassCard>
 
