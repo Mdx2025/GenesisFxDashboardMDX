@@ -144,7 +144,8 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
 
       {/* Notes Grid */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <div className="p-5 flex gap-5 overflow-x-auto">
+        <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-80px]" />
+        <div className="relative p-5 flex gap-5 overflow-x-auto">
           {notebookNotes.map(note => (
             <NoteCard key={note.id} note={note} />
           ))}

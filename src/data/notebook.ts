@@ -29,4 +29,22 @@ export const notebookNotes: NotebookNote[] = [
     tags: ['#trade'],
     attachments: 1,
   },
+  {
+    id: '3',
+    label: 'Day',
+    date: 'Monday, Apr 20, 2026',
+    account: 'L#716445',
+    preview: 'Example of a note',
+    tags: ['#trade'],
+    attachments: 1,
+  },
+  {
+    id: '4',
+    label: 'Day',
+    date: 'Monday, Apr 20, 2026',
+    account: 'L#716445',
+    preview: 'Example of a note',
+    tags: ['#trade'],
+    attachments: 1,
+  },
 ]
