@@ -55,7 +55,7 @@ export default function TradesView() {
     <div className="flex flex-col gap-4">
       {/* Header Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <GlowEllipse variant="purple" className="left-[-20px] top-[-20px]" />
+        <GlowEllipse className="left-[-20px] top-[-20px]" />
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-5">
           <div>
             <h3 className="text-white text-[22px] font-acid font-normal leading-tight">Trade History</h3>
@@ -90,7 +90,7 @@ export default function TradesView() {
 
       {/* Table Card */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-        <GlowEllipse variant="purple" className="left-1/2 -translate-x-1/2 top-[-30px]" />
+        <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-30px]" />
         <div className="relative overflow-x-auto">
           <table className="w-full" style={{ minWidth: '800px' }}>
             <thead>
