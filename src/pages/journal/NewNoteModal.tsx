@@ -93,8 +93,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] overflow-y-auto modal-scroll-green"
-        style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
+        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
@@ -108,7 +107,10 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           <CloseIcon />
         </button>
 
-        <div className="relative pl-[123px] pr-[100px] pt-[35px] pb-[50px]">
+        <div
+          className="relative pl-[123px] pr-[100px] pt-[35px] pb-[50px] overflow-y-auto modal-scroll-green"
+          style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
+        >
           {/* Title */}
           <h2 className="text-white text-[50px] font-acid font-normal text-center leading-none">
             New Note
