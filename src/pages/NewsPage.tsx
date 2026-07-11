@@ -140,9 +140,9 @@ function WebcamCard() {
       </div>
       <div className="grid grid-cols-2 gap-3 px-5 pb-5">
         {webcams.map(cam => (
-          <div key={cam.id} className="relative p-3 rounded-[10px] bg-[#04100A] border border-[rgba(94,255,169,0.10)] overflow-hidden flex flex-col gap-[89px]">
-            <img src="/images/news/nyc-webcam.png" alt={cam.label} className="absolute inset-0 w-full h-full object-cover rounded-xl" style={{ background: 'linear-gradient(182deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0) 100%)' }} />
-            <div className="relative z-10 flex flex-row items-center gap-2">
+          <div key={cam.id} className="relative rounded-xl overflow-hidden border border-[rgba(94,255,169,0.10)]">
+            <img src="/images/news/nyc-webcam.png" alt={cam.label} className="w-full h-auto block" />
+            <div className="absolute top-3 left-3 z-10 flex flex-row items-center gap-2">
               {/* Fox5 logo */}
               <div className="relative shrink-0">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
