@@ -54,7 +54,7 @@ function BookmarkIcon() {
 
 function NoteCard({ note }: { note: NotebookNote }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="15px" className="min-w-[420px] flex-1 overflow-hidden">
+    <GlassCard variant="light" divider="none" rounded="15px" className="flex-1 min-w-0 overflow-hidden">
       <div className="p-[18px] flex flex-col gap-3 h-full">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
@@ -145,7 +145,7 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
       {/* Notes Grid */}
       <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
         <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-80px]" />
-        <div className="relative p-5 flex gap-5 overflow-x-auto">
+        <div className="relative p-5 grid grid-cols-4 gap-5">
           {notebookNotes.map(note => (
             <NoteCard key={note.id} note={note} />
           ))}
