@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react'
+import gsap from 'gsap'
 
 function CloseIcon() {
   return (
@@ -15,51 +16,64 @@ interface NewFolderModalProps {
 }
 
 export default function NewFolderModal({ open, onClose, onSave }: NewFolderModalProps) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
   const [folderName, setFolderName] = useState('')
 
-  const [mounted, setMounted] = useState(false)
-  const [show, setShow] = useState(false)
+  const handleClose = useCallback(() => {
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) { onClose(); return }
+    gsap.to(modal, { opacity: 0, scale: 0.96, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlay, {
+      opacity: 0, duration: 0.2, ease: 'power2.in',
+      onComplete: () => { setMounted(false); onClose() },
+    })
+  }, [onClose])
 
   useEffect(() => {
     if (open) {
       setMounted(true)
-      requestAnimationFrame(() => requestAnimationFrame(() => setShow(true)))
-    } else {
-      setShow(false)
-      const t = setTimeout(() => setMounted(false), 200)
-      return () => clearTimeout(t)
+      setFolderName('')
     }
   }, [open])
 
+  useLayoutEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) return
+    gsap.set(overlay, { opacity: 0 })
+    gsap.set(modal, { opacity: 0, scale: 0.96 })
+    gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
+  }, [mounted])
+
   useEffect(() => {
-    if (!open) return
+    if (!mounted) return
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') handleClose()
     }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [open, onClose])
-
-  useEffect(() => {
-    if (open) setFolderName('')
-  }, [open])
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [mounted, handleClose])
 
   if (!mounted) return null
 
   return (
     <div
-      className={`fixed inset-0 z-[300] flex items-center justify-center transition-opacity duration-200 ${show ? 'opacity-100' : 'opacity-0'}`}
-      onClick={onClose}
+      ref={overlayRef}
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
+      onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]" />
-
       <div
+        ref={modalRef}
         className="relative w-[500px] max-w-[95vw] rounded-[30px] bg-[#0c1311] border border-white/6 p-6 sm:p-[40px] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.2)]"
-        onClick={e => e.stopPropagation()}
       >
         {/* Close button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-[20px] right-[20px] cursor-pointer hover:opacity-80 transition-opacity"
         >
           <CloseIcon />
@@ -88,7 +102,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
         {/* Actions */}
         <div className="flex items-center justify-center gap-4">
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="h-[44px] px-[36px] rounded-[300px] border border-[#303030] bg-transparent text-white text-[16px] font-acid cursor-pointer hover:border-[#505050] transition-colors"
           >
             Cancel
@@ -97,7 +111,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
             onClick={() => {
               if (folderName.trim()) {
                 onSave?.(folderName.trim())
-                onClose()
+                handleClose()
               }
             }}
             className="h-[44px] px-[36px] rounded-[300px] bg-[#00b38c] text-[#0c1311] text-[16px] font-acid font-medium cursor-pointer hover:bg-[#00c99a] transition-colors"

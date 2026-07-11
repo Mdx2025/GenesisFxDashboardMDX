@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react'
+import gsap from 'gsap'
 import { GlowButton, SecondaryButton } from '@/components/ui'
 
 function CloseIcon() {
@@ -42,6 +43,9 @@ interface NewNoteModalProps {
 }
 
 export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
   const [noteType] = useState('Day note')
   const [date, setDate] = useState('04/21/2026')
   const [account] = useState('L#716445')
@@ -49,41 +53,52 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
   const [note, setNote] = useState('')
   const [tags, setTags] = useState('')
 
-  const [mounted, setMounted] = useState(false)
-  const [show, setShow] = useState(false)
+  const handleClose = useCallback(() => {
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) { onClose(); return }
+    gsap.to(modal, { opacity: 0, scale: 0.96, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlay, {
+      opacity: 0, duration: 0.2, ease: 'power2.in',
+      onComplete: () => { setMounted(false); onClose() },
+    })
+  }, [onClose])
 
   useEffect(() => {
-    if (open) {
-      setMounted(true)
-      requestAnimationFrame(() => requestAnimationFrame(() => setShow(true)))
-    } else {
-      setShow(false)
-      const t = setTimeout(() => setMounted(false), 200)
-      return () => clearTimeout(t)
-    }
+    if (open) setMounted(true)
   }, [open])
 
+  useLayoutEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) return
+    gsap.set(overlay, { opacity: 0 })
+    gsap.set(modal, { opacity: 0, scale: 0.96 })
+    gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
+  }, [mounted])
+
   useEffect(() => {
-    if (!open) return
+    if (!mounted) return
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') handleClose()
     }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [open, onClose])
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [mounted, handleClose])
 
   if (!mounted) return null
 
   return (
     <div
-      className={`fixed inset-0 z-[300] flex items-center justify-center transition-opacity duration-200 ${show ? 'opacity-100' : 'opacity-0'}`}
-      onClick={onClose}
+      ref={overlayRef}
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
+      onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]" />
-
       <div
+        ref={modalRef}
         className="relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] border-[1.16px] border-[#0c1311] bg-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
-        onClick={e => e.stopPropagation()}
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
@@ -91,7 +106,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
         {/* Close button — fixed above scroll */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-[35px] right-[30px] z-20 cursor-pointer hover:opacity-80 transition-opacity"
         >
           <CloseIcon />
@@ -207,7 +222,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
           {/* Bottom actions */}
           <div className="flex items-center justify-end gap-3 mt-[30px]">
-            <SecondaryButton className="h-[44px]" onClick={onClose}>
+            <SecondaryButton className="h-[44px]" onClick={handleClose}>
               <span>New Account</span>
             </SecondaryButton>
             <GlowButton
