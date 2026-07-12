@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { signalProviders, signalTabs, signalFilterTabs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
@@ -51,6 +51,22 @@ function CheckIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
       <path d="M3 7L6 10L11 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function CheckCircleIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#00b38c" />
+    </svg>
+  )
+}
+
+function SignalPulseIcon() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <path d="M3 18H9L13.5 4.5L22.5 31.5L27 18H33" stroke="#00b38c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -186,6 +202,90 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
   )
 }
 
+/* ─── Follower Provider Card ─── */
+
+function FollowerProviderCard({ provider, onToggleFollow }: { provider: SignalProvider; onToggleFollow: (id: string) => void }) {
+  const isNegative = provider.pnl30d < 0
+
+  return (
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden w-full max-w-[504px]">
+      <div className="relative p-6 lg:p-[31px_24px_35px_25px] flex flex-col gap-[17px]">
+        {/* Header: Avatar + Username + Badges */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-[22px]">
+            <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <span className="text-white text-[16px] font-acid font-medium">{provider.initials}</span>
+            </div>
+            <div className="flex flex-col gap-[16px]">
+              <p className="text-[#a0a0a0] text-[16px] font-acid leading-[1.2]">{provider.username}</p>
+              <p className="text-white text-[16px] font-acid leading-[1.2]">{provider.tag}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="border border-[#303030] rounded-[16px] px-3 py-[10px]">
+              <span className="text-[#ececec] text-[14px] font-acid leading-[18.8px]">{provider.pricePerMonth}</span>
+            </div>
+            <button
+              onClick={() => onToggleFollow(provider.id)}
+              className="bg-[#09241c] rounded-[12px] px-3 py-2 flex items-center gap-[10px] cursor-pointer"
+            >
+              <CheckCircleIcon />
+              <span className="text-[#00b38c] text-[14px] font-acid leading-[18.8px]">Follow</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Trading Pair */}
+        <div className="flex items-center gap-[7px]">
+          <XauusdIcon />
+          <span className="border border-[#303030] rounded-full px-[14px] py-[14px] text-white text-[14px] font-acid leading-[18.8px]">
+            {provider.pair}
+          </span>
+        </div>
+
+        {/* P&L Chart Box */}
+        <div className="border border-[#303030] rounded-[28px] relative h-[194px]">
+          <div className="absolute left-[23px] top-[27px]">
+            <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">{`30D P&L`}</p>
+          </div>
+          <p className={`absolute left-[23px] top-[56px] text-[34px] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
+            {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
+          </p>
+          <div className="absolute right-[23px] top-[27px]">
+            <span className="border border-[#303030] rounded-full px-[14px] py-[14px] text-white text-[14px] font-acid leading-[18.8px]">
+              {provider.trades} trades
+            </span>
+          </div>
+          <div className="absolute left-[23px] right-[23px] bottom-[12px] h-[64px]">
+            <PnlChart data={provider.chartData} negative={isNegative} />
+          </div>
+        </div>
+
+        {/* Metrics Row */}
+        <div className="flex gap-[10px] w-full">
+          <div className="flex-1 border border-[#303030] rounded-[12px] h-[80px] flex flex-col items-center justify-center gap-[6px]">
+            <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">{provider.pricePerMonth}</span>
+            <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Price/mo</span>
+          </div>
+          <div className="flex-1 border border-[#303030] rounded-[12px] h-[80px] flex flex-col items-center justify-center gap-[6px]">
+            <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">{provider.profitShare}</span>
+            <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Profit Share</span>
+          </div>
+          <div className="flex-1 border border-[#303030] rounded-[12px] h-[80px] flex flex-col items-center justify-center gap-[6px]">
+            <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">{provider.followers}</span>
+            <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Followers</span>
+          </div>
+        </div>
+
+        {/* Manage Button */}
+        <SparkleButton fullWidth className="px-5">
+          <span className="flex items-center justify-center">Manage</span>
+        </SparkleButton>
+      </div>
+    </GlassCard>
+  )
+}
+
 /* ─── Main Page ─── */
 
 export default function SignalsPage() {
@@ -315,6 +415,40 @@ export default function SignalsPage() {
                 <p className="text-[#808080] text-[14px] font-acid leading-[18.8px] max-w-[320px]">
                   There are no signals from the past 7 days matching your filters. Check back soon or browse the marketplace for top providers.
                 </p>
+              </div>
+            </GlassCard>
+          </div>
+        )}
+
+        {/* Follower Tab */}
+        {activeTab === 2 && (
+          <div className="flex flex-col gap-5">
+            {/* Followed Provider Card */}
+            <FollowerProviderCard provider={providers[0]} onToggleFollow={handleToggleFollow} />
+
+            {/* Signals Executed Section */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="relative p-6 lg:p-8 min-h-[421px] flex flex-col">
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-white text-[24px] font-acid leading-none">Signals Executed</h3>
+                  <SearchInput
+                    placeholder="Search strategies"
+                    className="w-[287px]"
+                  />
+                </div>
+
+                {/* Empty State */}
+                <div className="flex-1 flex flex-col items-center justify-center py-10">
+                  <div className="w-[70px] h-[70px] rounded-full bg-[#09241c] flex items-center justify-center mb-6">
+                    <SignalPulseIcon />
+                  </div>
+                  <h3 className="text-white text-[24px] font-acid leading-none mb-3 text-center">No signals taken yet</h3>
+                  <p className="text-[#808080] text-[16px] font-acid leading-[1.2] max-w-[396px] text-center mb-6">
+                    Signals you execute will appear here
+                  </p>
+                  <GlowButton label="Trade" width={160} />
+                </div>
               </div>
             </GlassCard>
           </div>
