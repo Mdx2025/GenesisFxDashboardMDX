@@ -1,0 +1,321 @@
+import { useState } from 'react'
+import { useSidebar } from '@/layouts/RootLayout'
+import { TopBar } from '@/components/dashboard/TopBar'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput } from '@/components/ui'
+import { ChevronRightIcon } from '@/components/icons'
+import { signalProviders, signalTabs, signalFilterTabs } from '@/data/signals'
+import type { SignalProvider } from '@/data/signals'
+
+/* ─── Inline SVG Icons ─── */
+
+function TrophyIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+      <path d="M6.5 3H17.5V5H19.5C20.05 5 20.5 5.45 20.5 6V9C20.5 10.66 19.16 12 17.5 12H16.87C16.27 13.71 14.77 15 12.95 15.42V18H15.5V20H8.5V18H11.05V15.42C9.23 15 7.73 13.71 7.13 12H6.5C4.84 12 3.5 10.66 3.5 9V6C3.5 5.45 3.95 5 4.5 5H6.5V3ZM5.5 7V9C5.5 9.55 5.95 10 6.5 10H7V7H5.5ZM17 7V10H17.5C18.05 10 18.5 9.55 18.5 9V7H17Z" fill="#10BC83" />
+    </svg>
+  )
+}
+
+function StarIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function GridViewIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="3" width="8" height="8" rx="2" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+      <rect x="13" y="3" width="8" height="8" rx="2" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+      <rect x="3" y="13" width="8" height="8" rx="2" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+      <rect x="13" y="13" width="8" height="8" rx="2" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+    </svg>
+  )
+}
+
+function ListViewIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="4" width="18" height="4" rx="1" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+      <rect x="3" y="10" width="18" height="4" rx="1" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+      <rect x="3" y="16" width="18" height="4" rx="1" stroke={active ? '#10BC83' : '#808080'} strokeWidth="1.5" />
+    </svg>
+  )
+}
+
+function DownloadIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M21 15V19C21 19.53 20.79 20.04 20.41 20.41C20.04 20.79 19.53 21 19 21H5C4.47 21 3.96 20.79 3.59 20.41C3.21 20.04 3 19.53 3 19V15" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7 10L12 15L17 10" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 15V3" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M3 7L6 10L11 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function XauusdIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 38 38" fill="none">
+      <g clipPath="url(#xauClipSig)">
+        <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
+        <path d="M14.42 14.63H23.77L22.41 10.97C22.36 10.82 22.26 10.69 22.13 10.59L14.42 14.63ZM14.39 10.28C14.73 9.39 15.45 8.82 16.26 8.82H21.79C22.59 8.82 23.32 9.39 23.65 10.28L25.02 13.94C25.42 15.04 24.76 16.28 23.77 16.28H14.27C13.28 16.28 12.62 15.04 13.03 13.94L14.39 10.28ZM6.95 24.13H16.28L14.92 20.47C14.86 20.32 14.77 20.19 14.64 20.09L6.95 24.13ZM6.92 19.78C7.25 18.89 7.98 18.32 8.78 18.32H14.3C15.1 18.32 15.83 18.89 16.16 19.78L17.52 23.44C17.93 24.54 17.27 25.78 16.28 25.78H6.8C5.81 25.78 5.15 24.54 5.56 23.44L6.92 19.78ZM31.27 24.13H21.88L29.63 20.09C29.75 20.18 29.85 20.31 29.91 20.47L31.27 24.13ZM23.71 18.32C22.91 18.32 22.18 18.89 21.85 19.78L20.49 23.44C20.08 24.54 20.74 25.78 21.73 25.78H31.27C32.27 25.78 32.93 24.54 32.52 23.44L31.15 19.78C30.82 18.89 30.09 18.32 29.29 18.32H23.71Z" fill="white" />
+      </g>
+      <defs>
+        <clipPath id="xauClipSig"><rect width="38" height="38" rx="19" fill="white" /></clipPath>
+      </defs>
+    </svg>
+  )
+}
+
+/* ─── Mini P&L Chart ─── */
+
+function PnlChart({ data, negative }: { data: number[]; negative: boolean }) {
+  const w = 280
+  const h = 80
+  const max = Math.max(...data)
+  const min = Math.min(...data)
+  const range = max - min || 1
+  const step = w / (data.length - 1)
+  const color = negative ? '#d46356' : '#10BC83'
+
+  const points = data.map((v, i) => [i * step, h - ((v - min) / range) * h * 0.8 - h * 0.1])
+  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')
+  const areaD = `${pathD} L${w},${h} L0,${h} Z`
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none">
+      <defs>
+        <linearGradient id={`sigGrad${negative ? 'R' : 'G'}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.2" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d={areaD} fill={`url(#sigGrad${negative ? 'R' : 'G'})`} />
+      <path d={pathD} stroke={color} strokeWidth="1.5" fill="none" opacity="0.7" />
+    </svg>
+  )
+}
+
+/* ─── Signal Provider Card ─── */
+
+function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; onToggleFollow: (id: string) => void }) {
+  const isNegative = provider.pnl30d < 0
+
+  return (
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
+      <div className="relative p-6 pb-0 flex flex-col flex-1">
+        {/* Header: Avatar + Username + Tag + Follow */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-[16px] font-acid font-medium">{provider.initials}</span>
+            </div>
+            <div>
+              <p className="text-[#a0a0a0] text-[16px] font-acid font-medium">{provider.username}</p>
+              <span className="inline-block mt-1 text-white text-[16px] font-acid font-medium">{provider.tag}</span>
+            </div>
+          </div>
+          <button
+            onClick={() => onToggleFollow(provider.id)}
+            className={`h-[34px] px-4 rounded-full flex items-center gap-1.5 text-[14px] font-acid font-medium transition-colors cursor-pointer ${
+              provider.following
+                ? 'bg-[#09241c] border border-[#303030] text-white'
+                : 'bg-[#10BC83] text-white'
+            }`}
+          >
+            {provider.following && <CheckIcon />}
+            <span>{provider.following ? 'Following' : 'Follow'}</span>
+          </button>
+        </div>
+
+        {/* Trading Pair */}
+        <div className="flex items-center gap-2.5 mt-4">
+          <XauusdIcon />
+          <span className="border border-[#303030] rounded-full px-3 py-1 text-white text-[14px] font-acid font-medium">
+            {provider.pair}
+          </span>
+        </div>
+
+        {/* P&L Chart Box */}
+        <div className="border border-[#1a2e28] rounded-[14px] p-4 mt-4 flex flex-col">
+          <div className="flex items-start justify-between mb-2">
+            <div>
+              <p className={`text-[34px] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
+                {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
+              </p>
+              <p className="text-[#808080] text-[14px] font-acid font-medium mt-1">30D P&L</p>
+            </div>
+            <span className="border border-[#303030] rounded-full px-3 py-1 text-[#808080] text-[12px] font-acid font-medium">
+              {provider.trades} trades
+            </span>
+          </div>
+          <div className="mt-1">
+            <PnlChart data={provider.chartData} negative={isNegative} />
+          </div>
+        </div>
+
+        {/* Metrics Row */}
+        <div className="grid grid-cols-3 mt-4 border border-[#1a2e28] rounded-[14px] overflow-hidden">
+          <div className="p-4 flex flex-col items-center gap-1.5">
+            <span className="text-white text-[16px] font-acid font-medium">{provider.pricePerMonth}</span>
+            <span className="text-[#808080] text-[12px] font-acid font-medium">Price/mo</span>
+          </div>
+          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#1a2e28]">
+            <span className="text-white text-[16px] font-acid font-medium">{provider.profitShare}</span>
+            <span className="text-[#808080] text-[12px] font-acid font-medium">Profit Share</span>
+          </div>
+          <div className="p-4 flex flex-col items-center gap-1.5">
+            <span className="text-white text-[16px] font-acid font-medium">{provider.followers}</span>
+            <span className="text-[#808080] text-[12px] font-acid font-medium">Followers</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Action Button */}
+      <div className="p-6 pt-5">
+        <SparkleButton fullWidth className="px-5">
+          <span className="flex items-center justify-center gap-2">
+            <span>View Strategy</span>
+            <ChevronRightIcon size={18} color="#c6c6c6" />
+          </span>
+        </SparkleButton>
+      </div>
+    </GlassCard>
+  )
+}
+
+/* ─── Main Page ─── */
+
+export default function SignalsPage() {
+  const { sidebarOpen, setSidebarOpen } = useSidebar()
+  const [activeTab, setActiveTab] = useState(3)
+  const [filterTab, setFilterTab] = useState(0)
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [providers, setProviders] = useState(signalProviders)
+
+  const handleToggleFollow = (id: string) => {
+    setProviders(prev => prev.map(p => p.id === id ? { ...p, following: !p.following } : p))
+  }
+
+  const filteredProviders = providers.filter(p =>
+    p.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    p.tag.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+  return (
+    <div className="signals-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+      <TopBar
+        onMenuClick={() => setSidebarOpen(prev => !prev)}
+        menuOpen={sidebarOpen}
+        breadcrumbItems={[
+          { label: 'GenSocial', href: '/gensocial/signals' },
+          { label: 'Signals', current: true },
+        ]}
+      />
+
+      <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
+
+        {/* Page Title */}
+        <h1 className="text-white text-h1 font-normal">Signals</h1>
+
+        {/* Top Tabs: Signal Feed | Follower | Provider | Marketplace */}
+        <div className="w-full overflow-x-auto max-w-2xl">
+          <ModeToggle
+            options={[...signalTabs]}
+            defaultIndex={3}
+            activeIndex={activeTab}
+            onChange={setActiveTab}
+          />
+        </div>
+
+        {/* Hero Banner */}
+        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+          <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
+          <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
+          <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="flex-1">
+              <h2 className="text-white text-[50px] font-acid leading-none">Trade Signals</h2>
+              <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-5 max-w-[574px] leading-relaxed">
+                Follow expert signal providers, execute trade ideas in one click, and join active trading communities — all from one feed.
+              </p>
+              <div className="mt-6">
+                <SparkleButton className="px-6">
+                  <span className="flex items-center gap-2">
+                    <DownloadIcon />
+                    <span>Download App</span>
+                  </span>
+                </SparkleButton>
+              </div>
+            </div>
+            <div className="flex items-center gap-5 bg-[#09241c] rounded-[30px] px-6 py-5 lg:px-8">
+              <div className="w-[98px] h-[98px] rounded-[13px] bg-[#064b34] flex items-center justify-center">
+                <TrophyIcon />
+              </div>
+              <div>
+                <p className="text-white text-[50px] font-acid leading-none">71</p>
+                <p className="text-[#808080] text-[16px] font-acid font-medium mt-2">Active signals</p>
+              </div>
+            </div>
+          </div>
+        </GlassCard>
+
+        {/* Filter Row */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div className="w-full overflow-x-auto max-w-lg">
+            <ModeToggle
+              options={[...signalFilterTabs]}
+              defaultIndex={0}
+              activeIndex={filterTab}
+              onChange={setFilterTab}
+            />
+          </div>
+          <div className="flex items-center gap-3">
+            <SearchInput
+              placeholder="Search signals"
+              value={searchQuery}
+              onChange={setSearchQuery}
+              className="w-[287px]"
+            />
+            <button
+              onClick={() => {}}
+              className="w-[47px] h-[44px] rounded-[10px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+            >
+              <StarIcon />
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+            >
+              <ListViewIcon active={viewMode === 'list'} />
+            </button>
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+            >
+              <GridViewIcon active={viewMode === 'grid'} />
+            </button>
+          </div>
+        </div>
+
+        {/* Signal Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {filteredProviders.map(provider => (
+            <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} />
+          ))}
+        </div>
+
+      </div>
+    </div>
+  )
+}
