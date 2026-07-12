@@ -131,17 +131,15 @@ export default function TradeSessionsView() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center pt-2">
-        {/* Header section */}
-        <div className="flex flex-col items-center gap-4 text-center mb-6">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[430px_1fr_430px] gap-5 items-start pt-2 px-4">
+        {/* Header — full width on mobile, center column on desktop */}
+        <div className="flex flex-col items-center text-center gap-4 lg:order-2 lg:pt-6 mb-6 lg:mb-0">
           <h2 className="text-white text-[36px] sm:text-[48px] lg:text-[60px] font-acid leading-none">
             Trading Sessions
           </h2>
           <p className="text-[#808080] text-[16px] font-acid font-medium">
             Real-time market session status with liquidity flow visualization
           </p>
-
-          {/* Status badges */}
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <GlobeIcon />
@@ -154,17 +152,27 @@ export default function TradeSessionsView() {
               </span>
             </div>
           </div>
+          <div className="mt-4">
+            {activeSessions.map(s => (
+              <ActiveSessionPill key={s.city} city={s.city} />
+            ))}
+          </div>
         </div>
 
-        {/* Floating active session pill */}
-        <div className="mb-8">
-          {activeSessions.map(s => (
-            <ActiveSessionPill key={s.city} city={s.city} />
-          ))}
+        {/* Left column: Sydney + Tokyo — desktop only */}
+        <div className="hidden lg:flex flex-col gap-5 lg:order-1">
+          <SessionCard session={tradeSessions[0]} />
+          <SessionCard session={tradeSessions[2]} />
         </div>
 
-        {/* Session Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-[880px]">
+        {/* Right column: New York + London — desktop only */}
+        <div className="hidden lg:flex flex-col gap-5 lg:order-3">
+          <SessionCard session={tradeSessions[1]} />
+          <SessionCard session={tradeSessions[3]} />
+        </div>
+
+        {/* Mobile/Tablet: 2-col grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full lg:hidden">
           {tradeSessions.map(session => (
             <SessionCard key={session.city} session={session} />
           ))}
