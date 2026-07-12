@@ -190,7 +190,7 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
 
 export default function SignalsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeTab, setActiveTab] = useState(3)
+  const [activeTab, setActiveTab] = useState(0)
   const [filterTab, setFilterTab] = useState(0)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [searchQuery, setSearchQuery] = useState('')
@@ -221,17 +221,107 @@ export default function SignalsPage() {
         {/* Page Title */}
         <h1 className="text-white text-h1 font-normal">Signals</h1>
 
-        {/* Top Tabs: Signal Feed | Follower | Provider | Marketplace */}
+        {/* Top Tabs: Marketplace | Signal Feed | Follower | Provider */}
         <div className="w-full overflow-x-auto max-w-2xl">
           <ModeToggle
             options={[...signalTabs]}
-            defaultIndex={3}
+            defaultIndex={0}
             activeIndex={activeTab}
             onChange={setActiveTab}
           />
         </div>
 
+        {/* Signal Feed Tab */}
+        {activeTab === 1 && (
+          <div className="flex flex-col gap-5">
+            {/* Live Signal Feed Banner */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="relative p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-white text-[clamp(1.25rem,1rem+0.5vw,1.75rem)] font-acid leading-tight">Live Signal Feed</h2>
+                    <span className="inline-flex items-center h-[22px] px-2.5 rounded-full bg-[#09241c] border border-[#00b38c] text-[#00b38c] text-[11px] font-acid">
+                      Online
+                    </span>
+                  </div>
+                  <p className="text-[#808080] text-[14px] font-acid leading-[18.8px] mt-2 max-w-[500px]">
+                    Real-time trading signals from verified analysts. Click on any signal to view details and place trades.
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <SparkleButton className="px-5">Become Provider</SparkleButton>
+                  <SparkleButton className="px-5">Marketplace</SparkleButton>
+                </div>
+              </div>
+            </GlassCard>
+
+            {/* Enable Push Notifications */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="relative p-6 lg:p-8 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-[44px] h-[44px] rounded-full bg-[#09241c] flex items-center justify-center shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M18 8A6 6 0 1 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-white text-[16px] font-acid-medium leading-[24.44px]">Enable push notifications</p>
+                      <span className="inline-flex items-center h-[22px] px-2.5 rounded-full bg-[#09241c] border border-[#00b38c] text-[#00b38c] text-[11px] font-acid">
+                        Active
+                      </span>
+                    </div>
+                    <p className="text-[#808080] text-[14px] font-acid leading-[18.8px] mt-1">
+                      Get notified instantly when followed providers post new signals
+                    </p>
+                  </div>
+                </div>
+                <SparkleButton className="px-5 shrink-0">Enable</SparkleButton>
+              </div>
+            </GlassCard>
+
+            {/* Search + View Toggle */}
+            <div className="flex items-center gap-3">
+              <SearchInput
+                placeholder="Search instrument or analyst"
+                value={searchQuery}
+                onChange={setSearchQuery}
+                className="w-[287px]"
+              />
+              <button
+                onClick={() => setViewMode('list')}
+                className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+              >
+                <ListViewIcon active={viewMode === 'list'} />
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+              >
+                <GridViewIcon active={viewMode === 'grid'} />
+              </button>
+            </div>
+
+            {/* Empty State */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
+                <div className="w-[56px] h-[56px] rounded-full bg-[#09241c] flex items-center justify-center mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3 className="text-white text-[18px] font-acid-medium leading-tight mb-2">No signals</h3>
+                <p className="text-[#808080] text-[14px] font-acid leading-[18.8px] max-w-[320px]">
+                  There are no signals from the past 7 days matching your filters. Check back soon or browse the marketplace for top providers.
+                </p>
+              </div>
+            </GlassCard>
+          </div>
+        )}
+
         {/* Hero Banner */}
+        {activeTab === 0 && (<>
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
           <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
           <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
@@ -308,6 +398,7 @@ export default function SignalsPage() {
             <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} />
           ))}
         </div>
+        </>)}
 
       </div>
     </div>
