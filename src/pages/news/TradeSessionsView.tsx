@@ -4,15 +4,6 @@ import type { TradeSession } from '@/data/tradeSessions'
 
 /* ─── Icons ─── */
 
-function ClockIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="9" stroke="#808080" strokeWidth="1.5" />
-      <path d="M12 7V12L15 15" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  )
-}
-
 function GlobeIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -36,95 +27,149 @@ function NetworkIcon() {
   )
 }
 
+function SessionStatusIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L12 22" stroke="#064b34" strokeWidth="2" strokeLinecap="round" />
+      <path d="M5 9L12 2L19 9" stroke="#064b34" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 /* ─── Session Card ─── */
 
 function SessionCard({ session }: { session: TradeSession }) {
   const isOpen = session.status === 'open'
 
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className={`overflow-hidden relative ${isOpen ? 'border border-gfx-green-500/20' : ''}`}>
+    <GlassCard
+      variant="light"
+      divider="none"
+      rounded="19px"
+      className={`overflow-hidden relative ${isOpen ? '!border-gfx-green-300/30' : ''}`}
+    >
+      {/* Glow effect for open sessions */}
       {isOpen && (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#064b34]/30 to-transparent pointer-events-none" />
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#064b34]/40 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-[#00f0a0]/8 blur-[40px] mix-blend-screen pointer-events-none" />
+        </>
       )}
-      <div className="relative p-5 sm:p-8 lg:p-10 flex flex-col gap-3 sm:gap-4 min-h-[180px] lg:h-[218px]">
+
+      <div className="relative p-6 sm:p-8 lg:p-10 flex flex-col gap-3 h-[218px]">
+        {/* Header: City + Status */}
         <div className="flex items-start justify-between">
-          <h3 className="text-white text-2xl sm:text-3xl lg:text-[36px] font-acid leading-none">{session.city}</h3>
-          <div className="flex items-center">
-            {isOpen ? (
-              <span className="px-4 py-2.5 rounded-full bg-[#09241c] text-[#ececec] text-[16px] font-acid">
-                OPEN
-              </span>
-            ) : (
-              <span className="text-[#808080] text-[20px] font-acid">CLOSED</span>
-            )}
-          </div>
+          <h3 className={`text-white font-acid leading-none ${isOpen ? 'text-[30px]' : 'text-[36px]'}`}>
+            {session.city}
+          </h3>
+          {isOpen ? (
+            <span className="px-3 py-3 rounded-full bg-[#09241c] text-[#ececec] text-[16px] font-acid leading-none">
+              OPEN
+            </span>
+          ) : (
+            <span className="text-[#808080] text-[20px] font-acid leading-[20px]">CLOSED</span>
+          )}
         </div>
 
-        <div className="flex items-center gap-2">
-          <ClockIcon />
-          <span className="text-[#808080] text-[24px] font-acid">{session.time}</span>
+        {/* Time */}
+        <div className="flex items-center gap-1 mt-2">
+          <span className="text-[#808080] text-[24px] font-acid leading-none">{session.time}</span>
         </div>
 
-        <span className="text-[#00b38c] text-[24px] font-acid">
+        {/* Countdown */}
+        <span className="text-[#00b38c] text-[24px] font-acid leading-none mt-auto">
           {session.countdownLabel}: {session.countdown}
         </span>
       </div>
+
+      {/* Status indicator line */}
+      <div className="absolute right-5 top-1/2 -translate-y-1/2 opacity-30">
+        <SessionStatusIcon />
+      </div>
     </GlassCard>
+  )
+}
+
+/* ─── Active Session Floating Pill ─── */
+
+function ActiveSessionPill({ city }: { city: string }) {
+  return (
+    <div className="flex items-center gap-3.5 px-[18px] py-2.5 rounded-full backdrop-blur-[4px] bg-stat-pill border border-white/5">
+      <div className="relative w-[41px] h-[41px]">
+        <div className="absolute inset-0 rounded-full bg-[#00f0a0]/15 animate-pulse" />
+        <div className="absolute inset-[6px] rounded-full bg-[#00f0a0]/25" />
+        <div className="absolute inset-[12px] rounded-full bg-[#00f0a0] shadow-glow-green" />
+      </div>
+      <span className="text-[#ececec] text-[18px] font-acid leading-none">{city}</span>
+    </div>
   )
 }
 
 /* ─── Main Component ─── */
 
 export default function TradeSessionsView() {
-  const activeSessions = tradeSessions.filter(s => s.status === 'open').length
+  const activeSessions = tradeSessions.filter(s => s.status === 'open')
+  const activeCount = activeSessions.length
 
   return (
-    <div className="flex flex-col items-center gap-8 relative">
-      {/* Header */}
-      <div className="flex flex-col items-center gap-4 text-center">
-        <h2 className="text-white text-3xl sm:text-4xl lg:text-[60px] font-acid leading-none">Trading Sessions</h2>
-        <p className="text-[#808080] text-sm sm:text-base font-acid">
-          Real-time market session status with liquidity flow visualization
-        </p>
-
-        {/* Status badges */}
-        <div className="flex items-center gap-8">
-          <div className="flex items-center gap-2">
-            <GlobeIcon />
-            <span className="text-[#808080] text-[14px] font-acid">Global Markets</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <NetworkIcon />
-            <span className="text-[#808080] text-[14px] font-acid">{activeSessions} Active Sessions</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Session Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full max-w-[900px] relative z-10">
-        {tradeSessions.map(session => (
-          <SessionCard key={session.city} session={session} />
-        ))}
-      </div>
-
-      {/* Globe background */}
-      <div className="absolute top-[200px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-square pointer-events-none z-0 opacity-80">
+    <div className="relative w-full min-h-[700px] overflow-hidden">
+      {/* Globe background — centered behind everything */}
+      <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-square pointer-events-none z-0">
         <img
           src="/images/sessions/globe.png"
           alt=""
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain opacity-90"
         />
       </div>
 
-      {/* Floating active session pill */}
-      {tradeSessions.filter(s => s.status === 'open').map(s => (
-        <div key={s.city} className="absolute top-[380px] left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#08120f]/50 backdrop-blur-sm border border-white/5">
-          <div className="w-[41px] h-[41px] rounded-full bg-gfx-green-500/20 flex items-center justify-center">
-            <div className="w-5 h-5 rounded-full bg-gfx-green-500 shadow-[0_0_8px_rgba(0,240,160,0.5)]" />
+      {/* Bottom gradient fade — blends globe into background */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none z-[1]"
+        style={{
+          background: 'linear-gradient(to top, #000705 20%, transparent 100%)',
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center pt-2">
+        {/* Header section */}
+        <div className="flex flex-col items-center gap-4 text-center mb-6">
+          <h2 className="text-white text-[36px] sm:text-[48px] lg:text-[60px] font-acid leading-none">
+            Trading Sessions
+          </h2>
+          <p className="text-[#808080] text-[16px] font-acid font-medium">
+            Real-time market session status with liquidity flow visualization
+          </p>
+
+          {/* Status badges */}
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-2">
+              <GlobeIcon />
+              <span className="text-[#808080] text-[14px] font-acid leading-[18.8px]">Global Markets</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <NetworkIcon />
+              <span className="text-[#808080] text-[14px] font-acid leading-[18.8px]">
+                {activeCount} Active Session{activeCount !== 1 ? 's' : ''}
+              </span>
+            </div>
           </div>
-          <span className="text-[#ececec] text-[18px] font-acid">{s.city}</span>
         </div>
-      ))}
+
+        {/* Floating active session pill */}
+        <div className="mb-8">
+          {activeSessions.map(s => (
+            <ActiveSessionPill key={s.city} city={s.city} />
+          ))}
+        </div>
+
+        {/* Session Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-[880px]">
+          {tradeSessions.map(session => (
+            <SessionCard key={session.city} session={session} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
