@@ -180,6 +180,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
 /* ─── Main Page ─── */
 
 export default function PammPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [filterTab, setFilterTab] = useState(0)

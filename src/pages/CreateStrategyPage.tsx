@@ -133,7 +133,7 @@ const riskOptions = [
 
 export default function CreateStrategyPage() {
   const navigate = useNavigate()
-  const { collapsed } = useSidebar()
+  const { sidebarOpen, setSidebarOpen } = useSidebar()
 
   const [username, setUsername] = useState('')
   const [strategyName, setStrategyName] = useState('')
@@ -146,9 +146,17 @@ export default function CreateStrategyPage() {
   const [maxInvestors, setMaxInvestors] = useState('')
 
   return (
-    <div className={`flex-1 transition-all duration-300 ${collapsed ? 'ml-[80px]' : 'ml-[305px]'}`}>
-      <TopBar />
-      <div className="px-8 pb-12 pt-4 max-w-[700px] mx-auto">
+    <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+      <TopBar
+        onMenuClick={() => setSidebarOpen(prev => !prev)}
+        menuOpen={sidebarOpen}
+        breadcrumbItems={[
+          { label: 'GenSocial', href: '/gensocial/pamm' },
+          { label: 'PAMM Strategies', href: '/gensocial/pamm' },
+          { label: 'Create Strategy', current: true },
+        ]}
+      />
+      <div className="pb-12 pt-4 max-w-[700px] mx-auto">
         {/* Back + Title */}
         <div className="flex items-start gap-4 mb-8">
           <button
