@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlowButton } from '@/components/ui'
+import { GlowButton, GlassCard, GlowEllipse } from '@/components/ui'
 
 function InfoIcon() {
   return (
@@ -110,29 +110,23 @@ export function ConnectPammModal({
     >
       <div
         ref={modalRef}
-        className="relative w-[1290px] max-w-[95vw] h-[719px] max-h-[90vh]"
+        className="w-[1290px] max-w-[95vw] max-h-[90vh]"
       >
-        {/* Modal background */}
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none bg-[#0C1311] rounded-[18.56px] border-[1.16px] border-[#0C1311]"
-          style={{ boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)' }}
-          aria-hidden="true"
-        >
-          <div className="absolute w-[493px] h-[278px] left-[calc(50%+52px)] bottom-[-116px] bg-[#114131] rounded-full blur-[157px]" />
-        </div>
+        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+          <GlowEllipse className="left-1/2 -translate-x-1/2 bottom-[-200px]" />
 
-        {/* Close button */}
-        <button
-          onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[40px] top-[33px] w-[24px] h-[24px]"
-          aria-label="Close modal"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-        </button>
+          {/* Close button */}
+          <button
+            onClick={handleClose}
+            className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[40px] top-[33px] w-[24px] h-[24px]"
+            aria-label="Close modal"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </button>
 
-        <div className="relative z-10 flex h-full">
+          <div className="relative z-10 flex min-h-[719px]">
           {/* Left Column — Strategy Info */}
           <div className="w-[534px] flex-shrink-0 flex flex-col items-center relative">
             {/* Glass card background */}
@@ -262,6 +256,7 @@ export function ConnectPammModal({
             </div>
           </div>
         </div>
+        </GlassCard>
       </div>
     </div>
   )
