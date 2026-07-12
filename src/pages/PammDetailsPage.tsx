@@ -61,16 +61,6 @@ function ChartUpIcon() {
   )
 }
 
-function HandCursorIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M18 8.5V15C18 18.31 15.31 21 12 21C8.69 21 6 18.31 6 15V11" stroke="#808080" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M8 11V4C8 3.45 8.45 3 9 3C9.55 3 10 3.45 10 4V10" stroke="#808080" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M12 10V3C12 2.45 12.45 2 13 2C13.55 2 14 2.45 14 3V10" stroke="#808080" strokeWidth="1.5" strokeLinecap="round"/>
-      <path d="M16 10V5C16 4.45 16.45 4 17 4C17.55 4 18 4.45 18 5V8.5" stroke="#808080" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  )
-}
 
 /* ─── Portfolio Area Chart ─── */
 
@@ -429,7 +419,6 @@ export default function PammDetailsPage() {
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-white text-[1.0625rem] font-acid">Strategy Details</h3>
-                <HandCursorIcon />
               </div>
               <div className="flex flex-col">
                 {[
