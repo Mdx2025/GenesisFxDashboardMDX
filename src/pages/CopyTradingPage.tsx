@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
+import { useNavigate } from 'react-router-dom'
 import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { copyTraders, copyTradingTabs, copyTradingFilterTabs } from '@/data/copyTrading'
@@ -64,6 +65,46 @@ function SubscriptionIcon() {
         <circle cx="12" cy="7" r="4" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
+  )
+}
+
+function CourseUpIcon() {
+  return (
+    <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M22 7L13.5 15.5L8.5 10.5L2 17" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16 7H22V13" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  )
+}
+
+function PlusIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 3.33V12.67" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M3.33 8H12.67" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function WalletIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M21 4H3C1.89543 4 1 4.89543 1 6V18C1 19.1046 1.89543 20 3 20H21C22.1046 20 23 19.1046 23 18V6C23 4.89543 22.1046 4 21 4Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1 10H23" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function StatCard({ label, value, valueColor = 'text-white' }: { label: string; value: string; valueColor?: string }) {
+  return (
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+      <div className="relative p-6 min-h-[148px] flex flex-col justify-center">
+        <p className="text-[#a0a0a0] text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
+        <p className={`${valueColor} text-[2.25rem] font-acid leading-normal mt-2`}>{value}</p>
+      </div>
+    </GlassCard>
   )
 }
 
@@ -184,6 +225,7 @@ function TraderCard({ trader }: { trader: CopyTrader }) {
 /* ─── Main Page ─── */
 
 export default function CopyTradingPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [filterTab, setFilterTab] = useState(0)
@@ -306,43 +348,101 @@ export default function CopyTradingPage() {
 
         {/* Follower Tab — Empty State */}
         {activeTab === 1 && (
-          <div className="bg-[#0c1311] rounded-[19px] shadow-[0px_4.64px_23.2px_0px_rgba(0,0,0,0.03)] border border-[#0c1311] flex flex-col items-center justify-center py-[60px] px-8 min-h-[421px]">
-            <SubscriptionIcon />
-            <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
-              No active Subscription
-            </h3>
-            <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
-              {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
-            </p>
-            <div className="mt-8">
-              <GlowButton
-                label="Browse strategies"
-                width={200}
-                height={44}
-                onClick={() => setActiveTab(0)}
-              />
+          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+            <div className="flex flex-col items-center justify-center py-[60px] px-8 min-h-[421px]">
+              <SubscriptionIcon />
+              <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
+                No active Subscription
+              </h3>
+              <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+                {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
+              </p>
+              <div className="mt-8">
+                <GlowButton
+                  label="Browse strategies"
+                  width={200}
+                  height={44}
+                  onClick={() => setActiveTab(0)}
+                />
+              </div>
             </div>
-          </div>
+          </GlassCard>
         )}
 
-        {/* Master Tab — Empty State */}
+        {/* Master Tab */}
         {activeTab === 2 && (
-          <div className="bg-[#0c1311] rounded-[19px] shadow-[0px_4.64px_23.2px_0px_rgba(0,0,0,0.03)] border border-[#0c1311] flex flex-col items-center justify-center py-[60px] px-8 min-h-[421px]">
-            <SubscriptionIcon />
-            <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
-              No active Strategies
-            </h3>
-            <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
-              {`You haven't created any master trading strategies yet. Set up your first strategy and start attracting followers`}
-            </p>
-            <div className="mt-8">
-              <GlowButton
-                label="Create Strategy"
-                width={200}
-                height={44}
-              />
+          <>
+            {/* Profile Banner */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="relative flex items-center justify-between p-6 lg:p-8">
+                <div className="flex items-center gap-5">
+                  <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-[1.5rem] font-acid">M</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white text-[1.5rem] font-acid leading-normal">marcelo cedeno</h3>
+                    <p className="text-[#a0a0a0] text-[1rem] font-acid font-medium leading-[24.44px]">Manage your copy trading strategies</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#0c1311] rounded-[8px] px-4 py-2 flex items-center gap-2.5">
+                    <WalletIcon />
+                    <span className="text-[#808080] text-[0.875rem] font-acid">Social Wallet</span>
+                    <span className="text-[#ececec] text-[0.875rem] font-acid">$100.00</span>
+                  </div>
+                  <GlowButton
+                    label="Create strategy"
+                    icon={<PlusIcon />}
+                    width={180}
+                    height={44}
+                    onClick={() => navigate('/gensocial/pamm/create-strategy')}
+                  />
+                </div>
+              </div>
+            </GlassCard>
+
+            {/* Stat Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <StatCard label="Total AUM" value="$0.00" />
+              <StatCard label="Total Strategies" value="$0.00" />
+              <StatCard label="Total Followers" value="$0.00" valueColor="text-[#37c92e]" />
+              <StatCard label="Fee Earnings" value="$0.00" />
             </div>
-          </div>
+
+            {/* Master Dashboard */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="relative">
+                {/* Dashboard Header */}
+                <div className="flex items-center justify-between p-6 lg:p-8 pb-6">
+                  <h3 className="text-white text-[1.5rem] font-acid leading-normal">Master Dashboard</h3>
+                  <SearchInput placeholder="Search strategies" className="w-[287px]" />
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent" />
+
+                {/* Empty State */}
+                <div className="flex flex-col items-center justify-center py-[60px] px-8">
+                  <CourseUpIcon />
+                  <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
+                    No Strategies Created
+                  </h3>
+                  <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+                    {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
+                  </p>
+                  <div className="mt-8">
+                    <GlowButton
+                      label="Create strategy"
+                      icon={<PlusIcon />}
+                      width={200}
+                      height={44}
+                      onClick={() => navigate('/gensocial/pamm/create-strategy')}
+                    />
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
+          </>
         )}
 
       </div>
