@@ -212,83 +212,165 @@ export default function PammPage() {
           />
         </div>
 
-        {/* Hero Banner */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-          <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
-          <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
-          <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="flex-1">
-              <h2 className="text-white text-[50px] font-acid leading-none">Browse Stragies</h2>
-              <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-5 max-w-[592px] leading-relaxed">
-                Invest with proven money managers. Browse PAMM strategies, pick a manager, and let your capital trade alongside theirs.
-              </p>
-              <div className="mt-6">
-                <SparkleButton className="px-6">
-                  <span className="flex items-center gap-2">
-                    <DownloadIcon />
-                    <span>Download App</span>
-                  </span>
-                </SparkleButton>
+        {activeTab === 0 && (
+          <>
+            {/* Hero Banner */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
+              <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
+              <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div className="flex-1">
+                  <h2 className="text-white text-[50px] font-acid leading-none">Browse Stragies</h2>
+                  <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-5 max-w-[592px] leading-relaxed">
+                    Invest with proven money managers. Browse PAMM strategies, pick a manager, and let your capital trade alongside theirs.
+                  </p>
+                  <div className="mt-6">
+                    <SparkleButton className="px-6">
+                      <span className="flex items-center gap-2">
+                        <DownloadIcon />
+                        <span>Download App</span>
+                      </span>
+                    </SparkleButton>
+                  </div>
+                </div>
+                <div className="relative w-[359px] h-[134px] bg-[#09241c] rounded-[30px]">
+                  <div className="absolute left-[18px] top-[18px] w-[98px] h-[98px] bg-[#064b34] rounded-[12.51px] flex items-center justify-center">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M23.3346 11.6673L27.7096 11.668C30.1259 11.6683 32.0849 9.7099 32.0853 7.29366C32.0857 4.87741 30.1273 2.91835 27.711 2.91797C25.2948 2.91759 23.3357 4.87603 23.3353 7.29228L23.3346 11.6673L11.6687 11.6673L11.668 7.29228C11.6676 4.87603 9.70853 2.91759 7.29228 2.91797C4.87603 2.91835 2.91759 4.87741 2.91797 7.29366C2.91835 9.7099 4.87741 11.6683 7.29366 11.668L11.6687 11.6673L11.668 23.3339H23.3346V11.6673Z" fill="white"/>
+                      <path d="M23.3346 23.3339L27.7096 23.3346C30.1259 23.3343 32.0849 25.2927 32.0853 27.7089C32.0857 30.1252 30.1273 32.0843 27.711 32.0846C25.2948 32.085 23.3357 30.1266 23.3353 27.7103L23.3346 23.3339Z" fill="white"/>
+                      <path d="M7.29366 23.3346L11.6687 23.3353L11.668 27.7103C11.6676 30.1266 9.70853 32.085 7.29228 32.0846C4.87603 32.0843 2.91759 30.1252 2.91797 27.7089C2.91835 25.2927 4.87741 23.3343 7.29366 23.3346Z" fill="white"/>
+                    </svg>
+                  </div>
+                  <p className="absolute left-[143px] top-[38px] text-white text-[50px] font-acid leading-none">71</p>
+                  <p className="absolute left-[143px] top-[89px] text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Active strategies</p>
+                </div>
+              </div>
+            </GlassCard>
+
+            {/* Filter Row */}
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+              <div className="w-full overflow-x-auto max-w-lg">
+                <ModeToggle
+                  options={[...pammFilterTabs]}
+                  defaultIndex={0}
+                  activeIndex={filterTab}
+                  onChange={setFilterTab}
+                />
+              </div>
+              <div className="flex items-center gap-3">
+                <SearchInput
+                  placeholder="Search strategies"
+                  value={searchQuery}
+                  onChange={setSearchQuery}
+                  className="w-[287px]"
+                />
+                <button
+                  onClick={() => {}}
+                  className="w-[47px] h-[44px] rounded-[10px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                >
+                  <StarIcon />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+                >
+                  <ListViewIcon active={viewMode === 'list'} />
+                </button>
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+                >
+                  <GridViewIcon active={viewMode === 'grid'} />
+                </button>
               </div>
             </div>
-            <div className="relative w-[359px] h-[134px] bg-[#09241c] rounded-[30px]">
-              <div className="absolute left-[18px] top-[18px] w-[98px] h-[98px] bg-[#064b34] rounded-[12.51px] flex items-center justify-center">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M23.3346 11.6673L27.7096 11.668C30.1259 11.6683 32.0849 9.7099 32.0853 7.29366C32.0857 4.87741 30.1273 2.91835 27.711 2.91797C25.2948 2.91759 23.3357 4.87603 23.3353 7.29228L23.3346 11.6673L11.6687 11.6673L11.668 7.29228C11.6676 4.87603 9.70853 2.91759 7.29228 2.91797C4.87603 2.91835 2.91759 4.87741 2.91797 7.29366C2.91835 9.7099 4.87741 11.6683 7.29366 11.668L11.6687 11.6673L11.668 23.3339H23.3346V11.6673Z" fill="white"/>
-                  <path d="M23.3346 23.3339L27.7096 23.3346C30.1259 23.3343 32.0849 25.2927 32.0853 27.7089C32.0857 30.1252 30.1273 32.0843 27.711 32.0846C25.2948 32.085 23.3357 30.1266 23.3353 27.7103L23.3346 23.3339Z" fill="white"/>
-                  <path d="M7.29366 23.3346L11.6687 23.3353L11.668 27.7103C11.6676 30.1266 9.70853 32.085 7.29228 32.0846C4.87603 32.0843 2.91759 30.1252 2.91797 27.7089C2.91835 25.2927 4.87741 23.3343 7.29366 23.3346Z" fill="white"/>
+
+            {/* Strategy Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {filteredStrategies.map(strategy => (
+                <StrategyCard key={strategy.id} strategy={strategy} />
+              ))}
+            </div>
+          </>
+        )}
+
+        {activeTab === 1 && (
+          <>
+            {/* Stat Cards Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+                <div className="p-6">
+                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Active Strategies</p>
+                  <p className="text-white text-[36px] font-acid leading-none mt-3">0</p>
+                </div>
+              </GlassCard>
+              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+                <div className="p-6">
+                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Total Balance</p>
+                  <p className="text-white text-[36px] font-acid leading-none mt-3">$0.00</p>
+                </div>
+              </GlassCard>
+              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+                <div className="p-6">
+                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Total Profit/loss</p>
+                  <p className="text-[#37c92e] text-[36px] font-acid leading-none mt-3">$0.00</p>
+                </div>
+              </GlassCard>
+              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+                <div className="p-6">
+                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Total Withdrawals</p>
+                  <p className="text-white text-[36px] font-acid leading-none mt-3">$0.00</p>
+                </div>
+              </GlassCard>
+            </div>
+
+            {/* My Investments Header */}
+            <div className="flex items-center justify-between">
+              <h2 className="text-white text-[36px] font-acid leading-none">My Investments</h2>
+              <SearchInput
+                placeholder="Search for investments"
+                value={searchQuery}
+                onChange={setSearchQuery}
+                className="w-[287px]"
+              />
+            </div>
+
+            {/* Empty State */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="flex flex-col items-center justify-center py-16 px-8">
+                <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center mb-8">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="8" r="4" fill="#10BC83" />
+                    <ellipse cx="12" cy="18" rx="7" ry="4" fill="#10BC83" />
+                  </svg>
+                </div>
+                <p className="text-white text-[24px] font-acid leading-none">No PAMM Investments</p>
+                <p className="text-[#808080] text-[16px] font-acid mt-4 leading-[1.2]">You don't have any active PAMM subscriptions yet</p>
+                <button
+                  onClick={() => setActiveTab(0)}
+                  className="mt-10 h-[44px] px-[31px] rounded-[300px] bg-[#f1fffa] text-black text-[16px] font-acid font-medium leading-[24.44px] cursor-pointer hover:bg-[#e0f5ec] transition-colors"
+                >
+                  Browse strategies
+                </button>
+              </div>
+            </GlassCard>
+          </>
+        )}
+
+        {activeTab === 2 && (
+          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+            <div className="flex flex-col items-center justify-center py-16 px-8">
+              <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center mb-8">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="4" fill="#10BC83" />
+                  <ellipse cx="12" cy="18" rx="7" ry="4" fill="#10BC83" />
                 </svg>
               </div>
-              <p className="absolute left-[143px] top-[38px] text-white text-[50px] font-acid leading-none">71</p>
-              <p className="absolute left-[143px] top-[89px] text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Active strategies</p>
+              <p className="text-white text-[24px] font-acid leading-none">Manager</p>
+              <p className="text-[#808080] text-[16px] font-acid mt-4 leading-[1.2]">Manager tools coming soon</p>
             </div>
-          </div>
-        </GlassCard>
-
-        {/* Filter Row */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="w-full overflow-x-auto max-w-lg">
-            <ModeToggle
-              options={[...pammFilterTabs]}
-              defaultIndex={0}
-              activeIndex={filterTab}
-              onChange={setFilterTab}
-            />
-          </div>
-          <div className="flex items-center gap-3">
-            <SearchInput
-              placeholder="Search strategies"
-              value={searchQuery}
-              onChange={setSearchQuery}
-              className="w-[287px]"
-            />
-            <button
-              onClick={() => {}}
-              className="w-[47px] h-[44px] rounded-[10px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
-            >
-              <StarIcon />
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
-            >
-              <ListViewIcon active={viewMode === 'list'} />
-            </button>
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
-            >
-              <GridViewIcon active={viewMode === 'grid'} />
-            </button>
-          </div>
-        </div>
-
-        {/* Strategy Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {filteredStrategies.map(strategy => (
-            <StrategyCard key={strategy.id} strategy={strategy} />
-          ))}
-        </div>
+          </GlassCard>
+        )}
 
       </div>
     </div>
