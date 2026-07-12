@@ -26,14 +26,6 @@ function VerifiedIcon() {
   )
 }
 
-function TrophyIcon() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-      <path d="M6.5 3H17.5V5H19.5C20.05 5 20.5 5.45 20.5 6V9C20.5 10.66 19.16 12 17.5 12H16.87C16.27 13.71 14.77 15 12.95 15.42V18H15.5V20H8.5V18H11.05V15.42C9.23 15 7.73 13.71 7.13 12H6.5C4.84 12 3.5 10.66 3.5 9V6C3.5 5.45 3.95 5 4.5 5H6.5V3ZM5.5 7V9C5.5 9.55 5.95 10 6.5 10H7V7H5.5ZM17 7V10H17.5C18.05 10 18.5 9.55 18.5 9V7H17Z" fill="#10BC83" />
-    </svg>
-  )
-}
-
 function StarIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -239,14 +231,16 @@ export default function PammPage() {
                 </SparkleButton>
               </div>
             </div>
-            <div className="flex items-center gap-5 bg-[#09241c] rounded-[30px] px-6 py-5 lg:px-8">
-              <div className="w-[98px] h-[98px] rounded-[13px] bg-[#064b34] flex items-center justify-center">
-                <TrophyIcon />
+            <div className="relative w-[359px] h-[134px] bg-[#09241c] rounded-[30px]">
+              <div className="absolute left-[18px] top-[18px] w-[98px] h-[98px] bg-[#064b34] rounded-[12.51px] flex items-center justify-center">
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M23.3346 11.6673L27.7096 11.668C30.1259 11.6683 32.0849 9.7099 32.0853 7.29366C32.0857 4.87741 30.1273 2.91835 27.711 2.91797C25.2948 2.91759 23.3357 4.87603 23.3353 7.29228L23.3346 11.6673L11.6687 11.6673L11.668 7.29228C11.6676 4.87603 9.70853 2.91759 7.29228 2.91797C4.87603 2.91835 2.91759 4.87741 2.91797 7.29366C2.91835 9.7099 4.87741 11.6683 7.29366 11.668L11.6687 11.6673L11.668 23.3339H23.3346V11.6673Z" fill="white"/>
+                  <path d="M23.3346 23.3339L27.7096 23.3346C30.1259 23.3343 32.0849 25.2927 32.0853 27.7089C32.0857 30.1252 30.1273 32.0843 27.711 32.0846C25.2948 32.085 23.3357 30.1266 23.3353 27.7103L23.3346 23.3339Z" fill="white"/>
+                  <path d="M7.29366 23.3346L11.6687 23.3353L11.668 27.7103C11.6676 30.1266 9.70853 32.085 7.29228 32.0846C4.87603 32.0843 2.91759 30.1252 2.91797 27.7089C2.91835 25.2927 4.87741 23.3343 7.29366 23.3346Z" fill="white"/>
+                </svg>
               </div>
-              <div>
-                <p className="text-white text-[50px] font-acid leading-none">71</p>
-                <p className="text-[#808080] text-[16px] font-acid font-medium mt-2">Active strategies</p>
-              </div>
+              <p className="absolute left-[143px] top-[38px] text-white text-[50px] font-acid leading-none">71</p>
+              <p className="absolute left-[143px] top-[89px] text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Active strategies</p>
             </div>
           </div>
         </GlassCard>
