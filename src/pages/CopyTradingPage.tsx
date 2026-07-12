@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { copyTraders, copyTradingTabs, copyTradingFilterTabs } from '@/data/copyTrading'
 import type { CopyTrader } from '@/data/copyTrading'
@@ -53,6 +53,17 @@ function DownloadIcon() {
       <path d="M7 10L12 15L17 10" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M12 15V3" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  )
+}
+
+function SubscriptionIcon() {
+  return (
+    <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="7" r="4" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
   )
 }
 
@@ -210,83 +221,129 @@ export default function CopyTradingPage() {
           />
         </div>
 
-        {/* Hero Banner */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-          <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
-          <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
-          <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="flex-1">
-              <h2 className="text-white text-[50px] font-acid leading-none">Copy Trading</h2>
-              <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-5 max-w-[574px] leading-relaxed">
-                Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
-              </p>
-              <div className="mt-6">
-                <SparkleButton className="px-6">
-                  <span className="flex items-center gap-2">
-                    <DownloadIcon />
-                    <span>Download App</span>
-                  </span>
-                </SparkleButton>
+        {/* Leaderboard Tab */}
+        {activeTab === 0 && (
+          <>
+            {/* Hero Banner */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
+              <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
+              <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div className="flex-1">
+                  <h2 className="text-white text-[50px] font-acid leading-none">Copy Trading</h2>
+                  <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-5 max-w-[574px] leading-relaxed">
+                    Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
+                  </p>
+                  <div className="mt-6">
+                    <SparkleButton className="px-6">
+                      <span className="flex items-center gap-2">
+                        <DownloadIcon />
+                        <span>Download App</span>
+                      </span>
+                    </SparkleButton>
+                  </div>
+                </div>
+                <div className="relative w-[359px] h-[134px] bg-[#09241c] rounded-[30px]">
+                  <div className="absolute left-[18px] top-[18px] w-[98px] h-[98px] bg-[#064b34] rounded-[12.51px] flex items-center justify-center">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M23.3346 11.6673L27.7096 11.668C30.1259 11.6683 32.0849 9.7099 32.0853 7.29366C32.0857 4.87741 30.1273 2.91835 27.711 2.91797C25.2948 2.91759 23.3357 4.87603 23.3353 7.29228L23.3346 11.6673L11.6687 11.6673L11.668 7.29228C11.6676 4.87603 9.70853 2.91759 7.29228 2.91797C4.87603 2.91835 2.91759 4.87741 2.91797 7.29366C2.91835 9.7099 4.87741 11.6683 7.29366 11.668L11.6687 11.6673L11.668 23.3339H23.3346V11.6673Z" fill="white"/>
+                      <path d="M23.3346 23.3339L27.7096 23.3346C30.1259 23.3343 32.0849 25.2927 32.0853 27.7089C32.0857 30.1252 30.1273 32.0843 27.711 32.0846C25.2948 32.085 23.3357 30.1266 23.3353 27.7103L23.3346 23.3339Z" fill="white"/>
+                      <path d="M7.29366 23.3346L11.6687 23.3353L11.668 27.7103C11.6676 30.1266 9.70853 32.085 7.29228 32.0846C4.87603 32.0843 2.91759 30.1252 2.91797 27.7089C2.91835 25.2927 4.87741 23.3343 7.29366 23.3346Z" fill="white"/>
+                    </svg>
+                  </div>
+                  <p className="absolute left-[143px] top-[38px] text-white text-[50px] font-acid leading-none">71</p>
+                  <p className="absolute left-[143px] top-[89px] text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Active strategies</p>
+                </div>
+              </div>
+            </GlassCard>
+
+            {/* Filter Row */}
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+              <div className="w-full overflow-x-auto max-w-lg">
+                <ModeToggle
+                  options={[...copyTradingFilterTabs]}
+                  defaultIndex={0}
+                  activeIndex={filterTab}
+                  onChange={setFilterTab}
+                />
+              </div>
+              <div className="flex items-center gap-3">
+                <SearchInput
+                  placeholder="Search traders"
+                  value={searchQuery}
+                  onChange={setSearchQuery}
+                  className="w-[287px]"
+                />
+                <button
+                  onClick={() => {}}
+                  className="w-[47px] h-[44px] rounded-[10px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                >
+                  <StarIcon />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+                >
+                  <ListViewIcon active={viewMode === 'list'} />
+                </button>
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+                >
+                  <GridViewIcon active={viewMode === 'grid'} />
+                </button>
               </div>
             </div>
-            <div className="relative w-[359px] h-[134px] bg-[#09241c] rounded-[30px]">
-              <div className="absolute left-[18px] top-[18px] w-[98px] h-[98px] bg-[#064b34] rounded-[12.51px] flex items-center justify-center">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M23.3346 11.6673L27.7096 11.668C30.1259 11.6683 32.0849 9.7099 32.0853 7.29366C32.0857 4.87741 30.1273 2.91835 27.711 2.91797C25.2948 2.91759 23.3357 4.87603 23.3353 7.29228L23.3346 11.6673L11.6687 11.6673L11.668 7.29228C11.6676 4.87603 9.70853 2.91759 7.29228 2.91797C4.87603 2.91835 2.91759 4.87741 2.91797 7.29366C2.91835 9.7099 4.87741 11.6683 7.29366 11.668L11.6687 11.6673L11.668 23.3339H23.3346V11.6673Z" fill="white"/>
-                  <path d="M23.3346 23.3339L27.7096 23.3346C30.1259 23.3343 32.0849 25.2927 32.0853 27.7089C32.0857 30.1252 30.1273 32.0843 27.711 32.0846C25.2948 32.085 23.3357 30.1266 23.3353 27.7103L23.3346 23.3339Z" fill="white"/>
-                  <path d="M7.29366 23.3346L11.6687 23.3353L11.668 27.7103C11.6676 30.1266 9.70853 32.085 7.29228 32.0846C4.87603 32.0843 2.91759 30.1252 2.91797 27.7089C2.91835 25.2927 4.87741 23.3343 7.29366 23.3346Z" fill="white"/>
-                </svg>
-              </div>
-              <p className="absolute left-[143px] top-[38px] text-white text-[50px] font-acid leading-none">71</p>
-              <p className="absolute left-[143px] top-[89px] text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Active strategies</p>
+
+            {/* Trader Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {filteredTraders.map(trader => (
+                <TraderCard key={trader.id} trader={trader} />
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Follower Tab — Empty State */}
+        {activeTab === 1 && (
+          <div className="bg-[#0c1311] rounded-[19px] shadow-[0px_4.64px_23.2px_0px_rgba(0,0,0,0.03)] border border-[#0c1311] flex flex-col items-center justify-center py-[60px] px-8 min-h-[421px]">
+            <SubscriptionIcon />
+            <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
+              No active Subscription
+            </h3>
+            <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+              {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
+            </p>
+            <div className="mt-8">
+              <GlowButton
+                label="Browse strategies"
+                width={200}
+                height={44}
+                onClick={() => setActiveTab(0)}
+              />
             </div>
           </div>
-        </GlassCard>
+        )}
 
-        {/* Filter Row */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-          <div className="w-full overflow-x-auto max-w-lg">
-            <ModeToggle
-              options={[...copyTradingFilterTabs]}
-              defaultIndex={0}
-              activeIndex={filterTab}
-              onChange={setFilterTab}
-            />
+        {/* Master Tab — Empty State */}
+        {activeTab === 2 && (
+          <div className="bg-[#0c1311] rounded-[19px] shadow-[0px_4.64px_23.2px_0px_rgba(0,0,0,0.03)] border border-[#0c1311] flex flex-col items-center justify-center py-[60px] px-8 min-h-[421px]">
+            <SubscriptionIcon />
+            <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
+              No active Strategies
+            </h3>
+            <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+              {`You haven't created any master trading strategies yet. Set up your first strategy and start attracting followers`}
+            </p>
+            <div className="mt-8">
+              <GlowButton
+                label="Create Strategy"
+                width={200}
+                height={44}
+              />
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <SearchInput
-              placeholder="Search traders"
-              value={searchQuery}
-              onChange={setSearchQuery}
-              className="w-[287px]"
-            />
-            <button
-              onClick={() => {}}
-              className="w-[47px] h-[44px] rounded-[10px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
-            >
-              <StarIcon />
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
-            >
-              <ListViewIcon active={viewMode === 'list'} />
-            </button>
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
-            >
-              <GridViewIcon active={viewMode === 'grid'} />
-            </button>
-          </div>
-        </div>
-
-        {/* Trader Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {filteredTraders.map(trader => (
-            <TraderCard key={trader.id} trader={trader} />
-          ))}
-        </div>
+        )}
 
       </div>
     </div>
