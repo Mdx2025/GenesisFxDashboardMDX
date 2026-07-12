@@ -120,6 +120,9 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="w-full h-px bg-[#09241c]" />
+
         {/* ROI + Days Badge */}
         <div className="flex items-start justify-between w-full">
           <div>
@@ -136,9 +139,6 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
           <MiniAreaChart data={strategy.chartData} />
         </div>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-[#09241c]" />
-
         {/* Bottom Stats */}
         <div className="w-full bg-[#09241c] rounded-[9px] px-5 py-4">
           <div className="flex justify-between">
@@ -154,7 +154,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 w-full">
+        <div className="flex gap-3 w-full px-6">
           <SparkleButton className="px-[22px] flex-1">
             <span className="flex items-center justify-center gap-[9px]">
               <span>Details</span>
