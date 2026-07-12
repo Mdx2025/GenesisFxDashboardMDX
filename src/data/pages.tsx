@@ -14,6 +14,7 @@ import AccountDetailsPage from '@/pages/AccountDetailsPage'
 import ChallengesPage from '@/pages/ChallengesPage'
 import JournalPage from '@/pages/JournalPage'
 import PammPage from '@/pages/PammPage'
+import PammDetailsPage from '@/pages/PammDetailsPage'
 import CopyTradingPage from '@/pages/CopyTradingPage'
 import SignalsPage from '@/pages/SignalsPage'
 import {
@@ -46,6 +47,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/challenges', label: '10X Challenges', description: 'Prove your skill and level up your capital', icon: ChallengesIcon, component: ChallengesPage },
   { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon, component: AcademyPage },
   { path: '/gensocial/pamm', label: 'PAMM Strategies', description: 'Browse and invest in PAMM strategies', icon: GenSocialIcon, component: PammPage },
+  { path: '/gensocial/pamm/details-single-page', label: 'PAMM Details', description: 'PAMM strategy single page details', icon: GenSocialIcon, component: PammDetailsPage, showInDirectory: false },
   { path: '/gensocial/copy-trading', label: 'Copy Trading', description: 'Copy top-performing traders automatically', icon: GenSocialIcon, component: CopyTradingPage },
   { path: '/gensocial/signals', label: 'Signals', description: 'Follow expert signal providers and trade ideas', icon: GenSocialIcon, component: SignalsPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },

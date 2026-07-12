@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput } from '@/components/ui'
@@ -96,6 +97,7 @@ function MiniAreaChart({ data }: { data: number[] }) {
 /* ─── Strategy Card ─── */
 
 function StrategyCard({ strategy }: { strategy: PammStrategy }) {
+  const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
       <div className="relative pt-[31px] pb-[35px] pl-[25px] pr-[24px] flex flex-col items-center gap-[22px]">
@@ -105,9 +107,11 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
             <span className="text-white text-[16px] font-acid font-medium">{strategy.initials}</span>
           </div>
           <div className="flex-1 min-w-0 pt-1">
-            <div className="flex items-center gap-1.5">
+            <div className="flex justify-between items-center w-full">
               <span className="text-white text-[16px] font-acid font-medium truncate">{strategy.name}</span>
-              {strategy.verified && <VerifiedIcon />}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                <path d="M7.91243 0.550781L10.1869 5.15856L15.2731 5.90199L11.5928 9.48664L12.4613 14.5508L7.91243 12.1586L3.36354 14.5508L4.23209 9.48664L0.551758 5.90199L5.63798 5.15856L7.91243 0.550781Z" stroke="#808080" strokeWidth="1.1041" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
             <div className="flex items-center gap-2 mt-1.5">
               <div className="flex items-center gap-1">
@@ -155,7 +159,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
 
         {/* Action Buttons */}
         <div className="flex gap-3 w-full px-6">
-          <SparkleButton className="px-[22px] flex-1">
+          <SparkleButton className="px-[22px] flex-1" onClick={() => navigate('/gensocial/pamm/details-single-page')}>
             <span className="flex items-center justify-center gap-[9px]">
               <span>Details</span>
               <ChevronRightIcon size={27} color="#c6c6c6" />
