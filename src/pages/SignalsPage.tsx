@@ -454,6 +454,69 @@ export default function SignalsPage() {
           </div>
         )}
 
+        {/* Provider Tab */}
+        {activeTab === 3 && (
+          <div className="flex flex-col gap-5">
+            {/* Become a Provider Banner */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
+              <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
+              <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div className="flex-1">
+                  <h2 className="text-white text-[clamp(1.5rem,1.25rem+0.5vw,2rem)] font-acid leading-tight">Become a Signal Provider</h2>
+                  <p className="text-[#808080] text-[16px] font-acid leading-[1.2] mt-4 max-w-[500px]">
+                    Share your trading signals with followers, build your reputation, and earn revenue from your strategies.
+                  </p>
+                  <div className="flex items-center gap-3 mt-6">
+                    <GlowButton label="Apply Now" width={160} />
+                  </div>
+                </div>
+                <div className="flex gap-[10px]">
+                  <div className="border border-[#303030] rounded-[12px] h-[80px] w-[120px] flex flex-col items-center justify-center gap-[6px]">
+                    <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">0</span>
+                    <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Signals</span>
+                  </div>
+                  <div className="border border-[#303030] rounded-[12px] h-[80px] w-[120px] flex flex-col items-center justify-center gap-[6px]">
+                    <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">0</span>
+                    <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Followers</span>
+                  </div>
+                  <div className="border border-[#303030] rounded-[12px] h-[80px] w-[120px] flex flex-col items-center justify-center gap-[6px]">
+                    <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">$0</span>
+                    <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Revenue</span>
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
+
+            {/* Signals Published Section */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <div className="relative p-6 lg:p-8 min-h-[421px] flex flex-col">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-white text-[24px] font-acid leading-none">Signals Published</h3>
+                  <SearchInput
+                    placeholder="Search signals"
+                    className="w-[287px]"
+                  />
+                </div>
+
+                <div className="flex-1 flex flex-col items-center justify-center py-10">
+                  <div className="w-[70px] h-[70px] rounded-full bg-[#09241c] flex items-center justify-center mb-6">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                      <path d="M18 7.5V28.5" stroke="#00b38c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7.5 18H28.5" stroke="#00b38c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white text-[24px] font-acid leading-none mb-3 text-center">No signals published</h3>
+                  <p className="text-[#808080] text-[16px] font-acid leading-[1.2] max-w-[396px] text-center mb-6">
+                    Start sharing your trading signals with followers. Your published signals will appear here.
+                  </p>
+                  <SparkleButton className="px-6">Post Signal</SparkleButton>
+                </div>
+              </div>
+            </GlassCard>
+          </div>
+        )}
+
         {/* Hero Banner */}
         {activeTab === 0 && (<>
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
