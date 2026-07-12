@@ -125,64 +125,87 @@ function PortfolioChart() {
 
 /* ─── Performance Calendar Grid ─── */
 
-const monthlyPerformance = [
-  { month: 'Jan', value: '+139.90%' },
-  { month: 'Feb', value: '+3.42%' },
-  { month: 'Mar', value: '+3.42%' },
-  { month: 'Apr', value: '+3.42%' },
-  { month: 'May', value: null },
-  { month: 'Jun', value: null },
-  { month: 'Jul', value: null },
-  { month: 'Aug', value: null },
-  { month: 'Sep', value: null },
-  { month: 'Oct', value: null },
-  { month: 'Nov', value: null },
-  { month: 'Dec', value: null },
+type MonthEntry = { month: string; value: string | null; type: 'positive' | 'negative' | 'empty' }
+
+const monthlyPerformance: MonthEntry[] = [
+  { month: 'Jan', value: '+139.90%', type: 'positive' },
+  { month: 'Feb', value: '+3.42%', type: 'positive' },
+  { month: 'Mar', value: '+3.42%', type: 'negative' },
+  { month: 'Apr', value: '+3.42%', type: 'negative' },
+  { month: 'May', value: null, type: 'empty' },
+  { month: 'Jun', value: null, type: 'empty' },
+  { month: 'Jul', value: null, type: 'empty' },
+  { month: 'Aug', value: null, type: 'empty' },
+  { month: 'Sep', value: null, type: 'empty' },
+  { month: 'Oct', value: null, type: 'empty' },
+  { month: 'Nov', value: null, type: 'empty' },
+  { month: 'Dec', value: null, type: 'empty' },
 ]
+
+const CELL_STYLES = {
+  positive: 'bg-[#09241c] border border-[#00B38C]',
+  negative: 'bg-[#2A1411] border border-[#7F3B34]',
+  empty: 'border border-[#064B34]',
+} as const
+
+const TEXT_STYLES = {
+  positive: 'text-[#00B38C]',
+  negative: 'text-[#D46356]',
+  empty: '',
+} as const
 
 function PerformanceGrid() {
   return (
-    <div className="w-full">
-      <div className="flex items-start gap-0">
-        <div className="flex flex-col items-start pt-[2.375rem]">
-          <span className="text-[#808080] text-[0.6875rem] font-acid">Year</span>
-          <div className="h-[2.8125rem] flex items-center mt-[0.6875rem]">
-            <span className="text-white text-[0.6875rem] font-acid">2026</span>
+    <div className="relative w-full bg-[#0C1311] rounded-[18.56px] border border-[#0C1311] overflow-hidden p-8">
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[259px] w-[493px] h-[278px] rounded-full bg-[#064B34] blur-[157px]" />
+      <div className="relative">
+        <div className="flex items-start">
+          {/* Year column */}
+          <div className="flex flex-col items-start w-[60px] flex-shrink-0">
+            <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px]">Year</span>
+            <div className="h-[45px] flex items-center mt-3">
+              <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px]">2026</span>
+            </div>
           </div>
-        </div>
-        <div className="flex-1 overflow-x-auto">
-          <div className="flex gap-[0.0625rem] min-w-max pl-6">
+          {/* Month cells */}
+          <div className="flex-1 flex gap-[10px]">
             {monthlyPerformance.map(m => (
-              <div key={m.month} className="flex flex-col items-center w-[6.1875rem]">
-                <span className="text-[#808080] text-[0.6875rem] font-acid mb-[0.6875rem]">{m.month}</span>
-                <div className={`w-full h-[2.8125rem] rounded-[0.375rem] flex items-center justify-center ${
-                  m.value ? 'bg-[#0a2e1f]' : 'bg-[#09241c]'
-                }`}>
-                  {m.value && <span className="text-[#10BC83] text-[0.6875rem] font-acid">{m.value}</span>}
+              <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
+                <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
+                <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
+                  {m.value && <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
             ))}
-            <div className="flex flex-col items-center w-[6.1875rem]">
-              <span className="text-[#808080] text-[0.6875rem] font-acid mb-[0.6875rem]">Ann</span>
-              <div className="w-full h-[2.8125rem] rounded-[0.375rem] bg-[#0a2e1f] flex items-center justify-center">
-                <span className="text-[#10BC83] text-[0.6875rem] font-acid">+3.42%</span>
+            {/* Ann column */}
+            <div className="flex flex-col items-center flex-1 min-w-0">
+              <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Ann</span>
+              <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES.positive}`}>
+                <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex items-center justify-center gap-6 mt-5">
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-[0.25rem] bg-[#0a2e1f]" />
-          <span className="text-[#808080] text-[0.6875rem] font-acid">Positive turn</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-[0.25rem] bg-[#2e0a0a]" />
-          <span className="text-[#808080] text-[0.6875rem] font-acid">Negative turn</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-[0.25rem] bg-[#09241c]" />
-          <span className="text-[#808080] text-[0.6875rem] font-acid">No trades</span>
+        {/* Legend */}
+        <div className="flex items-center justify-center gap-8 mt-8">
+          <div className="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 0.5H18C18.8284 0.5 19.5 1.17157 19.5 2V18C19.5 18.8284 18.8284 19.5 18 19.5H2C1.17157 19.5 0.5 18.8284 0.5 18V2C0.5 1.17157 1.17157 0.5 2 0.5Z" fill="#09241C" stroke="#00B38C"/>
+            </svg>
+            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">Positive turn</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" fill="#2A1411" stroke="#7F3B34"/>
+            </svg>
+            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">Negative turn</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" stroke="#064B34"/>
+            </svg>
+            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">No trades</span>
+          </div>
         </div>
       </div>
     </div>
