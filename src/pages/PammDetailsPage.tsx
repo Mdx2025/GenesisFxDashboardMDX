@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
+import { ConnectPammModal } from '@/components/dashboard/ConnectPammModal'
 import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
@@ -316,6 +317,7 @@ export default function PammDetailsPage() {
   const navigate = useNavigate()
   const [perfTab, setPerfTab] = useState(0)
   const [tradeTab, setTradeTab] = useState(1)
+  const [connectModalOpen, setConnectModalOpen] = useState(false)
   const perfTabs = ['Performance Statement', 'Trading Statistics', 'Trade Calendar'] as const
   const tradeTabs = ['Open Positions', 'Closed Trades'] as const
 
@@ -370,6 +372,7 @@ export default function PammDetailsPage() {
                   <path d="M13.0394 2.51775C12.773 2.35791 12.4275 2.44429 12.2677 2.71068L12.4538 3.4783L12.4597 3.48229C12.4684 3.48844 12.4851 3.5006 12.5071 3.51893C12.5514 3.55589 12.6149 3.61571 12.6791 3.6993C12.8045 3.86225 12.9375 4.11958 12.9375 4.50009C12.9375 4.88059 12.8045 5.13792 12.6791 5.30087C12.6149 5.38446 12.5514 5.44428 12.5071 5.48124C12.4851 5.49957 12.4684 5.51173 12.4597 5.51788L12.4538 5.52187C12.1928 5.68346 12.1092 6.02537 12.2677 6.28949C12.4275 6.55588 12.773 6.64226 13.0394 6.48242L12.75 6.00009C13.0394 6.48242 13.0392 6.48257 13.0394 6.48242L13.0404 6.48182L13.0415 6.48117L13.0439 6.47973L13.0494 6.47628L13.0639 6.46712C13.0749 6.46 13.0887 6.45081 13.1048 6.43952C13.137 6.41696 13.179 6.38576 13.2273 6.34549C13.3236 6.26527 13.4476 6.14696 13.5709 5.9868C13.8205 5.66225 14.0625 5.16958 14.0625 4.50009C14.0625 3.83059 13.8205 3.33792 13.5709 3.01337C13.4476 2.85321 13.3236 2.7349 13.2273 2.65468C13.179 2.61441 13.137 2.58321 13.1048 2.56065C13.0887 2.54936 13.0749 2.54017 13.0639 2.53305L13.0494 2.52389L13.0439 2.52044L13.0415 2.519L13.0404 2.51835C13.0402 2.5182 13.0394 2.51775 12.75 3.00008L13.0394 2.51775Z" fill="black"/>
                 </svg>
               }
+              onClick={() => setConnectModalOpen(true)}
             />
           </div>
         </div>
@@ -568,6 +571,11 @@ export default function PammDetailsPage() {
         </GlassCard>
 
       </div>
+
+      <ConnectPammModal
+        open={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
     </div>
   )
 }
