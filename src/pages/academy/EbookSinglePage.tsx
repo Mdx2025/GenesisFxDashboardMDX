@@ -207,15 +207,16 @@ export default function EbookSinglePage() {
         {/* Fixed Bottom Bar */}
         <div className="shrink-0 border-t border-[#303030] bg-[#0c1311] px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14">
           <div className="flex items-center justify-between h-[88px] gap-4">
-            <SparkleButton onClick={() => setActiveChapter(prev => Math.max(1, prev - 1))} className="px-[22px] shrink-0">
-              <ChevronLeftIcon /> Previous
-            </SparkleButton>
+            <button
+              type="button"
+              onClick={() => setActiveChapter(prev => Math.max(1, prev - 1))}
+              className="flex items-center gap-2 text-[#a0a0a0] hover:text-white transition-colors cursor-pointer shrink-0"
+            >
+              <ChevronLeftIcon />
+              <span className="text-[16px] font-acid leading-[24.44px]">Previous</span>
+            </button>
 
-            <SparkleButton className="px-5 shrink-0">
-              <CheckIcon /> Mark as read
-            </SparkleButton>
-
-            <div className="flex items-center gap-4 shrink-0">
+            <div className="flex items-center gap-8">
               <div className="hidden sm:flex flex-col items-end gap-0.5">
                 <span className="text-[14px] font-acid text-[#808080] leading-[18.8px]">PROGRESS</span>
                 <span className="text-[16px] font-acid-medium text-white leading-[24.44px]">{progress}%</span>
@@ -226,12 +227,17 @@ export default function EbookSinglePage() {
                   />
                 </div>
               </div>
-              <GlowButton
-                label="Next Chapter"
-                width={180}
-                height={46}
-                onClick={() => setActiveChapter(prev => Math.min(totalChapters, prev + 1))}
-              />
+              <div className="flex items-center gap-2">
+                <SparkleButton className="px-5 shrink-0">
+                  <CheckIcon /> Mark as read
+                </SparkleButton>
+                <GlowButton
+                  label="Next Chapter"
+                  width={180}
+                  height={46}
+                  onClick={() => setActiveChapter(prev => Math.min(totalChapters, prev + 1))}
+                />
+              </div>
             </div>
           </div>
         </div>
