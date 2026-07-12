@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
-import { signalProviders, signalTabs, signalFilterTabs } from '@/data/signals'
+import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
 
 /* ─── Inline SVG Icons ─── */
@@ -59,6 +59,27 @@ function CheckCircleIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#00b38c" />
+    </svg>
+  )
+}
+
+function TrophyIcon({ size = 32 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <path d="M8 21H16" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 17V21" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7 4V7C7 9.76 9.24 12 12 12C14.76 12 17 9.76 17 7V4" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5 4H19" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M17 7C17 7 19 8 20 10C21 12 20 14 18 14" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7 7C7 7 5 8 4 10C3 12 4 14 6 14" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function ProviderBadgeIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1L8.5 4.5L12.5 5L9.75 7.5L10.5 11.5L7 9.5L3.5 11.5L4.25 7.5L1.5 5L5.5 4.5L7 1Z" fill="#00b38c" />
     </svg>
   )
 }
@@ -295,6 +316,7 @@ export default function SignalsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [searchQuery, setSearchQuery] = useState('')
   const [providers, setProviders] = useState(signalProviders)
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
   const handleToggleFollow = (id: string) => {
     setProviders(prev => prev.map(p => p.id === id ? { ...p, following: !p.following } : p))
@@ -456,64 +478,64 @@ export default function SignalsPage() {
 
         {/* Provider Tab */}
         {activeTab === 3 && (
-          <div className="flex flex-col gap-5">
-            {/* Become a Provider Banner */}
-            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
-              <GlowEllipse className="-left-[100px] -top-[80px] !w-[30rem] !h-[17rem]" />
-              <div className="relative p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-                <div className="flex-1">
-                  <h2 className="text-white text-[clamp(1.5rem,1.25rem+0.5vw,2rem)] font-acid leading-tight">Become a Signal Provider</h2>
-                  <p className="text-[#808080] text-[16px] font-acid leading-[1.2] mt-4 max-w-[500px]">
-                    Share your trading signals with followers, build your reputation, and earn revenue from your strategies.
-                  </p>
-                  <div className="flex items-center gap-3 mt-6">
-                    <GlowButton label="Apply Now" width={160} />
-                  </div>
+          <div className="flex flex-col gap-10">
+            {/* Hero Banner */}
+            <GlassCard variant="light" divider="none" rounded="22px" className="relative overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[280px] !w-[45rem] !h-[28rem]" />
+              <GlowEllipse className="right-[-200px] -bottom-[200px] !w-[45rem] !h-[28rem]" />
+              <GlowEllipse className="left-[-300px] bottom-[-100px] !w-[31rem] !h-[17rem]" />
+
+              <div className="relative flex flex-col items-center text-center px-6 py-14 lg:py-16 min-h-[412px] justify-center">
+                {/* Trophy icon — top right */}
+                <div className="absolute right-8 top-8 hidden lg:block">
+                  <TrophyIcon size={32} />
                 </div>
-                <div className="flex gap-[10px]">
-                  <div className="border border-[#303030] rounded-[12px] h-[80px] w-[120px] flex flex-col items-center justify-center gap-[6px]">
-                    <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">0</span>
-                    <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Signals</span>
-                  </div>
-                  <div className="border border-[#303030] rounded-[12px] h-[80px] w-[120px] flex flex-col items-center justify-center gap-[6px]">
-                    <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">0</span>
-                    <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Followers</span>
-                  </div>
-                  <div className="border border-[#303030] rounded-[12px] h-[80px] w-[120px] flex flex-col items-center justify-center gap-[6px]">
-                    <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">$0</span>
-                    <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Revenue</span>
-                  </div>
+
+                {/* Program badge */}
+                <div className="inline-flex items-center gap-2 h-[27px] px-4 rounded-full bg-[#09241c] border border-[#064b34] mb-8">
+                  <ProviderBadgeIcon />
+                  <span className="text-[#00b38c] text-[12px] font-acid leading-[18.8px] whitespace-nowrap">Genesis Signal Provider Program</span>
                 </div>
+
+                {/* Heading */}
+                <h2 className="text-white text-[clamp(2rem,1.5rem+1.5vw,3.125rem)] font-acid leading-none max-w-[633px]">
+                  Turn Your Trades Into Recurring Income
+                </h2>
+
+                {/* Subtitle */}
+                <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px] mt-5 max-w-[366px]">
+                  Publish your signals, grow a following, and earn monthly subscription plus performance fees.
+                </p>
+
+                {/* CTA Button */}
+                <div className="mt-7">
+                  <GlowButton label="Become a provider" width={220} />
+                </div>
+
+                {/* Caption */}
+                <p className="text-[#a0a0a0] text-[12px] font-acid leading-[18.8px] mt-5">
+                  Free to start · No upfront cost
+                </p>
               </div>
             </GlassCard>
 
-            {/* Signals Published Section */}
-            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <div className="relative p-6 lg:p-8 min-h-[421px] flex flex-col">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-white text-[24px] font-acid leading-none">Signals Published</h3>
-                  <SearchInput
-                    placeholder="Search signals"
-                    className="w-[287px]"
+            {/* FAQ Section */}
+            <div className="flex flex-col items-center gap-6">
+              <h2 className="text-white text-[clamp(1.5rem,1.25rem+0.75vw,3.125rem)] font-acid leading-none self-start lg:self-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="w-full max-w-[756px] flex flex-col gap-4 mx-auto">
+                {providerFaqs.map((faq, i) => (
+                  <FaqCard
+                    key={i}
+                    question={faq.question}
+                    answer={faq.answer}
+                    expanded={expandedFaq === i}
+                    onToggle={() => setExpandedFaq(expandedFaq === i ? null : i)}
                   />
-                </div>
-
-                <div className="flex-1 flex flex-col items-center justify-center py-10">
-                  <div className="w-[70px] h-[70px] rounded-full bg-[#09241c] flex items-center justify-center mb-6">
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                      <path d="M18 7.5V28.5" stroke="#00b38c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M7.5 18H28.5" stroke="#00b38c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white text-[24px] font-acid leading-none mb-3 text-center">No signals published</h3>
-                  <p className="text-[#808080] text-[16px] font-acid leading-[1.2] max-w-[396px] text-center mb-6">
-                    Start sharing your trading signals with followers. Your published signals will appear here.
-                  </p>
-                  <SparkleButton className="px-6">Post Signal</SparkleButton>
-                </div>
+                ))}
               </div>
-            </GlassCard>
+            </div>
           </div>
         )}
 
