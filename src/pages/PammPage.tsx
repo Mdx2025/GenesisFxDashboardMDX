@@ -98,9 +98,9 @@ function MiniAreaChart({ data }: { data: number[] }) {
 function StrategyCard({ strategy }: { strategy: PammStrategy }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
-      <div className="relative p-6 pb-0 flex flex-col flex-1">
-        {/* Header: Avatar + Name + Verified */}
-        <div className="flex items-start gap-3">
+      <div className="relative pt-[31px] pb-[35px] pl-[25px] pr-[24px] flex flex-col items-center gap-[22px]">
+        {/* Header: Avatar + Name + Verified + Stats */}
+        <div className="flex items-start gap-3 w-full">
           <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
             <span className="text-white text-[16px] font-acid font-medium">{strategy.initials}</span>
           </div>
@@ -114,60 +114,60 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
                 <UserRoundedIcon size={20} />
                 <span className="text-[#a0a0a0] text-[16px] font-acid font-medium">{strategy.investors}</span>
               </div>
-              <div className="w-px h-5 bg-white/10" />
+              <div className="w-px h-5 bg-[#09241c]" />
               <span className="text-[#a0a0a0] text-[16px] font-acid font-medium">AUM: {strategy.aum}</span>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-white/5 mt-4" />
-
-        {/* ROI Section */}
-        <div className="flex items-start justify-between mt-4">
+        {/* ROI + Days Badge */}
+        <div className="flex items-start justify-between w-full">
           <div>
-            <p className="text-[#a0a0a0] text-[16px] font-acid font-medium">ROI</p>
-            <p className="text-[#10BC83] text-[24px] font-acid mt-2">{strategy.roi}%</p>
+            <p className="text-[#a0a0a0] text-[16px] font-acid font-medium leading-[24.44px]">ROI</p>
+            <p className="text-[#10BC83] text-[24px] font-acid">{strategy.roi}%</p>
           </div>
-          <div className="border border-[#303030] rounded-full px-3 py-1.5 mt-1">
-            <span className="text-white text-[16px] font-acid font-medium">{strategy.roiDays}D</span>
+          <div className="border border-[#303030] rounded-full px-[11px] py-[11px]">
+            <span className="text-white text-[16px] font-acid font-medium leading-[24.44px]">{strategy.roiDays}D</span>
           </div>
         </div>
 
         {/* Chart area */}
-        <div className="h-[52px] mt-2">
+        <div className="w-full h-[53px]">
           <MiniAreaChart data={strategy.chartData} />
         </div>
 
+        {/* Divider */}
+        <div className="w-full h-px bg-[#09241c]" />
+
         {/* Bottom Stats */}
-        <div className="bg-[#09241c] rounded-[9px] p-5 mt-4">
+        <div className="w-full bg-[#09241c] rounded-[9px] px-5 py-4">
           <div className="flex justify-between">
             <div>
-              <p className="text-[#808080] text-[16px] font-acid font-medium">Min Investment</p>
-              <p className="text-white text-[16px] font-acid font-medium mt-2">${strategy.minInvestment.toFixed(2)}</p>
+              <p className="text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Min Investment</p>
+              <p className="text-white text-[16px] font-acid font-medium leading-[24.44px] mt-2">${strategy.minInvestment.toFixed(2)}</p>
             </div>
             <div className="text-right">
-              <p className="text-[#808080] text-[16px] font-acid font-medium">Total P&L</p>
-              <p className="text-[#00b38c] text-[16px] font-acid font-medium mt-2">${strategy.totalPnl.toFixed(2)}</p>
+              <p className="text-[#808080] text-[16px] font-acid font-medium leading-[24.44px]">Total P&L</p>
+              <p className="text-[#00b38c] text-[16px] font-acid font-medium leading-[25.14px] mt-2">${strategy.totalPnl.toFixed(2)}</p>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Action Buttons */}
-      <div className="flex gap-2 p-6 pt-5">
-        <SparkleButton className="px-5 flex-1">
-          <span className="flex items-center justify-center gap-2">
-            <span>Details</span>
-            <ChevronRightIcon size={18} color="#c6c6c6" />
-          </span>
-        </SparkleButton>
-        <SparkleButton className="px-5 flex-1">
-          <span className="flex items-center justify-center gap-2">
-            <span>Connect</span>
-            <ChevronRightIcon size={18} color="#c6c6c6" />
-          </span>
-        </SparkleButton>
+        {/* Action Buttons */}
+        <div className="flex gap-3 w-full">
+          <SparkleButton className="px-[22px] flex-1">
+            <span className="flex items-center justify-center gap-[9px]">
+              <span>Details</span>
+              <ChevronRightIcon size={27} color="#c6c6c6" />
+            </span>
+          </SparkleButton>
+          <SparkleButton className="px-[22px] flex-1">
+            <span className="flex items-center justify-center gap-[9px]">
+              <span>Connect</span>
+              <ChevronRightIcon size={27} color="#c6c6c6" />
+            </span>
+          </SparkleButton>
+        </div>
       </div>
     </GlassCard>
   )
