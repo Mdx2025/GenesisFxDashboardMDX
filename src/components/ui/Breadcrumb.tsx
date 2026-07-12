@@ -2,6 +2,7 @@ interface BreadcrumbItem {
   label: string
   href?: string
   current?: boolean
+  onClick?: () => void
 }
 
 interface BreadcrumbProps {
@@ -29,6 +30,8 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
             {i > 0 && <span>/</span>}
             {item.current ? (
               <span aria-current="page">{item.label}</span>
+            ) : item.onClick ? (
+              <button type="button" onClick={item.onClick} className="hover:text-white transition-colors cursor-pointer">{item.label}</button>
             ) : (
               <a href={item.href || '#'} className="hover:text-white transition-colors">{item.label}</a>
             )}
