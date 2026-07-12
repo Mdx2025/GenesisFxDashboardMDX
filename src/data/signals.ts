@@ -24,5 +24,5 @@ export const signalProviders: SignalProvider[] = [
   { id: '8', initials: 'EA', username: '@king_easy', tag: 'GFX', following: false, pair: 'XAUUSD', pnl30d: -84.70, trades: 4, pricePerMonth: 'Free', profitShare: '0%', followers: 11, chartData: [82, 76, 72, 66, 62, 56, 52, 46, 44, 40, 36, 32] },
 ]
 
-export const signalTabs = ['Signal Feed', 'Follower', 'Provider', 'Marketplace'] as const
+export const signalTabs = ['Marketplace', 'Signal Feed', 'Follower', 'Provider'] as const
 export const signalFilterTabs = ['All strategies', 'Recommended', 'Following'] as const
