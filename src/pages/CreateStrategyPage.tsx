@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassInput, GlassSelect, GlowButton, SparkleButton, GlowEllipse } from '@/components/ui'
+import { GlassCard, GlassInput, GlassTextarea, GlassSelect, GlowButton, SparkleButton, GlowEllipse } from '@/components/ui'
 
 /* ─── Toggle Switch ─── */
 
@@ -199,13 +199,7 @@ export default function CreateStrategyPage() {
 
             <div>
               <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-1">Strategy Description</label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Enter Strategy Description"
-                rows={4}
-                className="w-full bg-[#0C1311] font-acid text-white placeholder:text-[#808080] rounded-[20px] px-4 py-4 text-[1rem] outline-none border border-[#064B34] focus:border-[rgba(16,188,131,0.5)] transition-[border-color] duration-200 resize-none"
-              />
+              <GlassTextarea placeholder="Enter Strategy Description" value={description} onChange={setDescription} rows={4} />
             </div>
 
             <div>

@@ -6,6 +6,7 @@ interface GlassInputProps {
   type?: 'text' | 'number' | 'password'
   value?: string
   onChange?: (value: string) => void
+  suffix?: React.ReactNode
 }
 
 function EyeIcon() {
@@ -17,12 +18,13 @@ function EyeIcon() {
   )
 }
 
-export function GlassInput({ label, placeholder = '0.00', type = 'text', value: controlledValue, onChange }: GlassInputProps) {
+export function GlassInput({ label, placeholder = '0.00', type = 'text', value: controlledValue, onChange, suffix }: GlassInputProps) {
   const [internalValue, setInternalValue] = useState('')
   const [focused, setFocused] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const value = controlledValue ?? internalValue
   const isPassword = type === 'password'
+  const hasRight = isPassword || !!suffix
 
   function handleChange(raw: string) {
     if (type === 'number') {
@@ -53,7 +55,7 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className={`w-full bg-[#0C1311] font-acid text-white placeholder:text-[#808080] h-[3.125rem] rounded-[1.875rem] px-[1rem] ${isPassword ? 'pr-[3rem]' : ''} text-[1rem] outline-none transition-[border-color] duration-200 ${
+          className={`w-full bg-[#0C1311] font-acid text-white placeholder:text-[#808080] h-[3.125rem] rounded-[1.875rem] px-[1rem] ${hasRight ? 'pr-[3rem]' : ''} text-[1rem] outline-none transition-[border-color] duration-200 ${
             focused ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#064B34]'
           }`}
         />
@@ -66,6 +68,11 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
           >
             <EyeIcon />
           </button>
+        )}
+        {!isPassword && suffix && (
+          <div className="absolute right-4 top-1/2 -translate-y-1/2">
+            {suffix}
+          </div>
         )}
       </div>
     </div>

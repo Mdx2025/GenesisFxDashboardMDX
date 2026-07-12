@@ -1,0 +1,41 @@
+import { useState } from 'react'
+
+interface GlassTextareaProps {
+  label?: string
+  placeholder?: string
+  value?: string
+  onChange?: (value: string) => void
+  rows?: number
+}
+
+export function GlassTextarea({ label, placeholder = '', value: controlledValue, onChange, rows = 4 }: GlassTextareaProps) {
+  const [internalValue, setInternalValue] = useState('')
+  const [focused, setFocused] = useState(false)
+  const value = controlledValue ?? internalValue
+
+  function handleChange(raw: string) {
+    if (controlledValue === undefined) setInternalValue(raw)
+    onChange?.(raw)
+  }
+
+  return (
+    <div>
+      {label && (
+        <label className="block text-white font-acid font-medium text-[1rem] leading-[1.528rem] mb-[0.125rem]">
+          {label}
+        </label>
+      )}
+      <textarea
+        value={value}
+        placeholder={placeholder}
+        rows={rows}
+        onChange={(e) => handleChange(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        className={`w-full bg-[#0C1311] font-acid text-white placeholder:text-[#808080] rounded-[1.25rem] px-[1rem] py-[1rem] text-[1rem] outline-none resize-none transition-[border-color] duration-200 ${
+          focused ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#064B34]'
+        }`}
+      />
+    </div>
+  )
+}

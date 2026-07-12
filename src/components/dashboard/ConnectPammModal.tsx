@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlowButton, GlassCard, GlowEllipse } from '@/components/ui'
+import { GlowButton, GlassCard, GlassInput, GlowEllipse } from '@/components/ui'
 
 function InfoIcon() {
   return (
@@ -188,22 +188,21 @@ export function ConnectPammModal({
 
             {/* Investment Input */}
             <div className="mt-[35px]">
-              <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px] mb-[12px]">Investment</p>
-              <div className="h-[50px] rounded-[30px] bg-[#101e1a] border border-[#404040] flex items-center px-[18px]">
-                <input
-                  type="number"
-                  placeholder="Min $50.00"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  className="flex-1 bg-transparent text-white text-[1rem] font-acid outline-none placeholder:text-[#808080] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                />
-                <button
-                  onClick={() => setAmount('100')}
-                  className="text-[#808080] text-[1rem] font-acid cursor-pointer hover:text-white transition-colors"
-                >
-                  MAX
-                </button>
-              </div>
+              <GlassInput
+                label="Investment"
+                type="number"
+                placeholder="Min $50.00"
+                value={amount}
+                onChange={setAmount}
+                suffix={
+                  <button
+                    onClick={() => setAmount('100')}
+                    className="text-[#808080] text-[1rem] font-acid cursor-pointer hover:text-white transition-colors"
+                  >
+                    MAX
+                  </button>
+                }
+              />
             </div>
 
             {/* Checkboxes */}
