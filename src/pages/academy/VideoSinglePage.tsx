@@ -225,7 +225,7 @@ export default function VideoSinglePage() {
         </div>
 
         {/* Fixed Bottom Bar */}
-        <div className="shrink-0 border-t border-[#303030] bg-[#0c1311] px-4 xl:px-8 2xl:px-10 3xl:px-14 4xl:px-18">
+        <div className="shrink-0 border-t border-[#303030] bg-[#0c1311] px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14">
           <div className="flex items-center justify-between h-[88px] gap-4">
             <SparkleButton onClick={() => setActiveLesson(prev => Math.max(1, prev - 1))} className="px-[22px] shrink-0">
               <ChevronLeftIcon /> Previous Lesson
