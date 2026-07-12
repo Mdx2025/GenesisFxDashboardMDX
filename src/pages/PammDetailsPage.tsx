@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -316,11 +316,8 @@ export default function PammDetailsPage() {
   const navigate = useNavigate()
   const [perfTab, setPerfTab] = useState(0)
   const [tradeTab, setTradeTab] = useState(1)
-  const [chartPeriod, setChartPeriod] = useState(5)
-
   const perfTabs = ['Performance Statement', 'Trading Statistics', 'Trade Calendar'] as const
   const tradeTabs = ['Open Positions', 'Closed Trades'] as const
-  const chartPeriods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'] as const
 
   return (
     <div className="pamm-details-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -421,24 +418,7 @@ export default function PammDetailsPage() {
                     <span className="text-[#10BC83] text-[0.625rem] font-acid">+$6,437.21 (56.1%)</span>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="flex items-center bg-[#09241c] rounded-full overflow-hidden">
-                    {chartPeriods.map((p, i) => (
-                      <button
-                        key={p}
-                        onClick={() => setChartPeriod(i)}
-                        className={`px-3 py-2 text-[0.5rem] font-acid cursor-pointer transition-colors ${
-                          chartPeriod === i ? 'bg-[#10BC83] text-black rounded-full' : 'text-[#808080] hover:text-white'
-                        }`}
-                      >
-                        {p}
-                      </button>
-                    ))}
-                  </div>
-                  <button className="ml-2 w-8 h-8 flex items-center justify-center">
-                    <CalendarIcon />
-                  </button>
-                </div>
+                <PeriodPill />
               </div>
               <PortfolioChart />
             </div>
