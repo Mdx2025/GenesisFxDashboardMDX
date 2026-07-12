@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -212,6 +212,96 @@ function PerformanceGrid() {
   )
 }
 
+/* ─── Trading Statistics ─── */
+
+function StatInfoIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 6H9.00833" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+type StatRow = {
+  label: string
+  value: string
+  valueColor?: string
+  progressBar?: { percent: number }
+}
+
+const leftStats: StatRow[] = [
+  { label: 'Total Trades', value: '266' },
+  { label: 'Profit Factor', value: '1.05' },
+  { label: 'Total Volume', value: '29.88' },
+  { label: 'Consecutive Wins', value: '8' },
+  { label: 'Consecutive Losses', value: '11' },
+  { label: 'Monthly Average', value: '+6.72%', valueColor: '#37C92E' },
+]
+
+const rightStats: StatRow[] = [
+  { label: 'Win Rate', value: '38.35%', progressBar: { percent: 38.35 } },
+  { label: 'Risk-Reward Ratio', value: '0.59' },
+  { label: 'Average Loss', value: '-$52.37', valueColor: '#D46356' },
+  { label: 'Average Win', value: '8' },
+  { label: 'Best Trade', value: '11' },
+  { label: 'Worst Trade', value: '-$523.37', valueColor: '#D46356' },
+]
+
+function StatColumn({ rows }: { rows: StatRow[] }) {
+  return (
+    <div className="flex-1">
+      {rows.map((row, i) => (
+        <div key={row.label}>
+          <div className="flex items-center justify-between py-[1.1rem] px-[1.75rem]">
+            <div className="flex items-center gap-[0.625rem]">
+              <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">{row.label}</span>
+              <StatInfoIcon />
+            </div>
+            <div className="flex items-center gap-3">
+              {row.progressBar && (
+                <div className="flex items-center gap-2">
+                  <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{row.value}</span>
+                  <div className="w-[88px] h-[9px] rounded-[60px] bg-[#09241C] relative">
+                    <div
+                      className="h-full rounded-[4.5px] bg-[#064B34]"
+                      style={{ width: `${(row.progressBar.percent / 100) * 88}px` }}
+                    />
+                  </div>
+                </div>
+              )}
+              {!row.progressBar && (
+                <span
+                  className="text-[1rem] font-acid font-medium leading-[24.44px]"
+                  style={{ color: row.valueColor || 'white' }}
+                >
+                  {row.value}
+                </span>
+              )}
+            </div>
+          </div>
+          {i < rows.length - 1 && (
+            <div className="mx-[1.75rem] h-[0.61px] bg-[#09241C]" />
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function TradingStatistics() {
+  return (
+    <div className="relative w-full bg-[#0C1311] rounded-[18.56px] border-[1.16px] border-[#0C1311] overflow-hidden" style={{ boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)' }}>
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[259px] w-[493px] h-[278px] rounded-full bg-[#064B34] blur-[157px]" />
+      <div className="relative flex">
+        <StatColumn rows={leftStats} />
+        <StatColumn rows={rightStats} />
+      </div>
+    </div>
+  )
+}
+
 /* ─── Trades Table ─── */
 
 const closedTrades = [
@@ -403,6 +493,39 @@ export default function PammDetailsPage() {
               <PerformanceGrid />
             </div>
           </GlassCard>
+        )}
+
+        {/* Trading Statistics */}
+        {perfTab === 1 && (
+          <TradingStatistics />
+        )}
+
+        {/* Trade Calendar */}
+        {perfTab === 2 && (
+          <TradingCalendar
+            trades={{
+              '2026-6-1': { profit: 120.50, trades: 5 },
+              '2026-6-2': { profit: -45.30, trades: 3 },
+              '2026-6-3': { profit: 89.20, trades: 4 },
+              '2026-6-5': { profit: -22.10, trades: 2 },
+              '2026-6-6': { profit: 156.80, trades: 6 },
+              '2026-6-9': { profit: 45.60, trades: 3 },
+              '2026-6-10': { profit: -78.40, trades: 4 },
+              '2026-6-11': { profit: 234.50, trades: 7 },
+              '2026-6-12': { profit: 12.30, trades: 2 },
+              '2026-6-13': { profit: -95.20, trades: 5 },
+              '2026-6-16': { profit: 67.80, trades: 3 },
+              '2026-6-17': { profit: 145.90, trades: 4 },
+              '2026-6-18': { profit: -33.60, trades: 2 },
+              '2026-6-19': { profit: 78.40, trades: 3 },
+              '2026-6-20': { profit: -12.50, trades: 1 },
+              '2026-6-23': { profit: 198.30, trades: 5 },
+              '2026-6-24': { profit: 56.70, trades: 3 },
+              '2026-6-25': { profit: -67.80, trades: 4 },
+              '2026-6-26': { profit: 89.10, trades: 2 },
+              '2026-6-27': { profit: 134.60, trades: 6 },
+            }}
+          />
         )}
 
         {/* Trade Tabs */}
