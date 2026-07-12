@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { ModeToggle, GlassBannerCard, CourseCard, EBookCard, GlossaryCard, EmptyState } from '@/components/ui'
@@ -136,6 +137,7 @@ function GlossarySection() {
 
 export default function AcademyPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(0)
 
   return (
@@ -177,6 +179,7 @@ export default function AcademyPage() {
                   lessons={course.lessons}
                   duration={course.duration}
                   level={course.level}
+                  onClick={() => navigate(`/academy/video-single-page?course=${course.id}`)}
                 />
               ))}
             </div>
