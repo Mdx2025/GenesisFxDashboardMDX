@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
+import { SparkleButton, GlowButton } from '@/components/ui'
 import { COURSE_DETAILS } from '@/data/academy-lessons'
 import type { Lesson } from '@/data/academy-lessons'
 
@@ -190,15 +191,9 @@ export default function VideoSinglePage() {
                 </h2>
               </div>
 
-              <button
-                type="button"
-                className="shrink-0 h-[44px] px-5 rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-[#a0a0a0] flex items-center gap-2 cursor-pointer hover:border-white/60 transition-colors"
-              >
-                <CheckIcon />
-                <span className="text-[#c6c6c6] text-[16px] font-acid-medium leading-[24.44px] whitespace-nowrap">
-                  Mark as Complete
-                </span>
-              </button>
+              <SparkleButton className="px-5 shrink-0">
+                <CheckIcon /> Mark as Complete
+              </SparkleButton>
             </div>
 
             {/* Mobile chapter list */}
@@ -232,40 +227,28 @@ export default function VideoSinglePage() {
         {/* Fixed Bottom Bar */}
         <div className="shrink-0 border-t border-[#303030] bg-[#0c1311] px-4 xl:px-8 2xl:px-10 3xl:px-14 4xl:px-18">
           <div className="flex items-center justify-between h-[88px] gap-4">
-            <button
-              type="button"
-              onClick={() => setActiveLesson(prev => Math.max(1, prev - 1))}
-              className="h-[46px] px-[22px] rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-[#a0a0a0] flex items-center gap-2 cursor-pointer hover:border-white/60 transition-colors shrink-0"
-            >
-              <ChevronLeftIcon />
-              <span className="text-[#c6c6c6] text-[16px] font-acid-medium leading-[24.44px] whitespace-nowrap">
-                Previous Lesson
-              </span>
-            </button>
+            <SparkleButton onClick={() => setActiveLesson(prev => Math.max(1, prev - 1))} className="px-[22px] shrink-0">
+              <ChevronLeftIcon /> Previous Lesson
+            </SparkleButton>
 
-            <div className="hidden sm:flex items-center gap-4 flex-1 justify-end max-w-[300px]">
-              <div className="flex flex-col items-end gap-0.5">
+            <div className="flex items-center gap-4 shrink-0">
+              <div className="hidden sm:flex flex-col items-end gap-0.5">
                 <span className="text-[14px] font-acid text-[#808080] leading-[18.8px]">PROGRESS</span>
                 <span className="text-[16px] font-acid-medium text-white leading-[24.44px]">{progress}%</span>
+                <div className="w-[160px] h-[4px] bg-[#09241c] rounded-full overflow-hidden mt-0.5">
+                  <div
+                    className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
+                    style={{ width: `${Math.max(progress, 0)}%` }}
+                  />
+                </div>
               </div>
-              <div className="w-[160px] h-[4px] bg-[#09241c] rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
-                  style={{ width: `${Math.max(progress, 0)}%` }}
-                />
-              </div>
+              <GlowButton
+                label="Next Lesson"
+                width={180}
+                height={46}
+                onClick={() => setActiveLesson(prev => Math.min(totalLessons, prev + 1))}
+              />
             </div>
-
-            <button
-              type="button"
-              onClick={() => setActiveLesson(prev => Math.min(totalLessons, prev + 1))}
-              className="h-[46px] px-[22px] rounded-full cursor-pointer relative overflow-hidden shrink-0"
-            >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-neutral-300 to-teal-100" />
-              <span className="relative z-10 text-black text-[16px] font-acid-medium leading-[24.44px] whitespace-nowrap">
-                Next Lesson
-              </span>
-            </button>
           </div>
         </div>
       </div>
