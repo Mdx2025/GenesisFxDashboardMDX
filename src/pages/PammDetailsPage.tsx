@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -346,12 +346,8 @@ export default function PammDetailsPage() {
           </div>
           <h1 className="text-white text-h1 font-normal">Bitcoin King</h1>
           <div className="flex items-center gap-2 ml-2">
-            <div className="px-[1.125rem] py-[0.625rem] rounded-full border border-[#303030] bg-transparent">
-              <span className="text-white text-[0.5rem] font-acid">GenFX</span>
-            </div>
-            <div className="px-[1.125rem] py-[0.625rem] rounded-full border border-[#303030] bg-transparent">
-              <span className="text-white text-[0.5rem] font-acid">Rank 2</span>
-            </div>
+            <Badge variant="active">GenFX</Badge>
+            <Badge variant="active">Rank 2</Badge>
           </div>
           <div className="ml-auto flex items-center gap-3">
             <button className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer">
