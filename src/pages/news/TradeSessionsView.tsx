@@ -94,11 +94,41 @@ function SessionCard({ session }: { session: TradeSession }) {
 
 function ActiveSessionPill({ city }: { city: string }) {
   return (
-    <div className="flex items-center gap-3.5 px-[18px] py-2.5 rounded-full backdrop-blur-[4px] bg-stat-pill border border-white/5">
-      <div className="relative w-[41px] h-[41px]">
-        <div className="absolute inset-0 rounded-full bg-[#00f0a0]/15 animate-pulse" />
-        <div className="absolute inset-[6px] rounded-full bg-[#00f0a0]/25" />
-        <div className="absolute inset-[12px] rounded-full bg-[#00f0a0] shadow-glow-green" />
+    <div
+      className="inline-flex items-center gap-3.5 px-[18px] py-2.5 rounded-[30px] backdrop-blur-[4.05px]"
+      style={{
+        background:
+          'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, rgba(8, 18, 15, 0.50) 19%, rgba(17, 31, 27, 0.50) 73%)',
+      }}
+    >
+      <div className="relative w-[47px] h-[47px]">
+        <svg className="absolute inset-0" width="47" height="47" viewBox="0 0 47 47" fill="none">
+          <g filter="url(#pill-ring)">
+            <circle cx="23.2" cy="23.2" r="20" stroke="#CFF2E6" />
+          </g>
+          <defs>
+            <filter id="pill-ring" x="0" y="0" width="46.4" height="46.4" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feGaussianBlur stdDeviation="1.35" result="blur" />
+            </filter>
+          </defs>
+        </svg>
+        <svg className="absolute inset-0 m-auto" width="39" height="39" viewBox="0 0 39 39" fill="none">
+          <g filter="url(#pill-glow)">
+            <circle cx="19.1" cy="19.1" r="14.5" fill="#064B34" />
+          </g>
+          <defs>
+            <filter id="pill-glow" x="0" y="0" width="38.2" height="38.2" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feGaussianBlur stdDeviation="2.3" result="blur" />
+            </filter>
+          </defs>
+        </svg>
+        <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" width="9" height="9" viewBox="0 0 9 9" fill="none">
+          <circle cx="4.5" cy="4.5" r="4.5" fill="#CFF2E6" />
+        </svg>
       </div>
       <span className="text-[#ececec] text-[18px] font-acid leading-none">{city}</span>
     </div>
@@ -131,7 +161,7 @@ export default function TradeSessionsView() {
       />
 
       {/* Content */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[430px_1fr_430px] gap-5 items-start pt-2 px-4">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[430px_1fr_430px] gap-5 items-start px-4">
         {/* Header — full width on mobile, center column on desktop */}
         <div className="flex flex-col items-center text-center gap-4 lg:order-2 lg:pt-6 mb-6 lg:mb-0">
           <h2 className="text-white text-[36px] sm:text-[48px] lg:text-[60px] font-acid leading-none">
