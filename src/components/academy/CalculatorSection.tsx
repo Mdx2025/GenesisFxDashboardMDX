@@ -36,26 +36,12 @@ function DangerIcon() {
   )
 }
 
-function RestartIcon() {
-  return (
-    <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
-      <path d="M3.5 10.5C3.5 14.366 6.634 17.5 10.5 17.5C14.366 17.5 17.5 14.366 17.5 10.5C17.5 6.634 14.366 3.5 10.5 3.5C7.84 3.5 5.52 5.01 4.375 7.219" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M7 3.5L4.375 7.219L8.094 8.75" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
 function RefreshIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
       <path fillRule="evenodd" clipRule="evenodd" d="M10.5545 19.3487C15.4121 19.3487 19.3499 15.4109 19.3499 10.5533C19.3499 5.69567 15.4121 1.75781 10.5545 1.75781C5.69689 1.75781 1.75903 5.69567 1.75903 10.5533C1.75903 15.4109 5.69689 19.3487 10.5545 19.3487ZM14.0152 4.91677C14.2636 5.01796 14.426 5.25947 14.426 5.52768V7.91522C14.426 8.27954 14.1306 8.57488 13.7663 8.57488H11.4341C11.1686 8.57488 10.9291 8.41583 10.8261 8.17123C10.7231 7.92663 10.7767 7.64412 10.9622 7.45427L11.6319 6.76863C10.3605 6.37668 8.92446 6.69473 7.91671 7.72638C6.44966 9.22821 6.44966 11.6694 7.91671 13.1712C9.37532 14.6644 11.7337 14.6644 13.1923 13.1712C13.7884 12.5609 14.1435 11.7945 14.2546 10.997C14.3059 10.6294 14.5979 10.3201 14.9691 10.3201C15.3257 10.3201 15.6215 10.6056 15.587 10.9605C15.4762 12.1018 14.9936 13.2152 14.136 14.0932C12.1598 16.1162 8.94917 16.1162 6.97294 14.0932C5.00515 12.0787 5.00515 8.81891 6.97294 6.80447C8.5012 5.23998 10.7691 4.88429 12.6343 5.74248L13.2944 5.06673C13.4818 4.87486 13.7668 4.81558 14.0152 4.91677Z" fill="white"/>
     </svg>
   )
-}
-
-interface BreakdownRow {
-  label: string
-  value: string
 }
 
 export function CalculatorSection() {
@@ -84,72 +70,66 @@ export function CalculatorSection() {
 
   const result = calculate()
 
-  const breakdownRows: BreakdownRow[] = [
-    { label: 'Account Balance', value: `$${result.balance.toLocaleString()}` },
-    { label: `Risk Amount (${riskPct}%)`, value: `$${result.riskAmount.toFixed(2)}` },
-    { label: 'Stop Loss', value: `${result.stopLoss} pips` },
-    { label: `Pip Value (${pair})`, value: `$${result.pipValue.toFixed(2)}` },
-    { label: 'Position Size', value: `${result.positionSize} lots` },
+  const breakdownRows = [
+    { label: 'CURRENCY PAIR', value: pair, subtext: 'Pip size: 0.0001 | Contract: 100,000' },
+    { label: 'ACCOUNT BALANCE', value: `$${result.balance.toLocaleString()}`, subtext: 'Your trading capital' },
+    { label: 'RISK AMOUNT', value: `$${result.riskAmount.toFixed(2)}`, subtext: `${riskPct}% of balance` },
+    { label: 'STOP LOSS DISTANCE', value: `${result.stopLoss} pips`, subtext: 'Profit currency: USD' },
   ]
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.65rem] pt-10 xl:pt-16 pb-10">
-      {/* Left Card - Position Size Calculator */}
-      <div className="calc-card rounded-[1.625rem] p-[2.75rem] xl:p-[4.4375rem]">
+      {/* Left Card — Position Size Calculator */}
+      <div className="calc-card rounded-[26px] p-[2.75rem] xl:p-[4.4375rem]">
         <div className="flex items-start gap-5">
-          <div className="w-[3.125rem] h-[3.125rem] rounded-[0.55rem] bg-[#09241C] flex items-center justify-center shrink-0">
+          <div className="w-[50px] h-[50px] rounded-[9px] bg-[#09241C] flex items-center justify-center shrink-0">
             <CodeScanIcon />
           </div>
           <div>
-            <h2 className="text-white text-[2.25rem] font-normal leading-none">Position Size</h2>
-            <p className="text-[#808080] text-[1rem] font-normal mt-2">Trading Calculator</p>
+            <h2 className="text-white text-[36px] font-acid leading-none">Position Size</h2>
+            <p className="text-[#808080] text-[16px] font-acid mt-2">Trading Calculator</p>
           </div>
         </div>
 
-        {/* Recommended Position Result */}
-        <div className="mt-14 rounded-[1.25rem] px-8 py-6 flex flex-col gap-2"
-          style={{ background: 'linear-gradient(to right, #0C1311, #09241C)' }}>
-          <span className="text-[#A0A0A0] text-[1rem] font-normal">Recommended Position</span>
+        {/* Recommended Position */}
+        <div
+          className="mt-14 rounded-[20px] border border-[#09241C] px-8 py-6 flex flex-col gap-2"
+          style={{ background: 'linear-gradient(45deg, #0C1311 10%, #09241C 66%)' }}
+        >
+          <span className="text-[#A0A0A0] text-[16px] font-acid font-medium">Recommended Position</span>
           <div className="flex items-baseline gap-2">
-            <span className="text-[#00B38C] text-[2.25rem] font-normal">{result.positionSize.toFixed(2)}</span>
-            <span className="text-[#A0A0A0] text-[1rem] font-normal">lots</span>
+            <span className="text-[#00B38C] text-[36px] font-acid">{result.positionSize.toFixed(2)}</span>
+            <span className="text-[#A0A0A0] text-[16px] font-acid font-medium">lots</span>
           </div>
         </div>
 
-        {/* Form Fields */}
+        {/* Form */}
         <div className="mt-10 flex flex-col gap-6">
-          {/* Currency Pair */}
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[1rem] font-medium">Currency Pair</label>
-            <GlassSelect
-              options={CURRENCY_PAIRS}
-              value={pair}
-              onChange={(v) => setPair(v)}
-            />
+            <label className="text-white text-[16px] font-acid font-medium">Currency Pair</label>
+            <GlassSelect options={CURRENCY_PAIRS} value={pair} onChange={(v) => setPair(v)} />
           </div>
 
-          {/* Account Balance */}
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[1rem] font-medium">Account Balance</label>
-            <div className="h-[2.875rem] px-5 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center">
-              <span className="text-[#808080] text-[1rem] mr-1">$</span>
+            <label className="text-white text-[16px] font-acid font-medium">Account Balance</label>
+            <div className="h-[46px] px-5 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center">
+              <span className="text-[#808080] text-[16px] font-acid mr-1">$</span>
               <input
                 type="number"
                 value={balance}
                 onChange={e => setBalance(e.target.value)}
-                className="bg-transparent text-[#808080] text-[1rem] w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="bg-transparent text-[#808080] text-[16px] font-acid w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
             </div>
           </div>
 
-          {/* Risk % */}
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[1rem] font-medium">Risk %</label>
+            <label className="text-white text-[16px] font-acid font-medium">Risk %</label>
             <div className="grid grid-cols-4 gap-2">
               {RISK_OPTIONS.map((opt, i) => (
                 <button
                   key={opt}
-                  className={`h-[3.125rem] rounded-[1rem] text-[1rem] font-normal cursor-pointer transition-colors ${
+                  className={`h-[50px] rounded-[16px] border border-[#303030] text-[16px] font-acid cursor-pointer transition-colors opacity-80 ${
                     riskIdx === i
                       ? 'bg-[#0A714F] text-white'
                       : 'bg-[#0C1311] text-[#A0A0A0] hover:bg-white/5'
@@ -162,25 +142,23 @@ export function CalculatorSection() {
             </div>
           </div>
 
-          {/* Stop Loss */}
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[1rem] font-medium">Stop Loss</label>
-            <div className="h-[2.875rem] px-5 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center">
+            <label className="text-white text-[16px] font-acid font-medium">Stop Loss</label>
+            <div className="h-[46px] px-5 rounded-full bg-[#0C1311] border border-[#064B34] flex items-center">
               <input
                 type="number"
                 value={stopLoss}
                 onChange={e => setStopLoss(e.target.value)}
-                className="bg-transparent text-[#808080] text-[1rem] w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="bg-transparent text-[#808080] text-[16px] font-acid w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
-              <span className="text-[#808080] text-[1rem] ml-1">pips</span>
             </div>
           </div>
         </div>
 
-        {/* Action Bar */}
+        {/* Actions */}
         <div className="mt-10 flex items-center gap-3">
           <button
-            className="h-[2.75rem] w-[5.375rem] rounded-[1.5rem] bg-[#0C1311] border border-[#064B34] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+            className="h-[44px] w-[86px] rounded-[24px] bg-[#0C1311] border border-[#303030] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => { setBalance('10000'); setStopLoss('50'); setRiskIdx(1) }}
             aria-label="Reset"
           >
@@ -192,23 +170,36 @@ export function CalculatorSection() {
         </div>
       </div>
 
-      {/* Right Card - Calculation Breakdown */}
-      <div className="calc-card rounded-[1.625rem] p-[2.75rem] xl:p-[4.4375rem]">
+      {/* Right Card — Calculation Breakdown */}
+      <div className="calc-card rounded-[26px] p-[2.75rem] xl:p-[4.4375rem]">
         <div className="flex items-center gap-3 mb-10">
           <DangerIcon />
-          <h2 className="text-white text-[1.5rem] font-normal">Calculation Breakdown</h2>
+          <h2 className="text-white text-[24px] font-acid">Calculation Breakdown</h2>
         </div>
 
-        <div className="flex flex-col">
-          {breakdownRows.map((row, i) => (
-            <div key={row.label}>
-              {i > 0 && <div className="h-px bg-[#09241C] my-0" />}
-              <div className="flex items-center justify-between py-[1.2rem]">
-                <span className="text-[#606060] text-[0.875rem]">{row.label}</span>
-                <span className="text-white text-[0.875rem]">{row.value}</span>
-              </div>
+        <div className="flex flex-col gap-[10px]">
+          {breakdownRows.map(row => (
+            <div key={row.label} className="bg-[#09241C] rounded-[20px] px-[17px] py-[14px] h-[91px] flex flex-col justify-center">
+              <span className="text-[#808080] text-[12px] font-acid font-bold uppercase tracking-[2.3px]">
+                {row.label}
+              </span>
+              <span className="text-white text-[16px] font-acid font-medium mt-1">
+                {row.value}
+              </span>
+              <span className="text-[#808080] text-[14px] font-acid leading-[18.8px] mt-0.5">
+                {row.subtext}
+              </span>
             </div>
           ))}
+        </div>
+
+        {/* Position Size Result */}
+        <div className="mt-8 calc-card rounded-[19px] px-[17px] py-[14px] h-[100px] flex flex-col justify-center">
+          <span className="text-[#00B38C] text-[12px] font-acid">Position size</span>
+          <span className="text-[#00B38C] text-[24px] font-acid mt-1">
+            {result.positionSize.toFixed(2)} lots
+          </span>
+          <span className="text-[#808080] text-[14px] font-acid mt-0.5">Min: 0.01 | Max: 50</span>
         </div>
       </div>
     </div>
