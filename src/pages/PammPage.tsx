@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { pammStrategies, pammTabs, pammFilterTabs } from '@/data/pamm'
 import type { PammStrategy } from '@/data/pamm'
@@ -416,24 +416,28 @@ export default function PammPage() {
                     <span className="text-white text-[17px] font-acid">M</span>
                   </div>
                   <div>
-                    <p className="text-white text-[17px] font-acid">marcelo cedeno</p>
-                    <p className="text-[#808080] text-[11px] font-acid mt-1">Manage your copy trading strategies</p>
+                    <p className="text-white text-[1.5rem] font-acid">marcelo cedeno</p>
+                    <p className="text-[#808080] text-[1rem] font-acid mt-1">Manage your copy trading strategies</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 px-5 h-[36px] rounded-full border border-[#303030]">
+                  <div className="flex items-center gap-2 px-5 h-[36px]">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 6C13.93 6 15.5 7.57 15.5 9.5C15.5 11.43 13.93 13 12 13C10.07 13 8.5 11.43 8.5 9.5C8.5 7.57 10.07 6 12 6ZM12 20C9.97 20 7.57 19.18 5.86 17.12C7.55 15.8 9.68 15 12 15C14.32 15 16.45 15.8 18.14 17.12C16.43 19.18 14.03 20 12 20Z" fill="#808080"/>
                     </svg>
                     <span className="text-[#808080] text-[10px] font-acid">Social Wallet</span>
                     <span className="text-white text-[10px] font-acid">$100.00</span>
                   </div>
-                  <button className="h-[44px] px-6 rounded-full bg-[#10BC83] text-black text-[16px] font-acid font-medium cursor-pointer hover:bg-[#0ea774] transition-colors flex items-center gap-2">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 5V19M5 12H19" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                    Create Strategy
-                  </button>
+                  <GlowButton
+                    label="Create Strategy"
+                    width={200}
+                    height={44}
+                    icon={
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5V19M5 12H19" stroke="black" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    }
+                  />
                 </div>
               </div>
             </div>
