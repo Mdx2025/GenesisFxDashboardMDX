@@ -194,6 +194,7 @@ export default function AcademyPage() {
                 category={ebook.category}
                 image={ebook.image}
                 readTime={ebook.readTime}
+                onClick={() => navigate(`/academy/ebook-single-page?ebook=${ebook.id}`)}
               />
             ))}
           </div>
