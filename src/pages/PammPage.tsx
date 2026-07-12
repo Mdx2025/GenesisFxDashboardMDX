@@ -471,63 +471,50 @@ export default function PammPage() {
             {/* Strategies Table */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[250px]" />
+              <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px] bg-gradient-to-r from-transparent via-[rgba(0,240,160,0.3)] to-transparent" />
               <div className="relative overflow-x-auto">
                 <table className="w-full min-w-[60rem]">
                   <thead>
-                    <tr className="border-b border-[#09241c]">
-                      {['Strategy Name', 'AUM', 'Investors', 'P&L', 'Min Investment', 'Managment Fee', 'Perfomance Fee', 'Status', 'Actions'].map(h => (
-                        <th key={h} className="text-left text-[#808080] text-[8px] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
+                    <tr className="border-b border-[rgba(255,255,255,0.04)]">
+                      {['Strategy name', 'aum', 'Investors', 'P&L', 'Min Investment', 'managment fee', 'perfomance fee', 'status', 'actions'].map(h => (
+                        <th key={h} className="text-left text-[#606060] text-[12px] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-7 py-4 first:pl-7">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {[0, 1, 2].map(i => (
                       <tr key={i} className="border-b border-[#09241c] last:border-0">
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">Testing PAMM</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">Testing PAMM</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">$0.00</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">$0.00</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">0</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">0</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">$0.00</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">$0.00</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">$100.00</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">$100.00</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">2%</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">2%</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="text-white text-[10px] font-acid">20%</span>
+                        <td className="px-7 py-5">
+                          <span className="text-white text-[14px] font-acid font-normal leading-[18.8px]">20%</span>
                         </td>
-                        <td className="px-6 py-5">
-                          <span className="px-4 py-[7px] rounded-full border border-[#10BC83] text-[#10BC83] text-[8px] font-acid">Active</span>
+                        <td className="px-7 py-5">
+                          <span className="inline-flex items-center justify-center px-4 py-[7px] rounded-[30px] border-[1.16px] border-[#0C9104] text-[#37C92E] text-[12px] font-acid leading-[18.8px]">Active</span>
                         </td>
-                        <td className="px-6 py-5">
+                        <td className="px-7 py-5">
                           <div className="flex items-center gap-2">
-                            <SparkleButton className="px-4 !h-[46px]">
-                              <span className="flex items-center gap-1.5">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                  <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                  <path d="M18.5 2.50001C18.8978 2.10219 19.4374 1.87869 20 1.87869C20.5626 1.87869 21.1022 2.10219 21.5 2.50001C21.8978 2.89784 22.1213 3.4374 22.1213 4.00001C22.1213 4.56262 21.8978 5.10219 21.5 5.50001L12 15L8 16L9 12L18.5 2.50001Z" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                                <span className="text-[14px]">Edit</span>
-                              </span>
+                            <SparkleButton className="!px-[38px] !h-[46px]">
+                              <span className="text-[#C6C6C6] text-[16px] font-acid font-medium leading-[24.44px]">View</span>
                             </SparkleButton>
-                            <SparkleButton className="px-4 !h-[46px]">
-                              <span className="flex items-center gap-1.5">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                  <path d="M15 3H21V9" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                  <path d="M9 21H3V15" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                  <path d="M21 3L14 10" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                  <path d="M3 21L10 14" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                                <span className="text-[14px]">Share</span>
-                              </span>
+                            <SparkleButton className="!px-[38px] !h-[46px]">
+                              <span className="text-[#C6C6C6] text-[16px] font-acid font-medium leading-[24.44px]">Edit</span>
                             </SparkleButton>
                           </div>
                         </td>
