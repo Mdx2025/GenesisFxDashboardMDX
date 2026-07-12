@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassInput, GlassSelect, GlowButton, SecondaryButton, GlowEllipse } from '@/components/ui'
+import { GlassCard, GlassInput, GlassSelect, GlowButton, SparkleButton, GlowEllipse } from '@/components/ui'
 
 /* ─── Toggle Switch ─── */
 
@@ -157,25 +157,26 @@ export default function CreateStrategyPage() {
         ]}
       />
       <div className="pb-12 pt-4 max-w-[700px] mx-auto">
-        {/* Back + Title */}
-        <div className="flex items-start gap-4 mb-8">
-          <button
-            type="button"
-            onClick={() => navigate('/gensocial/pamm')}
-            className="w-[44px] h-[44px] rounded-full bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0c2e22] transition-colors flex-shrink-0 mt-1"
-          >
-            <BackArrowIcon />
-          </button>
-          <div>
-            <h1 className="text-white text-[2.25rem] font-acid leading-normal">Create New Strategy</h1>
-            <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] mt-1">Set up your PAMM trading strategy</p>
-          </div>
-        </div>
-
-        {/* Basic Details */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden mb-6">
+        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
           <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[200px]" />
-          <div className="relative p-8 flex flex-col gap-6">
+          <div className="relative p-8 flex flex-col gap-8">
+
+            {/* Page Header (inside card) */}
+            <div className="flex items-start gap-4">
+              <button
+                type="button"
+                onClick={() => navigate('/gensocial/pamm')}
+                className="w-[44px] h-[44px] rounded-full bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0c2e22] transition-colors flex-shrink-0 mt-1"
+              >
+                <BackArrowIcon />
+              </button>
+              <div>
+                <h1 className="text-white text-[2.25rem] font-acid leading-normal">Create New Strategy</h1>
+                <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] mt-1">Set up your PAMM trading strategy</p>
+              </div>
+            </div>
+
+            {/* Basic Details */}
             <SectionHeader
               icon={<BasicDetailsIcon />}
               title="Basic Details"
@@ -217,16 +218,11 @@ export default function CreateStrategyPage() {
               <GlassSelect options={riskOptions} placeholder="Select risk profile..." />
               <p className="text-[#808080] text-[0.75rem] font-acid mt-1">Minimum amount required to invest in this strategy</p>
             </div>
-          </div>
-        </GlassCard>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#064b34] to-transparent mb-6" />
+            {/* Divider */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#064b34] to-transparent" />
 
-        {/* Fee Structure */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden mb-6">
-          <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[200px]" />
-          <div className="relative p-8 flex flex-col gap-6">
+            {/* Fee Structure */}
             <SectionHeader
               icon={<FeeIcon />}
               title="Fee Structure"
@@ -246,16 +242,11 @@ export default function CreateStrategyPage() {
               suffix="%"
               helpText="Percentage of profits(P&L) you earn as commission (HWM)."
             />
-          </div>
-        </GlassCard>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#064b34] to-transparent mb-6" />
+            {/* Divider */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#064b34] to-transparent" />
 
-        {/* Advanced Settings */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden mb-6">
-          <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[200px]" />
-          <div className="relative p-8 flex flex-col gap-6">
+            {/* Advanced Settings */}
             <SectionHeader
               icon={<SettingsIcon />}
               title="Advanced Settings"
@@ -319,20 +310,21 @@ export default function CreateStrategyPage() {
                 <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] mt-2">Set a limit on the number of investors (optional). Leave empty for unlimited</p>
               </div>
             </div>
+
+            {/* Action Buttons */}
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <SparkleButton onClick={() => navigate('/gensocial/pamm')}>
+                Cancel
+              </SparkleButton>
+              <GlowButton
+                label="Submit Application"
+                width={220}
+                height={46}
+              />
+            </div>
+
           </div>
         </GlassCard>
-
-        {/* Action Buttons */}
-        <div className="flex items-center justify-center gap-4 mt-8">
-          <SecondaryButton onClick={() => navigate('/gensocial/pamm')} className="w-[180px]">
-            Cancel
-          </SecondaryButton>
-          <GlowButton
-            label="Submit Application"
-            width={220}
-            height={46}
-          />
-        </div>
       </div>
     </div>
   )
