@@ -80,7 +80,7 @@ function MiniAreaChart({ data }: { data: number[] }) {
   const areaD = `${pathD} L${w},${h} L0,${h} Z`
 
   return (
-    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" className="absolute bottom-[86px] left-0 right-0">
+    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none">
       <defs>
         <linearGradient id="pammChartGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#10BC83" stopOpacity="0.25" />
@@ -135,7 +135,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
         </div>
 
         {/* Chart area */}
-        <div className="relative h-[52px] mt-4">
+        <div className="h-[52px] mt-2">
           <MiniAreaChart data={strategy.chartData} />
         </div>
 
