@@ -206,7 +206,7 @@ export default function PammPage() {
         {/* Page Title */}
         <h1 className="text-white text-h1 font-normal">PAMM Strategies</h1>
 
-        {/* Top Tabs: Browse | Investments | Manager + Tutorial */}
+        {/* Top Tabs: Browse | Investments | Manager + Tutorial (Investments only) */}
         <div className="flex items-center justify-between">
           <div className="w-full overflow-x-auto max-w-lg">
             <ModeToggle
@@ -216,14 +216,16 @@ export default function PammPage() {
               onChange={setActiveTab}
             />
           </div>
-          <SparkleButton className="px-5 shrink-0">
-            <span className="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM8 4.6C7.50294 4.6 7.1 5.00294 7.1 5.5C7.1 5.83137 6.83137 6.1 6.5 6.1C6.16863 6.1 5.9 5.83137 5.9 5.5C5.9 4.3402 6.8402 3.4 8 3.4C9.1598 3.4 10.1 4.3402 10.1 5.5C10.1 6.06867 9.87317 6.58558 9.50637 6.96317C9.43255 7.03915 9.36215 7.1095 9.29498 7.17661C9.12231 7.34913 8.97104 7.50027 8.83832 7.6708C8.6631 7.89594 8.6 8.06141 8.6 8.2V8.8C8.6 9.13137 8.33137 9.4 8 9.4C7.66863 9.4 7.4 9.13137 7.4 8.8V8.2C7.4 7.67585 7.64401 7.25155 7.89133 6.93377C8.07434 6.69863 8.30435 6.46907 8.49102 6.28277C8.54733 6.22657 8.5997 6.17431 8.64564 6.12702C8.80367 5.96435 8.9 5.74404 8.9 5.5C8.9 5.00294 8.49706 4.6 8 4.6ZM8 12C8.44183 12 8.8 11.6418 8.8 11.2C8.8 10.7582 8.44183 10.4 8 10.4C7.55817 10.4 7.2 10.7582 7.2 11.2C7.2 11.6418 7.55817 12 8 12Z" fill="#A0A0A0"/>
-              </svg>
-              <span>Tutorial</span>
-            </span>
-          </SparkleButton>
+          {activeTab === 1 && (
+            <SparkleButton className="px-5 shrink-0">
+              <span className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM8 4.6C7.50294 4.6 7.1 5.00294 7.1 5.5C7.1 5.83137 6.83137 6.1 6.5 6.1C6.16863 6.1 5.9 5.83137 5.9 5.5C5.9 4.3402 6.8402 3.4 8 3.4C9.1598 3.4 10.1 4.3402 10.1 5.5C10.1 6.06867 9.87317 6.58558 9.50637 6.96317C9.43255 7.03915 9.36215 7.1095 9.29498 7.17661C9.12231 7.34913 8.97104 7.50027 8.83832 7.6708C8.6631 7.89594 8.6 8.06141 8.6 8.2V8.8C8.6 9.13137 8.33137 9.4 8 9.4C7.66863 9.4 7.4 9.13137 7.4 8.8V8.2C7.4 7.67585 7.64401 7.25155 7.89133 6.93377C8.07434 6.69863 8.30435 6.46907 8.49102 6.28277C8.54733 6.22657 8.5997 6.17431 8.64564 6.12702C8.80367 5.96435 8.9 5.74404 8.9 5.5C8.9 5.00294 8.49706 4.6 8 4.6ZM8 12C8.44183 12 8.8 11.6418 8.8 11.2C8.8 10.7582 8.44183 10.4 8 10.4C7.55817 10.4 7.2 10.7582 7.2 11.2C7.2 11.6418 7.55817 12 8 12Z" fill="#A0A0A0"/>
+                </svg>
+                <span>Tutorial</span>
+              </span>
+            </SparkleButton>
+          )}
         </div>
 
         {activeTab === 0 && (
@@ -404,18 +406,138 @@ export default function PammPage() {
         )}
 
         {activeTab === 2 && (
-          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-            <div className="flex flex-col items-center justify-center py-16 px-8">
-              <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center mb-8">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="8" r="4" fill="#10BC83" />
-                  <ellipse cx="12" cy="18" rx="7" ry="4" fill="#10BC83" />
-                </svg>
+          <>
+            {/* Manager Profile Banner */}
+            <div className="relative w-full h-[125px] rounded-[19px] bg-[#09241c] overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[200px]" />
+              <div className="relative flex items-center justify-between h-full px-8">
+                <div className="flex items-center gap-5">
+                  <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-[17px] font-acid">M</span>
+                  </div>
+                  <div>
+                    <p className="text-white text-[17px] font-acid">marcelo cedeno</p>
+                    <p className="text-[#808080] text-[11px] font-acid mt-1">Manage your copy trading strategies</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 px-5 h-[36px] rounded-full border border-[#303030]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 6C13.93 6 15.5 7.57 15.5 9.5C15.5 11.43 13.93 13 12 13C10.07 13 8.5 11.43 8.5 9.5C8.5 7.57 10.07 6 12 6ZM12 20C9.97 20 7.57 19.18 5.86 17.12C7.55 15.8 9.68 15 12 15C14.32 15 16.45 15.8 18.14 17.12C16.43 19.18 14.03 20 12 20Z" fill="#808080"/>
+                    </svg>
+                    <span className="text-[#808080] text-[10px] font-acid">Social Wallet</span>
+                    <span className="text-white text-[10px] font-acid">$100.00</span>
+                  </div>
+                  <button className="h-[44px] px-6 rounded-full bg-[#10BC83] text-black text-[16px] font-acid font-medium cursor-pointer hover:bg-[#0ea774] transition-colors flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 5V19M5 12H19" stroke="black" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                    Create Strategy
+                  </button>
+                </div>
               </div>
-              <p className="text-white text-[24px] font-acid leading-none">Manager</p>
-              <p className="text-[#808080] text-[16px] font-acid mt-4 leading-[1.2]">Manager tools coming soon</p>
             </div>
-          </GlassCard>
+
+            {/* Manager Stat Cards */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+              {[
+                { label: 'Total AUM', value: '$0.00' },
+                { label: 'Total strategies', value: '$0.00' },
+                { label: 'Total strategies', value: '$0.00' },
+                { label: 'Total P&L Generated', value: '$0.00' },
+                { label: 'Fee Earnings', value: '$0.00' },
+              ].map((stat, i) => (
+                <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+                  <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[200px]" />
+                  <div className="relative p-6">
+                    <p className="text-[#808080] text-[10px] font-acid">{stat.label}</p>
+                    <p className="text-white text-[25px] font-acid leading-none mt-3">{stat.value}</p>
+                  </div>
+                </GlassCard>
+              ))}
+            </div>
+
+            {/* Manager Dashboard Header */}
+            <div className="flex items-center justify-between">
+              <h2 className="text-white text-[25px] font-acid leading-none">Manager Dashboard</h2>
+              <SearchInput
+                placeholder="Search strategies"
+                value={searchQuery}
+                onChange={setSearchQuery}
+                className="w-[287px]"
+              />
+            </div>
+
+            {/* Strategies Table */}
+            <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[250px]" />
+              <div className="relative overflow-x-auto">
+                <table className="w-full min-w-[60rem]">
+                  <thead>
+                    <tr className="border-b border-[#09241c]">
+                      {['Strategy Name', 'AUM', 'Investors', 'P&L', 'Min Investment', 'Managment Fee', 'Perfomance Fee', 'Status', 'Actions'].map(h => (
+                        <th key={h} className="text-left text-[#808080] text-[8px] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[0, 1, 2].map(i => (
+                      <tr key={i} className="border-b border-[#09241c] last:border-0">
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">Testing PAMM</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">$0.00</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">0</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">$0.00</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">$100.00</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">2%</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="text-white text-[10px] font-acid">20%</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <span className="px-4 py-[7px] rounded-full border border-[#10BC83] text-[#10BC83] text-[8px] font-acid">Active</span>
+                        </td>
+                        <td className="px-6 py-5">
+                          <div className="flex items-center gap-2">
+                            <SparkleButton className="px-4 !h-[46px]">
+                              <span className="flex items-center gap-1.5">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M18.5 2.50001C18.8978 2.10219 19.4374 1.87869 20 1.87869C20.5626 1.87869 21.1022 2.10219 21.5 2.50001C21.8978 2.89784 22.1213 3.4374 22.1213 4.00001C22.1213 4.56262 21.8978 5.10219 21.5 5.50001L12 15L8 16L9 12L18.5 2.50001Z" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                                <span className="text-[14px]">Edit</span>
+                              </span>
+                            </SparkleButton>
+                            <SparkleButton className="px-4 !h-[46px]">
+                              <span className="flex items-center gap-1.5">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                  <path d="M15 3H21V9" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M9 21H3V15" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M21 3L14 10" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  <path d="M3 21L10 14" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                                <span className="text-[14px]">Share</span>
+                              </span>
+                            </SparkleButton>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </GlassCard>
+          </>
         )}
 
       </div>
