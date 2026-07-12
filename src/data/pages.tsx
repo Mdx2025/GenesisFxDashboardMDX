@@ -16,6 +16,7 @@ import JournalPage from '@/pages/JournalPage'
 import PammPage from '@/pages/PammPage'
 import PammDetailsPage from '@/pages/PammDetailsPage'
 import CopyTradingPage from '@/pages/CopyTradingPage'
+import CreateStrategyPage from '@/pages/CreateStrategyPage'
 import SignalsPage from '@/pages/SignalsPage'
 import VideoSinglePage from '@/pages/academy/VideoSinglePage'
 import EbookSinglePage from '@/pages/academy/EbookSinglePage'
@@ -52,6 +53,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/academy/ebook-single-page', label: 'E-Book', description: 'Single e-book chapter view', icon: AcademyIcon, component: EbookSinglePage, showInDirectory: false },
   { path: '/gensocial/pamm', label: 'PAMM Strategies', description: 'Browse and invest in PAMM strategies', icon: GenSocialIcon, component: PammPage },
   { path: '/gensocial/pamm/details-single-page', label: 'PAMM Details', description: 'PAMM strategy single page details', icon: GenSocialIcon, component: PammDetailsPage, showInDirectory: false },
+  { path: '/gensocial/pamm/create-strategy', label: 'Create Strategy', description: 'Create a new PAMM trading strategy', icon: GenSocialIcon, component: CreateStrategyPage, showInDirectory: false },
   { path: '/gensocial/copy-trading', label: 'Copy Trading', description: 'Copy top-performing traders automatically', icon: GenSocialIcon, component: CopyTradingPage },
   { path: '/gensocial/signals', label: 'Signals', description: 'Follow expert signal providers and trade ideas', icon: GenSocialIcon, component: SignalsPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
