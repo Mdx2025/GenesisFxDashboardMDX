@@ -3,4 +3,5 @@ node_modules
 build
 .env
 .env.*
-dist
+.next
+next-env.d.ts
