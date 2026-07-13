@@ -267,31 +267,18 @@ export default function CopyTradingPage() {
         {activeTab === 0 && (
           <>
             {/* Hero Banner */}
-            <GlassBannerCard contentClassName="p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-              <div className="flex-1">
-                <h2 className="text-white text-[3.125rem] font-acid leading-none">Copy Trading</h2>
-                <p className="text-[#a0a0a0] text-[1rem] font-acid font-medium mt-5 max-w-[35.875rem] leading-relaxed">
-                  Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
-                </p>
-                <div className="mt-6">
-                  <SparkleButton className="px-6">
-                    <span className="flex items-center gap-2">
-                      <DownloadIcon />
-                      <span>Download App</span>
-                    </span>
-                  </SparkleButton>
-                </div>
-              </div>
-              <div className="relative w-[22.4375rem] h-[8.375rem] bg-[#09241c] rounded-[1.875rem]">
-                <div className="absolute left-[1.125rem] top-[1.125rem] w-[6.125rem] h-[6.125rem] bg-[#064b34] rounded-[0.78rem] flex items-center justify-center">
-                  <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.3346 11.6673L27.7096 11.668C30.1259 11.6683 32.0849 9.7099 32.0853 7.29366C32.0857 4.87741 30.1273 2.91835 27.711 2.91797C25.2948 2.91759 23.3357 4.87603 23.3353 7.29228L23.3346 11.6673L11.6687 11.6673L11.668 7.29228C11.6676 4.87603 9.70853 2.91759 7.29228 2.91797C4.87603 2.91835 2.91759 4.87741 2.91797 7.29366C2.91835 9.7099 4.87741 11.6683 7.29366 11.668L11.6687 11.6673L11.668 23.3339H23.3346V11.6673Z" fill="white"/>
-                    <path d="M23.3346 23.3339L27.7096 23.3346C30.1259 23.3343 32.0849 25.2927 32.0853 27.7089C32.0857 30.1252 30.1273 32.0843 27.711 32.0846C25.2948 32.085 23.3357 30.1266 23.3353 27.7103L23.3346 23.3339Z" fill="white"/>
-                    <path d="M7.29366 23.3346L11.6687 23.3353L11.668 27.7103C11.6676 30.1266 9.70853 32.085 7.29228 32.0846C4.87603 32.0843 2.91759 30.1252 2.91797 27.7089C2.91835 25.2927 4.87741 23.3343 7.29366 23.3346Z" fill="white"/>
-                  </svg>
-                </div>
-                <p className="absolute left-[8.9375rem] top-[2.375rem] text-white text-[3.125rem] font-acid leading-none">71</p>
-                <p className="absolute left-[8.9375rem] top-[5.5625rem] text-[#808080] text-[1rem] font-acid font-medium leading-[1.5275rem]">Active strategies</p>
+            <GlassBannerCard>
+              <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Copy Trading</h2>
+              <p className="text-[#a0a0a0] text-[0.875rem] xl:text-[1rem] font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
+                Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
+              </p>
+              <div className="mt-6">
+                <SparkleButton className="px-6">
+                  <span className="flex items-center gap-2">
+                    <DownloadIcon />
+                    <span>Download App</span>
+                  </span>
+                </SparkleButton>
               </div>
             </GlassBannerCard>
 
