@@ -192,8 +192,8 @@ function TraderCard({ trader }: { trader: CopyTrader }) {
 
       {/* Action Buttons */}
       <div className="flex flex-col gap-2.5 p-6 pt-5">
-        <GlowButton label="View" width="100%" onClick={() => navigate('/gensocial/copy-trading/details-single-page')} />
-        <GlowButton label="View" width="100%" />
+        <SparkleButton fullWidth onClick={() => navigate('/gensocial/copy-trading/details-single-page')}>View</SparkleButton>
+        <GlowButton label="Copy" width="100%" />
       </div>
     </GlassCard>
   )
