@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
+import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox } from '@/components/ui'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
@@ -128,7 +129,7 @@ function PnlChart({ data, negative }: { data: number[]; negative: boolean }) {
 
 /* ─── Signal Provider Card ─── */
 
-function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; onToggleFollow: (id: string) => void }) {
+function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: SignalProvider; onToggleFollow: (id: string) => void; onFollowClick: (provider: SignalProvider) => void }) {
   const isNegative = provider.pnl30d < 0
 
   return (
@@ -155,13 +156,15 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
             </button>
           ) : (
             <button
-              onClick={() => onToggleFollow(provider.id)}
+              onClick={() => onFollowClick(provider)}
               className="px-3 py-2 rounded-[12px] flex items-center gap-[10px] text-[0.875rem] font-acid transition-colors cursor-pointer"
               style={{ background: '#F1FFFA', color: 'black' }}
             >
-              <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="black"/></svg>
-              <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M3.0625 6.125C1.61882 6.125 0.896986 6.125 0.448493 5.67651C0 5.22801 0 4.50618 0 3.0625C0 1.61882 0 0.896986 0.448493 0.448493C0.896986 0 1.61882 0 3.0625 0C4.50618 0 5.22801 0 5.67651 0.448493C6.125 0.896986 6.125 1.61882 6.125 3.0625C6.125 4.50618 6.125 5.22801 5.67651 5.67651C5.22801 6.125 4.50618 6.125 3.0625 6.125ZM3.57292 1.70139C3.57292 1.41949 3.3444 1.19097 3.0625 1.19097C2.7806 1.19097 2.55208 1.41949 2.55208 1.70139V2.55208H1.70139C1.41949 2.55208 1.19097 2.7806 1.19097 3.0625C1.19097 3.3444 1.41949 3.57292 1.70139 3.57292H2.55208V4.42361C2.55208 4.70551 2.7806 4.93403 3.0625 4.93403C3.3444 4.93403 3.57292 4.70551 3.57292 4.42361V3.57292H4.42361C4.70551 3.57292 4.93403 3.3444 4.93403 3.0625C4.93403 2.7806 4.70551 2.55208 4.42361 2.55208H3.57292V1.70139Z" fill="black"/></svg>
-              <svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M10.2184 0.43994C9.80448 0.444953 9.41865 0.460049 9.08243 0.505254C8.51991 0.580883 7.90419 0.761648 7.39543 1.2704C6.88667 1.77916 6.70591 2.39488 6.63028 2.9574C6.56232 3.46291 6.56241 4.08054 6.56251 4.73727V4.88771C6.56241 5.54444 6.56232 6.16207 6.63028 6.66757C6.68335 7.0623 6.78819 7.48322 7.0218 7.87499C7.01454 7.875 7.00727 7.875 7 7.875C0 7.875 0 6.11212 0 3.9375C0 1.76288 3.13401 0 7 0C8.16041 0 9.25487 0.158826 10.2184 0.43994Z" fill="black"/></svg>
+              <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
+                <circle cx="7" cy="3.5" r="3.5" fill="black"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M10.9375 17.5C9.49382 17.5 8.77199 17.5 8.32349 17.0515C7.875 16.603 7.875 15.8812 7.875 14.4375C7.875 12.9938 7.875 12.272 8.32349 11.8235C8.77199 11.375 9.49382 11.375 10.9375 11.375C12.3812 11.375 13.103 11.375 13.5515 11.8235C14 12.272 14 12.9938 14 14.4375C14 15.8812 14 16.603 13.5515 17.0515C13.103 17.5 12.3812 17.5 10.9375 17.5ZM11.4479 13.0764C11.4479 12.7945 11.2194 12.566 10.9375 12.566C10.6556 12.566 10.4271 12.7945 10.4271 13.0764V13.9271H9.57639C9.29449 13.9271 9.06597 14.1556 9.06597 14.4375C9.06597 14.7194 9.29449 14.9479 9.57639 14.9479H10.4271V15.7986C10.4271 16.0805 10.6556 16.309 10.9375 16.309C11.2194 16.309 11.4479 16.0805 11.4479 15.7986V14.9479H12.2986C12.5805 14.9479 12.809 14.7194 12.809 14.4375C12.809 14.1556 12.5805 13.9271 12.2986 13.9271H11.4479V13.0764Z" fill="black"/>
+                <path d="M10.2184 10.0649C9.80448 10.07 9.41865 10.085 9.08243 10.1303C8.51991 10.2059 7.90419 10.3866 7.39543 10.8954C6.88667 11.4042 6.70591 12.0199 6.63028 12.5824C6.56232 13.0879 6.56241 13.7055 6.56251 14.3623V14.5127C6.56241 15.1694 6.56232 15.7871 6.63028 16.2926C6.68335 16.6873 6.78819 17.1082 7.0218 17.5C7.01454 17.5 7.00727 17.5 7 17.5C0 17.5 0 15.7371 0 13.5625C0 11.3879 3.13401 9.625 7 9.625C8.16041 9.625 9.25487 9.78383 10.2184 10.0649Z" fill="black"/>
+              </svg>
               <span className="leading-[18.8px]">Follow</span>
             </button>
           )}
@@ -314,9 +317,24 @@ export default function SignalsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [providers, setProviders] = useState(signalProviders)
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [followModalOpen, setFollowModalOpen] = useState(false)
+  const [followTarget, setFollowTarget] = useState<SignalProvider | null>(null)
 
   const handleToggleFollow = (id: string) => {
     setProviders(prev => prev.map(p => p.id === id ? { ...p, following: !p.following } : p))
+  }
+
+  const handleFollowClick = (provider: SignalProvider) => {
+    setFollowTarget(provider)
+    setFollowModalOpen(true)
+  }
+
+  const handleConfirmFollow = () => {
+    if (followTarget) {
+      setProviders(prev => prev.map(p => p.id === followTarget.id ? { ...p, following: true } : p))
+    }
+    setFollowModalOpen(false)
+    setFollowTarget(null)
   }
 
   const filteredProviders = providers.filter(p =>
@@ -627,12 +645,25 @@ export default function SignalsPage() {
         {/* Signal Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProviders.map(provider => (
-            <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} />
+            <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} onFollowClick={handleFollowClick} />
           ))}
         </div>
         </>)}
 
       </div>
+
+      {followTarget && (
+        <FollowStrategyModal
+          open={followModalOpen}
+          onClose={() => { setFollowModalOpen(false); setFollowTarget(null) }}
+          onConfirm={handleConfirmFollow}
+          strategyName={followTarget.tag}
+          username={followTarget.username}
+          initials={followTarget.initials}
+          pricePerMonth={followTarget.pricePerMonth}
+          profitShare={followTarget.profitShare}
+        />
+      )}
     </div>
   )
 }
