@@ -125,7 +125,7 @@ function TraderCard({ trader }: { trader: CopyTrader }) {
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
       <div className="relative p-6 pb-0 flex flex-col flex-1">
         {/* Header: Avatar + Name + Username + Star */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
             <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
               <span className="text-white text-[16px] font-acid font-medium">{trader.initials}</span>
