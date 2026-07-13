@@ -263,7 +263,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
 
 function TradingStatistics() {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px">
+    <GlassCard variant="light" divider="none" rounded="19px" className="px-8 py-13">
       <div className="relative flex">
         <StatColumn rows={leftStats} />
         <StatColumn rows={rightStats} />
