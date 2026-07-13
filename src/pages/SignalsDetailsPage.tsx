@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, PeriodPill, Badge } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, PeriodPill, Badge, BannerStatBox } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -60,6 +60,18 @@ function UsersIcon() {
       <circle cx="9" cy="7" r="4" stroke="#10BC83" strokeWidth="1.5"/>
       <path d="M23 21V19C23 18.0544 22.6839 17.1392 22.1049 16.4003C21.5259 15.6614 20.7168 15.1415 19.808 14.9278" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M16 3.13C16.8604 3.35 17.623 3.87 18.1676 4.60 18.7122 5.33 19.0078 6.23 19.0078 7.16 19.0078 8.08 18.7122 8.98 18.1676 9.72 17.623 10.45 16.8604 10.97 16 11.19" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function XauusdSmallIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 38 38" fill="none">
+      <g clipPath="url(#xauClipSm)">
+        <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
+        <path d="M14.42 14.63H23.77L22.41 10.97C22.36 10.82 22.26 10.69 22.13 10.59L14.42 14.63ZM14.39 10.28C14.73 9.39 15.45 8.82 16.26 8.82H21.79C22.59 8.82 23.32 9.39 23.65 10.28L25.02 13.94C25.42 15.04 24.76 16.28 23.77 16.28H14.27C13.28 16.28 12.62 15.04 13.03 13.94L14.39 10.28ZM6.95 24.13H16.28L14.92 20.47C14.86 20.32 14.77 20.19 14.64 20.09L6.95 24.13ZM6.92 19.78C7.25 18.89 7.98 18.32 8.78 18.32H14.3C15.1 18.32 15.83 18.89 16.16 19.78L17.52 23.44C17.93 24.54 17.27 25.78 16.28 25.78H6.8C5.81 25.78 5.15 24.54 5.56 23.44L6.92 19.78ZM31.27 24.13H21.88L29.63 20.09C29.75 20.18 29.85 20.31 29.91 20.47L31.27 24.13ZM23.71 18.32C22.91 18.32 22.18 18.89 21.85 19.78L20.49 23.44C20.08 24.54 20.74 25.78 21.73 25.78H31.27C32.27 25.78 32.93 24.54 32.52 23.44L31.15 19.78C30.82 18.89 30.09 18.32 29.29 18.32H23.71Z" fill="white" />
+      </g>
+      <defs><clipPath id="xauClipSm"><rect width="38" height="38" rx="19" fill="white" /></clipPath></defs>
     </svg>
   )
 }
@@ -171,15 +183,14 @@ export default function SignalsDetailsPage() {
           </div>
           <div>
             <h1 className="text-white text-h1 font-normal">C$ Signals</h1>
-            <p className="text-[#a0a0a0] text-[0.625rem] font-acid">@csescoe — Signals Provider — 11 followers</p>
+            <p className="text-[#a0a0a0] text-[0.875rem] font-acid">@csescoe — Signals Provider — 11 followers</p>
           </div>
           <div className="ml-2"><Badge variant="active">Active</Badge></div>
           <div className="ml-auto">
             <GlowButton
-              label="Follow Strategy"
-              width={164}
+              label="Trade"
+              width={140}
               height={44}
-              icon={<FollowPersonIcon />}
               onClick={() => setFollowModalOpen(true)}
             />
           </div>
@@ -189,8 +200,8 @@ export default function SignalsDetailsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {[
             { label: 'Total Signals', value: '2', icon: <ChartIcon /> },
-            { label: 'Win Rate', value: '100%', valueColor: 'text-[#10BC83]', icon: <PieChartIcon /> },
-            { label: 'Total P&L', value: '$50.35', valueColor: 'text-[#10BC83]', icon: <GraphUpIcon />, hasInfo: true },
+            { label: 'Win Rate', value: '100%', valueColor: 'text-[#37c92e]', icon: <PieChartIcon /> },
+            { label: 'Total P&L', value: '$50.35', valueColor: 'text-[#37c92e]', icon: <GraphUpIcon />, hasInfo: true },
             { label: 'Max Drawdown', value: '196', icon: <UsersIcon />, hasInfo: true },
           ].map((stat, i) => (
             <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
@@ -198,12 +209,12 @@ export default function SignalsDetailsPage() {
               <div className="relative p-6 flex justify-between items-start">
                 <div>
                   <div className="flex items-center gap-2">
-                    <p className="text-[#808080] text-[0.625rem] font-acid uppercase tracking-wider">{stat.label}</p>
+                    <p className="text-[#a0a0a0] text-[0.875rem] font-acid">{stat.label}</p>
                     {stat.hasInfo && <InfoIcon />}
                   </div>
-                  <p className={`${stat.valueColor || 'text-white'} text-[1.5625rem] font-acid leading-none mt-3`}>{stat.value}</p>
+                  <p className={`${stat.valueColor || 'text-white'} text-[2.25rem] font-acid leading-none mt-3`}>{stat.value}</p>
                 </div>
-                <div className="w-[2.625rem] h-[2.625rem] rounded-[0.625rem] bg-[#09241c] flex items-center justify-center">
+                <div className="w-[2.625rem] h-[2.625rem] rounded-[0.75rem] bg-[#09241c] flex items-center justify-center">
                   {stat.icon}
                 </div>
               </div>
@@ -218,7 +229,7 @@ export default function SignalsDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
-                <h3 className="text-white text-[1.0625rem] font-acid">P&L Perfomance</h3>
+                <h3 className="text-white text-[1.5rem] font-acid">P&L Perfomance</h3>
                 <PeriodPill />
               </div>
               <PnlPerformanceChart />
@@ -230,7 +241,7 @@ export default function SignalsDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-white text-[1.0625rem] font-acid">Strategy Details</h3>
+                <h3 className="text-white text-[1.5rem] font-acid">Strategy Details</h3>
               </div>
               <div className="flex flex-col">
                 {[
@@ -246,11 +257,11 @@ export default function SignalsDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-[#808080] text-[0.625rem] font-acid">{item.label}</span>
+                      <span className="text-[#a0a0a0] text-[0.875rem] font-acid">{item.label}</span>
                       {item.isBadge ? (
                         <Badge variant="active">{item.value}</Badge>
                       ) : (
-                        <span className="text-white text-[0.625rem] font-acid">{item.value}</span>
+                        <span className="text-[#ececec] text-[0.875rem] font-acid">{item.value}</span>
                       )}
                     </div>
                   </div>
@@ -266,58 +277,36 @@ export default function SignalsDetailsPage() {
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
             <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[15.625rem]" />
             <div className="relative p-6 lg:p-8">
-              <h3 className="text-white text-[1.0625rem] font-acid mb-6">Performance & Frequency</h3>
+              <h3 className="text-white text-[1.5rem] font-acid mb-6">Performance & Frequency</h3>
 
               {/* Top row: stats + Most Traded */}
               <div className="flex justify-between items-start mb-8">
-                <div className="grid grid-cols-3 gap-x-20 gap-y-6">
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">2</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Total Signals</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">100%</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Win Rate</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">$50.35</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Total P&L</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">$25.18</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Avg P&L / Trade</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">0</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Open Positions</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">3</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Active Days</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">0.7</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Signals / Day</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">4.7</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Signals / Week</p>
-                  </div>
-                  <div>
-                    <p className="text-white text-[1.0625rem] font-acid">20.0</p>
-                    <p className="text-[#808080] text-[0.6875rem] font-acid mt-1">Signals / Month</p>
-                  </div>
+                <div className="grid grid-cols-3 gap-x-20 gap-y-8">
+                  {[
+                    { value: '2', label: 'Total Signals' },
+                    { value: '100%', label: 'Win Rate', green: true },
+                    { value: '$50.35', label: 'Total P&L', green: true },
+                    { value: '$25.18', label: 'Avg P&L / Trade', green: true },
+                    { value: '0', label: 'Open Positions' },
+                    { value: '3', label: 'Active Days' },
+                    { value: '0.7', label: 'Signals / Day' },
+                    { value: '4.7', label: 'Signals / Week' },
+                    { value: '20.0', label: 'Signals / Month' },
+                  ].map((s, i) => (
+                    <div key={i}>
+                      <p className={`${s.green ? 'text-[#37c92e]' : 'text-white'} text-[1.5rem] font-acid`}>{s.value}</p>
+                      <p className="text-[#a0a0a0] text-[1rem] font-acid-medium mt-1">{s.label}</p>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Most Traded badge */}
                 <div className="flex flex-col items-end">
-                  <p className="text-[#808080] text-[0.6875rem] font-acid mb-2">Most Traded</p>
-                  <div className="flex items-center gap-2 border border-[#303030] rounded-full px-4 py-2">
-                    <div className="w-[18px] h-[18px] rounded-full bg-[#1a1a1a] flex items-center justify-center">
-                      <span className="text-[#ffd700] text-[0.375rem] font-acid font-bold">XAU</span>
-                    </div>
-                    <span className="text-white text-[0.875rem] font-acid">XAUUSD</span>
-                    <span className="text-white text-[0.875rem] font-acid ml-1">2</span>
+                  <p className="text-[#a0a0a0] text-[1rem] font-acid-medium mb-2">Most Traded</p>
+                  <div className="flex items-center gap-2 border border-[#09241c] rounded-[8px] px-3 py-2.5">
+                    <XauusdSmallIcon />
+                    <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif' }}>XAUUSD</span>
+                    <span className="text-[#808080] text-[0.875rem] font-acid">2</span>
                   </div>
                 </div>
               </div>
@@ -325,20 +314,17 @@ export default function SignalsDetailsPage() {
           </GlassCard>
 
           {/* Follow this Strategy Card */}
-          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-            <GlowEllipse className="right-0 -top-[6.25rem]" />
-            <div className="relative p-6 lg:p-8">
-              <h3 className="text-white text-[0.6875rem] font-acid mb-2">Follow this Strategy</h3>
-              <p className="text-[#a0a0a0] text-[0.625rem] font-acid mb-6">Remote trade signals — not copy trading.</p>
-              <GlowButton
-                label="Follow"
-                width="100%"
-                height={44}
-                icon={<FollowPersonIcon />}
-                onClick={() => setFollowModalOpen(true)}
-              />
-            </div>
-          </GlassCard>
+          <div className="bg-[#09241c] rounded-[18px] overflow-hidden p-8">
+            <h3 className="text-white text-[1rem] font-acid-medium mb-2">Follow this Strategy</h3>
+            <p className="text-[#a0a0a0] text-[0.875rem] font-acid mb-6">Remote trade signals — not copy trading.</p>
+            <button
+              onClick={() => setFollowModalOpen(true)}
+              className="w-full h-[44px] bg-[#f1fffa] rounded-[12px] flex items-center justify-center gap-2.5 cursor-pointer transition-opacity hover:opacity-90"
+            >
+              <FollowPersonIcon />
+              <span className="text-black text-[0.875rem] font-acid">Follow</span>
+            </button>
+          </div>
         </div>
 
         {/* Trade Tabs */}
@@ -359,7 +345,7 @@ export default function SignalsDetailsPage() {
               <thead>
                 <tr className="border-b border-[#09241c]">
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-[#808080] text-[0.5rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
+                    <th key={h} className="text-left text-[#808080] text-[0.75rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
