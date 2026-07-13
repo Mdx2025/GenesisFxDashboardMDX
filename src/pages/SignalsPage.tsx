@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard } from '@/components/ui'
-import { ChevronRightIcon } from '@/components/icons'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
 
@@ -146,17 +145,26 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
               <span className="inline-block mt-1 text-white text-[16px] font-acid font-medium">{provider.tag}</span>
             </div>
           </div>
-          <button
-            onClick={() => onToggleFollow(provider.id)}
-            className={`h-[34px] px-4 rounded-full flex items-center gap-1.5 text-[14px] font-acid font-medium transition-colors cursor-pointer ${
-              provider.following
-                ? 'bg-[#09241c] border border-[#303030] text-white'
-                : 'bg-[#10BC83] text-white'
-            }`}
-          >
-            {provider.following && <CheckIcon />}
-            <span>{provider.following ? 'Following' : 'Follow'}</span>
-          </button>
+          {provider.following ? (
+            <button
+              onClick={() => onToggleFollow(provider.id)}
+              className="h-[34px] px-3 rounded-[12px] bg-[#09241c] border border-[#303030] flex items-center gap-1.5 text-[0.875rem] font-acid font-medium text-white transition-colors cursor-pointer"
+            >
+              <CheckIcon />
+              <span>Following</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => onToggleFollow(provider.id)}
+              className="px-3 py-2 rounded-[12px] flex items-center gap-[10px] text-[0.875rem] font-acid transition-colors cursor-pointer"
+              style={{ background: '#F1FFFA', color: 'black' }}
+            >
+              <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="black"/></svg>
+              <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M3.0625 6.125C1.61882 6.125 0.896986 6.125 0.448493 5.67651C0 5.22801 0 4.50618 0 3.0625C0 1.61882 0 0.896986 0.448493 0.448493C0.896986 0 1.61882 0 3.0625 0C4.50618 0 5.22801 0 5.67651 0.448493C6.125 0.896986 6.125 1.61882 6.125 3.0625C6.125 4.50618 6.125 5.22801 5.67651 5.67651C5.22801 6.125 4.50618 6.125 3.0625 6.125ZM3.57292 1.70139C3.57292 1.41949 3.3444 1.19097 3.0625 1.19097C2.7806 1.19097 2.55208 1.41949 2.55208 1.70139V2.55208H1.70139C1.41949 2.55208 1.19097 2.7806 1.19097 3.0625C1.19097 3.3444 1.41949 3.57292 1.70139 3.57292H2.55208V4.42361C2.55208 4.70551 2.7806 4.93403 3.0625 4.93403C3.3444 4.93403 3.57292 4.70551 3.57292 4.42361V3.57292H4.42361C4.70551 3.57292 4.93403 3.3444 4.93403 3.0625C4.93403 2.7806 4.70551 2.55208 4.42361 2.55208H3.57292V1.70139Z" fill="black"/></svg>
+              <svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M10.2184 0.43994C9.80448 0.444953 9.41865 0.460049 9.08243 0.505254C8.51991 0.580883 7.90419 0.761648 7.39543 1.2704C6.88667 1.77916 6.70591 2.39488 6.63028 2.9574C6.56232 3.46291 6.56241 4.08054 6.56251 4.73727V4.88771C6.56241 5.54444 6.56232 6.16207 6.63028 6.66757C6.68335 7.0623 6.78819 7.48322 7.0218 7.87499C7.01454 7.875 7.00727 7.875 7 7.875C0 7.875 0 6.11212 0 3.9375C0 1.76288 3.13401 0 7 0C8.16041 0 9.25487 0.158826 10.2184 0.43994Z" fill="black"/></svg>
+              <span className="leading-[18.8px]">Follow</span>
+            </button>
+          )}
         </div>
 
         {/* Trading Pair */}
@@ -168,15 +176,15 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
         </div>
 
         {/* P&L Chart Box */}
-        <div className="border border-[#1a2e28] rounded-[14px] p-4 mt-4 flex flex-col">
+        <div className="border border-[#303030] rounded-[14px] p-4 mt-4 flex flex-col">
           <div className="flex items-start justify-between mb-2">
             <div>
-              <p className={`text-[34px] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
+              <p className="text-[#808080] text-[0.875rem] font-acid font-medium mb-1">30D P&L</p>
+              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
               </p>
-              <p className="text-[#808080] text-[14px] font-acid font-medium mt-1">30D P&L</p>
             </div>
-            <span className="border border-[#303030] rounded-full px-3 py-1 text-[#808080] text-[12px] font-acid font-medium">
+            <span className="border border-[#303030] rounded-full px-3 py-1 text-[#808080] text-[0.75rem] font-acid font-medium">
               {provider.trades} trades
             </span>
           </div>
@@ -186,18 +194,18 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
         </div>
 
         {/* Metrics Row */}
-        <div className="grid grid-cols-3 mt-4 border border-[#1a2e28] rounded-[14px] overflow-hidden">
+        <div className="grid grid-cols-3 mt-4 border border-[#303030] rounded-[14px] overflow-hidden">
           <div className="p-4 flex flex-col items-center gap-1.5">
-            <span className="text-white text-[16px] font-acid font-medium">{provider.pricePerMonth}</span>
-            <span className="text-[#808080] text-[12px] font-acid font-medium">Price/mo</span>
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.pricePerMonth}</span>
+            <span className="text-[#808080] text-[1rem] font-acid font-medium">Price/mo</span>
           </div>
-          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#1a2e28]">
-            <span className="text-white text-[16px] font-acid font-medium">{provider.profitShare}</span>
-            <span className="text-[#808080] text-[12px] font-acid font-medium">Profit Share</span>
+          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#303030]">
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.profitShare}</span>
+            <span className="text-[#808080] text-[1rem] font-acid font-medium">Profit Share</span>
           </div>
           <div className="p-4 flex flex-col items-center gap-1.5">
-            <span className="text-white text-[16px] font-acid font-medium">{provider.followers}</span>
-            <span className="text-[#808080] text-[12px] font-acid font-medium">Followers</span>
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.followers}</span>
+            <span className="text-[#808080] text-[1rem] font-acid font-medium">Followers</span>
           </div>
         </div>
       </div>
@@ -205,10 +213,7 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
       {/* Action Button */}
       <div className="p-6 pt-5">
         <SparkleButton fullWidth className="px-5">
-          <span className="flex items-center justify-center gap-2">
-            <span>View Strategy</span>
-            <ChevronRightIcon size={18} color="#c6c6c6" />
-          </span>
+          <span className="flex items-center justify-center text-[#C6C6C6]">View Strategy</span>
         </SparkleButton>
       </div>
     </GlassCard>
