@@ -4,6 +4,7 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { useNavigate } from 'react-router-dom'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput, BannerStatBox } from '@/components/ui'
 import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
+import { CreateStrategyModal } from '@/components/dashboard/CreateStrategyModal'
 import { ChevronRightIcon } from '@/components/icons'
 import { copyTraders, copyTradingTabs, copyTradingFilterTabs } from '@/data/copyTrading'
 import type { CopyTrader } from '@/data/copyTrading'
@@ -210,6 +211,7 @@ export default function CopyTradingPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [copyModalOpen, setCopyModalOpen] = useState(false)
   const [copyTarget, setCopyTarget] = useState<CopyTrader | null>(null)
+  const [createStrategyOpen, setCreateStrategyOpen] = useState(false)
 
   const handleCopyClick = (trader: CopyTrader) => {
     setCopyTarget(trader)
@@ -395,7 +397,7 @@ export default function CopyTradingPage() {
                     icon={<PlusIcon />}
                     width={180}
                     height={44}
-                    onClick={() => navigate('/gensocial/pamm/create-strategy')}
+                    onClick={() => setCreateStrategyOpen(true)}
                   />
                 </div>
               </div>
@@ -436,7 +438,7 @@ export default function CopyTradingPage() {
                       icon={<PlusIcon />}
                       width={200}
                       height={44}
-                      onClick={() => navigate('/gensocial/pamm/create-strategy')}
+                      onClick={() => setCreateStrategyOpen(true)}
                     />
                   </div>
                 </div>
@@ -456,6 +458,11 @@ export default function CopyTradingPage() {
           traderInitials={copyTarget.initials}
         />
       )}
+
+      <CreateStrategyModal
+        open={createStrategyOpen}
+        onClose={() => setCreateStrategyOpen(false)}
+      />
     </div>
   )
 }
