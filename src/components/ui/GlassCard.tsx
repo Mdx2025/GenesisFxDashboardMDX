@@ -8,6 +8,7 @@ interface GlassCardProps {
   glow?: boolean
   rounded?: string
   className?: string
+  style?: React.CSSProperties
   children: ReactNode
 }
 
@@ -17,11 +18,11 @@ const VARIANT_CLASS = {
   purple: 'glass-card-purple',
 } as const
 
-export function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '19px', className = '', children }: GlassCardProps) {
+export function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '19px', className = '', style, children }: GlassCardProps) {
   return (
     <div
       className={`${VARIANT_CLASS[variant]} relative ${className}`}
-      style={{ borderRadius: rounded }}
+      style={{ borderRadius: rounded, ...style }}
     >
       {divider !== 'none' && <DividerGlow variant={divider} />}
       {variant === 'purple' && glow && (

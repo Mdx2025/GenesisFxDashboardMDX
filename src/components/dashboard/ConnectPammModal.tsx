@@ -112,7 +112,7 @@ export function ConnectPammModal({
         ref={modalRef}
         className="w-[1290px] max-w-[95vw] max-h-[90vh]"
       >
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden !bg-[#0c1311]">
+        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden" style={{ background: '#0c1311' }}>
           <GlowEllipse className="left-1/2 -translate-x-1/2 bottom-[-200px]" />
 
           {/* Close button */}
