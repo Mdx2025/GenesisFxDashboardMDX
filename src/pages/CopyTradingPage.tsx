@@ -3,6 +3,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useNavigate } from 'react-router-dom'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput, BannerStatBox } from '@/components/ui'
+import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
 import { ChevronRightIcon } from '@/components/icons'
 import { copyTraders, copyTradingTabs, copyTradingFilterTabs } from '@/data/copyTrading'
 import type { CopyTrader } from '@/data/copyTrading'
@@ -119,7 +120,7 @@ function FavoriteStarIcon() {
   )
 }
 
-function TraderCard({ trader }: { trader: CopyTrader }) {
+function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: CopyTrader) => void }) {
   const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
@@ -192,7 +193,7 @@ function TraderCard({ trader }: { trader: CopyTrader }) {
       {/* Action Buttons */}
       <div className="flex flex-col gap-2.5 p-6 pt-5">
         <SparkleButton fullWidth onClick={() => navigate('/gensocial/copy-trading/details-single-page')}>View</SparkleButton>
-        <GlowButton label="Copy" width="100%" />
+        <GlowButton label="Copy" width="100%" onClick={() => onCopy?.(trader)} />
       </div>
     </GlassCard>
   )
@@ -207,6 +208,13 @@ export default function CopyTradingPage() {
   const [filterTab, setFilterTab] = useState(0)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [searchQuery, setSearchQuery] = useState('')
+  const [copyModalOpen, setCopyModalOpen] = useState(false)
+  const [copyTarget, setCopyTarget] = useState<CopyTrader | null>(null)
+
+  const handleCopyClick = (trader: CopyTrader) => {
+    setCopyTarget(trader)
+    setCopyModalOpen(true)
+  }
 
   const filteredTraders = copyTraders.filter(t =>
     t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -332,7 +340,7 @@ export default function CopyTradingPage() {
             {/* Trader Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {filteredTraders.map(trader => (
-                <TraderCard key={trader.id} trader={trader} />
+                <TraderCard key={trader.id} trader={trader} onCopy={handleCopyClick} />
               ))}
             </div>
           </>
@@ -438,6 +446,16 @@ export default function CopyTradingPage() {
         )}
 
       </div>
+
+      {copyTarget && (
+        <CopySubscriptionModal
+          open={copyModalOpen}
+          onClose={() => { setCopyModalOpen(false); setCopyTarget(null) }}
+          traderName={copyTarget.name}
+          traderUsername={copyTarget.username}
+          traderInitials={copyTarget.initials}
+        />
+      )}
     </div>
   )
 }
