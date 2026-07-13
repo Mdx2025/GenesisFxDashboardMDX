@@ -633,7 +633,7 @@ export default function SignalsPage() {
         </div>
 
         {/* Signal Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProviders.map(provider => (
             <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} />
           ))}
