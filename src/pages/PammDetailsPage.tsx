@@ -147,7 +147,7 @@ const TEXT_STYLES = {
 
 function PerformanceGrid() {
   return (
-    <div className="relative w-full bg-[#0C1311] rounded-[18.56px] border border-[#0C1311] overflow-hidden p-8">
+    <>
       <div className="absolute left-1/2 -translate-x-1/2 -top-[259px] w-[493px] h-[278px] rounded-full bg-[#064B34] blur-[157px]" />
       <div className="relative">
         <div className="flex items-start">
@@ -199,7 +199,7 @@ function PerformanceGrid() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -283,13 +283,13 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
 
 function TradingStatistics() {
   return (
-    <div className="relative w-full bg-[#0C1311] rounded-[18.56px] border-[1.16px] border-[#0C1311] overflow-hidden px-8 py-15" style={{ boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)' }}>
+    <>
       <div className="absolute left-1/2 -translate-x-1/2 -top-[259px] w-[493px] h-[278px] rounded-full bg-[#064B34] blur-[157px]" />
       <div className="relative flex">
         <StatColumn rows={leftStats} />
         <StatColumn rows={rightStats} />
       </div>
-    </div>
+    </>
   )
 }
 
