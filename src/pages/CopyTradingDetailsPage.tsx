@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { ConnectPammModal } from '@/components/dashboard/ConnectPammModal'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge, StatCard } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -61,6 +60,24 @@ function ChartUpIcon() {
   )
 }
 
+function VerifiedIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 0L8.5 1.5L10.5 1L11 3L13 3.5L12.5 5.5L14 7L12.5 8.5L13 10.5L11 11L10.5 13L8.5 12.5L7 14L5.5 12.5L3.5 13L3 11L1 10.5L1.5 8.5L0 7L1.5 5.5L1 3.5L3 3L3.5 1L5.5 1.5L7 0Z" fill="#10BC83" />
+      <path d="M5 7L6.5 8.5L9 5.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function StatInfoIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 6H9.00833" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
 
 /* ─── Portfolio Area Chart ─── */
 
@@ -75,7 +92,6 @@ function PortfolioChart() {
   const points = data.map((v, i) => [i * step, h - ((v - min) / range) * h * 0.85 - h * 0.05])
   const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')
   const areaD = `${pathD} L${w},${h} L0,${h} Z`
-
   const yLabels = ['$305', '$253', '$202', '$150', '$98']
 
   return (
@@ -83,17 +99,17 @@ function PortfolioChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} className="text-[#808080] text-[0.75rem] font-acid">{label}</span>
+            <span key={label} className="text-gfx-neutral-400 text-[0.75rem] font-acid">{label}</span>
           ))}
         </div>
         <div className="flex-1">
           <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" style={{ height: `${h}px` }}>
             <defs>
-              <linearGradient id="portfolioGrad" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="copyPortfolioGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#10BC83" stopOpacity="0.2" />
                 <stop offset="100%" stopColor="#10BC83" stopOpacity="0" />
               </linearGradient>
-              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <linearGradient id="copyLineGrad" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stopColor="#10BC83" stopOpacity="0.3" />
                 <stop offset="50%" stopColor="#10BC83" stopOpacity="1" />
                 <stop offset="100%" stopColor="#10BC83" stopOpacity="0.5" />
@@ -102,8 +118,8 @@ function PortfolioChart() {
             {[0.15, 0.38, 0.6, 0.83].map((y, i) => (
               <line key={i} x1="0" y1={h * y} x2={w} y2={h * y} stroke="#1a2e26" strokeWidth="0.5" strokeDasharray="4 4" />
             ))}
-            <path d={areaD} fill="url(#portfolioGrad)" />
-            <path d={pathD} stroke="url(#lineGrad)" strokeWidth="2" fill="none" />
+            <path d={areaD} fill="url(#copyPortfolioGrad)" />
+            <path d={pathD} stroke="url(#copyLineGrad)" strokeWidth="2" fill="none" />
             <circle cx={points[20][0]} cy={points[20][1]} r="12" fill="#10BC83" opacity="0.15" />
             <circle cx={points[20][0]} cy={points[20][1]} r="4" fill="#10BC83" />
             <line x1={points[20][0]} y1={points[20][1] + 16} x2={points[20][0]} y2={h} stroke="#10BC83" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.4" />
@@ -150,51 +166,41 @@ function PerformanceGrid() {
     <>
       <div className="relative">
         <div className="flex items-start">
-          {/* Year column */}
           <div className="flex flex-col items-start w-[60px] flex-shrink-0">
-            <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px]">Year</span>
+            <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px]">Year</span>
             <div className="h-[45px] flex items-center mt-3">
-              <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px]">2026</span>
+              <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px]">2026</span>
             </div>
           </div>
-          {/* Month cells */}
           <div className="flex-1 flex gap-[10px]">
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
-                <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
+                <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
                 <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
                   {m.value && <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
             ))}
-            {/* Ann column */}
             <div className="flex flex-col items-center flex-1 min-w-0">
-              <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Ann</span>
+              <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Ann</span>
               <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES.positive}`}>
                 <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
           </div>
         </div>
-        {/* Legend */}
         <div className="flex items-center justify-center gap-8 mt-8">
           <div className="flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M2 0.5H18C18.8284 0.5 19.5 1.17157 19.5 2V18C19.5 18.8284 18.8284 19.5 18 19.5H2C1.17157 19.5 0.5 18.8284 0.5 18V2C0.5 1.17157 1.17157 0.5 2 0.5Z" fill="#09241C" stroke="#00B38C"/>
-            </svg>
-            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">Positive turn</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 0.5H18C18.8284 0.5 19.5 1.17157 19.5 2V18C19.5 18.8284 18.8284 19.5 18 19.5H2C1.17157 19.5 0.5 18.8284 0.5 18V2C0.5 1.17157 1.17157 0.5 2 0.5Z" fill="#09241C" stroke="#00B38C"/></svg>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">Positive turn</span>
           </div>
           <div className="flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" fill="#2A1411" stroke="#7F3B34"/>
-            </svg>
-            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">Negative turn</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" fill="#2A1411" stroke="#7F3B34"/></svg>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">Negative turn</span>
           </div>
           <div className="flex items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" stroke="#064B34"/>
-            </svg>
-            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">No trades</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" stroke="#064B34"/></svg>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">No trades</span>
           </div>
         </div>
       </div>
@@ -204,22 +210,7 @@ function PerformanceGrid() {
 
 /* ─── Trading Statistics ─── */
 
-function StatInfoIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M9 6H9.00833" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
-type StatRow = {
-  label: string
-  value: string
-  valueColor?: string
-  progressBar?: { percent: number }
-}
+type StatRow = { label: string; value: string; valueColor?: string; progressBar?: { percent: number } }
 
 const leftStats: StatRow[] = [
   { label: 'Total Trades', value: '266' },
@@ -246,34 +237,24 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
         <div key={row.label}>
           <div className="flex items-center justify-between py-[1.1rem] px-[1.75rem]">
             <div className="flex items-center gap-[0.625rem]">
-              <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">{row.label}</span>
+              <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">{row.label}</span>
               <StatInfoIcon />
             </div>
             <div className="flex items-center gap-3">
               {row.progressBar && (
                 <div className="flex items-center gap-2">
                   <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{row.value}</span>
-                  <div className="w-[88px] h-[9px] rounded-[60px] bg-[#09241C] relative">
-                    <div
-                      className="h-full rounded-[4.5px] bg-[#064B34]"
-                      style={{ width: `${(row.progressBar.percent / 100) * 88}px` }}
-                    />
+                  <div className="w-[88px] h-[9px] rounded-[60px] bg-gfx-green-900 relative">
+                    <div className="h-full rounded-[4.5px] bg-gfx-green-200" style={{ width: `${(row.progressBar.percent / 100) * 88}px` }} />
                   </div>
                 </div>
               )}
               {!row.progressBar && (
-                <span
-                  className="text-[1rem] font-acid font-medium leading-[24.44px]"
-                  style={{ color: row.valueColor || 'white' }}
-                >
-                  {row.value}
-                </span>
+                <span className="text-[1rem] font-acid font-medium leading-[24.44px]" style={{ color: row.valueColor || 'white' }}>{row.value}</span>
               )}
             </div>
           </div>
-          {i < rows.length - 1 && (
-            <div className="mx-[1.75rem] h-[0.61px] bg-[#09241C]" />
-          )}
+          {i < rows.length - 1 && <div className="mx-[1.75rem] h-[0.61px] bg-gfx-green-900" />}
         </div>
       ))}
     </div>
@@ -300,41 +281,41 @@ const closedTrades = [
 
 /* ─── Main Page ─── */
 
-export default function PammDetailsPage() {
+export default function CopyTradingDetailsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const navigate = useNavigate()
   const [perfTab, setPerfTab] = useState(0)
   const [tradeTab, setTradeTab] = useState(1)
-  const [connectModalOpen, setConnectModalOpen] = useState(false)
   const perfTabs = ['Performance Statement', 'Trading Statistics', 'Trade Calendar'] as const
   const tradeTabs = ['Open Positions', 'Closed Trades'] as const
 
   return (
-    <div className="pamm-details-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+    <div className="copy-trading-details-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
       <TopBar
         onMenuClick={() => setSidebarOpen(prev => !prev)}
         menuOpen={sidebarOpen}
         breadcrumbItems={[
-          { label: 'GenSocial', href: '/gensocial/pamm' },
-          { label: 'PAMM Strategies', href: '/gensocial/pamm' },
+          { label: 'GenSocial', href: '/gensocial/copy-trading' },
+          { label: 'Copy Trading', href: '/gensocial/copy-trading' },
           { label: 'Details', current: true },
         ]}
       />
 
       <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
 
-        {/* Header Row: Back + Avatar + Name + Badges + Star + Button */}
+        {/* Header Row */}
         <div className="flex items-center gap-4">
           <button
-            onClick={() => navigate('/gensocial/pamm')}
-            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            onClick={() => navigate('/gensocial/copy-trading')}
+            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>
-          <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0 overflow-hidden">
-            <span className="text-white text-[1rem] font-acid font-medium">BK</span>
+          <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <span className="text-white text-[1rem] font-acid font-medium">EA</span>
           </div>
-          <h1 className="text-white text-h1 font-normal">Bitcoin King</h1>
+          <h1 className="text-white text-h1 font-normal">KingEasy</h1>
+          <VerifiedIcon />
           <div className="flex items-center gap-2 ml-2">
             <Badge variant="active">GenFX</Badge>
             <Badge variant="active">Rank 2</Badge>
@@ -348,43 +329,47 @@ export default function PammDetailsPage() {
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <GlowButton
-              label="Connect Row"
-              width={180}
-              height={44}
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M13.7677 1.21068C13.9275 0.944292 14.273 0.857912 14.5394 1.01775L14.25 1.50008C14.5394 1.01775 14.5392 1.01759 14.5394 1.01775L14.5404 1.01837L14.5416 1.01908L14.5444 1.02077L14.5516 1.02521C14.5571 1.02864 14.564 1.03302 14.5723 1.03836C14.5888 1.04904 14.6106 1.06357 14.637 1.08204C14.6898 1.11896 14.761 1.17183 14.8445 1.2414C15.0111 1.38021 15.2289 1.58759 15.4459 1.86962C15.883 2.43792 16.3125 3.30559 16.3125 4.50009C16.3125 5.69458 15.883 6.56225 15.4459 7.13055C15.2289 7.41258 15.0111 7.61996 14.8445 7.75877C14.761 7.82834 14.6898 7.88121 14.637 7.91813C14.6106 7.9366 14.5888 7.95113 14.5723 7.96181C14.5682 7.96447 14.5644 7.9669 14.5609 7.96908C14.5575 7.97128 14.5544 7.97324 14.5516 7.97496L14.5444 7.9794L14.5416 7.98109L14.5404 7.9818C14.5402 7.98195 14.5394 7.98242 14.25 7.50009L14.5394 7.98242C14.273 8.14226 13.9275 8.05588 13.7677 7.78949C13.6085 7.52422 13.6935 7.18049 13.9572 7.01977L13.9614 7.01712C13.9669 7.01359 13.9773 7.00673 13.9919 6.99649C14.0212 6.97599 14.0671 6.94214 14.1243 6.89452C14.2389 6.79896 14.3961 6.65009 14.5541 6.44462C14.867 6.03792 15.1875 5.4056 15.1875 4.50009C15.1875 3.59458 14.867 2.96225 14.5541 2.55555C14.3961 2.35008 14.2389 2.20121 14.1243 2.10565C14.0671 2.05803 14.0212 2.02418 13.9919 2.00368C13.9773 1.99344 13.9669 1.98658 13.9614 1.98305L13.9572 1.9804C13.6935 1.81969 13.6085 1.47595 13.7677 1.21068Z" fill="black"/>
-                  <path d="M7.5 7.50009C9.15685 7.50009 10.5 6.15694 10.5 4.50009C10.5 2.84323 9.15685 1.50008 7.5 1.50008C5.84315 1.50008 4.5 2.84323 4.5 4.50009C4.5 6.15694 5.84315 7.50009 7.5 7.50009Z" fill="black"/>
-                  <path d="M1.5 13.1251C1.5 14.989 1.5 16.5001 7.5 16.5001C13.5 16.5001 13.5 14.989 13.5 13.1251C13.5 11.2611 10.8137 9.75009 7.5 9.75009C4.18629 9.75009 1.5 11.2611 1.5 13.1251Z" fill="black"/>
-                  <path d="M13.0394 2.51775C12.773 2.35791 12.4275 2.44429 12.2677 2.71068L12.4538 3.4783L12.4597 3.48229C12.4684 3.48844 12.4851 3.5006 12.5071 3.51893C12.5514 3.55589 12.6149 3.61571 12.6791 3.6993C12.8045 3.86225 12.9375 4.11958 12.9375 4.50009C12.9375 4.88059 12.8045 5.13792 12.6791 5.30087C12.6149 5.38446 12.5514 5.44428 12.5071 5.48124C12.4851 5.49957 12.4684 5.51173 12.4597 5.51788L12.4538 5.52187C12.1928 5.68346 12.1092 6.02537 12.2677 6.28949C12.4275 6.55588 12.773 6.64226 13.0394 6.48242L12.75 6.00009C13.0394 6.48242 13.0392 6.48257 13.0394 6.48242L13.0404 6.48182L13.0415 6.48117L13.0439 6.47973L13.0494 6.47628L13.0639 6.46712C13.0749 6.46 13.0887 6.45081 13.1048 6.43952C13.137 6.41696 13.179 6.38576 13.2273 6.34549C13.3236 6.26527 13.4476 6.14696 13.5709 5.9868C13.8205 5.66225 14.0625 5.16958 14.0625 4.50009C14.0625 3.83059 13.8205 3.33792 13.5709 3.01337C13.4476 2.85321 13.3236 2.7349 13.2273 2.65468C13.179 2.61441 13.137 2.58321 13.1048 2.56065C13.0887 2.54936 13.0749 2.54017 13.0639 2.53305L13.0494 2.52389L13.0439 2.52044L13.0415 2.519L13.0404 2.51835C13.0402 2.5182 13.0394 2.51775 12.75 3.00008L13.0394 2.51775Z" fill="black"/>
-                </svg>
-              }
-              onClick={() => setConnectModalOpen(true)}
-            />
+            <GlowButton label="Copy Trader" width={180} height={44} />
           </div>
         </div>
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard label="AUM" value="$3.50" icon={<ChartUpIcon />} />
-          <StatCard label="ROI" value="+194.12%" valueColor="text-[#10BC83]" icon={<GraphUpIcon />} />
-          <StatCard label="Closed P&L" value="$2.31" icon={<PieChartIcon />} />
-          <StatCard label="AUM" value="16.18%" icon={<CalendarIcon />} />
+          {[
+            { label: 'AUM', value: '$3,000.00', icon: <ChartUpIcon /> },
+            { label: 'ROI', value: '+194.12%', valueColor: 'text-gfx-green-500', icon: <GraphUpIcon /> },
+            { label: 'Closed P&L', value: '$400.53', icon: <PieChartIcon /> },
+            { label: 'Followers', value: '0', icon: <CalendarIcon /> },
+          ].map((stat, i) => (
+            <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[12.5rem]" />
+              <div className="relative p-6 flex justify-between items-start">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="text-gfx-neutral-400 text-[0.625rem] font-acid uppercase tracking-wider">{stat.label}</p>
+                    <InfoIcon />
+                  </div>
+                  <p className={`${stat.valueColor || 'text-white'} text-[1.5625rem] font-acid leading-none mt-3`}>{stat.value}</p>
+                </div>
+                <div className="w-[2.625rem] h-[2.625rem] rounded-[0.625rem] bg-gfx-green-900 flex items-center justify-center">
+                  {stat.icon}
+                </div>
+              </div>
+            </GlassCard>
+          ))}
         </div>
 
-        {/* Main Content: Chart (left) + Strategy Details (right) */}
+        {/* Main Content: Chart (left) + Trader Details (right) */}
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_23.5rem] gap-5">
-          {/* Chart Area */}
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-[#808080] text-[0.625rem] font-acid">Portfolio Equity</p>
+                  <p className="text-gfx-neutral-400 text-[0.625rem] font-acid">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
-                    <span className="text-white text-[1.5625rem] font-acid">$17,897.30</span>
-                    <span className="text-[#10BC83] text-[0.625rem] font-acid">+$6,437.21 (56.1%)</span>
+                    <span className="text-white text-[1.5625rem] font-acid">$3,000.30</span>
+                    <span className="text-gfx-green-500 text-[0.625rem] font-acid">+$400.53 (194.12%)</span>
                   </div>
                 </div>
                 <PeriodPill />
@@ -393,27 +378,26 @@ export default function PammDetailsPage() {
             </div>
           </GlassCard>
 
-          {/* Strategy Details Sidebar */}
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-white text-[1.0625rem] font-acid">Strategy Details</h3>
+                <h3 className="text-white text-[1.0625rem] font-acid">Trader Details</h3>
               </div>
               <div className="flex flex-col">
                 {[
-                  { label: 'Strategy Name', value: 'Bitcoin King 1.0' },
-                  { label: 'Minimum Investment', value: '$50.00' },
-                  { label: 'Managment Fee', value: '1.7%' },
-                  { label: 'Performance Fee', value: '20%' },
+                  { label: 'Trader Name', value: 'KingEasy' },
+                  { label: 'Minimum Copy', value: '$100.00' },
+                  { label: 'Management Fee', value: '2.0%' },
+                  { label: 'Performance Fee', value: '25%' },
                   { label: 'Performance Fee Schedule', value: 'Monthly' },
                   { label: 'Currency', value: 'USD' },
-                  { label: 'Launch Date', value: 'Nov 24,2025' },
+                  { label: 'Since', value: 'Jan 15,2026' },
                 ].map((item, i) => (
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-[#808080] text-[0.625rem] font-acid">{item.label}</span>
+                      <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">{item.label}</span>
                       <span className="text-white text-[0.625rem] font-acid">{item.value}</span>
                     </div>
                   </div>
@@ -425,15 +409,9 @@ export default function PammDetailsPage() {
 
         {/* Performance Tabs */}
         <div className="w-full overflow-x-auto max-w-[40.5rem]">
-          <ModeToggle
-            options={[...perfTabs]}
-            defaultIndex={0}
-            activeIndex={perfTab}
-            onChange={setPerfTab}
-          />
+          <ModeToggle options={[...perfTabs]} defaultIndex={0} activeIndex={perfTab} onChange={setPerfTab} />
         </div>
 
-        {/* Performance Calendar */}
         {perfTab === 0 && (
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
             <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[15.625rem]" />
@@ -443,12 +421,8 @@ export default function PammDetailsPage() {
           </GlassCard>
         )}
 
-        {/* Trading Statistics */}
-        {perfTab === 1 && (
-          <TradingStatistics />
-        )}
+        {perfTab === 1 && <TradingStatistics />}
 
-        {/* Trade Calendar */}
         {perfTab === 2 && (
           <TradingCalendar
             trades={{
@@ -478,12 +452,7 @@ export default function PammDetailsPage() {
 
         {/* Trade Tabs */}
         <div className="w-full overflow-x-auto max-w-[27.25rem]">
-          <ModeToggle
-            options={[...tradeTabs]}
-            defaultIndex={1}
-            activeIndex={tradeTab}
-            onChange={setTradeTab}
-          />
+          <ModeToggle options={[...tradeTabs]} defaultIndex={1} activeIndex={tradeTab} onChange={setTradeTab} />
         </div>
 
         {/* Trades Table */}
@@ -492,22 +461,22 @@ export default function PammDetailsPage() {
           <div className="relative overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>
-                <tr className="border-b border-[#09241c]">
+                <tr className="border-b border-gfx-green-900">
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-[#808080] text-[0.5rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-400 text-[0.5rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {closedTrades.map((trade, i) => (
-                  <tr key={i} className="border-b border-[#09241c] last:border-0">
+                  <tr key={i} className="border-b border-gfx-green-900 last:border-0">
                     <td className="px-6 py-4">
                       <p className="text-white text-[0.6875rem] font-acid">{trade.openDate}</p>
-                      <p className="text-[#808080] text-[0.6875rem] font-acid">{trade.openTime}</p>
+                      <p className="text-gfx-neutral-400 text-[0.6875rem] font-acid">{trade.openTime}</p>
                     </td>
                     <td className="px-6 py-4">
                       <p className="text-white text-[0.6875rem] font-acid">{trade.closeDate}</p>
-                      <p className="text-[#808080] text-[0.6875rem] font-acid">{trade.closeTime}</p>
+                      <p className="text-gfx-neutral-400 text-[0.6875rem] font-acid">{trade.closeTime}</p>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
@@ -518,20 +487,12 @@ export default function PammDetailsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-4 py-1.5 rounded-full border border-[#10BC83] text-[#10BC83] text-[0.5rem] font-acid">{trade.side}</span>
+                      <span className="px-4 py-1.5 rounded-full border border-gfx-green-500 text-gfx-green-500 text-[0.5rem] font-acid">{trade.side}</span>
                     </td>
-                    <td className="px-6 py-4">
-                      <span className="text-white text-[0.6875rem] font-acid">{trade.volume}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-white text-[0.6875rem] font-acid">{trade.openPrice}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-white text-[0.6875rem] font-acid">{trade.closePrice}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-[#ff4d4d] text-[0.6875rem] font-acid">{trade.pnl}</span>
-                    </td>
+                    <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.volume}</span></td>
+                    <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.openPrice}</span></td>
+                    <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.closePrice}</span></td>
+                    <td className="px-6 py-4"><span className="text-[#ff4d4d] text-[0.6875rem] font-acid">{trade.pnl}</span></td>
                   </tr>
                 ))}
               </tbody>
@@ -540,11 +501,6 @@ export default function PammDetailsPage() {
         </GlassCard>
 
       </div>
-
-      <ConnectPammModal
-        open={connectModalOpen}
-        onClose={() => setConnectModalOpen(false)}
-      />
     </div>
   )
 }

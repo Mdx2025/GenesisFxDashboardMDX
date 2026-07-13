@@ -1,20 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard } from '@/components/ui'
-import { ChevronRightIcon } from '@/components/icons'
+import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
+import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard } from '@/components/ui'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
 
 /* ─── Inline SVG Icons ─── */
-
-function StarIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
 
 function GridViewIcon({ active }: { active?: boolean }) {
   return (
@@ -137,7 +130,8 @@ function PnlChart({ data, negative }: { data: number[]; negative: boolean }) {
 
 /* ─── Signal Provider Card ─── */
 
-function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; onToggleFollow: (id: string) => void }) {
+function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: SignalProvider; onToggleFollow: (id: string) => void; onFollowClick: (provider: SignalProvider) => void }) {
+  const navigate = useNavigate()
   const isNegative = provider.pnl30d < 0
 
   return (
@@ -154,17 +148,28 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
               <span className="inline-block mt-1 text-white text-[16px] font-acid font-medium">{provider.tag}</span>
             </div>
           </div>
-          <button
-            onClick={() => onToggleFollow(provider.id)}
-            className={`h-[34px] px-4 rounded-full flex items-center gap-1.5 text-[14px] font-acid font-medium transition-colors cursor-pointer ${
-              provider.following
-                ? 'bg-[#09241c] border border-[#303030] text-white'
-                : 'bg-[#10BC83] text-white'
-            }`}
-          >
-            {provider.following && <CheckIcon />}
-            <span>{provider.following ? 'Following' : 'Follow'}</span>
-          </button>
+          {provider.following ? (
+            <button
+              onClick={() => onToggleFollow(provider.id)}
+              className="h-[34px] px-3 rounded-[12px] bg-[#09241c] border border-[#303030] flex items-center gap-1.5 text-[0.875rem] font-acid font-medium text-white transition-colors cursor-pointer"
+            >
+              <CheckIcon />
+              <span>Following</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => onFollowClick(provider)}
+              className="px-3 py-2 rounded-[12px] flex items-center gap-[10px] text-[0.875rem] font-acid transition-colors cursor-pointer"
+              style={{ background: '#F1FFFA', color: 'black' }}
+            >
+              <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
+                <circle cx="7" cy="3.5" r="3.5" fill="black"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M10.9375 17.5C9.49382 17.5 8.77199 17.5 8.32349 17.0515C7.875 16.603 7.875 15.8812 7.875 14.4375C7.875 12.9938 7.875 12.272 8.32349 11.8235C8.77199 11.375 9.49382 11.375 10.9375 11.375C12.3812 11.375 13.103 11.375 13.5515 11.8235C14 12.272 14 12.9938 14 14.4375C14 15.8812 14 16.603 13.5515 17.0515C13.103 17.5 12.3812 17.5 10.9375 17.5ZM11.4479 13.0764C11.4479 12.7945 11.2194 12.566 10.9375 12.566C10.6556 12.566 10.4271 12.7945 10.4271 13.0764V13.9271H9.57639C9.29449 13.9271 9.06597 14.1556 9.06597 14.4375C9.06597 14.7194 9.29449 14.9479 9.57639 14.9479H10.4271V15.7986C10.4271 16.0805 10.6556 16.309 10.9375 16.309C11.2194 16.309 11.4479 16.0805 11.4479 15.7986V14.9479H12.2986C12.5805 14.9479 12.809 14.7194 12.809 14.4375C12.809 14.1556 12.5805 13.9271 12.2986 13.9271H11.4479V13.0764Z" fill="black"/>
+                <path d="M10.2184 10.0649C9.80448 10.07 9.41865 10.085 9.08243 10.1303C8.51991 10.2059 7.90419 10.3866 7.39543 10.8954C6.88667 11.4042 6.70591 12.0199 6.63028 12.5824C6.56232 13.0879 6.56241 13.7055 6.56251 14.3623V14.5127C6.56241 15.1694 6.56232 15.7871 6.63028 16.2926C6.68335 16.6873 6.78819 17.1082 7.0218 17.5C7.01454 17.5 7.00727 17.5 7 17.5C0 17.5 0 15.7371 0 13.5625C0 11.3879 3.13401 9.625 7 9.625C8.16041 9.625 9.25487 9.78383 10.2184 10.0649Z" fill="black"/>
+              </svg>
+              <span className="leading-[18.8px]">Follow</span>
+            </button>
+          )}
         </div>
 
         {/* Trading Pair */}
@@ -176,15 +181,15 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
         </div>
 
         {/* P&L Chart Box */}
-        <div className="border border-[#1a2e28] rounded-[14px] p-4 mt-4 flex flex-col">
+        <div className="border border-[#303030] rounded-[14px] p-4 mt-4 flex flex-col">
           <div className="flex items-start justify-between mb-2">
             <div>
-              <p className={`text-[34px] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
+              <p className="text-[#808080] text-[0.875rem] font-acid font-medium mb-1">30D P&L</p>
+              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
               </p>
-              <p className="text-[#808080] text-[14px] font-acid font-medium mt-1">30D P&L</p>
             </div>
-            <span className="border border-[#303030] rounded-full px-3 py-1 text-[#808080] text-[12px] font-acid font-medium">
+            <span className="border border-[#303030] rounded-full px-3 py-1 text-[#808080] text-[0.75rem] font-acid font-medium">
               {provider.trades} trades
             </span>
           </div>
@@ -194,29 +199,26 @@ function SignalCard({ provider, onToggleFollow }: { provider: SignalProvider; on
         </div>
 
         {/* Metrics Row */}
-        <div className="grid grid-cols-3 mt-4 border border-[#1a2e28] rounded-[14px] overflow-hidden">
+        <div className="grid grid-cols-3 mt-4 border border-[#303030] rounded-[14px] overflow-hidden">
           <div className="p-4 flex flex-col items-center gap-1.5">
-            <span className="text-white text-[16px] font-acid font-medium">{provider.pricePerMonth}</span>
-            <span className="text-[#808080] text-[12px] font-acid font-medium">Price/mo</span>
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.pricePerMonth}</span>
+            <span className="text-[#808080] text-[1rem] font-acid font-medium">Price/mo</span>
           </div>
-          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#1a2e28]">
-            <span className="text-white text-[16px] font-acid font-medium">{provider.profitShare}</span>
-            <span className="text-[#808080] text-[12px] font-acid font-medium">Profit Share</span>
+          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#303030]">
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.profitShare}</span>
+            <span className="text-[#808080] text-[1rem] font-acid font-medium">Profit Share</span>
           </div>
           <div className="p-4 flex flex-col items-center gap-1.5">
-            <span className="text-white text-[16px] font-acid font-medium">{provider.followers}</span>
-            <span className="text-[#808080] text-[12px] font-acid font-medium">Followers</span>
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.followers}</span>
+            <span className="text-[#808080] text-[1rem] font-acid font-medium">Followers</span>
           </div>
         </div>
       </div>
 
       {/* Action Button */}
       <div className="p-6 pt-5">
-        <SparkleButton fullWidth className="px-5">
-          <span className="flex items-center justify-center gap-2">
-            <span>View Strategy</span>
-            <ChevronRightIcon size={18} color="#c6c6c6" />
-          </span>
+        <SparkleButton fullWidth className="px-5" onClick={() => navigate('/gensocial/signals/details-single-page')}>
+          <span className="flex items-center justify-center text-[#C6C6C6]">View Strategy</span>
         </SparkleButton>
       </div>
     </GlassCard>
@@ -310,6 +312,7 @@ function FollowerProviderCard({ provider, onToggleFollow }: { provider: SignalPr
 /* ─── Main Page ─── */
 
 export default function SignalsPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [filterTab, setFilterTab] = useState(0)
@@ -317,9 +320,24 @@ export default function SignalsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [providers, setProviders] = useState(signalProviders)
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [followModalOpen, setFollowModalOpen] = useState(false)
+  const [followTarget, setFollowTarget] = useState<SignalProvider | null>(null)
 
   const handleToggleFollow = (id: string) => {
     setProviders(prev => prev.map(p => p.id === id ? { ...p, following: !p.following } : p))
+  }
+
+  const handleFollowClick = (provider: SignalProvider) => {
+    setFollowTarget(provider)
+    setFollowModalOpen(true)
+  }
+
+  const handleConfirmFollow = () => {
+    if (followTarget) {
+      setProviders(prev => prev.map(p => p.id === followTarget.id ? { ...p, following: true } : p))
+    }
+    setFollowModalOpen(false)
+    setFollowTarget(null)
   }
 
   const filteredProviders = providers.filter(p =>
@@ -557,15 +575,7 @@ export default function SignalsPage() {
                 </SparkleButton>
               </div>
             </div>
-            <div className="hidden xl:flex items-center gap-4 bg-[#0a2e1f] rounded-[1rem] px-6 py-5 shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-[#10BC83]/20 flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L5 7.5M5 7.5L7.5 10M5 7.5H15M12.5 10L15 12.5M15 12.5L12.5 15M15 12.5H5" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </div>
-              <div>
-                <p className="text-white text-[2rem] font-acid leading-none">71</p>
-                <p className="text-[#a0a0a0] text-[0.75rem] font-acid mt-1">Active signals</p>
-              </div>
-            </div>
+            <BannerStatBox value={71} label="Active signals" />
           </div>
         </GlassBannerCard>
 
@@ -588,34 +598,90 @@ export default function SignalsPage() {
             />
             <button
               onClick={() => {}}
-              className="w-[47px] h-[44px] rounded-[10px] bg-[#09241c] flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+              className="relative w-[47px] h-[44px] flex items-center justify-center cursor-pointer"
             >
-              <StarIcon />
+              <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
+              </svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+              className="relative w-[47px] h-[44px] flex items-center justify-center cursor-pointer"
             >
-              <ListViewIcon active={viewMode === 'list'} />
+              <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'list' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
+              </svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clipPath="url(#listClipSig)">
+                  <path d="M0 5.5C0 4.4128 0 3.8692 0.171271 3.44041C0.399632 2.86867 0.837649 2.41443 1.38896 2.17761C1.80245 2 2.32663 2 3.375 2H5.625C6.67337 2 7.19755 2 7.61104 2.17761C8.16235 2.41443 8.60037 2.86867 8.82873 3.44041C9 3.8692 9 4.4128 9 5.5C9 6.5872 9 7.1308 8.82873 7.55959C8.60037 8.13133 8.16235 8.58557 7.61104 8.82239C7.19755 9 6.67337 9 5.625 9H3.375C2.32663 9 1.80245 9 1.38896 8.82239C0.837649 8.58557 0.399632 8.13133 0.171271 7.55959C0 7.1308 0 6.5872 0 5.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M10 3.5C10 3.03406 10 2.80109 10.2664 2.61732C10.6217 2.37229 11.303 2.17761 12.1606 2.07612C12.8038 2 13.6192 2 15.25 2H18.75C20.3808 2 21.1962 2 21.8394 2.07612C22.697 2.17761 23.3784 2.37229 23.7336 2.61732C24 2.80109 24 3.03406 24 3.5C24 3.96594 24 4.19891 23.7336 4.38268C23.3784 4.62771 22.697 4.82239 21.8394 4.92388C21.1962 5 20.3808 5 18.75 5H15.25C13.6192 5 12.8038 5 12.1606 4.92388C11.303 4.82239 10.6217 4.62771 10.2664 4.38268C10 4.19891 10 3.96594 10 3.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M10 7.5C10 7.03406 10 6.80109 10.2664 6.61732C10.6217 6.37229 11.303 6.17761 12.1606 6.07612C12.8038 6 13.6192 6 15.25 6H18.75C20.3808 6 21.1962 6 21.8394 6.07612C22.697 6.17761 23.3784 6.37229 23.7336 6.61732C24 6.80109 24 7.03406 24 7.5C24 7.96594 24 8.19891 23.7336 8.38268C23.3784 8.62771 22.697 8.82239 21.8394 8.92388C21.1962 9 20.3808 9 18.75 9H15.25C13.6192 9 12.8038 9 12.1606 8.92388C11.303 8.82239 10.6217 8.62771 10.2664 8.38268C10 8.19891 10 7.96594 10 7.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M0 13.5C0 12.4128 0 11.8692 0.171271 11.4404C0.399632 10.8687 0.837649 10.4144 1.38896 10.1776C1.80245 10 2.32663 10 3.375 10H5.625C6.67337 10 7.19755 10 7.61104 10.1776C8.16235 10.4144 8.60037 10.8687 8.82873 11.4404C9 11.8692 9 12.4128 9 13.5C9 14.5872 9 15.1308 8.82873 15.5596C8.60037 16.1313 8.16235 16.5856 7.61104 16.8224C7.19755 17 6.67337 17 5.625 17H3.375C2.32663 17 1.80245 17 1.38896 16.8224C0.837649 16.5856 0.399632 16.1313 0.171271 15.5596C0 15.1308 0 14.5872 0 13.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M10 11.5C10 11.0341 10 10.8011 10.2664 10.6173C10.6217 10.3723 11.303 10.1776 12.1606 10.0761C12.8038 10 13.6192 10 15.25 10H18.75C20.3808 10 21.1962 10 21.8394 10.0761C22.697 10.1776 23.3784 10.3723 23.7336 10.6173C24 10.8011 24 11.0341 24 11.5C24 11.9659 24 12.1989 23.7336 12.3827C23.3784 12.6277 22.697 12.8224 21.8394 12.9239C21.1962 13 20.3808 13 18.75 13H15.25C13.6192 13 12.8038 13 12.1606 12.9239C11.303 12.8224 10.6217 12.6277 10.2664 12.3827C10 12.1989 10 11.9659 10 11.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M10 15.5C10 15.0341 10 14.8011 10.2664 14.6173C10.6217 14.3723 11.303 14.1776 12.1606 14.0761C12.8038 14 13.6192 14 15.25 14H18.75C20.3808 14 21.1962 14 21.8394 14.0761C22.697 14.1776 23.3784 14.3723 23.7336 14.6173C24 14.8011 24 15.0341 24 15.5C24 15.9659 24 16.1989 23.7336 16.3827C23.3784 16.6277 22.697 16.8224 21.8394 16.9239C21.1962 17 20.3808 17 18.75 17H15.25C13.6192 17 12.8038 17 12.1606 16.9239C11.303 16.8224 10.6217 16.6277 10.2664 16.3827C10 16.1989 10 15.9659 10 15.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M0 21.5C0 20.4128 0 19.8692 0.171271 19.4404C0.399632 18.8687 0.837649 18.4144 1.38896 18.1776C1.80245 18 2.32663 18 3.375 18H5.625C6.67337 18 7.19755 18 7.61104 18.1776C8.16235 18.4144 8.60037 18.8687 8.82873 19.4404C9 19.8692 9 20.4128 9 21.5C9 22.5872 9 23.1308 8.82873 23.5596C8.60037 24.1313 8.16235 24.5856 7.61104 24.8224C7.19755 25 6.67337 25 5.625 25H3.375C2.32663 25 1.80245 25 1.38896 24.8224C0.837649 24.5856 0.399632 24.1313 0.171271 23.5596C0 23.1308 0 22.5872 0 21.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M10 19.5C10 19.0341 10 18.8011 10.2664 18.6173C10.6217 18.3723 11.303 18.1776 12.1606 18.0761C12.8038 18 13.6192 18 15.25 18H18.75C20.3808 18 21.1962 18 21.8394 18.0761C22.697 18.1776 23.3784 18.3723 23.7336 18.6173C24 18.8011 24 19.0341 24 19.5C24 19.9659 24 20.1989 23.7336 20.3827C23.3784 20.6277 22.697 20.8224 21.8394 20.9239C21.1962 21 20.3808 21 18.75 21H15.25C13.6192 21 12.8038 21 12.1606 20.9239C11.303 20.8224 10.6217 20.6277 10.2664 20.3827C10 20.1989 10 19.9659 10 19.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                  <path d="M10 23.5C10 23.0341 10 22.8011 10.2664 22.6173C10.6217 22.3723 11.303 22.1776 12.1606 22.0761C12.8038 22 13.6192 22 15.25 22H18.75C20.3808 22 21.1962 22 21.8394 22.0761C22.697 22.1776 23.3784 22.3723 23.7336 22.6173C24 22.8011 24 23.0341 24 23.5C24 23.9659 24 24.1989 23.7336 24.3827C23.3784 24.6277 22.697 24.8224 21.8394 24.9239C21.1962 25 20.3808 25 18.75 25H15.25C13.6192 25 12.8038 25 12.1606 24.9239C11.303 24.8224 10.6217 24.6277 10.2664 24.3827C10 24.1989 10 23.9659 10 23.5Z" fill={viewMode === 'list' ? '#10BC83' : '#808080'}/>
+                </g>
+                <defs><clipPath id="listClipSig"><rect width="24" height="24" rx="5" fill="white"/></clipPath></defs>
+              </svg>
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`w-[47px] h-[44px] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-[#064b34]' : 'bg-[#09241c] hover:bg-[#0d2e24]'}`}
+              className="relative w-[47px] h-[44px] flex items-center justify-center cursor-pointer"
             >
-              <GridViewIcon active={viewMode === 'grid'} />
+              <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'grid' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
+              </svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 6.21053C2 4.22567 2 3.23323 2.65901 2.61662C3.31802 2 4.37868 2 6.5 2C8.62132 2 9.68198 2 10.341 2.61662C11 3.23323 11 4.22567 11 6.21053V17.7895C11 19.7743 11 20.7668 10.341 21.3834C9.68198 22 8.62132 22 6.5 22C4.37868 22 3.31802 22 2.65901 21.3834C2 20.7668 2 19.7743 2 17.7895V6.21053Z" fill={viewMode === 'grid' ? '#10BC83' : '#808080'}/>
+                <path d="M13 15.4C13 13.3258 13 12.2887 13.659 11.6444C14.318 11 15.3787 11 17.5 11C19.6213 11 20.682 11 21.341 11.6444C22 12.2887 22 13.3258 22 15.4V17.6C22 19.6742 22 20.7113 21.341 21.3556C20.682 22 19.6213 22 17.5 22C15.3787 22 14.318 22 13.659 21.3556C13 20.7113 13 19.6742 13 17.6V15.4Z" fill={viewMode === 'grid' ? '#10BC83' : '#808080'}/>
+                <path d="M13 5.5C13 4.4128 13 3.8692 13.1713 3.44041C13.3996 2.86867 13.8376 2.41443 14.389 2.17761C14.8024 2 15.3266 2 16.375 2H18.625C19.6734 2 20.1976 2 20.611 2.17761C21.1624 2.41443 21.6004 2.86867 21.8287 3.44041C22 3.8692 22 4.4128 22 5.5C22 6.5872 22 7.1308 21.8287 7.55959C21.6004 8.13133 21.1624 8.58557 20.611 8.82239C20.1976 9 19.6734 9 18.625 9H16.375C15.3266 9 14.8024 9 14.389 8.82239C13.8376 8.58557 13.3996 8.13133 13.1713 7.55959C13 7.1308 13 6.5872 13 5.5Z" fill={viewMode === 'grid' ? '#10BC83' : '#808080'}/>
+              </svg>
             </button>
           </div>
         </div>
 
         {/* Signal Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProviders.map(provider => (
-            <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} />
+            <SignalStrategyCard
+              key={provider.id}
+              initials={provider.initials}
+              username={provider.username}
+              tag={provider.tag}
+              pair={provider.pair}
+              pairIcon={<XauusdIcon />}
+              pnl={provider.pnl30d}
+              trades={provider.trades}
+              pricePerMonth={provider.pricePerMonth}
+              profitShare={provider.profitShare}
+              followers={provider.followers}
+              following={provider.following}
+              onFollow={() => provider.following ? handleToggleFollow(provider.id) : handleFollowClick(provider)}
+              onViewStrategy={() => navigate('/gensocial/signals/details-single-page')}
+            />
           ))}
         </div>
         </>)}
 
       </div>
+
+      {followTarget && (
+        <FollowStrategyModal
+          open={followModalOpen}
+          onClose={() => { setFollowModalOpen(false); setFollowTarget(null) }}
+          onConfirm={handleConfirmFollow}
+          strategyName={followTarget.tag}
+          username={followTarget.username}
+          initials={followTarget.initials}
+          pricePerMonth={followTarget.pricePerMonth}
+          profitShare={followTarget.profitShare}
+        />
+      )}
     </div>
   )
 }
