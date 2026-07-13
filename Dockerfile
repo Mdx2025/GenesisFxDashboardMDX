@@ -3,7 +3,7 @@ WORKDIR /app
 RUN npm install -g pnpm@latest
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --ignore-scripts
-ARG CACHE_BUST=1
+ARG CACHE_BUST=2
 COPY . .
 RUN pnpm build
 
