@@ -116,11 +116,8 @@ export function CopySubscriptionModal({
       aria-modal="true"
       aria-label="Configure Subscription"
     >
-      <div
-        ref={modalRef}
-        className="relative w-[1024px] max-w-[95vw] flex rounded-[19px] overflow-hidden border border-[#064B34]"
-        style={{ background: '#0A0E0C' }}
-      >
+      <div ref={modalRef} className="w-[1024px] max-w-[95vw]">
+      <GlassCard variant="light" divider="none" rounded="19px" className="flex overflow-hidden">
         {/* Left Column — Configuration Form */}
         <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0 }}>
           {/* Step indicator + title */}
@@ -195,7 +192,7 @@ export function CopySubscriptionModal({
         </div>
 
         {/* Divider */}
-        <div className="w-px bg-[#064B34]" />
+        <div className="w-px bg-[#303030]" />
 
         {/* Right Column — Profile & Summary */}
         <div className="w-[460px] flex-shrink-0 p-10 flex flex-col">
@@ -240,6 +237,7 @@ export function CopySubscriptionModal({
             </div>
           </GlassCard>
         </div>
+      </GlassCard>
       </div>
     </div>
   )
