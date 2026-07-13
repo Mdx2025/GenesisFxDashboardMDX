@@ -19,6 +19,7 @@ import CopyTradingPage from '@/pages/CopyTradingPage'
 import CopyTradingDetailsPage from '@/pages/CopyTradingDetailsPage'
 import CreateStrategyPage from '@/pages/CreateStrategyPage'
 import SignalsPage from '@/pages/SignalsPage'
+import SignalsDetailsPage from '@/pages/SignalsDetailsPage'
 import VideoSinglePage from '@/pages/academy/VideoSinglePage'
 import EbookSinglePage from '@/pages/academy/EbookSinglePage'
 import {
@@ -58,5 +59,6 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/gensocial/copy-trading', label: 'Copy Trading', description: 'Copy top-performing traders automatically', icon: GenSocialIcon, component: CopyTradingPage },
   { path: '/gensocial/copy-trading/details-single-page', label: 'Copy Trading Details', description: 'Copy trading strategy single page details', icon: GenSocialIcon, component: CopyTradingDetailsPage, showInDirectory: false },
   { path: '/gensocial/signals', label: 'Signals', description: 'Follow expert signal providers and trade ideas', icon: GenSocialIcon, component: SignalsPage },
+  { path: '/gensocial/signals/details-single-page', label: 'Signal Details', description: 'Signal provider single page details', icon: GenSocialIcon, component: SignalsDetailsPage, showInDirectory: false },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
 ]

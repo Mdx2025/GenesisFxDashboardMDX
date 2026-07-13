@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
@@ -130,6 +131,7 @@ function PnlChart({ data, negative }: { data: number[]; negative: boolean }) {
 /* ─── Signal Provider Card ─── */
 
 function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: SignalProvider; onToggleFollow: (id: string) => void; onFollowClick: (provider: SignalProvider) => void }) {
+  const navigate = useNavigate()
   const isNegative = provider.pnl30d < 0
 
   return (
@@ -215,7 +217,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
 
       {/* Action Button */}
       <div className="p-6 pt-5">
-        <SparkleButton fullWidth className="px-5">
+        <SparkleButton fullWidth className="px-5" onClick={() => navigate('/gensocial/signals/details-single-page')}>
           <span className="flex items-center justify-center text-[#C6C6C6]">View Strategy</span>
         </SparkleButton>
       </div>
