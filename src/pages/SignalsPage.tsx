@@ -312,6 +312,7 @@ function FollowerProviderCard({ provider, onToggleFollow }: { provider: SignalPr
 /* ─── Main Page ─── */
 
 export default function SignalsPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
   const [filterTab, setFilterTab] = useState(0)
