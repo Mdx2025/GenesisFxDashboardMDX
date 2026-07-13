@@ -104,7 +104,7 @@ function StatCard({ label, value, valueColor = 'text-white' }: { label: string; 
         <p className="text-[#a0a0a0] text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
         <p className={`${valueColor} text-[2.25rem] font-acid leading-normal mt-2`}>{value}</p>
       </div>
-      <GlowEllipse className="!w-[8rem] !h-[5rem] bottom-0 left-0 -translate-x-1/3 translate-y-1/3 !blur-[3rem] opacity-30" />
+      <GlowEllipse className="!w-[12rem] !h-[8rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[4rem] opacity-60" />
     </GlassCard>
   )
 }
