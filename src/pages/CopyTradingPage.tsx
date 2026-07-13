@@ -133,7 +133,6 @@ function TraderCard({ trader }: { trader: CopyTrader }) {
             <div className="flex-1 min-w-0 pt-1">
               <div className="flex items-center gap-1.5">
                 <span className="text-white text-[16px] font-acid font-medium truncate">{trader.name}</span>
-                {trader.verified && <VerifiedIcon />}
               </div>
               <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-0.5">{trader.username}</p>
             </div>
