@@ -233,17 +233,30 @@ export default function PammPage() {
           <>
             {/* Hero Banner */}
             <GlassBannerCard>
-              <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Browse Strategies</h2>
-              <p className="text-[#a0a0a0] text-[0.875rem] xl:text-[1rem] font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
-                Invest with proven money managers. Browse PAMM strategies, pick a manager, and let your capital trade alongside theirs.
-              </p>
-              <div className="mt-6">
-                <SparkleButton className="px-6">
-                  <span className="flex items-center gap-2">
-                    <DownloadIcon />
-                    <span>Download App</span>
-                  </span>
-                </SparkleButton>
+              <div className="flex items-center justify-between gap-8">
+                <div>
+                  <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Browse Strategies</h2>
+                  <p className="text-[#a0a0a0] text-[0.875rem] xl:text-[1rem] font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
+                    Invest with proven money managers. Browse PAMM strategies, pick a manager, and let your capital trade alongside theirs.
+                  </p>
+                  <div className="mt-6">
+                    <SparkleButton className="px-6">
+                      <span className="flex items-center gap-2">
+                        <DownloadIcon />
+                        <span>Download App</span>
+                      </span>
+                    </SparkleButton>
+                  </div>
+                </div>
+                <div className="hidden xl:flex items-center gap-4 bg-[#0a2e1f] rounded-[1rem] px-6 py-5 shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-[#10BC83]/20 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L5 7.5M5 7.5L7.5 10M5 7.5H15M12.5 10L15 12.5M15 12.5L12.5 15M15 12.5H5" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-white text-[2rem] font-acid leading-none">71</p>
+                    <p className="text-[#a0a0a0] text-[0.75rem] font-acid mt-1">Active strategies</p>
+                  </div>
+                </div>
               </div>
             </GlassBannerCard>
 
