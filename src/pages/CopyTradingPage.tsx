@@ -111,22 +111,36 @@ function MiniAreaChart({ data }: { data: number[] }) {
 
 /* ─── Leaderboard Trader Card ─── */
 
+function FavoriteStarIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M7.91243 0.550781L10.1869 5.15856L15.2731 5.90199L11.5928 9.48664L12.4613 14.5508L7.91243 12.1586L3.36354 14.5508L4.23209 9.48664L0.551758 5.90199L5.63798 5.15856L7.91243 0.550781Z" stroke="#808080" strokeWidth="1.1041" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
 function TraderCard({ trader }: { trader: CopyTrader }) {
+  const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
       <div className="relative p-6 pb-0 flex flex-col flex-1">
-        {/* Header: Avatar + Name + Username + Verified */}
-        <div className="flex items-start gap-3">
-          <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
-            <span className="text-white text-[16px] font-acid font-medium">{trader.initials}</span>
-          </div>
-          <div className="flex-1 min-w-0 pt-1">
-            <div className="flex items-center gap-1.5">
-              <span className="text-white text-[16px] font-acid font-medium truncate">{trader.name}</span>
-              {trader.verified && <VerifiedIcon />}
+        {/* Header: Avatar + Name + Username + Star */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-start gap-3">
+            <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-[16px] font-acid font-medium">{trader.initials}</span>
             </div>
-            <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-0.5">{trader.username}</p>
+            <div className="flex-1 min-w-0 pt-1">
+              <div className="flex items-center gap-1.5">
+                <span className="text-white text-[16px] font-acid font-medium truncate">{trader.name}</span>
+                {trader.verified && <VerifiedIcon />}
+              </div>
+              <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-0.5">{trader.username}</p>
+            </div>
           </div>
+          <button className="p-2 cursor-pointer" aria-label="Favorite">
+            <FavoriteStarIcon />
+          </button>
         </div>
 
         {/* Divider */}
@@ -176,20 +190,10 @@ function TraderCard({ trader }: { trader: CopyTrader }) {
         </div>
       </div>
 
-      {/* Action Buttons — stacked full-width */}
+      {/* Action Buttons */}
       <div className="flex flex-col gap-2.5 p-6 pt-5">
-        <SparkleButton fullWidth className="px-5">
-          <span className="flex items-center justify-center gap-2">
-            <span>Copy Trader</span>
-            <ChevronRightIcon size={18} color="#c6c6c6" />
-          </span>
-        </SparkleButton>
-        <SparkleButton fullWidth className="px-5">
-          <span className="flex items-center justify-center gap-2">
-            <span>View Profile</span>
-            <ChevronRightIcon size={18} color="#c6c6c6" />
-          </span>
-        </SparkleButton>
+        <GlowButton label="View" width="100%" onClick={() => navigate('/gensocial/copy-trading/details-single-page')} />
+        <GlowButton label="View" width="100%" />
       </div>
     </GlassCard>
   )
