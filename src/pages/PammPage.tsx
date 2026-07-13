@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, StatCard } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { pammStrategies, pammTabs, pammFilterTabs } from '@/data/pamm'
 import type { PammStrategy } from '@/data/pamm'
@@ -339,34 +339,10 @@ export default function PammPage() {
           <>
             {/* Stat Cards Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[200px]" />
-                <div className="relative p-6">
-                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Active Strategies</p>
-                  <p className="text-white text-[36px] font-acid leading-none mt-3">0</p>
-                </div>
-              </GlassCard>
-              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[200px]" />
-                <div className="relative p-6">
-                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Total Balance</p>
-                  <p className="text-white text-[36px] font-acid leading-none mt-3">$0.00</p>
-                </div>
-              </GlassCard>
-              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[200px]" />
-                <div className="relative p-6">
-                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Total Profit/loss</p>
-                  <p className="text-[#37c92e] text-[36px] font-acid leading-none mt-3">$0.00</p>
-                </div>
-              </GlassCard>
-              <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[200px]" />
-                <div className="relative p-6">
-                  <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">Total Withdrawals</p>
-                  <p className="text-white text-[36px] font-acid leading-none mt-3">$0.00</p>
-                </div>
-              </GlassCard>
+              <StatCard label="Active Strategies" value="0" />
+              <StatCard label="Total Balance" value="$0.00" />
+              <StatCard label="Total Profit/loss" value="$0.00" valueColor="text-[#37c92e]" />
+              <StatCard label="Total Withdrawals" value="$0.00" />
             </div>
 
             {/* My Investments Header */}
@@ -442,21 +418,11 @@ export default function PammPage() {
 
             {/* Manager Stat Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-              {[
-                { label: 'Total AUM', value: '$0.00' },
-                { label: 'Total strategies', value: '$0.00' },
-                { label: 'Total strategies', value: '$0.00' },
-                { label: 'Total P&L Generated', value: '$0.00' },
-                { label: 'Fee Earnings', value: '$0.00' },
-              ].map((stat, i) => (
-                <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                  <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[200px]" />
-                  <div className="relative p-6">
-                    <p className="text-[#808080] text-[10px] font-acid">{stat.label}</p>
-                    <p className="text-white text-[25px] font-acid leading-none mt-3">{stat.value}</p>
-                  </div>
-                </GlassCard>
-              ))}
+              <StatCard label="Total AUM" value="$0.00" />
+              <StatCard label="Total strategies" value="$0.00" />
+              <StatCard label="Total strategies" value="$0.00" />
+              <StatCard label="Total P&L Generated" value="$0.00" />
+              <StatCard label="Fee Earnings" value="$0.00" />
             </div>
 
             {/* Manager Dashboard Header */}

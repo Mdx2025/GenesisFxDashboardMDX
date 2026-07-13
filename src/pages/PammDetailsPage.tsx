@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { ConnectPammModal } from '@/components/dashboard/ConnectPammModal'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge, StatCard } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -369,28 +369,10 @@ export default function PammDetailsPage() {
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          {[
-            { label: 'AUM', value: '$3.50', icon: <ChartUpIcon /> },
-            { label: 'ROI', value: '+194.12%', valueColor: 'text-[#10BC83]', icon: <GraphUpIcon /> },
-            { label: 'Closed P&L', value: '$2.31', icon: <PieChartIcon /> },
-            { label: 'AUM', value: '16.18%', icon: <CalendarIcon /> },
-          ].map((stat, i) => (
-            <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[12.5rem]" />
-              <div className="relative p-6 flex justify-between items-start">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-[#808080] text-[0.625rem] font-acid uppercase tracking-wider">{stat.label}</p>
-                    <InfoIcon />
-                  </div>
-                  <p className={`${stat.valueColor || 'text-white'} text-[1.5625rem] font-acid leading-none mt-3`}>{stat.value}</p>
-                </div>
-                <div className="w-[2.625rem] h-[2.625rem] rounded-[0.625rem] bg-[#09241c] flex items-center justify-center">
-                  {stat.icon}
-                </div>
-              </div>
-            </GlassCard>
-          ))}
+          <StatCard label="AUM" value="$3.50" icon={<ChartUpIcon />} />
+          <StatCard label="ROI" value="+194.12%" valueColor="text-[#10BC83]" icon={<GraphUpIcon />} />
+          <StatCard label="Closed P&L" value="$2.31" icon={<PieChartIcon />} />
+          <StatCard label="AUM" value="16.18%" icon={<CalendarIcon />} />
         </div>
 
         {/* Main Content: Chart (left) + Strategy Details (right) */}
