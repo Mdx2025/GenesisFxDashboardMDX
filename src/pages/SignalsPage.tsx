@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, SignalStrategyCard } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
@@ -604,9 +604,23 @@ export default function SignalsPage() {
         </div>
 
         {/* Signal Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProviders.map(provider => (
-            <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} />
+            <SignalStrategyCard
+              key={provider.id}
+              initials={provider.initials}
+              username={provider.username}
+              tag={provider.tag}
+              pair={provider.pair}
+              pairIcon={<XauusdIcon />}
+              pnl={provider.pnl30d}
+              trades={provider.trades}
+              pricePerMonth={provider.pricePerMonth}
+              profitShare={provider.profitShare}
+              followers={provider.followers}
+              following={provider.following}
+              onFollow={() => handleToggleFollow(provider.id)}
+            />
           ))}
         </div>
         </>)}
