@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
-import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard } from '@/components/ui'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
 
@@ -647,7 +647,22 @@ export default function SignalsPage() {
         {/* Signal Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProviders.map(provider => (
-            <SignalCard key={provider.id} provider={provider} onToggleFollow={handleToggleFollow} onFollowClick={handleFollowClick} />
+            <SignalStrategyCard
+              key={provider.id}
+              initials={provider.initials}
+              username={provider.username}
+              tag={provider.tag}
+              pair={provider.pair}
+              pairIcon={<XauusdIcon />}
+              pnl={provider.pnl30d}
+              trades={provider.trades}
+              pricePerMonth={provider.pricePerMonth}
+              profitShare={provider.profitShare}
+              followers={provider.followers}
+              following={provider.following}
+              onFollow={() => provider.following ? handleToggleFollow(provider.id) : handleFollowClick(provider)}
+              onViewStrategy={() => navigate('/gensocial/signals/details-single-page')}
+            />
           ))}
         </div>
         </>)}
