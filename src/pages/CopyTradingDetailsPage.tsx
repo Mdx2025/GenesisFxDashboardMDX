@@ -164,7 +164,6 @@ const TEXT_STYLES = {
 function PerformanceGrid() {
   return (
     <>
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[259px] w-[493px] h-[278px] rounded-full bg-gfx-green-200 blur-[157px]" />
       <div className="relative">
         <div className="flex items-start">
           <div className="flex flex-col items-start w-[60px] flex-shrink-0">
@@ -265,7 +264,6 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
 function TradingStatistics() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[259px] w-[493px] h-[278px] rounded-full bg-gfx-green-200 blur-[157px]" />
       <div className="relative flex">
         <StatColumn rows={leftStats} />
         <StatColumn rows={rightStats} />
