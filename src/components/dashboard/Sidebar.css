@@ -45,14 +45,16 @@
   justify-content: center;
 }
 
-.user-card-glow {
+.user-card-gradient-border::before {
+  content: '';
   position: absolute;
-  width: 96px;
-  height: 56px;
-  left: 86px;
-  bottom: -20px;
-  background: #6ee7b7;
-  border-radius: 50%;
-  filter: url(#blur-77);
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, #00B38C -66.81%, #0C1311 127.96%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
 }

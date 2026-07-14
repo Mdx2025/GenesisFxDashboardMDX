@@ -1,6 +1,6 @@
 import './Sidebar.css'
 import { useState, useRef, useLayoutEffect } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
 import {
@@ -29,6 +29,7 @@ interface SidebarProps {
 
 export function Sidebar({ open, onClose }: SidebarProps) {
   const location = useLocation()
+  const navigate = useNavigate()
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
   const [collapsed, setCollapsed] = useState(false)
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
@@ -102,10 +103,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
         <div className="relative z-10 mb-1.5 2xl:mb-2">
           <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">User Account</h2>
-          <div className="user-card flex items-center gap-3 p-3 rounded-lg bg-zinc-950 outline outline-1 outline-offset-[-1px] outline-[#064B34] relative overflow-hidden">
-            <div className="user-card-glow" aria-hidden="true" />
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-40px] w-[200px] h-[80px] rounded-full blur-[80px] pointer-events-none bg-gfx-glow-green" aria-hidden="true" />
-            <div className="relative z-10 w-9 h-9 3xl:w-12 3xl:h-12 4xl:w-16 4xl:h-16 rounded-2xl bg-teal-950 flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
+          <button
+            type="button"
+            onClick={() => navigate('/settings')}
+            className="user-card user-card-gradient-border flex items-center gap-3 p-3 rounded-[0.875rem] bg-gfx-green-800 relative overflow-hidden cursor-pointer w-full text-left"
+          >
+            <div className="relative z-10 w-9 h-9 3xl:w-12 3xl:h-12 4xl:w-16 4xl:h-16 rounded-2xl bg-[#064B34] flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
               <svg className="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
                 <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="url(#blur-30)" />
               </svg>
@@ -115,7 +118,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               <p className="text-white text-sidebar-label leading-5">Marcelo Cedeno</p>
               <time className="text-gfx-neutral-300 text-sidebar-label leading-5 block" dateTime="2025-09-27">Sep 27th, 2025</time>
             </div>
-          </div>
+          </button>
         </div>
 
         <div className="w-full py-2.5 2xl:py-4 sidebar-hide" aria-hidden="true">
