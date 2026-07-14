@@ -230,31 +230,41 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
 
 function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider: SignalProvider; onToggleFollow: (id: string) => void; onManage?: () => void }) {
   const isNegative = provider.pnl30d < 0
+  const chartData = Array.from({ length: 12 }, (_, i) => 80 - i * 4 + Math.random() * 4)
 
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden w-full max-w-[504px]">
-      <div className="relative p-6 lg:p-[31px_24px_35px_25px] flex flex-col gap-[17px]">
-        {/* Header: Avatar + Username + Badges */}
+    <div
+      className="signal-strategy-card flex flex-col w-full max-w-[504px]"
+      style={{
+        background: 'var(--signal-card-bg, #0C1311)',
+        borderRadius: 'var(--signal-card-radius, 18.56px)',
+        outline: '1.16px solid var(--signal-card-border, #0C1311)',
+        outlineOffset: '-1.16px',
+        boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
+      }}
+    >
+      <div className="flex flex-col gap-[17px] pt-[31px] pb-[35px] px-[25px]">
+        {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[22px]">
-            <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0 overflow-hidden">
-              <span className="text-white text-[16px] font-acid font-medium">{provider.initials}</span>
+            <div className="w-[63px] h-[63px] rounded-full bg-[var(--signal-avatar-bg,#064b34)] flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <span className="text-white text-[1rem] font-acid font-medium">{provider.initials}</span>
             </div>
-            <div className="flex flex-col gap-[16px]">
-              <p className="text-[#a0a0a0] text-[16px] font-acid leading-[1.2]">{provider.username}</p>
-              <p className="text-white text-[16px] font-acid leading-[1.2]">{provider.tag}</p>
+            <div className="flex flex-col gap-1">
+              <p className="text-[var(--signal-text-muted,#a0a0a0)] text-[1rem] font-acid font-medium leading-[1.2]">{provider.username}</p>
+              <span className="text-white text-[1rem] font-acid font-medium leading-[1.2]">{provider.tag}</span>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="border border-[#303030] rounded-[16px] px-3 py-[10px]">
-              <span className="text-[#ececec] text-[14px] font-acid leading-[18.8px]">{provider.pricePerMonth}</span>
-            </div>
+            <span className="border border-[#303030] rounded-full px-3 py-1 text-[#ececec] text-[0.875rem] font-acid font-medium">
+              {provider.pricePerMonth}
+            </span>
             <button
               onClick={() => onToggleFollow(provider.id)}
               className="bg-[#09241c] rounded-[12px] px-3 py-2 flex items-center gap-[10px] cursor-pointer"
             >
               <CheckCircleIcon />
-              <span className="text-[#00b38c] text-[14px] font-acid leading-[18.8px]">Follow</span>
+              <span className="text-[#00b38c] text-[0.875rem] font-acid leading-[18.8px]">Follow</span>
             </button>
           </div>
         </div>
@@ -262,51 +272,51 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         {/* Trading Pair */}
         <div className="flex items-center gap-[7px]">
           <XauusdIcon />
-          <span className="border border-[#303030] rounded-full px-[14px] py-[14px] text-white text-[14px] font-acid leading-[18.8px]">
+          <span className="border border-[#303030] rounded-full px-3 py-1 text-white text-[0.875rem] font-acid font-medium">
             {provider.pair}
           </span>
         </div>
 
-        {/* P&L Chart Box */}
-        <div className="border border-[#303030] rounded-[28px] relative h-[194px]">
-          <div className="absolute left-[23px] top-[27px]">
-            <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">{`30D P&L`}</p>
-          </div>
-          <p className={`absolute left-[23px] top-[56px] text-[34px] font-acid leading-none ${isNegative ? 'text-[#d46356]' : 'text-[#10BC83]'}`}>
-            {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
-          </p>
-          <div className="absolute right-[23px] top-[27px]">
-            <span className="border border-[#303030] rounded-full px-[14px] py-[14px] text-white text-[14px] font-acid leading-[18.8px]">
+        {/* P&L Chart */}
+        <div className="border border-[#303030] rounded-[14px] p-4 flex flex-col">
+          <div className="flex items-start justify-between mb-2">
+            <div>
+              <p className="text-[var(--signal-text-dim,#808080)] text-[0.875rem] font-acid font-medium mb-1">{`30D P&L`}</p>
+              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-[var(--signal-pnl-negative,#d46356)]' : 'text-[var(--signal-pnl-positive,#10BC83)]'}`}>
+                {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
+              </p>
+            </div>
+            <span className="border border-[#303030] rounded-full px-3 py-1 text-[var(--signal-text-dim,#808080)] text-[0.75rem] font-acid font-medium">
               {provider.trades} trades
             </span>
           </div>
-          <div className="absolute left-[23px] right-[23px] bottom-[12px] h-[64px]">
-            <PnlChart data={provider.chartData} negative={isNegative} />
+          <div className="mt-1">
+            <PnlChart data={chartData} negative={isNegative} />
           </div>
         </div>
 
-        {/* Metrics Row */}
-        <div className="flex gap-[10px] w-full">
-          <div className="flex-1 border border-[#303030] rounded-[12px] h-[80px] flex flex-col items-center justify-center gap-[6px]">
-            <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">{provider.pricePerMonth}</span>
-            <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Price/mo</span>
+        {/* Metrics */}
+        <div className="grid grid-cols-3 border border-[#303030] rounded-[14px] overflow-hidden">
+          <div className="p-4 flex flex-col items-center gap-1.5">
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.pricePerMonth}</span>
+            <span className="text-[var(--signal-text-dim,#808080)] text-[1rem] font-acid font-medium">Price/mo</span>
           </div>
-          <div className="flex-1 border border-[#303030] rounded-[12px] h-[80px] flex flex-col items-center justify-center gap-[6px]">
-            <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">{provider.profitShare}</span>
-            <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Profit Share</span>
+          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#303030]">
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.profitShare}</span>
+            <span className="text-[var(--signal-text-dim,#808080)] text-[1rem] font-acid font-medium">Profit Share</span>
           </div>
-          <div className="flex-1 border border-[#303030] rounded-[12px] h-[80px] flex flex-col items-center justify-center gap-[6px]">
-            <span className="text-white text-[16px] font-acid-medium leading-[24.44px]">{provider.followers}</span>
-            <span className="text-[#a0a0a0] text-[16px] font-acid-medium leading-[24.44px]">Followers</span>
+          <div className="p-4 flex flex-col items-center gap-1.5">
+            <span className="text-white text-[1rem] font-acid font-medium">{provider.followers}</span>
+            <span className="text-[var(--signal-text-dim,#808080)] text-[1rem] font-acid font-medium">Followers</span>
           </div>
         </div>
 
         {/* Manage Button */}
         <SparkleButton fullWidth className="px-5" onClick={onManage}>
-          <span className="flex items-center justify-center">Manage</span>
+          <span className="flex items-center justify-center text-[#C6C6C6]">Manage</span>
         </SparkleButton>
       </div>
-    </GlassCard>
+    </div>
   )
 }
 
