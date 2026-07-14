@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, PeriodPill, Badge, BannerStatBox } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, PeriodPill, Badge, BannerStatBox, StatCard } from '@/components/ui'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -198,28 +198,10 @@ export default function SignalsDetailsPage() {
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          {[
-            { label: 'Total Signals', value: '2', icon: <ChartIcon /> },
-            { label: 'Win Rate', value: '100%', valueColor: 'text-[#37c92e]', icon: <PieChartIcon /> },
-            { label: 'Total P&L', value: '$50.35', valueColor: 'text-[#37c92e]', icon: <GraphUpIcon />, hasInfo: true },
-            { label: 'Max Drawdown', value: '196', icon: <UsersIcon />, hasInfo: true },
-          ].map((stat, i) => (
-            <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[12.5rem]" />
-              <div className="relative p-6 flex justify-between items-start">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-[#a0a0a0] text-[0.875rem] font-acid">{stat.label}</p>
-                    {stat.hasInfo && <InfoIcon />}
-                  </div>
-                  <p className={`${stat.valueColor || 'text-white'} text-[2.25rem] font-acid leading-none mt-3`}>{stat.value}</p>
-                </div>
-                <div className="w-[2.625rem] h-[2.625rem] rounded-[0.75rem] bg-[#09241c] flex items-center justify-center">
-                  {stat.icon}
-                </div>
-              </div>
-            </GlassCard>
-          ))}
+          <StatCard label="Total Signals" value="2" icon={<ChartIcon />} />
+          <StatCard label="Win Rate" value="100%" valueColor="text-[#37c92e]" icon={<PieChartIcon />} />
+          <StatCard label="Total P&L" value="$50.35" valueColor="text-[#37c92e]" icon={<GraphUpIcon />} />
+          <StatCard label="Max Drawdown" value="196" icon={<UsersIcon />} />
         </div>
 
         {/* Chart (left) + Strategy Details (right) */}
@@ -275,7 +257,7 @@ export default function SignalsDetailsPage() {
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_23.5rem] gap-5">
           {/* Performance & Frequency */}
           <GlassCard variant="light" divider="none" rounded="18.56px" className="p-[44px]">
-            <div className="flex justify-between items-start mb-8">
+            <div className="flex justify-between items-start">
               <h3 className="text-white text-[1.5rem] font-acid font-normal">Performance & Frequency</h3>
               <div className="flex flex-col items-end">
                 <p className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
