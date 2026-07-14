@@ -27,7 +27,7 @@ export default function ForgotPasswordPage() {
       <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'blur(25.375rem)' }} aria-hidden="true" />
 
       {/* Card — Frame 2085662595 */}
-      <div className="relative w-[51.125rem] max-w-[calc(100%-2rem)] h-[90vh] rounded-[3rem] overflow-hidden flex flex-col">
+      <div className="relative w-full max-w-3xl h-[90vh] rounded-[3rem] overflow-hidden flex flex-col">
         {/* GlowEllipse — top right corner */}
         <GlowEllipse className="-top-[6.25rem] -right-[10rem] scale-[1.8]" />
         {/* GlowEllipse — bottom left corner */}
