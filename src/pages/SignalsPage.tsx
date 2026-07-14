@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
+import { ManageSubscriptionModal } from '@/components/dashboard/ManageSubscriptionModal'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard } from '@/components/ui'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
@@ -227,7 +228,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
 
 /* ─── Follower Provider Card ─── */
 
-function FollowerProviderCard({ provider, onToggleFollow }: { provider: SignalProvider; onToggleFollow: (id: string) => void }) {
+function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider: SignalProvider; onToggleFollow: (id: string) => void; onManage?: () => void }) {
   const isNegative = provider.pnl30d < 0
 
   return (
@@ -301,7 +302,7 @@ function FollowerProviderCard({ provider, onToggleFollow }: { provider: SignalPr
         </div>
 
         {/* Manage Button */}
-        <SparkleButton fullWidth className="px-5">
+        <SparkleButton fullWidth className="px-5" onClick={onManage}>
           <span className="flex items-center justify-center">Manage</span>
         </SparkleButton>
       </div>
@@ -322,6 +323,7 @@ export default function SignalsPage() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
   const [followModalOpen, setFollowModalOpen] = useState(false)
   const [followTarget, setFollowTarget] = useState<SignalProvider | null>(null)
+  const [manageModalOpen, setManageModalOpen] = useState(false)
 
   const handleToggleFollow = (id: string) => {
     setProviders(prev => prev.map(p => p.id === id ? { ...p, following: !p.following } : p))
@@ -464,7 +466,7 @@ export default function SignalsPage() {
         {activeTab === 2 && (
           <div className="flex flex-col gap-5">
             {/* Followed Provider Card */}
-            <FollowerProviderCard provider={providers[0]} onToggleFollow={handleToggleFollow} />
+            <FollowerProviderCard provider={providers[0]} onToggleFollow={handleToggleFollow} onManage={() => setManageModalOpen(true)} />
 
             {/* Signals Executed Section */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
@@ -682,6 +684,13 @@ export default function SignalsPage() {
           profitShare={followTarget.profitShare}
         />
       )}
+
+      <ManageSubscriptionModal
+        open={manageModalOpen}
+        onClose={() => setManageModalOpen(false)}
+        providerName={providers[0]?.tag ?? 'Genesis Assets'}
+        providerInitials={providers[0]?.initials ?? 'GA'}
+      />
     </div>
   )
 }
