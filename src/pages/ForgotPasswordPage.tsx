@@ -27,11 +27,11 @@ export default function ForgotPasswordPage() {
       <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'blur(25.375rem)' }} aria-hidden="true" />
 
       {/* Card — Frame 2085662595 */}
-      <div className="relative w-[51.125rem] max-w-[calc(100%-2rem)] h-[90vh] rounded-[3rem] overflow-hidden">
+      <div className="relative w-[51.125rem] max-w-[calc(100%-2rem)] h-[90vh] rounded-[3rem] overflow-hidden flex flex-col">
         {/* GlowEllipse — top right corner */}
-        <GlowEllipse className="-top-[6.25rem] -right-[10rem]" />
+        <GlowEllipse className="-top-[6.25rem] -right-[10rem] scale-[1.8]" />
         {/* GlowEllipse — bottom left corner */}
-        <GlowEllipse className="-bottom-[6.25rem] -left-[10rem]" />
+        <GlowEllipse className="-bottom-[6.25rem] -left-[10rem] scale-[1.8]" />
 
         {/* Pixel texture — top right corner only */}
         <div
@@ -54,13 +54,9 @@ export default function ForgotPasswordPage() {
           aria-hidden="true"
         />
 
-        {/* Logo — top center */}
-        <div className="relative flex justify-center pt-[5.4375rem]">
-          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto relative z-10" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10">
+        {/* Centered content */}
+        <div className="flex-1 flex flex-col justify-center items-center relative z-10">
+          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto mb-[3rem]" />
           {step === 1 ? (
             <EmailStep email={email} setEmail={setEmail} onSubmit={() => { if (email.trim()) setStep(2) }} />
           ) : (
@@ -69,7 +65,7 @@ export default function ForgotPasswordPage() {
         </div>
 
         {/* Footer inside card */}
-        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-[5.375rem] mt-auto leading-[1.175rem]">
+        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-[2rem] leading-[1.175rem]">
           2026 Genesis FX Markets. All rights reserved.
         </p>
       </div>
@@ -85,7 +81,7 @@ function EmailStep({ email, setEmail, onSubmit }: {
   const fadeRef = useFadeIn()
 
   return (
-    <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 pt-[13.375rem]">
+    <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 w-full">
       <h1 className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-none text-center">
         Reset Your Password
       </h1>
@@ -122,7 +118,7 @@ function ConfirmationStep() {
   const fadeRef = useFadeIn()
 
   return (
-    <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 pt-[16.3125rem]">
+    <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 w-full">
       <div className="w-[3.875rem] h-[3.875rem] flex items-center justify-center">
         <MailIcon />
       </div>
