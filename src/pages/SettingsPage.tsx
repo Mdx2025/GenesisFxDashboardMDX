@@ -108,7 +108,7 @@ export default function SettingsPage() {
         ]}
       />
 
-      <div className="w-full max-w-[74.375rem] mx-auto font-acid mt-8">
+      <div className="w-full max-w-[74.375rem] mx-auto font-acid mt-[15%]">
       {/* Profile Header Card */}
       <div className="relative bg-[#0d1512] border border-[rgba(16,185,129,0.12)] rounded-[1.125rem] overflow-hidden">
         {/* Banner area */}
