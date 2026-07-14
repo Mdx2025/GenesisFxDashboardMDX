@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useNavigate } from 'react-router-dom'
-import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput, BannerStatBox } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput, StatCard, BannerStatBox } from '@/components/ui'
 import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
 import { CreateStrategyModal } from '@/components/dashboard/CreateStrategyModal'
 import { ChevronRightIcon } from '@/components/icons'
@@ -71,17 +71,6 @@ function WalletIcon() {
   )
 }
 
-function StatCard({ label, value, valueColor = 'text-white' }: { label: string; value: string; valueColor?: string }) {
-  return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <div className="relative p-6 min-h-[148px] flex flex-col justify-center">
-        <p className="text-[#a0a0a0] text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
-        <p className={`${valueColor} text-[2.25rem] font-acid leading-normal mt-2`}>{value}</p>
-      </div>
-      <GlowEllipse className="!w-[12rem] !h-[8rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[4rem] opacity-60" />
-    </GlassCard>
-  )
-}
 
 /* ─── Mini Area Chart ─── */
 
