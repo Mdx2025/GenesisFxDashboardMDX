@@ -190,7 +190,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-full max-w-3xl max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] flex flex-col overflow-hidden"
+        className="glass-card relative w-3xl max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
