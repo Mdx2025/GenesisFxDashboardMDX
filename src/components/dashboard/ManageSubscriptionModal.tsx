@@ -128,7 +128,7 @@ export function ManageSubscriptionModal({
       aria-label="Manage Subscription"
     >
       <div ref={modalRef} className="w-[560px] max-w-[95vw]">
-        <GlassCard variant="light" divider="none" rounded="22px" className="relative overflow-hidden">
+        <GlassCard variant="light" divider="none" rounded="22px" className="relative overflow-hidden bg-[#0c1311]">
           <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[200px]" />
 
           {/* Close button */}
