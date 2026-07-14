@@ -42,7 +42,7 @@ function KycIcon() {
 
 function PartnerDotIcon() {
   return (
-    <div className="w-[0.375rem] h-[0.375rem] rounded-[0.1875rem] bg-gfx-green-300" />
+    <div className="w-1.5 h-1.5 rounded-full bg-gfx-green-300" />
   )
 }
 
@@ -64,13 +64,13 @@ function ProfileBadge({ icon, label, variant = 'default' }: ProfileBadgeProps) {
   const styles = {
     default: 'bg-gfx-green-800 border-gfx-neutral-250 text-gfx-neutral-400',
     green: 'bg-gfx-green-800 border-gfx-green-200 text-gfx-green-300',
-    purple: 'bg-[#090414] border-[#2D1F4B] text-[#C8AFFF]',
+    purple: 'bg-gfx-purple-bg border-gfx-purple-border text-gfx-purple-accent',
   }
 
   return (
-    <div className={`inline-flex items-center gap-[0.4375rem] h-[1.9375rem] px-[0.875rem] rounded-[1.25rem] border ${styles[variant]}`}>
+    <div className={`inline-flex items-center gap-2 h-8 px-3.5 rounded-full border ${styles[variant]}`}>
       {icon}
-      <span className="text-[0.875rem] font-acid leading-[1.175rem] whitespace-nowrap">{label}</span>
+      <span className="text-sm font-acid leading-tight whitespace-nowrap">{label}</span>
     </div>
   )
 }
@@ -83,11 +83,11 @@ interface KycStatusItemProps {
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
     <GlassCard className="!p-0 h-[4.6875rem]">
-      <div className="flex items-start gap-[0.625rem] px-[1.5625rem] pt-[1.3125rem]">
+      <div className="flex items-start gap-2.5 px-6 pt-5">
         <WarningTriangleIcon />
         <div>
-          <p className="text-white text-[1rem] font-acid font-medium leading-[1.528rem]">{title}</p>
-          <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[1.175rem]">{subtitle}</p>
+          <p className="text-white text-base font-acid font-medium leading-relaxed">{title}</p>
+          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight">{subtitle}</p>
         </div>
       </div>
     </GlassCard>
@@ -108,12 +108,12 @@ export default function SettingsPage() {
         ]}
       />
 
-      <div className="w-full max-w-[74.375rem] mx-auto font-acid mt-[15%]">
+      <div className="w-full mx-auto font-acid mt-[15%]">
       {/* Profile Header Card */}
-      <div className="relative bg-[#0d1512] border border-[rgba(16,185,129,0.12)] rounded-[1.125rem] overflow-hidden">
+      <div className="relative bg-gfx-green-800 border border-gfx-green-300/12 rounded-lg overflow-hidden">
         {/* Banner area */}
         <div
-          className="relative h-[11.875rem] border-b border-[rgba(255,255,255,0.05)]"
+          className="relative h-48 border-b border-white/5"
           style={{
             backgroundImage: `url("data:image/svg+xml;utf8,<svg viewBox='0 0 1545 190' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%25' width='100%25' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(125.85 0 0 121.03 309 228)'><stop stop-color='rgba(16,185,129,0.35)' offset='0'/><stop stop-color='rgba(16,185,129,0)' offset='0.6'/></radialGradient></defs></svg>"), linear-gradient(160.71deg, #0A1F18 0%, #071410 70%)`,
           }}
@@ -132,14 +132,14 @@ export default function SettingsPage() {
           />
 
           {/* Avatar */}
-          <div className="absolute left-[2.5rem] bottom-[-2.875rem]">
-            <div className="relative w-[7.25rem] h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-[#060a09] flex items-center justify-center overflow-hidden">
-              <span className="text-[#f5f7f6] text-[1.975rem] font-['Segoe_UI'] font-bold relative z-10">JD</span>
+          <div className="absolute left-10 -bottom-12">
+            <div className="relative w-28 h-28 rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
+              <span className="text-white text-3xl font-acid font-bold relative z-10">JD</span>
               {/* Avatar glow */}
-              <div className="absolute bottom-[-4.5rem] left-1/2 -translate-x-1/2 w-[17.1875rem] h-[7.27rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.4) 0%, transparent 70%)' }} aria-hidden="true" />
+              <div className="absolute -bottom-18 left-1/2 -translate-x-1/2 w-[17.1875rem] h-[7.27rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.4) 0%, transparent 70%)' }} aria-hidden="true" />
             </div>
             {/* Camera button */}
-            <div className="absolute bottom-0 right-0 w-[2rem] h-[2rem] rounded-[1rem] bg-[#40c99c] border-[3px] border-gfx-green-800 flex items-center justify-center">
+            <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M7 4.375V9.625M4.375 7H9.625" stroke="#0C1311" strokeWidth="1.5" strokeLinecap="round" />
                 <path d="M5.25 1.75H8.75L9.625 3.5H11.375C11.856 3.5 12.25 3.894 12.25 4.375V10.5C12.25 10.981 11.856 11.375 11.375 11.375H2.625C2.144 11.375 1.75 10.981 1.75 10.5V4.375C1.75 3.894 2.144 3.5 2.625 3.5H4.375L5.25 1.75Z" stroke="#0C1311" strokeWidth="1.2" strokeLinejoin="round" />
@@ -149,10 +149,10 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile info */}
-        <div className="pl-[11rem] pt-[0.625rem] pb-[1.5rem]">
-          <h2 className="text-[#f5f7f6] text-[1.5rem] font-acid leading-normal">Joe Doe</h2>
-          <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[1.175rem] mt-[0.75rem]">joedoe@gmail.com</p>
-          <div className="flex flex-wrap items-center gap-[0.5rem] mt-[0.75rem]">
+        <div className="pl-44 pt-2.5 pb-6">
+          <h2 className="text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-3">joedoe@gmail.com</p>
+          <div className="flex flex-wrap items-center gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
             <ProfileBadge icon={<KycIcon />} label="KYC Required" />
             <ProfileBadge icon={<PartnerDotIcon />} label="Partner" variant="green" />
@@ -162,7 +162,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="mt-[2.5rem] max-w-2xl">
+      <div className="mt-10 w-2xl">
         <ModeToggle
           options={[...TABS]}
           activeIndex={activeTab}
@@ -171,10 +171,10 @@ export default function SettingsPage() {
       </div>
 
       {/* Personal Information */}
-      <GlassCard className="mt-[2.5rem] !rounded-[1.125rem]">
-        <div className="px-[5rem] pt-[1rem] pb-[2.5rem]">
-          <h3 className="text-white text-[1.5rem] font-acid leading-normal mb-[2.5rem]">Personal Information</h3>
-          <div className="grid grid-cols-2 gap-x-[2rem] gap-y-[1.5rem]">
+      <GlassCard className="mt-10 !rounded-lg">
+        <div className="px-20 pt-4 pb-10">
+          <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
             <GlassInput label="First Name" placeholder="Joe" />
             <GlassInput label="First Name" placeholder="Cedeno" />
             <GlassInput label="Email Address" placeholder="joedoe@gmail.com" />
@@ -186,10 +186,10 @@ export default function SettingsPage() {
       </GlassCard>
 
       {/* KYC Status */}
-      <GlassCard className="mt-[2rem] !rounded-[1.125rem]">
-        <div className="px-[5rem] pt-[1rem] pb-[2.5rem]">
-          <h3 className="text-white text-[1.5rem] font-acid leading-normal mb-[2rem]">KYC Status</h3>
-          <div className="grid grid-cols-2 gap-x-[2rem]">
+      <GlassCard className="mt-8 !rounded-lg">
+        <div className="px-20 pt-4 pb-10">
+          <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
+          <div className="grid grid-cols-2 gap-x-8">
             <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
             <KycStatusItem title="Proof of Address" subtitle="Not Submitted" />
           </div>
