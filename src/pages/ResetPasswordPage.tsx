@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlowButton, WaveText } from '@/components/ui'
 import { EyeIcon } from '@/components/icons'
-import { AuthLayout } from '@/components/auth/AuthLayout'
+import { AuthCardLayout } from '@/components/auth/AuthCard'
 import { useFadeIn } from '@/hooks/useFadeIn'
 
 const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
@@ -17,7 +17,7 @@ export default function ResetPasswordPage() {
   const isValid = newPassword.trim() !== '' && confirmPassword.trim() !== ''
 
   return (
-    <AuthLayout>
+    <AuthCardLayout>
       <div ref={fadeRef} className="w-full max-w-[34.125rem] px-4 sm:px-0 flex flex-col items-center gap-[2.6875rem]">
         <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">
           Reset Your Password
@@ -74,6 +74,6 @@ export default function ResetPasswordPage() {
           <Link to="/" className="text-white font-medium hover:underline">Sign In</Link>
         </p>
       </div>
-    </AuthLayout>
+    </AuthCardLayout>
   )
 }

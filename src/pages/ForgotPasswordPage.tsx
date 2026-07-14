@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlowButton, WaveText } from '@/components/ui'
-import { AuthLayout } from '@/components/auth/AuthLayout'
+import { AuthCardLayout } from '@/components/auth/AuthCard'
 import { useFadeIn } from '@/hooks/useFadeIn'
 
 function MailIcon() {
@@ -40,13 +40,13 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <AuthLayout>
+    <AuthCardLayout>
       {step === 1 ? (
         <EmailStep email={email} setEmail={setEmail} onSubmit={handleSubmit} />
       ) : (
         <ConfirmationStep />
       )}
-    </AuthLayout>
+    </AuthCardLayout>
   )
 }
 
