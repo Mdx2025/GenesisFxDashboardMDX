@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { GlassCard, GlassInput } from '@/components/ui'
+import { GlassCard, GlassInput, ModeToggle } from '@/components/ui'
+import { TopBar } from '@/components/dashboard/TopBar'
+import { useSidebar } from '@/layouts/RootLayout'
 
 const TABS = ['Profile', 'Verification', 'Rewards', 'Support', 'Security', 'Settings'] as const
 
@@ -93,10 +95,20 @@ function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
 }
 
 export default function SettingsPage() {
-  const [activeTab, setActiveTab] = useState<typeof TABS[number]>('Profile')
+  const [activeTab, setActiveTab] = useState(0)
+  const { sidebarOpen, setSidebarOpen } = useSidebar()
 
   return (
-    <div className="w-full max-w-[74.375rem] mx-auto font-acid">
+    <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+      <TopBar
+        menuOpen={sidebarOpen}
+        onMenuClick={() => setSidebarOpen(v => !v)}
+        breadcrumbItems={[
+          { label: 'Settings', current: true },
+        ]}
+      />
+
+      <div className="w-full max-w-[74.375rem] mx-auto font-acid mt-8">
       {/* Profile Header Card */}
       <div className="relative bg-[#0d1512] border border-[rgba(16,185,129,0.12)] rounded-[1.125rem] overflow-hidden">
         {/* Banner area */}
@@ -150,21 +162,12 @@ export default function SettingsPage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="mt-[2.5rem] bg-[#111312] rounded-full h-[2.875rem] flex items-center px-[0.125rem]">
-        {TABS.map(tab => (
-          <button
-            key={tab}
-            type="button"
-            onClick={() => setActiveTab(tab)}
-            className={`h-[2.625rem] px-[1.5rem] rounded-full text-[1rem] font-acid font-medium transition-colors cursor-pointer whitespace-nowrap ${
-              activeTab === tab
-                ? 'bg-[#064B34] border border-gfx-green-300 text-white'
-                : 'text-gfx-neutral-500 hover:text-white border border-transparent'
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+      <div className="mt-[2.5rem]">
+        <ModeToggle
+          options={[...TABS]}
+          activeIndex={activeTab}
+          onChange={setActiveTab}
+        />
       </div>
 
       {/* Personal Information */}
@@ -192,6 +195,7 @@ export default function SettingsPage() {
           </div>
         </div>
       </GlassCard>
+      </div>
     </div>
   )
 }
