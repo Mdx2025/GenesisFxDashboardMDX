@@ -4,8 +4,6 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard } from '@/components/ui'
 import { PAGE_REGISTRY } from '@/data/pages'
 
-const DIRECTORY_PAGES = PAGE_REGISTRY.filter(p => p.showInDirectory !== false)
-
 export default function AllPagesPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
 
@@ -22,7 +20,7 @@ export default function AllPagesPage() {
         <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mb-8">All Pages</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 3xl:gap-6">
-          {DIRECTORY_PAGES.map((page) => {
+          {PAGE_REGISTRY.map((page) => {
             const Icon = page.icon
             return (
               <Link key={page.path} to={page.path} className="group">
