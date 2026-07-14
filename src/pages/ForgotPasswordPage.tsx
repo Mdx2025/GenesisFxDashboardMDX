@@ -54,9 +54,13 @@ export default function ForgotPasswordPage() {
           aria-hidden="true"
         />
 
+        {/* Logo — top center */}
+        <div className="relative flex justify-center pt-[3rem] z-10">
+          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto" />
+        </div>
+
         {/* Centered content */}
         <div className="flex-1 flex flex-col justify-center items-center relative z-10">
-          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto mb-[3rem]" />
           {step === 1 ? (
             <EmailStep email={email} setEmail={setEmail} onSubmit={() => { if (email.trim()) setStep(2) }} />
           ) : (
