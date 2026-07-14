@@ -117,7 +117,7 @@ export function CopySubscriptionModal({
       aria-label="Configure Subscription"
     >
       <div ref={modalRef} className="w-[1024px] max-w-[95vw]">
-      <GlassCard variant="light" divider="none" rounded="19px" className="flex overflow-hidden">
+      <GlassCard variant="light" divider="none" rounded="19px" className="flex overflow-hidden" style={{ background: '#0C1311' }}>
         {/* Left Column — Configuration Form */}
         <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0 }}>
           {/* Step indicator + title */}
