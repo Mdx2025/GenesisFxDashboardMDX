@@ -74,32 +74,32 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[0.25rem]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[500px] max-w-[95vw] rounded-[30px] p-6 sm:p-[40px] overflow-hidden bg-gfx-green-800"
+        className="glass-card relative w-[31.25rem] max-w-[95vw] rounded-[1.875rem] p-6 sm:p-[2.5rem] overflow-hidden bg-gfx-green-800"
       >
-        <GlowEllipse className="-right-[80px] -top-[60px]" />
-        <GlowEllipse className="-left-[80px] -bottom-[60px]" />
+        <GlowEllipse className="-right-[5rem] -top-[3.75rem]" />
+        <GlowEllipse className="-left-[5rem] -bottom-[3.75rem]" />
 
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-[20px] right-[20px] z-10 cursor-pointer hover:opacity-80 transition-opacity"
+          className="absolute top-[1.25rem] right-[1.25rem] z-10 cursor-pointer hover:opacity-80 transition-opacity"
         >
           <CloseIcon />
         </button>
 
         {/* Title */}
-        <h2 className="relative text-white text-[2rem] font-acid font-normal text-center mb-[30px]">
+        <h2 className="relative text-white text-[2rem] font-acid font-normal text-center mb-[1.875rem]">
           Create a New Folder
         </h2>
 
         {/* Folder Name */}
-        <div className="relative mb-[30px]">
+        <div className="relative mb-[1.875rem]">
           <GlassInput
             label="Folder Name"
             placeholder="Enter folder name"

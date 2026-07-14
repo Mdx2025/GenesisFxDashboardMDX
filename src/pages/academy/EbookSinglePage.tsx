@@ -36,16 +36,16 @@ function ChapterItem({ chapter, isActive, onClick }: { chapter: EbookChapter; is
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full rounded-[12px] overflow-hidden flex items-center gap-3 px-[13px] py-[14px] cursor-pointer transition-colors text-left ${
+      className={`relative w-full rounded-[0.75rem] overflow-hidden flex items-center gap-3 px-[0.8125rem] py-[0.8750rem] cursor-pointer transition-colors text-left ${
         isActive
           ? 'bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.3)]'
           : 'hover:bg-gfx-green-800/50'
       }`}
     >
       {isActive && (
-        <div className="absolute -left-[80px] bottom-[-20px] w-[170px] h-[120px] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
+        <div className="absolute -left-[5rem] bottom-[-20px] w-[10.6250rem] h-[7.5rem] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
       )}
-      <div className="w-[24px] h-[24px] rounded-[7px] bg-gfx-green-800 flex items-center justify-center shrink-0">
+      <div className="w-[1.5rem] h-[1.5rem] rounded-[0.4375rem] bg-gfx-green-800 flex items-center justify-center shrink-0">
         <span className={`text-[0.75rem] font-acid leading-none ${isActive ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
           {chapter.id}
         </span>
@@ -73,7 +73,7 @@ export default function EbookSinglePage() {
 
   return (
     <>
-      <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+      <div className="absolute left-1/2 -translate-x-1/2 w-[37.5000rem] h-[18.75rem] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
       <div className="relative flex flex-col h-full">
         <div className="px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -91,7 +91,7 @@ export default function EbookSinglePage() {
 
         <div className="flex-1 flex overflow-hidden">
           {/* Chapter Contents Panel */}
-          <div className="hidden xl:flex flex-col w-[280px] 3xl:w-[320px] shrink-0 px-5 pb-6">
+          <div className="hidden xl:flex flex-col w-[17.5000rem] 3xl:w-[20rem] shrink-0 px-5 pb-6">
             <div className="mb-2">
               <p className="text-[0.75rem] font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px]">
                 CHAPTERS
@@ -101,7 +101,7 @@ export default function EbookSinglePage() {
               </p>
             </div>
 
-            <div className="h-[4px] bg-gfx-green-900 rounded-full mb-6 overflow-hidden">
+            <div className="h-[0.25rem] bg-gfx-green-900 rounded-full mb-6 overflow-hidden">
               <div
                 className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                 style={{ width: `${Math.max(progress, 0)}%` }}
@@ -123,7 +123,7 @@ export default function EbookSinglePage() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col min-w-0 px-4 xl:px-0 xl:pr-5 2xl:pr-7 3xl:pr-10 4xl:pr-14 pb-4 overflow-y-auto">
             {/* Cover Image */}
-            <div className="relative w-full rounded-[18px] overflow-hidden aspect-[1228/360]">
+            <div className="relative w-full rounded-[1.125rem] overflow-hidden aspect-[1228/360]">
               <img
                 src={ebook.image}
                 alt={ebook.title}
@@ -140,12 +140,12 @@ export default function EbookSinglePage() {
               </h1>
 
               <div className="flex items-center gap-3 mt-3">
-                <div className="inline-flex items-center h-[28px] px-4 rounded-full bg-gfx-green-900 border border-[#00b38c]">
+                <div className="inline-flex items-center h-[1.75rem] px-4 rounded-full bg-gfx-green-900 border border-gfx-green-300">
                   <span className="text-[0.75rem] font-acid text-gfx-green-300 leading-[18.8px]">
                     Chapter {activeChapter}
                   </span>
                 </div>
-                <div className="inline-flex items-center gap-2 h-[28px] px-3 rounded-full bg-gfx-green-800 border border-gfx-green-900">
+                <div className="inline-flex items-center gap-2 h-[1.75rem] px-3 rounded-full bg-gfx-green-800 border border-gfx-green-900">
                   <ClockIcon />
                   <span className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px]">
                     {ebook.readTime}
@@ -159,7 +159,7 @@ export default function EbookSinglePage() {
               {ebook.sections.map((section, i) => (
                 <div
                   key={i}
-                  className="bg-[#0d1512] border border-[rgba(255,255,255,0.05)] rounded-[16px] p-6"
+                  className="bg-[#0d1512] border border-[rgba(255,255,255,0.05)] rounded-[1rem] p-6"
                 >
                   <h3 className="text-white text-[1rem] font-acid-medium leading-[24.44px] mb-2">
                     {section.title}
@@ -184,7 +184,7 @@ export default function EbookSinglePage() {
               <p className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px] mb-4">
                 {completedCount} of {totalChapters} chapters completed
               </p>
-              <div className="h-[4px] bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
+              <div className="h-[0.25rem] bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
                 <div
                   className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                   style={{ width: `${Math.max(progress, 0)}%` }}
@@ -206,7 +206,7 @@ export default function EbookSinglePage() {
 
         {/* Fixed Bottom Bar */}
         <div className="shrink-0 border-t border-gfx-neutral-250 bg-gfx-green-800 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14">
-          <div className="flex items-center justify-between h-[88px] gap-4">
+          <div className="flex items-center justify-between h-[5.5rem] gap-4">
             <button
               type="button"
               onClick={() => setActiveChapter(prev => Math.max(1, prev - 1))}
@@ -219,7 +219,7 @@ export default function EbookSinglePage() {
               <div className="hidden sm:flex flex-col items-end gap-0.5">
                 <span className="text-[0.875rem] font-acid text-gfx-neutral-400 leading-[18.8px]">PROGRESS</span>
                 <span className="text-[1rem] font-acid-medium text-white leading-[24.44px]">{progress}%</span>
-                <div className="w-[160px] h-[4px] bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
+                <div className="w-[10rem] h-[0.25rem] bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
                   <div
                     className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                     style={{ width: `${Math.max(progress, 0)}%` }}

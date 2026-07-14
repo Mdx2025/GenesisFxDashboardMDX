@@ -48,8 +48,8 @@ function GalleryIcon() {
 
 function NoteCard({ note }: { note: NotebookNote }) {
   return (
-    <div className="flex-1 min-w-0 rounded-[15px] border border-gfx-green-900 bg-transparent">
-      <div className="p-[18px] flex flex-col gap-3 h-full">
+    <div className="flex-1 min-w-0 rounded-[0.9375rem] border border-gfx-green-900 bg-transparent">
+      <div className="p-[1.125rem] flex flex-col gap-3 h-full">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
             <span className="text-white text-sm sm:text-base font-acid font-medium">{note.label}</span>
@@ -70,7 +70,7 @@ function NoteCard({ note }: { note: NotebookNote }) {
           {note.tags.map(tag => (
             <div
               key={tag}
-              className="h-[24px] px-[1.125rem] rounded-full border border-gfx-green-200 bg-gfx-green-800 flex items-center justify-center"
+              className="h-[1.5rem] px-[1.125rem] rounded-full border border-gfx-green-200 bg-gfx-green-800 flex items-center justify-center"
             >
               <span className="text-gfx-green-300 text-[0.75rem] font-acid">{tag}</span>
             </div>

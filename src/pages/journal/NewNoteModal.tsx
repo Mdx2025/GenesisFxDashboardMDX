@@ -87,32 +87,32 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
+      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[0.25rem]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-gfx-green-800 flex flex-col overflow-hidden"
+        className="glass-card relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] rounded-[1.875rem] bg-gfx-green-800 flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-gfx-green-200 [filter:url(#blur-120)] opacity-20 pointer-events-none" />
-        <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-gfx-green-200 [filter:url(#blur-100)] opacity-15 pointer-events-none" />
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[36.6875rem] h-[27.1875rem] rotate-[48deg] rounded-full bg-gfx-green-200 [filter:url(#blur-120)] opacity-20 pointer-events-none" />
+        <div className="absolute bottom-[12.5rem] left-1/2 -translate-x-1/2 w-[30.8125rem] h-[17.3750rem] rounded-full bg-gfx-green-200 [filter:url(#blur-100)] opacity-15 pointer-events-none" />
 
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-[35px] right-[30px] z-20 cursor-pointer hover:opacity-80 transition-opacity"
+          className="absolute top-[2.1875rem] right-[1.875rem] z-20 cursor-pointer hover:opacity-80 transition-opacity"
         >
           <CloseIcon />
         </button>
 
         <div
-          className="relative px-4 sm:px-8 lg:pl-[123px] lg:pr-[100px] pt-6 sm:pt-[35px] pb-8 sm:pb-[50px] overflow-y-auto modal-scroll-green"
+          className="relative px-4 sm:px-8 lg:pl-[7.6875rem] lg:pr-[6.25rem] pt-6 sm:pt-[2.1875rem] pb-8 sm:pb-[3.125rem] overflow-y-auto modal-scroll-green"
           style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
         >
           {/* Title */}
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-[50px] font-acid font-normal text-center leading-none">
+          <h2 className="text-white text-3xl sm:text-4xl lg:text-[3.125rem] font-acid font-normal text-center leading-none">
             New Note
           </h2>
 
@@ -123,7 +123,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           </div>
 
           {/* Form fields */}
-          <div className="flex flex-col gap-[18px] mt-[24px]">
+          <div className="flex flex-col gap-[1.125rem] mt-[1.5rem]">
             {/* Note Type */}
             <GlassSelect
               label="Note Type"
@@ -138,14 +138,14 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Date */}
             <div>
-              <label className="text-white text-[1rem] font-acid font-medium mb-[8px] block">
+              <label className="text-white text-[1rem] font-acid font-medium mb-[0.5rem] block">
                 Date
               </label>
               <input
                 type="text"
                 value={date}
                 onChange={e => setDate(e.target.value)}
-                className="w-full h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-200 px-[26px] text-gfx-neutral-400 text-[1rem] font-acid outline-none focus:border-[#00b38c] transition-colors"
+                className="w-full h-[3.125rem] rounded-[1.875rem] bg-gfx-green-800 border border-gfx-green-200 px-[1.6250rem] text-gfx-neutral-400 text-[1rem] font-acid outline-none focus:border-gfx-green-300 transition-colors"
               />
             </div>
 
@@ -185,7 +185,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Tags */}
             <div>
-              <label className="text-white text-[1rem] font-acid font-medium mb-[8px] block">
+              <label className="text-white text-[1rem] font-acid font-medium mb-[0.5rem] block">
                 Tags
               </label>
               <input
@@ -193,16 +193,16 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
                 value={tags}
                 onChange={e => setTags(e.target.value)}
                 placeholder="Add a tag"
-                className="w-full h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-200 px-[26px] text-gfx-neutral-400 text-[1rem] font-acid outline-none focus:border-[#00b38c] transition-colors placeholder:text-gfx-neutral-400"
+                className="w-full h-[3.125rem] rounded-[1.875rem] bg-gfx-green-800 border border-gfx-green-200 px-[1.6250rem] text-gfx-neutral-400 text-[1rem] font-acid outline-none focus:border-gfx-green-300 transition-colors placeholder:text-gfx-neutral-400"
               />
             </div>
 
             {/* Attachments */}
             <div>
-              <label className="text-white text-[1rem] font-acid font-medium mb-[8px] block">
+              <label className="text-white text-[1rem] font-acid font-medium mb-[0.5rem] block">
                 Attachments
               </label>
-              <div className="h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center gap-[10px] cursor-pointer hover:border-[#00b38c] transition-colors">
+              <div className="h-[3.125rem] rounded-[1.875rem] bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center gap-[0.625rem] cursor-pointer hover:border-gfx-green-300 transition-colors">
                 <UploadIcon />
                 <span className="text-gfx-neutral-400 text-[1rem] font-acid">Upload file</span>
               </div>
@@ -210,7 +210,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           </div>
 
           {/* Bottom actions */}
-          <div className="flex items-center justify-center gap-3 mt-[30px]">
+          <div className="flex items-center justify-center gap-3 mt-[1.875rem]">
             <SparkleButton onClick={handleClose}>
               Cancel
             </SparkleButton>

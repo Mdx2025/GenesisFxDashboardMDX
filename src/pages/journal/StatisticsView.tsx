@@ -37,25 +37,25 @@ const COLOR_MAP = {
 } as const
 
 const GLOW_POSITIONS = [
-  '-left-[40px] -top-[50px]',
-  '-right-[40px] -bottom-[50px]',
-  '-right-[40px] -top-[50px]',
-  '-left-[40px] -bottom-[50px]',
-  '-right-[40px] -top-[50px]',
-  '-left-[40px] -top-[50px]',
-  '-left-[40px] -bottom-[50px]',
-  '-right-[40px] -top-[50px]',
-  '-right-[40px] -bottom-[50px]',
-  '-left-[40px] -top-[50px]',
-  '-left-[40px] -bottom-[50px]',
-  '-right-[40px] -top-[50px]',
+  '-left-[2.5rem] -top-[3.125rem]',
+  '-right-[2.5rem] -bottom-[3.125rem]',
+  '-right-[2.5rem] -top-[3.125rem]',
+  '-left-[2.5rem] -bottom-[3.125rem]',
+  '-right-[2.5rem] -top-[3.125rem]',
+  '-left-[2.5rem] -top-[3.125rem]',
+  '-left-[2.5rem] -bottom-[3.125rem]',
+  '-right-[2.5rem] -top-[3.125rem]',
+  '-right-[2.5rem] -bottom-[3.125rem]',
+  '-left-[2.5rem] -top-[3.125rem]',
+  '-left-[2.5rem] -bottom-[3.125rem]',
+  '-right-[2.5rem] -top-[3.125rem]',
 ] as const
 
 function MetricCard({ label, value, color, index }: { label: string; value: string; color: keyof typeof COLOR_MAP; index: number }) {
   const isPill = label === 'Most Profitable Asset'
 
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[147px]">
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[9.1875rem]">
       <GlowEllipse className={`!w-[10rem] !h-[6rem] !blur-[3rem] ${GLOW_POSITIONS[index % GLOW_POSITIONS.length]}`} />
       <div className="p-5 h-full flex flex-col">
         <div className="flex items-center justify-between">
@@ -64,7 +64,7 @@ function MetricCard({ label, value, color, index }: { label: string; value: stri
         </div>
         <div className="flex-1 flex items-center mt-2">
           {isPill ? (
-            <span className="h-[36px] px-5 rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-white/10 flex items-center text-white text-[1.5rem] font-acid">
+            <span className="h-[2.25rem] px-5 rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-white/10 flex items-center text-white text-[1.5rem] font-acid">
               {value}
             </span>
           ) : (
@@ -162,12 +162,12 @@ function ScoreBar({ score }: { score: number }) {
         <span className="text-gfx-neutral-400 text-[1rem] font-acid">Your Genesis Score</span>
         <span className="text-white text-[1.5rem] font-acid">15.00</span>
       </div>
-      <div className="relative h-[8px] rounded-full overflow-hidden">
+      <div className="relative h-[0.5rem] rounded-full overflow-hidden">
         <div className="absolute inset-0 rounded-full" style={{
           background: 'linear-gradient(to right, #EE4741, #EC7F23, #DCB40E, #28C45B)',
         }} />
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border-2 border-[#0c1311]"
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border-2 border-gfx-green-800"
           style={{ left: `${pct}%` }}
         />
       </div>
@@ -185,16 +185,16 @@ function ScoreBar({ score }: { score: number }) {
 function SessionAnalysis() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-right-[80px] -top-[60px]" />
+      <GlowEllipse className="-right-[5rem] -top-[3.75rem]" />
       <div className="p-6">
         <h3 className="text-white text-[1rem] font-acid font-medium mb-5">Session & Time Analysis</h3>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="h-[103px] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
+          <div className="h-[6.4375rem] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
             <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Best Hour</span>
             <span className="text-gfx-green-300 text-[1rem] font-acid font-medium">14:00 — 15:00</span>
           </div>
-          <div className="h-[103px] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
+          <div className="h-[6.4375rem] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
             <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Best Session</span>
             <span className="text-gfx-green-300 text-[1rem] font-acid font-medium">Asian Cross</span>
           </div>
@@ -202,13 +202,13 @@ function SessionAnalysis() {
 
         <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium mb-3">Session Performance</p>
         <div className="overflow-x-auto">
-        <div className="grid grid-cols-3 px-4 mb-3 min-w-[350px]">
+        <div className="grid grid-cols-3 px-4 mb-3 min-w-[21.8750rem]">
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Date / Time</span>
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Win Rate</span>
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider text-right">Net P&L</span>
         </div>
         {sessionPerformance.map((row, i) => (
-          <div key={i} className="grid grid-cols-3 items-center px-4 h-[68px] border-t border-gfx-green-900 min-w-[350px]">
+          <div key={i} className="grid grid-cols-3 items-center px-4 h-[4.25rem] border-t border-gfx-green-900 min-w-[21.8750rem]">
             <span className="text-white text-[0.875rem] font-acid">{row.session}</span>
             <span className="text-white text-[0.875rem] font-acid">{row.winRate}</span>
             <span className={`text-[0.875rem] font-acid text-right ${row.pnl >= 0 ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
@@ -227,7 +227,7 @@ function SessionAnalysis() {
 function SymbolExposure() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-right-[80px] -top-[60px]" />
+      <GlowEllipse className="-right-[5rem] -top-[3.75rem]" />
       <div className="p-6">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-white text-[1rem] font-acid font-medium">Symbol Exposure</h3>
@@ -237,14 +237,14 @@ function SymbolExposure() {
         </div>
 
         <div className="overflow-x-auto">
-        <div className="grid grid-cols-4 px-4 mb-3 min-w-[450px]">
+        <div className="grid grid-cols-4 px-4 mb-3 min-w-[28.1250rem]">
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Symbol</span>
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Trades</span>
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Volume</span>
           <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider text-right">P&L</span>
         </div>
         {symbolExposure.map((row, i) => (
-          <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-gfx-green-900 min-w-[450px]">
+          <div key={i} className="grid grid-cols-4 items-center px-4 h-[4.25rem] border-t border-gfx-green-900 min-w-[28.1250rem]">
             <span className="text-white text-[0.875rem] font-acid">{row.symbol}</span>
             <span className="text-white text-[0.875rem] font-acid">{row.trades}</span>
             <span className="text-gfx-neutral-500 text-[0.875rem] font-acid">{row.volume}</span>
@@ -264,13 +264,13 @@ function SymbolExposure() {
 function TechnicalStatistics() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-left-[80px] -top-[60px]" />
+      <GlowEllipse className="-left-[5rem] -top-[3.75rem]" />
       <div className="p-6">
         <h3 className="text-white text-[1rem] font-acid font-medium mb-5">Technical Statistics</h3>
 
         <div className="flex flex-col">
           {technicalStats.map((row, i) => (
-            <div key={i} className="flex items-center justify-between h-[56px] border-t border-gfx-green-900 first:border-t-0">
+            <div key={i} className="flex items-center justify-between h-[3.5000rem] border-t border-gfx-green-900 first:border-t-0">
               <span className="text-gfx-neutral-500 text-[1rem] font-acid">{row.label}</span>
               <span className={`text-[1rem] font-acid ${row.teal ? 'text-gfx-green-300' : 'text-gfx-neutral-600'}`}>
                 {row.value}
@@ -296,7 +296,7 @@ function AvgPnlByDayChart() {
 
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-left-[80px] -top-[60px]" />
+      <GlowEllipse className="-left-[5rem] -top-[3.75rem]" />
       <div className="relative p-7">
         <div className="flex items-center gap-2 mb-8">
           <h3 className="text-white text-[1rem] font-acid font-medium">Avg P&L by Day of Week</h3>
@@ -304,11 +304,11 @@ function AvgPnlByDayChart() {
         </div>
 
         <div className="flex">
-          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-[2.3px] h-[258px]">
+          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-[2.3px] h-[16.1250rem]">
             {Y_LABELS.map(l => <span key={l}>{l}</span>)}
           </div>
 
-          <div className="flex-1 relative h-[310px]">
+          <div className="flex-1 relative h-[19.3750rem]">
             <svg className="absolute inset-0" width="100%" height="258" viewBox="0 0 621 258" preserveAspectRatio="none" fill="none">
               {[0, 51.6, 103.2, 154.8, 206.4].map((y, i) => (
                 <line key={`h${i}`} x1="0" y1={y} x2="621" y2={y} stroke="#09241C" strokeWidth="1.29" strokeDasharray={i === 4 ? 'none' : '4.69 4.69'} />
@@ -336,7 +336,7 @@ function AvgPnlByDayChart() {
               <path d={lossPath} stroke="#D46356" strokeWidth="0.58" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
 
-            <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3 top-[268px]">
+            <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3 top-[16.7500rem]">
               {DAYS.map(d => (
                 <span key={d} className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">{d}</span>
               ))}
@@ -371,7 +371,7 @@ export default function StatisticsView() {
       {/* Header */}
       <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
         <GlowEllipse className="bottom-[-30%] left-1/2 -translate-x-1/2" />
-        <div className="relative px-[30px] py-5 flex items-center justify-between">
+        <div className="relative px-[1.875rem] py-5 flex items-center justify-between">
           <div>
             <h2 className="text-white text-[1.5rem] font-acid">Trading Statistics</h2>
             <p className="text-gfx-neutral-400 text-[1rem] font-acid font-medium mt-1">All time</p>
@@ -387,7 +387,7 @@ export default function StatisticsView() {
           <div className="p-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-white text-[1.5rem] font-acid">Genesis Score</h3>
-              <div className="flex items-center gap-2 h-[30px] px-3 rounded-full border border-[rgba(0,240,160,0.15)] bg-[rgba(0,240,160,0.1)]">
+              <div className="flex items-center gap-2 h-[1.875rem] px-3 rounded-full border border-[rgba(0,240,160,0.15)] bg-[rgba(0,240,160,0.1)]">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

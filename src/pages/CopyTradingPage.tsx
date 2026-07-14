@@ -33,7 +33,7 @@ function DownloadIcon() {
 
 function SubscriptionIcon() {
   return (
-    <div className="w-[70px] h-[70px] rounded-full bg-gfx-green-200 flex items-center justify-center">
+    <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-gfx-green-200 flex items-center justify-center">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
         <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="12" cy="7" r="4" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -44,7 +44,7 @@ function SubscriptionIcon() {
 
 function CourseUpIcon() {
   return (
-    <div className="w-[70px] h-[70px] rounded-full bg-gfx-green-200 flex items-center justify-center">
+    <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-gfx-green-200 flex items-center justify-center">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
         <path d="M22 7L13.5 15.5L8.5 10.5L2 17" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M16 7H22V13" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -158,7 +158,7 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         </div>
 
         {/* Stats Box */}
-        <div className="bg-gfx-green-900 rounded-[9px] p-5 mt-4">
+        <div className="bg-gfx-green-900 rounded-[0.5625rem] p-5 mt-4">
           <div className="flex flex-col gap-3.5">
             <div className="flex justify-between items-center">
               <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Total P&L</span>
@@ -277,7 +277,7 @@ export default function CopyTradingPage() {
                   placeholder="Search traders"
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  className="w-[287px]"
+                  className="w-[17.9375rem]"
                 />
                 <button
                   onClick={() => {}}
@@ -340,12 +340,12 @@ export default function CopyTradingPage() {
         {/* Follower Tab — Empty State */}
         {activeTab === 1 && (
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-            <div className="flex flex-col items-center justify-center py-[60px] px-8 min-h-[421px]">
+            <div className="flex flex-col items-center justify-center py-[3.75rem] px-8 min-h-[26.3125rem]">
               <SubscriptionIcon />
               <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
                 No active Subscription
               </h3>
-              <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+              <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
                 {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
               </p>
               <div className="mt-8">
@@ -376,7 +376,7 @@ export default function CopyTradingPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="bg-gfx-green-800 rounded-[8px] px-4 py-2 flex items-center gap-2.5">
+                  <div className="bg-gfx-green-800 rounded-[0.5rem] px-4 py-2 flex items-center gap-2.5">
                     <WalletIcon />
                     <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Social Wallet</span>
                     <span className="text-gfx-neutral-600 text-[0.875rem] font-acid">$100.00</span>
@@ -406,19 +406,19 @@ export default function CopyTradingPage() {
                 {/* Dashboard Header */}
                 <div className="flex items-center justify-between p-6 lg:p-8 pb-6">
                   <h3 className="text-white text-[1.5rem] font-acid leading-normal">Master Dashboard</h3>
-                  <SearchInput placeholder="Search strategies" className="w-[287px]" />
+                  <SearchInput placeholder="Search strategies" className="w-[17.9375rem]" />
                 </div>
 
                 {/* Divider */}
                 <div className="h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent" />
 
                 {/* Empty State */}
-                <div className="flex flex-col items-center justify-center py-[60px] px-8">
+                <div className="flex flex-col items-center justify-center py-[3.75rem] px-8">
                   <CourseUpIcon />
                   <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
                     No Strategies Created
                   </h3>
-                  <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+                  <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
                     {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
                   </p>
                   <div className="mt-8">

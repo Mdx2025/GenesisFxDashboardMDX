@@ -39,8 +39,8 @@ export default function TradesView() {
         <GlowEllipse className="left-[10%] top-[-20%]" />
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-10">
           <div>
-            <h3 className="text-white text-[22px] font-acid font-normal leading-tight">Trade History</h3>
-            <p className="text-gfx-neutral-400 text-[13px] font-acid mt-0.5">
+            <h3 className="text-white text-[1.375rem] font-acid font-normal leading-tight">Trade History</h3>
+            <p className="text-gfx-neutral-400 text-[0.8125rem] font-acid mt-0.5">
               <span className="text-white">{filtered.length}</span>{' '}
               Trade{filtered.length !== 1 ? 's' : ''} Found
             </p>
@@ -59,15 +59,15 @@ export default function TradesView() {
 
       {/* Table Card */}
       <div className="relative overflow-hidden rounded-[1.1875rem] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]">
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-252px] w-[493px] h-[278px] rounded-full bg-gfx-green-200 blur-[157px]" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-[-252px] w-[30.8125rem] h-[17.3750rem] rounded-full bg-gfx-green-200 blur-[9.8125rem]" />
         <div className="relative overflow-x-auto">
-          <table className="w-full min-w-[800px]">
+          <table className="w-full min-w-[50rem]">
             <thead>
               <tr className="border-b border-gfx-green-900">
                 {COLUMNS.map(col => (
                   <th
                     key={col}
-                    className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase text-left h-[58px] px-4 sm:px-7 tracking-[2.32px]"
+                    className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-[2.32px]"
                   >
                     {col}
                   </th>
@@ -77,15 +77,15 @@ export default function TradesView() {
             <tbody>
               {filtered.map((trade, i) => (
                 <tr key={i} className="border-b border-gfx-green-900">
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.dateTime}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.instrument}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.side}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.size}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[76px]">{trade.entry}</td>
-                  <td className={`text-[0.875rem] font-acid px-4 sm:px-7 h-[76px] ${trade.exitPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
+                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.dateTime}</td>
+                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.instrument}</td>
+                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.side}</td>
+                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.size}</td>
+                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.entry}</td>
+                  <td className={`text-[0.875rem] font-acid px-4 sm:px-7 h-[4.75rem] ${trade.exitPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
                     {trade.exit}
                   </td>
-                  <td className={`text-[0.875rem] font-acid px-4 sm:px-7 h-[76px] ${trade.netPnlPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
+                  <td className={`text-[0.875rem] font-acid px-4 sm:px-7 h-[4.75rem] ${trade.netPnlPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
                     {trade.netPnl}
                   </td>
                 </tr>

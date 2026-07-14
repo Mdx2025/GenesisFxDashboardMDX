@@ -152,7 +152,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
           {provider.following ? (
             <button
               onClick={() => onToggleFollow(provider.id)}
-              className="h-[34px] px-3 rounded-[12px] bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-[0.875rem] font-acid font-medium text-white transition-colors cursor-pointer"
+              className="h-[2.1250rem] px-3 rounded-[0.75rem] bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-[0.875rem] font-acid font-medium text-white transition-colors cursor-pointer"
             >
               <CheckIcon />
               <span>Following</span>
@@ -160,7 +160,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
           ) : (
             <button
               onClick={() => onFollowClick(provider)}
-              className="px-3 py-2 rounded-[12px] flex items-center gap-[10px] text-[0.875rem] font-acid transition-colors cursor-pointer"
+              className="px-3 py-2 rounded-[0.75rem] flex items-center gap-[0.625rem] text-[0.875rem] font-acid transition-colors cursor-pointer"
               style={{ background: '#F1FFFA', color: 'black' }}
             >
               <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
@@ -234,7 +234,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
 
   return (
     <div
-      className="signal-strategy-card flex flex-col w-full max-w-[504px]"
+      className="signal-strategy-card flex flex-col w-full max-w-[31.5000rem]"
       style={{
         background: 'var(--signal-card-bg, #0C1311)',
         borderRadius: 'var(--signal-card-radius, 18.56px)',
@@ -243,7 +243,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
       }}
     >
-      <div className="flex flex-col gap-[17px] pt-[1.9375rem] pb-[2.1875rem] px-[1.5625rem]">
+      <div className="flex flex-col gap-[1.0625rem] pt-[1.9375rem] pb-[2.1875rem] px-[1.5625rem]">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[1.375rem]">
@@ -261,7 +261,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
             </span>
             <button
               onClick={() => onToggleFollow(provider.id)}
-              className="bg-gfx-green-900 rounded-[12px] px-3 py-2 flex items-center gap-[10px] cursor-pointer"
+              className="bg-gfx-green-900 rounded-[0.75rem] px-3 py-2 flex items-center gap-[0.625rem] cursor-pointer"
             >
               <CheckCircleIcon />
               <span className="text-gfx-green-300 text-[0.875rem] font-acid leading-[18.8px]">Follow</span>
@@ -270,7 +270,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         </div>
 
         {/* Trading Pair */}
-        <div className="flex items-center gap-[7px]">
+        <div className="flex items-center gap-[0.4375rem]">
           <XauusdIcon />
           <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-[0.875rem] font-acid font-medium">
             {provider.pair}
@@ -392,11 +392,11 @@ export default function SignalsPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
                     <h2 className="text-white text-[clamp(1.25rem,1rem+0.5vw,1.75rem)] font-acid leading-tight">Live Signal Feed</h2>
-                    <span className="inline-flex items-center h-[22px] px-2.5 rounded-full bg-gfx-green-900 border border-[#00b38c] text-gfx-green-300 text-[0.6875rem] font-acid">
+                    <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-[0.6875rem] font-acid">
                       Online
                     </span>
                   </div>
-                  <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[18.8px] mt-2 max-w-[500px]">
+                  <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[18.8px] mt-2 max-w-[31.25rem]">
                     Real-time trading signals from verified analysts. Click on any signal to view details and place trades.
                   </p>
                 </div>
@@ -420,7 +420,7 @@ export default function SignalsPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <p className="text-white text-[1rem] font-acid-medium leading-[24.44px]">Enable push notifications</p>
-                      <span className="inline-flex items-center h-[22px] px-2.5 rounded-full bg-gfx-green-900 border border-[#00b38c] text-gfx-green-300 text-[0.6875rem] font-acid">
+                      <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-[0.6875rem] font-acid">
                         Active
                       </span>
                     </div>
@@ -439,17 +439,17 @@ export default function SignalsPage() {
                 placeholder="Search instrument or analyst"
                 value={searchQuery}
                 onChange={setSearchQuery}
-                className="w-[287px]"
+                className="w-[17.9375rem]"
               />
               <button
                 onClick={() => setViewMode('list')}
-                className={`w-[2.9375rem] h-[2.75rem] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-[2.9375rem] h-[2.75rem] rounded-[0.625rem] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
               >
                 <ListViewIcon active={viewMode === 'list'} />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`w-[2.9375rem] h-[2.75rem] rounded-[10px] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-[2.9375rem] h-[2.75rem] rounded-[0.625rem] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
               >
                 <GridViewIcon active={viewMode === 'grid'} />
               </button>
@@ -458,13 +458,13 @@ export default function SignalsPage() {
             {/* Empty State */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
-                <div className="w-[56px] h-[56px] rounded-full bg-gfx-green-900 flex items-center justify-center mb-4">
+                <div className="w-[3.5000rem] h-[3.5000rem] rounded-full bg-gfx-green-900 flex items-center justify-center mb-4">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <h3 className="text-white text-[1.125rem] font-acid-medium leading-tight mb-2">No signals</h3>
-                <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[18.8px] max-w-[320px]">
+                <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[18.8px] max-w-[20rem]">
                   There are no signals from the past 7 days matching your filters. Check back soon or browse the marketplace for top providers.
                 </p>
               </div>
@@ -480,23 +480,23 @@ export default function SignalsPage() {
 
             {/* Signals Executed Section */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <div className="relative p-6 lg:p-8 min-h-[421px] flex flex-col">
+              <div className="relative p-6 lg:p-8 min-h-[26.3125rem] flex flex-col">
                 {/* Header Row */}
                 <div className="flex items-center justify-between">
                   <h3 className="text-white text-[1.5rem] font-acid leading-none">Signals Executed</h3>
                   <SearchInput
                     placeholder="Search strategies"
-                    className="w-[287px]"
+                    className="w-[17.9375rem]"
                   />
                 </div>
 
                 {/* Empty State */}
                 <div className="flex-1 flex flex-col items-center justify-center py-10">
-                  <div className="w-[70px] h-[70px] rounded-full bg-gfx-green-900 flex items-center justify-center mb-6">
+                  <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-gfx-green-900 flex items-center justify-center mb-6">
                     <SignalPulseIcon />
                   </div>
                   <h3 className="text-white text-[1.5rem] font-acid leading-none mb-3 text-center">No signals taken yet</h3>
-                  <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] max-w-[396px] text-center mb-6">
+                  <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] max-w-[24.7500rem] text-center mb-6">
                     Signals you execute will appear here
                   </p>
                   <GlowButton label="Trade" width={160} />
@@ -511,29 +511,29 @@ export default function SignalsPage() {
           <div className="flex flex-col gap-10">
             {/* Hero Banner */}
             <GlassCard variant="light" divider="none" rounded="22px" className="relative overflow-hidden">
-              <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[280px] !w-[45rem] !h-[28rem]" />
-              <GlowEllipse className="right-[-200px] -bottom-[200px] !w-[45rem] !h-[28rem]" />
+              <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[17.5000rem] !w-[45rem] !h-[28rem]" />
+              <GlowEllipse className="right-[-200px] -bottom-[12.5rem] !w-[45rem] !h-[28rem]" />
               <GlowEllipse className="left-[-300px] bottom-[-100px] !w-[31rem] !h-[17rem]" />
 
-              <div className="relative flex flex-col items-center text-center px-6 py-14 lg:py-16 min-h-[412px] justify-center">
+              <div className="relative flex flex-col items-center text-center px-6 py-14 lg:py-16 min-h-[25.7500rem] justify-center">
                 {/* Trophy icon — top right */}
                 <div className="absolute right-8 top-8 hidden lg:block">
                   <TrophyIcon size={32} />
                 </div>
 
                 {/* Program badge */}
-                <div className="inline-flex items-center gap-2 h-[27px] px-4 rounded-full bg-gfx-green-900 border border-gfx-green-200 mb-8">
+                <div className="inline-flex items-center gap-2 h-[1.6875rem] px-4 rounded-full bg-gfx-green-900 border border-gfx-green-200 mb-8">
                   <ProviderBadgeIcon />
                   <span className="text-gfx-green-300 text-[0.75rem] font-acid leading-[18.8px] whitespace-nowrap">Genesis Signal Provider Program</span>
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-white text-[clamp(2rem,1.5rem+1.5vw,3.125rem)] font-acid leading-none max-w-[633px]">
+                <h2 className="text-white text-[clamp(2rem,1.5rem+1.5vw,3.125rem)] font-acid leading-none max-w-[39.5625rem]">
                   Turn Your Trades Into Recurring Income
                 </h2>
 
                 {/* Subtitle */}
-                <p className="text-gfx-neutral-500 text-[0.875rem] font-acid leading-[18.8px] mt-5 max-w-[366px]">
+                <p className="text-gfx-neutral-500 text-[0.875rem] font-acid leading-[18.8px] mt-5 max-w-[22.8750rem]">
                   Publish your signals, grow a following, and earn monthly subscription plus performance fees.
                 </p>
 
@@ -554,7 +554,7 @@ export default function SignalsPage() {
               <h2 className="text-white text-[clamp(1.5rem,1.25rem+0.75vw,3.125rem)] font-acid leading-none self-start lg:self-center">
                 Frequently Asked Questions
               </h2>
-              <div className="w-full max-w-[756px] flex flex-col gap-4 mx-auto">
+              <div className="w-full max-w-[47.2500rem] flex flex-col gap-4 mx-auto">
                 {providerFaqs.map((faq, i) => (
                   <FaqCard
                     key={i}
@@ -606,7 +606,7 @@ export default function SignalsPage() {
               placeholder="Search signals"
               value={searchQuery}
               onChange={setSearchQuery}
-              className="w-[287px]"
+              className="w-[17.9375rem]"
             />
             <button
               onClick={() => {}}

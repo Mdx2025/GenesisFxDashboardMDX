@@ -32,7 +32,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
   const remaining = circumference - progress
 
   return (
-    <div className="relative w-[100px] h-[100px]">
+    <div className="relative w-[6.25rem] h-[6.25rem]">
       <svg width="100" height="100" viewBox="0 0 100 100" className="rotate-[-90deg]">
         <circle cx="50" cy="50" r={radius} fill="none" stroke="#09241c" strokeWidth="6" />
         <circle
@@ -56,7 +56,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
 
 function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden h-[182px]">
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden h-[11.3750rem]">
       <GlowEllipse className={`${glowPos} !w-[11.25rem] !h-[6.25rem] !blur-[4.375rem]`} />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">

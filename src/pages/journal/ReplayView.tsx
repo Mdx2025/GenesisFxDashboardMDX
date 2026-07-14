@@ -24,10 +24,10 @@ interface ReplayCardProps {
 function ReplayCard({ title, description, illustration, active }: ReplayCardProps) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden flex-1 min-w-0">
-      <div className="flex flex-col items-center pt-0 pb-8 px-9 h-[419px]">
+      <div className="flex flex-col items-center pt-0 pb-8 px-9 h-[26.1875rem]">
         {/* Illustration */}
-        <div className="relative w-[240px] h-[240px] flex items-center justify-center shrink-0">
-          <div className="absolute w-[380px] h-[214px] rounded-full bg-gfx-green-200 [filter:url(#blur-80)] opacity-30 top-[20px]" aria-hidden="true" />
+        <div className="relative w-[15rem] h-[15rem] flex items-center justify-center shrink-0">
+          <div className="absolute w-[23.7500rem] h-[13.3750rem] rounded-full bg-gfx-green-200 [filter:url(#blur-80)] opacity-30 top-[1.25rem]" aria-hidden="true" />
           <img
             src={illustration}
             alt={title}
@@ -39,7 +39,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
         <h4 className="text-white text-[1rem] font-acid font-medium text-center -mt-2">{title}</h4>
 
         {/* Description */}
-        <p className="text-gfx-neutral-400 text-[0.875rem] font-acid text-center mt-3 max-w-[360px] leading-[18px]">
+        <p className="text-gfx-neutral-400 text-[0.875rem] font-acid text-center mt-3 max-w-[22.5000rem] leading-[1.125rem]">
           {description}
         </p>
 
@@ -53,7 +53,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
               radius={300}
             />
           ) : (
-            <div className="w-full max-w-[387px] h-[2.75rem] rounded-[300px] border border-gfx-neutral-250 flex items-center justify-center">
+            <div className="w-full max-w-[24.1875rem] h-[2.75rem] rounded-[18.75rem] border border-gfx-neutral-250 flex items-center justify-center">
               <span className="text-gfx-neutral-300 text-[0.875rem] font-acid">Coming soon</span>
             </div>
           )}

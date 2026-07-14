@@ -146,8 +146,8 @@ const monthlyPerformance: MonthEntry[] = [
 ]
 
 const CELL_STYLES = {
-  positive: 'bg-gfx-green-900 border border-[#00B38C]',
-  negative: 'bg-[#2A1411] border border-[#7F3B34]',
+  positive: 'bg-gfx-green-900 border border-gfx-green-300',
+  negative: 'bg-gfx-red-surface border border-[#7F3B34]',
   empty: 'border border-gfx-green-200',
 } as const
 
@@ -163,18 +163,18 @@ function PerformanceGrid() {
       <div className="relative">
         <div className="flex items-start">
           {/* Year column */}
-          <div className="flex flex-col items-start w-[60px] flex-shrink-0">
+          <div className="flex flex-col items-start w-[3.75rem] flex-shrink-0">
             <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px]">Year</span>
-            <div className="h-[45px] flex items-center mt-3">
+            <div className="h-[2.8125rem] flex items-center mt-3">
               <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px]">2026</span>
             </div>
           </div>
           {/* Month cells */}
-          <div className="flex-1 flex gap-[10px]">
+          <div className="flex-1 flex gap-[0.625rem]">
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
                 <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
-                <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
+                <div className={`w-full h-[2.8125rem] rounded-[0.5rem] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
                   {m.value && <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
@@ -182,7 +182,7 @@ function PerformanceGrid() {
             {/* Ann column */}
             <div className="flex flex-col items-center flex-1 min-w-0">
               <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Ann</span>
-              <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES.positive}`}>
+              <div className={`w-full h-[2.8125rem] rounded-[0.5rem] flex items-center justify-center ${CELL_STYLES.positive}`}>
                 <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
@@ -265,7 +265,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
               {row.progressBar && (
                 <div className="flex items-center gap-2">
                   <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{row.value}</span>
-                  <div className="w-[88px] h-[9px] rounded-[60px] bg-gfx-green-900 relative">
+                  <div className="w-[5.5rem] h-[0.5625rem] rounded-[3.75rem] bg-gfx-green-900 relative">
                     <div
                       className="h-full rounded-[4.5px] bg-gfx-green-200"
                       style={{ width: `${(row.progressBar.percent / 100) * 88}px` }}
@@ -527,7 +527,7 @@ export default function PammDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[24px] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[1.5rem] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
                       <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.volume}</span>

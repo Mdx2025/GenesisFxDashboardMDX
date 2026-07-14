@@ -131,7 +131,7 @@ function PnlPerformanceChart() {
           </svg>
         </div>
       </div>
-      <div className="flex justify-between mt-2 pl-[44px]">
+      <div className="flex justify-between mt-2 pl-[2.7500rem]">
         <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">Jun 22</span>
         <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">Jun 22</span>
         <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">Jun 22</span>
@@ -256,7 +256,7 @@ export default function SignalsDetailsPage() {
         {/* Performance & Frequency (left) + Follow Card (right) */}
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_23.5rem] gap-5">
           {/* Performance & Frequency */}
-          <GlassCard variant="light" divider="none" rounded="18.56px" className="p-[44px]">
+          <GlassCard variant="light" divider="none" rounded="18.56px" className="p-[2.7500rem]">
             <div className="flex justify-between items-start">
               <h3 className="text-white text-[1.5rem] font-acid font-normal">Performance & Frequency</h3>
               <div className="flex flex-col items-end">
@@ -269,7 +269,7 @@ export default function SignalsDetailsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-y-[53px]">
+            <div className="grid grid-cols-3 gap-y-[3.3125rem]">
               {[
                 { value: '2', label: 'Total Signals' },
                 { value: '100%', label: 'Win Rate', green: true },
@@ -290,7 +290,7 @@ export default function SignalsDetailsPage() {
           </GlassCard>
 
           {/* Follow this Strategy Card */}
-          <div className="bg-gfx-green-900 rounded-[18px] overflow-hidden px-8 py-25 h-fit">
+          <div className="bg-gfx-green-900 rounded-[1.125rem] overflow-hidden px-8 py-25 h-fit">
             <h3 className="text-white text-[1rem] font-acid-medium mb-2">Follow this Strategy</h3>
             <p className="text-gfx-neutral-500 text-[0.875rem] font-acid mb-6">Remote trade signals — not copy trading.</p>
             <GlowButton
@@ -341,7 +341,7 @@ export default function SignalsDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[24px] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[1.5rem] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
                       <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.volume}</span>

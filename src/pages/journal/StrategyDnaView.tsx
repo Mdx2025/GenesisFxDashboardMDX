@@ -127,7 +127,7 @@ const TRAIT_ICON_MAP: Record<TraderTrait['icon'], () => ReactNode> = {
 
 function SectionPillIcon({ children }: { children: React.ReactNode }) {
   return (
-    <span className="flex items-center justify-center w-[34px] h-[34px] rounded-[10px] bg-[rgba(215,96,255,0.15)] border border-[rgba(168,85,247,0.25)]">
+    <span className="flex items-center justify-center w-[2.1250rem] h-[2.1250rem] rounded-[0.625rem] bg-[rgba(215,96,255,0.15)] border border-[rgba(168,85,247,0.25)]">
       {children}
     </span>
   )
@@ -144,7 +144,7 @@ function TraderPassportCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
       <div
-        className="absolute inset-0 rounded-[20px] pointer-events-none"
+        className="absolute inset-0 rounded-[1.25rem] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%)' }}
         aria-hidden="true"
       />
@@ -166,13 +166,13 @@ function TraderPassportCard() {
 
         {/* Avatar */}
         <div
-          className="w-[112px] h-[112px] rounded-full flex items-center justify-center"
+          className="w-[7rem] h-[7rem] rounded-full flex items-center justify-center"
           style={{
             background: 'radial-gradient(circle, #d760ff, #9877e2)',
             boxShadow: '0 0 0 6px rgba(168,85,247,0.12), 0 0 40px rgba(168,85,247,0.35)',
           }}
         >
-          <span className="text-white text-[46px] font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-white text-[2.8750rem] font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
             T
           </span>
         </div>
@@ -186,7 +186,7 @@ function TraderPassportCard() {
         </span>
 
         {/* Archetype box */}
-        <div className="w-full rounded-[20px] bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
+        <div className="w-full rounded-[1.25rem] bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
           <span className="text-[0.75rem] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
             &#10022; ARCHETYPE
           </span>
@@ -203,7 +203,7 @@ function TraderPassportCard() {
           ].map((s, i) => (
             <div
               key={i}
-              className="h-[73px] rounded-[0.875rem] bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
+              className="h-[4.5625rem] rounded-[0.875rem] bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
             >
               <span className="text-[1.5rem] text-[#f3eef9] font-acid">{s.value}</span>
               <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">{s.label}</span>
@@ -221,7 +221,7 @@ function TraderPassportCard() {
               {p.xpCurrent} / {p.xpMax} XP
             </span>
           </div>
-          <div className="relative w-full h-[7px] rounded-full bg-gfx-purple-surface overflow-visible">
+          <div className="relative w-full h-[0.4375rem] rounded-full bg-gfx-purple-surface overflow-visible">
             <div
               className="absolute inset-y-0 left-0 rounded-full"
               style={{
@@ -253,7 +253,7 @@ function TraderPassportCard() {
           }}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[0.75rem] text-[#f2994a] font-acid font-bold uppercase tracking-[2.3px]">
+            <span className="text-[0.75rem] text-gfx-amber font-acid font-bold uppercase tracking-[2.3px]">
               &#128293; Daily Streak
             </span>
           </div>
@@ -261,7 +261,7 @@ function TraderPassportCard() {
             <span className="text-[1.5rem] text-[#f3eef9] font-acid">{p.dailyStreakDays}</span>
             <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">days</span>
           </div>
-          <div className="w-full h-[6px] rounded-full bg-white/8 overflow-hidden">
+          <div className="w-full h-[0.375rem] rounded-full bg-white/8 overflow-hidden">
             <div
               className="h-full rounded-full"
               style={{
@@ -271,8 +271,8 @@ function TraderPassportCard() {
             />
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-[0.75rem] text-[#f2994a] font-acid font-semibold">{daysRemaining}d to</span>
-            <span className="text-[0.75rem] text-[#f2994a] font-acid font-semibold">{p.dailyStreakReward}</span>
+            <span className="text-[0.75rem] text-gfx-amber font-acid font-semibold">{daysRemaining}d to</span>
+            <span className="text-[0.75rem] text-gfx-amber font-acid font-semibold">{p.dailyStreakReward}</span>
           </div>
         </div>
       </div>
@@ -289,9 +289,9 @@ function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' 
     : 'right-[-40px] top-[-30px]'
 
   return (
-    <GlassCard variant="purple" divider="none" rounded="20px" className="h-[133px]" glow={false}>
+    <GlassCard variant="purple" divider="none" rounded="20px" className="h-[8.3125rem]" glow={false}>
       <GlowEllipse variant="purple" className={ellipsePos} />
-      <div className="relative p-[22px] h-full flex flex-col justify-between">
+      <div className="relative p-[1.375rem] h-full flex flex-col justify-between">
         <span className="text-[0.75rem] text-gfx-neutral-400 uppercase tracking-[2.3px] font-acid font-bold">
           {stat.label}
         </span>
@@ -332,7 +332,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
   else if (trait.barColor === 'orange') barBg = '#f2994a'
 
   return (
-    <GlassCard variant="purple" divider="none" rounded="14px" className="h-[104px]" glow={false}>
+    <GlassCard variant="purple" divider="none" rounded="14px" className="h-[6.5000rem]" glow={false}>
       <div className="p-4 h-full flex flex-col justify-between">
         <div className="flex items-center gap-2">
           <Icon />
@@ -342,7 +342,7 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
           <span className="text-[1.5rem] text-white font-acid">{trait.value}</span>
           <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">/100</span>
         </div>
-        <div className="w-full h-[5px] rounded-full bg-[#2d1f4b] overflow-hidden">
+        <div className="w-full h-[0.3125rem] rounded-full bg-gfx-purple-surface overflow-hidden">
           {trait.barColor !== 'none' && (
             <div
               className="h-full rounded-full"
@@ -396,14 +396,14 @@ function StyleProgressRow({ row, variant }: { row: StyleRow; variant: 'purple' |
         <div className="flex items-center gap-2">
           <span className="text-[0.875rem] text-white font-acid">{row.label}</span>
           {row.isTop && (
-            <span className="px-2 py-0.5 rounded-full bg-[#422e6d] border border-[#8163c5] text-[#c8afff] text-[0.625rem] font-acid font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-gfx-purple-accent text-[0.625rem] font-acid font-bold">
               TOP
             </span>
           )}
         </div>
         <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">{row.percentage}%</span>
       </div>
-      <div className="w-full h-[6px] rounded-full bg-[#2d1f4b] overflow-hidden">
+      <div className="w-full h-[0.375rem] rounded-full bg-gfx-purple-surface overflow-hidden">
         <div
           className="h-full rounded-full"
           style={{ width: `${row.percentage}%`, background: barBg }}
@@ -470,14 +470,14 @@ function AiStrategySummaryCard() {
             <span className="text-[1rem] text-white font-acid font-medium">AI Strategy Summary</span>
             <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">Personalized analysis of your trading DNA</span>
           </div>
-          <span className="px-3 py-1 rounded-full bg-[#422e6d] border border-[#8163c5] text-[#c8afff] text-[0.75rem] font-acid font-bold">
+          <span className="px-3 py-1 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-gfx-purple-accent text-[0.75rem] font-acid font-bold">
             AI
           </span>
         </div>
 
         {/* Body */}
         <p
-          className="text-gfx-neutral-400 leading-[24px]"
+          className="text-gfx-neutral-400 leading-[1.5rem]"
           style={{ fontSize: '14.5px', fontFamily: 'Inter, sans-serif' }}
         >
           {aiStrategySummary}
@@ -487,7 +487,7 @@ function AiStrategySummaryCard() {
         <div className="flex justify-end">
           <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(168,85,247,0.16)] border border-[rgba(168,85,247,0.4)] cursor-pointer hover:opacity-90 transition-opacity">
             <AiCoachSmallIcon />
-            <span className="text-[0.75rem] text-[#c8afff] font-acid">AI Coach</span>
+            <span className="text-[0.75rem] text-gfx-purple-accent font-acid">AI Coach</span>
           </button>
         </div>
       </div>

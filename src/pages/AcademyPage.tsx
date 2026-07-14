@@ -41,7 +41,7 @@ function LearningJourneyCard() {
     <GlassBannerCard className="w-full" contentClassName="py-12 px-5 xl:py-27 xl:px-13 3xl:py-34 3xl:px-10 4xl:py-42 4xl:px-14">
       <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
         <div className="flex items-start gap-6 shrink-0">
-          <div className="w-[54px] h-[54px] rounded-[16px] bg-[#011b12] flex items-center justify-center shrink-0">
+          <div className="w-[3.3750rem] h-[3.3750rem] rounded-[1rem] bg-gfx-green-100 flex items-center justify-center shrink-0">
             <AcademyCapIcon size={26} />
           </div>
           <div className="flex flex-col gap-1">
@@ -55,7 +55,7 @@ function LearningJourneyCard() {
         </div>
 
         <div className="flex flex-col gap-2 flex-1 min-w-0">
-          <div className="flex items-center gap-3 w-full xl:max-w-[420px] xl:ml-auto">
+          <div className="flex items-center gap-3 w-full xl:max-w-[26.2500rem] xl:ml-auto">
             <div className="flex-1 h-1 bg-[#0f1e19] rounded-full overflow-hidden">
               <div
                 className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
@@ -64,7 +64,7 @@ function LearningJourneyCard() {
             </div>
             <span className="text-white text-body2 font-medium shrink-0">{pct}%</span>
           </div>
-          <div className="flex items-center gap-5 flex-wrap w-full xl:max-w-[420px] xl:ml-auto">
+          <div className="flex items-center gap-5 flex-wrap w-full xl:max-w-[26.2500rem] xl:ml-auto">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-500" />
               <span className="text-white text-body2 font-medium">{completed} done</span>
@@ -74,7 +74,7 @@ function LearningJourneyCard() {
               <span className="text-white text-body2 font-medium">{inProgress} in progress</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gfx-neutral-300" />
               <span className="text-white text-body2 font-medium">{notStarted} not started</span>
             </div>
           </div>
@@ -95,14 +95,14 @@ function GlossarySection() {
   }, [activeLetter])
 
   return (
-    <div className="pt-10 xl:pt-[62px] pb-10">
-      <div className="flex items-center justify-center gap-[13px] flex-wrap mb-[41px]">
+    <div className="pt-10 xl:pt-[3.8750rem] pb-10">
+      <div className="flex items-center justify-center gap-[0.8125rem] flex-wrap mb-[2.5625rem]">
         <button
           onClick={() => setActiveLetter('All')}
-          className={`h-[33px] px-[11px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors ${
+          className={`h-[2.0625rem] px-[0.6875rem] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors ${
             activeLetter === 'All'
-              ? 'bg-[#00b38c] text-[#021b13]'
-              : 'bg-[#011b12] text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
+              ? 'bg-gfx-green-300 text-[#021b13]'
+              : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
           }`}
         >
           All
@@ -111,10 +111,10 @@ function GlossarySection() {
           <button
             key={letter}
             onClick={() => setActiveLetter(letter)}
-            className={`w-[33px] h-[33px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors flex items-center justify-center ${
+            className={`w-[2.0625rem] h-[2.0625rem] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors flex items-center justify-center ${
               activeLetter === letter
-                ? 'bg-[#00b38c] text-[#021b13]'
-                : 'bg-[#011b12] text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
+                ? 'bg-gfx-green-300 text-[#021b13]'
+                : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
             }`}
           >
             {letter}
@@ -123,7 +123,7 @@ function GlossarySection() {
       </div>
 
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[18px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[1.125rem]">
           {filtered.map(term => (
             <GlossaryCard key={term.id} term={term.term} definition={term.definition} />
           ))}
@@ -142,7 +142,7 @@ export default function AcademyPage() {
 
   return (
     <>
-      <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+      <div className="absolute left-1/2 -translate-x-1/2 w-[37.5000rem] h-[18.75rem] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
         <TopBar

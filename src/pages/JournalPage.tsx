@@ -71,7 +71,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
   const remaining = circumference - progress
 
   return (
-    <div className="relative w-[100px] h-[100px]">
+    <div className="relative w-[6.25rem] h-[6.25rem]">
       <svg width="100" height="100" viewBox="0 0 100 100" className="rotate-[-90deg]">
         <circle cx="50" cy="50" r={radius} fill="none" stroke="#09241c" strokeWidth="6" />
         <circle
@@ -151,11 +151,11 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
       variant="light"
       divider="none"
       rounded="19px"
-      className={`h-[114px] overflow-hidden ${
-        stat.active ? 'border border-[#00b38c] weekly-stat-active' : 'weekly-stat-inactive'
+      className={`h-[7.1250rem] overflow-hidden ${
+        stat.active ? 'border border-gfx-green-300 weekly-stat-active' : 'weekly-stat-inactive'
       }`}
     >
-      <div className="h-full px-[22px] py-[14px]">
+      <div className="h-full px-[1.375rem] py-[0.8750rem]">
         <div className="flex flex-col gap-1.5">
           <div className="flex justify-between items-center">
             <p className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">{stat.day}</p>
@@ -178,7 +178,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
 function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-right-[100px] -top-[100px]" />
+      <GlowEllipse className="-right-[6.25rem] -top-[6.25rem]" />
       <div className="relative p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
@@ -194,15 +194,15 @@ function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
 
         <div className="mt-5">
           <div className="overflow-x-auto">
-          <div className="grid grid-cols-4 px-4 mb-3 min-w-[500px]">
+          <div className="grid grid-cols-4 px-4 mb-3 min-w-[31.25rem]">
             <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Date / Time</span>
             <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Instrument</span>
             <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Side</span>
             <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider text-right">P&L</span>
           </div>
-          <div className="flex flex-col min-w-[500px]">
+          <div className="flex flex-col min-w-[31.25rem]">
             {trades.map((trade, i) => (
-              <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-white/5">
+              <div key={i} className="grid grid-cols-4 items-center px-4 h-[4.25rem] border-t border-white/5">
                 <span className="text-white text-[0.875rem] font-acid">{trade.date}</span>
                 <span className="text-white text-[0.875rem] font-acid">{trade.instrument}</span>
                 <span className="text-gfx-neutral-500 text-[0.875rem] font-acid">{trade.side}</span>
@@ -227,7 +227,7 @@ function ImpactDots({ level }: { level: number }) {
       {[1, 2, 3].map(i => (
         <div
           key={i}
-          className={`w-2 h-2 rounded-full ${i <= level ? 'bg-[#d46356]' : 'bg-white/10'}`}
+          className={`w-2 h-2 rounded-full ${i <= level ? 'bg-gfx-red-muted' : 'bg-white/10'}`}
         />
       ))}
     </div>
@@ -237,7 +237,7 @@ function ImpactDots({ level }: { level: number }) {
 function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-      <GlowEllipse className="-left-[100px] -top-[100px]" />
+      <GlowEllipse className="-left-[6.25rem] -top-[6.25rem]" />
       <div className="relative p-6 pb-5">
         <div className="flex items-start justify-between mb-1">
           <div>
@@ -253,9 +253,9 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 
         <div className="flex flex-col mt-5">
           {news.map((event, i) => (
-            <div key={i} className="flex items-center gap-4 px-4 h-[68px] border-t border-white/5">
-              <div className="w-[2.9375rem] h-[48px] rounded-[18px] bg-[#2a1411] flex items-center justify-center flex-shrink-0">
-                <span className="text-gfx-red-muted text-[17px] font-acid">{event.countryCode}</span>
+            <div key={i} className="flex items-center gap-4 px-4 h-[4.25rem] border-t border-white/5">
+              <div className="w-[2.9375rem] h-[3rem] rounded-[1.125rem] bg-gfx-red-surface flex items-center justify-center flex-shrink-0">
+                <span className="text-gfx-red-muted text-[1.0625rem] font-acid">{event.countryCode}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white text-[1rem] font-acid font-medium">{event.title}</p>
@@ -276,7 +276,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 
 function StatCard({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[182px]">
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[11.3750rem]">
       <GlowEllipse className="-left-[3.125rem] -top-[3.125rem] !w-[11.25rem] !h-[6.25rem] !blur-[4.375rem]" />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
@@ -322,13 +322,13 @@ export default function JournalPage() {
           <div className="flex items-center gap-3 flex-wrap">
             <AiCoachButton />
             <ChatButton />
-            <button className="flex items-center gap-3 h-12 lg:h-[72px] px-3 lg:px-[19px] rounded-2xl lg:rounded-[20px] border border-gfx-neutral-250 hover:border-[#404040] transition-colors cursor-pointer">
-              <div className="relative w-[18px] h-[18px] flex items-center justify-center">
-                <div className="w-[10px] h-[10px] rounded-full bg-[#37C92E] shadow-[0_0_4px_rgba(12,145,4,1)]" />
+            <button className="flex items-center gap-3 h-12 lg:h-[4.5000rem] px-3 lg:px-[1.1875rem] rounded-2xl lg:rounded-[1.25rem] border border-gfx-neutral-250 hover:border-[#404040] transition-colors cursor-pointer">
+              <div className="relative w-[1.125rem] h-[1.125rem] flex items-center justify-center">
+                <div className="w-[0.625rem] h-[0.625rem] rounded-full bg-gfx-bullish-light shadow-[0_0_4px_rgba(12,145,4,1)]" />
               </div>
               <div className="flex flex-col items-start">
-                <span className="text-white text-[1rem] font-acid font-medium leading-[24px]">All Accounts</span>
-                <span className="text-white text-[1rem] font-acid font-medium leading-[24px]">$0.00</span>
+                <span className="text-white text-[1rem] font-acid font-medium leading-[1.5rem]">All Accounts</span>
+                <span className="text-white text-[1rem] font-acid font-medium leading-[1.5rem]">$0.00</span>
               </div>
               <ChevronRightIcon size={20} color="#808080" />
             </button>
@@ -351,7 +351,7 @@ export default function JournalPage() {
             {/* Weekly Stats Carousel */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <GlowEllipse className="bottom-[-60%] left-1/2 -translate-x-1/2" />
-              <div className="relative p-[30px]">
+              <div className="relative p-[1.875rem]">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <p className="text-white text-[1.5rem] font-acid">Welcome back, marcelo</p>
@@ -363,13 +363,13 @@ export default function JournalPage() {
                     </SparkleButton>
                     <button
                       onClick={() => swiperRef.current?.slidePrev()}
-                      className="w-[3.25rem] h-[3.25rem] rounded-[15px] bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                      className="w-[3.25rem] h-[3.25rem] rounded-[0.9375rem] bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
                     >
                       <ChevronLeftSmall />
                     </button>
                     <button
                       onClick={() => swiperRef.current?.slideNext()}
-                      className="w-[3.25rem] h-[3.25rem] rounded-[15px] bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                      className="w-[3.25rem] h-[3.25rem] rounded-[0.9375rem] bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
                     >
                       <ChevronRightSmall />
                     </button>
@@ -400,14 +400,14 @@ export default function JournalPage() {
             {/* Stats Row: Net P&L + 2x2 grid */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
               <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-                <GlowEllipse className="-right-[100px] -top-[100px]" />
-                <div className="relative p-6 h-full flex flex-col min-h-[340px]">
+                <GlowEllipse className="-right-[6.25rem] -top-[6.25rem]" />
+                <div className="relative p-6 h-full flex flex-col min-h-[21.2500rem]">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">Net P&L</span>
                       <InfoIcon />
                     </div>
-                    <div className="flex items-center gap-2 h-[30px] px-3 rounded-full border border-gfx-green-500/30 bg-gfx-green-500/5">
+                    <div className="flex items-center gap-2 h-[1.875rem] px-3 rounded-full border border-gfx-green-500/30 bg-gfx-green-500/5">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                         <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -426,13 +426,13 @@ export default function JournalPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <StatCard label="Most Traded Asset">
-                  <div className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5 bg-stat-pill">
+                  <div className="flex items-center justify-center gap-4 rounded-[18.75rem] px-5 py-2.5 bg-stat-pill">
                     <XauusdIcon />
                     <span className="text-white text-xl sm:text-2xl font-acid">XAAUSD</span>
                   </div>
                 </StatCard>
                 <StatCard label="Total Trades">
-                  <div className="flex items-center justify-center gap-4 rounded-[300px] px-5 py-2.5 h-[58px] bg-stat-pill">
+                  <div className="flex items-center justify-center gap-4 rounded-[18.75rem] px-5 py-2.5 h-[3.6250rem] bg-stat-pill">
                     <DiagramUpIcon />
                     <span className="text-white text-[1.5rem] font-acid">{journalStats.totalTrades}</span>
                   </div>
