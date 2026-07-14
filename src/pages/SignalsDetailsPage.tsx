@@ -274,8 +274,8 @@ export default function SignalsDetailsPage() {
         {/* Performance & Frequency (left) + Follow Card (right) */}
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_23.5rem] gap-5">
           {/* Performance & Frequency */}
-          <div className="rounded-[18.56px] p-[44px]" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
-            <div className="flex justify-between items-start mb-[85px]">
+          <GlassCard variant="light" divider="none" rounded="18.56px" className="p-[44px]">
+            <div className="flex justify-between items-start mb-8">
               <h3 className="text-white text-[1.5rem] font-acid font-normal">Performance & Frequency</h3>
               <div className="flex flex-col items-end">
                 <p className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
@@ -305,7 +305,7 @@ export default function SignalsDetailsPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </GlassCard>
 
           {/* Follow this Strategy Card */}
           <div className="bg-[#09241c] rounded-[18px] overflow-hidden px-8 py-25 h-fit">
@@ -331,7 +331,7 @@ export default function SignalsDetailsPage() {
         </div>
 
         {/* Trades Table */}
-        <div className="rounded-[18.56px] overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
+        <GlassCard variant="light" divider="none" rounded="18.56px" className="overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>
@@ -383,7 +383,7 @@ export default function SignalsDetailsPage() {
               </tbody>
             </table>
           </div>
-        </div>
+        </GlassCard>
 
       </div>
 
