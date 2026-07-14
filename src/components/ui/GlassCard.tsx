@@ -18,7 +18,7 @@ const VARIANT_CLASS = {
   purple: 'glass-card-purple',
 } as const
 
-export function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '19px', className = '', style, children }: GlassCardProps) {
+export function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '1.125rem', className = '', style, children }: GlassCardProps) {
   return (
     <div
       className={`${VARIANT_CLASS[variant]} relative ${className}`}

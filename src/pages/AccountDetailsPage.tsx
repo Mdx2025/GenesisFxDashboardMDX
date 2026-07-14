@@ -78,7 +78,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
         style={{ transform: visible ? 'scale(1)' : 'scale(0.95)' }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] glass-card shadow-[0px_9px_37px_0px_rgba(0,0,0,0.30)] backdrop-blur-xl">
+        <div className="relative bg-[#0a0a0a] rounded-2xl glass-card shadow-lg backdrop-blur-xl">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[400px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <button
             onClick={(e) => { e.stopPropagation(); onClose() }}
@@ -135,7 +135,7 @@ export default function AccountDetailsPage() {
           <div className="flex items-center gap-4 flex-wrap">
             <button
               onClick={() => navigate('/tradelocker/accounts')}
-              className="w-[38px] h-[38px] rounded-[10px] bg-[#09241C] flex items-center justify-center hover:bg-[#0C3126] transition-colors cursor-pointer shrink-0"
+              className="w-10 h-10 rounded-sm bg-gfx-green-900 flex items-center justify-center hover:bg-gfx-green-800 transition-colors cursor-pointer shrink-0"
               aria-label="Go back"
             >
               <BackArrow />
@@ -178,8 +178,8 @@ export default function AccountDetailsPage() {
             <div className="flex items-center gap-3 mt-1">
               <p className="text-white text-h2 font-normal">$17,897.30</p>
               <div className="flex items-center gap-1.5">
-                <span className="text-[#37C92E] text-body2">▲</span>
-                <span className="text-[#37C92E] text-body2">+$6,437.21 (56.1%)</span>
+                <span className="text-gfx-bullish-light text-body2">▲</span>
+                <span className="text-gfx-bullish-light text-body2">+$6,437.21 (56.1%)</span>
               </div>
             </div>
             <div className="h-full mt-6">
@@ -193,7 +193,7 @@ export default function AccountDetailsPage() {
           <div className="absolute -left-[60px] -top-[60px] w-[200px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <div className="relative z-10">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-white text-[1.5rem] font-normal">Account Details</h2>
+              <h2 className="text-white text-2xl font-normal">Account Details</h2>
               <div className="flex items-center gap-3 relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none" className="opacity-60">
                   <circle cx="8.19061" cy="4.09344" r="2.73016" fill="white"/>
@@ -201,7 +201,7 @@ export default function AccountDetailsPage() {
                 </svg>
                 <button
                   onClick={() => setSettingsOpen(!settingsOpen)}
-                  className="w-9 h-9 rounded-[6px] border border-[#064B34] flex items-center justify-center hover:bg-white/5 transition-colors cursor-pointer"
+                  className="w-9 h-9 rounded-sm border border-gfx-green-200 flex items-center justify-center hover:bg-white/5 transition-colors cursor-pointer"
                   aria-label="Settings"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -211,12 +211,12 @@ export default function AccountDetailsPage() {
                 {settingsOpen && (
                   <>
                     <div className="fixed inset-0 z-40" onClick={() => setSettingsOpen(false)} />
-                    <div className="absolute top-full right-0 mt-2 w-[185px] rounded-[20px] bg-[#0C1311] border border-[#064B34] shadow-lg backdrop-blur-[50px] z-50 overflow-hidden">
-                      <button onClick={() => { setSettingsOpen(false); setEditModal(true) }} className="w-full text-left px-5 py-3.5 text-white text-[1rem] font-medium hover:bg-white/5 transition-colors cursor-pointer">Change Username</button>
-                      <div className="h-px bg-[#09241C] mx-4" />
-                      <button onClick={() => { setSettingsOpen(false); setPasswordModal(true) }} className="w-full text-left px-5 py-3.5 text-white text-[1rem] font-medium hover:bg-white/5 transition-colors cursor-pointer">Change Password</button>
-                      <div className="h-px bg-[#09241C] mx-4" />
-                      <button onClick={() => { setSettingsOpen(false); setLeverageModal(true) }} className="w-full text-left px-5 py-3.5 text-white text-[1rem] font-medium hover:bg-white/5 transition-colors cursor-pointer">Change Leverage</button>
+                    <div className="absolute top-full right-0 mt-2 w-[185px] rounded-xl bg-gfx-green-800 border border-gfx-green-200 shadow-lg backdrop-blur-[50px] z-50 overflow-hidden">
+                      <button onClick={() => { setSettingsOpen(false); setEditModal(true) }} className="w-full text-left px-5 py-3.5 text-white text-base font-medium hover:bg-white/5 transition-colors cursor-pointer">Change Username</button>
+                      <div className="h-px bg-gfx-green-900 mx-4" />
+                      <button onClick={() => { setSettingsOpen(false); setPasswordModal(true) }} className="w-full text-left px-5 py-3.5 text-white text-base font-medium hover:bg-white/5 transition-colors cursor-pointer">Change Password</button>
+                      <div className="h-px bg-gfx-green-900 mx-4" />
+                      <button onClick={() => { setSettingsOpen(false); setLeverageModal(true) }} className="w-full text-left px-5 py-3.5 text-white text-base font-medium hover:bg-white/5 transition-colors cursor-pointer">Change Leverage</button>
                     </div>
                   </>
                 )}
@@ -225,13 +225,13 @@ export default function AccountDetailsPage() {
             <div className="flex flex-col">
               {ACCOUNT_DETAILS_FIELDS.map((field, i) => (
                 <div key={field.key}>
-                  {i > 0 && <div className="h-px bg-[#09241C]" />}
+                  {i > 0 && <div className="h-px bg-gfx-green-900" />}
                   <div className="flex items-center justify-between py-3.5">
-                    <span className="text-gfx-neutral-300 text-[0.875rem]">{field.label}</span>
+                    <span className="text-gfx-neutral-300 text-sm">{field.label}</span>
                     {field.key === 'status' ? (
                       <Badge variant="active">Active</Badge>
                     ) : (
-                      <span className="text-white text-[0.875rem]">{details[field.key]}</span>
+                      <span className="text-white text-sm">{details[field.key]}</span>
                     )}
                   </div>
                 </div>
@@ -254,7 +254,7 @@ export default function AccountDetailsPage() {
       {/* Edit Account Modal */}
       <ModalOverlay open={editModal} onClose={() => setEditModal(false)}>
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
-          <div className="w-[59px] h-[59px] rounded-full bg-[#09241C] flex items-center justify-center mb-6">
+          <div className="w-[59px] h-[59px] rounded-full bg-gfx-green-900 flex items-center justify-center mb-6">
             <SettingsIcon />
           </div>
           <h2 className="text-white text-h2 font-normal mb-8">Edit Account Details</h2>
@@ -271,7 +271,7 @@ export default function AccountDetailsPage() {
       {/* Change Password Modal */}
       <ModalOverlay open={passwordModal} onClose={() => setPasswordModal(false)}>
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
-          <div className="w-[59px] h-[59px] rounded-full bg-[#09241C] flex items-center justify-center mb-6">
+          <div className="w-[59px] h-[59px] rounded-full bg-gfx-green-900 flex items-center justify-center mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
               <path fillRule="evenodd" clipRule="evenodd" d="M4.48773 8.59889V6.84205C4.48773 3.65441 7.07182 1.07031 10.2595 1.07031C13.4471 1.07031 16.0312 3.65441 16.0312 6.84205V8.59889C16.9844 8.67008 17.6051 8.8498 18.0589 9.30353C18.8102 10.0549 18.8102 11.2641 18.8102 13.6826C18.8102 16.1011 18.8102 17.3104 18.0589 18.0617C17.3075 18.8131 16.0983 18.8131 13.6798 18.8131H6.83918C4.42066 18.8131 3.21141 18.8131 2.46008 18.0617C1.70874 17.3104 1.70874 16.1011 1.70874 13.6826C1.70874 11.2641 1.70874 10.0549 2.46008 9.30353C2.9138 8.8498 3.53453 8.67008 4.48773 8.59889ZM5.77033 6.84205C5.77033 4.36277 7.78019 2.35292 10.2595 2.35292C12.7387 2.35292 14.7486 4.36277 14.7486 6.84205V8.55525C14.4211 8.5522 14.0658 8.5522 13.6798 8.5522H6.83918C6.4531 8.5522 6.09784 8.5522 5.77033 8.55525V6.84205Z" fill="#00B38C"/>
             </svg>
@@ -283,8 +283,8 @@ export default function AccountDetailsPage() {
             <GlassInput label="Confirm Password" placeholder="Confirm new password" type="password" />
           </div>
           <div className="w-full max-w-[34rem] mt-6">
-            <p className="text-white text-[0.875rem] font-medium mb-2">Password requirements:</p>
-            <ul className="text-gfx-neutral-300 text-[0.8125rem] space-y-1 list-disc pl-5">
+            <p className="text-white text-sm font-medium mb-2">Password requirements:</p>
+            <ul className="text-gfx-neutral-300 text-label space-y-1 list-disc pl-5">
               <li>At least 8 characters</li>
               <li>At least 1 number</li>
               <li>At least 1 special character</li>
@@ -303,13 +303,13 @@ export default function AccountDetailsPage() {
       <ModalOverlay open={leverageModal} onClose={() => setLeverageModal(false)}>
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
           <h2 className="text-white text-h2 font-normal mb-6">Change Leverage</h2>
-          <div className="flex items-center gap-8 mb-8 text-[0.875rem]">
+          <div className="flex items-center gap-8 mb-8 text-sm">
             <div className="flex flex-col items-center">
-              <span className="text-[#A0A0A0]">Account</span>
+              <span className="text-gfx-neutral-500">Account</span>
               <span className="text-white font-medium">{account.account}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-[#A0A0A0]">Current</span>
+              <span className="text-gfx-neutral-500">Current</span>
               <span className="text-white font-medium">1200</span>
             </div>
           </div>

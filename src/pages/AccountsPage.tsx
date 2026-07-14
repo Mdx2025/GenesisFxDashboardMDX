@@ -73,12 +73,12 @@ export default function AccountsPage() {
               />
             </div>
 
-            <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
+            <GlassCard variant="light" divider="white" rounded="1.5rem" className="overflow-hidden">
               <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">
                 <div className="flex items-center justify-between flex-wrap gap-3">
                   <div className="flex items-center gap-3">
-                    <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Trading Accounts</h2>
+                    <h2 className="text-lg font-bold tracking-tight text-white">Trading Accounts</h2>
                     <Badge variant="status">{filteredAccounts.length} ACTIVE</Badge>
                   </div>
                   <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -99,15 +99,15 @@ export default function AccountsPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Platform</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[8%]">Type</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Balance</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Equity</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Closed P&L</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Open P&L</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[7%]">Status</th>
-                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" />
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Platform</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[8%]">Type</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Balance</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Equity</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Closed P&L</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Open P&L</th>
+                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[7%]">Status</th>
+                      <th className="text-right text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" />
                     </tr>
                   </thead>
                   <tbody>
@@ -115,27 +115,27 @@ export default function AccountsPage() {
                       <tr key={acc.account} className={i > 0 ? 'border-t border-white/5' : ''}>
                         <td className="px-4 sm:px-6 py-4 xl:py-5">
                           <div>
-                            <p className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-bold leading-tight">{acc.account}</p>
-                            <p className="text-gfx-neutral-300 text-[0.8125rem] mt-0.5">{acc.username}</p>
+                            <p className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-bold leading-tight">{acc.account}</p>
+                            <p className="text-gfx-neutral-300 text-label mt-0.5">{acc.username}</p>
                           </div>
                         </td>
-                        <td className="text-white/60 text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{acc.platform}</td>
+                        <td className="text-white/60 text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{acc.platform}</td>
                         <td className="py-4 xl:py-5">
                           <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
                         </td>
-                        <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.balance}</td>
-                        <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.equity}</td>
-                        <td className={`text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
-                        <td className={`text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
+                        <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.balance}</td>
+                        <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.equity}</td>
+                        <td className={`text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
+                        <td className={`text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
                         <td className="py-4 xl:py-5">
                           <div className="flex items-center gap-2">
                             <GreenDot size={8} />
-                            <span className="text-gfx-neutral-300 text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{acc.status}</span>
+                            <span className="text-gfx-neutral-300 text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{acc.status}</span>
                           </div>
                         </td>
                         <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
                           <div className="flex items-center justify-end gap-6">
-                            <button onClick={() => navigate(`/tradelocker/accounts/${encodeURIComponent(acc.account)}`)} className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
+                            <button onClick={() => navigate(`/tradelocker/accounts/${encodeURIComponent(acc.account)}`)} className="text-gfx-neutral-300 text-sm hover:text-white transition-colors cursor-pointer">View</button>
                             <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                             <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
