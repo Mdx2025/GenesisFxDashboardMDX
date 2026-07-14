@@ -87,7 +87,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
           </div>
         )}
         <span
-          className={`font-acid flex-1 text-left text-[1rem] ml-[10px] ${selected ? 'text-white' : 'text-[#808080]'}`}
+          className={`font-acid flex-1 text-left text-[1rem] ml-[10px] ${selected ? 'text-white' : 'text-gfx-neutral-400'}`}
         >
           {selected ? selected.label : placeholder}
         </span>
@@ -102,7 +102,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
       <ul
         ref={dropdownRef}
         role="listbox"
-        className="absolute left-0 right-0 top-full mt-2 rounded-2xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] backdrop-blur-[24px]"
+        className="absolute left-0 right-0 top-full mt-2 rounded-2xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] [backdrop-filter:url(#blur-24)]"
       >
         {options.map((option) => {
           const isSelected = selected?.value === option.value

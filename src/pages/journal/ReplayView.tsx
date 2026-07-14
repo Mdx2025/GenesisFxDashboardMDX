@@ -27,7 +27,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
       <div className="flex flex-col items-center pt-0 pb-8 px-9 h-[419px]">
         {/* Illustration */}
         <div className="relative w-[240px] h-[240px] flex items-center justify-center shrink-0">
-          <div className="absolute w-[380px] h-[214px] rounded-full bg-[#064b34] blur-[80px] opacity-30 top-[20px]" aria-hidden="true" />
+          <div className="absolute w-[380px] h-[214px] rounded-full bg-gfx-green-200 [filter:url(#blur-80)] opacity-30 top-[20px]" aria-hidden="true" />
           <img
             src={illustration}
             alt={title}
@@ -36,10 +36,10 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
         </div>
 
         {/* Title */}
-        <h4 className="text-white text-[16px] font-acid font-medium text-center -mt-2">{title}</h4>
+        <h4 className="text-white text-[1rem] font-acid font-medium text-center -mt-2">{title}</h4>
 
         {/* Description */}
-        <p className="text-[#808080] text-[14px] font-acid text-center mt-3 max-w-[360px] leading-[18px]">
+        <p className="text-gfx-neutral-400 text-[0.875rem] font-acid text-center mt-3 max-w-[360px] leading-[18px]">
           {description}
         </p>
 
@@ -53,8 +53,8 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
               radius={300}
             />
           ) : (
-            <div className="w-full max-w-[387px] h-[44px] rounded-[300px] border border-[#303030] flex items-center justify-center">
-              <span className="text-[#606060] text-[14px] font-acid">Coming soon</span>
+            <div className="w-full max-w-[387px] h-[2.75rem] rounded-[300px] border border-gfx-neutral-250 flex items-center justify-center">
+              <span className="text-gfx-neutral-300 text-[0.875rem] font-acid">Coming soon</span>
             </div>
           )}
         </div>
@@ -76,13 +76,13 @@ export default function ReplayView() {
             <h3 className="text-white text-xl sm:text-2xl font-acid font-normal leading-tight">
               Replay Your Trades
             </h3>
-            <p className="text-[#808080] text-[14px] font-acid mt-1">
+            <p className="text-gfx-neutral-400 text-[0.875rem] font-acid mt-1">
               Relive and analyze your trading sessions with interactive playback
             </p>
           </div>
-          <button className="flex items-center gap-3 h-[44px] px-3 pr-5 rounded-sm bg-transparent transition-colors cursor-pointer border border-[#303030]">
+          <button className="flex items-center gap-3 h-[2.75rem] px-3 pr-5 rounded-sm bg-transparent transition-colors cursor-pointer border border-gfx-neutral-250">
             <QuestionIcon />
-            <span className="text-white text-[14px] font-acid">How it works</span>
+            <span className="text-white text-[0.875rem] font-acid">How it works</span>
           </button>
         </div>
       </GlassCard>

@@ -80,7 +80,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[500px] max-w-[95vw] rounded-[30px] p-6 sm:p-[40px] overflow-hidden bg-[#0C1311]"
+        className="glass-card relative w-[500px] max-w-[95vw] rounded-[30px] p-6 sm:p-[40px] overflow-hidden bg-gfx-green-800"
       >
         <GlowEllipse className="-right-[80px] -top-[60px]" />
         <GlowEllipse className="-left-[80px] -bottom-[60px]" />
@@ -94,7 +94,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
         </button>
 
         {/* Title */}
-        <h2 className="relative text-white text-[32px] font-acid font-normal text-center mb-[30px]">
+        <h2 className="relative text-white text-[2rem] font-acid font-normal text-center mb-[30px]">
           Create a New Folder
         </h2>
 

@@ -82,7 +82,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
         </defs>
       </svg>
       <nav
-        className="inline-flex items-center gap-1 rounded-full p-1.5 bg-[rgba(10,14,12,0.85)] border-[1.16px] border-[rgba(255,255,255,0.06)] backdrop-blur-[23px] shadow-[0px_4.641px_23.204px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)]"
+        className="inline-flex items-center gap-1 rounded-full p-1.5 bg-[rgba(10,14,12,0.85)] border-[1.16px] border-[rgba(255,255,255,0.06)] [backdrop-filter:url(#blur-23)] shadow-[0px_4.641px_23.204px_rgba(0,0,0,0.2),inset_0px_1.16px_0px_1.16px_rgba(255,255,255,0.04)]"
       >
         {items.map((item, i) => {
           const isActive = i === active
@@ -108,7 +108,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
                 aria-hidden="true"
               />
               <div
-                className={`absolute pointer-events-none w-[98px] h-[45px] left-1/2 -translate-x-1/2 bottom-[-20px] bg-[#55FFC7] rounded-full blur-[20px] transition-opacity duration-300 ${isActive ? 'opacity-30' : 'opacity-0'}`}
+                className={`absolute pointer-events-none w-[98px] h-[45px] left-1/2 -translate-x-1/2 bottom-[-20px] bg-[#55FFC7] rounded-full [filter:url(#blur-20)] transition-opacity duration-300 ${isActive ? 'opacity-30' : 'opacity-0'}`}
                 aria-hidden="true"
               />
               <div className={`absolute w-px h-px rounded-full bg-white pointer-events-none z-[1] right-[8px] top-[8px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />

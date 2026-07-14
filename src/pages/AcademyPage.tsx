@@ -102,7 +102,7 @@ function GlossarySection() {
           className={`h-[33px] px-[11px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors ${
             activeLetter === 'All'
               ? 'bg-[#00b38c] text-[#021b13]'
-              : 'bg-[#011b12] text-[#808080] border border-[rgba(107,107,107,0.5)] hover:text-white'
+              : 'bg-[#011b12] text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
           }`}
         >
           All
@@ -114,7 +114,7 @@ function GlossarySection() {
             className={`w-[33px] h-[33px] rounded-full text-[17.6px] leading-[17.6px] font-normal cursor-pointer transition-colors flex items-center justify-center ${
               activeLetter === letter
                 ? 'bg-[#00b38c] text-[#021b13]'
-                : 'bg-[#011b12] text-[#808080] border border-[rgba(107,107,107,0.5)] hover:text-white'
+                : 'bg-[#011b12] text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
             }`}
           >
             {letter}

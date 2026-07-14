@@ -93,11 +93,11 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] flex flex-col overflow-hidden"
+        className="glass-card relative w-[793px] max-w-[95vw] max-h-[90vh] rounded-[30px] bg-gfx-green-800 flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
-        <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-[#064b34] blur-[100px] opacity-15 pointer-events-none" />
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-gfx-green-200 [filter:url(#blur-120)] opacity-20 pointer-events-none" />
+        <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-gfx-green-200 [filter:url(#blur-100)] opacity-15 pointer-events-none" />
 
         {/* Close button */}
         <button
@@ -118,7 +118,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
           {/* DEMO selector */}
           <div className="flex justify-between items-center">
-            <span className="text-[#808080] text-[16px] font-acid">DEMO</span>
+            <span className="text-gfx-neutral-400 text-[1rem] font-acid">DEMO</span>
             <TriangleDownIcon />
           </div>
 
@@ -138,14 +138,14 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Date */}
             <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
+              <label className="text-white text-[1rem] font-acid font-medium mb-[8px] block">
                 Date
               </label>
               <input
                 type="text"
                 value={date}
                 onChange={e => setDate(e.target.value)}
-                className="w-full h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] px-[26px] text-[#808080] text-[16px] font-acid outline-none focus:border-[#00b38c] transition-colors"
+                className="w-full h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-200 px-[26px] text-gfx-neutral-400 text-[1rem] font-acid outline-none focus:border-[#00b38c] transition-colors"
               />
             </div>
 
@@ -185,7 +185,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Tags */}
             <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
+              <label className="text-white text-[1rem] font-acid font-medium mb-[8px] block">
                 Tags
               </label>
               <input
@@ -193,18 +193,18 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
                 value={tags}
                 onChange={e => setTags(e.target.value)}
                 placeholder="Add a tag"
-                className="w-full h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] px-[26px] text-[#808080] text-[16px] font-acid outline-none focus:border-[#00b38c] transition-colors placeholder:text-[#808080]"
+                className="w-full h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-200 px-[26px] text-gfx-neutral-400 text-[1rem] font-acid outline-none focus:border-[#00b38c] transition-colors placeholder:text-gfx-neutral-400"
               />
             </div>
 
             {/* Attachments */}
             <div>
-              <label className="text-white text-[16px] font-acid font-medium mb-[8px] block">
+              <label className="text-white text-[1rem] font-acid font-medium mb-[8px] block">
                 Attachments
               </label>
-              <div className="h-[50px] rounded-[30px] bg-[#0c1311] border border-[#064b34] flex items-center justify-center gap-[10px] cursor-pointer hover:border-[#00b38c] transition-colors">
+              <div className="h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center gap-[10px] cursor-pointer hover:border-[#00b38c] transition-colors">
                 <UploadIcon />
-                <span className="text-[#808080] text-[16px] font-acid">Upload file</span>
+                <span className="text-gfx-neutral-400 text-[1rem] font-acid">Upload file</span>
               </div>
             </div>
           </div>

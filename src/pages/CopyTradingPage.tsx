@@ -33,7 +33,7 @@ function DownloadIcon() {
 
 function SubscriptionIcon() {
   return (
-    <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center">
+    <div className="w-[70px] h-[70px] rounded-full bg-gfx-green-200 flex items-center justify-center">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
         <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="12" cy="7" r="4" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -44,7 +44,7 @@ function SubscriptionIcon() {
 
 function CourseUpIcon() {
   return (
-    <div className="w-[70px] h-[70px] rounded-full bg-[#064b34] flex items-center justify-center">
+    <div className="w-[70px] h-[70px] rounded-full bg-gfx-green-200 flex items-center justify-center">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
         <path d="M22 7L13.5 15.5L8.5 10.5L2 17" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M16 7H22V13" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -118,14 +118,14 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         {/* Header: Avatar + Name + Username + Star */}
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
-            <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-[16px] font-acid font-medium">{trader.initials}</span>
+            <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-[1rem] font-acid font-medium">{trader.initials}</span>
             </div>
             <div className="flex-1 min-w-0 pt-1">
               <div className="flex items-center gap-1.5">
-                <span className="text-white text-[16px] font-acid font-medium truncate">{trader.name}</span>
+                <span className="text-white text-[1rem] font-acid font-medium truncate">{trader.name}</span>
               </div>
-              <p className="text-[#a0a0a0] text-[16px] font-acid font-medium mt-0.5">{trader.username}</p>
+              <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium mt-0.5">{trader.username}</p>
             </div>
           </div>
           <button className="p-2 cursor-pointer" aria-label="Favorite">
@@ -139,17 +139,17 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         {/* Total P&L + Badges */}
         <div className="mt-4">
           <div className="flex items-center gap-2 flex-wrap">
-            <p className="text-[#a0a0a0] text-[16px] font-acid font-medium">Total P&L</p>
+            <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">Total P&L</p>
             <div className="flex gap-2 ml-auto">
-              <span className="border border-[#303030] rounded-full px-3 py-1 text-white text-[12px] font-acid font-medium">
+              <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-[0.75rem] font-acid font-medium">
                 {trader.followers} Followers
               </span>
-              <span className="border border-[#303030] rounded-full px-3 py-1 text-white text-[12px] font-acid font-medium">
+              <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-[0.75rem] font-acid font-medium">
                 {trader.aum} AUM
               </span>
             </div>
           </div>
-          <p className="text-[#10BC83] text-[24px] font-acid mt-2">{trader.totalPnlPercent}%</p>
+          <p className="text-gfx-green-500 text-[1.5rem] font-acid mt-2">{trader.totalPnlPercent}%</p>
         </div>
 
         {/* Chart area */}
@@ -158,23 +158,23 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         </div>
 
         {/* Stats Box */}
-        <div className="bg-[#09241c] rounded-[9px] p-5 mt-4">
+        <div className="bg-gfx-green-900 rounded-[9px] p-5 mt-4">
           <div className="flex flex-col gap-3.5">
             <div className="flex justify-between items-center">
-              <span className="text-[#808080] text-[16px] font-acid font-medium">Total P&L</span>
-              <span className="text-white text-[16px] font-acid font-medium">{trader.totalPnlAmount}</span>
+              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Total P&L</span>
+              <span className="text-white text-[1rem] font-acid font-medium">{trader.totalPnlAmount}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-[#808080] text-[16px] font-acid font-medium">Equity</span>
-              <span className="text-white text-[16px] font-acid font-medium">{trader.equity}</span>
+              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Equity</span>
+              <span className="text-white text-[1rem] font-acid font-medium">{trader.equity}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-[#808080] text-[16px] font-acid font-medium">Win Rate</span>
-              <span className="text-white text-[16px] font-acid font-medium">{trader.winRate}</span>
+              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Win Rate</span>
+              <span className="text-white text-[1rem] font-acid font-medium">{trader.winRate}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-[#808080] text-[16px] font-acid font-medium">Max Drawdown</span>
-              <span className="text-white text-[16px] font-acid font-medium">{trader.maxDrawdown}</span>
+              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Max Drawdown</span>
+              <span className="text-white text-[1rem] font-acid font-medium">{trader.maxDrawdown}</span>
             </div>
           </div>
         </div>
@@ -246,7 +246,7 @@ export default function CopyTradingPage() {
               <div className="flex items-center justify-between gap-8">
                 <div>
                   <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Copy Trading</h2>
-                  <p className="text-[#a0a0a0] text-[0.875rem] xl:text-[1rem] font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
+                  <p className="text-gfx-neutral-500 text-[0.875rem] xl:text-[1rem] font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
                     Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
                   </p>
                   <div className="mt-6">
@@ -281,7 +281,7 @@ export default function CopyTradingPage() {
                 />
                 <button
                   onClick={() => {}}
-                  className="relative w-[47px] h-[44px] flex items-center justify-center cursor-pointer"
+                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
@@ -292,7 +292,7 @@ export default function CopyTradingPage() {
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className="relative w-[47px] h-[44px] flex items-center justify-center cursor-pointer"
+                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'list' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -314,7 +314,7 @@ export default function CopyTradingPage() {
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
-                  className="relative w-[47px] h-[44px] flex items-center justify-center cursor-pointer"
+                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'grid' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -345,7 +345,7 @@ export default function CopyTradingPage() {
               <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
                 No active Subscription
               </h3>
-              <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+              <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
                 {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
               </p>
               <div className="mt-8">
@@ -367,19 +367,19 @@ export default function CopyTradingPage() {
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <div className="relative flex items-center justify-between p-6 lg:p-8">
                 <div className="flex items-center gap-5">
-                  <div className="w-[63px] h-[63px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+                  <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
                     <span className="text-white text-[1.5rem] font-acid">M</span>
                   </div>
                   <div>
                     <h3 className="text-white text-[1.5rem] font-acid leading-normal">marcelo cedeno</h3>
-                    <p className="text-[#a0a0a0] text-[1rem] font-acid font-medium leading-[24.44px]">Manage your copy trading strategies</p>
+                    <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">Manage your copy trading strategies</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="bg-[#0c1311] rounded-[8px] px-4 py-2 flex items-center gap-2.5">
+                  <div className="bg-gfx-green-800 rounded-[8px] px-4 py-2 flex items-center gap-2.5">
                     <WalletIcon />
-                    <span className="text-[#808080] text-[0.875rem] font-acid">Social Wallet</span>
-                    <span className="text-[#ececec] text-[0.875rem] font-acid">$100.00</span>
+                    <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Social Wallet</span>
+                    <span className="text-gfx-neutral-600 text-[0.875rem] font-acid">$100.00</span>
                   </div>
                   <GlowButton
                     label="Create strategy"
@@ -396,7 +396,7 @@ export default function CopyTradingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <StatCard label="Total AUM" value="$0.00" />
               <StatCard label="Total Strategies" value="$0.00" />
-              <StatCard label="Total Followers" value="$0.00" valueColor="text-[#37c92e]" />
+              <StatCard label="Total Followers" value="$0.00" valueColor="text-gfx-bullish-light" />
               <StatCard label="Fee Earnings" value="$0.00" />
             </div>
 
@@ -418,7 +418,7 @@ export default function CopyTradingPage() {
                   <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
                     No Strategies Created
                   </h3>
-                  <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
+                  <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[396px]">
                     {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
                   </p>
                   <div className="mt-8">

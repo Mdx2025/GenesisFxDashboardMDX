@@ -10,17 +10,17 @@ export function StatCard({ label, value, valueColor = 'text-white', icon }: { la
           <>
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-[#a0a0a0] text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
+                <p className="text-gfx-neutral-500 text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
                 <p className={`${valueColor} text-[2.25rem] font-acid leading-normal mt-2`}>{value}</p>
               </div>
-              <div className="w-[2.625rem] h-[2.625rem] rounded-[0.625rem] bg-[#09241c] flex items-center justify-center">
+              <div className="w-[2.625rem] h-[2.625rem] rounded-[0.625rem] bg-gfx-green-900 flex items-center justify-center">
                 {icon}
               </div>
             </div>
           </>
         ) : (
           <>
-            <p className="text-[#a0a0a0] text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
+            <p className="text-gfx-neutral-500 text-[0.875rem] font-acid leading-[18.8px]">{label}</p>
             <p className={`${valueColor} text-[2.25rem] font-acid leading-normal mt-2`}>{value}</p>
           </>
         )}

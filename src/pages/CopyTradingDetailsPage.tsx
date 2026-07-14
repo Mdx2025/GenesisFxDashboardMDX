@@ -150,14 +150,14 @@ const monthlyPerformance: MonthEntry[] = [
 ]
 
 const CELL_STYLES = {
-  positive: 'bg-[#09241c] border border-[#00B38C]',
+  positive: 'bg-gfx-green-900 border border-[#00B38C]',
   negative: 'bg-[#2A1411] border border-[#7F3B34]',
-  empty: 'border border-[#064B34]',
+  empty: 'border border-gfx-green-200',
 } as const
 
 const TEXT_STYLES = {
-  positive: 'text-[#00B38C]',
-  negative: 'text-[#D46356]',
+  positive: 'text-gfx-green-300',
+  negative: 'text-gfx-red-muted',
   empty: '',
 } as const
 
@@ -462,7 +462,7 @@ export default function CopyTradingDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-[#606060] text-[0.75rem] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -471,11 +471,11 @@ export default function CopyTradingDetailsPage() {
                   <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
                     <td className="px-12 py-4">
                       <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
-                      <p className="text-[#606060] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
+                      <p className="text-gfx-neutral-300 text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
-                      <p className="text-[#606060] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
+                      <p className="text-gfx-neutral-300 text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <div className="flex items-center gap-3">
@@ -484,17 +484,17 @@ export default function CopyTradingDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-[18px] h-[24px] rounded-full text-[#37C92E] text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[24px] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4"><span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.volume}</span></td>
                     <td className="px-12 py-4"><span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openPrice}</span></td>
                     <td className="px-12 py-4"><span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closePrice}</span></td>
-                    <td className="px-12 py-4"><span className="text-[#D46356] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.pnl}</span></td>
+                    <td className="px-12 py-4"><span className="text-gfx-red-muted text-[1rem] font-acid font-medium leading-[24.44px]">{trade.pnl}</span></td>
                   </tr>
                 ))}
                 {tradeTab === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-12 py-12 text-center text-[#606060] text-[0.875rem] font-acid">No open positions</td>
+                    <td colSpan={8} className="px-12 py-12 text-center text-gfx-neutral-300 text-[0.875rem] font-acid">No open positions</td>
                   </tr>
                 )}
               </tbody>

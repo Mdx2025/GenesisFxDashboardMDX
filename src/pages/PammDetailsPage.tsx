@@ -95,7 +95,7 @@ function PortfolioChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} className="text-[#808080] text-[0.75rem] font-acid">{label}</span>
+            <span key={label} className="text-gfx-neutral-400 text-[0.75rem] font-acid">{label}</span>
           ))}
         </div>
         <div className="flex-1">
@@ -146,14 +146,14 @@ const monthlyPerformance: MonthEntry[] = [
 ]
 
 const CELL_STYLES = {
-  positive: 'bg-[#09241c] border border-[#00B38C]',
+  positive: 'bg-gfx-green-900 border border-[#00B38C]',
   negative: 'bg-[#2A1411] border border-[#7F3B34]',
-  empty: 'border border-[#064B34]',
+  empty: 'border border-gfx-green-200',
 } as const
 
 const TEXT_STYLES = {
-  positive: 'text-[#00B38C]',
-  negative: 'text-[#D46356]',
+  positive: 'text-gfx-green-300',
+  negative: 'text-gfx-red-muted',
   empty: '',
 } as const
 
@@ -164,16 +164,16 @@ function PerformanceGrid() {
         <div className="flex items-start">
           {/* Year column */}
           <div className="flex flex-col items-start w-[60px] flex-shrink-0">
-            <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px]">Year</span>
+            <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px]">Year</span>
             <div className="h-[45px] flex items-center mt-3">
-              <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px]">2026</span>
+              <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px]">2026</span>
             </div>
           </div>
           {/* Month cells */}
           <div className="flex-1 flex gap-[10px]">
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
-                <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
+                <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
                 <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
                   {m.value && <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
@@ -181,7 +181,7 @@ function PerformanceGrid() {
             ))}
             {/* Ann column */}
             <div className="flex flex-col items-center flex-1 min-w-0">
-              <span className="text-[#ececec] text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Ann</span>
+              <span className="text-gfx-neutral-600 text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Ann</span>
               <div className={`w-full h-[45px] rounded-[8px] flex items-center justify-center ${CELL_STYLES.positive}`}>
                 <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
@@ -194,19 +194,19 @@ function PerformanceGrid() {
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M2 0.5H18C18.8284 0.5 19.5 1.17157 19.5 2V18C19.5 18.8284 18.8284 19.5 18 19.5H2C1.17157 19.5 0.5 18.8284 0.5 18V2C0.5 1.17157 1.17157 0.5 2 0.5Z" fill="#09241C" stroke="#00B38C"/>
             </svg>
-            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">Positive turn</span>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">Positive turn</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" fill="#2A1411" stroke="#7F3B34"/>
             </svg>
-            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">Negative turn</span>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">Negative turn</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" stroke="#064B34"/>
             </svg>
-            <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">No trades</span>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">No trades</span>
           </div>
         </div>
       </div>
@@ -258,16 +258,16 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
         <div key={row.label}>
           <div className="flex items-center justify-between py-[1.1rem] px-[1.75rem]">
             <div className="flex items-center gap-[0.625rem]">
-              <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px]">{row.label}</span>
+              <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">{row.label}</span>
               <StatInfoIcon />
             </div>
             <div className="flex items-center gap-3">
               {row.progressBar && (
                 <div className="flex items-center gap-2">
                   <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{row.value}</span>
-                  <div className="w-[88px] h-[9px] rounded-[60px] bg-[#09241C] relative">
+                  <div className="w-[88px] h-[9px] rounded-[60px] bg-gfx-green-900 relative">
                     <div
-                      className="h-full rounded-[4.5px] bg-[#064B34]"
+                      className="h-full rounded-[4.5px] bg-gfx-green-200"
                       style={{ width: `${(row.progressBar.percent / 100) * 88}px` }}
                     />
                   </div>
@@ -284,7 +284,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
             </div>
           </div>
           {i < rows.length - 1 && (
-            <div className="mx-[1.75rem] h-[0.61px] bg-[#09241C]" />
+            <div className="mx-[1.75rem] h-[0.61px] bg-gfx-green-900" />
           )}
         </div>
       ))}
@@ -339,11 +339,11 @@ export default function PammDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/pamm')}
-            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>
-          <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
             <span className="text-white text-[1rem] font-acid font-medium">BK</span>
           </div>
           <h1 className="text-white text-h1 font-normal">Bitcoin King</h1>
@@ -380,7 +380,7 @@ export default function PammDetailsPage() {
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           <StatCard label="AUM" value="$3.50" icon={<ChartUpIcon />} />
-          <StatCard label="ROI" value="+194.12%" valueColor="text-[#10BC83]" icon={<GraphUpIcon />} />
+          <StatCard label="ROI" value="+194.12%" valueColor="text-gfx-green-500" icon={<GraphUpIcon />} />
           <StatCard label="Closed P&L" value="$2.31" icon={<PieChartIcon />} />
           <StatCard label="AUM" value="16.18%" icon={<CalendarIcon />} />
         </div>
@@ -393,10 +393,10 @@ export default function PammDetailsPage() {
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-[#808080] text-[0.625rem] font-acid">Portfolio Equity</p>
+                  <p className="text-gfx-neutral-400 text-[0.625rem] font-acid">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
                     <span className="text-white text-[1.5625rem] font-acid">$17,897.30</span>
-                    <span className="text-[#10BC83] text-[0.625rem] font-acid">+$6,437.21 (56.1%)</span>
+                    <span className="text-gfx-green-500 text-[0.625rem] font-acid">+$6,437.21 (56.1%)</span>
                   </div>
                 </div>
                 <PeriodPill />
@@ -425,7 +425,7 @@ export default function PammDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-[#808080] text-[0.625rem] font-acid">{item.label}</span>
+                      <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">{item.label}</span>
                       <span className="text-white text-[0.625rem] font-acid">{item.value}</span>
                     </div>
                   </div>
@@ -505,7 +505,7 @@ export default function PammDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-[#606060] text-[0.75rem] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -514,11 +514,11 @@ export default function PammDetailsPage() {
                   <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
                     <td className="px-12 py-4">
                       <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
-                      <p className="text-[#606060] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
+                      <p className="text-gfx-neutral-300 text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
-                      <p className="text-[#606060] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
+                      <p className="text-gfx-neutral-300 text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <div className="flex items-center gap-3">
@@ -527,7 +527,7 @@ export default function PammDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-[18px] h-[24px] rounded-full text-[#37C92E] text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[24px] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
                       <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.volume}</span>
@@ -539,13 +539,13 @@ export default function PammDetailsPage() {
                       <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closePrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-[#D46356] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.pnl}</span>
+                      <span className="text-gfx-red-muted text-[1rem] font-acid font-medium leading-[24.44px]">{trade.pnl}</span>
                     </td>
                   </tr>
                 ))}
                 {tradeTab === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-12 py-12 text-center text-[#606060] text-[0.875rem] font-acid">No open positions</td>
+                    <td colSpan={8} className="px-12 py-12 text-center text-gfx-neutral-300 text-[0.875rem] font-acid">No open positions</td>
                   </tr>
                 )}
               </tbody>

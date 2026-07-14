@@ -51,7 +51,7 @@ function FollowButton({ following, onClick }: { following: boolean; onClick?: ()
     return (
       <button
         onClick={onClick}
-        className="h-[34px] px-3 rounded-[12px] bg-[#09241c] border border-[#303030] flex items-center gap-1.5 text-[0.875rem] font-acid font-medium text-white transition-colors cursor-pointer"
+        className="h-[34px] px-3 rounded-[12px] bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-[0.875rem] font-acid font-medium text-white transition-colors cursor-pointer"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M3 7L6 10L11 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -133,13 +133,13 @@ export function SignalStrategyCard({
         {/* Trading Pair */}
         <div className="flex items-center gap-[7px]">
           {pairIcon}
-          <span className="border border-[#303030] rounded-full px-3 py-1 text-white text-[0.875rem] font-acid font-medium">
+          <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-[0.875rem] font-acid font-medium">
             {pair}
           </span>
         </div>
 
         {/* P&L Chart */}
-        <div className="border border-[#303030] rounded-[14px] p-4 flex flex-col">
+        <div className="border border-gfx-neutral-250 rounded-[14px] p-4 flex flex-col">
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="text-[var(--signal-text-dim,#808080)] text-[0.875rem] font-acid font-medium mb-1">{pnlLabel}</p>
@@ -147,7 +147,7 @@ export function SignalStrategyCard({
                 {isNegative ? '-' : '+'}${Math.abs(pnl).toFixed(2)}
               </p>
             </div>
-            <span className="border border-[#303030] rounded-full px-3 py-1 text-[var(--signal-text-dim,#808080)] text-[0.75rem] font-acid font-medium">
+            <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-[var(--signal-text-dim,#808080)] text-[0.75rem] font-acid font-medium">
               {trades} trades
             </span>
           </div>
@@ -157,12 +157,12 @@ export function SignalStrategyCard({
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-3 border border-[#303030] rounded-[14px] overflow-hidden">
+        <div className="grid grid-cols-3 border border-gfx-neutral-250 rounded-[14px] overflow-hidden">
           <div className="p-4 flex flex-col items-center gap-1.5">
             <span className="text-white text-[1rem] font-acid font-medium">{pricePerMonth}</span>
             <span className="text-[var(--signal-text-dim,#808080)] text-[1rem] font-acid font-medium">Price/mo</span>
           </div>
-          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-[#303030]">
+          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-gfx-neutral-250">
             <span className="text-white text-[1rem] font-acid font-medium">{profitShare}</span>
             <span className="text-[var(--signal-text-dim,#808080)] text-[1rem] font-acid font-medium">Profit Share</span>
           </div>

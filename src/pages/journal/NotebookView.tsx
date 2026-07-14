@@ -48,7 +48,7 @@ function GalleryIcon() {
 
 function NoteCard({ note }: { note: NotebookNote }) {
   return (
-    <div className="flex-1 min-w-0 rounded-[15px] border border-[#09241C] bg-transparent">
+    <div className="flex-1 min-w-0 rounded-[15px] border border-gfx-green-900 bg-transparent">
       <div className="p-[18px] flex flex-col gap-3 h-full">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
@@ -61,24 +61,24 @@ function NoteCard({ note }: { note: NotebookNote }) {
 
         <div className="flex items-center gap-3">
           <span className="text-white text-sm sm:text-base font-acid font-medium">{note.date}</span>
-          <span className="text-[#808080] text-xs sm:text-sm font-acid">Account: {note.account}</span>
+          <span className="text-gfx-neutral-400 text-xs sm:text-sm font-acid">Account: {note.account}</span>
         </div>
 
-        <p className="text-[#a0a0a0] text-sm sm:text-base font-acid font-medium">{note.preview}</p>
+        <p className="text-gfx-neutral-500 text-sm sm:text-base font-acid font-medium">{note.preview}</p>
 
         <div className="flex items-center gap-3 mt-auto">
           {note.tags.map(tag => (
             <div
               key={tag}
-              className="h-[24px] px-[18px] rounded-full border border-[#064b34] bg-[#0c1311] flex items-center justify-center"
+              className="h-[24px] px-[1.125rem] rounded-full border border-gfx-green-200 bg-gfx-green-800 flex items-center justify-center"
             >
-              <span className="text-[#00b38c] text-[12px] font-acid">{tag}</span>
+              <span className="text-gfx-green-300 text-[0.75rem] font-acid">{tag}</span>
             </div>
           ))}
           {note.attachments > 0 && (
             <div className="flex items-center gap-1.5">
               <GalleryIcon />
-              <span className="text-white text-[16px] font-acid font-medium">{note.attachments}</span>
+              <span className="text-white text-[1rem] font-acid font-medium">{note.attachments}</span>
             </div>
           )}
         </div>
@@ -105,7 +105,7 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 sm:px-6 py-6 sm:py-10">
           <div>
             <h3 className="text-white text-xl sm:text-2xl font-acid font-normal leading-tight">Notebook</h3>
-            <p className="text-[#808080] text-sm sm:text-base font-acid font-medium mt-1">
+            <p className="text-gfx-neutral-400 text-sm sm:text-base font-acid font-medium mt-1">
               All your trading notes in one place
             </p>
           </div>

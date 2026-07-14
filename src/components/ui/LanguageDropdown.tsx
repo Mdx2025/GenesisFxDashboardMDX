@@ -84,7 +84,7 @@ export function LanguageDropdown() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 h-9 px-3 rounded-lg hover:opacity-90 transition-opacity cursor-pointer bg-[#0C1311]"
+        className="flex items-center gap-1.5 h-9 px-3 rounded-lg hover:opacity-90 transition-opacity cursor-pointer bg-gfx-green-800"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={`Language: ${selected.label}`}
@@ -107,7 +107,7 @@ export function LanguageDropdown() {
         ref={dropdownRef}
         role="listbox"
         aria-label="Select language"
-        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] backdrop-blur-[23px]"
+        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] [backdrop-filter:url(#blur-23)]"
       >
           {languages.map((lang) => (
             <li key={lang.code} role="option" aria-selected={selected.code === lang.code}>

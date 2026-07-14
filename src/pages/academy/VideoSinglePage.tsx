@@ -53,7 +53,7 @@ function VideoPlayerControls() {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" /></svg>
         </button>
         <span className="text-white text-sm font-acid ml-1">0:19 / 0:50</span>
-        <div className="flex-1 mx-4 h-[3px] bg-[#303030] rounded-full overflow-hidden">
+        <div className="flex-1 mx-4 h-[3px] bg-gfx-neutral-250 rounded-full overflow-hidden">
           <div className="h-full bg-gfx-green-500 rounded-full" style={{ width: '38%' }} />
         </div>
         <button type="button" className="text-white/70 hover:text-white transition-colors cursor-pointer">
@@ -78,29 +78,29 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
       className={`relative w-full h-[61px] rounded-[12px] overflow-hidden flex items-start gap-3 px-[13px] py-[12px] cursor-pointer transition-colors text-left ${
         isActive
           ? 'bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.3)]'
-          : 'hover:bg-[#0c1311]/50'
+          : 'hover:bg-gfx-green-800/50'
       }`}
     >
       {isActive && (
         <>
-          <div className="absolute -left-[80px] bottom-[-20px] w-[170px] h-[120px] rounded-full bg-[#064B34] blur-[40px] opacity-40 pointer-events-none" />
+          <div className="absolute -left-[80px] bottom-[-20px] w-[170px] h-[120px] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
           <div className="absolute right-[10px] top-[10px]">
             <PlayIcon />
           </div>
         </>
       )}
-      <div className="w-[24px] h-[24px] rounded-[7px] bg-[#0c1311] flex items-center justify-center shrink-0">
-        <span className={`text-[12px] font-acid leading-none ${isActive ? 'text-[#00b38c]' : 'text-[#808080]'}`}>
+      <div className="w-[24px] h-[24px] rounded-[7px] bg-gfx-green-800 flex items-center justify-center shrink-0">
+        <span className={`text-[0.75rem] font-acid leading-none ${isActive ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
           {lesson.id}
         </span>
       </div>
       <div className="flex flex-col gap-1 min-w-0">
-        <span className={`text-[14px] font-acid leading-[18.8px] truncate ${isActive ? 'text-white' : 'text-[#808080]'}`}>
+        <span className={`text-[0.875rem] font-acid leading-[18.8px] truncate ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
           {lesson.title}
         </span>
         <div className="flex items-center gap-1.5">
           <ClockIcon />
-          <span className="text-[14px] font-acid text-[#808080] leading-[18.8px]">{lesson.duration}</span>
+          <span className="text-[0.875rem] font-acid text-gfx-neutral-400 leading-[18.8px]">{lesson.duration}</span>
         </div>
       </div>
     </button>
@@ -143,15 +143,15 @@ export default function VideoSinglePage() {
           {/* Course Contents Panel */}
           <div className="hidden xl:flex flex-col w-[280px] 3xl:w-[320px] shrink-0 px-5 pb-6">
             <div className="mb-2">
-              <p className="text-[12px] font-acid-bold text-[#a0a0a0] tracking-[2.32px] uppercase leading-[15.68px]">
+              <p className="text-[0.75rem] font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px]">
                 COURSE CONTENTS
               </p>
-              <p className="text-[12px] font-acid text-[#808080] leading-[18.8px] mt-1">
+              <p className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px] mt-1">
                 {completedCount} of {totalLessons} chapters completed
               </p>
             </div>
 
-            <div className="h-[4px] bg-[#09241c] rounded-full mb-6 overflow-hidden">
+            <div className="h-[4px] bg-gfx-green-900 rounded-full mb-6 overflow-hidden">
               <div
                 className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                 style={{ width: `${Math.max(progress, 0)}%` }}
@@ -173,7 +173,7 @@ export default function VideoSinglePage() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col min-w-0 px-4 xl:px-0 xl:pr-5 2xl:pr-7 3xl:pr-10 4xl:pr-14 pb-4">
             {/* Video Player */}
-            <div className="relative w-full rounded-[28px] overflow-hidden bg-[#0c1311] aspect-video">
+            <div className="relative w-full rounded-[28px] overflow-hidden bg-gfx-green-800 aspect-video">
               <div className="absolute inset-0 bg-gradient-to-br from-[#1a3a4a] to-[#0c2030]" />
               <VideoPlayerControls />
             </div>
@@ -181,8 +181,8 @@ export default function VideoSinglePage() {
             {/* Lesson Info */}
             <div className="mt-5 flex items-start justify-between gap-4">
               <div className="flex flex-col gap-2">
-                <div className="inline-flex items-center h-[28px] px-3 rounded-full bg-[#09241c] border border-[#064b34]">
-                  <span className="text-[12px] font-acid text-[#808080] leading-[18.8px]">
+                <div className="inline-flex items-center h-[28px] px-3 rounded-full bg-gfx-green-900 border border-gfx-green-200">
+                  <span className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px]">
                     Lesson {activeLesson} of {totalLessons}
                   </span>
                 </div>
@@ -198,13 +198,13 @@ export default function VideoSinglePage() {
 
             {/* Mobile chapter list */}
             <div className="xl:hidden mt-6">
-              <p className="text-[12px] font-acid-bold text-[#a0a0a0] tracking-[2.32px] uppercase leading-[15.68px] mb-2">
+              <p className="text-[0.75rem] font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px] mb-2">
                 COURSE CONTENTS
               </p>
-              <p className="text-[12px] font-acid text-[#808080] leading-[18.8px] mb-4">
+              <p className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px] mb-4">
                 {completedCount} of {totalLessons} chapters completed
               </p>
-              <div className="h-[4px] bg-[#09241c] rounded-full mb-4 overflow-hidden">
+              <div className="h-[4px] bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
                 <div
                   className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                   style={{ width: `${Math.max(progress, 0)}%` }}
@@ -225,7 +225,7 @@ export default function VideoSinglePage() {
         </div>
 
         {/* Fixed Bottom Bar */}
-        <div className="shrink-0 border-t border-[#303030] bg-[#0c1311] px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14">
+        <div className="shrink-0 border-t border-gfx-neutral-250 bg-gfx-green-800 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14">
           <div className="flex items-center justify-between h-[88px] gap-4">
             <SparkleButton onClick={() => setActiveLesson(prev => Math.max(1, prev - 1))} className="px-[22px] shrink-0">
               <ChevronLeftIcon /> Previous Lesson
@@ -233,9 +233,9 @@ export default function VideoSinglePage() {
 
             <div className="flex items-center gap-4 shrink-0">
               <div className="hidden sm:flex flex-col items-end gap-0.5">
-                <span className="text-[14px] font-acid text-[#808080] leading-[18.8px]">PROGRESS</span>
-                <span className="text-[16px] font-acid-medium text-white leading-[24.44px]">{progress}%</span>
-                <div className="w-[160px] h-[4px] bg-[#09241c] rounded-full overflow-hidden mt-0.5">
+                <span className="text-[0.875rem] font-acid text-gfx-neutral-400 leading-[18.8px]">PROGRESS</span>
+                <span className="text-[1rem] font-acid-medium text-white leading-[24.44px]">{progress}%</span>
+                <div className="w-[160px] h-[4px] bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
                   <div
                     className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                     style={{ width: `${Math.max(progress, 0)}%` }}

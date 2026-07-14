@@ -59,16 +59,16 @@ function MetricCard({ label, value, color, index }: { label: string; value: stri
       <GlowEllipse className={`!w-[10rem] !h-[6rem] !blur-[3rem] ${GLOW_POSITIONS[index % GLOW_POSITIONS.length]}`} />
       <div className="p-5 h-full flex flex-col">
         <div className="flex items-center justify-between">
-          <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">{label}</span>
+          <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">{label}</span>
           <InfoIcon />
         </div>
         <div className="flex-1 flex items-center mt-2">
           {isPill ? (
-            <span className="h-[36px] px-5 rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-white/10 flex items-center text-white text-[24px] font-acid">
+            <span className="h-[36px] px-5 rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-white/10 flex items-center text-white text-[1.5rem] font-acid">
               {value}
             </span>
           ) : (
-            <span className="text-[36px] font-acid" style={{ color: COLOR_MAP[color] }}>
+            <span className="text-[2.25rem] font-acid" style={{ color: COLOR_MAP[color] }}>
               {value}
             </span>
           )}
@@ -159,8 +159,8 @@ function ScoreBar({ score }: { score: number }) {
   return (
     <div className="w-full mt-4">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[#808080] text-[16px] font-acid">Your Genesis Score</span>
-        <span className="text-white text-[24px] font-acid">15.00</span>
+        <span className="text-gfx-neutral-400 text-[1rem] font-acid">Your Genesis Score</span>
+        <span className="text-white text-[1.5rem] font-acid">15.00</span>
       </div>
       <div className="relative h-[8px] rounded-full overflow-hidden">
         <div className="absolute inset-0 rounded-full" style={{
@@ -173,7 +173,7 @@ function ScoreBar({ score }: { score: number }) {
       </div>
       <div className="flex justify-between mt-2">
         {[0, 20, 40, 60, 80, 100].map(v => (
-          <span key={v} className="text-white text-[12px] font-acid">{v}</span>
+          <span key={v} className="text-white text-[0.75rem] font-acid">{v}</span>
         ))}
       </div>
     </div>
@@ -187,31 +187,31 @@ function SessionAnalysis() {
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
       <GlowEllipse className="-right-[80px] -top-[60px]" />
       <div className="p-6">
-        <h3 className="text-white text-[16px] font-acid font-medium mb-5">Session & Time Analysis</h3>
+        <h3 className="text-white text-[1rem] font-acid font-medium mb-5">Session & Time Analysis</h3>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="h-[103px] rounded-[19px] bg-[#09241c] p-4 flex flex-col justify-between">
-            <span className="text-[#808080] text-[14px] font-acid">Best Hour</span>
-            <span className="text-[#00b38c] text-[16px] font-acid font-medium">14:00 — 15:00</span>
+          <div className="h-[103px] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
+            <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Best Hour</span>
+            <span className="text-gfx-green-300 text-[1rem] font-acid font-medium">14:00 — 15:00</span>
           </div>
-          <div className="h-[103px] rounded-[19px] bg-[#09241c] p-4 flex flex-col justify-between">
-            <span className="text-[#808080] text-[14px] font-acid">Best Session</span>
-            <span className="text-[#00b38c] text-[16px] font-acid font-medium">Asian Cross</span>
+          <div className="h-[103px] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
+            <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Best Session</span>
+            <span className="text-gfx-green-300 text-[1rem] font-acid font-medium">Asian Cross</span>
           </div>
         </div>
 
-        <p className="text-gfx-neutral-500 text-[16px] font-acid font-medium mb-3">Session Performance</p>
+        <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium mb-3">Session Performance</p>
         <div className="overflow-x-auto">
         <div className="grid grid-cols-3 px-4 mb-3 min-w-[350px]">
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Date / Time</span>
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Win Rate</span>
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider text-right">Net P&L</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Date / Time</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Win Rate</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider text-right">Net P&L</span>
         </div>
         {sessionPerformance.map((row, i) => (
-          <div key={i} className="grid grid-cols-3 items-center px-4 h-[68px] border-t border-[#09241c] min-w-[350px]">
-            <span className="text-white text-[14px] font-acid">{row.session}</span>
-            <span className="text-white text-[14px] font-acid">{row.winRate}</span>
-            <span className={`text-[14px] font-acid text-right ${row.pnl >= 0 ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
+          <div key={i} className="grid grid-cols-3 items-center px-4 h-[68px] border-t border-gfx-green-900 min-w-[350px]">
+            <span className="text-white text-[0.875rem] font-acid">{row.session}</span>
+            <span className="text-white text-[0.875rem] font-acid">{row.winRate}</span>
+            <span className={`text-[0.875rem] font-acid text-right ${row.pnl >= 0 ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
               {row.pnl >= 0 ? '+' : '-'}${Math.abs(row.pnl).toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </span>
           </div>
@@ -230,7 +230,7 @@ function SymbolExposure() {
       <GlowEllipse className="-right-[80px] -top-[60px]" />
       <div className="p-6">
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-white text-[16px] font-acid font-medium">Symbol Exposure</h3>
+          <h3 className="text-white text-[1rem] font-acid font-medium">Symbol Exposure</h3>
           <button className="cursor-pointer hover:opacity-80 transition-opacity">
             <ExpandIcon />
           </button>
@@ -238,17 +238,17 @@ function SymbolExposure() {
 
         <div className="overflow-x-auto">
         <div className="grid grid-cols-4 px-4 mb-3 min-w-[450px]">
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Symbol</span>
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Trades</span>
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider">Volume</span>
-          <span className="text-gfx-neutral-300 text-[12px] font-acid font-bold uppercase tracking-wider text-right">P&L</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Symbol</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Trades</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider">Volume</span>
+          <span className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-wider text-right">P&L</span>
         </div>
         {symbolExposure.map((row, i) => (
-          <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-[#09241c] min-w-[450px]">
-            <span className="text-white text-[14px] font-acid">{row.symbol}</span>
-            <span className="text-white text-[14px] font-acid">{row.trades}</span>
-            <span className="text-gfx-neutral-500 text-[14px] font-acid">{row.volume}</span>
-            <span className={`text-[14px] font-acid text-right ${row.pnl >= 0 ? 'text-[#37c92e]' : 'text-[#d46356]'}`}>
+          <div key={i} className="grid grid-cols-4 items-center px-4 h-[68px] border-t border-gfx-green-900 min-w-[450px]">
+            <span className="text-white text-[0.875rem] font-acid">{row.symbol}</span>
+            <span className="text-white text-[0.875rem] font-acid">{row.trades}</span>
+            <span className="text-gfx-neutral-500 text-[0.875rem] font-acid">{row.volume}</span>
+            <span className={`text-[0.875rem] font-acid text-right ${row.pnl >= 0 ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
               {row.pnl >= 0 ? '+' : '-'}${Math.abs(row.pnl).toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </span>
           </div>
@@ -266,13 +266,13 @@ function TechnicalStatistics() {
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
       <GlowEllipse className="-left-[80px] -top-[60px]" />
       <div className="p-6">
-        <h3 className="text-white text-[16px] font-acid font-medium mb-5">Technical Statistics</h3>
+        <h3 className="text-white text-[1rem] font-acid font-medium mb-5">Technical Statistics</h3>
 
         <div className="flex flex-col">
           {technicalStats.map((row, i) => (
-            <div key={i} className="flex items-center justify-between h-[56px] border-t border-[#09241c] first:border-t-0">
-              <span className="text-gfx-neutral-500 text-[16px] font-acid">{row.label}</span>
-              <span className={`text-[16px] font-acid ${row.teal ? 'text-[#00b38c]' : 'text-[#ececec]'}`}>
+            <div key={i} className="flex items-center justify-between h-[56px] border-t border-gfx-green-900 first:border-t-0">
+              <span className="text-gfx-neutral-500 text-[1rem] font-acid">{row.label}</span>
+              <span className={`text-[1rem] font-acid ${row.teal ? 'text-gfx-green-300' : 'text-gfx-neutral-600'}`}>
                 {row.value}
               </span>
             </div>
@@ -299,12 +299,12 @@ function AvgPnlByDayChart() {
       <GlowEllipse className="-left-[80px] -top-[60px]" />
       <div className="relative p-7">
         <div className="flex items-center gap-2 mb-8">
-          <h3 className="text-white text-[16px] font-acid font-medium">Avg P&L by Day of Week</h3>
+          <h3 className="text-white text-[1rem] font-acid font-medium">Avg P&L by Day of Week</h3>
           <InfoIcon />
         </div>
 
         <div className="flex">
-          <div className="flex flex-col justify-between pr-3 text-[#606060] text-[12px] font-acid font-bold uppercase tracking-[2.3px] h-[258px]">
+          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-[2.3px] h-[258px]">
             {Y_LABELS.map(l => <span key={l}>{l}</span>)}
           </div>
 
@@ -338,7 +338,7 @@ function AvgPnlByDayChart() {
 
             <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3 top-[268px]">
               {DAYS.map(d => (
-                <span key={d} className="text-[#A0A0A0] text-[16px] font-acid font-medium">{d}</span>
+                <span key={d} className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">{d}</span>
               ))}
             </div>
           </div>
@@ -349,13 +349,13 @@ function AvgPnlByDayChart() {
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <rect x="0.48" y="0.48" width="19.04" height="19.04" rx="8" fill="#0C1311" stroke="#00B38C" strokeWidth="0.96" />
             </svg>
-            <span className="text-[#A0A0A0] text-[16px] font-acid font-medium">Profitable</span>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">Profitable</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <rect x="0.48" y="0.48" width="19.04" height="19.04" rx="8" fill="#2A1411" stroke="#D46356" strokeWidth="0.96" />
             </svg>
-            <span className="text-[#A0A0A0] text-[16px] font-acid font-medium">Loss</span>
+            <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">Loss</span>
           </div>
         </div>
       </div>
@@ -373,8 +373,8 @@ export default function StatisticsView() {
         <GlowEllipse className="bottom-[-30%] left-1/2 -translate-x-1/2" />
         <div className="relative px-[30px] py-5 flex items-center justify-between">
           <div>
-            <h2 className="text-white text-[24px] font-acid">Trading Statistics</h2>
-            <p className="text-[#808080] text-[16px] font-acid font-medium mt-1">All time</p>
+            <h2 className="text-white text-[1.5rem] font-acid">Trading Statistics</h2>
+            <p className="text-gfx-neutral-400 text-[1rem] font-acid font-medium mt-1">All time</p>
           </div>
           <PeriodPill />
         </div>
@@ -386,12 +386,12 @@ export default function StatisticsView() {
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
           <div className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-white text-[24px] font-acid">Genesis Score</h3>
+              <h3 className="text-white text-[1.5rem] font-acid">Genesis Score</h3>
               <div className="flex items-center gap-2 h-[30px] px-3 rounded-full border border-[rgba(0,240,160,0.15)] bg-[rgba(0,240,160,0.1)]">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="text-gfx-green-500 text-[12px] font-acid">24H +$0.00(0.0%)</span>
+                <span className="text-gfx-green-500 text-[0.75rem] font-acid">24H +$0.00(0.0%)</span>
               </div>
             </div>
             <RadarChart />
