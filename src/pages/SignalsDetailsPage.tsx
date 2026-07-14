@@ -274,56 +274,49 @@ export default function SignalsDetailsPage() {
         {/* Performance & Frequency (left) + Follow Card (right) */}
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_23.5rem] gap-5">
           {/* Performance & Frequency */}
-          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-            <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[15.625rem]" />
-            <div className="relative p-6 lg:p-8">
-              <h3 className="text-white text-[1.5rem] font-acid mb-6">Performance & Frequency</h3>
-
-              {/* Top row: stats + Most Traded */}
-              <div className="flex justify-between items-start mb-8">
-                <div className="grid grid-cols-3 gap-x-20 gap-y-8">
-                  {[
-                    { value: '2', label: 'Total Signals' },
-                    { value: '100%', label: 'Win Rate', green: true },
-                    { value: '$50.35', label: 'Total P&L', green: true },
-                    { value: '$25.18', label: 'Avg P&L / Trade', green: true },
-                    { value: '0', label: 'Open Positions' },
-                    { value: '3', label: 'Active Days' },
-                    { value: '0.7', label: 'Signals / Day' },
-                    { value: '4.7', label: 'Signals / Week' },
-                    { value: '20.0', label: 'Signals / Month' },
-                  ].map((s, i) => (
-                    <div key={i}>
-                      <p className={`${s.green ? 'text-[#37c92e]' : 'text-white'} text-[1.5rem] font-acid`}>{s.value}</p>
-                      <p className="text-[#a0a0a0] text-[1rem] font-acid-medium mt-1">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Most Traded badge */}
-                <div className="flex flex-col items-end">
-                  <p className="text-[#a0a0a0] text-[1rem] font-acid-medium mb-2">Most Traded</p>
-                  <div className="flex items-center gap-2 border border-[#09241c] rounded-[8px] px-3 py-2.5">
-                    <XauusdSmallIcon />
-                    <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif' }}>XAUUSD</span>
-                    <span className="text-[#808080] text-[0.875rem] font-acid">2</span>
-                  </div>
+          <div className="rounded-[18.56px] p-[44px]" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
+            <div className="flex justify-between items-start mb-[85px]">
+              <h3 className="text-white text-[1.5rem] font-acid font-normal">Performance & Frequency</h3>
+              <div className="flex flex-col items-end">
+                <p className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
+                <div className="flex items-center gap-2 bg-[#0C1311] rounded-[7.94px] border-[1.32px] border-[#09241C] px-3 py-2">
+                  <XauusdSmallIcon />
+                  <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
+                  <span className="text-[#808080] text-[0.875rem] font-acid leading-[18.8px]">2</span>
                 </div>
               </div>
             </div>
-          </GlassCard>
+
+            <div className="grid grid-cols-3 gap-y-[53px]">
+              {[
+                { value: '2', label: 'Total Signals' },
+                { value: '100%', label: 'Win Rate', green: true },
+                { value: '$50.35', label: 'Total P&L', green: true },
+                { value: '$25.18', label: 'Avg P&L / Trade', green: true },
+                { value: '0', label: 'Open Positions' },
+                { value: '3', label: 'Active Days' },
+                { value: '0.7', label: 'Signals / Day' },
+                { value: '4.7', label: 'Signals / Week' },
+                { value: '20.0', label: 'Signals / Month' },
+              ].map((s, i) => (
+                <div key={i}>
+                  <p className={`${s.green ? 'text-[#37C92E]' : 'text-white'} text-[1.5rem] font-acid font-normal`}>{s.value}</p>
+                  <p className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px] mt-1">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Follow this Strategy Card */}
           <div className="bg-[#09241c] rounded-[18px] overflow-hidden px-8 py-25 h-fit">
             <h3 className="text-white text-[1rem] font-acid-medium mb-2">Follow this Strategy</h3>
             <p className="text-[#a0a0a0] text-[0.875rem] font-acid mb-6">Remote trade signals — not copy trading.</p>
-            <button
+            <GlowButton
+              label="Follow"
+              width="100%"
+              height={44}
               onClick={() => setFollowModalOpen(true)}
-              className="w-full h-[44px] bg-[#f1fffa] rounded-[12px] flex items-center justify-center gap-2.5 cursor-pointer transition-opacity hover:opacity-90"
-            >
-              <FollowPersonIcon />
-              <span className="text-black text-[0.875rem] font-acid">Follow</span>
-            </button>
+            />
           </div>
         </div>
 
