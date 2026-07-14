@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { SparkleButton } from '@/components/ui'
+import { GlassCard, GlowEllipse, ModeToggle, GlassSelect } from '@/components/ui'
 
 /* ─── Icons ─── */
 
@@ -12,50 +12,12 @@ function CloseIcon() {
   )
 }
 
-function CalendarIcon() {
+function CheckCircleIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="3" y="4" width="18" height="18" rx="2" stroke="#808080" strokeWidth="1.5"/>
-      <path d="M16 2V6M8 2V6M3 10H21" stroke="#808080" strokeWidth="1.5" strokeLinecap="round"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" fill="#064b34"/>
+      <path d="M8 12L11 15L16 9" stroke="#00b38c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
-  )
-}
-
-/* ─── Tab Pills ─── */
-
-const TABS = ['Open Positions', 'Trade History', 'Fees & Billing'] as const
-
-function TabPills({ active, onChange }: { active: number; onChange: (i: number) => void }) {
-  return (
-    <div className="flex bg-[#0c1311] rounded-full p-1 gap-1">
-      {TABS.map((label, i) => (
-        <button
-          key={label}
-          onClick={() => onChange(i)}
-          className={`px-5 py-2.5 rounded-full text-[0.875rem] font-acid cursor-pointer transition-colors ${
-            active === i
-              ? 'bg-[#064b34] text-white'
-              : 'text-[#808080] hover:text-white'
-          }`}
-        >
-          {label}
-        </button>
-      ))}
-    </div>
-  )
-}
-
-/* ─── Info Row ─── */
-
-function InfoRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between py-3">
-      <div className="flex items-center gap-3">
-        <CalendarIcon />
-        <span className="text-white text-[0.875rem] font-acid">{label}</span>
-      </div>
-      <span className="text-white text-[0.875rem] font-acid">{value}</span>
-    </div>
   )
 }
 
@@ -69,12 +31,28 @@ function AssetTag({ label }: { label: string }) {
   )
 }
 
+/* ─── Options ─── */
+
+const pricingOptions = [
+  { value: 'free', label: 'Free' },
+  { value: '9.99', label: '$9.99/mo' },
+  { value: '29.99', label: '$29.99/mo' },
+  { value: '49.99', label: '$49.99/mo' },
+]
+
+const billingOptions = [
+  { value: 'monthly', label: 'Monthly' },
+  { value: 'quarterly', label: 'Quarterly' },
+  { value: 'yearly', label: 'Yearly' },
+]
+
 /* ─── Modal ─── */
 
 interface ManageSubscriptionModalProps {
   open: boolean
   onClose: () => void
   providerName?: string
+  providerSubtitle?: string
   providerInitials?: string
 }
 
@@ -82,6 +60,7 @@ export function ManageSubscriptionModal({
   open,
   onClose,
   providerName = 'Genesis Assets',
+  providerSubtitle = 'GFX',
   providerInitials = 'GA',
 }: ManageSubscriptionModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -148,75 +127,88 @@ export function ManageSubscriptionModal({
       aria-modal="true"
       aria-label="Manage Subscription"
     >
-      <div
-        ref={modalRef}
-        className="relative w-[480px] max-w-[95vw]"
-      >
-        {/* Modal background */}
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none bg-gfx-main rounded-[28px] backdrop-blur-[23.23px] border border-gfx-green-200"
-          aria-hidden="true"
-        >
-          <div className="absolute w-[400px] h-[250px] left-1/2 -translate-x-1/2 top-[-150px] bg-[#114131] rounded-full blur-[120px] opacity-30" />
-        </div>
+      <div ref={modalRef} className="w-[560px] max-w-[95vw]">
+        <GlassCard variant="light" divider="none" rounded="22px" className="relative overflow-hidden">
+          <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[200px]" />
 
-        {/* Close button */}
-        <button
-          onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-80 transition-opacity right-[20px] top-[20px]"
-          aria-label="Close modal"
-        >
-          <CloseIcon />
-        </button>
+          {/* Close button */}
+          <button
+            onClick={handleClose}
+            className="absolute z-20 cursor-pointer hover:opacity-80 transition-opacity right-[24px] top-[24px]"
+            aria-label="Close modal"
+          >
+            <CloseIcon />
+          </button>
 
-        {/* Content */}
-        <div className="relative z-10 px-6 sm:px-8 pt-7 pb-8">
+          {/* Content */}
+          <div className="relative p-[50px_50px_40px]">
 
-          {/* Provider Header */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-[44px] h-[44px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-[0.875rem] font-acid font-medium">{providerInitials}</span>
-            </div>
-            <div>
-              <p className="text-white text-[1rem] font-acid leading-tight">{providerName}</p>
-              <div className="mt-1">
-                <span className="bg-[#064b34] text-[#10BC83] text-[0.75rem] font-acid px-3 py-1 rounded-full">
-                  Active
-                </span>
+            {/* Provider Header */}
+            <div className="flex items-center gap-3 mb-1">
+              <div className="w-[40px] h-[40px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-[0.75rem] font-acid font-medium">{providerInitials}</span>
+              </div>
+              <div>
+                <p className="text-white text-[1.125rem] font-acid leading-tight">{providerName}</p>
+                <p className="text-[#a0a0a0] text-[0.75rem] font-acid leading-[18.8px]">{providerSubtitle}</p>
               </div>
             </div>
-          </div>
 
-          {/* Tabs */}
-          <TabPills active={activeTab} onChange={setActiveTab} />
+            {/* Active Badge */}
+            <div className="flex items-center gap-[10px] bg-[#09241c] rounded-[12px] px-3 py-2 w-fit mb-6 ml-[52px] -mt-1">
+              <CheckCircleIcon />
+              <span className="text-[#00b38c] text-[0.875rem] font-acid">Active</span>
+            </div>
 
-          {/* Tab Content */}
-          <div className="mt-6">
+            {/* Tabs — ModeToggle */}
+            <div className="flex justify-center mb-6">
+              <ModeToggle
+                options={['Open Positions', 'Trade History', 'Fees & Billing']}
+                activeIndex={activeTab}
+                onChange={setActiveTab}
+              />
+            </div>
+
+            {/* Tab Content */}
             {activeTab === 0 && (
-              <div className="flex flex-col items-center justify-center py-12">
-                <p className="text-[#808080] text-[1rem] font-acid">No open positions</p>
+              <div className="flex flex-col gap-6">
+                <div className="border border-[#303030] rounded-[20px] min-h-[191px] flex items-center justify-center">
+                  <p className="text-[#a0a0a0] text-[1rem] font-acid-medium leading-[24.44px]">No open positions yet.</p>
+                </div>
+                {/* Cancel Subscription */}
+                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-[1rem] font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
+                  Cancel Subscription
+                </button>
               </div>
             )}
 
             {activeTab === 1 && (
-              <div className="flex flex-col items-center justify-center py-12">
-                <p className="text-[#808080] text-[1rem] font-acid">No trade history</p>
+              <div className="flex flex-col gap-6">
+                <div className="border border-[#303030] rounded-[20px] min-h-[191px] flex items-center justify-center">
+                  <p className="text-[#a0a0a0] text-[1rem] font-acid-medium leading-[24.44px]">No closed trades yet.</p>
+                </div>
+                {/* Cancel Subscription */}
+                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-[1rem] font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
+                  Cancel Subscription
+                </button>
               </div>
             )}
 
             {activeTab === 2 && (
               <div className="flex flex-col gap-5">
                 {/* Pricing */}
-                <div>
-                  <p className="text-[#a0a0a0] text-[0.875rem] font-acid mb-2">Pricing</p>
-                  <InfoRow label="Monthly Fee" value="Free" />
-                </div>
+                <GlassSelect
+                  label="Pricing"
+                  options={pricingOptions}
+                  defaultValue="free"
+                />
 
                 {/* Billing Schedule */}
-                <div>
-                  <p className="text-[#a0a0a0] text-[0.875rem] font-acid mb-2">Billing Schedule</p>
-                  <InfoRow label="Monthly Fee" value="" />
-                </div>
+                <GlassSelect
+                  label="Billing Schedule"
+                  options={billingOptions}
+                  defaultValue="monthly"
+                />
 
                 {/* Asset Focus */}
                 <div>
@@ -229,13 +221,13 @@ export function ManageSubscriptionModal({
                 </div>
 
                 {/* Cancel Subscription */}
-                <SparkleButton fullWidth className="mt-2">
+                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-[1rem] font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors mt-2">
                   Cancel Subscription
-                </SparkleButton>
+                </button>
               </div>
             )}
           </div>
-        </div>
+        </GlassCard>
       </div>
     </div>
   )
