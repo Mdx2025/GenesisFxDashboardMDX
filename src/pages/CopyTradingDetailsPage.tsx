@@ -461,22 +461,22 @@ export default function CopyTradingDetailsPage() {
           <div className="relative overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>
-                <tr className="border-b border-gfx-green-900">
+                <tr className="border-b border-[#09241c]">
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-400 text-[0.5rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
+                    <th key={h} className="text-left text-[#808080] text-[0.75rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {closedTrades.map((trade, i) => (
-                  <tr key={i} className="border-b border-gfx-green-900 last:border-0">
+                {tradeTab === 1 && closedTrades.map((trade, i) => (
+                  <tr key={i} className="border-b border-[#09241c] last:border-0">
                     <td className="px-6 py-4">
                       <p className="text-white text-[0.6875rem] font-acid">{trade.openDate}</p>
-                      <p className="text-gfx-neutral-400 text-[0.6875rem] font-acid">{trade.openTime}</p>
+                      <p className="text-[#808080] text-[0.6875rem] font-acid">{trade.openTime}</p>
                     </td>
                     <td className="px-6 py-4">
                       <p className="text-white text-[0.6875rem] font-acid">{trade.closeDate}</p>
-                      <p className="text-gfx-neutral-400 text-[0.6875rem] font-acid">{trade.closeTime}</p>
+                      <p className="text-[#808080] text-[0.6875rem] font-acid">{trade.closeTime}</p>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
@@ -487,7 +487,7 @@ export default function CopyTradingDetailsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-4 py-1.5 rounded-full border border-gfx-green-500 text-gfx-green-500 text-[0.5rem] font-acid">{trade.side}</span>
+                      <span className="px-4 py-1.5 rounded-full border border-[#10BC83] text-[#10BC83] text-[0.5rem] font-acid">{trade.side}</span>
                     </td>
                     <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.volume}</span></td>
                     <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.openPrice}</span></td>
@@ -495,6 +495,11 @@ export default function CopyTradingDetailsPage() {
                     <td className="px-6 py-4"><span className="text-[#ff4d4d] text-[0.6875rem] font-acid">{trade.pnl}</span></td>
                   </tr>
                 ))}
+                {tradeTab === 0 && (
+                  <tr>
+                    <td colSpan={8} className="px-6 py-12 text-center text-[#808080] text-[0.875rem] font-acid">No open positions</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
