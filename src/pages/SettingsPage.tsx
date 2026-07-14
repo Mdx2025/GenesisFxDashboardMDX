@@ -162,7 +162,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="mt-[2.5rem]">
+      <div className="mt-[2.5rem] max-w-2xl">
         <ModeToggle
           options={[...TABS]}
           activeIndex={activeTab}
