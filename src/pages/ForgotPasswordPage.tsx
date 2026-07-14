@@ -1,74 +1,85 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GlowButton, WaveText } from '@/components/ui'
-import { AuthCardLayout } from '@/components/auth/AuthCard'
+import { GlowButton } from '@/components/ui'
 import { useFadeIn } from '@/hooks/useFadeIn'
 
 function MailIcon() {
   return (
     <svg width="62" height="62" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M2 8.5c0-2.121 0-3.182.659-3.841C3.318 4 4.379 4 6.5 4h11c2.121 0 3.182 0 3.841.659C22 5.318 22 6.379 22 8.5v4c0 2.121 0 3.182-.659 3.841C20.682 17 19.621 17 17.5 17h-11c-2.121 0-3.182 0-3.841-.659C2 15.682 2 14.621 2 12.5v-4z"
-        fill="#10BC83"
-        opacity="0.3"
-      />
-      <path
-        d="M2 8.5c0-2.121 0-3.182.659-3.841C3.318 4 4.379 4 6.5 4h11c2.121 0 3.182 0 3.841.659C22 5.318 22 6.379 22 8.5v4c0 2.121 0 3.182-.659 3.841C20.682 17 19.621 17 17.5 17h-11c-2.121 0-3.182 0-3.841-.659C2 15.682 2 14.621 2 12.5v-4z"
-        stroke="#10BC83"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M6 8l4.058 2.845a3 3 0 003.484.105L18 8"
-        stroke="#10BC83"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M2 8.5c0-2.121 0-3.182.659-3.841C3.318 4 4.379 4 6.5 4h11c2.121 0 3.182 0 3.841.659C22 5.318 22 6.379 22 8.5v4c0 2.121 0 3.182-.659 3.841C20.682 17 19.621 17 17.5 17h-11c-2.121 0-3.182 0-3.841-.659C2 15.682 2 14.621 2 12.5v-4z" fill="#10BC83" opacity="0.3" />
+      <path d="M2 8.5c0-2.121 0-3.182.659-3.841C3.318 4 4.379 4 6.5 4h11c2.121 0 3.182 0 3.841.659C22 5.318 22 6.379 22 8.5v4c0 2.121 0 3.182-.659 3.841C20.682 17 19.621 17 17.5 17h-11c-2.121 0-3.182 0-3.841-.659C2 15.682 2 14.621 2 12.5v-4z" stroke="#10BC83" strokeWidth="1.5" />
+      <path d="M6 8l4.058 2.845a3 3 0 003.484.105L18 8" stroke="#10BC83" strokeWidth="1.5" strokeLinecap="round" />
       <circle cx="19" cy="5" r="3.5" fill="#10BC83" stroke="#000705" strokeWidth="1" />
     </svg>
   )
 }
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-gfx-green-800 border border-gfx-green-200 px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors font-acid"
 
 export default function ForgotPasswordPage() {
   const [step, setStep] = useState<1 | 2>(1)
   const [email, setEmail] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email.trim()) setStep(2)
-  }
-
   return (
-    <AuthCardLayout>
-      {step === 1 ? (
-        <EmailStep email={email} setEmail={setEmail} onSubmit={handleSubmit} />
-      ) : (
-        <ConfirmationStep />
-      )}
-    </AuthCardLayout>
+    <div className="min-h-screen bg-gfx-sidebar font-acid relative overflow-hidden flex items-center justify-center">
+      {/* Page glow — top right */}
+      <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] right-0 rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'blur(25rem)' }} aria-hidden="true" />
+
+      {/* Card — Frame 2085662595 */}
+      <div className="relative w-[51.125rem] max-w-[calc(100%-2rem)] min-h-[61.25rem] rounded-[3rem] overflow-hidden">
+        {/* Glow top-right */}
+        <div className="absolute -top-[16.5625rem] right-[-9.375rem] w-[36.6875rem] h-[20.75rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(0,179,140,0.5) 0%, transparent 70%)' }} aria-hidden="true" />
+        {/* Glow bottom-left */}
+        <div className="absolute -bottom-[20.4375rem] -left-[27.75rem] w-[36.6875rem] h-[20.75rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(0,179,140,0.5) 0%, transparent 70%)' }} aria-hidden="true" />
+        <div className="absolute -bottom-[18.625rem] -left-[18.625rem] w-[18.4375rem] h-[17.125rem] rounded-full pointer-events-none mix-blend-plus-lighter" style={{ background: 'radial-gradient(ellipse, rgba(64,201,156,0.5) 0%, transparent 70%)' }} aria-hidden="true" />
+        <div className="absolute -bottom-[18.625rem] -left-[18.625rem] w-[18.4375rem] h-[17.125rem] rounded-full pointer-events-none mix-blend-plus-lighter" style={{ background: 'radial-gradient(ellipse, rgba(64,201,156,0.4) 0%, transparent 65%)' }} aria-hidden="true" />
+
+        {/* Pixel texture top-right */}
+        <div className="absolute -top-[11.3125rem] -right-[2rem] w-[31.25rem] h-[29.875rem] opacity-20 pointer-events-none" style={{ backgroundImage: 'url(/images/pixels.png)', backgroundSize: '37.5rem', maskImage: 'radial-gradient(ellipse at 70% 40%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse at 70% 40%, black 0%, transparent 70%)' }} aria-hidden="true" />
+        {/* Pixel texture bottom-left */}
+        <div className="absolute -bottom-[0.25rem] -left-[2rem] w-[31.25rem] h-[29.875rem] opacity-20 pointer-events-none" style={{ backgroundImage: 'url(/images/pixels.png)', backgroundSize: '37.5rem', maskImage: 'radial-gradient(ellipse at 30% 60%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse at 30% 60%, black 0%, transparent 70%)' }} aria-hidden="true" />
+
+        {/* Logo — top center */}
+        <div className="relative flex justify-center pt-[5.4375rem]">
+          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto relative z-10" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">
+          {step === 1 ? (
+            <EmailStep email={email} setEmail={setEmail} onSubmit={() => { if (email.trim()) setStep(2) }} />
+          ) : (
+            <ConfirmationStep />
+          )}
+        </div>
+
+        {/* Footer inside card */}
+        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-[5.375rem] mt-auto leading-[1.175rem]">
+          2026 Genesis FX Markets. All rights reserved.
+        </p>
+      </div>
+    </div>
   )
 }
 
 function EmailStep({ email, setEmail, onSubmit }: {
   email: string
   setEmail: (v: string) => void
-  onSubmit: (e: React.FormEvent) => void
+  onSubmit: () => void
 }) {
   const fadeRef = useFadeIn()
 
   return (
-    <div ref={fadeRef} className="w-full max-w-[34.125rem] px-4 sm:px-0 flex flex-col items-center gap-[2.6875rem]">
-      <div className="flex flex-col items-center gap-[1.375rem]">
-        <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">
-          Reset Your Password
-        </WaveText>
-        <WaveText as="p" className="text-[#808080] text-sm leading-[1.34] text-center max-w-[21.5rem]" delay={0.4} stagger={0.015}>
-          Enter your email address and we'll send you a link to reset your password.
-        </WaveText>
-      </div>
+    <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 pt-[13.375rem]">
+      <h1 className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-none text-center">
+        Reset Your Password
+      </h1>
 
-      <form className="w-full flex flex-col gap-[1.125rem]" onSubmit={onSubmit}>
+      <p className="text-gfx-neutral-400 text-sm leading-[1.175rem] text-center max-w-[21.5rem] mt-[1.5625rem]">
+        Enter your email address and we&apos;ll send you a link to reset your password.
+      </p>
+
+      <div className="w-full max-w-[34.125rem] mt-[3.8125rem]">
         <input
           type="email"
           placeholder="Email"
@@ -78,14 +89,14 @@ function EmailStep({ email, setEmail, onSubmit }: {
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
+      </div>
 
-        <div className="w-full pt-2">
-          <GlowButton label="Send Reset Link" width="100%" disabled={!email.trim()} onClick={() => { if (email.trim()) onSubmit(new Event('submit') as unknown as React.FormEvent) }} />
-        </div>
-      </form>
+      <div className="w-full max-w-[34.125rem] mt-[1.625rem]">
+        <GlowButton label="Send Reset Link" width="100%" disabled={!email.trim()} onClick={onSubmit} />
+      </div>
 
-      <p className="text-base leading-[1.2]">
-        <span className="text-[#808080]">Back to </span>
+      <p className="text-base leading-[1.2] mt-[2.4375rem]">
+        <span className="text-gfx-neutral-400">Back to </span>
         <Link to="/" className="text-white font-medium hover:underline">Sign In</Link>
       </p>
     </div>
@@ -96,18 +107,18 @@ function ConfirmationStep() {
   const fadeRef = useFadeIn()
 
   return (
-    <div ref={fadeRef} className="w-full max-w-[34.125rem] px-4 sm:px-0 flex flex-col items-center gap-[1.375rem]">
+    <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 pt-[16.3125rem]">
       <div className="w-[3.875rem] h-[3.875rem] flex items-center justify-center">
         <MailIcon />
       </div>
 
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">
+      <h1 className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-none text-center mt-[1.1875rem]">
         Confirmed Request
-      </WaveText>
+      </h1>
 
-      <WaveText as="p" className="text-[#808080] text-sm leading-[1.34] text-center max-w-[21.5rem]" delay={0.4} stagger={0.015}>
+      <p className="text-gfx-neutral-400 text-sm leading-[1.175rem] text-center max-w-[21.5rem] mt-[2.1875rem]">
         If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes.
-      </WaveText>
+      </p>
     </div>
   )
 }
