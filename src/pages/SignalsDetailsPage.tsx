@@ -188,7 +188,7 @@ export default function SignalsDetailsPage() {
           <div className="ml-2"><Badge variant="active">Active</Badge></div>
           <div className="ml-auto">
             <GlowButton
-              label="Trade"
+              label="Connect now"
               width={140}
               height={44}
               onClick={() => setFollowModalOpen(true)}
@@ -314,7 +314,7 @@ export default function SignalsDetailsPage() {
           </GlassCard>
 
           {/* Follow this Strategy Card */}
-          <div className="bg-[#09241c] rounded-[18px] overflow-hidden p-8">
+          <div className="bg-[#09241c] rounded-[18px] overflow-hidden px-8 py-[25px] h-fit">
             <h3 className="text-white text-[1rem] font-acid-medium mb-2">Follow this Strategy</h3>
             <p className="text-[#a0a0a0] text-[0.875rem] font-acid mb-6">Remote trade signals — not copy trading.</p>
             <button
