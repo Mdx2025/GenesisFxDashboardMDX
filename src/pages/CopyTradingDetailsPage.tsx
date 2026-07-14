@@ -456,54 +456,51 @@ export default function CopyTradingDetailsPage() {
         </div>
 
         {/* Trades Table */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-          <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[15.625rem]" />
-          <div className="relative overflow-x-auto">
+        <div className="rounded-[18.56px] overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
+          <div className="overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>
-                <tr className="border-b border-[#09241c]">
+                <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-[#808080] text-[0.75rem] font-acid font-normal uppercase tracking-wider px-6 py-4">{h}</th>
+                    <th key={h} className="text-left text-[#606060] text-[0.75rem] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
-                  <tr key={i} className="border-b border-[#09241c] last:border-0">
-                    <td className="px-6 py-4">
-                      <p className="text-white text-[0.6875rem] font-acid">{trade.openDate}</p>
-                      <p className="text-[#808080] text-[0.6875rem] font-acid">{trade.openTime}</p>
+                  <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
+                    <td className="px-12 py-4">
+                      <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
+                      <p className="text-[#606060] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
                     </td>
-                    <td className="px-6 py-4">
-                      <p className="text-white text-[0.6875rem] font-acid">{trade.closeDate}</p>
-                      <p className="text-[#808080] text-[0.6875rem] font-acid">{trade.closeTime}</p>
+                    <td className="px-12 py-4">
+                      <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
+                      <p className="text-[#606060] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-[2.375rem] h-[2.375rem] rounded-full bg-[#1a1a1a] flex items-center justify-center overflow-hidden">
-                          <span className="text-[#ffd700] text-[0.625rem] font-acid font-bold">XAU</span>
-                        </div>
-                        <span className="text-white text-[0.6875rem] font-acid">{trade.symbol}</span>
+                    <td className="px-12 py-4">
+                      <div className="flex items-center gap-3">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><g clipPath="url(#xauClipCT)"><path d="M0 0H38V38H0V0Z" fill="#D69A00"/><path d="M14.42 14.63H23.77L22.41 10.97C22.36 10.82 22.26 10.69 22.13 10.59L14.42 14.63ZM14.39 10.28C14.73 9.39 15.45 8.82 16.26 8.82H21.79C22.59 8.82 23.32 9.39 23.65 10.28L25.02 13.94C25.42 15.04 24.76 16.28 23.77 16.28H14.27C13.28 16.28 12.62 15.04 13.03 13.94L14.39 10.28ZM6.95 24.13H16.28L14.92 20.47C14.86 20.32 14.77 20.19 14.64 20.09L6.95 24.13ZM6.92 19.78C7.25 18.89 7.98 18.32 8.78 18.32H14.3C15.1 18.32 15.83 18.89 16.16 19.78L17.52 23.44C17.93 24.54 17.27 25.78 16.28 25.78H6.8C5.81 25.78 5.15 24.54 5.56 23.44L6.92 19.78ZM31.27 24.13H21.88L29.63 20.09C29.75 20.18 29.85 20.31 29.91 20.47L31.27 24.13ZM23.71 18.32C22.91 18.32 22.18 18.89 21.85 19.78L20.49 23.44C20.08 24.54 20.74 25.78 21.73 25.78H31.27C32.27 25.78 32.93 24.54 32.52 23.44L31.15 19.78C30.82 18.89 30.09 18.32 29.29 18.32H23.71Z" fill="white"/></g><defs><clipPath id="xauClipCT"><rect width="38" height="38" rx="19" fill="white"/></clipPath></defs></svg>
+                        <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.symbol}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
-                      <span className="px-4 py-1.5 rounded-full border border-[#10BC83] text-[#10BC83] text-[0.5rem] font-acid">{trade.side}</span>
+                    <td className="px-12 py-4">
+                      <span className="inline-flex items-center justify-center px-[18px] h-[24px] rounded-full text-[#37C92E] text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
-                    <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.volume}</span></td>
-                    <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.openPrice}</span></td>
-                    <td className="px-6 py-4"><span className="text-white text-[0.6875rem] font-acid">{trade.closePrice}</span></td>
-                    <td className="px-6 py-4"><span className="text-[#ff4d4d] text-[0.6875rem] font-acid">{trade.pnl}</span></td>
+                    <td className="px-12 py-4"><span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.volume}</span></td>
+                    <td className="px-12 py-4"><span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openPrice}</span></td>
+                    <td className="px-12 py-4"><span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closePrice}</span></td>
+                    <td className="px-12 py-4"><span className="text-[#D46356] text-[1rem] font-acid font-medium leading-[24.44px]">{trade.pnl}</span></td>
                   </tr>
                 ))}
                 {tradeTab === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-6 py-12 text-center text-[#808080] text-[0.875rem] font-acid">No open positions</td>
+                    <td colSpan={8} className="px-12 py-12 text-center text-[#606060] text-[0.875rem] font-acid">No open positions</td>
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
-        </GlassCard>
+        </div>
 
       </div>
     </div>
