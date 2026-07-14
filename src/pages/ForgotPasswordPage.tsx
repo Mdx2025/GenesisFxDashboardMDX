@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlowButton } from '@/components/ui'
+import { GlowEllipse } from '@/components/ui/GlowEllipse'
 import { useFadeIn } from '@/hooks/useFadeIn'
 
 function MailIcon() {
@@ -23,21 +24,35 @@ export default function ForgotPasswordPage() {
   return (
     <div className="min-h-screen bg-gfx-sidebar font-acid relative overflow-hidden flex items-center justify-center">
       {/* Page glow — top right */}
-      <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] right-0 rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'blur(25rem)' }} aria-hidden="true" />
+      <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'blur(25.375rem)' }} aria-hidden="true" />
 
       {/* Card — Frame 2085662595 */}
       <div className="relative w-[51.125rem] max-w-[calc(100%-2rem)] min-h-[61.25rem] rounded-[3rem] overflow-hidden">
-        {/* Glow top-right */}
-        <div className="absolute -top-[16.5625rem] right-[-9.375rem] w-[36.6875rem] h-[20.75rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(0,179,140,0.5) 0%, transparent 70%)' }} aria-hidden="true" />
-        {/* Glow bottom-left */}
-        <div className="absolute -bottom-[20.4375rem] -left-[27.75rem] w-[36.6875rem] h-[20.75rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(0,179,140,0.5) 0%, transparent 70%)' }} aria-hidden="true" />
-        <div className="absolute -bottom-[18.625rem] -left-[18.625rem] w-[18.4375rem] h-[17.125rem] rounded-full pointer-events-none mix-blend-plus-lighter" style={{ background: 'radial-gradient(ellipse, rgba(64,201,156,0.5) 0%, transparent 70%)' }} aria-hidden="true" />
-        <div className="absolute -bottom-[18.625rem] -left-[18.625rem] w-[18.4375rem] h-[17.125rem] rounded-full pointer-events-none mix-blend-plus-lighter" style={{ background: 'radial-gradient(ellipse, rgba(64,201,156,0.4) 0%, transparent 65%)' }} aria-hidden="true" />
+        {/* GlowEllipse — top right corner */}
+        <GlowEllipse className="-top-[6.25rem] -right-[10rem]" />
+        {/* GlowEllipse — bottom left corner */}
+        <GlowEllipse className="-bottom-[6.25rem] -left-[10rem]" />
 
-        {/* Pixel texture top-right */}
-        <div className="absolute -top-[11.3125rem] -right-[2rem] w-[31.25rem] h-[29.875rem] opacity-20 pointer-events-none" style={{ backgroundImage: 'url(/images/pixels.png)', backgroundSize: '37.5rem', maskImage: 'radial-gradient(ellipse at 70% 40%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse at 70% 40%, black 0%, transparent 70%)' }} aria-hidden="true" />
-        {/* Pixel texture bottom-left */}
-        <div className="absolute -bottom-[0.25rem] -left-[2rem] w-[31.25rem] h-[29.875rem] opacity-20 pointer-events-none" style={{ backgroundImage: 'url(/images/pixels.png)', backgroundSize: '37.5rem', maskImage: 'radial-gradient(ellipse at 30% 60%, black 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse at 30% 60%, black 0%, transparent 70%)' }} aria-hidden="true" />
+        {/* Pixel texture — top right corner only */}
+        <div
+          className="absolute -top-[2rem] -right-[2rem] w-[20.75rem] h-[14.875rem] opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: 'url(/images/pixels.png)',
+            backgroundSize: '37.5rem',
+            backgroundPosition: 'top left',
+          }}
+          aria-hidden="true"
+        />
+        {/* Pixel texture — bottom left corner only */}
+        <div
+          className="absolute -bottom-[2rem] -left-[2rem] w-[20.75rem] h-[14.875rem] opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: 'url(/images/pixels.png)',
+            backgroundSize: '37.5rem',
+            backgroundPosition: 'bottom right',
+          }}
+          aria-hidden="true"
+        />
 
         {/* Logo — top center */}
         <div className="relative flex justify-center pt-[5.4375rem]">
