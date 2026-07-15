@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react'
-import { GlassCard, GlassInput, ModeToggle, StatCard } from '@/components/ui'
+import { useState, useRef, type ReactNode } from 'react'
+import { GlassCard, GlassInput, ModeToggle } from '@/components/ui'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -326,7 +326,8 @@ function RewardsTab() {
 function ChatDialogIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path fillRule="evenodd" clipRule="evenodd" d="M2 6C2 3.79086 3.79086 2 6 2H18C20.2091 2 22 3.79086 22 6V14C22 16.2091 20.2091 18 18 18H13.4142L9.70711 21.7071C9.07714 22.3371 8 21.8909 8 21V18H6C3.79086 18 2 16.2091 2 14V6ZM7 8.5C7 8.22386 7.22386 8 7.5 8H16.5C16.7761 8 17 8.22386 17 8.5C17 8.77614 16.7761 9 16.5 9H7.5C7.22386 9 7 8.77614 7 8.5ZM7 12.5C7 12.2239 7.22386 12 7.5 12H12.5C12.7761 12 13 12.2239 13 12.5C13 12.7761 12.7761 13 12.5 13H7.5C7.22386 13 7 12.7761 7 12.5Z" fill="var(--color-gfx-green-300)" />
+      <path d="M22 8.5C22 4.91015 19.0899 2 15.5 2C13.4171 2 11.5631 2.9823 10.3735 4.50721C15.4471 4.70336 19.5 8.87838 19.5 14C19.5 14.1103 19.4981 14.2202 19.4944 14.3296L19.8267 14.4185C20.793 14.677 21.677 13.793 21.4185 12.8267L21.2911 12.3506C21.1882 11.9661 21.2501 11.5598 21.4155 11.1977C21.7908 10.376 22 9.46242 22 8.5Z" fill="white"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M18 14C18 18.4183 14.4183 22 10 22C8.76449 22 7.5944 21.7199 6.54976 21.2198C6.19071 21.0479 5.78393 20.9876 5.39939 21.0904L4.17335 21.4185C3.20701 21.677 2.32295 20.793 2.58151 19.8267L2.90955 18.6006C3.01245 18.2161 2.95209 17.8093 2.7802 17.4502C2.28008 16.4056 2 15.2355 2 14C2 9.58172 5.58172 6 10 6C14.4183 6 18 9.58172 18 14ZM6.5 15C7.05228 15 7.5 14.5523 7.5 14C7.5 13.4477 7.05228 13 6.5 13C5.94772 13 5.5 13.4477 5.5 14C5.5 14.5523 5.94772 15 6.5 15ZM10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44772 13 9 13.4477 9 14C9 14.5523 9.44772 15 10 15ZM13.5 15C14.0523 15 14.5 14.5523 14.5 14C14.5 13.4477 14.0523 13 13.5 13C12.9477 13 12.5 13.4477 12.5 14C12.5 14.5523 12.9477 15 13.5 15Z" fill="white"/>
     </svg>
   )
 }
@@ -334,7 +335,7 @@ function ChatDialogIcon() {
 function EnvelopeIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path fillRule="evenodd" clipRule="evenodd" d="M3 5C3 4.44772 3.44772 4 4 4H20C20.5523 4 21 4.44772 21 5V19C21 19.5523 20.5523 20 20 20H4C3.44772 20 3 19.5523 3 19V5ZM5.5 7.5L12 12.5L18.5 7.5L17.5 6.5L12 10.5L6.5 6.5L5.5 7.5Z" fill="var(--color-gfx-green-300)" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M3 5C3 4.44772 3.44772 4 4 4H20C20.5523 4 21 4.44772 21 5V19C21 19.5523 20.5523 20 20 20H4C3.44772 20 3 19.5523 3 19V5ZM5.5 7.5L12 12.5L18.5 7.5L17.5 6.5L12 10.5L6.5 6.5L5.5 7.5Z" fill="white" />
     </svg>
   )
 }
@@ -342,8 +343,8 @@ function EnvelopeIcon() {
 function WhatsappIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z" fill="#25D366" />
-      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" fill="#25D366" />
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z" fill="white" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" fill="white" />
     </svg>
   )
 }
@@ -351,8 +352,26 @@ function WhatsappIcon() {
 function HelpCenterIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm-.004 4c-1.657 0-3 1.343-3 3h2c0-.552.448-1 1-1s1 .448 1 1c0 .374-.187.724-.5.928l-.625.375A2.498 2.498 0 0 0 10.996 12.5V13h2v-.5c0-.374.187-.724.5-.928l.625-.375a2.998 2.998 0 0 0 .875-4.197c-.625-.883-1.66-1.5-2.996-1.5h-.004ZM11 15v2h2v-2h-2Z" fill="var(--color-gfx-green-300)" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm-.004 4c-1.657 0-3 1.343-3 3h2c0-.552.448-1 1-1s1 .448 1 1c0 .374-.187.724-.5.928l-.625.375A2.498 2.498 0 0 0 10.996 12.5V13h2v-.5c0-.374.187-.724.5-.928l.625-.375a2.998 2.998 0 0 0 .875-4.197c-.625-.883-1.66-1.5-2.996-1.5h-.004ZM11 15v2h2v-2h-2Z" fill="white" />
     </svg>
+  )
+}
+
+function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode; title: string; subtitle: string; action: string }) {
+  return (
+    <div
+      className="bg-[#0C1311] rounded-[1.875rem] flex items-start gap-5 px-5 py-6"
+      style={{ boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)' }}
+    >
+      <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
+        {icon}
+      </div>
+      <div>
+        <p className="text-white text-2xl font-acid leading-normal">{title}</p>
+        <p className="text-[#808080] text-base font-acid">{subtitle}</p>
+        <p className="text-[#10BC83] text-base font-acid">{action}</p>
+      </div>
+    </div>
   )
 }
 
@@ -367,10 +386,10 @@ function SupportTab() {
         />
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
         <div className="grid grid-cols-2 gap-5">
-          <StatCard label="Live chat" value="Available 24/7" icon={<ChatDialogIcon />} />
-          <StatCard label="Email Support" value="support@genesisfxmarkets.com" icon={<EnvelopeIcon />} />
-          <StatCard label="Whatsapp" value="Quick chat support" icon={<WhatsappIcon />} />
-          <StatCard label="Help Center" value="Browse common questions" icon={<HelpCenterIcon />} />
+          <SupportContactCard icon={<ChatDialogIcon />} title="Live chat" subtitle="Available 24/7" action="Start Live Chat" />
+          <SupportContactCard icon={<EnvelopeIcon />} title="Email Support" subtitle="support@genesisfxmarkets.com" action="Send Email" />
+          <SupportContactCard icon={<WhatsappIcon />} title="Whatsapp" subtitle="Quick chat support" action="Open Whatsapp" />
+          <SupportContactCard icon={<HelpCenterIcon />} title="Help Center" subtitle="Browse common questions" action="Visit Help Center" />
         </div>
       </div>
     </GlassCard>
@@ -393,9 +412,9 @@ function SmartphoneIcon() {
   )
 }
 
-function ToggleSwitch({ enabled = false }: { enabled?: boolean }) {
+function ToggleSwitch({ enabled = false, onClick }: { enabled?: boolean; onClick?: () => void }) {
   return (
-    <div className={`w-11 h-[1.375rem] rounded-full relative cursor-pointer ${enabled ? 'bg-gfx-green-300' : 'bg-[#09241c]'}`}>
+    <div onClick={onClick} className={`w-11 h-[1.375rem] rounded-full relative cursor-pointer transition-colors ${enabled ? 'bg-gfx-green-300' : 'bg-[#09241c]'}`}>
       <div className={`w-[1.125rem] h-[1.125rem] rounded-full absolute top-px transition-all ${
         enabled ? 'right-px bg-white' : 'left-px bg-gfx-neutral-250'
       }`} />
@@ -450,6 +469,109 @@ function SecurityTab() {
         </div>
       </div>
     </GlassCard>
+  )
+}
+
+function SettingsButton({ label }: { label: string }) {
+  return (
+    <button className="flex items-center gap-2 px-5 py-2.5 rounded-[1.875rem] border border-[#a0a0a0] bg-gradient-to-b from-[#09241c] to-[#0C1311] text-[#c6c6c6] text-base font-acid font-medium hover:border-gfx-green-300 transition-colors shrink-0">
+      {label}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </button>
+  )
+}
+
+function SettingsTab() {
+  const [aiCoachEnabled, setAiCoachEnabled] = useState(true)
+  const [themeIndex, setThemeIndex] = useState(1)
+
+  return (
+    <>
+      <div className="mt-10 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 py-8">
+        <div className="flex items-center gap-2 mb-6">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M16.07 12.5a1.33 1.33 0 0 0 .27 1.47l.05.05a1.61 1.61 0 1 1-2.28 2.28l-.05-.05a1.33 1.33 0 0 0-1.47-.27 1.33 1.33 0 0 0-.8 1.22v.13a1.61 1.61 0 1 1-3.23 0v-.07a1.33 1.33 0 0 0-.87-1.22 1.33 1.33 0 0 0-1.47.27l-.05.05a1.61 1.61 0 1 1-2.28-2.28l.05-.05a1.33 1.33 0 0 0 .27-1.47 1.33 1.33 0 0 0-1.22-.8h-.13a1.61 1.61 0 1 1 0-3.23h.07a1.33 1.33 0 0 0 1.22-.87 1.33 1.33 0 0 0-.27-1.47l-.05-.05a1.61 1.61 0 1 1 2.28-2.28l.05.05c.38.38.93.52 1.47.27h.07a1.33 1.33 0 0 0 .8-1.22v-.13a1.61 1.61 0 1 1 3.23 0v.07c.05.53.36 1 .8 1.22a1.33 1.33 0 0 0 1.47-.27l.05-.05a1.61 1.61 0 1 1 2.28 2.28l-.05.05a1.33 1.33 0 0 0-.27 1.47v.07c.22.44.69.75 1.22.8h.13a1.61 1.61 0 0 1 0 3.23h-.07a1.33 1.33 0 0 0-1.22.8Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <h3 className="text-white text-2xl font-acid">Username</h3>
+        </div>
+        <div className="relative">
+          <input
+            className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
+            placeholder="@ Not set"
+          />
+          <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gfx-green-300 flex items-center justify-center hover:opacity-90 transition-opacity">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0C1311" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-6 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 pt-8 pb-4">
+        <h3 className="text-white text-2xl font-acid mb-8">Settings</h3>
+
+        <div className="divide-y divide-[#09241c]">
+          <div className="flex items-center justify-between py-6 first:pt-0">
+            <div>
+              <p className="text-white text-base font-acid font-medium">Profile Picture</p>
+              <p className="text-[#808080] text-base font-acid">Change your profile picture</p>
+            </div>
+            <SettingsButton label="Change Picture" />
+          </div>
+
+          <div className="flex items-center justify-between py-6">
+            <div>
+              <p className="text-white text-base font-acid font-medium">Theme</p>
+              <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
+            </div>
+            <ModeToggle options={['Light', 'Dark', 'Auto']} activeIndex={themeIndex} onChange={setThemeIndex} />
+          </div>
+
+          <div className="flex items-center justify-between py-6">
+            <div>
+              <p className="text-white text-base font-acid font-medium">Change Language</p>
+              <p className="text-[#808080] text-base font-acid">Choose your preferred language</p>
+            </div>
+            <SettingsButton label="Change Language" />
+          </div>
+
+          <div className="flex items-center justify-between py-6">
+            <div>
+              <p className="text-white text-base font-acid font-medium">AI Coach Widget</p>
+              <p className="text-[#808080] text-base font-acid">Show the floating AI Coach button on every page</p>
+            </div>
+            <ToggleSwitch enabled={aiCoachEnabled} onClick={() => setAiCoachEnabled(v => !v)} />
+          </div>
+
+          <div className="flex items-center justify-between py-6">
+            <div>
+              <p className="text-white text-base font-acid font-medium">Change Password</p>
+              <p className="text-[#808080] text-base font-acid">Update your account password</p>
+            </div>
+            <SettingsButton label="Change Password" />
+          </div>
+
+          <div className="flex items-center justify-between py-6">
+            <div>
+              <p className="text-white text-base font-acid font-medium">Change Email</p>
+              <p className="text-[#808080] text-base font-acid">Update your email address</p>
+            </div>
+            <SettingsButton label="Change Email" />
+          </div>
+
+          <div className="flex items-center justify-between py-6">
+            <div>
+              <p className="text-white text-base font-acid font-medium">Close Account</p>
+              <p className="text-[#808080] text-base font-acid">Permanently delete your account and all data</p>
+            </div>
+            <SettingsButton label="Close Account" />
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
@@ -584,6 +706,7 @@ export default function SettingsPage() {
       {activeTab === 2 && <RewardsTab />}
       {activeTab === 3 && <SupportTab />}
       {activeTab === 4 && <SecurityTab />}
+      {activeTab === 5 && <SettingsTab />}
       </div>
     </div>
   )

@@ -1,6 +1,5 @@
 import { type ReactNode } from 'react'
 import { GlassCard } from './GlassCard'
-import { GlowEllipse } from './GlowEllipse'
 
 export function StatCard({ label, value, valueColor = 'text-white', icon }: { label: string; value: string; valueColor?: string; icon?: ReactNode }) {
   return (
@@ -25,7 +24,6 @@ export function StatCard({ label, value, valueColor = 'text-white', icon }: { la
           </>
         )}
       </div>
-      <GlowEllipse className="!w-[12rem] !h-[8rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[4rem] opacity-60" />
     </GlassCard>
   )
 }
