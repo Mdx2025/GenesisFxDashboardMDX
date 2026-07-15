@@ -159,7 +159,7 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
             <span className="text-white text-lg font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
-                <span className="text-sm" style={{ color: '#00B38C' }}>
+                <span className="text-sm text-gfx-green-300">
                   +$0.00
                 </span>
               </div>

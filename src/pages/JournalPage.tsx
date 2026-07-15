@@ -81,7 +81,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
           strokeWidth="6"
           strokeDasharray={`${progress} ${remaining}`}
           strokeLinecap="round"
-          className="drop-shadow-[0_0_6px_rgba(16,188,131,0.5)]"
+          className="[filter:var(--shadow-drop-glow-green)]"
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">

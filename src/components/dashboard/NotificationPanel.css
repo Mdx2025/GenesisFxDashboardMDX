@@ -3,7 +3,7 @@
 }
 
 .notif-panel-inner {
-  background: #0C1311;
+  background: var(--color-gfx-green-800);
   position: relative;
   border: 1px solid transparent;
 }
@@ -14,7 +14,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+  background: linear-gradient(180deg, var(--color-gfx-green-200) -66.81%, var(--color-gfx-green-800) 127.96%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -27,19 +27,19 @@
 }
 
 .notif-item:hover {
-  background: rgba(6, 75, 52, 0.12);
+  background: color-mix(in srgb, var(--color-gfx-green-200) 12%, transparent);
 }
 
 .notif-unread {
-  background: rgba(0, 179, 140, 0.04);
+  background: color-mix(in srgb, var(--color-gfx-green-300) 4%, transparent);
 }
 
 .notif-unread:hover {
-  background: rgba(6, 75, 52, 0.18);
+  background: color-mix(in srgb, var(--color-gfx-green-200) 18%, transparent);
 }
 
 .notif-item + .notif-item {
-  border-top: 1px solid rgba(6, 75, 52, 0.15);
+  border-top: 1px solid color-mix(in srgb, var(--color-gfx-green-200) 15%, transparent);
 }
 
 .notif-scrollbar::-webkit-scrollbar {
@@ -51,7 +51,7 @@
 }
 
 .notif-scrollbar::-webkit-scrollbar-thumb {
-  background: #064B34;
+  background: var(--color-gfx-green-200);
   border-radius: 2px;
 }
 

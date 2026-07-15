@@ -91,8 +91,8 @@ function LiveNewsCard() {
       <div className="px-5 py-3 max-w-lg">
         <ModeToggle options={[...NEWS_CHANNELS]} activeIndex={channel} onChange={setChannel} size="sm" />
       </div>
-      <div className="relative mx-5 mb-4 rounded-xl bg-[#0a0f0d] aspect-video flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a14] to-[#080d0b]" />
+      <div className="relative mx-5 mb-4 rounded-xl bg-gfx-surface-video aspect-video flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-gfx-green-150 to-gfx-main" />
         <button className="relative z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/15 transition-colors" aria-label="Play video">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="white"><rect x="5" y="4" width="3" height="10" rx="1"/><rect x="10" y="4" width="3" height="10" rx="1"/></svg>
         </button>
@@ -311,7 +311,7 @@ function TopMoversCard() {
     <Card title="Top movers" className="flex-1">
       <div className="grid grid-cols-2 gap-3 p-5">
         {movers.map((m, i) => (
-          <div key={i} className="bg-[#0a0f0d] rounded-xl p-4 flex flex-col gap-2">
+          <div key={i} className="bg-gfx-surface-video rounded-xl p-4 flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-gfx-green-500/10 flex items-center justify-center text-tiny">

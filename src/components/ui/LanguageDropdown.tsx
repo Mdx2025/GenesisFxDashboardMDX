@@ -107,7 +107,7 @@ export function LanguageDropdown() {
         ref={dropdownRef}
         role="listbox"
         aria-label="Select language"
-        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] [backdrop-filter:url(#blur-23)]"
+        className="absolute right-0 top-full mt-2 w-44 rounded-xl overflow-hidden z-50 border border-gfx-card-border bg-gfx-surface-panel [backdrop-filter:url(#blur-23)]"
       >
           {languages.map((lang) => (
             <li key={lang.code} role="option" aria-selected={selected.code === lang.code}>

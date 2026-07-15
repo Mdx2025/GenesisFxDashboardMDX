@@ -22,7 +22,7 @@ export function PlatformsView() {
       {PLATFORMS.map((platform) => (
         <div
           key={platform.name}
-          className="relative flex items-center gap-3 sm:gap-5 px-4 sm:px-6 xl:px-8 py-4 sm:py-6 xl:py-8 rounded-lg bg-gfx-green-800 shadow-[0px_9.08px_23.2px_rgba(0,0,0,0.2)] border border-[rgba(255,255,255,0.06)]"
+          className="relative flex items-center gap-3 sm:gap-5 px-4 sm:px-6 xl:px-8 py-4 sm:py-6 xl:py-8 rounded-lg bg-gfx-green-800 shadow-md border border-gfx-card-border"
         >
           <div className="flex-shrink-0 w-10 h-10 sm:w-[3.6875rem] sm:h-[3.6875rem] rounded-md sm:rounded-md bg-gfx-green-900 flex items-center justify-center">
             <img src={platform.icon} alt="" aria-hidden="true" className="w-5 h-5 sm:w-[29px] sm:h-[29px] object-contain" />

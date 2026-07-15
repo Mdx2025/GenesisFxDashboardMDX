@@ -1,5 +1,5 @@
 .glossary-card {
-  background: #0C1311;
+  background: var(--color-gfx-green-800);
   border: 1px solid transparent;
   position: relative;
 }
@@ -9,7 +9,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+  background: linear-gradient(180deg, var(--color-gfx-green-200) -66.81%, var(--color-gfx-green-800) 127.96%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;

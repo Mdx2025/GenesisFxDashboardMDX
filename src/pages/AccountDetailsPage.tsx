@@ -78,7 +78,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
         style={{ transform: visible ? 'scale(1)' : 'scale(0.95)' }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative bg-[#0a0a0a] rounded-2xl glass-card shadow-lg backdrop-blur-xl">
+        <div className="relative bg-gfx-surface-dark rounded-2xl glass-card shadow-lg backdrop-blur-xl">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[400px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <button
             onClick={(e) => { e.stopPropagation(); onClose() }}

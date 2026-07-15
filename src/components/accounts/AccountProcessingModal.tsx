@@ -115,7 +115,7 @@ export function AccountProcessingModal({ open, onClose, onComplete }: AccountPro
     >
       <div
         ref={modalRef}
-        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-[#09090b] rounded-xl sm:rounded-2xl backdrop-blur-[23.23px] border border-gfx-green-200"
+        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-gfx-surface-dark rounded-xl sm:rounded-2xl backdrop-blur-[23.23px] border border-gfx-green-200"
       >
         <svg width="0" height="0" className="absolute">
           <defs>

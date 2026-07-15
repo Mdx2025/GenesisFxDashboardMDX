@@ -10,7 +10,7 @@
   top: -58px;
   transform: rotate(47.67deg);
   transform-origin: top left;
-  background: #134e4a;
+  background: var(--color-gfx-green-175);
   border-radius: 50%;
   filter: url(#blur-161);
   pointer-events: none;
@@ -51,7 +51,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(180deg, #00B38C -66.81%, #0C1311 127.96%);
+  background: linear-gradient(180deg, var(--color-gfx-green-300) -66.81%, var(--color-gfx-green-800) 127.96%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;

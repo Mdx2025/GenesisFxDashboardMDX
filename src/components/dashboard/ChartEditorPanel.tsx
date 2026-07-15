@@ -38,7 +38,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
 
   return (
     <div
-      className="absolute top-3 right-3 z-30 w-[280px] rounded-xl overflow-hidden bg-[rgba(10,14,12,0.92)] border border-white/[0.06] [backdrop-filter:url(#blur-24)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+      className="absolute top-3 right-3 z-30 w-[280px] rounded-xl overflow-hidden bg-gfx-surface-panel border border-gfx-card-border [backdrop-filter:url(#blur-24)] shadow-xl"
     >
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
@@ -62,7 +62,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
                   onClick={() => update({ data: p.data })}
                   className={`px-2.5 py-1 rounded-md text-xs cursor-pointer transition-all ${
                     active
-                      ? 'bg-[rgba(20,184,166,0.2)] text-white border border-[rgba(20,184,166,0.4)]'
+                      ? 'bg-gfx-green-500/20 text-white border border-gfx-green-500/40'
                       : 'bg-white/[0.04] text-gfx-neutral-300 border border-white/[0.06]'
                   }`}
                 >
@@ -138,7 +138,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
         {/* Reset */}
         <button
           onClick={() => onChange(defaultChartConfig)}
-          className="w-full py-2 rounded-lg text-xs uppercase tracking-[1.5px] text-gfx-neutral-300 hover:text-white cursor-pointer transition-colors bg-white/[0.03] border border-white/[0.06]"
+          className="w-full py-2 rounded-lg text-xs uppercase tracking-wide text-gfx-neutral-300 hover:text-white cursor-pointer transition-colors bg-white/[0.03] border border-white/[0.06]"
         >
           Reset Defaults
         </button>
@@ -150,7 +150,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-tiny uppercase tracking-[1.5px] text-gfx-neutral-500">{label}</span>
+      <span className="text-tiny uppercase tracking-wide text-gfx-neutral-500">{label}</span>
       {children}
     </div>
   )

@@ -142,7 +142,7 @@ export default function WithdrawPage() {
                         className={`h-12 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
                             ? 'bg-gfx-green-200 border border-gfx-green-250'
-                            : 'bg-gfx-green-800 border border-transparent hover:bg-[#1a1c1b]'
+                            : 'bg-gfx-green-800 border border-transparent hover:bg-gfx-surface-hover'
                         }`}
                       >
                         {coin.icon}

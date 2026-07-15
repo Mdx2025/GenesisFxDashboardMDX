@@ -143,7 +143,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
                 <span className="cursor-pointer"><InfoIcon /></span>
                 {/* Tooltip on hover */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-50">
-                  <div className="bg-gfx-green-900 rounded-md px-4 py-4 shadow-[0px_4px_8.9px_rgba(0,0,0,0.25)] text-center w-[221px]">
+                  <div className="bg-gfx-green-900 rounded-md px-4 py-4 shadow-sm text-center w-[221px]">
                     <p className="text-gfx-neutral-600 text-base font-medium font-acid leading-6">Account Details Email</p>
                     <p className="text-gfx-neutral-400 text-sm font-normal font-acid leading-5 mt-2.5">Your TradeLocker account details will be emailed to you once your account is created.</p>
                   </div>

@@ -94,7 +94,7 @@ export function CalculatorSection() {
         {/* Recommended Position */}
         <div
           className="mt-14 rounded-xl border border-gfx-green-900 px-8 py-6 flex flex-col gap-2"
-          style={{ background: 'linear-gradient(45deg, #0C1311 10%, #09241C 66%)' }}
+          style={{ background: 'linear-gradient(45deg, var(--color-gfx-green-800) 10%, var(--color-gfx-green-900) 66%)' }}
         >
           <span className="text-gfx-neutral-500 text-base font-acid font-medium">Recommended Position</span>
           <div className="flex items-baseline gap-2">

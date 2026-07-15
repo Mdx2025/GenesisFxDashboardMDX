@@ -120,10 +120,10 @@ export function CopySubscriptionModal({
       <div
         ref={modalRef}
         className="w-[1024px] max-w-[95vw] rounded-xl flex overflow-hidden"
-        style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03), 0px 25px 50px -12px rgba(0,0,0,0.25)', outline: '1.16px solid #0C1311' }}
+        style={{ background: 'var(--color-gfx-green-800)', boxShadow: 'var(--shadow-subtle), 0px 25px 50px -12px rgba(0,0,0,0.25)', outline: '1.16px solid var(--color-gfx-green-800)' }}
       >
         {/* Left Column — Configuration Form */}
-        <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0, borderRight: '1px solid #303030' }}>
+        <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0, borderRight: '1px solid var(--color-gfx-neutral-250)' }}>
           {/* Step indicator + title */}
           <div className="flex items-center gap-4 mb-[39px]">
             <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-gfx-green-300 flex items-center justify-center flex-shrink-0">

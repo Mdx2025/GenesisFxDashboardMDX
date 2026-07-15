@@ -6,26 +6,26 @@
   gap: clamp(12px, 0.5rem + 0.3vw, 24px);
   cursor: pointer;
   transition: background 0.35s ease, color 0.35s ease, outline-color 0.35s ease;
-  color: #A0A0A0;
+  color: var(--color-gfx-neutral-500);
   font-size: clamp(0.7rem, 0.4rem + 0.45vw, 1.5rem);
   background: transparent;
   position: relative;
   overflow: hidden;
-  z-index: 1;
+  z-index: var(--z-base);
 }
 .nav-btn > svg {
   width: clamp(21px, 1rem + 0.4vw, 36px);
   height: clamp(21px, 1rem + 0.4vw, 36px);
 }
 .nav-btn:hover {
-  background: rgba(255,255,255,0.03);
+  background: var(--color-gfx-card-bg);
 }
 .nav-btn:focus-visible {
-  outline: 2px solid #10BC83;
+  outline: 2px solid var(--color-gfx-green-500);
   outline-offset: -2px;
 }
 .nav-btn.active {
-  background: #000705;
+  background: var(--color-gfx-sidebar);
   border: 1px solid transparent;
   outline: none;
   color: #fff;
@@ -36,7 +36,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+  background: linear-gradient(180deg, var(--color-gfx-green-200) -66.81%, var(--color-gfx-green-800) 127.96%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -44,8 +44,8 @@
   pointer-events: none;
 }
 .nav-btn.active > svg {
-  color: #00B38C;
-  fill: #00B38C;
+  color: var(--color-gfx-green-300);
+  fill: var(--color-gfx-green-300);
 }
 .active-indicator {
   position: absolute;

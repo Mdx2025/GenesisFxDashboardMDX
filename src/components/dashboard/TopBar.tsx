@@ -106,7 +106,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
             : 'sticky top-0 z-40 py-4 -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14'
         }`}
         style={{
-          background: scrolled ? 'rgba(10, 14, 12, 0.85)' : 'transparent',
+          background: scrolled ? 'var(--color-gfx-surface-blur)' : 'transparent',
           backdropFilter: scrolled ? 'url(#blur-23)' : 'none',
           WebkitBackdropFilter: scrolled ? 'url(#blur-23)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',

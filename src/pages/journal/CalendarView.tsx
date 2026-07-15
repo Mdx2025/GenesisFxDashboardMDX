@@ -42,7 +42,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
           strokeWidth="6"
           strokeDasharray={`${progress} ${remaining}`}
           strokeLinecap="round"
-          className="drop-shadow-[0_0_6px_rgba(16,188,131,0.5)]"
+          className="[filter:var(--shadow-drop-glow-green)]"
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
@@ -66,8 +66,7 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
         <div className="flex-1 flex items-center justify-center mt-2">
           {stat.type === 'asset' && (
             <div
-              className="flex items-center gap-4 px-5 py-2.5 rounded-full"
-              style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
+              className="flex items-center gap-4 px-5 py-2.5 rounded-full bg-stat-pill"
             >
               <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
                 <g clipPath="url(#xauusd-clip)">
@@ -85,8 +84,7 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
           )}
           {stat.type === 'number' && (
             <div
-              className="flex items-center gap-4 px-5 py-2.5 rounded-full"
-              style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
+              className="flex items-center gap-4 px-5 py-2.5 rounded-full bg-stat-pill"
             >
               <DiagramUpIcon />
               <span className="text-white text-2xl font-acid">{stat.value}</span>

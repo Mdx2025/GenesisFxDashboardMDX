@@ -361,7 +361,7 @@ export default function PammPage() {
                 <p className="text-gfx-neutral-400 text-base font-acid mt-4 leading-tight">You don't have any active PAMM subscriptions yet</p>
                 <button
                   onClick={() => setActiveTab(0)}
-                  className="mt-10 h-11 px-[1.9375rem] rounded-full bg-[#f1fffa] text-black text-base font-acid font-medium leading-6 cursor-pointer hover:bg-[#e0f5ec] transition-colors"
+                  className="mt-10 h-11 px-[1.9375rem] rounded-full bg-gfx-green-lightest text-black text-base font-acid font-medium leading-6 cursor-pointer hover:bg-gfx-green-lightest-hover transition-colors"
                 >
                   Browse strategies
                 </button>

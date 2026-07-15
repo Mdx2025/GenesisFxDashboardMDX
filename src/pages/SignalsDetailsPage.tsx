@@ -325,7 +325,7 @@ export default function SignalsDetailsPage() {
               </thead>
               <tbody>
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
-                  <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
+                  <tr key={i} style={{ borderBottom: '0.77px solid var(--color-gfx-green-900)' }}>
                     <td className="px-12 py-4">
                       <p className="text-white text-base font-acid font-medium leading-6">{trade.openDate}</p>
                       <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.openTime}</p>
@@ -341,7 +341,7 @@ export default function SignalsDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid var(--color-gfx-bullish)', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
                       <span className="text-white text-base font-acid font-medium leading-6">{trade.volume}</span>

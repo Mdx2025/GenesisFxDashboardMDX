@@ -456,7 +456,7 @@ export default function CopyTradingDetailsPage() {
         </div>
 
         {/* Trades Table */}
-        <div className="rounded-lg overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
+        <div className="rounded-lg overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: 'var(--shadow-subtle)', outline: '1.16px solid var(--color-gfx-green-800)' }}>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>
@@ -468,7 +468,7 @@ export default function CopyTradingDetailsPage() {
               </thead>
               <tbody>
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
-                  <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
+                  <tr key={i} style={{ borderBottom: '0.77px solid var(--color-gfx-green-900)' }}>
                     <td className="px-12 py-4">
                       <p className="text-white text-base font-acid font-medium leading-6">{trade.openDate}</p>
                       <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.openTime}</p>
@@ -484,7 +484,7 @@ export default function CopyTradingDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid var(--color-gfx-bullish)', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-6">{trade.volume}</span></td>
                     <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-6">{trade.openPrice}</span></td>

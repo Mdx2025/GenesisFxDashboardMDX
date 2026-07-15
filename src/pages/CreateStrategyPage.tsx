@@ -63,7 +63,7 @@ function FeeRow({ label, helpText, value, suffix }: { label: string; helpText: s
         <p className="text-gfx-neutral-600 text-base font-acid leading-tight">{label}</p>
         <span className="text-gfx-green-300 text-base font-acid leading-tight">{value}{suffix}</span>
       </div>
-      <div className="w-full h-px bg-[#1a1a1a] my-4" />
+      <div className="w-full h-px bg-gfx-surface-divider my-4" />
       <p className="text-gfx-neutral-400 text-base font-acid leading-tight">{helpText}</p>
     </div>
   )

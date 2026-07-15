@@ -90,6 +90,20 @@
   --color-gfx-glow-green-light: #104030;
   --color-gfx-glow-purple: #D760FF;
 
+  /* Surface tokens — blur/dropdown/panel backgrounds */
+  --color-gfx-surface-blur: rgba(10, 14, 12, 0.85);
+  --color-gfx-surface-panel: rgba(10, 14, 12, 0.92);
+  --color-gfx-surface-dark: #0a0a0a;
+  --color-gfx-surface-divider: #1a1a1a;
+  --color-gfx-surface-progress: #0f1e19;
+  --color-gfx-surface-video: #0a0f0d;
+  --color-gfx-green-lightest: #f1fffa;
+  --color-gfx-green-lightest-hover: #e0f5ec;
+  --color-gfx-green-glow-em: #55FFC7;
+
+  /* Focus ring */
+  --color-gfx-focus-ring: rgba(16, 188, 131, 0.5);
+
   /* Radius tokens */
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -102,7 +116,10 @@
   --shadow-sm: 0px 2px 8px rgba(0,0,0,0.15);
   --shadow-md: 0px 4.64px 23.2px rgba(0,0,0,0.2);
   --shadow-lg: 0px 9.08px 36.32px rgba(0,0,0,0.3);
+  --shadow-xl: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-subtle: 0px 2.8px 14px rgba(0,0,0,0.03);
   --shadow-glow-green: 0 0 6px rgba(0,240,160,0.6), 0 0 12px rgba(0,240,160,0.3);
+  --shadow-drop-glow-green: drop-shadow(0 0 6px rgba(16,188,131,0.5));
 
   /* Z-index tokens */
   --z-base: 1;
@@ -172,6 +189,7 @@
 
   --tracking-label: 0.22em;
   --tracking-tab: 2.32px;
+  --tracking-wide: 1.5px;
 
   /* Extended fluid type — page titles and hero sections */
   --font-size-hero: clamp(2rem, 1rem + 5vw, 3.125rem);
@@ -218,7 +236,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1.16px;
-    background: linear-gradient(180deg, #064B34 -66.81%, #0C1311 127.96%);
+    background: linear-gradient(180deg, var(--color-gfx-green-200) -66.81%, var(--color-gfx-green-800) 127.96%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -227,12 +245,12 @@
   }
 
   .weekly-stat-active.glass-card {
-    background: #0C1311;
+    background: var(--color-gfx-green-800);
     box-shadow: none;
   }
 
   .weekly-stat-inactive.glass-card {
-    background: #09241C;
+    background: var(--color-gfx-green-900);
     box-shadow: none;
     border: 1.16px solid transparent;
   }
@@ -249,7 +267,7 @@
   }
 
   .glass-card-purple {
-    background: #090414;
+    background: var(--color-gfx-purple-bg);
     border: 1px solid var(--color-gfx-purple-border);
     position: relative;
     overflow: hidden;
@@ -270,12 +288,12 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #00f0a0;
+    background: var(--color-gfx-green-glow);
     box-shadow: 0 0 5px rgba(0,240,160,0.8);
   }
 
   .bg-stat-pill {
-    background: radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%);
+    background: radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, var(--color-gfx-green-800) 19%, var(--color-gfx-green-900) 73%);
   }
 }
 
@@ -315,8 +333,8 @@
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
 
 .modal-scroll-green::-webkit-scrollbar { width: 4px; }
-.modal-scroll-green::-webkit-scrollbar-track { background: #09241c; border-radius: 60px; }
-.modal-scroll-green::-webkit-scrollbar-thumb { background: #00b38c; border-radius: 60px; }
+.modal-scroll-green::-webkit-scrollbar-track { background: var(--color-gfx-green-900); border-radius: var(--radius-full); }
+.modal-scroll-green::-webkit-scrollbar-thumb { background: var(--color-gfx-green-300); border-radius: var(--radius-full); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -350,5 +368,5 @@
 /* Economic Calendar green scrollbar */
 .econ-calendar-scroll::-webkit-scrollbar { width: 4px; }
 .econ-calendar-scroll::-webkit-scrollbar-track { background: transparent; }
-.econ-calendar-scroll::-webkit-scrollbar-thumb { background: #10BC83; border-radius: 4px; }
-.econ-calendar-scroll { scrollbar-width: thin; scrollbar-color: #10BC83 transparent; }
+.econ-calendar-scroll::-webkit-scrollbar-thumb { background: var(--color-gfx-green-500); border-radius: 4px; }
+.econ-calendar-scroll { scrollbar-width: thin; scrollbar-color: var(--color-gfx-green-500) transparent; }

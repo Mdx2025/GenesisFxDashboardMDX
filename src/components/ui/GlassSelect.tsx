@@ -81,7 +81,7 @@ export function GlassSelect({ options, defaultValue, value, placeholder = 'Selec
         type="button"
         onClick={() => setOpen(!open)}
         className={`w-full ${s.trigger} text-sm text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus:outline-none text-white bg-gfx-green-100 ${
-          open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-gfx-green-200'
+          open ? 'border border-gfx-focus-ring' : 'border border-gfx-green-200'
         }`}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -104,7 +104,7 @@ export function GlassSelect({ options, defaultValue, value, placeholder = 'Selec
       <ul
         ref={dropdownRef}
         role="listbox"
-        className={`absolute left-0 right-0 top-full mt-2 ${s.dropdown} overflow-y-auto max-h-[15rem] z-50 border border-white/[0.06] bg-[rgba(10,14,12,0.92)] [backdrop-filter:url(#blur-24)]`}
+        className={`absolute left-0 right-0 top-full mt-2 ${s.dropdown} overflow-y-auto max-h-[15rem] z-50 border border-gfx-card-border bg-gfx-surface-panel [backdrop-filter:url(#blur-24)]`}
       >
         {options.map((option) => {
           const isSelected = selected?.value === option.value
