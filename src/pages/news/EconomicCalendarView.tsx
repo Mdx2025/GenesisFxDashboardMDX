@@ -35,7 +35,7 @@ const GRID_COLS = 'grid-cols-[80px_160px_80px_1fr_120px_120px_100px]'
 /* ─── Calendar Row ─── */
 
 function CalendarRow({ event }: { event: EconomicEvent }) {
-  const actualColorClass = event.actualColor === 'red' ? 'text-gfx-red-muted' : 'text-[#37c92e]'
+  const actualColorClass = event.actualColor === 'red' ? 'text-gfx-red-muted' : 'text-gfx-bullish-light'
 
   return (
     <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-15 h-[62px] border-b border-white/[0.04]`}>

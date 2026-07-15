@@ -128,7 +128,7 @@ export default function WithdrawProcessingPage() {
             <HourglassIllustration />
 
             <p className="text-gfx-neutral-500 text-2xl 3xl:text-3xl 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
-            <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-[4rem] 4xl:text-[5.25rem] font-normal mt-2 leading-tight">
+            <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-6xl 4xl:text-[5.25rem] font-normal mt-2 leading-tight">
               {amount} {coin}
             </p>
 

@@ -572,7 +572,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
                 </h2>
                 <button
                   type="button"
-                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-md border border-[#A0A0A0] bg-transparent text-gfx-neutral-600 text-base font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
+                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-md border border-gfx-neutral-500 bg-transparent text-gfx-neutral-600 text-base font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
                 >
                   <NotebookIcon />
                   <span>Rules</span>
@@ -585,7 +585,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Left — Challenge Details */}
             <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800">
               <GlowEllipse className="left-[36px] -top-[220px]" />
-              <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
+              <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-2xl mb-6">Challenge Details</h3>
@@ -604,8 +604,8 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
                   <div>
                     <div className="flex items-baseline gap-2 mb-[0.125rem]">
-                      <span className="text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem]">Username</span>
-                      <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-[1.528rem]">(On Leaderboard)</span>
+                      <span className="text-gfx-neutral-600 font-acid font-medium text-base leading-6">Username</span>
+                      <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-6">(On Leaderboard)</span>
                     </div>
                     <GlassInput
                       placeholder="Enter your preferred account name"
@@ -637,16 +637,16 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
                 {/* Divider */}
                 <div className="divider-glow my-4" />
 
-                <p className="text-white font-acid font-medium text-base leading-[1.528rem] mb-4">Trading Account Details</p>
+                <p className="text-white font-acid font-medium text-base leading-6 mb-4">Trading Account Details</p>
 
                 <div className="flex flex-col">
                   {accountPreviewRows.map((row) => (
                     <div key={row.label} className="flex items-center justify-between py-3 border-b border-gfx-green-900 last:border-b-0">
-                      <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-[1.528rem]">{row.label}</span>
+                      <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-6">{row.label}</span>
                       {row.special === 'live' ? (
                         <LiveBadge />
                       ) : (
-                        <span className="text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem]">
+                        <span className="text-gfx-neutral-600 font-acid font-medium text-base leading-6">
                           {row.value}
                         </span>
                       )}

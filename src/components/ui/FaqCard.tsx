@@ -17,7 +17,7 @@ export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCar
   return (
     <div className="rounded-3xl border border-gfx-neutral-250 bg-gfx-sidebar px-8 py-7">
       <div className="flex items-center justify-between gap-6">
-        <span className="text-lg 3xl:text-2xl 4xl:text-3xl text-white font-normal leading-[1.406rem] 3xl:leading-8 4xl:leading-10">{question}</span>
+        <span className="text-lg 3xl:text-2xl 4xl:text-3xl text-white font-normal leading-6 3xl:leading-8 4xl:leading-10">{question}</span>
         <button
           type="button"
           onClick={onToggle}

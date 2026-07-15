@@ -144,34 +144,34 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
                 {/* Tooltip on hover */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-50">
                   <div className="bg-gfx-green-900 rounded-md px-4 py-4 shadow-[0px_4px_8.9px_rgba(0,0,0,0.25)] text-center w-[221px]">
-                    <p className="text-gfx-neutral-600 text-base font-medium font-acid leading-[1.528rem]">Account Details Email</p>
-                    <p className="text-gfx-neutral-400 text-sm font-normal font-acid leading-[1.175rem] mt-2.5">Your TradeLocker account details will be emailed to you once your account is created.</p>
+                    <p className="text-gfx-neutral-600 text-base font-medium font-acid leading-6">Account Details Email</p>
+                    <p className="text-gfx-neutral-400 text-sm font-normal font-acid leading-5 mt-2.5">Your TradeLocker account details will be emailed to you once your account is created.</p>
                   </div>
                 </div>
               </div>
-              <span className="text-gfx-neutral-400 text-base font-medium font-acid leading-[1.528rem]">Account Details</span>
+              <span className="text-gfx-neutral-400 text-base font-medium font-acid leading-6">Account Details</span>
             </div>
           </div>
 
           {/* Form fields */}
           <div className="flex flex-col gap-5.5">
             <div>
-              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem] mb-1.5">From Account</label>
+              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-6 mb-1.5">From Account</label>
               <GlassInput placeholder="Gen.01" value={fromAccount} onChange={setFromAccount} />
             </div>
 
             <div>
-              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem] mb-1.5">Account Type</label>
+              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-6 mb-1.5">Account Type</label>
               <GlassSelect options={ACCOUNT_TYPE_OPTIONS} placeholder="0.00" value={accountType} onChange={setAccountType} />
             </div>
 
             <div>
-              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem] mb-1.5">Leverage</label>
+              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-6 mb-1.5">Leverage</label>
               <GlassSelect options={LEVERAGE_OPTIONS} placeholder="1200" value={leverage} onChange={setLeverage} />
             </div>
 
             <div>
-              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem] mb-1.5">Demo Account Size</label>
+              <label className="block text-gfx-neutral-600 font-acid font-medium text-base leading-6 mb-1.5">Demo Account Size</label>
               <GlassSelect options={DEMO_SIZE_OPTIONS} placeholder="$10,000" value={demoSize} onChange={setDemoSize} />
             </div>
           </div>

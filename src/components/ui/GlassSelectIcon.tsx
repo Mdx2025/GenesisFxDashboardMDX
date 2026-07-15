@@ -66,7 +66,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
   return (
     <div ref={ref} className={`relative ${open ? 'z-50' : 'z-0'}`}>
       {label && (
-        <label className="block text-white font-acid font-medium text-base leading-[1.528rem] mb-[2px]">
+        <label className="block text-white font-acid font-medium text-base leading-6 mb-[2px]">
           {label}
         </label>
       )}
@@ -74,7 +74,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
         type="button"
         onClick={() => setOpen(!open)}
         className={`w-full flex items-center cursor-pointer focus:outline-none h-[50px] bg-gfx-green-100 rounded-2xl ${
-          open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#404040]'
+          open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-gfx-neutral-350'
         }`}
         aria-haspopup="listbox"
         aria-expanded={open}

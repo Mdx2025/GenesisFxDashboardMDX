@@ -99,7 +99,7 @@ function GlossarySection() {
       <div className="flex items-center justify-center gap-[0.8125rem] flex-wrap mb-[2.5625rem]">
         <button
           onClick={() => setActiveLetter('All')}
-          className={`h-[2.0625rem] px-3 rounded-full text-lg leading-[17.6px] font-normal cursor-pointer transition-colors ${
+          className={`h-[2.0625rem] px-3 rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors ${
             activeLetter === 'All'
               ? 'bg-gfx-green-300 text-gfx-green-100'
               : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
@@ -111,7 +111,7 @@ function GlossarySection() {
           <button
             key={letter}
             onClick={() => setActiveLetter(letter)}
-            className={`w-[2.0625rem] h-[2.0625rem] rounded-full text-lg leading-[17.6px] font-normal cursor-pointer transition-colors flex items-center justify-center ${
+            className={`w-[2.0625rem] h-[2.0625rem] rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors flex items-center justify-center ${
               activeLetter === letter
                 ? 'bg-gfx-green-300 text-gfx-green-100'
                 : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'

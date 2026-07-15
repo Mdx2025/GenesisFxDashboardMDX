@@ -151,7 +151,7 @@ const monthlyPerformance: MonthEntry[] = [
 
 const CELL_STYLES = {
   positive: 'bg-gfx-green-900 border border-gfx-green-300',
-  negative: 'bg-gfx-red-surface border border-[#7F3B34]',
+  negative: 'bg-gfx-red-surface border border-gfx-red-deep',
   empty: 'border border-gfx-green-200',
 } as const
 
@@ -167,24 +167,24 @@ function PerformanceGrid() {
       <div className="relative">
         <div className="flex items-start">
           <div className="flex flex-col items-start w-[3.75rem] flex-shrink-0">
-            <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px]">Year</span>
+            <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6">Year</span>
             <div className="h-11 flex items-center mt-3">
-              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px]">2026</span>
+              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6">2026</span>
             </div>
           </div>
           <div className="flex-1 flex gap-2.5">
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
-                <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
+                <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6 mb-3">{m.month}</span>
                 <div className={`w-full h-11 rounded-sm flex items-center justify-center ${CELL_STYLES[m.type]}`}>
-                  {m.value && <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
+                  {m.value && <span className={`text-base font-acid font-medium leading-6 ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
             ))}
             <div className="flex flex-col items-center flex-1 min-w-0">
-              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">Ann</span>
+              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6 mb-3">Ann</span>
               <div className={`w-full h-11 rounded-sm flex items-center justify-center ${CELL_STYLES.positive}`}>
-                <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
+                <span className={`text-base font-acid font-medium leading-6 ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
           </div>
@@ -192,15 +192,15 @@ function PerformanceGrid() {
         <div className="flex items-center justify-center gap-8 mt-8">
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 0.5H18C18.8284 0.5 19.5 1.17157 19.5 2V18C19.5 18.8284 18.8284 19.5 18 19.5H2C1.17157 19.5 0.5 18.8284 0.5 18V2C0.5 1.17157 1.17157 0.5 2 0.5Z" fill="#09241C" stroke="#00B38C"/></svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">Positive turn</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">Positive turn</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" fill="#2A1411" stroke="#7F3B34"/></svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">Negative turn</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">Negative turn</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" stroke="#064B34"/></svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">No trades</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">No trades</span>
           </div>
         </div>
       </div>
@@ -237,20 +237,20 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
         <div key={row.label}>
           <div className="flex items-center justify-between py-4 px-7">
             <div className="flex items-center gap-2.5">
-              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">{row.label}</span>
+              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">{row.label}</span>
               <StatInfoIcon />
             </div>
             <div className="flex items-center gap-3">
               {row.progressBar && (
                 <div className="flex items-center gap-2">
-                  <span className="text-white text-base font-acid font-medium leading-[24.44px]">{row.value}</span>
+                  <span className="text-white text-base font-acid font-medium leading-6">{row.value}</span>
                   <div className="w-[5.5rem] h-[0.5625rem] rounded-full bg-gfx-green-900 relative">
                     <div className="h-full rounded bg-gfx-green-200" style={{ width: `${(row.progressBar.percent / 100) * 88}px` }} />
                   </div>
                 </div>
               )}
               {!row.progressBar && (
-                <span className="text-base font-acid font-medium leading-[24.44px]" style={{ color: row.valueColor || 'white' }}>{row.value}</span>
+                <span className="text-base font-acid font-medium leading-6" style={{ color: row.valueColor || 'white' }}>{row.value}</span>
               )}
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function CopyTradingDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/copy-trading')}
-            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>
@@ -395,7 +395,7 @@ export default function CopyTradingDetailsPage() {
                   { label: 'Since', value: 'Jan 15,2026' },
                 ].map((item, i) => (
                   <div key={i}>
-                    {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
+                    {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
                       <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">{item.label}</span>
                       <span className="text-white text-[0.625rem] font-acid">{item.value}</span>
@@ -462,7 +462,7 @@ export default function CopyTradingDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-4 px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -470,26 +470,26 @@ export default function CopyTradingDetailsPage() {
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
                   <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
                     <td className="px-12 py-4">
-                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
-                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-6">{trade.openDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.openTime}</p>
                     </td>
                     <td className="px-12 py-4">
-                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
-                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-6">{trade.closeDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.closeTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <div className="flex items-center gap-3">
                         <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><g clipPath="url(#xauClipCT)"><path d="M0 0H38V38H0V0Z" fill="#D69A00"/><path d="M14.42 14.63H23.77L22.41 10.97C22.36 10.82 22.26 10.69 22.13 10.59L14.42 14.63ZM14.39 10.28C14.73 9.39 15.45 8.82 16.26 8.82H21.79C22.59 8.82 23.32 9.39 23.65 10.28L25.02 13.94C25.42 15.04 24.76 16.28 23.77 16.28H14.27C13.28 16.28 12.62 15.04 13.03 13.94L14.39 10.28ZM6.95 24.13H16.28L14.92 20.47C14.86 20.32 14.77 20.19 14.64 20.09L6.95 24.13ZM6.92 19.78C7.25 18.89 7.98 18.32 8.78 18.32H14.3C15.1 18.32 15.83 18.89 16.16 19.78L17.52 23.44C17.93 24.54 17.27 25.78 16.28 25.78H6.8C5.81 25.78 5.15 24.54 5.56 23.44L6.92 19.78ZM31.27 24.13H21.88L29.63 20.09C29.75 20.18 29.85 20.31 29.91 20.47L31.27 24.13ZM23.71 18.32C22.91 18.32 22.18 18.89 21.85 19.78L20.49 23.44C20.08 24.54 20.74 25.78 21.73 25.78H31.27C32.27 25.78 32.93 24.54 32.52 23.44L31.15 19.78C30.82 18.89 30.09 18.32 29.29 18.32H23.71Z" fill="white"/></g><defs><clipPath id="xauClipCT"><rect width="38" height="38" rx="19" fill="white"/></clipPath></defs></svg>
-                        <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.symbol}</span>
+                        <span className="text-white text-base font-acid font-medium leading-6">{trade.symbol}</span>
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
-                    <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span></td>
-                    <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openPrice}</span></td>
-                    <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closePrice}</span></td>
-                    <td className="px-12 py-4"><span className="text-gfx-red-muted text-base font-acid font-medium leading-[24.44px]">{trade.pnl}</span></td>
+                    <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-6">{trade.volume}</span></td>
+                    <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-6">{trade.openPrice}</span></td>
+                    <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-6">{trade.closePrice}</span></td>
+                    <td className="px-12 py-4"><span className="text-gfx-red-muted text-base font-acid font-medium leading-6">{trade.pnl}</span></td>
                   </tr>
                 ))}
                 {tradeTab === 0 && (

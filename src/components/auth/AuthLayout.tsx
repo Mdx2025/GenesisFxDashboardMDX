@@ -8,14 +8,14 @@ function AuthFooter() {
   return (
     <footer className="w-full relative lg:absolute lg:bottom-0 mt-6 lg:mt-0 px-4 lg:pl-15 lg:pr-0">
       <div className="bg-gfx-green-800 rounded-sm px-4 lg:px-6 py-3 lg:py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-        <span className="text-gfx-neutral-600 text-xs leading-[1.175rem] whitespace-nowrap">
+        <span className="text-gfx-neutral-600 text-xs leading-5 whitespace-nowrap">
           2026 Genesis FX Markets. All rights reserved.
         </span>
         <nav className="flex flex-wrap items-center justify-center gap-x-4 lg:gap-x-6 gap-y-1" aria-label="Legal links">
-          <a href="#terms" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Terms &amp; Conditions</a>
-          <a href="#privacy" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#risk" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Risk Disclosure</a>
-          <a href="#aml" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Anti-Money Laundering</a>
+          <a href="#terms" className="text-gfx-neutral-500 text-xs leading-5 hover:text-white transition-colors">Terms &amp; Conditions</a>
+          <a href="#privacy" className="text-gfx-neutral-500 text-xs leading-5 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#risk" className="text-gfx-neutral-500 text-xs leading-5 hover:text-white transition-colors">Risk Disclosure</a>
+          <a href="#aml" className="text-gfx-neutral-500 text-xs leading-5 hover:text-white transition-colors">Anti-Money Laundering</a>
         </nav>
       </div>
     </footer>
@@ -40,8 +40,8 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           />
           <div className="absolute w-[36.6875rem] h-[20.75rem] -top-[13.4375rem] -right-[16.875rem] rounded-full bg-gfx-green-300 blur-[10rem] opacity-20 pointer-events-none" aria-hidden="true" />
           <div className="absolute w-[30.8125rem] h-[17.375rem] -bottom-[9.375rem] -left-[9.375rem] rounded-full bg-gfx-green-300 blur-[10rem] opacity-20 pointer-events-none" aria-hidden="true" />
-          <div className="absolute w-[18.4375rem] h-[17.125rem] -bottom-[6.25rem] -left-[3.125rem] rounded-full bg-[#40c99c] blur-[8.75rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
-          <div className="absolute w-[18.4375rem] h-[17.125rem] -bottom-[5rem] left-0 rounded-full bg-[#40c99c] blur-[9.375rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
+          <div className="absolute w-[18.4375rem] h-[17.125rem] -bottom-[6.25rem] -left-[3.125rem] rounded-full bg-gfx-green-350 blur-[8.75rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
+          <div className="absolute w-[18.4375rem] h-[17.125rem] -bottom-[5rem] left-0 rounded-full bg-gfx-green-350 blur-[9.375rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
           <img
             src="/images/genesis-logo.png"
             alt="Genesis FX"

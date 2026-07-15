@@ -174,7 +174,7 @@ export default function SignalsDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/signals')}
-            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>
@@ -237,7 +237,7 @@ export default function SignalsDetailsPage() {
                   { label: 'Launch Date', value: 'Jun 19, 2026' },
                 ].map((item, i) => (
                   <div key={i}>
-                    {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
+                    {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
                       <span className="text-gfx-neutral-500 text-sm font-acid">{item.label}</span>
                       {item.isBadge ? (
@@ -260,11 +260,11 @@ export default function SignalsDetailsPage() {
             <div className="flex justify-between items-start">
               <h3 className="text-white text-2xl font-acid font-normal">Performance & Frequency</h3>
               <div className="flex flex-col items-end">
-                <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
+                <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6 mb-2">Most Traded</p>
                 <div className="flex items-center gap-2 bg-gfx-green-800 rounded-sm border-[1.32px] border-gfx-green-900 px-3 py-2">
                   <XauusdSmallIcon />
                   <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
-                  <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">2</span>
+                  <span className="text-gfx-neutral-400 text-sm font-acid leading-5">2</span>
                 </div>
               </div>
             </div>
@@ -283,7 +283,7 @@ export default function SignalsDetailsPage() {
               ].map((s, i) => (
                 <div key={i}>
                   <p className={`${s.green ? 'text-gfx-bullish-light' : 'text-white'} text-2xl font-acid font-normal`}>{s.value}</p>
-                  <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px] mt-1">{s.label}</p>
+                  <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6 mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -319,7 +319,7 @@ export default function SignalsDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-4 px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -327,33 +327,33 @@ export default function SignalsDetailsPage() {
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
                   <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
                     <td className="px-12 py-4">
-                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
-                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-6">{trade.openDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.openTime}</p>
                     </td>
                     <td className="px-12 py-4">
-                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
-                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-6">{trade.closeDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.closeTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <div className="flex items-center gap-3">
                         <XauusdSmallIcon />
-                        <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.symbol}</span>
+                        <span className="text-white text-base font-acid font-medium leading-6">{trade.symbol}</span>
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span>
+                      <span className="text-white text-base font-acid font-medium leading-6">{trade.volume}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openPrice}</span>
+                      <span className="text-white text-base font-acid font-medium leading-6">{trade.openPrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closePrice}</span>
+                      <span className="text-white text-base font-acid font-medium leading-6">{trade.closePrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-gfx-red-muted text-base font-acid font-medium leading-[24.44px]">{trade.pnl}</span>
+                      <span className="text-gfx-red-muted text-base font-acid font-medium leading-6">{trade.pnl}</span>
                     </td>
                   </tr>
                 ))}

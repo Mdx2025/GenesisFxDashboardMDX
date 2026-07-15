@@ -372,7 +372,7 @@ export default function CopyTradingPage() {
                   </div>
                   <div>
                     <h3 className="text-white text-2xl font-acid leading-normal">marcelo cedeno</h3>
-                    <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">Manage your copy trading strategies</p>
+                    <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">Manage your copy trading strategies</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

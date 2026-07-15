@@ -150,7 +150,7 @@ export function ManageSubscriptionModal({
               </div>
               <div>
                 <p className="text-white text-lg font-acid leading-tight">{providerName}</p>
-                <p className="text-gfx-neutral-500 text-xs font-acid leading-[18.8px]">{providerSubtitle}</p>
+                <p className="text-gfx-neutral-500 text-xs font-acid leading-5">{providerSubtitle}</p>
               </div>
             </div>
 
@@ -173,10 +173,10 @@ export function ManageSubscriptionModal({
             {activeTab === 0 && (
               <div className="flex flex-col gap-6">
                 <div className="border border-gfx-neutral-250 rounded-xl min-h-[191px] flex items-center justify-center">
-                  <p className="text-gfx-neutral-500 text-base font-acid-medium leading-[24.44px]">No open positions yet.</p>
+                  <p className="text-gfx-neutral-500 text-base font-acid-medium leading-6">No open positions yet.</p>
                 </div>
                 {/* Cancel Subscription */}
-                <button className="w-full h-[46px] rounded-2xl border border-[#7f3b34] text-gfx-red-muted text-base font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
+                <button className="w-full h-[46px] rounded-2xl border border-gfx-red-deep text-gfx-red-muted text-base font-acid-medium leading-6 cursor-pointer hover:bg-gfx-red-deep/10 transition-colors">
                   Cancel Subscription
                 </button>
               </div>
@@ -185,10 +185,10 @@ export function ManageSubscriptionModal({
             {activeTab === 1 && (
               <div className="flex flex-col gap-6">
                 <div className="border border-gfx-neutral-250 rounded-xl min-h-[191px] flex items-center justify-center">
-                  <p className="text-gfx-neutral-500 text-base font-acid-medium leading-[24.44px]">No closed trades yet.</p>
+                  <p className="text-gfx-neutral-500 text-base font-acid-medium leading-6">No closed trades yet.</p>
                 </div>
                 {/* Cancel Subscription */}
-                <button className="w-full h-[46px] rounded-2xl border border-[#7f3b34] text-gfx-red-muted text-base font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
+                <button className="w-full h-[46px] rounded-2xl border border-gfx-red-deep text-gfx-red-muted text-base font-acid-medium leading-6 cursor-pointer hover:bg-gfx-red-deep/10 transition-colors">
                   Cancel Subscription
                 </button>
               </div>
@@ -221,7 +221,7 @@ export function ManageSubscriptionModal({
                 </div>
 
                 {/* Cancel Subscription */}
-                <button className="w-full h-[46px] rounded-2xl border border-[#7f3b34] text-gfx-red-muted text-base font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors mt-2">
+                <button className="w-full h-[46px] rounded-2xl border border-gfx-red-deep text-gfx-red-muted text-base font-acid-medium leading-6 cursor-pointer hover:bg-gfx-red-deep/10 transition-colors mt-2">
                   Cancel Subscription
                 </button>
               </div>

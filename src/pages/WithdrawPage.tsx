@@ -104,7 +104,7 @@ export default function WithdrawPage() {
             <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
               Withdraw Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem]">
+            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
               Choose your preferred withdrawal method to get started.
             </p>
           </div>
@@ -141,8 +141,8 @@ export default function WithdrawPage() {
                         onClick={() => handleCoinSelect(coin.id)}
                         className={`h-12 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
-                            ? 'bg-gfx-green-200 border border-[#0a714f]'
-                            : 'bg-[#111312] border border-transparent hover:bg-[#1a1c1b]'
+                            ? 'bg-gfx-green-200 border border-gfx-green-250'
+                            : 'bg-gfx-green-800 border border-transparent hover:bg-[#1a1c1b]'
                         }`}
                       >
                         {coin.icon}
@@ -221,7 +221,7 @@ export default function WithdrawPage() {
                             </div>
                           </div>
 
-                          <div className="h-px bg-[#404040]" />
+                          <div className="h-px bg-gfx-neutral-350" />
 
                           <div className="flex items-center justify-between">
                             <div className="flex flex-col gap-3">

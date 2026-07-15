@@ -96,7 +96,7 @@ export function TransactionsPanel() {
                     <td className="py-5 text-white text-sm">{tx.direction}</td>
                     <td className={`py-5 text-sm ${tx.amountColor === 'green' ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>{tx.amount}</td>
                     <td className="py-5">
-                      <span className="inline-block px-4.5 py-1 rounded-full border border-[#0C9104] text-gfx-bullish-light text-xs">
+                      <span className="inline-block px-4.5 py-1 rounded-full border border-gfx-bullish text-gfx-bullish-light text-xs">
                         {tx.status}
                       </span>
                     </td>

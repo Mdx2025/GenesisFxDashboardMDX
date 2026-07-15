@@ -178,10 +178,10 @@ function TraderPassportCard() {
         </div>
 
         {/* Name */}
-        <span className="text-2xl text-[#f3eef9] font-acid text-center">{p.name}</span>
+        <span className="text-2xl text-gfx-purple-text font-acid text-center">{p.name}</span>
 
         {/* Location badge */}
-        <span className="px-4 py-1 rounded-full bg-white/5 border border-white/8 text-xs text-[#f3eef9] font-acid">
+        <span className="px-4 py-1 rounded-full bg-white/5 border border-white/8 text-xs text-gfx-purple-text font-acid">
           &#127487;&#127462; {p.location}
         </span>
 
@@ -205,7 +205,7 @@ function TraderPassportCard() {
               key={i}
               className="h-[4.5625rem] rounded-md bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
             >
-              <span className="text-2xl text-[#f3eef9] font-acid">{s.value}</span>
+              <span className="text-2xl text-gfx-purple-text font-acid">{s.value}</span>
               <span className="text-xs text-gfx-neutral-400 font-acid">{s.label}</span>
             </div>
           ))}
@@ -258,7 +258,7 @@ function TraderPassportCard() {
             </span>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl text-[#f3eef9] font-acid">{p.dailyStreakDays}</span>
+            <span className="text-2xl text-gfx-purple-text font-acid">{p.dailyStreakDays}</span>
             <span className="text-xs text-gfx-neutral-400 font-acid">days</span>
           </div>
           <div className="w-full h-[0.375rem] rounded-full bg-white/8 overflow-hidden">

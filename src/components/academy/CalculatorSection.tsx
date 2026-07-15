@@ -131,7 +131,7 @@ export function CalculatorSection() {
                   key={opt}
                   className={`h-[50px] rounded-lg border border-gfx-neutral-250 text-base font-acid cursor-pointer transition-colors opacity-80 ${
                     riskIdx === i
-                      ? 'bg-[#0A714F] text-white'
+                      ? 'bg-gfx-green-250 text-white'
                       : 'bg-gfx-green-800 text-gfx-neutral-500 hover:bg-white/5'
                   }`}
                   onClick={() => setRiskIdx(i)}
@@ -186,7 +186,7 @@ export function CalculatorSection() {
               <span className="text-white text-base font-acid font-medium mt-1">
                 {row.value}
               </span>
-              <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] mt-0.5">
+              <span className="text-gfx-neutral-400 text-sm font-acid leading-5 mt-0.5">
                 {row.subtext}
               </span>
             </div>

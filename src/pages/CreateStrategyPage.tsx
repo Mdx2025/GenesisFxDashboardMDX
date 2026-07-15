@@ -12,7 +12,7 @@ function Toggle({ enabled, onChange }: { enabled: boolean; onChange: (v: boolean
       type="button"
       onClick={() => onChange(!enabled)}
       className={`relative w-[44px] h-[22px] rounded-full transition-colors cursor-pointer flex-shrink-0 ${
-        enabled ? 'bg-[#40c99c]' : 'bg-gfx-green-900'
+        enabled ? 'bg-gfx-green-350' : 'bg-gfx-green-900'
       }`}
     >
       <div

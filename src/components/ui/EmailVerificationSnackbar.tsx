@@ -60,7 +60,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
         {/* Decorative glows */}
         <div className="absolute pointer-events-none w-[587px] h-[435px] left-[477px] top-[-281px] rotate-[48deg] origin-top-left bg-gfx-green-200 rounded-full blur-[157px]" aria-hidden="true" />
         <div className="absolute pointer-events-none w-[493px] h-[278px] left-[-17px] top-[61px] bg-gfx-green-200 rounded-full blur-[157px]" aria-hidden="true" />
-        <div className="absolute pointer-events-none w-[237px] h-[237px] left-[502px] top-[-61px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px]" aria-hidden="true" />
+        <div className="absolute pointer-events-none w-[237px] h-[237px] left-[502px] top-[-61px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px]" aria-hidden="true" />
 
         {/* Divider glow */}
         <div className="absolute left-4 top-0 w-[calc(100%-2rem)] h-[1.25px] bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)]" aria-hidden="true" />
@@ -68,13 +68,13 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
         {/* Content */}
         <div className="relative z-10 px-6 py-[2rem] flex flex-col gap-1">
           <div className="flex items-center gap-2">
-            <span className="text-white text-base font-medium leading-[1.525rem]">Check your email</span>
+            <span className="text-white text-base font-medium leading-6">Check your email</span>
             <EmailIcon />
           </div>
-          <p className="text-gfx-neutral-400 text-base font-medium leading-[1.525rem]">
+          <p className="text-gfx-neutral-400 text-base font-medium leading-6">
             We've sent a verification link to your email.
           </p>
-          <p className="text-gfx-neutral-400 text-base font-medium leading-[1.525rem]">
+          <p className="text-gfx-neutral-400 text-base font-medium leading-6">
             Please click it to confirm your account before<br />signing in
           </p>
         </div>

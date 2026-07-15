@@ -76,7 +76,7 @@ export default function DailySinglePage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/news')}
-            className="w-10 h-10 rounded-md bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0a714f] transition-colors shrink-0"
+            className="w-10 h-10 rounded-md bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-250 transition-colors shrink-0"
             aria-label="Back to news"
           >
             <BackArrow />
@@ -126,7 +126,7 @@ export default function DailySinglePage() {
                     <VolumeIcon />
                   </button>
                   <div className="w-[62px] h-1 bg-gfx-green-900 rounded-full overflow-hidden">
-                    <div className="w-[20%] h-full bg-[#0a714f] rounded-full" />
+                    <div className="w-[20%] h-full bg-gfx-green-250 rounded-full" />
                   </div>
                   <button className="cursor-pointer hover:opacity-80 transition-opacity">
                     <FullscreenIcon />
@@ -139,7 +139,7 @@ export default function DailySinglePage() {
 
               {/* Progress bar */}
               <div className="w-full h-1 bg-gfx-green-900 rounded-full overflow-hidden mb-3">
-                <div className="w-[23%] h-full bg-[#0a714f] rounded-full" />
+                <div className="w-[23%] h-full bg-gfx-green-250 rounded-full" />
               </div>
             </div>
 

@@ -194,7 +194,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                 <path d="M19.2493 11.4444V11.9921C19.2493 12.6493 19.4369 13.2918 19.7884 13.8386L20.6497 15.1787C21.4365 16.4027 20.8359 18.0664 19.4675 18.4534C15.8879 19.466 12.1121 19.466 8.5325 18.4534C7.1641 18.0664 6.5635 16.4027 7.3503 15.1787L8.2116 13.8386C8.5631 13.2918 8.7507 12.6493 8.7507 11.9921V11.4444C8.7507 8.4376 11.1009 6 14 6C16.8991 6 19.2493 8.4376 19.2493 11.4444Z" fill="white"/>
               </svg>
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-gfx-green-300 text-[10px] text-white font-medium">{unreadCount}</span>
+                <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-gfx-green-300 text-[0.625rem] text-white font-medium">{unreadCount}</span>
               )}
             </button>
 
@@ -220,7 +220,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                             {n.unread && <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-300 shrink-0" />}
                           </div>
                           <p className="text-gfx-neutral-300 text-xs leading-relaxed mt-0.5 line-clamp-2">{n.message}</p>
-                          <span className="text-[#404040] text-[10px] mt-1 block">{n.time}</span>
+                          <span className="text-gfx-neutral-350 text-[0.625rem] mt-1 block">{n.time}</span>
                         </div>
                       </div>
                     ))}

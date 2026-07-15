@@ -1,7 +1,7 @@
 export function StepCircle({ stepNumber, status }: { stepNumber: number; status: 'completed' | 'active' | 'inactive' }) {
   if (status === 'inactive') {
     return (
-      <div className="w-10 h-10 3xl:w-14 3xl:h-14 4xl:w-18 4xl:h-18 rounded-full bg-[#404040] flex items-center justify-center">
+      <div className="w-10 h-10 3xl:w-14 3xl:h-14 4xl:w-18 4xl:h-18 rounded-full bg-gfx-neutral-350 flex items-center justify-center">
         <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium">{stepNumber}</span>
       </div>
     )
@@ -21,6 +21,6 @@ export function StepCircle({ stepNumber, status }: { stepNumber: number; status:
 }
 
 export function StepConnector({ status }: { status: 'completed' | 'inactive' }) {
-  return <div className={`flex-1 w-px mt-3 mb-1 ${status === 'completed' ? 'bg-white' : 'bg-[#404040]'}`} />
+  return <div className={`flex-1 w-px mt-3 mb-1 ${status === 'completed' ? 'bg-white' : 'bg-gfx-neutral-350'}`} />
 }
 

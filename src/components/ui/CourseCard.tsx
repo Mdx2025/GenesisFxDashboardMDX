@@ -77,7 +77,7 @@ export function CourseCard({ image, title, description, lessons, duration, level
               {title}
             </h3>
 
-            <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-normal leading-[24.44px] 3xl:leading-8 4xl:leading-9 line-clamp-2">
+            <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-normal leading-6 3xl:leading-8 4xl:leading-9 line-clamp-2">
               {description}
             </p>
           </div>
@@ -86,7 +86,7 @@ export function CourseCard({ image, title, description, lessons, duration, level
 
         <div className="flex items-center mt-5 3xl:mt-[25px] 4xl:mt-8">
           <span
-            className="inline-flex items-center justify-center h-[37px] 3xl:h-[46px] 4xl:h-[56px] px-[13px] 3xl:px-4 4xl:px-5 rounded-full text-white text-base 3xl:text-xl 4xl:text-2xl font-normal leading-[24.44px] outline outline-[0.99px] outline-offset-[-0.99px] outline-[rgba(0,66,44,0.5)]"
+            className="inline-flex items-center justify-center h-[37px] 3xl:h-[46px] 4xl:h-[56px] px-[13px] 3xl:px-4 4xl:px-5 rounded-full text-white text-base 3xl:text-xl 4xl:text-2xl font-normal leading-6 outline outline-[0.99px] outline-offset-[-0.99px] outline-[rgba(0,66,44,0.5)]"
             style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #08120F 19%, #111F1B 73%)' }}
           >
             {level}
@@ -94,12 +94,12 @@ export function CourseCard({ image, title, description, lessons, duration, level
 
           <div className="flex items-center gap-1 3xl:gap-1.5 ml-[22px] 3xl:ml-[28px] 4xl:ml-[33px]">
             <VideoLibraryIcon />
-            <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-medium leading-[24.44px]">{lessons} Lessons</span>
+            <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-medium leading-6">{lessons} Lessons</span>
           </div>
 
           <div className="flex items-center gap-1 3xl:gap-1.5 ml-auto">
             <ClockIcon />
-            <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-medium leading-[24.44px]">{duration}</span>
+            <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-medium leading-6">{duration}</span>
           </div>
         </div>
       </div>

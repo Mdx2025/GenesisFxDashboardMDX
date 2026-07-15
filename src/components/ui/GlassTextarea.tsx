@@ -21,7 +21,7 @@ export function GlassTextarea({ label, placeholder = '', value: controlledValue,
   return (
     <div>
       {label && (
-        <label className="block text-white font-acid font-medium text-base leading-[1.528rem] mb-[0.125rem]">
+        <label className="block text-white font-acid font-medium text-base leading-6 mb-[0.125rem]">
           {label}
         </label>
       )}

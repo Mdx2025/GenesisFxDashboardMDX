@@ -168,7 +168,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
                 <path fillRule="evenodd" clipRule="evenodd" d="M10.9375 17.5C9.49382 17.5 8.77199 17.5 8.32349 17.0515C7.875 16.603 7.875 15.8812 7.875 14.4375C7.875 12.9938 7.875 12.272 8.32349 11.8235C8.77199 11.375 9.49382 11.375 10.9375 11.375C12.3812 11.375 13.103 11.375 13.5515 11.8235C14 12.272 14 12.9938 14 14.4375C14 15.8812 14 16.603 13.5515 17.0515C13.103 17.5 12.3812 17.5 10.9375 17.5ZM11.4479 13.0764C11.4479 12.7945 11.2194 12.566 10.9375 12.566C10.6556 12.566 10.4271 12.7945 10.4271 13.0764V13.9271H9.57639C9.29449 13.9271 9.06597 14.1556 9.06597 14.4375C9.06597 14.7194 9.29449 14.9479 9.57639 14.9479H10.4271V15.7986C10.4271 16.0805 10.6556 16.309 10.9375 16.309C11.2194 16.309 11.4479 16.0805 11.4479 15.7986V14.9479H12.2986C12.5805 14.9479 12.809 14.7194 12.809 14.4375C12.809 14.1556 12.5805 13.9271 12.2986 13.9271H11.4479V13.0764Z" fill="black"/>
                 <path d="M10.2184 10.0649C9.80448 10.07 9.41865 10.085 9.08243 10.1303C8.51991 10.2059 7.90419 10.3866 7.39543 10.8954C6.88667 11.4042 6.70591 12.0199 6.63028 12.5824C6.56232 13.0879 6.56241 13.7055 6.56251 14.3623V14.5127C6.56241 15.1694 6.56232 15.7871 6.63028 16.2926C6.68335 16.6873 6.78819 17.1082 7.0218 17.5C7.01454 17.5 7.00727 17.5 7 17.5C0 17.5 0 15.7371 0 13.5625C0 11.3879 3.13401 9.625 7 9.625C8.16041 9.625 9.25487 9.78383 10.2184 10.0649Z" fill="black"/>
               </svg>
-              <span className="leading-[18.8px]">Follow</span>
+              <span className="leading-5">Follow</span>
             </button>
           )}
         </div>
@@ -264,7 +264,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
               className="bg-gfx-green-900 rounded-md px-3 py-2 flex items-center gap-2.5 cursor-pointer"
             >
               <CheckCircleIcon />
-              <span className="text-gfx-green-300 text-sm font-acid leading-[18.8px]">Follow</span>
+              <span className="text-gfx-green-300 text-sm font-acid leading-5">Follow</span>
             </button>
           </div>
         </div>
@@ -396,7 +396,7 @@ export default function SignalsPage() {
                       Online
                     </span>
                   </div>
-                  <p className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] mt-2 max-w-[31.25rem]">
+                  <p className="text-gfx-neutral-400 text-sm font-acid leading-5 mt-2 max-w-[31.25rem]">
                     Real-time trading signals from verified analysts. Click on any signal to view details and place trades.
                   </p>
                 </div>
@@ -419,12 +419,12 @@ export default function SignalsPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="text-white text-base font-acid-medium leading-[24.44px]">Enable push notifications</p>
+                      <p className="text-white text-base font-acid-medium leading-6">Enable push notifications</p>
                       <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-xs font-acid">
                         Active
                       </span>
                     </div>
-                    <p className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] mt-1">
+                    <p className="text-gfx-neutral-400 text-sm font-acid leading-5 mt-1">
                       Get notified instantly when followed providers post new signals
                     </p>
                   </div>
@@ -443,13 +443,13 @@ export default function SignalsPage() {
               />
               <button
                 onClick={() => setViewMode('list')}
-                className={`w-12 h-11 rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-12 h-11 rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-gfx-green-150'}`}
               >
                 <ListViewIcon active={viewMode === 'list'} />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`w-12 h-11 rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-12 h-11 rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-gfx-green-150'}`}
               >
                 <GridViewIcon active={viewMode === 'grid'} />
               </button>
@@ -464,7 +464,7 @@ export default function SignalsPage() {
                   </svg>
                 </div>
                 <h3 className="text-white text-lg font-acid-medium leading-tight mb-2">No signals</h3>
-                <p className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] max-w-[20rem]">
+                <p className="text-gfx-neutral-400 text-sm font-acid leading-5 max-w-[20rem]">
                   There are no signals from the past 7 days matching your filters. Check back soon or browse the marketplace for top providers.
                 </p>
               </div>
@@ -524,7 +524,7 @@ export default function SignalsPage() {
                 {/* Program badge */}
                 <div className="inline-flex items-center gap-2 h-[1.6875rem] px-4 rounded-full bg-gfx-green-900 border border-gfx-green-200 mb-8">
                   <ProviderBadgeIcon />
-                  <span className="text-gfx-green-300 text-xs font-acid leading-[18.8px] whitespace-nowrap">Genesis Signal Provider Program</span>
+                  <span className="text-gfx-green-300 text-xs font-acid leading-5 whitespace-nowrap">Genesis Signal Provider Program</span>
                 </div>
 
                 {/* Heading */}
@@ -533,7 +533,7 @@ export default function SignalsPage() {
                 </h2>
 
                 {/* Subtitle */}
-                <p className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px] mt-5 max-w-[22.8750rem]">
+                <p className="text-gfx-neutral-500 text-sm font-acid leading-5 mt-5 max-w-[22.8750rem]">
                   Publish your signals, grow a following, and earn monthly subscription plus performance fees.
                 </p>
 
@@ -543,7 +543,7 @@ export default function SignalsPage() {
                 </div>
 
                 {/* Caption */}
-                <p className="text-gfx-neutral-500 text-xs font-acid leading-[18.8px] mt-5">
+                <p className="text-gfx-neutral-500 text-xs font-acid leading-5 mt-5">
                   Free to start · No upfront cost
                 </p>
               </div>

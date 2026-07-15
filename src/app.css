@@ -43,6 +43,19 @@
   --color-gfx-red-surface: #2A1411;
   --color-gfx-amber: #e29d58;
 
+  --color-gfx-neutral-350: #404040;
+  --color-gfx-neutral-450: #6B7280;
+
+  --color-gfx-green-150: #0d2e24;
+  --color-gfx-green-175: #114131;
+  --color-gfx-green-250: #0a714f;
+  --color-gfx-green-350: #40c99c;
+  --color-gfx-green-dark: #14532d;
+
+  --color-gfx-red-deep: #7f3b34;
+
+  --color-gfx-purple-text: #f3eef9;
+
   /* Semantic surface tokens */
   --color-gfx-sidebar: #000705;
   --color-gfx-main: #040b09;

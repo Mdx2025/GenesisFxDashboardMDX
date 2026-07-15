@@ -116,7 +116,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
               <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[30%] top-[4px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[60%] bottom-[4px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <div className={`absolute w-px h-px rounded-full pointer-events-none z-base right-[25%] top-[6px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
-              <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[15%] bottom-[8px] bg-[#8c8c8c] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[15%] bottom-[8px] bg-gfx-neutral-400 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <span className="relative z-10 shrink-0 flex items-center justify-center size-[18px]">
                 {item.icon}
               </span>

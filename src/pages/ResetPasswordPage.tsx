@@ -113,7 +113,7 @@ export default function ResetPasswordPage() {
         </div>
 
         {/* Footer inside card */}
-        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-8 leading-[1.175rem]">
+        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-8 leading-5">
           2026 Genesis FX Markets. All rights reserved.
         </p>
       </div>

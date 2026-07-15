@@ -95,12 +95,12 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
         </span>
       </div>
       <div className="flex flex-col gap-1 min-w-0">
-        <span className={`text-sm font-acid leading-[18.8px] truncate ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
+        <span className={`text-sm font-acid leading-5 truncate ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
           {lesson.title}
         </span>
         <div className="flex items-center gap-1.5">
           <ClockIcon />
-          <span className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{lesson.duration}</span>
+          <span className="text-sm font-acid text-gfx-neutral-400 leading-5">{lesson.duration}</span>
         </div>
       </div>
     </button>
@@ -143,10 +143,10 @@ export default function VideoSinglePage() {
           {/* Course Contents Panel */}
           <div className="hidden xl:flex flex-col w-[17.5000rem] 3xl:w-[20rem] shrink-0 px-5 pb-6">
             <div className="mb-2">
-              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px]">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-4">
                 COURSE CONTENTS
               </p>
-              <p className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px] mt-1">
+              <p className="text-xs font-acid text-gfx-neutral-400 leading-5 mt-1">
                 {completedCount} of {totalLessons} chapters completed
               </p>
             </div>
@@ -182,7 +182,7 @@ export default function VideoSinglePage() {
             <div className="mt-5 flex items-start justify-between gap-4">
               <div className="flex flex-col gap-2">
                 <div className="inline-flex items-center h-[1.75rem] px-3 rounded-full bg-gfx-green-900 border border-gfx-green-200">
-                  <span className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px]">
+                  <span className="text-xs font-acid text-gfx-neutral-400 leading-5">
                     Lesson {activeLesson} of {totalLessons}
                   </span>
                 </div>
@@ -198,10 +198,10 @@ export default function VideoSinglePage() {
 
             {/* Mobile chapter list */}
             <div className="xl:hidden mt-6">
-              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px] mb-2">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-4 mb-2">
                 COURSE CONTENTS
               </p>
-              <p className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px] mb-4">
+              <p className="text-xs font-acid text-gfx-neutral-400 leading-5 mb-4">
                 {completedCount} of {totalLessons} chapters completed
               </p>
               <div className="h-1 bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
@@ -233,8 +233,8 @@ export default function VideoSinglePage() {
 
             <div className="flex items-center gap-4 shrink-0">
               <div className="hidden sm:flex flex-col items-end gap-0.5">
-                <span className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">PROGRESS</span>
-                <span className="text-base font-acid-medium text-white leading-[24.44px]">{progress}%</span>
+                <span className="text-sm font-acid text-gfx-neutral-400 leading-5">PROGRESS</span>
+                <span className="text-base font-acid-medium text-white leading-6">{progress}%</span>
                 <div className="w-[10rem] h-1 bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
                   <div
                     className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"

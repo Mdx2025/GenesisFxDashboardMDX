@@ -41,7 +41,7 @@ export default function KycPage() {
           <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
             Withdraw Funds
           </h1>
-          <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem]">
+          <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-6 3xl:leading-8 4xl:leading-10">
             Choose your preferred withdrawal method to get started.
           </p>
         </div>
@@ -56,9 +56,9 @@ export default function KycPage() {
             />
 
             {/* Internal glow ellipses */}
-            <div className="absolute w-[36.6875rem] h-[27.1875rem] left-[25%] -top-[14.6875rem] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left bg-[#00110B]" aria-hidden="true" />
-            <div className="absolute w-[30.8125rem] h-[17.375rem] left-[8%] top-[4.375rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-[#114131]" aria-hidden="true" />
-            <div className="absolute w-[30.8125rem] h-[17.375rem] right-0 -top-[29.125rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-[#114131]" aria-hidden="true" />
+            <div className="absolute w-[36.6875rem] h-[27.1875rem] left-[25%] -top-[14.6875rem] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left bg-gfx-green-50" aria-hidden="true" />
+            <div className="absolute w-[30.8125rem] h-[17.375rem] left-[8%] top-[4.375rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-gfx-green-175" aria-hidden="true" />
+            <div className="absolute w-[30.8125rem] h-[17.375rem] right-0 -top-[29.125rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-gfx-green-175" aria-hidden="true" />
 
             {/* Two-panel layout */}
             <div className="relative z-10 flex flex-col xl:flex-row min-h-[730px] 3xl:min-h-[900px] 4xl:min-h-[1200px]">
@@ -68,11 +68,11 @@ export default function KycPage() {
                   <KycIllustration />
 
                   <div className="flex flex-col gap-6 3xl:gap-8 4xl:gap-12 items-center">
-                    <h2 className="text-white text-3xl xl:text-4xl 3xl:text-[3rem] 4xl:text-[4rem] font-normal text-center leading-none">
+                    <h2 className="text-white text-3xl xl:text-4xl 3xl:text-[3rem] 4xl:text-6xl font-normal text-center leading-none">
                       KYC Verification Required
                     </h2>
 
-                    <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
+                    <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
                       To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
                     </p>
 
@@ -96,7 +96,7 @@ export default function KycPage() {
                   Choose Withdrawal Method
                 </h3>
 
-                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Select your preferred withdrawal method to get started
                 </p>
 
@@ -104,7 +104,7 @@ export default function KycPage() {
                   Cryptocurrency
                 </h4>
 
-                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Bitcoin, Ethereum, USDT, USDC, and more
                 </p>
 

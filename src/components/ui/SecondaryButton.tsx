@@ -9,7 +9,7 @@ interface SecondaryButtonProps {
 export function SecondaryButton({ children, onClick, className }: SecondaryButtonProps) {
   return (
     <button
-      className={`h-[2.875rem] relative overflow-hidden cursor-pointer group focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded-3xl bg-gradient-to-t from-gfx-green-900 to-gfx-green-800 border border-[#a0a0a0] ${className ?? ''}`}
+      className={`h-[2.875rem] relative overflow-hidden cursor-pointer group focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded-3xl bg-gradient-to-t from-gfx-green-900 to-gfx-green-800 border border-gfx-neutral-500 ${className ?? ''}`}
       type="button"
       onClick={onClick}
     >

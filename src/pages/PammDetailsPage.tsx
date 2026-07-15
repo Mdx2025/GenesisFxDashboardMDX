@@ -147,7 +147,7 @@ const monthlyPerformance: MonthEntry[] = [
 
 const CELL_STYLES = {
   positive: 'bg-gfx-green-900 border border-gfx-green-300',
-  negative: 'bg-gfx-red-surface border border-[#7F3B34]',
+  negative: 'bg-gfx-red-surface border border-gfx-red-deep',
   empty: 'border border-gfx-green-200',
 } as const
 
@@ -164,26 +164,26 @@ function PerformanceGrid() {
         <div className="flex items-start">
           {/* Year column */}
           <div className="flex flex-col items-start w-[3.75rem] flex-shrink-0">
-            <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px]">Year</span>
+            <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6">Year</span>
             <div className="h-11 flex items-center mt-3">
-              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px]">2026</span>
+              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6">2026</span>
             </div>
           </div>
           {/* Month cells */}
           <div className="flex-1 flex gap-2.5">
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
-                <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
+                <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6 mb-3">{m.month}</span>
                 <div className={`w-full h-11 rounded-sm flex items-center justify-center ${CELL_STYLES[m.type]}`}>
-                  {m.value && <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
+                  {m.value && <span className={`text-base font-acid font-medium leading-6 ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
             ))}
             {/* Ann column */}
             <div className="flex flex-col items-center flex-1 min-w-0">
-              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">Ann</span>
+              <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-6 mb-3">Ann</span>
               <div className={`w-full h-11 rounded-sm flex items-center justify-center ${CELL_STYLES.positive}`}>
-                <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
+                <span className={`text-base font-acid font-medium leading-6 ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
           </div>
@@ -194,19 +194,19 @@ function PerformanceGrid() {
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M2 0.5H18C18.8284 0.5 19.5 1.17157 19.5 2V18C19.5 18.8284 18.8284 19.5 18 19.5H2C1.17157 19.5 0.5 18.8284 0.5 18V2C0.5 1.17157 1.17157 0.5 2 0.5Z" fill="#09241C" stroke="#00B38C"/>
             </svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">Positive turn</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">Positive turn</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" fill="#2A1411" stroke="#7F3B34"/>
             </svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">Negative turn</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">Negative turn</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 0.5H16C17.933 0.5 19.5 2.067 19.5 4V16C19.5 17.933 17.933 19.5 16 19.5H4C2.067 19.5 0.5 17.933 0.5 16V4C0.5 2.067 2.067 0.5 4 0.5Z" stroke="#064B34"/>
             </svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">No trades</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">No trades</span>
           </div>
         </div>
       </div>
@@ -258,13 +258,13 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
         <div key={row.label}>
           <div className="flex items-center justify-between py-4 px-7">
             <div className="flex items-center gap-2.5">
-              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">{row.label}</span>
+              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">{row.label}</span>
               <StatInfoIcon />
             </div>
             <div className="flex items-center gap-3">
               {row.progressBar && (
                 <div className="flex items-center gap-2">
-                  <span className="text-white text-base font-acid font-medium leading-[24.44px]">{row.value}</span>
+                  <span className="text-white text-base font-acid font-medium leading-6">{row.value}</span>
                   <div className="w-[5.5rem] h-[0.5625rem] rounded-full bg-gfx-green-900 relative">
                     <div
                       className="h-full rounded bg-gfx-green-200"
@@ -275,7 +275,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
               )}
               {!row.progressBar && (
                 <span
-                  className="text-base font-acid font-medium leading-[24.44px]"
+                  className="text-base font-acid font-medium leading-6"
                   style={{ color: row.valueColor || 'white' }}
                 >
                   {row.value}
@@ -339,7 +339,7 @@ export default function PammDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/pamm')}
-            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>
@@ -423,7 +423,7 @@ export default function PammDetailsPage() {
                   { label: 'Launch Date', value: 'Nov 24,2025' },
                 ].map((item, i) => (
                   <div key={i}>
-                    {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
+                    {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
                       <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">{item.label}</span>
                       <span className="text-white text-[0.625rem] font-acid">{item.value}</span>
@@ -505,7 +505,7 @@ export default function PammDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-4 px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -513,33 +513,33 @@ export default function PammDetailsPage() {
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
                   <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
                     <td className="px-12 py-4">
-                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
-                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-6">{trade.openDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.openTime}</p>
                     </td>
                     <td className="px-12 py-4">
-                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
-                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-6">{trade.closeDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-6">{trade.closeTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <div className="flex items-center gap-3">
                         <XauusdSmallIcon />
-                        <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.symbol}</span>
+                        <span className="text-white text-base font-acid font-medium leading-6">{trade.symbol}</span>
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-5" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span>
+                      <span className="text-white text-base font-acid font-medium leading-6">{trade.volume}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openPrice}</span>
+                      <span className="text-white text-base font-acid font-medium leading-6">{trade.openPrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closePrice}</span>
+                      <span className="text-white text-base font-acid font-medium leading-6">{trade.closePrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-gfx-red-muted text-base font-acid font-medium leading-[24.44px]">{trade.pnl}</span>
+                      <span className="text-gfx-red-muted text-base font-acid font-medium leading-6">{trade.pnl}</span>
                     </td>
                   </tr>
                 ))}

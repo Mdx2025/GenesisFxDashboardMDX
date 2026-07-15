@@ -182,7 +182,7 @@ export default function DepositPage() {
             <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
               Deposit Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem]">
+            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
               All payments will be credited to your main wallet. You can then transfer funds to your trading accounts.
             </p>
           </div>
@@ -219,8 +219,8 @@ export default function DepositPage() {
                         onClick={() => handleCoinSelect(coin.id)}
                         className={`h-12 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
-                            ? 'bg-gfx-green-200 border border-[#0a714f]'
-                            : 'bg-[#111312] border border-transparent hover:bg-[#1a1c1b]'
+                            ? 'bg-gfx-green-200 border border-gfx-green-250'
+                            : 'bg-gfx-green-800 border border-transparent hover:bg-[#1a1c1b]'
                         }`}
                       >
                         {coin.icon}
@@ -284,9 +284,9 @@ export default function DepositPage() {
                               <QrCodePlaceholder />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <span className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-300 leading-[1.175rem] 3xl:leading-6 4xl:leading-8">Address</span>
+                              <span className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-300 leading-5 3xl:leading-6 4xl:leading-8">Address</span>
                               <div className="flex items-start gap-2 mt-3">
-                                <p className="text-base text-white leading-[1.528rem] break-all">
+                                <p className="text-base text-white leading-6 break-all">
                                   {DEPOSIT_ADDRESS}
                                 </p>
                                 <button
@@ -298,7 +298,7 @@ export default function DepositPage() {
                                   <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
                                 </button>
                               </div>
-                              <p className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-300 leading-[1.175rem] 3xl:leading-6 4xl:leading-8 mt-3">
+                              <p className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-300 leading-5 3xl:leading-6 4xl:leading-8 mt-3">
                                 Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
                               </p>
                             </div>

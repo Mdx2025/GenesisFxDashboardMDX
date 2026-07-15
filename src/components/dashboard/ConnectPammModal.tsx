@@ -152,11 +152,11 @@ export function ConnectPammModal({
               {/* AUM / ROI Cards */}
               <div className="flex gap-3 mt-8 w-full max-w-[350px]">
                 <div className="flex-1 h-[118px] rounded-md border border-gfx-green-300 bg-gfx-green-800 flex flex-col items-center justify-center">
-                  <span className="text-gfx-green-300 text-base font-acid font-medium leading-[24.44px]">Aum</span>
+                  <span className="text-gfx-green-300 text-base font-acid font-medium leading-6">Aum</span>
                   <span className="text-gfx-green-300 text-2xl font-acid mt-1">{aum}</span>
                 </div>
                 <div className="flex-1 h-[118px] rounded-md border border-gfx-green-300 bg-gfx-green-800 flex flex-col items-center justify-center">
-                  <span className="text-gfx-green-300 text-base font-acid font-medium leading-[24.44px]">ROI</span>
+                  <span className="text-gfx-green-300 text-base font-acid font-medium leading-6">ROI</span>
                   <span className="text-gfx-green-300 text-2xl font-acid mt-1">{roi}</span>
                 </div>
               </div>
@@ -166,10 +166,10 @@ export function ConnectPammModal({
                 {details.map((d) => (
                   <div key={d.label} className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px]">{d.label}</span>
+                      <span className="text-gfx-neutral-400 text-base font-acid font-medium leading-6">{d.label}</span>
                       <InfoIcon />
                     </div>
-                    <span className="text-white text-base font-acid font-medium leading-[24.44px]">{d.value}</span>
+                    <span className="text-white text-base font-acid font-medium leading-6">{d.value}</span>
                   </div>
                 ))}
               </div>
@@ -181,7 +181,7 @@ export function ConnectPammModal({
             <h2 className="text-white text-4xl font-acid font-normal">Connect to PAMM</h2>
 
             {/* Available Balance */}
-            <div className="mt-10 h-[50px] rounded-2xl bg-gfx-green-100 border border-[#404040] flex items-center justify-between px-4.5">
+            <div className="mt-10 h-[50px] rounded-2xl bg-gfx-green-100 border border-gfx-neutral-350 flex items-center justify-between px-4.5">
               <span className="text-gfx-neutral-400 text-base font-acid">Available Balance</span>
               <span className="text-white text-base font-acid">{availableBalance}</span>
             </div>
@@ -211,7 +211,7 @@ export function ConnectPammModal({
                 <button
                   onClick={() => setAgreedTerms(!agreedTerms)}
                   className={`w-[20px] h-[20px] rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center mt-0.5 cursor-pointer transition-colors ${
-                    agreedTerms ? 'border-gfx-green-500 bg-gfx-green-500' : 'border-[#404040] bg-transparent'
+                    agreedTerms ? 'border-gfx-green-500 bg-gfx-green-500' : 'border-gfx-neutral-350 bg-transparent'
                   }`}
                 >
                   {agreedTerms && (
@@ -220,7 +220,7 @@ export function ConnectPammModal({
                     </svg>
                   )}
                 </button>
-                <span className="text-gfx-neutral-400 text-base font-acid leading-[24.44px]">
+                <span className="text-gfx-neutral-400 text-base font-acid leading-6">
                   I have read and agree to the PAMM investment agreement
                 </span>
               </label>
@@ -229,7 +229,7 @@ export function ConnectPammModal({
                 <button
                   onClick={() => setAgreedRisk(!agreedRisk)}
                   className={`w-[20px] h-[20px] rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center mt-0.5 cursor-pointer transition-colors ${
-                    agreedRisk ? 'border-gfx-green-500 bg-gfx-green-500' : 'border-[#404040] bg-transparent'
+                    agreedRisk ? 'border-gfx-green-500 bg-gfx-green-500' : 'border-gfx-neutral-350 bg-transparent'
                   }`}
                 >
                   {agreedRisk && (
@@ -238,7 +238,7 @@ export function ConnectPammModal({
                     </svg>
                   )}
                 </button>
-                <span className="text-gfx-neutral-400 text-base font-acid leading-[24.44px]">
+                <span className="text-gfx-neutral-400 text-base font-acid leading-6">
                   I acknoweledge that investments in PAMM strategies carry risk. PAst perfomance does not guarantee future results.
                 </span>
               </label>

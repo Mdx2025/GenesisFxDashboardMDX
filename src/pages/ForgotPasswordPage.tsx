@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
         </div>
 
         {/* Footer inside card */}
-        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-8 leading-[1.175rem]">
+        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-8 leading-5">
           2026 Genesis FX Markets. All rights reserved.
         </p>
       </div>
@@ -88,7 +88,7 @@ function EmailStep({ email, setEmail, onSubmit }: {
         Reset Your Password
       </h1>
 
-      <p className="text-gfx-neutral-400 text-sm leading-[1.175rem] text-center max-w-[21.5rem] mt-[1.5625rem]">
+      <p className="text-gfx-neutral-400 text-sm leading-5 text-center max-w-[21.5rem] mt-[1.5625rem]">
         Enter your email address and we&apos;ll send you a link to reset your password.
       </p>
 
@@ -129,7 +129,7 @@ function ConfirmationStep() {
         Confirmed Request
       </h1>
 
-      <p className="text-gfx-neutral-400 text-sm leading-[1.175rem] text-center max-w-[21.5rem] mt-[2.1875rem]">
+      <p className="text-gfx-neutral-400 text-sm leading-5 text-center max-w-[21.5rem] mt-[2.1875rem]">
         If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes.
       </p>
     </div>

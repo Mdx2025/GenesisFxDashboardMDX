@@ -172,8 +172,8 @@ function WebcamCard() {
                   </defs>
                 </svg>
                 <div className="flex flex-col">
-                  <span className="text-white text-sm font-acid leading-[18.8px]">{cam.label}</span>
-                  <span className="text-gfx-neutral-400 text-xs font-acid leading-[18.8px]">{cam.source}</span>
+                  <span className="text-white text-sm font-acid leading-5">{cam.label}</span>
+                  <span className="text-gfx-neutral-400 text-xs font-acid leading-5">{cam.source}</span>
                 </div>
               </div>
             </div>

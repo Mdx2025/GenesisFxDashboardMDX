@@ -52,7 +52,7 @@ function SessionCard({ session }: { session: TradeSession }) {
       {isOpen && (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-gfx-green-200/40 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-[#00f0a0]/8 blur-[40px] mix-blend-screen pointer-events-none" />
+          <div className="absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-gfx-green-glow/8 blur-[40px] mix-blend-screen pointer-events-none" />
         </>
       )}
 
@@ -173,11 +173,11 @@ export default function TradeSessionsView() {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <GlobeIcon />
-              <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">Global Markets</span>
+              <span className="text-gfx-neutral-400 text-sm font-acid leading-5">Global Markets</span>
             </div>
             <div className="flex items-center gap-2">
               <NetworkIcon />
-              <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">
+              <span className="text-gfx-neutral-400 text-sm font-acid leading-5">
                 {activeCount} Active Session{activeCount !== 1 ? 's' : ''}
               </span>
             </div>

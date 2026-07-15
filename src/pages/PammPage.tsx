@@ -130,11 +130,11 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
         {/* ROI + Days Badge */}
         <div className="flex items-start justify-between w-full">
           <div>
-            <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">ROI</p>
+            <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">ROI</p>
             <p className="text-gfx-green-500 text-2xl font-acid">{strategy.roi}%</p>
           </div>
           <div className="border border-gfx-neutral-250 rounded-full px-3 py-[0.6875rem]">
-            <span className="text-white text-base font-acid font-medium leading-[24.44px]">{strategy.roiDays}D</span>
+            <span className="text-white text-base font-acid font-medium leading-6">{strategy.roiDays}D</span>
           </div>
         </div>
 
@@ -147,12 +147,12 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
         <div className="w-full bg-gfx-green-900 rounded-sm px-5 py-4">
           <div className="flex justify-between">
             <div>
-              <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px]">Min Investment</p>
-              <p className="text-white text-base font-acid font-medium leading-[24.44px] mt-2">${strategy.minInvestment.toFixed(2)}</p>
+              <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-6">Min Investment</p>
+              <p className="text-white text-base font-acid font-medium leading-6 mt-2">${strategy.minInvestment.toFixed(2)}</p>
             </div>
             <div className="text-right">
-              <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px]">Total P&L</p>
-              <p className="text-gfx-green-300 text-base font-acid font-medium leading-[25.14px] mt-2">${strategy.totalPnl.toFixed(2)}</p>
+              <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-6">Total P&L</p>
+              <p className="text-gfx-green-300 text-base font-acid font-medium leading-6 mt-2">${strategy.totalPnl.toFixed(2)}</p>
             </div>
           </div>
         </div>
@@ -361,7 +361,7 @@ export default function PammPage() {
                 <p className="text-gfx-neutral-400 text-base font-acid mt-4 leading-tight">You don't have any active PAMM subscriptions yet</p>
                 <button
                   onClick={() => setActiveTab(0)}
-                  className="mt-10 h-11 px-[1.9375rem] rounded-full bg-[#f1fffa] text-black text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:bg-[#e0f5ec] transition-colors"
+                  className="mt-10 h-11 px-[1.9375rem] rounded-full bg-[#f1fffa] text-black text-base font-acid font-medium leading-6 cursor-pointer hover:bg-[#e0f5ec] transition-colors"
                 >
                   Browse strategies
                 </button>
@@ -437,7 +437,7 @@ export default function PammPage() {
                   <thead>
                     <tr className="border-b border-[rgba(255,255,255,0.04)]">
                       {['Strategy name', 'aum', 'Investors', 'P&L', 'Min Investment', 'managment fee', 'perfomance fee', 'status', 'actions'].map(h => (
-                        <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-7 py-4 first:pl-7">{h}</th>
+                        <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-4 px-7 py-4 first:pl-7">{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -445,36 +445,36 @@ export default function PammPage() {
                     {[0, 1, 2].map(i => (
                       <tr key={i} className="border-b border-gfx-green-900 last:border-0">
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">Testing PAMM</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">Testing PAMM</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">$0.00</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">$0.00</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">0</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">0</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">$0.00</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">$0.00</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">$100.00</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">$100.00</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">2%</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">2%</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="text-white text-sm font-acid font-normal leading-[18.8px]">20%</span>
+                          <span className="text-white text-sm font-acid font-normal leading-5">20%</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="inline-flex items-center justify-center px-4 py-[0.4375rem] rounded-3xl border-[1.16px] border-gfx-bullish text-gfx-bullish-light text-xs font-acid leading-[18.8px]">Active</span>
+                          <span className="inline-flex items-center justify-center px-4 py-[0.4375rem] rounded-3xl border-[1.16px] border-gfx-bullish text-gfx-bullish-light text-xs font-acid leading-5">Active</span>
                         </td>
                         <td className="px-7 py-5">
                           <div className="flex items-center gap-2">
                             <SparkleButton className="!px-10 !h-[2.8750rem]">
-                              <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-[24.44px]">View</span>
+                              <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-6">View</span>
                             </SparkleButton>
                             <SparkleButton className="!px-10 !h-[2.8750rem]">
-                              <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-[24.44px]">Edit</span>
+                              <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-6">Edit</span>
                             </SparkleButton>
                           </div>
                         </td>
