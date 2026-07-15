@@ -1,5 +1,5 @@
 import { useState, useRef, type ReactNode } from 'react'
-import { GlassCard, GlassInput, ModeToggle } from '@/components/ui'
+import { GlassCard, GlassInput, ModeToggle, GlowEllipse } from '@/components/ui'
 import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
@@ -133,7 +133,7 @@ interface KycStatusItemProps {
 
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
-    <GlassCard className="!p-0 h-[4.6875rem]">
+    <GlassCard className="!p-0 h-[4.6875rem] !bg-[#0C1311]">
       <div className="flex items-start gap-2.5 px-6 pt-5">
         <WarningTriangleIcon />
         <div>
@@ -582,8 +582,8 @@ function SettingsTab() {
 function ProfileTab() {
   return (
     <>
-      <GlassCard className="mt-10 !rounded-lg">
-        <div className="px-30 pt-4 pb-10">
+      <GlassCard className="mt-10 !rounded-lg relative overflow-hidden">
+        <div className="relative px-30 pt-10 pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
           <div className="grid grid-cols-2 gap-x-8 gap-y-6">
             <GlassInput label="First Name" placeholder="Joe" />
@@ -594,16 +594,18 @@ function ProfileTab() {
             <GlassInput label="Country" placeholder="United states" />
           </div>
         </div>
+        <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 !blur-[5rem] opacity-60" />
       </GlassCard>
 
-      <GlassCard className="mt-8 !rounded-lg">
-        <div className="px-30 pt-4 pb-10">
+      <GlassCard className="mt-8 !rounded-lg relative overflow-hidden">
+        <div className="relative px-30 pt-10 pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
           <div className="grid grid-cols-2 gap-x-8">
             <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
             <KycStatusItem title="Proof of Address" subtitle="Not Submitted" />
           </div>
         </div>
+        <GlowEllipse className="!w-[20rem] !h-[10rem] top-0 left-1/2 -translate-x-1/2 -translate-y-1/4 !blur-[5rem] opacity-60" />
       </GlassCard>
     </>
   )
