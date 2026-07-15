@@ -289,6 +289,50 @@ function TradingFeaturesTable() {
   )
 }
 
+function GiftIcon() {
+  return (
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+      <path d="M10.667 29.333v24c0 2.946 2.388 5.334 5.333 5.334h32c2.946 0 5.333-2.388 5.333-5.334v-24" stroke="#808080" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 18.667h48c1.473 0 2.667 1.194 2.667 2.666v8H5.333v-8c0-1.472 1.194-2.666 2.667-2.666Z" stroke="#808080" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M32 58.667V18.667" stroke="#808080" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M32 18.667h-9.333c-2.946 0-5.334-2.388-5.334-5.334 0-2.945 2.388-5.333 5.334-5.333C28.444 8 32 13.333 32 18.667Z" stroke="#808080" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M32 18.667h9.333c2.946 0 5.334-2.388 5.334-5.334 0-2.945-2.388-5.333-5.334-5.333C35.556 8 32 13.333 32 18.667Z" stroke="#808080" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function RewardsTab() {
+  return (
+    <div className="mt-10 relative">
+      <div className="relative bg-gfx-green-800 border border-gfx-green-800 rounded-[1.16rem] overflow-hidden shadow-[0_0.29rem_1.45rem_0_rgba(0,0,0,0.03)] h-[29.6875rem]">
+        {/* Bottom highlight glows */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[75%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
+          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[120%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-40"
+          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.1) 0%, transparent 70%)' }}
+          aria-hidden="true"
+        />
+
+        {/* Title */}
+        <h3 className="text-white text-2xl font-acid leading-normal absolute left-[7.8rem] top-12">My Rewards</h3>
+
+        {/* Empty state content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="mt-4">
+            <GiftIcon />
+          </div>
+          <p className="text-gfx-neutral-400 text-base font-acid font-medium mt-6">No promotions found</p>
+          <p className="text-gfx-neutral-400 text-base font-acid font-medium mt-3">Use a promo code when signing up to get exclusive bonuses!</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function ProfileTab() {
   return (
     <>
@@ -418,6 +462,7 @@ export default function SettingsPage() {
 
       {activeTab === 0 && <ProfileTab />}
       {activeTab === 1 && <VerificationTab />}
+      {activeTab === 2 && <RewardsTab />}
       </div>
     </div>
   )
