@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { GlassCard, GlassInput, ModeToggle } from '@/components/ui'
+import { GlassCard, GlassInput, ModeToggle, StatCard } from '@/components/ui'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -356,32 +356,6 @@ function HelpCenterIcon() {
   )
 }
 
-interface SupportCardProps {
-  icon: React.ReactNode
-  title: string
-  subtitle: string
-  actionLabel?: string
-}
-
-function SupportCard({ icon, title, subtitle, actionLabel }: SupportCardProps) {
-  return (
-    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-[1.875rem] p-5 h-[7.8125rem] relative shadow-[0_0.29rem_0.725rem_0_rgba(0,0,0,0.03)]">
-      <div className="flex items-start gap-5">
-        <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0">
-          {icon}
-        </div>
-        <div className="pt-1">
-          <h4 className="text-white text-2xl font-acid leading-normal">{title}</h4>
-          <p className="text-gfx-neutral-400 text-base font-acid mt-2">{subtitle}</p>
-          {actionLabel && (
-            <p className="text-gfx-green-500 text-base font-acid mt-2">{actionLabel}</p>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function SupportTab() {
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
@@ -393,27 +367,86 @@ function SupportTab() {
         />
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
         <div className="grid grid-cols-2 gap-5">
-          <SupportCard
-            icon={<ChatDialogIcon />}
-            title="Live chat"
-            subtitle="Available 24/7"
-            actionLabel="Start  Live Chat"
-          />
-          <SupportCard
-            icon={<EnvelopeIcon />}
-            title="Email Support"
-            subtitle="support@genesisfxmarkets.com"
-          />
-          <SupportCard
-            icon={<WhatsappIcon />}
-            title="Whatsapp"
-            subtitle="Quick chat support"
-          />
-          <SupportCard
-            icon={<HelpCenterIcon />}
-            title="Help Center"
-            subtitle="Browse common questions"
-          />
+          <StatCard label="Live chat" value="Available 24/7" icon={<ChatDialogIcon />} />
+          <StatCard label="Email Support" value="support@genesisfxmarkets.com" icon={<EnvelopeIcon />} />
+          <StatCard label="Whatsapp" value="Quick chat support" icon={<WhatsappIcon />} />
+          <StatCard label="Help Center" value="Browse common questions" icon={<HelpCenterIcon />} />
+        </div>
+      </div>
+    </GlassCard>
+  )
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M3.378 5.082A1 1 0 0 0 3 6v5c0 6.075 3.925 9.684 8.663 11.876a.75.75 0 0 0 .674 0C17.075 20.684 21 17.075 21 11V6a1 1 0 0 0-.378-.918l-8.5-5a.75.75 0 0 0-.744 0l-8.5 5h.5ZM12 8a2 2 0 0 0-2 2c0 .74.402 1.387 1 1.732V14a1 1 0 1 0 2 0v-2.268A2 2 0 0 0 12 8Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+function SmartphoneIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M7 3C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V5C19 3.89543 18.1046 3 17 3H7ZM12 18C12.5523 18 13 17.5523 13 17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17C11 17.5523 11.4477 18 12 18Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+function ToggleSwitch({ enabled = false }: { enabled?: boolean }) {
+  return (
+    <div className={`w-11 h-[1.375rem] rounded-full relative cursor-pointer ${enabled ? 'bg-gfx-green-300' : 'bg-[#09241c]'}`}>
+      <div className={`w-[1.125rem] h-[1.125rem] rounded-full absolute top-px transition-all ${
+        enabled ? 'right-px bg-white' : 'left-px bg-gfx-neutral-250'
+      }`} />
+    </div>
+  )
+}
+
+function SecurityTab() {
+  return (
+    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
+      <div className="relative overflow-hidden px-10 pt-10 pb-10">
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
+          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
+          aria-hidden="true"
+        />
+        <h3 className="text-white text-2xl font-acid leading-normal">Security Settings</h3>
+        <p className="text-gfx-neutral-400 text-base font-acid font-medium mt-2 mb-8">
+          Manage your account security and two-factor authentication
+        </p>
+
+        <div className="border border-[#09241c] rounded-[2rem] overflow-hidden px-8 py-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-5">
+              <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0">
+                <ShieldIcon />
+              </div>
+              <div>
+                <p className="text-white text-base font-acid font-medium">Two-Factor Authentication</p>
+                <p className="text-gfx-neutral-400 text-base font-acid font-medium">Add an extra layer of security to your account</p>
+              </div>
+            </div>
+            <ToggleSwitch />
+          </div>
+        </div>
+
+        <div className="bg-[#09241c] border border-[#09241c] rounded-[2rem] overflow-hidden px-8 py-8 mt-5">
+          <div className="flex items-start gap-5">
+            <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0 mt-1">
+              <SmartphoneIcon />
+            </div>
+            <div>
+              <p className="text-white text-base font-acid font-medium mb-3">How it works</p>
+              <ul className="text-gfx-neutral-400 text-base font-acid font-medium list-disc pl-6 space-y-1">
+                <li>Download an authenticator app (Google Authenticator, Authy, etc.)</li>
+                <li>Scan the QR code or enter the secret key</li>
+                <li>Enter the 6-digit code to verify setup</li>
+                <li>You'll need this code each time you sign in</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </GlassCard>
@@ -550,6 +583,7 @@ export default function SettingsPage() {
       {activeTab === 1 && <VerificationTab />}
       {activeTab === 2 && <RewardsTab />}
       {activeTab === 3 && <SupportTab />}
+      {activeTab === 4 && <SecurityTab />}
       </div>
     </div>
   )
