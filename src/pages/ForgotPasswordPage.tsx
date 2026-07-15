@@ -84,7 +84,7 @@ function EmailStep({ email, setEmail, onSubmit }: {
 
   return (
     <div ref={fadeRef} className="flex flex-col items-center px-6 sm:px-0 w-full">
-      <h1 className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-none text-center">
+      <h1 className="text-white text-hero font-normal leading-none text-center">
         Reset Your Password
       </h1>
 
@@ -125,7 +125,7 @@ function ConfirmationStep() {
         <MailIcon />
       </div>
 
-      <h1 className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-none text-center mt-[1.1875rem]">
+      <h1 className="text-white text-hero font-normal leading-none text-center mt-[1.1875rem]">
         Confirmed Request
       </h1>
 

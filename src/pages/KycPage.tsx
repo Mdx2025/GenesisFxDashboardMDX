@@ -38,7 +38,7 @@ export default function KycPage() {
         />
 
         <div className="mt-8 mb-10">
-          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
+          <h1 className="text-white font-normal leading-none text-hero-lg">
             Withdraw Funds
           </h1>
           <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-6 3xl:leading-8 4xl:leading-10">
@@ -68,7 +68,7 @@ export default function KycPage() {
                   <KycIllustration />
 
                   <div className="flex flex-col gap-6 3xl:gap-8 4xl:gap-12 items-center">
-                    <h2 className="text-white text-3xl xl:text-4xl 3xl:text-[3rem] 4xl:text-6xl font-normal text-center leading-none">
+                    <h2 className="text-white text-3xl xl:text-4xl 3xl:text-5xl 4xl:text-6xl font-normal text-center leading-none">
                       KYC Verification Required
                     </h2>
 

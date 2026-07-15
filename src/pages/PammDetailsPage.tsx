@@ -393,10 +393,10 @@ export default function PammDetailsPage() {
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-gfx-neutral-400 text-[0.625rem] font-acid">Portfolio Equity</p>
+                  <p className="text-gfx-neutral-400 text-tiny font-acid">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
                     <span className="text-white text-2xl font-acid">$17,897.30</span>
-                    <span className="text-gfx-green-500 text-[0.625rem] font-acid">+$6,437.21 (56.1%)</span>
+                    <span className="text-gfx-green-500 text-tiny font-acid">+$6,437.21 (56.1%)</span>
                   </div>
                 </div>
                 <PeriodPill />
@@ -425,8 +425,8 @@ export default function PammDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">{item.label}</span>
-                      <span className="text-white text-[0.625rem] font-acid">{item.value}</span>
+                      <span className="text-gfx-neutral-400 text-tiny font-acid">{item.label}</span>
+                      <span className="text-white text-tiny font-acid">{item.value}</span>
                     </div>
                   </div>
                 ))}
@@ -505,7 +505,7 @@ export default function PammDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-4 px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>

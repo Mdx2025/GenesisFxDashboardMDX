@@ -39,7 +39,7 @@ export default function TradesView() {
         <GlowEllipse className="left-[10%] top-[-20%]" />
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-10">
           <div>
-            <h3 className="text-white text-[1.375rem] font-acid font-normal leading-tight">Trade History</h3>
+            <h3 className="text-white text-xl font-acid font-normal leading-tight">Trade History</h3>
             <p className="text-gfx-neutral-400 text-sm font-acid mt-0.5">
               <span className="text-white">{filtered.length}</span>{' '}
               Trade{filtered.length !== 1 ? 's' : ''} Found
@@ -67,7 +67,7 @@ export default function TradesView() {
                 {COLUMNS.map(col => (
                   <th
                     key={col}
-                    className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-[2.32px]"
+                    className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-tab"
                   >
                     {col}
                   </th>

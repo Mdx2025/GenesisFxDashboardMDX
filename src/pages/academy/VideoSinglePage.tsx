@@ -143,7 +143,7 @@ export default function VideoSinglePage() {
           {/* Course Contents Panel */}
           <div className="hidden xl:flex flex-col w-[17.5000rem] 3xl:w-[20rem] shrink-0 px-5 pb-6">
             <div className="mb-2">
-              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-4">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-tab uppercase leading-4">
                 COURSE CONTENTS
               </p>
               <p className="text-xs font-acid text-gfx-neutral-400 leading-5 mt-1">
@@ -186,7 +186,7 @@ export default function VideoSinglePage() {
                     Lesson {activeLesson} of {totalLessons}
                   </span>
                 </div>
-                <h2 className="text-white text-[clamp(1.5rem,1rem+1vw,2.5rem)] font-acid leading-tight">
+                <h2 className="text-white text-h2 font-acid leading-tight">
                   {currentLesson.title}
                 </h2>
               </div>
@@ -198,7 +198,7 @@ export default function VideoSinglePage() {
 
             {/* Mobile chapter list */}
             <div className="xl:hidden mt-6">
-              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-4 mb-2">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-tab uppercase leading-4 mb-2">
                 COURSE CONTENTS
               </p>
               <p className="text-xs font-acid text-gfx-neutral-400 leading-5 mb-4">

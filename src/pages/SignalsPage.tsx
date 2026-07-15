@@ -391,7 +391,7 @@ export default function SignalsPage() {
               <div className="relative p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <h2 className="text-white text-[clamp(1.25rem,1rem+0.5vw,1.75rem)] font-acid leading-tight">Live Signal Feed</h2>
+                    <h2 className="text-white text-h3 font-acid leading-tight">Live Signal Feed</h2>
                     <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-xs font-acid">
                       Online
                     </span>
@@ -528,7 +528,7 @@ export default function SignalsPage() {
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-white text-[clamp(2rem,1.5rem+1.5vw,3.125rem)] font-acid leading-none max-w-[39.5625rem]">
+                <h2 className="text-white text-hero font-acid leading-none max-w-[39.5625rem]">
                   Turn Your Trades Into Recurring Income
                 </h2>
 
@@ -551,7 +551,7 @@ export default function SignalsPage() {
 
             {/* FAQ Section */}
             <div className="flex flex-col items-center gap-6">
-              <h2 className="text-white text-[clamp(1.5rem,1.25rem+0.75vw,3.125rem)] font-acid leading-none self-start lg:self-center">
+              <h2 className="text-white text-h2 font-acid leading-none self-start lg:self-center">
                 Frequently Asked Questions
               </h2>
               <div className="w-full max-w-[47.2500rem] flex flex-col gap-4 mx-auto">

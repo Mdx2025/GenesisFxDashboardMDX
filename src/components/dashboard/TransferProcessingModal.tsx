@@ -130,12 +130,12 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         <div className="absolute pointer-events-none w-[493px] h-[288px] left-[190px] top-[540px] bg-gfx-green-dark rounded-full blur-[157px]" aria-hidden="true" />
 
         {/* Title */}
-        <div className="absolute text-white font-acid font-normal text-center left-0 right-0 top-[23%] text-[clamp(1.125rem,4.8vw,2.25rem)]">
+        <div className="absolute text-white font-acid font-normal text-center left-0 right-0 top-[23%] text-card-value">
           Sending 0.1 ETH
         </div>
 
         {/* Subtitle */}
-        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[33%] text-[clamp(0.875rem,3.2vw,1.5rem)] text-gfx-neutral-500">
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[33%] text-h4 text-gfx-neutral-500">
           Processing Internal Transfer
         </div>
 
@@ -164,7 +164,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         </div>
 
         {/* Disclaimer */}
-        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[74%] text-[clamp(0.625rem,2vw,1rem)] text-gfx-neutral-300 leading-normal">
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[74%] text-stat text-gfx-neutral-300 leading-normal">
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
       </div>

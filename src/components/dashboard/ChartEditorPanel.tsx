@@ -42,7 +42,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
     >
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
-        <span className="text-xs uppercase tracking-[2px] text-gfx-neutral-300 font-medium">Chart Editor</span>
+        <span className="text-xs uppercase tracking-tab text-gfx-neutral-300 font-medium">Chart Editor</span>
         <button onClick={() => setOpen(false)} className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M11 3L3 11M3 3l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -150,7 +150,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-[0.625rem] uppercase tracking-[1.5px] text-gfx-neutral-500">{label}</span>
+      <span className="text-tiny uppercase tracking-[1.5px] text-gfx-neutral-500">{label}</span>
       {children}
     </div>
   )
@@ -184,7 +184,7 @@ function Slider({ value, min, max, step, color, onChange }: { value: number; min
           }} /* dynamic value */
         />
       </div>
-      <span className="text-[0.625rem] text-gfx-neutral-500 tabular-nums w-8 text-right">
+      <span className="text-tiny text-gfx-neutral-500 tabular-nums w-8 text-right">
         {Number.isInteger(step) ? value : value.toFixed(2)}
       </span>
     </div>

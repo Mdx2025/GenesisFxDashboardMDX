@@ -24,7 +24,7 @@ export function RecentTransactions({ transactions, className = '' }: RecentTrans
               <thead>
                 <tr>
                   {['Time (UTC+)', 'Type', 'Coin', 'Amount', 'Remark'].map(header => (
-                    <th key={header} className={`${header === 'Time (UTC+)' ? 'px-6' : 'px-4'} pt-6 pb-4 text-left text-xs 3xl:text-base 4xl:text-xl font-bold uppercase tracking-[2.32px] text-gfx-neutral-300 whitespace-nowrap`}>
+                    <th key={header} className={`${header === 'Time (UTC+)' ? 'px-6' : 'px-4'} pt-6 pb-4 text-left text-xs 3xl:text-base 4xl:text-xl font-bold uppercase tracking-tab text-gfx-neutral-300 whitespace-nowrap`}>
                       {header}
                     </th>
                   ))}

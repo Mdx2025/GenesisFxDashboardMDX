@@ -158,7 +158,7 @@ function Step1({ setAccountType, onContinue }: {
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Create Account</WaveText>
+      <WaveText as="h1" className="text-white text-hero font-normal leading-tight text-center">Create Account</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-12 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
@@ -205,7 +205,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">{title}</WaveText>
+      <WaveText as="h1" className="text-white text-hero font-normal leading-tight text-center">{title}</WaveText>
       <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-5 text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
@@ -272,7 +272,7 @@ function Step3Corporate({ onBack, onCreateAccount }: { onBack: () => void; onCre
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Corporate Account</WaveText>
+      <WaveText as="h1" className="text-white text-hero font-normal leading-tight text-center">Corporate Account</WaveText>
       <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-5 text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
@@ -311,7 +311,7 @@ function Step3Personal({ onBack, onCreateAccount }: { onBack: () => void; onCrea
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Personal Account</WaveText>
+      <WaveText as="h1" className="text-white text-hero font-normal leading-tight text-center">Personal Account</WaveText>
       <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-5 text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">

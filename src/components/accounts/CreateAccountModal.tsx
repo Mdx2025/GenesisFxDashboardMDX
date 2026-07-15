@@ -132,7 +132,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
         {/* Content */}
         <div className="relative z-10 px-25 py-25">
           {/* Title */}
-          <h2 className="text-white font-acid font-normal text-[clamp(2rem,6vw,3.125rem)] leading-none text-center">
+          <h2 className="text-white font-acid font-normal text-hero leading-none text-center">
             Create Account
           </h2>
 

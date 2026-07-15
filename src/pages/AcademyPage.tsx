@@ -45,10 +45,10 @@ function LearningJourneyCard() {
             <AcademyCapIcon size={26} />
           </div>
           <div className="flex flex-col gap-1">
-            <h2 className="text-white text-[clamp(1.5rem,0.75rem+1.5vw,3.125rem)] font-normal leading-none">
+            <h2 className="text-white text-h2 font-normal leading-none">
               Your Learning Journey
             </h2>
-            <p className="text-gfx-neutral-500 text-[clamp(0.75rem,0.5rem+0.4vw,1.125rem)] font-normal">
+            <p className="text-gfx-neutral-500 text-label font-normal">
               {completed} of {total} courses completed
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function AcademyPage() {
         />
 
         <div className="mt-6 3xl:mt-8 4xl:mt-10 mb-10 xl:mb-20">
-          <h1 className="text-white font-normal leading-none text-[clamp(1.75rem,1rem+1.5vw,3.125rem)]">
+          <h1 className="text-white font-normal leading-none text-h1">
             Genesis Academy
           </h1>
         </div>

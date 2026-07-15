@@ -53,7 +53,7 @@ function CoinLogo({ coin }: { coin: string }) {
   }
   return (
     <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: bg }} /* dynamic */>
-      <span className="text-[0.625rem] font-bold text-white">{coin.charAt(0)}</span>
+      <span className="text-tiny font-bold text-white">{coin.charAt(0)}</span>
     </div>
   )
 }
@@ -145,7 +145,7 @@ export default function AssetsManagementPage() {
           breadcrumbItems={[{ label: 'Assets Management', href: '/assets-management' }, { label: 'Funding', current: true }]}
         />
 
-          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mt-6 3xl:mt-8 4xl:mt-10">Funding</h1>
+          <h1 className="text-white font-normal leading-none text-hero-lg mt-6 3xl:mt-8 4xl:mt-10">Funding</h1>
 
           <section aria-label="Fiat Wallet" className="py-7 md:py-15">
             <GlassBannerCard contentClassName="py-8 px-5 xl:py-17 xl:px-13 3xl:py-21 3xl:px-10 4xl:py-26 4xl:px-14">
@@ -291,13 +291,13 @@ export default function AssetsManagementPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
-                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Deposit Address</th>
-                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Coin</th>
-                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Network</th>
-                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Date</th>
-                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Status</th>
-                      <th className="text-right text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Deposit Address</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Coin</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[10%]">Network</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Date</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Status</th>
+                      <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
                     </tr>
                   </thead>
                   <tbody>

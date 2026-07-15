@@ -112,12 +112,12 @@ function LeaderboardContent() {
         <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-y border-white/5">
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">User</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Current Tier</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Return %</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Chart</th>
-              <th className="text-right text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">User</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Current Tier</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Return %</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[20%]">Chart</th>
+              <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
             </tr>
           </thead>
           <tbody>
@@ -179,12 +179,12 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
         <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-y border-white/5">
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[14%]">Deposit</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">10x Equity</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Max Drawdown</th>
-              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">Status</th>
-              <th className="text-right text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[14%]">Deposit</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[16%]">10x Equity</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Max Drawdown</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[16%]">Status</th>
+              <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -231,7 +231,7 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
       {/* Hero Banner */}
       <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
         <div className="flex flex-col">
-          <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
+          <h2 className="text-white text-h2 font-normal">10x Challenge</h2>
           <p className="text-gfx-neutral-400 text-body2">
             Turn $125 into $1,000,000 — prove your skill, level up your capital
           </p>
@@ -241,7 +241,7 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
             <TrophyIcon />
           </div>
           <div className="flex flex-col items-center gap-1">
-            <span className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">0</span>
+            <span className="text-white text-h2 font-normal">0</span>
             <span className="text-gfx-neutral-400 text-base font-medium">My challenges</span>
           </div>
         </div>
@@ -682,7 +682,7 @@ export default function ChallengesPage() {
 
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-8 lg:gap-20">
-          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mt-6 3xl:mt-8 4xl:mt-10">10X Challenges</h1>
+          <h1 className="text-white font-normal leading-none text-hero-lg mt-6 3xl:mt-8 4xl:mt-10">10X Challenges</h1>
 
           {/* Tabs + Actions Row */}
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">

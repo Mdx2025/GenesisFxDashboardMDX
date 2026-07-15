@@ -38,7 +38,7 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
 
       <div className="absolute inset-0 flex flex-col justify-between p-[22px]">
-        <h3 className="text-white text-[clamp(1.75rem,1rem+1.5vw,2.75rem)] font-normal leading-none text-center mt-[50px]">
+        <h3 className="text-white text-h1 font-normal leading-none text-center mt-[50px]">
           {category}
         </h3>
 

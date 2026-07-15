@@ -182,7 +182,7 @@ export default function DesignSystemPage() {
             <div><p className="text-caption text-gfx-neutral-300 mb-1">Caption</p><p className="text-caption text-gfx-neutral-500">Caption text for annotations and supplementary details.</p></div>
             <div><p className="text-caption text-gfx-neutral-300 mb-1">Label</p><p className="text-label text-gfx-neutral-500">Form labels and input descriptors.</p></div>
             <div><p className="text-caption text-gfx-neutral-300 mb-1">Eyebrow</p><p className="text-eyebrow text-gfx-green-500">Category Label</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Tab</p><p className="text-tab text-gfx-neutral-500 uppercase tracking-[2.32px]">TAB LABEL</p></div>
+            <div><p className="text-caption text-gfx-neutral-300 mb-1">Tab</p><p className="text-tab text-gfx-neutral-500 uppercase tracking-tab">TAB LABEL</p></div>
           </div>
         </Section>
 

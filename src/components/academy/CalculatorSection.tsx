@@ -180,7 +180,7 @@ export function CalculatorSection() {
         <div className="flex flex-col gap-2.5">
           {breakdownRows.map(row => (
             <div key={row.label} className="bg-gfx-green-900 rounded-xl px-4 py-3.5 h-[91px] flex flex-col justify-center">
-              <span className="text-gfx-neutral-400 text-xs font-acid font-bold uppercase tracking-[2.32px]">
+              <span className="text-gfx-neutral-400 text-xs font-acid font-bold uppercase tracking-tab">
                 {row.label}
               </span>
               <span className="text-white text-base font-acid font-medium mt-1">

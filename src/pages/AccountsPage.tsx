@@ -99,15 +99,15 @@ export default function AccountsPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Platform</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[8%]">Type</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Balance</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Equity</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[11%]">Closed P&L</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Open P&L</th>
-                      <th className="text-left text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[7%]">Status</th>
-                      <th className="text-right text-caption font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" />
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[11%]">Platform</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[8%]">Type</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Balance</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Equity</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[11%]">Closed P&L</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[10%]">Open P&L</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[7%]">Status</th>
+                      <th className="text-right text-caption font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" />
                     </tr>
                   </thead>
                   <tbody>

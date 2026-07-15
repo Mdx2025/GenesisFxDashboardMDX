@@ -132,9 +132,9 @@ function PnlPerformanceChart() {
         </div>
       </div>
       <div className="flex justify-between mt-2 pl-[2.7500rem]">
-        <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">Jun 22</span>
-        <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">Jun 22</span>
-        <span className="text-gfx-neutral-400 text-[0.625rem] font-acid">Jun 22</span>
+        <span className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
+        <span className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
+        <span className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
       </div>
     </div>
   )
@@ -263,7 +263,7 @@ export default function SignalsDetailsPage() {
                 <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6 mb-2">Most Traded</p>
                 <div className="flex items-center gap-2 bg-gfx-green-800 rounded-sm border-[1.32px] border-gfx-green-900 px-3 py-2">
                   <XauusdSmallIcon />
-                  <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
+                  <span className="text-white text-base font-bold tracking-wide" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
                   <span className="text-gfx-neutral-400 text-sm font-acid leading-5">2</span>
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function SignalsDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-4 px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>

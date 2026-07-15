@@ -146,7 +146,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <h2 className="text-center text-white text-[clamp(1.75rem,5vw,3rem)] font-normal font-acid leading-none">
+            <h2 className="text-center text-white text-h1 font-normal font-acid leading-none">
               Enter your code
             </h2>
 
@@ -172,7 +172,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
                 onChange={e => handleChange(i, e.target.value)}
                 onKeyDown={e => handleKeyDown(i, e)}
                 onPaste={i === 0 ? handlePaste : undefined}
-                className={`w-[clamp(3.5rem,15vw,7rem)] h-[clamp(4rem,17vw,8rem)] rounded-xl sm:rounded-2xl border text-center text-white text-[clamp(1.5rem,5vw,3rem)] font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
+                className={`w-[clamp(3.5rem,15vw,7rem)] h-[clamp(4rem,17vw,8rem)] rounded-xl sm:rounded-2xl border text-center text-white text-h2 font-normal font-acid bg-transparent outline-none transition-colors focus:border-gfx-green-500 ${
                   error
                     ? 'border-red-500'
                     : digit

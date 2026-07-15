@@ -17,7 +17,7 @@ export default function AllPagesPage() {
           breadcrumbItems={[{ label: 'All Pages', current: true }]}
         />
 
-        <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)] mb-8">All Pages</h1>
+        <h1 className="text-white font-normal leading-none text-hero-lg mb-8">All Pages</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 3xl:gap-6">
           {PAGE_REGISTRY.map((page) => {

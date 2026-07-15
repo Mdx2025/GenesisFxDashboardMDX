@@ -26,7 +26,7 @@ export default function LoginPage() {
     <AuthLayout>
       <div ref={fadeRef} className="w-full max-w-[34.125rem] px-4 sm:px-0 flex flex-col items-center gap-[2.6875rem]">
         <div className="flex flex-col items-center gap-[2.6875rem]">
-          <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Trader's Room Log In</WaveText>
+          <WaveText as="h1" className="text-white text-hero font-normal leading-tight text-center">Trader's Room Log In</WaveText>
           <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-5 text-center" delay={0.4} stagger={0.015}>Welcome back! Sign in to your account below.</WaveText>
         </div>
 

@@ -236,7 +236,7 @@ function LiveQuotesCard() {
         <SearchInput placeholder="Search for" />
       </div>
       <div className="px-5">
-        <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_auto] gap-x-3 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider pb-2 border-b border-white/[0.04]">
+        <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_auto] gap-x-3 text-tiny text-gfx-neutral-500 uppercase tracking-wider pb-2 border-b border-white/[0.04]">
           <span />
           <span>Symbol</span>
           <span className="text-right">Bid</span>
@@ -278,7 +278,7 @@ function NewsFeedCard() {
   return (
     <Card title="News Feed" className="flex-1">
       <div className="px-5">
-        <div className="grid grid-cols-[3.5rem_1fr_4.5rem_2.5rem] gap-x-3 text-[0.625rem] text-gfx-neutral-500 uppercase tracking-wider py-3 border-b border-white/[0.04]">
+        <div className="grid grid-cols-[3.5rem_1fr_4.5rem_2.5rem] gap-x-3 text-tiny text-gfx-neutral-500 uppercase tracking-wider py-3 border-b border-white/[0.04]">
           <span>Bias</span>
           <span>Headline</span>
           <span>Source</span>
@@ -314,7 +314,7 @@ function TopMoversCard() {
           <div key={i} className="bg-[#0a0f0d] rounded-xl p-4 flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-gfx-green-500/10 flex items-center justify-center text-[0.625rem]">
+                <span className="w-6 h-6 rounded-full bg-gfx-green-500/10 flex items-center justify-center text-tiny">
                   {m.flag || m.icon}
                 </span>
                 <span className="text-white text-xs">{m.symbol}</span>
@@ -422,17 +422,17 @@ function TradeSessionsCard() {
           <div key={i} className="flex items-center justify-between py-3.5 border-b border-white/[0.04] last:border-0">
             <div className="flex flex-col gap-0.5">
               <span className="text-white text-xs font-normal">{s.city}</span>
-              <span className="text-gfx-neutral-500 text-[0.625rem]">{s.hours}</span>
+              <span className="text-gfx-neutral-500 text-tiny">{s.hours}</span>
             </div>
             <div className="flex flex-col items-end gap-0.5">
-              <span className={`px-2.5 py-0.5 rounded text-[0.625rem] font-normal ${
+              <span className={`px-2.5 py-0.5 rounded text-tiny font-normal ${
                 s.open
                   ? 'bg-gfx-green-500/15 text-gfx-green-500 border border-gfx-green-500/20'
                   : 'bg-gfx-danger/15 text-gfx-danger border border-gfx-danger/20'
               }`}>
                 {s.open ? 'OPEN' : 'CLOSED'}
               </span>
-              <span className="text-gfx-neutral-500 text-[0.625rem]">Opens Mon</span>
+              <span className="text-gfx-neutral-500 text-tiny">Opens Mon</span>
             </div>
           </div>
         ))}

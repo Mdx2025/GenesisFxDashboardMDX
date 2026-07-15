@@ -56,7 +56,7 @@ export default function ResetPasswordPage() {
 
         {/* Centered content */}
         <div ref={fadeRef} className="flex-1 flex flex-col justify-center items-center relative z-10 px-6 sm:px-0">
-          <h1 className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-none text-center">
+          <h1 className="text-white text-hero font-normal leading-none text-center">
             Reset Your Password
           </h1>
 

@@ -93,7 +93,7 @@ export default function EbookSinglePage() {
           {/* Chapter Contents Panel */}
           <div className="hidden xl:flex flex-col w-[17.5000rem] 3xl:w-[20rem] shrink-0 px-5 pb-6">
             <div className="mb-2">
-              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-4">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-tab uppercase leading-4">
                 CHAPTERS
               </p>
               <p className="text-xs font-acid text-gfx-neutral-400 leading-5 mt-1">
@@ -135,7 +135,7 @@ export default function EbookSinglePage() {
 
             {/* Title + Tags */}
             <div className="mt-6">
-              <h1 className="text-white text-[clamp(1.75rem,1.25rem+1vw,2.25rem)] font-acid leading-tight">
+              <h1 className="text-white text-card-value font-acid leading-tight">
                 {ebook.title}
               </h1>
 
@@ -178,7 +178,7 @@ export default function EbookSinglePage() {
 
             {/* Mobile chapter list */}
             <div className="xl:hidden mt-6">
-              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-4 mb-2">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-tab uppercase leading-4 mb-2">
                 CHAPTERS
               </p>
               <p className="text-xs font-acid text-gfx-neutral-400 leading-5 mb-4">

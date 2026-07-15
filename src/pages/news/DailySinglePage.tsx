@@ -81,7 +81,7 @@ export default function DailySinglePage() {
           >
             <BackArrow />
           </button>
-          <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
+          <h1 className="text-white font-normal leading-none text-hero-lg">
             News: 27/04/2026
           </h1>
         </div>

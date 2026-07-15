@@ -179,7 +179,7 @@ export default function DepositPage() {
           />
 
           <div className="mt-8 mb-10">
-            <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
+            <h1 className="text-white font-normal leading-none text-hero-lg">
               Deposit Funds
             </h1>
             <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
@@ -198,7 +198,7 @@ export default function DepositPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-[3.25rem] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -241,7 +241,7 @@ export default function DepositPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-[3.25rem] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Select Network
                     </h3>
 
@@ -264,7 +264,7 @@ export default function DepositPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-[3.25rem] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Deposit Address
                     </h3>
 
