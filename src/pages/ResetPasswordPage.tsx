@@ -5,7 +5,7 @@ import { GlowEllipse } from '@/components/ui/GlowEllipse'
 import { EyeIcon } from '@/components/icons'
 import { useFadeIn } from '@/hooks/useFadeIn'
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-gfx-green-800 border border-gfx-green-200 px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors font-acid"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors font-acid"
 
 export default function ResetPasswordPage() {
   const [newPassword, setNewPassword] = useState('')
@@ -113,7 +113,7 @@ export default function ResetPasswordPage() {
         </div>
 
         {/* Footer inside card */}
-        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-[2rem] leading-[1.175rem]">
+        <p className="relative z-10 text-gfx-neutral-400 text-xs text-center pb-8 leading-[1.175rem]">
           2026 Genesis FX Markets. All rights reserved.
         </p>
       </div>

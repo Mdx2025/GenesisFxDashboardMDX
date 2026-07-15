@@ -115,22 +115,22 @@ export default function AccountsPage() {
                       <tr key={acc.account} className={i > 0 ? 'border-t border-white/5' : ''}>
                         <td className="px-4 sm:px-6 py-4 xl:py-5">
                           <div>
-                            <p className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-bold leading-tight">{acc.account}</p>
+                            <p className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-bold leading-tight">{acc.account}</p>
                             <p className="text-gfx-neutral-300 text-label mt-0.5">{acc.username}</p>
                           </div>
                         </td>
-                        <td className="text-white/60 text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{acc.platform}</td>
+                        <td className="text-white/60 text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{acc.platform}</td>
                         <td className="py-4 xl:py-5">
                           <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
                         </td>
-                        <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.balance}</td>
-                        <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{acc.equity}</td>
-                        <td className={`text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
-                        <td className={`text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5 ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
+                        <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5">{acc.balance}</td>
+                        <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5">{acc.equity}</td>
+                        <td className={`text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5 ${acc.closedPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.closedPL}</td>
+                        <td className={`text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5 ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</td>
                         <td className="py-4 xl:py-5">
                           <div className="flex items-center gap-2">
                             <GreenDot size={8} />
-                            <span className="text-gfx-neutral-300 text-sm 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{acc.status}</span>
+                            <span className="text-gfx-neutral-300 text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{acc.status}</span>
                           </div>
                         </td>
                         <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">

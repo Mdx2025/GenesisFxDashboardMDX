@@ -182,7 +182,7 @@ export default function DepositPage() {
             <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
               Deposit Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
+            <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
               All payments will be credited to your main wallet. You can then transfer funds to your trading accounts.
             </p>
           </div>
@@ -198,7 +198,7 @@ export default function DepositPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -217,14 +217,14 @@ export default function DepositPage() {
                         key={coin.id}
                         type="button"
                         onClick={() => handleCoinSelect(coin.id)}
-                        className={`h-[3.125rem] 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-[1.875rem] flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
+                        className={`h-[3.125rem] 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
                             ? 'bg-[#064b34] border border-[#0a714f]'
                             : 'bg-[#111312] border border-transparent hover:bg-[#1a1c1b]'
                         }`}
                       >
                         {coin.icon}
-                        <span className="text-white text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium">{coin.label}</span>
+                        <span className="text-white text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium">{coin.label}</span>
                       </button>
                     ))}
                   </div>
@@ -241,7 +241,7 @@ export default function DepositPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Select Network
                     </h3>
 
@@ -264,7 +264,7 @@ export default function DepositPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Deposit Address
                     </h3>
 
@@ -284,9 +284,9 @@ export default function DepositPage() {
                               <QrCodePlaceholder />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <span className="text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] text-gfx-neutral-300 leading-[1.175rem] 3xl:leading-[1.5rem] 4xl:leading-[2rem]">Address</span>
+                              <span className="text-sm 3xl:text-[1.125rem] 4xl:text-2xl text-gfx-neutral-300 leading-[1.175rem] 3xl:leading-[1.5rem] 4xl:leading-[2rem]">Address</span>
                               <div className="flex items-start gap-2 mt-3">
-                                <p className="text-[1rem] text-white leading-[1.528rem] break-all">
+                                <p className="text-base text-white leading-[1.528rem] break-all">
                                   {DEPOSIT_ADDRESS}
                                 </p>
                                 <button
@@ -298,7 +298,7 @@ export default function DepositPage() {
                                   <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
                                 </button>
                               </div>
-                              <p className="text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] text-gfx-neutral-300 leading-[1.175rem] 3xl:leading-[1.5rem] 4xl:leading-[2rem] mt-3">
+                              <p className="text-sm 3xl:text-[1.125rem] 4xl:text-2xl text-gfx-neutral-300 leading-[1.175rem] 3xl:leading-[1.5rem] 4xl:leading-[2rem] mt-3">
                                 Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
                               </p>
                             </div>

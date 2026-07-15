@@ -36,10 +36,10 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
         </div>
 
         {/* Title */}
-        <h4 className="text-white text-[1rem] font-acid font-medium text-center -mt-2">{title}</h4>
+        <h4 className="text-white text-base font-acid font-medium text-center -mt-2">{title}</h4>
 
         {/* Description */}
-        <p className="text-gfx-neutral-400 text-[0.875rem] font-acid text-center mt-3 max-w-[22.5000rem] leading-[1.125rem]">
+        <p className="text-gfx-neutral-400 text-sm font-acid text-center mt-3 max-w-[22.5000rem] leading-[1.125rem]">
           {description}
         </p>
 
@@ -54,7 +54,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
             />
           ) : (
             <div className="w-full max-w-[24.1875rem] h-[2.75rem] rounded-[18.75rem] border border-gfx-neutral-250 flex items-center justify-center">
-              <span className="text-gfx-neutral-300 text-[0.875rem] font-acid">Coming soon</span>
+              <span className="text-gfx-neutral-300 text-sm font-acid">Coming soon</span>
             </div>
           )}
         </div>
@@ -76,13 +76,13 @@ export default function ReplayView() {
             <h3 className="text-white text-xl sm:text-2xl font-acid font-normal leading-tight">
               Replay Your Trades
             </h3>
-            <p className="text-gfx-neutral-400 text-[0.875rem] font-acid mt-1">
+            <p className="text-gfx-neutral-400 text-sm font-acid mt-1">
               Relive and analyze your trading sessions with interactive playback
             </p>
           </div>
           <button className="flex items-center gap-3 h-[2.75rem] px-3 pr-5 rounded-sm bg-transparent transition-colors cursor-pointer border border-gfx-neutral-250">
             <QuestionIcon />
-            <span className="text-white text-[0.875rem] font-acid">How it works</span>
+            <span className="text-white text-sm font-acid">How it works</span>
           </button>
         </div>
       </GlassCard>

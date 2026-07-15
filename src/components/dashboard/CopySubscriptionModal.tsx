@@ -126,15 +126,15 @@ export function CopySubscriptionModal({
         <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0, borderRight: '1px solid #303030' }}>
           {/* Step indicator + title */}
           <div className="flex items-center gap-4 mb-[39px]">
-            <div className="w-8 h-8 rounded-full bg-[#09241C] border border-[#00B38C] flex items-center justify-center flex-shrink-0">
-              <span className="text-[#00B38C] text-[0.875rem] font-semibold" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '20px' }}>1</span>
+            <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-[#00B38C] flex items-center justify-center flex-shrink-0">
+              <span className="text-[#00B38C] text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '20px' }}>1</span>
             </div>
-            <h2 className="text-white text-[1.5rem] font-acid font-normal">Configure Subscription</h2>
+            <h2 className="text-white text-2xl font-acid font-normal">Configure Subscription</h2>
           </div>
 
           {/* Select Account */}
           <div className="mb-[39px]">
-            <label className="block text-white text-[1rem] font-acid font-medium leading-[24.44px] mb-3">Select Account</label>
+            <label className="block text-white text-base font-acid font-medium leading-[24.44px] mb-3">Select Account</label>
             <GlassSelect
               options={ACCOUNT_OPTIONS}
               placeholder="Select an account"
@@ -146,7 +146,7 @@ export function CopySubscriptionModal({
           {/* Lot Size Mode */}
           <div className="mb-8">
             <div className="flex items-center gap-1.5 mb-[12.5px]">
-              <label className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">Lot Size Mode</label>
+              <label className="text-white text-base font-acid font-medium leading-[24.44px]">Lot Size Mode</label>
               <InfoIcon />
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -157,14 +157,14 @@ export function CopySubscriptionModal({
                   onClick={() => setLotMode(mode.id)}
                   className={`h-20 rounded-[8px] text-left px-[17px] flex flex-col justify-center cursor-pointer transition-colors ${
                     lotMode === mode.id
-                      ? 'bg-[#09241C] border border-[#00B38C]'
-                      : 'bg-[#0C1311] border border-[#09241C] hover:border-[#064B34]'
+                      ? 'bg-gfx-green-900 border border-[#00B38C]'
+                      : 'bg-gfx-green-800 border border-[#09241C] hover:border-gfx-green-200'
                   }`}
                 >
-                  <span className={`text-[1rem] font-acid font-medium leading-[24.44px] ${lotMode === mode.id ? 'text-[#00B38C]' : 'text-white'}`}>
+                  <span className={`text-base font-acid font-medium leading-[24.44px] ${lotMode === mode.id ? 'text-[#00B38C]' : 'text-white'}`}>
                     {mode.title}
                   </span>
-                  <span className="text-[#808080] text-[0.875rem] font-acid leading-[18.8px] mt-0.5">
+                  <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] mt-0.5">
                     {mode.subtitle}
                   </span>
                 </button>
@@ -178,9 +178,9 @@ export function CopySubscriptionModal({
               <label className="text-white text-[0.9375rem] font-semibold leading-[22.5px]" style={{ fontFamily: 'Inter, sans-serif' }}>Subscription Amount</label>
               <InfoIcon color="#808080" />
             </div>
-            <div className="h-[62px] rounded-[8px] bg-[#09241C] flex items-center justify-between px-[17px]">
-              <span className="text-[#A0A0A0] text-[0.875rem] font-acid leading-[18.8px]">Account Balance</span>
-              <span className="text-white text-[0.875rem] font-acid leading-[18.8px]">$0.00</span>
+            <div className="h-[62px] rounded-[8px] bg-gfx-green-900 flex items-center justify-between px-[17px]">
+              <span className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px]">Account Balance</span>
+              <span className="text-white text-sm font-acid leading-[18.8px]">$0.00</span>
             </div>
           </div>
 
@@ -200,29 +200,29 @@ export function CopySubscriptionModal({
           {/* Profile */}
           <div className="flex items-center gap-4 mb-[32px]">
             <div className="w-14 h-14 rounded-full bg-[#064B34] flex items-center justify-center flex-shrink-0 border border-[#222]">
-              <span className="text-white text-[0.875rem] font-acid font-medium">{traderInitials}</span>
+              <span className="text-white text-sm font-acid font-medium">{traderInitials}</span>
             </div>
             <div>
-              <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px] block">{traderName}</span>
-              <span className="text-[#A0A0A0] text-[1rem] font-acid font-medium leading-[24.44px] block">{traderUsername}</span>
+              <span className="text-white text-base font-acid font-medium leading-[24.44px] block">{traderName}</span>
+              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px] block">{traderUsername}</span>
             </div>
           </div>
 
           {/* AUM / ROI stat cards */}
           <div className="flex gap-4 mb-[32px]">
-            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-[#09241C] rounded-[8px] border border-[#064B34]">
-              <span className="text-[#00B38C] text-[0.75rem] font-acid leading-[18.8px]">AUM</span>
-              <span className="text-[#00B38C] text-[1rem] font-acid font-medium leading-[24.44px] mt-[8px]">{aum}</span>
+            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-[8px] border border-gfx-green-200">
+              <span className="text-[#00B38C] text-xs font-acid leading-[18.8px]">AUM</span>
+              <span className="text-[#00B38C] text-base font-acid font-medium leading-[24.44px] mt-[8px]">{aum}</span>
             </div>
-            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-[#09241C] rounded-[8px] border border-[#064B34]">
-              <span className="text-[#00B38C] text-[0.75rem] font-acid leading-[18.8px]">ROI</span>
-              <span className="text-[#00B38C] text-[1rem] font-acid font-medium leading-[24.44px] mt-[8px]">{roi}</span>
+            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-[8px] border border-gfx-green-200">
+              <span className="text-[#00B38C] text-xs font-acid leading-[18.8px]">ROI</span>
+              <span className="text-[#00B38C] text-base font-acid font-medium leading-[24.44px] mt-[8px]">{roi}</span>
             </div>
           </div>
 
           {/* Subscription Summary */}
           <div className="flex-1 px-[29px] py-[29px] rounded-[12px] border border-[#303030]">
-            <h3 className="text-white text-[1rem] font-acid font-medium leading-[24.44px] mb-[24.5px]">Subscription Summary</h3>
+            <h3 className="text-white text-base font-acid font-medium leading-[24.44px] mb-[24.5px]">Subscription Summary</h3>
 
             <div className="space-y-[17.5px]">
               <SummaryRow label="Strategy Status" value="Active" valueClass="text-[#00B38C]" />
@@ -250,8 +250,8 @@ export function CopySubscriptionModal({
 function SummaryRow({ label, value, valueClass = 'text-white' }: { label: string; value: string; valueClass?: string }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-[#A0A0A0] text-[0.875rem] font-acid leading-[18.8px]">{label}</span>
-      <span className={`text-[0.875rem] font-acid leading-[18.8px] ${valueClass}`}>{value}</span>
+      <span className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px]">{label}</span>
+      <span className={`text-sm font-acid leading-[18.8px] ${valueClass}`}>{value}</span>
     </div>
   )
 }

@@ -100,18 +100,18 @@ export function FollowStrategyModal({
         <div className="px-[39px] pt-[46px] pb-[44px]">
           {/* Title */}
           <h2 className="text-white font-acid text-[24px] leading-none">Follow Strategy</h2>
-          <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px] mt-[12px]">
+          <p className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px] mt-[12px]">
             Review the fees and terms before following this strategy
           </p>
 
           {/* Strategy info */}
           <div className="flex items-center gap-[22px] mt-[27px]">
             <div className="w-[40px] h-[40px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-[12px] font-acid font-medium">{initials}</span>
+              <span className="text-white text-xs font-acid font-medium">{initials}</span>
             </div>
             <div>
               <p className="text-white text-[18px] font-acid leading-none">{strategyName}</p>
-              <p className="text-[#a0a0a0] text-[12px] font-acid leading-[18.8px] mt-[4px]">{username}</p>
+              <p className="text-gfx-neutral-500 text-xs font-acid leading-[18.8px] mt-[4px]">{username}</p>
             </div>
           </div>
 
@@ -119,14 +119,14 @@ export function FollowStrategyModal({
           <div className="w-full h-px bg-[#303030] mt-[22px]" />
 
           {/* Subscription Fees */}
-          <p className="text-white text-[12px] font-acid leading-[18.8px] mt-[24px]">Subscription Fees</p>
+          <p className="text-white text-xs font-acid leading-[18.8px] mt-[24px]">Subscription Fees</p>
 
           <div className="border border-[#303030] rounded-[12px] mt-[12px] overflow-hidden">
             {/* Monthly subscription */}
             <div className="flex items-center justify-between px-[24px] py-[14px]">
-              <span className="text-[#ececec] text-[12px] font-acid leading-[18.8px]">Monthly subscription</span>
-              <span className="text-[#ececec] text-[12px] font-acid leading-[18.8px]">
-                {monthlyAmount}<span className="text-[#a0a0a0]"> / mo</span>
+              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">Monthly subscription</span>
+              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">
+                {monthlyAmount}<span className="text-gfx-neutral-500"> / mo</span>
               </span>
             </div>
 
@@ -135,16 +135,16 @@ export function FollowStrategyModal({
 
             {/* Performance fee */}
             <div className="flex items-center justify-between px-[24px] py-[14px]">
-              <span className="text-[#ececec] text-[12px] font-acid leading-[18.8px]">Perfomance fee</span>
-              <span className="text-[#ececec] text-[12px] font-acid leading-[18.8px]">
-                {perfFee}<span className="text-[#a0a0a0]"> of profits</span>
+              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">Perfomance fee</span>
+              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">
+                {perfFee}<span className="text-gfx-neutral-500"> of profits</span>
               </span>
             </div>
 
             {/* Charges today (highlighted row) */}
             <div className="flex items-center justify-between px-[24px] py-[14px] bg-[rgba(16,188,131,0.08)]">
-              <span className="text-[#ececec] text-[12px] font-acid leading-[18.8px]">Charges today</span>
-              <span className="text-[#ececec] text-[12px] font-acid leading-[18.8px]">{monthlyAmount}</span>
+              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">Charges today</span>
+              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">{monthlyAmount}</span>
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export function FollowStrategyModal({
                 <path d="M9 14L4 9L5.4 7.6L9 11.2L14.6 5.6L16 7L9 14Z" fill="#00b38c"/>
               </svg>
             </div>
-            <p className="text-[#a0a0a0] text-[14px] font-acid leading-[18.8px]">
+            <p className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px]">
               By following this strategy you agree to our{' '}
               <span className="text-white">Signal Subscription Terms & Conditions.</span>{' '}
               You acknowledge that trading signals are for informational purposes only and do not constitute financial advice. Past performance does not guarantee future results. You may unfollow at any time. Applicable fees will be charged as described above.
@@ -177,7 +177,7 @@ export function FollowStrategyModal({
                 </svg>
               )}
             </button>
-            <p className="text-white text-[14px] font-acid leading-[18.8px]">
+            <p className="text-white text-sm font-acid leading-[18.8px]">
               I have read and agree to the{' '}
               <span className="text-[#00b38c] underline cursor-pointer">Signal Subscription Terms</span>
               <br />

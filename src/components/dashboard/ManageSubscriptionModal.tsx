@@ -25,7 +25,7 @@ function CheckCircleIcon() {
 
 function AssetTag({ label }: { label: string }) {
   return (
-    <span className="border border-[#303030] rounded-full px-4 py-2 text-[#ececec] text-[0.875rem] font-acid">
+    <span className="border border-[#303030] rounded-full px-4 py-2 text-[#ececec] text-sm font-acid">
       {label}
     </span>
   )
@@ -146,18 +146,18 @@ export function ManageSubscriptionModal({
             {/* Provider Header */}
             <div className="flex items-center gap-3 mb-1">
               <div className="w-[40px] h-[40px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-[0.75rem] font-acid font-medium">{providerInitials}</span>
+                <span className="text-white text-xs font-acid font-medium">{providerInitials}</span>
               </div>
               <div>
                 <p className="text-white text-[1.125rem] font-acid leading-tight">{providerName}</p>
-                <p className="text-[#a0a0a0] text-[0.75rem] font-acid leading-[18.8px]">{providerSubtitle}</p>
+                <p className="text-gfx-neutral-500 text-xs font-acid leading-[18.8px]">{providerSubtitle}</p>
               </div>
             </div>
 
             {/* Active Badge */}
             <div className="flex items-center gap-[10px] bg-[#09241c] rounded-[12px] px-3 py-2 w-fit mb-6 ml-[52px] -mt-1">
               <CheckCircleIcon />
-              <span className="text-[#00b38c] text-[0.875rem] font-acid">Active</span>
+              <span className="text-[#00b38c] text-sm font-acid">Active</span>
             </div>
 
             {/* Tabs — ModeToggle */}
@@ -173,10 +173,10 @@ export function ManageSubscriptionModal({
             {activeTab === 0 && (
               <div className="flex flex-col gap-6">
                 <div className="border border-[#303030] rounded-[20px] min-h-[191px] flex items-center justify-center">
-                  <p className="text-[#a0a0a0] text-[1rem] font-acid-medium leading-[24.44px]">No open positions yet.</p>
+                  <p className="text-gfx-neutral-500 text-base font-acid-medium leading-[24.44px]">No open positions yet.</p>
                 </div>
                 {/* Cancel Subscription */}
-                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-[1rem] font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
+                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-base font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
                   Cancel Subscription
                 </button>
               </div>
@@ -185,10 +185,10 @@ export function ManageSubscriptionModal({
             {activeTab === 1 && (
               <div className="flex flex-col gap-6">
                 <div className="border border-[#303030] rounded-[20px] min-h-[191px] flex items-center justify-center">
-                  <p className="text-[#a0a0a0] text-[1rem] font-acid-medium leading-[24.44px]">No closed trades yet.</p>
+                  <p className="text-gfx-neutral-500 text-base font-acid-medium leading-[24.44px]">No closed trades yet.</p>
                 </div>
                 {/* Cancel Subscription */}
-                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-[1rem] font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
+                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-base font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors">
                   Cancel Subscription
                 </button>
               </div>
@@ -212,7 +212,7 @@ export function ManageSubscriptionModal({
 
                 {/* Asset Focus */}
                 <div>
-                  <p className="text-[#a0a0a0] text-[0.875rem] font-acid mb-3">Asset Focus</p>
+                  <p className="text-gfx-neutral-500 text-sm font-acid mb-3">Asset Focus</p>
                   <div className="flex flex-wrap gap-2">
                     <AssetTag label="Forex" />
                     <AssetTag label="Gold" />
@@ -221,7 +221,7 @@ export function ManageSubscriptionModal({
                 </div>
 
                 {/* Cancel Subscription */}
-                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-[1rem] font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors mt-2">
+                <button className="w-full h-[46px] rounded-[30px] border border-[#7f3b34] text-[#d46356] text-base font-acid-medium leading-[24.44px] cursor-pointer hover:bg-[#7f3b34]/10 transition-colors mt-2">
                   Cancel Subscription
                 </button>
               </div>

@@ -119,13 +119,13 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
             <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-[1rem] font-acid font-medium">{trader.initials}</span>
+              <span className="text-white text-base font-acid font-medium">{trader.initials}</span>
             </div>
             <div className="flex-1 min-w-0 pt-1">
               <div className="flex items-center gap-1.5">
-                <span className="text-white text-[1rem] font-acid font-medium truncate">{trader.name}</span>
+                <span className="text-white text-base font-acid font-medium truncate">{trader.name}</span>
               </div>
-              <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium mt-0.5">{trader.username}</p>
+              <p className="text-gfx-neutral-500 text-base font-acid font-medium mt-0.5">{trader.username}</p>
             </div>
           </div>
           <button className="p-2 cursor-pointer" aria-label="Favorite">
@@ -139,17 +139,17 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         {/* Total P&L + Badges */}
         <div className="mt-4">
           <div className="flex items-center gap-2 flex-wrap">
-            <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">Total P&L</p>
+            <p className="text-gfx-neutral-500 text-base font-acid font-medium">Total P&L</p>
             <div className="flex gap-2 ml-auto">
-              <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-[0.75rem] font-acid font-medium">
+              <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-xs font-acid font-medium">
                 {trader.followers} Followers
               </span>
-              <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-[0.75rem] font-acid font-medium">
+              <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-xs font-acid font-medium">
                 {trader.aum} AUM
               </span>
             </div>
           </div>
-          <p className="text-gfx-green-500 text-[1.5rem] font-acid mt-2">{trader.totalPnlPercent}%</p>
+          <p className="text-gfx-green-500 text-2xl font-acid mt-2">{trader.totalPnlPercent}%</p>
         </div>
 
         {/* Chart area */}
@@ -161,20 +161,20 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         <div className="bg-gfx-green-900 rounded-[0.5625rem] p-5 mt-4">
           <div className="flex flex-col gap-3.5">
             <div className="flex justify-between items-center">
-              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Total P&L</span>
-              <span className="text-white text-[1rem] font-acid font-medium">{trader.totalPnlAmount}</span>
+              <span className="text-gfx-neutral-400 text-base font-acid font-medium">Total P&L</span>
+              <span className="text-white text-base font-acid font-medium">{trader.totalPnlAmount}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Equity</span>
-              <span className="text-white text-[1rem] font-acid font-medium">{trader.equity}</span>
+              <span className="text-gfx-neutral-400 text-base font-acid font-medium">Equity</span>
+              <span className="text-white text-base font-acid font-medium">{trader.equity}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Win Rate</span>
-              <span className="text-white text-[1rem] font-acid font-medium">{trader.winRate}</span>
+              <span className="text-gfx-neutral-400 text-base font-acid font-medium">Win Rate</span>
+              <span className="text-white text-base font-acid font-medium">{trader.winRate}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gfx-neutral-400 text-[1rem] font-acid font-medium">Max Drawdown</span>
-              <span className="text-white text-[1rem] font-acid font-medium">{trader.maxDrawdown}</span>
+              <span className="text-gfx-neutral-400 text-base font-acid font-medium">Max Drawdown</span>
+              <span className="text-white text-base font-acid font-medium">{trader.maxDrawdown}</span>
             </div>
           </div>
         </div>
@@ -246,7 +246,7 @@ export default function CopyTradingPage() {
               <div className="flex items-center justify-between gap-8">
                 <div>
                   <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Copy Trading</h2>
-                  <p className="text-gfx-neutral-500 text-[0.875rem] xl:text-[1rem] font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
+                  <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
                     Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
                   </p>
                   <div className="mt-6">
@@ -342,10 +342,10 @@ export default function CopyTradingPage() {
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
             <div className="flex flex-col items-center justify-center py-[3.75rem] px-8 min-h-[26.3125rem]">
               <SubscriptionIcon />
-              <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
+              <h3 className="text-white text-2xl font-acid leading-normal mt-8">
                 No active Subscription
               </h3>
-              <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
+              <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
                 {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
               </p>
               <div className="mt-8">
@@ -368,18 +368,18 @@ export default function CopyTradingPage() {
               <div className="relative flex items-center justify-between p-6 lg:p-8">
                 <div className="flex items-center gap-5">
                   <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-[1.5rem] font-acid">M</span>
+                    <span className="text-white text-2xl font-acid">M</span>
                   </div>
                   <div>
-                    <h3 className="text-white text-[1.5rem] font-acid leading-normal">marcelo cedeno</h3>
-                    <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px]">Manage your copy trading strategies</p>
+                    <h3 className="text-white text-2xl font-acid leading-normal">marcelo cedeno</h3>
+                    <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">Manage your copy trading strategies</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-gfx-green-800 rounded-[0.5rem] px-4 py-2 flex items-center gap-2.5">
                     <WalletIcon />
-                    <span className="text-gfx-neutral-400 text-[0.875rem] font-acid">Social Wallet</span>
-                    <span className="text-gfx-neutral-600 text-[0.875rem] font-acid">$100.00</span>
+                    <span className="text-gfx-neutral-400 text-sm font-acid">Social Wallet</span>
+                    <span className="text-gfx-neutral-600 text-sm font-acid">$100.00</span>
                   </div>
                   <GlowButton
                     label="Create strategy"
@@ -405,7 +405,7 @@ export default function CopyTradingPage() {
               <div className="relative">
                 {/* Dashboard Header */}
                 <div className="flex items-center justify-between p-6 lg:p-8 pb-6">
-                  <h3 className="text-white text-[1.5rem] font-acid leading-normal">Master Dashboard</h3>
+                  <h3 className="text-white text-2xl font-acid leading-normal">Master Dashboard</h3>
                   <SearchInput placeholder="Search strategies" className="w-[17.9375rem]" />
                 </div>
 
@@ -415,10 +415,10 @@ export default function CopyTradingPage() {
                 {/* Empty State */}
                 <div className="flex flex-col items-center justify-center py-[3.75rem] px-8">
                   <CourseUpIcon />
-                  <h3 className="text-white text-[1.5rem] font-acid leading-normal mt-8">
+                  <h3 className="text-white text-2xl font-acid leading-normal mt-8">
                     No Strategies Created
                   </h3>
-                  <p className="text-gfx-neutral-400 text-[1rem] font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
+                  <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
                     {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
                   </p>
                   <div className="mt-8">

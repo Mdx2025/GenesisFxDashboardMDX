@@ -151,13 +151,13 @@ export function ConnectPammModal({
 
               {/* AUM / ROI Cards */}
               <div className="flex gap-3 mt-8 w-full max-w-[350px]">
-                <div className="flex-1 h-[118px] rounded-[12px] border border-[#00b38c] bg-[#0C1311] flex flex-col items-center justify-center">
-                  <span className="text-[#00b38c] text-[1rem] font-acid font-medium leading-[24.44px]">Aum</span>
-                  <span className="text-[#00b38c] text-[1.5rem] font-acid mt-1">{aum}</span>
+                <div className="flex-1 h-[118px] rounded-[12px] border border-[#00b38c] bg-gfx-green-800 flex flex-col items-center justify-center">
+                  <span className="text-[#00b38c] text-base font-acid font-medium leading-[24.44px]">Aum</span>
+                  <span className="text-[#00b38c] text-2xl font-acid mt-1">{aum}</span>
                 </div>
-                <div className="flex-1 h-[118px] rounded-[12px] border border-[#00b38c] bg-[#0C1311] flex flex-col items-center justify-center">
-                  <span className="text-[#00b38c] text-[1rem] font-acid font-medium leading-[24.44px]">ROI</span>
-                  <span className="text-[#00b38c] text-[1.5rem] font-acid mt-1">{roi}</span>
+                <div className="flex-1 h-[118px] rounded-[12px] border border-[#00b38c] bg-gfx-green-800 flex flex-col items-center justify-center">
+                  <span className="text-[#00b38c] text-base font-acid font-medium leading-[24.44px]">ROI</span>
+                  <span className="text-[#00b38c] text-2xl font-acid mt-1">{roi}</span>
                 </div>
               </div>
 
@@ -166,10 +166,10 @@ export function ConnectPammModal({
                 {details.map((d) => (
                   <div key={d.label} className="flex items-center justify-between">
                     <div className="flex items-center gap-[10px]">
-                      <span className="text-[#808080] text-[1rem] font-acid font-medium leading-[24.44px]">{d.label}</span>
+                      <span className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px]">{d.label}</span>
                       <InfoIcon />
                     </div>
-                    <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{d.value}</span>
+                    <span className="text-white text-base font-acid font-medium leading-[24.44px]">{d.value}</span>
                   </div>
                 ))}
               </div>
@@ -182,8 +182,8 @@ export function ConnectPammModal({
 
             {/* Available Balance */}
             <div className="mt-[38px] h-[50px] rounded-[30px] bg-[#101e1a] border border-[#404040] flex items-center justify-between px-[18px]">
-              <span className="text-[#808080] text-[1rem] font-acid">Available Balance</span>
-              <span className="text-white text-[1rem] font-acid">{availableBalance}</span>
+              <span className="text-gfx-neutral-400 text-base font-acid">Available Balance</span>
+              <span className="text-white text-base font-acid">{availableBalance}</span>
             </div>
 
             {/* Investment Input */}
@@ -197,7 +197,7 @@ export function ConnectPammModal({
                 suffix={
                   <button
                     onClick={() => setAmount('100')}
-                    className="text-[#808080] text-[1rem] font-acid cursor-pointer hover:text-white transition-colors"
+                    className="text-gfx-neutral-400 text-base font-acid cursor-pointer hover:text-white transition-colors"
                   >
                     MAX
                   </button>
@@ -220,7 +220,7 @@ export function ConnectPammModal({
                     </svg>
                   )}
                 </button>
-                <span className="text-[#808080] text-[1rem] font-acid leading-[24.44px]">
+                <span className="text-gfx-neutral-400 text-base font-acid leading-[24.44px]">
                   I have read and agree to the PAMM investment agreement
                 </span>
               </label>
@@ -238,7 +238,7 @@ export function ConnectPammModal({
                     </svg>
                   )}
                 </button>
-                <span className="text-[#808080] text-[1rem] font-acid leading-[24.44px]">
+                <span className="text-gfx-neutral-400 text-base font-acid leading-[24.44px]">
                   I acknoweledge that investments in PAMM strategies carry risk. PAst perfomance does not guarantee future results.
                 </span>
               </label>

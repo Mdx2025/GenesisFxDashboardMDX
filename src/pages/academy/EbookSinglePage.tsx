@@ -46,11 +46,11 @@ function ChapterItem({ chapter, isActive, onClick }: { chapter: EbookChapter; is
         <div className="absolute -left-[5rem] bottom-[-20px] w-[10.6250rem] h-[7.5rem] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
       )}
       <div className="w-[1.5rem] h-[1.5rem] rounded-[0.4375rem] bg-gfx-green-800 flex items-center justify-center shrink-0">
-        <span className={`text-[0.75rem] font-acid leading-none ${isActive ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
+        <span className={`text-xs font-acid leading-none ${isActive ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
           {chapter.id}
         </span>
       </div>
-      <span className={`text-[0.875rem] font-acid leading-[18.8px] ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
+      <span className={`text-sm font-acid leading-[18.8px] ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
         {chapter.title}
       </span>
     </button>
@@ -93,10 +93,10 @@ export default function EbookSinglePage() {
           {/* Chapter Contents Panel */}
           <div className="hidden xl:flex flex-col w-[17.5000rem] 3xl:w-[20rem] shrink-0 px-5 pb-6">
             <div className="mb-2">
-              <p className="text-[0.75rem] font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px]">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px]">
                 CHAPTERS
               </p>
-              <p className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px] mt-1">
+              <p className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px] mt-1">
                 {completedCount} of {totalChapters} chapters completed
               </p>
             </div>
@@ -123,7 +123,7 @@ export default function EbookSinglePage() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col min-w-0 px-4 xl:px-0 xl:pr-5 2xl:pr-7 3xl:pr-10 4xl:pr-14 pb-4 overflow-y-auto">
             {/* Cover Image */}
-            <div className="relative w-full rounded-[1.125rem] overflow-hidden aspect-[1228/360]">
+            <div className="relative w-full rounded-lg overflow-hidden aspect-[1228/360]">
               <img
                 src={ebook.image}
                 alt={ebook.title}
@@ -141,13 +141,13 @@ export default function EbookSinglePage() {
 
               <div className="flex items-center gap-3 mt-3">
                 <div className="inline-flex items-center h-[1.75rem] px-4 rounded-full bg-gfx-green-900 border border-gfx-green-300">
-                  <span className="text-[0.75rem] font-acid text-gfx-green-300 leading-[18.8px]">
+                  <span className="text-xs font-acid text-gfx-green-300 leading-[18.8px]">
                     Chapter {activeChapter}
                   </span>
                 </div>
                 <div className="inline-flex items-center gap-2 h-[1.75rem] px-3 rounded-full bg-gfx-green-800 border border-gfx-green-900">
                   <ClockIcon />
-                  <span className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px]">
+                  <span className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px]">
                     {ebook.readTime}
                   </span>
                 </div>
@@ -161,10 +161,10 @@ export default function EbookSinglePage() {
                   key={i}
                   className="bg-[#0d1512] border border-[rgba(255,255,255,0.05)] rounded-[1rem] p-6"
                 >
-                  <h3 className="text-white text-[1rem] font-acid-medium leading-[24.44px] mb-2">
+                  <h3 className="text-white text-base font-acid-medium leading-[24.44px] mb-2">
                     {section.title}
                   </h3>
-                  <p className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[18.8px]">
+                  <p className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">
                     {section.body}
                   </p>
                 </div>
@@ -172,16 +172,16 @@ export default function EbookSinglePage() {
             </div>
 
             {/* Disclaimer */}
-            <p className="text-gfx-neutral-400 text-[0.75rem] font-acid leading-[18.8px] mt-6 mb-4">
+            <p className="text-gfx-neutral-400 text-xs font-acid leading-[18.8px] mt-6 mb-4">
               Any news, opinions, research, data, or other information contained within this e-book is provided as general market commentary and does not constitute investment or trading advice. We expressly disclaim any liability for any lost principal or profits without limitation which may arise directly or indirectly from the use of or reliance on such information.
             </p>
 
             {/* Mobile chapter list */}
             <div className="xl:hidden mt-6">
-              <p className="text-[0.75rem] font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px] mb-2">
+              <p className="text-xs font-acid-bold text-gfx-neutral-500 tracking-[2.32px] uppercase leading-[15.68px] mb-2">
                 CHAPTERS
               </p>
-              <p className="text-[0.75rem] font-acid text-gfx-neutral-400 leading-[18.8px] mb-4">
+              <p className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px] mb-4">
                 {completedCount} of {totalChapters} chapters completed
               </p>
               <div className="h-[0.25rem] bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
@@ -210,15 +210,15 @@ export default function EbookSinglePage() {
             <button
               type="button"
               onClick={() => setActiveChapter(prev => Math.max(1, prev - 1))}
-              className="flex items-center gap-2 text-gfx-neutral-500 text-[1rem] font-acid leading-[24.44px] cursor-pointer shrink-0 bg-transparent border-none hover:text-white transition-colors"
+              className="flex items-center gap-2 text-gfx-neutral-500 text-base font-acid leading-[24.44px] cursor-pointer shrink-0 bg-transparent border-none hover:text-white transition-colors"
             >
               <ChevronLeftIcon /> Previous
             </button>
 
             <div className="flex flex-row items-center gap-8 shrink-0">
               <div className="hidden sm:flex flex-col items-end gap-0.5">
-                <span className="text-[0.875rem] font-acid text-gfx-neutral-400 leading-[18.8px]">PROGRESS</span>
-                <span className="text-[1rem] font-acid-medium text-white leading-[24.44px]">{progress}%</span>
+                <span className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">PROGRESS</span>
+                <span className="text-base font-acid-medium text-white leading-[24.44px]">{progress}%</span>
                 <div className="w-[10rem] h-[0.25rem] bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
                   <div
                     className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"

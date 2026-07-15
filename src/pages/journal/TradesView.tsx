@@ -67,7 +67,7 @@ export default function TradesView() {
                 {COLUMNS.map(col => (
                   <th
                     key={col}
-                    className="text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-[2.32px]"
+                    className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-[2.32px]"
                   >
                     {col}
                   </th>
@@ -77,22 +77,22 @@ export default function TradesView() {
             <tbody>
               {filtered.map((trade, i) => (
                 <tr key={i} className="border-b border-gfx-green-900">
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.dateTime}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.instrument}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.side}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.size}</td>
-                  <td className="text-gfx-neutral-600 text-[1rem] font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.entry}</td>
-                  <td className={`text-[0.875rem] font-acid px-4 sm:px-7 h-[4.75rem] ${trade.exitPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
+                  <td className="text-gfx-neutral-600 text-base font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.dateTime}</td>
+                  <td className="text-gfx-neutral-600 text-base font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.instrument}</td>
+                  <td className="text-gfx-neutral-600 text-base font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.side}</td>
+                  <td className="text-gfx-neutral-600 text-base font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.size}</td>
+                  <td className="text-gfx-neutral-600 text-base font-acid font-medium px-4 sm:px-7 h-[4.75rem]">{trade.entry}</td>
+                  <td className={`text-sm font-acid px-4 sm:px-7 h-[4.75rem] ${trade.exitPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
                     {trade.exit}
                   </td>
-                  <td className={`text-[0.875rem] font-acid px-4 sm:px-7 h-[4.75rem] ${trade.netPnlPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
+                  <td className={`text-sm font-acid px-4 sm:px-7 h-[4.75rem] ${trade.netPnlPositive ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>
                     {trade.netPnl}
                   </td>
                 </tr>
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="text-center text-gfx-neutral-400 text-[0.875rem] font-acid py-12">
+                  <td colSpan={7} className="text-center text-gfx-neutral-400 text-sm font-acid py-12">
                     No trades found
                   </td>
                 </tr>

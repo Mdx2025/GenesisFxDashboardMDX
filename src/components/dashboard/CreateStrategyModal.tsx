@@ -64,8 +64,8 @@ function SectionHeader({ icon, title, subtitle }: { icon: React.ReactNode; title
         {icon}
       </div>
       <div>
-        <h3 className="text-white text-[1.5rem] font-acid leading-normal">{title}</h3>
-        <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-0.5">{subtitle}</p>
+        <h3 className="text-white text-2xl font-acid leading-normal">{title}</h3>
+        <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-0.5">{subtitle}</p>
       </div>
     </div>
   )
@@ -190,7 +190,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-3xl max-w-[95vw] max-h-[90vh] rounded-[30px] bg-[#0C1311] flex flex-col overflow-hidden"
+        className="glass-card relative w-3xl max-w-[95vw] max-h-[90vh] rounded-[30px] bg-gfx-green-800 flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
@@ -226,7 +226,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
 
             {/* Account */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Account</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Account</label>
               <GlassSelect
                 options={[
                   { value: 'anapinzon-genFX-716446', label: 'anapinzon.ux-GenFX  L#716446' },
@@ -251,7 +251,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
             {/* Username */}
             <div>
               <div className="flex items-center gap-1.5 mb-2">
-                <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">Username</label>
+                <label className="text-[#ececec] text-base font-acid leading-[1.2]">Username</label>
                 <InfoIcon />
               </div>
               <GlassInput placeholder="Enter username" value={username} onChange={setUsername} />
@@ -259,29 +259,29 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
 
             {/* Strategy Name */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Strategy Name*</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Strategy Name*</label>
               <GlassInput placeholder="Enter Strategy Name" value={strategyName} onChange={(v) => setStrategyName(v.slice(0, 20))} />
-              <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-1">{strategyName.length}/20 characters</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">{strategyName.length}/20 characters</p>
             </div>
 
             {/* Description */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Description</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Description</label>
               <GlassTextarea placeholder="Enter Strategy Description" value={description} onChange={setDescription} rows={4} />
             </div>
 
             {/* Risk Profile */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Risk Profile</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Risk Profile</label>
               <GlassSelect options={riskOptions} placeholder="Select risk profile..." value={riskProfile} onChange={setRiskProfile} />
-              <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-1">Choose the risk level that best describes your trading strategy</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">Choose the risk level that best describes your trading strategy</p>
             </div>
 
             {/* Minimum Investment */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Minimum Investment(USD) *</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Minimum Investment(USD) *</label>
               <GlassSelect options={minInvestmentOptions} placeholder="Select minimum..." value={minInvestment} onChange={setMinInvestment} />
-              <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-1">Minimun amount required to invest in this strategy</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">Minimun amount required to invest in this strategy</p>
             </div>
 
             {/* Divider */}
@@ -296,16 +296,16 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
 
             {/* Performance Fee */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Performance Fee(%)</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Performance Fee(%)</label>
               <GlassSelect options={performanceFeeOptions} placeholder="Select..." value={performanceFee} onChange={setPerformanceFee} />
-              <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-1">Charged on profits generated for followers</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">Charged on profits generated for followers</p>
             </div>
 
             {/* Monthly Subscription */}
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-2">Monthly Subscription(%)</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Monthly Subscription(%)</label>
               <GlassSelect options={monthlySubOptions} placeholder="Select..." value={monthlySub} onChange={setMonthlySub} />
-              <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-1">MAx $10,000/mo</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">MAx $10,000/mo</p>
             </div>
           </div>
 

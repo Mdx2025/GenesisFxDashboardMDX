@@ -66,7 +66,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
   return (
     <div ref={ref} className={`relative ${open ? 'z-50' : 'z-0'}`}>
       {label && (
-        <label className="block text-white font-acid font-medium text-[1rem] leading-[1.528rem] mb-[2px]">
+        <label className="block text-white font-acid font-medium text-base leading-[1.528rem] mb-[2px]">
           {label}
         </label>
       )}
@@ -87,7 +87,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
           </div>
         )}
         <span
-          className={`font-acid flex-1 text-left text-[1rem] ml-[10px] ${selected ? 'text-white' : 'text-gfx-neutral-400'}`}
+          className={`font-acid flex-1 text-left text-base ml-[10px] ${selected ? 'text-white' : 'text-gfx-neutral-400'}`}
         >
           {selected ? selected.label : placeholder}
         </span>

@@ -46,7 +46,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-white text-[0.875rem] font-acid">{label}</span>
+        <span className="text-white text-sm font-acid">{label}</span>
       </div>
     </div>
   )
@@ -60,7 +60,7 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
       <GlowEllipse className={`${glowPos} !w-[11.25rem] !h-[6.25rem] !blur-[4.375rem]`} />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
-          <span className="text-gfx-neutral-500 text-[1rem] font-acid font-medium">{stat.label}</span>
+          <span className="text-gfx-neutral-500 text-base font-acid font-medium">{stat.label}</span>
           <InfoIcon />
         </div>
         <div className="flex-1 flex items-center justify-center mt-2">
@@ -80,7 +80,7 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
                   </clipPath>
                 </defs>
               </svg>
-              <span className="text-white text-[1.5rem] font-acid">XAUUSD</span>
+              <span className="text-white text-2xl font-acid">XAUUSD</span>
             </div>
           )}
           {stat.type === 'number' && (
@@ -89,7 +89,7 @@ function StatCard({ stat, glowPos }: { stat: CalendarStat; glowPos: string }) {
               style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #0C1311 19%, #09241C 73%)' }}
             >
               <DiagramUpIcon />
-              <span className="text-white text-[1.5rem] font-acid">{stat.value}</span>
+              <span className="text-white text-2xl font-acid">{stat.value}</span>
             </div>
           )}
           {stat.type === 'donut' && (

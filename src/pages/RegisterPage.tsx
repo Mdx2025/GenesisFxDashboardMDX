@@ -33,7 +33,7 @@ function ChevronRight({ className }: { className?: string }) {
 function StepBadge({ step, total }: { step: number; total: number }) {
   return (
     <div className="h-[2.125rem] px-3.5 rounded-[2rem] border border-[#2f2f2f] flex items-center">
-      <span className="text-[#a0a0a0] text-sm sm:text-base leading-[1.2]">Step {step} of {total}</span>
+      <span className="text-gfx-neutral-500 text-sm sm:text-base leading-[1.2]">Step {step} of {total}</span>
     </div>
   )
 }
@@ -57,7 +57,7 @@ function AccountTypeCard({ icon, title, description, onClick }: {
         {icon}
       </div>
       <span className="text-white text-base leading-[1.2] relative z-10 mt-3">{title}</span>
-      <span className="text-[#808080] text-sm sm:text-base text-center leading-[1.2] relative z-10 mt-1">{description}</span>
+      <span className="text-gfx-neutral-400 text-sm sm:text-base text-center leading-[1.2] relative z-10 mt-1">{description}</span>
     </button>
   )
 }
@@ -84,12 +84,12 @@ const COUNTRY_OPTIONS = [
   { value: 'other', label: 'Other' },
 ]
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors"
 
 function SignInLink() {
   return (
     <p className="text-base leading-[1.2]">
-      <span className="text-[#808080]">Already have an account? </span>
+      <span className="text-gfx-neutral-400">Already have an account? </span>
       <Link to="/" className="text-white hover:underline">Sign In</Link>
     </p>
   )
@@ -206,7 +206,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
       <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">{title}</WaveText>
-      <WaveText as="p" className="text-[#a0a0a0] text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
+      <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
@@ -227,7 +227,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-5 top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0" aria-label={showPassword ? 'Hide password' : 'Show password'}>
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-5 top-1/2 -translate-y-1/2 text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0" aria-label={showPassword ? 'Hide password' : 'Show password'}>
               <EyeIcon open={showPassword} />
             </button>
           </div>
@@ -242,7 +242,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
               value={confirmPassword}
               onChange={e => setConfirmPassword(e.target.value)}
             />
-            <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-5 top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0" aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}>
+            <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-5 top-1/2 -translate-y-1/2 text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0" aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}>
               <EyeIcon open={showConfirmPassword} />
             </button>
           </div>
@@ -273,7 +273,7 @@ function Step3Corporate({ onBack, onCreateAccount }: { onBack: () => void; onCre
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
       <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Corporate Account</WaveText>
-      <WaveText as="p" className="text-[#a0a0a0] text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
+      <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
@@ -312,7 +312,7 @@ function Step3Personal({ onBack, onCreateAccount }: { onBack: () => void; onCrea
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
       <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Personal Account</WaveText>
-      <WaveText as="p" className="text-[#a0a0a0] text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
+      <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">

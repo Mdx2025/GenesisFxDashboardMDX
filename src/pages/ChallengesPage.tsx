@@ -126,19 +126,19 @@ function LeaderboardContent() {
                 <td className="px-4 sm:px-6 py-4 xl:py-5">
                   <div className="flex items-center gap-2">
                     <TrophySmallIcon variant={row.trophy} />
-                    <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.rank}</span>
+                    <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.rank}</span>
                   </div>
                 </td>
                 <td className="py-4 xl:py-5">
                   <div className="flex items-center gap-3">
                     <UserAvatarIcon />
-                    <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.user}</span>
+                    <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.user}</span>
                   </div>
                 </td>
-                <td className="text-[#a0a0a0] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{row.tier}</td>
-                <td className="text-[#10BC83] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{row.returnPct}</td>
+                <td className="text-gfx-neutral-500 text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{row.tier}</td>
+                <td className="text-[#10BC83] text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5">{row.returnPct}</td>
                 <td className="py-4 xl:py-5"><Sparkline /></td>
-                <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{row.reward}</td>
+                <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{row.reward}</td>
               </tr>
             ))}
           </tbody>
@@ -191,23 +191,23 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
             {tiersData.map((row, i) => (
               <tr key={i} className={i > 0 ? 'border-t border-white/5' : ''}>
                 <td className="px-4 sm:px-6 py-4 xl:py-5">
-                  <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.tier}</span>
+                  <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.tier}</span>
                 </td>
                 <td className="py-4 xl:py-5">
                   <div className="flex items-center gap-1">
-                    <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{row.deposit}</span>
+                    <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.deposit}</span>
                     <ChevronRightTinyIcon />
                   </div>
                 </td>
-                <td className="text-[#10BC83] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold py-4 xl:py-5">{row.equity}</td>
-                <td className="text-[#a0a0a0] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{row.maxDrawdown}</td>
+                <td className="text-[#10BC83] text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5">{row.equity}</td>
+                <td className="text-gfx-neutral-500 text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{row.maxDrawdown}</td>
                 <td className="py-4 xl:py-5">
                   {row.status === 'Active' ? (
                     <span className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1 bg-gfx-green-100 border border-gfx-green-200 text-gfx-green-500">
                       Active
                     </span>
                   ) : (
-                    <span className="text-[#808080] text-[0.875rem] italic">Coming Soon</span>
+                    <span className="text-gfx-neutral-400 text-sm italic">Coming Soon</span>
                   )}
                 </td>
                 <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
@@ -232,17 +232,17 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
       <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
         <div className="flex flex-col">
           <h2 className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">10x Challenge</h2>
-          <p className="text-[#808080] text-body2">
+          <p className="text-gfx-neutral-400 text-body2">
             Turn $125 into $1,000,000 — prove your skill, level up your capital
           </p>
         </div>
-        <div className="flex items-center gap-4 bg-[#09241C] rounded-[1.875rem] px-6 py-4 shrink-0">
+        <div className="flex items-center gap-4 bg-gfx-green-900 rounded-3xl px-6 py-4 shrink-0">
           <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-[#064B34] flex items-center justify-center">
             <TrophyIcon />
           </div>
           <div className="flex flex-col items-center gap-1">
             <span className="text-white text-[clamp(1.5rem,1rem+1.5vw,3.125rem)] font-normal">0</span>
-            <span className="text-[#808080] text-[1rem] font-medium">My challenges</span>
+            <span className="text-gfx-neutral-400 text-base font-medium">My challenges</span>
           </div>
         </div>
       </GlassBannerCard>
@@ -250,12 +250,12 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
       {/* Empty State */}
       <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
         <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
-          <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-[#09241C] flex items-center justify-center">
+          <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-gfx-green-900 flex items-center justify-center">
             <UserRoundedIcon />
           </div>
           <div className="flex flex-col items-center gap-2">
-            <h3 className="text-white text-[1.5rem] font-normal">No 10x Accounts Yet</h3>
-            <p className="text-[#808080] text-body2 text-center max-w-lg">
+            <h3 className="text-white text-2xl font-normal">No 10x Accounts Yet</h3>
+            <p className="text-gfx-neutral-400 text-body2 text-center max-w-lg">
               Create your first 10X account to start trading with enhanced leverage
             </p>
           </div>
@@ -345,12 +345,12 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
     >
       <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-[30px] overflow-hidden">
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-[#064B34] rounded-full blur-[157px]" />
           <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-[#064B34] rounded-full blur-[157px]" />
-          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-[#0C1311] rounded-full blur-[157px]" />
+          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
         </div>
 
         <button
@@ -371,13 +371,13 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
               <h2 className="text-white font-acid font-normal text-[1.25rem] sm:text-[1.75rem] leading-none">
                 Current Month Prize Pool
               </h2>
-              <span className="px-3 py-1 rounded-full bg-[#09241C] border border-[#064B34] text-[#a0a0a0] text-xs">
+              <span className="px-3 py-1 rounded-full bg-gfx-green-900 border border-gfx-green-200 text-gfx-neutral-500 text-xs">
                 April 2026
               </span>
             </div>
             <button
               type="button"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-[#a0a0a0] text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors shrink-0"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-gfx-neutral-500 text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors shrink-0"
             >
               <QuestionIcon />
               <span>How it works</span>
@@ -388,7 +388,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           <div className="flex items-center justify-between gap-4 mb-6">
             <h3 className="text-white font-acid font-normal text-[1.25rem]">Tier Leaderboard</h3>
             <div className="flex flex-col items-center px-5 py-2.5 rounded-[0.875rem] border border-[#10BC83]/30">
-              <span className="text-[#10BC83] text-[1.5rem] font-acid font-medium leading-tight">$500</span>
+              <span className="text-[#10BC83] text-2xl font-acid font-medium leading-tight">$500</span>
               <span className="text-[#10BC83] text-xs font-acid">Top Prize</span>
             </div>
           </div>
@@ -396,13 +396,13 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           {/* Rank / Prize table */}
           <div className="w-full">
             <div className="flex items-center pb-3 mb-1">
-              <div className="w-[30%] text-[#606060] text-xs font-medium tracking-[0.08em]">Rank</div>
-              <div className="w-[70%] text-[#606060] text-xs font-medium tracking-[0.08em] text-right">Prize</div>
+              <div className="w-[30%] text-gfx-neutral-300 text-xs font-medium tracking-[0.08em]">Rank</div>
+              <div className="w-[70%] text-gfx-neutral-300 text-xs font-medium tracking-[0.08em] text-right">Prize</div>
             </div>
             {leaderboardPrizes.map((row, i) => (
               <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
                 <div className="w-[30%]">
-                  <span className="text-[#a0a0a0] text-sm font-acid">{row.rank}</span>
+                  <span className="text-gfx-neutral-500 text-sm font-acid">{row.rank}</span>
                 </div>
                 <div className="w-[70%] text-right">
                   <span className="text-white text-base font-acid font-medium">{row.prize}</span>
@@ -462,7 +462,7 @@ function LiveBadge() {
           <rect x="9.29" y="9.29" width="6.97" height="6.97" rx="3.48" fill="#00B38C"/>
         </g>
       </svg>
-      <span className="text-[#A0A0A0] font-acid text-[0.875rem]">Live</span>
+      <span className="text-gfx-neutral-500 font-acid text-sm">Live</span>
     </div>
   )
 }
@@ -567,12 +567,12 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
               {/* Title + Rules */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 className="text-white font-acid font-normal text-[1.5rem] sm:text-[2.25rem] leading-none">
+                <h2 className="text-white font-acid font-normal text-2xl sm:text-[2.25rem] leading-none">
                   Start your 10x Challenge
                 </h2>
                 <button
                   type="button"
-                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-[1rem] font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
+                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-base font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
                 >
                   <NotebookIcon />
                   <span>Rules</span>
@@ -583,12 +583,12 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Two panels */}
             <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
-            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-[18.56px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
               <GlowEllipse className="left-[36px] -top-[220px]" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
-                <h3 className="text-white font-acid font-normal text-[1.5rem] mb-6">Challenge Details</h3>
+                <h3 className="text-white font-acid font-normal text-2xl mb-6">Challenge Details</h3>
 
                 <div className="flex flex-col gap-5">
                   <GlassSelect
@@ -604,22 +604,22 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
                   <div>
                     <div className="flex items-baseline gap-2 mb-[0.125rem]">
-                      <span className="text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem]">Username</span>
-                      <span className="text-[#A0A0A0] font-acid font-medium text-[1rem] leading-[1.528rem]">(On Leaderboard)</span>
+                      <span className="text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem]">Username</span>
+                      <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-[1.528rem]">(On Leaderboard)</span>
                     </div>
                     <GlassInput
                       placeholder="Enter your preferred account name"
                       value={username}
                       onChange={setUsername}
                     />
-                    <span className="text-[#808080] text-[1rem] font-acid mt-2 block leading-[1.2rem]">
+                    <span className="text-gfx-neutral-400 text-base font-acid mt-2 block leading-[1.2rem]">
                       0/25 characters
                     </span>
                   </div>
 
                   <div className="flex items-center gap-3 mt-1">
                     <ChallengeCheckbox checked={agreed} onChange={() => setAgreed(v => !v)} />
-                    <span className="text-[#808080] text-[1rem] font-acid leading-[1.2rem]">
+                    <span className="text-gfx-neutral-400 text-base font-acid leading-[1.2rem]">
                       I agree to the <span className="text-[#00B38C]">Terms & Conditions</span>
                     </span>
                   </div>
@@ -630,23 +630,23 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             </div>
 
             {/* Right — Account Preview */}
-            <div className="relative flex-1 overflow-hidden rounded-[18.56px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+            <div className="relative flex-1 overflow-hidden rounded-[18.56px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
-                <h3 className="text-white font-acid font-normal text-[1.5rem] mb-2">Account Preview</h3>
+                <h3 className="text-white font-acid font-normal text-2xl mb-2">Account Preview</h3>
 
                 {/* Divider */}
                 <div className="divider-glow my-4" />
 
-                <p className="text-white font-acid font-medium text-[1rem] leading-[1.528rem] mb-4">Trading Account Details</p>
+                <p className="text-white font-acid font-medium text-base leading-[1.528rem] mb-4">Trading Account Details</p>
 
                 <div className="flex flex-col">
                   {accountPreviewRows.map((row) => (
                     <div key={row.label} className="flex items-center justify-between py-3 border-b border-[#09241C] last:border-b-0">
-                      <span className="text-[#A0A0A0] font-acid font-medium text-[1rem] leading-[1.528rem]">{row.label}</span>
+                      <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-[1.528rem]">{row.label}</span>
                       {row.special === 'live' ? (
                         <LiveBadge />
                       ) : (
-                        <span className="text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem]">
+                        <span className="text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem]">
                           {row.value}
                         </span>
                       )}

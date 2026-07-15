@@ -107,7 +107,7 @@ function PnlPerformanceChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} className="text-gfx-neutral-400 text-[0.75rem] font-acid">{label}</span>
+            <span key={label} className="text-gfx-neutral-400 text-xs font-acid">{label}</span>
           ))}
         </div>
         <div className="flex-1">
@@ -179,11 +179,11 @@ export default function SignalsDetailsPage() {
             <BackArrowIcon />
           </button>
           <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
-            <span className="text-white text-[1rem] font-acid font-medium">CS</span>
+            <span className="text-white text-base font-acid font-medium">CS</span>
           </div>
           <div>
             <h1 className="text-white text-h1 font-normal">C$ Signals</h1>
-            <p className="text-gfx-neutral-500 text-[0.875rem] font-acid">@csescoe — Signals Provider — 11 followers</p>
+            <p className="text-gfx-neutral-500 text-sm font-acid">@csescoe — Signals Provider — 11 followers</p>
           </div>
           <div className="ml-2"><Badge variant="active">Active</Badge></div>
           <div className="ml-auto">
@@ -211,7 +211,7 @@ export default function SignalsDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
-                <h3 className="text-white text-[1.5rem] font-acid">P&L Perfomance</h3>
+                <h3 className="text-white text-2xl font-acid">P&L Perfomance</h3>
                 <PeriodPill />
               </div>
               <PnlPerformanceChart />
@@ -223,7 +223,7 @@ export default function SignalsDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-white text-[1.5rem] font-acid">Strategy Details</h3>
+                <h3 className="text-white text-2xl font-acid">Strategy Details</h3>
               </div>
               <div className="flex flex-col">
                 {[
@@ -239,11 +239,11 @@ export default function SignalsDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-[#0d2b22] my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-gfx-neutral-500 text-[0.875rem] font-acid">{item.label}</span>
+                      <span className="text-gfx-neutral-500 text-sm font-acid">{item.label}</span>
                       {item.isBadge ? (
                         <Badge variant="active">{item.value}</Badge>
                       ) : (
-                        <span className="text-gfx-neutral-600 text-[0.875rem] font-acid">{item.value}</span>
+                        <span className="text-gfx-neutral-600 text-sm font-acid">{item.value}</span>
                       )}
                     </div>
                   </div>
@@ -258,13 +258,13 @@ export default function SignalsDetailsPage() {
           {/* Performance & Frequency */}
           <GlassCard variant="light" divider="none" rounded="18.56px" className="p-[2.7500rem]">
             <div className="flex justify-between items-start">
-              <h3 className="text-white text-[1.5rem] font-acid font-normal">Performance & Frequency</h3>
+              <h3 className="text-white text-2xl font-acid font-normal">Performance & Frequency</h3>
               <div className="flex flex-col items-end">
-                <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
+                <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
                 <div className="flex items-center gap-2 bg-gfx-green-800 rounded-[0.496rem] border-[1.32px] border-gfx-green-900 px-3 py-2">
                   <XauusdSmallIcon />
                   <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
-                  <span className="text-gfx-neutral-400 text-[0.875rem] font-acid leading-[18.8px]">2</span>
+                  <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">2</span>
                 </div>
               </div>
             </div>
@@ -282,17 +282,17 @@ export default function SignalsDetailsPage() {
                 { value: '20.0', label: 'Signals / Month' },
               ].map((s, i) => (
                 <div key={i}>
-                  <p className={`${s.green ? 'text-gfx-bullish-light' : 'text-white'} text-[1.5rem] font-acid font-normal`}>{s.value}</p>
-                  <p className="text-gfx-neutral-500 text-[1rem] font-acid font-medium leading-[24.44px] mt-1">{s.label}</p>
+                  <p className={`${s.green ? 'text-gfx-bullish-light' : 'text-white'} text-2xl font-acid font-normal`}>{s.value}</p>
+                  <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px] mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
           </GlassCard>
 
           {/* Follow this Strategy Card */}
-          <div className="bg-gfx-green-900 rounded-[1.125rem] overflow-hidden px-8 py-25 h-fit">
-            <h3 className="text-white text-[1rem] font-acid-medium mb-2">Follow this Strategy</h3>
-            <p className="text-gfx-neutral-500 text-[0.875rem] font-acid mb-6">Remote trade signals — not copy trading.</p>
+          <div className="bg-gfx-green-900 rounded-lg overflow-hidden px-8 py-25 h-fit">
+            <h3 className="text-white text-base font-acid-medium mb-2">Follow this Strategy</h3>
+            <p className="text-gfx-neutral-500 text-sm font-acid mb-6">Remote trade signals — not copy trading.</p>
             <GlowButton
               label="Follow"
               width="100%"
@@ -319,7 +319,7 @@ export default function SignalsDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-300 text-[0.75rem] font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] leading-[15.68px] px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -327,39 +327,39 @@ export default function SignalsDetailsPage() {
                 {tradeTab === 1 && closedTrades.map((trade, i) => (
                   <tr key={i} style={{ borderBottom: '0.77px solid #09241C' }}>
                     <td className="px-12 py-4">
-                      <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
-                      <p className="text-gfx-neutral-300 text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.openTime}</p>
                     </td>
                     <td className="px-12 py-4">
-                      <p className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
-                      <p className="text-gfx-neutral-300 text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
+                      <p className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closeDate}</p>
+                      <p className="text-gfx-neutral-300 text-base font-acid font-medium leading-[24.44px]">{trade.closeTime}</p>
                     </td>
                     <td className="px-12 py-4">
                       <div className="flex items-center gap-3">
                         <XauusdSmallIcon />
-                        <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.symbol}</span>
+                        <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.symbol}</span>
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[1.5rem] rounded-full text-gfx-bullish-light text-[0.75rem] font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[1.5rem] rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.volume}</span>
+                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.openPrice}</span>
+                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openPrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-white text-[1rem] font-acid font-medium leading-[24.44px]">{trade.closePrice}</span>
+                      <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.closePrice}</span>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="text-gfx-red-muted text-[1rem] font-acid font-medium leading-[24.44px]">{trade.pnl}</span>
+                      <span className="text-gfx-red-muted text-base font-acid font-medium leading-[24.44px]">{trade.pnl}</span>
                     </td>
                   </tr>
                 ))}
                 {tradeTab === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-12 py-12 text-center text-gfx-neutral-300 text-[0.875rem] font-acid">No open positions</td>
+                    <td colSpan={8} className="px-12 py-12 text-center text-gfx-neutral-300 text-sm font-acid">No open positions</td>
                   </tr>
                 )}
               </tbody>

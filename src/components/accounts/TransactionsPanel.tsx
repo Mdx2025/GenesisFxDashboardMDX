@@ -75,11 +75,11 @@ export function TransactionsPanel() {
             <table className="w-full min-w-[900px]">
               <thead>
                 <tr className="border-b border-[#09241C]">
-                  <th className="text-left text-[0.75rem] font-bold tracking-[0.19em] text-[#606060] uppercase pl-6 py-4 w-[15%]">Type</th>
-                  <th className="text-left text-[0.75rem] font-bold tracking-[0.19em] text-[#606060] uppercase py-4 w-[20%]">Date</th>
-                  <th className="text-left text-[0.75rem] font-bold tracking-[0.19em] text-[#606060] uppercase py-4 w-[20%]">Direction</th>
-                  <th className="text-left text-[0.75rem] font-bold tracking-[0.19em] text-[#606060] uppercase py-4 w-[20%]">Amount</th>
-                  <th className="text-left text-[0.75rem] font-bold tracking-[0.19em] text-[#606060] uppercase py-4 w-[15%]">Status</th>
+                  <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase pl-6 py-4 w-[15%]">Type</th>
+                  <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Date</th>
+                  <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Direction</th>
+                  <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Amount</th>
+                  <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase py-4 w-[15%]">Status</th>
                   <th className="w-[10%]" />
                 </tr>
               </thead>
@@ -89,14 +89,14 @@ export function TransactionsPanel() {
                     <td className="pl-6 py-5">
                       <div className="flex items-center gap-2">
                         {tx.icon === 'in' ? <TransferInIcon /> : <TransferOutIcon />}
-                        <span className="text-white text-[0.875rem]">{tx.type}</span>
+                        <span className="text-white text-sm">{tx.type}</span>
                       </div>
                     </td>
-                    <td className="py-5 text-white text-[0.875rem]">{tx.date}</td>
-                    <td className="py-5 text-white text-[0.875rem]">{tx.direction}</td>
-                    <td className={`py-5 text-[0.875rem] ${tx.amountColor === 'green' ? 'text-[#37C92E]' : 'text-[#D46356]'}`}>{tx.amount}</td>
+                    <td className="py-5 text-white text-sm">{tx.date}</td>
+                    <td className="py-5 text-white text-sm">{tx.direction}</td>
+                    <td className={`py-5 text-sm ${tx.amountColor === 'green' ? 'text-gfx-bullish-light' : 'text-[#D46356]'}`}>{tx.amount}</td>
                     <td className="py-5">
-                      <span className="inline-block px-[18px] py-1 rounded-full border border-[#0C9104] text-[#37C92E] text-[0.75rem]">
+                      <span className="inline-block px-[18px] py-1 rounded-full border border-[#0C9104] text-gfx-bullish-light text-xs">
                         {tx.status}
                       </span>
                     </td>

@@ -144,7 +144,7 @@ function TraderPassportCard() {
   return (
     <GlassCard variant="purple" divider="none" rounded="20px" glow={false}>
       <div
-        className="absolute inset-0 rounded-[1.25rem] pointer-events-none"
+        className="absolute inset-0 rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 54.29% 52.77% at 50% 46.64%, var(--color-gfx-purple-surface) 16%, var(--color-gfx-purple-bg) 100%)' }}
         aria-hidden="true"
       />
@@ -155,11 +155,11 @@ function TraderPassportCard() {
         <div className="flex justify-between items-center w-full">
           <div className="flex items-center gap-2">
             <SparkleIcon />
-            <span className="text-[0.75rem] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+            <span className="text-xs text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
               Trader Passport
             </span>
           </div>
-          <span className="px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-[0.75rem] font-acid font-bold">
+          <span className="px-3 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-white text-xs font-acid font-bold">
             LVL {p.level}
           </span>
         </div>
@@ -178,20 +178,20 @@ function TraderPassportCard() {
         </div>
 
         {/* Name */}
-        <span className="text-[1.5rem] text-[#f3eef9] font-acid text-center">{p.name}</span>
+        <span className="text-2xl text-[#f3eef9] font-acid text-center">{p.name}</span>
 
         {/* Location badge */}
-        <span className="px-4 py-1 rounded-full bg-white/5 border border-white/8 text-[0.75rem] text-[#f3eef9] font-acid">
+        <span className="px-4 py-1 rounded-full bg-white/5 border border-white/8 text-xs text-[#f3eef9] font-acid">
           &#127487;&#127462; {p.location}
         </span>
 
         {/* Archetype box */}
-        <div className="w-full rounded-[1.25rem] bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
-          <span className="text-[0.75rem] text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+        <div className="w-full rounded-full bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
+          <span className="text-xs text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
             &#10022; ARCHETYPE
           </span>
-          <span className="text-[1.5rem] text-white font-acid">{p.archetype}</span>
-          <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">{p.archetypeDescription}</span>
+          <span className="text-2xl text-white font-acid">{p.archetype}</span>
+          <span className="text-xs text-gfx-neutral-400 font-acid">{p.archetypeDescription}</span>
         </div>
 
         {/* Three stat pills */}
@@ -205,8 +205,8 @@ function TraderPassportCard() {
               key={i}
               className="h-[4.5625rem] rounded-[0.875rem] bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
             >
-              <span className="text-[1.5rem] text-[#f3eef9] font-acid">{s.value}</span>
-              <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">{s.label}</span>
+              <span className="text-2xl text-[#f3eef9] font-acid">{s.value}</span>
+              <span className="text-xs text-gfx-neutral-400 font-acid">{s.label}</span>
             </div>
           ))}
         </div>
@@ -214,10 +214,10 @@ function TraderPassportCard() {
         {/* XP Progress */}
         <div className="w-full flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <span className="text-[0.75rem] text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.3px]">
+            <span className="text-xs text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.3px]">
               XP Progress
             </span>
-            <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">
+            <span className="text-xs text-gfx-neutral-400 font-acid">
               {p.xpCurrent} / {p.xpMax} XP
             </span>
           </div>
@@ -239,7 +239,7 @@ function TraderPassportCard() {
               }}
             />
           </div>
-          <span className="text-[0.75rem] text-gfx-neutral-400 font-acid text-left">
+          <span className="text-xs text-gfx-neutral-400 font-acid text-left">
             ALL ACCOUNTS &middot; {p.trades} TRADES &middot; {p.greenDays} GREEN DAYS &middot; {p.streak}-STREAK
           </span>
         </div>
@@ -253,13 +253,13 @@ function TraderPassportCard() {
           }}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[0.75rem] text-gfx-amber font-acid font-bold uppercase tracking-[2.3px]">
+            <span className="text-xs text-gfx-amber font-acid font-bold uppercase tracking-[2.3px]">
               &#128293; Daily Streak
             </span>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-[1.5rem] text-[#f3eef9] font-acid">{p.dailyStreakDays}</span>
-            <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">days</span>
+            <span className="text-2xl text-[#f3eef9] font-acid">{p.dailyStreakDays}</span>
+            <span className="text-xs text-gfx-neutral-400 font-acid">days</span>
           </div>
           <div className="w-full h-[0.375rem] rounded-full bg-white/8 overflow-hidden">
             <div
@@ -271,8 +271,8 @@ function TraderPassportCard() {
             />
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-[0.75rem] text-gfx-amber font-acid font-semibold">{daysRemaining}d to</span>
-            <span className="text-[0.75rem] text-gfx-amber font-acid font-semibold">{p.dailyStreakReward}</span>
+            <span className="text-xs text-gfx-amber font-acid font-semibold">{daysRemaining}d to</span>
+            <span className="text-xs text-gfx-amber font-acid font-semibold">{p.dailyStreakReward}</span>
           </div>
         </div>
       </div>
@@ -292,7 +292,7 @@ function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' 
     <GlassCard variant="purple" divider="none" rounded="20px" className="h-[8.3125rem]" glow={false}>
       <GlowEllipse variant="purple" className={ellipsePos} />
       <div className="relative p-[1.375rem] h-full flex flex-col justify-between">
-        <span className="text-[0.75rem] text-gfx-neutral-400 uppercase tracking-[2.3px] font-acid font-bold">
+        <span className="text-xs text-gfx-neutral-400 uppercase tracking-[2.3px] font-acid font-bold">
           {stat.label}
         </span>
         <div className="flex items-baseline gap-0.5">
@@ -300,10 +300,10 @@ function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' 
             {stat.value}
           </span>
           {stat.unit && (
-            <span className="text-[1rem] text-gfx-neutral-400 font-acid">{stat.unit}</span>
+            <span className="text-base text-gfx-neutral-400 font-acid">{stat.unit}</span>
           )}
         </div>
-        <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">{stat.peer}</span>
+        <span className="text-xs text-gfx-neutral-400 font-acid">{stat.peer}</span>
       </div>
     </GlassCard>
   )
@@ -336,11 +336,11 @@ function TraitBar({ trait }: { trait: TraderTrait }) {
       <div className="p-4 h-full flex flex-col justify-between">
         <div className="flex items-center gap-2">
           <Icon />
-          <span className="text-[0.75rem] text-[#948aa3] uppercase tracking-wider font-acid">{trait.name}</span>
+          <span className="text-xs text-[#948aa3] uppercase tracking-wider font-acid">{trait.name}</span>
         </div>
         <div className="flex items-baseline gap-0.5">
-          <span className="text-[1.5rem] text-white font-acid">{trait.value}</span>
-          <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">/100</span>
+          <span className="text-2xl text-white font-acid">{trait.value}</span>
+          <span className="text-xs text-gfx-neutral-400 font-acid">/100</span>
         </div>
         <div className="w-full h-[0.3125rem] rounded-full bg-gfx-purple-surface overflow-hidden">
           {trait.barColor !== 'none' && (
@@ -366,8 +366,8 @@ function TraderTraitsCard() {
             <TraitPillIcon />
           </SectionPillIcon>
           <div className="flex flex-col">
-            <span className="text-[1rem] text-white font-acid font-medium">Trader Traits</span>
-            <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">Core strengths &amp; weaknesses</span>
+            <span className="text-base text-white font-acid font-medium">Trader Traits</span>
+            <span className="text-xs text-gfx-neutral-400 font-acid">Core strengths &amp; weaknesses</span>
           </div>
         </div>
 
@@ -394,14 +394,14 @@ function StyleProgressRow({ row, variant }: { row: StyleRow; variant: 'purple' |
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-[0.875rem] text-white font-acid">{row.label}</span>
+          <span className="text-sm text-white font-acid">{row.label}</span>
           {row.isTop && (
             <span className="px-2 py-0.5 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-gfx-purple-accent text-[0.625rem] font-acid font-bold">
               TOP
             </span>
           )}
         </div>
-        <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">{row.percentage}%</span>
+        <span className="text-xs text-gfx-neutral-400 font-acid">{row.percentage}%</span>
       </div>
       <div className="w-full h-[0.375rem] rounded-full bg-gfx-purple-surface overflow-hidden">
         <div
@@ -425,12 +425,12 @@ function StyleCompositionCard() {
           <DnaIcon />
         </SectionPillIcon>
         <div className="flex flex-col flex-1">
-          <span className="text-[1rem] text-white font-acid font-medium">Style Composition</span>
-          <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">
+          <span className="text-base text-white font-acid font-medium">Style Composition</span>
+          <span className="text-xs text-gfx-neutral-400 font-acid">
             Moderate conviction &middot; top strand 48%
           </span>
         </div>
-        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/8 text-[0.75rem] text-gfx-neutral-400 font-acid">
+        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/8 text-xs text-gfx-neutral-400 font-acid">
           0 STYLES
         </span>
       </div>
@@ -467,10 +467,10 @@ function AiStrategySummaryCard() {
             <SubtitlesIcon />
           </SectionPillIcon>
           <div className="flex flex-col flex-1">
-            <span className="text-[1rem] text-white font-acid font-medium">AI Strategy Summary</span>
-            <span className="text-[0.75rem] text-gfx-neutral-400 font-acid">Personalized analysis of your trading DNA</span>
+            <span className="text-base text-white font-acid font-medium">AI Strategy Summary</span>
+            <span className="text-xs text-gfx-neutral-400 font-acid">Personalized analysis of your trading DNA</span>
           </div>
-          <span className="px-3 py-1 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-gfx-purple-accent text-[0.75rem] font-acid font-bold">
+          <span className="px-3 py-1 rounded-full bg-gfx-purple-badge border border-gfx-purple-border-highlight text-gfx-purple-accent text-xs font-acid font-bold">
             AI
           </span>
         </div>
@@ -487,7 +487,7 @@ function AiStrategySummaryCard() {
         <div className="flex justify-end">
           <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(168,85,247,0.16)] border border-[rgba(168,85,247,0.4)] cursor-pointer hover:opacity-90 transition-opacity">
             <AiCoachSmallIcon />
-            <span className="text-[0.75rem] text-gfx-purple-accent font-acid">AI Coach</span>
+            <span className="text-xs text-gfx-purple-accent font-acid">AI Coach</span>
           </button>
         </div>
       </div>

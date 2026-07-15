@@ -72,13 +72,13 @@ function NoteCard({ note }: { note: NotebookNote }) {
               key={tag}
               className="h-[1.5rem] px-[1.125rem] rounded-full border border-gfx-green-200 bg-gfx-green-800 flex items-center justify-center"
             >
-              <span className="text-gfx-green-300 text-[0.75rem] font-acid">{tag}</span>
+              <span className="text-gfx-green-300 text-xs font-acid">{tag}</span>
             </div>
           ))}
           {note.attachments > 0 && (
             <div className="flex items-center gap-1.5">
               <GalleryIcon />
-              <span className="text-white text-[1rem] font-acid font-medium">{note.attachments}</span>
+              <span className="text-white text-base font-acid font-medium">{note.attachments}</span>
             </div>
           )}
         </div>

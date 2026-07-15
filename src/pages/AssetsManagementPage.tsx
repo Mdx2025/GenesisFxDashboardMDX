@@ -152,10 +152,10 @@ export default function AssetsManagementPage() {
               <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8">
                 <div className="flex flex-col gap-4 shrink-0">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-[#808080] text-[1.5rem] font-normal leading-none">
+                    <h2 className="text-gfx-neutral-400 text-2xl font-normal leading-none">
                       Fiat Wallet
                     </h2>
-                    <button className="text-[#808080] hover:text-white transition-colors cursor-pointer" aria-label="Toggle balance visibility" onClick={() => setBalanceVisible(v => !v)}>
+                    <button className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer" aria-label="Toggle balance visibility" onClick={() => setBalanceVisible(v => !v)}>
                       {balanceVisible ? (
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                           <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -171,10 +171,10 @@ export default function AssetsManagementPage() {
 
                   <div className="flex items-baseline gap-2">
                     <span className="text-white text-[3.125rem] font-normal leading-none">{balanceVisible ? '$100.00' : '****'}</span>
-                    <span className="text-[#A0A0A0] text-[1.5rem] font-normal">{balanceVisible ? 'USD' : ''}</span>
+                    <span className="text-gfx-neutral-500 text-2xl font-normal">{balanceVisible ? 'USD' : ''}</span>
                   </div>
 
-                  <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 bg-[#0C1311] border border-[#064B34]">
+                  <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 bg-gfx-green-800 border border-gfx-green-200">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
                       <rect x="1" y="5" width="18" height="13" rx="2" stroke="#00B38C" strokeWidth="1.4" fill="none"/>
                       <path d="M5 5V4a3 3 0 013-3h4a3 3 0 013 3v1" stroke="#00B38C" strokeWidth="1.4" strokeLinecap="round"/>
@@ -309,7 +309,7 @@ export default function AssetsManagementPage() {
                           <td className="px-4 sm:px-6 py-4 xl:py-5">
                             <div className="flex items-center gap-3">
                               <Icon size={16} color="#A0A0A0" />
-                              <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem]">{label}</span>
+                              <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{label}</span>
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
@@ -318,18 +318,18 @@ export default function AssetsManagementPage() {
                               onClick={() => { navigator.clipboard.writeText(tx.address); setCopied(true) }}
                               className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100"
                             >
-                              <span className="text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] text-white truncate">{tx.address}</span>
+                              <span className="text-sm 3xl:text-[1.125rem] 4xl:text-2xl text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </button>
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="flex items-center gap-2">
                               <CoinLogo coin={tx.coin} />
-                              <span className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold">{tx.coin}</span>
+                              <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold">{tx.coin}</span>
                             </div>
                           </td>
-                          <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5">{tx.network}</td>
-                          <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] py-4 xl:py-5"><time>{tx.date}</time></td>
+                          <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{tx.network}</td>
+                          <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5"><time>{tx.date}</time></td>
                           <td className="py-4 xl:py-5">
                             <span
                               className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1"
@@ -338,7 +338,7 @@ export default function AssetsManagementPage() {
                               {tx.status}
                             </span>
                           </td>
-                          <td className="text-white text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
+                          <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
                         </tr>
                       )
                     })}

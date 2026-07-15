@@ -146,11 +146,11 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
             <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
               <ChevronLeftIcon />
             </button>
-            <h2 className="text-gfx-neutral-600 text-[1.5rem] font-normal">{MONTH_NAMES[month]} {year}</h2>
+            <h2 className="text-gfx-neutral-600 text-2xl font-normal">{MONTH_NAMES[month]} {year}</h2>
             <button onClick={nextMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
               <ChevronRightIcon />
             </button>
-            <div className="px-3.5 py-2.5 rounded-lg border border-gfx-neutral-500 text-gfx-neutral-500 text-[0.875rem] font-medium">
+            <div className="px-3.5 py-2.5 rounded-lg border border-gfx-neutral-500 text-gfx-neutral-500 text-sm font-medium">
               This month
             </div>
           </div>
@@ -159,12 +159,12 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
             <span className="text-white text-[1.125rem] font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
-                <span className="text-[0.875rem]" style={{ color: '#00B38C' }}>
+                <span className="text-sm" style={{ color: '#00B38C' }}>
                   +$0.00
                 </span>
               </div>
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
-                <span className="text-[0.875rem] text-gfx-neutral-600">0 days</span>
+                <span className="text-sm text-gfx-neutral-600">0 days</span>
               </div>
             </div>
             <InfoIcon />
@@ -215,18 +215,18 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
                       return (
                         <td key={dayIdx} className="p-[5px]">
                           <div className={`${cellBg} rounded-[19px] h-[109px] px-3 py-3 relative flex items-center justify-center border ${cellBorder}`}>
-                            <span className="absolute top-3 right-3 text-gfx-neutral-500 text-[0.875rem]">{dayData.day}</span>
+                            <span className="absolute top-3 right-3 text-gfx-neutral-500 text-sm">{dayData.day}</span>
                             {hasTradeData && (
                               <div className="text-center">
                                 <div className="flex items-center justify-center gap-1">
                                   <span className={`text-[0.6875rem] font-bold ${isProfitable ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>
                                     {isProfitable ? '▲' : '▼'}
                                   </span>
-                                  <span className={`text-[0.875rem] ${isProfitable ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>
+                                  <span className={`text-sm ${isProfitable ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>
                                     {dayData.profit! >= 0 ? '+' : ''}{dayData.profit! >= 0 ? `$${dayData.profit!.toFixed(2)}` : `-$${Math.abs(dayData.profit!).toFixed(2)}`}
                                   </span>
                                 </div>
-                                <span className="text-gfx-neutral-500 text-[0.875rem]">({dayData.trades} trades)</span>
+                                <span className="text-gfx-neutral-500 text-sm">({dayData.trades} trades)</span>
                               </div>
                             )}
                           </div>
@@ -235,8 +235,8 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
                     })}
                     <td className="p-[5px]">
                       <div className="bg-gfx-green-800 rounded-[19px] h-[109px] px-3 py-3 flex flex-col items-center justify-center border border-gfx-neutral-200">
-                        <span className="text-gfx-neutral-600 text-[0.875rem]">Week {weekIdx + 1}</span>
-                        <span className="text-gfx-neutral-500 text-[0.875rem]">
+                        <span className="text-gfx-neutral-600 text-sm">Week {weekIdx + 1}</span>
+                        <span className="text-gfx-neutral-500 text-sm">
                           {weekHasTrades ? `${weekTotal >= 0 ? '+' : ''}$${Math.abs(weekTotal).toFixed(2)}` : ''}
                         </span>
                       </div>
@@ -251,15 +251,15 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
         <div className="flex items-center gap-10 mt-4 justify-center">
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 rounded-lg bg-gfx-green-800 border border-gfx-green-300" />
-            <span className="text-gfx-neutral-500 text-[1rem] font-medium">Profitable</span>
+            <span className="text-gfx-neutral-500 text-base font-medium">Profitable</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 rounded-lg bg-gfx-red-surface border border-gfx-red-muted" />
-            <span className="text-gfx-neutral-500 text-[1rem] font-medium">Loss</span>
+            <span className="text-gfx-neutral-500 text-base font-medium">Loss</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 rounded-lg bg-gfx-green-800 border border-gfx-neutral-200" />
-            <span className="text-gfx-neutral-500 text-[1rem] font-medium">No Trade</span>
+            <span className="text-gfx-neutral-500 text-base font-medium">No Trade</span>
           </div>
         </div>
       </div>

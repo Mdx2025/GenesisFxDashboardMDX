@@ -84,7 +84,7 @@ function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
 
           <p className="text-white text-[16px] font-acid font-medium mt-6 relative">What's Covered</p>
 
-          <ul className="mt-3 space-y-1.5 text-[#808080] text-[16px] font-acid leading-[1.2] list-disc pl-6 relative">
+          <ul className="mt-3 space-y-1.5 text-gfx-neutral-400 text-[16px] font-acid leading-[1.2] list-disc pl-6 relative">
             <li>Key forex pair movements &amp; technical setups</li>
             <li>Major economic data releases &amp; impact analysis</li>
             <li>Commodities, indices &amp; crypto market outlook</li>
@@ -122,7 +122,7 @@ function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClic
         <h4 className="text-white text-[24px] font-acid font-normal leading-[1]">{episode.title}</h4>
         <div className="flex items-center gap-1.5 mt-2">
           <CalendarIcon />
-          <span className="text-[#606060] text-[16px] font-acid font-medium">{episode.date}</span>
+          <span className="text-gfx-neutral-300 text-[16px] font-acid font-medium">{episode.date}</span>
         </div>
       </div>
     </div>

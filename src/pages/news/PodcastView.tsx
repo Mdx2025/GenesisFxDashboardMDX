@@ -85,13 +85,13 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
 
         <div className="flex flex-col gap-2 flex-1 min-w-0 ml-6">
           <span className="text-white text-[21px] font-acid">{episode.date}</span>
-          <p className="text-[#808080] text-[16px] font-acid font-medium leading-[24.44px] max-w-[362px]">
+          <p className="text-gfx-neutral-400 text-[16px] font-acid font-medium leading-[24.44px] max-w-[362px]">
             {episode.description}
           </p>
         </div>
 
         <div className="shrink-0 flex items-center gap-4">
-          <span className="text-[#808080] text-[16px] font-acid">{episode.duration}</span>
+          <span className="text-gfx-neutral-400 text-[16px] font-acid">{episode.duration}</span>
           <button
             onClick={onPlay}
             className="relative w-[58px] h-[58px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
@@ -148,11 +148,11 @@ function PlayerBar() {
       </div>
 
       <div className="flex items-center gap-3 flex-1 max-w-[400px]">
-        <span className="text-[#808080] text-[12px] font-acid shrink-0">2:45</span>
+        <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">2:45</span>
         <div className="flex-1 h-[4px] bg-[#09241c] rounded-full overflow-hidden">
           <div className="w-[46%] h-full bg-[#00b38c] rounded-full" />
         </div>
-        <span className="text-[#808080] text-[12px] font-acid shrink-0">3:33</span>
+        <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">3:33</span>
       </div>
 
       <div className="flex items-center gap-2 shrink-0">
@@ -184,7 +184,7 @@ export default function PodcastView() {
 
           <div className="flex flex-col gap-4 px-8 py-10 relative z-10">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1.5 rounded-full bg-[#09241c] text-[#ececec] text-[14px] font-acid">
+              <span className="px-3 py-1.5 rounded-full bg-[#09241c] text-[#ececec] text-sm font-acid">
                 Basics
               </span>
               <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
@@ -197,11 +197,11 @@ export default function PodcastView() {
 
             <h2 className="text-white text-2xl sm:text-3xl lg:text-[52px] font-acid leading-none">Deep Dive Podcast</h2>
 
-            <p className="text-[#808080] text-sm sm:text-base font-acid leading-relaxed max-w-full lg:max-w-[725px]">
+            <p className="text-gfx-neutral-400 text-sm sm:text-base font-acid leading-relaxed max-w-full lg:max-w-[725px]">
               Your daily dose of market clarity. The Deep Dive delivers sharp insights on stocks, crypto, commodities, and global trends—cutting through the noise to bring you what matters.
             </p>
 
-            <span className="text-[#808080] text-[16px] font-acid">Total: 27 min</span>
+            <span className="text-gfx-neutral-400 text-[16px] font-acid">Total: 27 min</span>
           </div>
         </div>
       </GlassCard>

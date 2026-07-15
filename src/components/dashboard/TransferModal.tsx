@@ -146,7 +146,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
           <div className="relative z-10 px-[78px] pt-[32px] pb-[54px]">
 
           {/* Card title */}
-          <h3 className="text-white font-acid font-normal text-center text-[1.5rem] mb-[42px]">
+          <h3 className="text-white font-acid font-normal text-center text-2xl mb-[42px]">
             Transfer Funds
           </h3>
 

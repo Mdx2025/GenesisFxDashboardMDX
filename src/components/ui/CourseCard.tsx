@@ -73,11 +73,11 @@ export function CourseCard({ image, title, description, lessons, duration, level
       <div className="px-[27px] 3xl:px-[34px] 4xl:px-[40px] pt-[9px] 3xl:pt-[11px] 4xl:pt-[14px] pb-[27px] 3xl:pb-[34px] 4xl:pb-[40px]">
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-col gap-2">
-            <h3 className="text-white text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
+            <h3 className="text-white text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
               {title}
             </h3>
 
-            <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] line-clamp-2">
+            <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-2xl font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] line-clamp-2">
               {description}
             </p>
           </div>
@@ -86,7 +86,7 @@ export function CourseCard({ image, title, description, lessons, duration, level
 
         <div className="flex items-center mt-[20px] 3xl:mt-[25px] 4xl:mt-[30px]">
           <span
-            className="inline-flex items-center justify-center h-[37px] 3xl:h-[46px] 4xl:h-[56px] px-[13px] 3xl:px-[16px] 4xl:px-[20px] rounded-full text-white text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-normal leading-[24.44px] outline outline-[0.99px] outline-offset-[-0.99px] outline-[rgba(0,66,44,0.5)]"
+            className="inline-flex items-center justify-center h-[37px] 3xl:h-[46px] 4xl:h-[56px] px-[13px] 3xl:px-[16px] 4xl:px-[20px] rounded-full text-white text-base 3xl:text-[1.25rem] 4xl:text-2xl font-normal leading-[24.44px] outline outline-[0.99px] outline-offset-[-0.99px] outline-[rgba(0,66,44,0.5)]"
             style={{ background: 'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, #08120F 19%, #111F1B 73%)' }}
           >
             {level}
@@ -94,12 +94,12 @@ export function CourseCard({ image, title, description, lessons, duration, level
 
           <div className="flex items-center gap-[5px] 3xl:gap-[6px] ml-[22px] 3xl:ml-[28px] 4xl:ml-[33px]">
             <VideoLibraryIcon />
-            <span className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-medium leading-[24.44px]">{lessons} Lessons</span>
+            <span className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-2xl font-medium leading-[24.44px]">{lessons} Lessons</span>
           </div>
 
           <div className="flex items-center gap-[5px] 3xl:gap-[6px] ml-auto">
             <ClockIcon />
-            <span className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.5rem] font-medium leading-[24.44px]">{duration}</span>
+            <span className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-2xl font-medium leading-[24.44px]">{duration}</span>
           </div>
         </div>
       </div>

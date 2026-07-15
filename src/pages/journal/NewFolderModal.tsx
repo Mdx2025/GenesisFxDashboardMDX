@@ -80,7 +80,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-[31.25rem] max-w-[95vw] rounded-[1.875rem] p-6 sm:p-[2.5rem] overflow-hidden bg-gfx-green-800"
+        className="glass-card relative w-[31.25rem] max-w-[95vw] rounded-3xl p-6 sm:p-[2.5rem] overflow-hidden bg-gfx-green-800"
       >
         <GlowEllipse className="-right-[5rem] -top-[3.75rem]" />
         <GlowEllipse className="-left-[5rem] -bottom-[3.75rem]" />

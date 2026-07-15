@@ -33,8 +33,8 @@ function SectionHeader({ icon, title, subtitle }: { icon: React.ReactNode; title
         {icon}
       </div>
       <div>
-        <h3 className="text-white text-[1.5rem] font-acid leading-normal">{title}</h3>
-        <p className="text-[#a0a0a0] text-[1rem] font-acid leading-[1.2] mt-0.5">{subtitle}</p>
+        <h3 className="text-white text-2xl font-acid leading-normal">{title}</h3>
+        <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-0.5">{subtitle}</p>
       </div>
     </div>
   )
@@ -46,8 +46,8 @@ function SettingRow({ title, subtitle, enabled, onChange }: { title: string; sub
   return (
     <div className="flex items-center justify-between border border-[#303030] rounded-[30px] px-6 py-5">
       <div>
-        <p className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">{title}</p>
-        <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] mt-1">{subtitle}</p>
+        <p className="text-[#ececec] text-base font-acid leading-[1.2]">{title}</p>
+        <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] mt-1">{subtitle}</p>
       </div>
       <Toggle enabled={enabled} onChange={onChange} />
     </div>
@@ -60,11 +60,11 @@ function FeeRow({ label, helpText, value, suffix }: { label: string; helpText: s
   return (
     <div>
       <div className="flex items-center justify-between">
-        <p className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">{label}</p>
-        <span className="text-[#00b38c] text-[1rem] font-acid leading-[1.2]">{value}{suffix}</span>
+        <p className="text-[#ececec] text-base font-acid leading-[1.2]">{label}</p>
+        <span className="text-[#00b38c] text-base font-acid leading-[1.2]">{value}{suffix}</span>
       </div>
       <div className="w-full h-px bg-[#1a1a1a] my-4" />
-      <p className="text-[#808080] text-[1rem] font-acid leading-[1.2]">{helpText}</p>
+      <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2]">{helpText}</p>
     </div>
   )
 }
@@ -172,7 +172,7 @@ export default function CreateStrategyPage() {
               </button>
               <div>
                 <h1 className="text-white text-[2.25rem] font-acid leading-normal">Create New Strategy</h1>
-                <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] mt-1">Set up your PAMM trading strategy</p>
+                <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] mt-1">Set up your PAMM trading strategy</p>
               </div>
             </div>
 
@@ -185,32 +185,32 @@ export default function CreateStrategyPage() {
 
             <div>
               <div className="flex items-center gap-1.5 mb-1">
-                <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">Username</label>
+                <label className="text-[#ececec] text-base font-acid leading-[1.2]">Username</label>
                 <InfoIcon />
               </div>
               <GlassInput placeholder="Enter username" value={username} onChange={setUsername} />
             </div>
 
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-1">Strategy Name*</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-1">Strategy Name*</label>
               <GlassInput placeholder="Enter strategy name" value={strategyName} onChange={setStrategyName} />
-              <p className="text-[#808080] text-[0.75rem] font-acid mt-1">USD characters only</p>
+              <p className="text-gfx-neutral-400 text-xs font-acid mt-1">USD characters only</p>
             </div>
 
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-1">Strategy Description</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-1">Strategy Description</label>
               <GlassTextarea placeholder="Enter Strategy Description" value={description} onChange={setDescription} rows={4} />
             </div>
 
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-1">Risk Profile</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-1">Risk Profile</label>
               <GlassSelect options={riskOptions} placeholder="Search risk profile..." />
             </div>
 
             <div>
-              <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-1">Minimum Deposit(USD) *</label>
+              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-1">Minimum Deposit(USD) *</label>
               <GlassSelect options={riskOptions} placeholder="Select risk profile..." />
-              <p className="text-[#808080] text-[0.75rem] font-acid mt-1">Minimum amount required to invest in this strategy</p>
+              <p className="text-gfx-neutral-400 text-xs font-acid mt-1">Minimum amount required to invest in this strategy</p>
             </div>
 
             {/* Divider */}
@@ -254,7 +254,7 @@ export default function CreateStrategyPage() {
                   <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="#ececec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="#ececec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <p className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">Access</p>
+                <p className="text-[#ececec] text-base font-acid leading-[1.2]">Access</p>
               </div>
               <SettingRow
                 title="Private Strategy"
@@ -271,7 +271,7 @@ export default function CreateStrategyPage() {
                   <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#ececec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   <circle cx="12" cy="12" r="3" stroke="#ececec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <p className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">Visibility</p>
+                <p className="text-[#ececec] text-base font-acid leading-[1.2]">Visibility</p>
               </div>
               <SettingRow
                 title="Hide Open Positions"
@@ -296,12 +296,12 @@ export default function CreateStrategyPage() {
                   <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="#ececec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="#ececec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <p className="text-[#ececec] text-[1rem] font-acid leading-[1.2]">Investor Limits</p>
+                <p className="text-[#ececec] text-base font-acid leading-[1.2]">Investor Limits</p>
               </div>
               <div>
-                <label className="text-[#ececec] text-[1rem] font-acid leading-[1.2] block mb-1">Maximum Investors</label>
+                <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-1">Maximum Investors</label>
                 <GlassInput placeholder="Leave empty for unlimited" value={maxInvestors} onChange={setMaxInvestors} />
-                <p className="text-[#808080] text-[1rem] font-acid leading-[1.2] mt-2">Set a limit on the number of investors (optional). Leave empty for unlimited</p>
+                <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] mt-2">Set a limit on the number of investors (optional). Leave empty for unlimited</p>
               </div>
             </div>
 

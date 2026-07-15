@@ -151,10 +151,10 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
             </h2>
 
             <div className="text-center px-6">
-              <p className="text-[#A0A0A0] text-[0.875rem] sm:text-[1rem] leading-6">
+              <p className="text-gfx-neutral-500 text-sm sm:text-base leading-6">
                 We sent a 4-digit code to your email
               </p>
-              <p className="text-[#A0A0A0] text-[0.875rem] sm:text-[1rem] leading-6">
+              <p className="text-gfx-neutral-500 text-sm sm:text-base leading-6">
                 Enter it below to confirm your withdrawal
               </p>
             </div>
@@ -185,16 +185,16 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
           </div>
 
           {error && (
-            <p className="text-center text-red-500 text-[0.875rem] animate-[fadeInStep_0.3s_ease-out]">
+            <p className="text-center text-red-500 text-sm animate-[fadeInStep_0.3s_ease-out]">
               Invalid code. Please try again.
             </p>
           )}
 
           <div className="flex items-center justify-center gap-1 pb-10 sm:pb-20">
-            <span className="text-[#A0A0A0] text-[1rem] leading-6">
+            <span className="text-gfx-neutral-500 text-base leading-6">
               Didn't receive the code?
             </span>
-            <button className="text-white text-[1rem] leading-6 hover:underline cursor-pointer">
+            <button className="text-white text-base leading-6 hover:underline cursor-pointer">
               Resend
             </button>
           </div>

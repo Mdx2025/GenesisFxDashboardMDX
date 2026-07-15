@@ -127,19 +127,19 @@ export default function WithdrawProcessingPage() {
           <div className="relative z-10 text-center max-w-[500px] 3xl:max-w-[700px] 4xl:max-w-[900px] w-full animate-[fadeInStep_0.5s_ease-out]">
             <HourglassIllustration />
 
-            <p className="text-[#A0A0A0] text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
+            <p className="text-gfx-neutral-500 text-2xl 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
             <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-[4rem] 4xl:text-[5.25rem] font-normal mt-2 leading-tight">
               {amount} {coin}
             </p>
 
             <div className="mt-8 3xl:mt-10 4xl:mt-14 space-y-1 3xl:space-y-2 4xl:space-y-3">
-              <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 Estimated completion time: {estimatedTime}
               </p>
-              <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 You will receive an email once withdrawal is completed.
               </p>
-              <p className="text-[#A0A0A0] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 View History for the latest updates
               </p>
             </div>

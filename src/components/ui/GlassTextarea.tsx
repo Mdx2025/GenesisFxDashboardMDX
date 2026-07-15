@@ -21,7 +21,7 @@ export function GlassTextarea({ label, placeholder = '', value: controlledValue,
   return (
     <div>
       {label && (
-        <label className="block text-white font-acid font-medium text-[1rem] leading-[1.528rem] mb-[0.125rem]">
+        <label className="block text-white font-acid font-medium text-base leading-[1.528rem] mb-[0.125rem]">
           {label}
         </label>
       )}
@@ -32,8 +32,8 @@ export function GlassTextarea({ label, placeholder = '', value: controlledValue,
         onChange={(e) => handleChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={`w-full bg-[#0C1311] font-acid text-white placeholder:text-[#808080] rounded-[1.25rem] px-[1rem] py-[1rem] text-[1rem] outline-none resize-none transition-[border-color] duration-200 ${
-          focused ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#064B34]'
+        className={`w-full bg-gfx-green-800 font-acid text-white placeholder:text-gfx-neutral-400 rounded-full px-4 py-4 text-base outline-none resize-none transition-[border-color] duration-200 ${
+          focused ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-gfx-green-200'
         }`}
       />
     </div>

@@ -60,7 +60,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
             <div className="flex justify-end">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5">
                 <GlobeIcon />
-                <span className="text-white text-[14px] font-acid">{article.region}</span>
+                <span className="text-white text-sm font-acid">{article.region}</span>
               </div>
             </div>
           )}
@@ -68,13 +68,13 @@ function HeroCard({ article }: { article: NewsArticle }) {
           <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-white text-2xl sm:text-3xl lg:text-[50px] font-acid font-normal leading-[1.05]">{article.title}</h2>
 
-          <p className="text-[#808080] text-sm sm:text-base font-acid mt-4 leading-[1.5] max-w-full lg:max-w-[470px]">
+          <p className="text-gfx-neutral-400 text-sm sm:text-base font-acid mt-4 leading-[1.5] max-w-full lg:max-w-[470px]">
             {article.description}
           </p>
 
           <div className="flex items-center gap-2 mt-6">
             <ClockIcon />
-            <span className="text-[#808080] text-[14px] font-acid">{article.date}</span>
+            <span className="text-gfx-neutral-400 text-sm font-acid">{article.date}</span>
           </div>
           </div>
         </div>
@@ -107,12 +107,12 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
         <div className="relative z-10">
           {/* Category + Commodity icon */}
           <div className="flex justify-between items-center mb-4">
-            <span className="text-[#ececec] text-[14px] font-acid">
+            <span className="text-[#ececec] text-sm font-acid">
               {article.category}
             </span>
             <span className="flex items-center gap-2">
               <CommodityIcon />
-              <span className="text-white text-[14px] font-acid">{article.category}</span>
+              <span className="text-white text-sm font-acid">{article.category}</span>
             </span>
           </div>
 
@@ -120,13 +120,13 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
             {article.title}
           </h3>
 
-          <p className="text-[#808080] text-[16px] font-acid mt-3 leading-[1.5] max-w-[465px]">
+          <p className="text-gfx-neutral-400 text-[16px] font-acid mt-3 leading-[1.5] max-w-[465px]">
             {article.description}
           </p>
 
           <div className="flex items-center gap-2 mt-4">
             <ClockIcon />
-            <span className="text-[#808080] text-[14px] font-acid">{article.date}</span>
+            <span className="text-gfx-neutral-400 text-sm font-acid">{article.date}</span>
           </div>
         </div>
       </div>
@@ -154,14 +154,14 @@ function ListCard({ article }: { article: NewsArticle }) {
 
           <h4 className="text-white text-lg sm:text-xl lg:text-2xl font-acid font-normal leading-[1.2]">{article.title}</h4>
 
-          <p className="text-[#808080] text-sm sm:text-base font-acid font-medium mt-3 leading-[1.5]">
+          <p className="text-gfx-neutral-400 text-sm sm:text-base font-acid font-medium mt-3 leading-[1.5]">
             {article.description}
           </p>
         </div>
 
         {/* Date + icon right */}
         <div className="shrink-0 flex items-center gap-2">
-          <span className="text-[#a0a0a0] text-[16px] font-acid font-medium whitespace-nowrap">{article.date}</span>
+          <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium whitespace-nowrap">{article.date}</span>
           <button className="hover:opacity-80 transition-opacity cursor-pointer">
             <CornerArrowIcon />
           </button>

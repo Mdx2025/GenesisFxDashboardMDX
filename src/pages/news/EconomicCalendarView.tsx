@@ -39,11 +39,11 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
 
   return (
     <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[62px] border-b border-white/[0.04]`}>
-      <span className="text-white text-sm lg:text-[20px] font-acid">{event.time}</span>
+      <span className="text-white text-sm lg:text-xl font-acid">{event.time}</span>
 
       <div className="flex items-center gap-2 lg:gap-3">
-        <span className="text-[#808080] text-sm lg:text-[20px]">{event.flag}</span>
-        <span className="text-white text-sm lg:text-[20px] font-acid">{event.country}</span>
+        <span className="text-gfx-neutral-400 text-sm lg:text-xl">{event.flag}</span>
+        <span className="text-white text-sm lg:text-xl font-acid">{event.country}</span>
         <ImpactIcon />
       </div>
 
@@ -51,21 +51,21 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
         <FolderIcon />
       </div>
 
-      <span className="text-white text-sm lg:text-[20px] font-acid truncate">{event.event}</span>
+      <span className="text-white text-sm lg:text-xl font-acid truncate">{event.event}</span>
 
-      <span className={`text-sm lg:text-[20px] font-acid ${actualColorClass}`}>
+      <span className={`text-sm lg:text-xl font-acid ${actualColorClass}`}>
         {event.actual ?? ''}
       </span>
 
       <div className="flex items-center">
         {event.forecast ? (
-          <span className="text-[#606060] text-sm lg:text-[20px] font-acid">{event.forecast}</span>
+          <span className="text-gfx-neutral-300 text-sm lg:text-xl font-acid">{event.forecast}</span>
         ) : (
           <DashLine />
         )}
       </div>
 
-      <span className="text-[#606060] text-sm lg:text-[20px] font-acid">
+      <span className="text-gfx-neutral-300 text-sm lg:text-xl font-acid">
         {event.prior ?? ''}
       </span>
     </div>
@@ -78,7 +78,7 @@ function DateHeader({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-[60px] h-[56px] lg:h-[68px] bg-[#09241c]">
       <GreenDot size={10} />
-      <span className="text-white text-sm lg:text-[20px] font-acid">{label}</span>
+      <span className="text-white text-sm lg:text-xl font-acid">{label}</span>
     </div>
   )
 }
@@ -89,7 +89,7 @@ function ColumnHeaders() {
   return (
     <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[48px] lg:h-[56px] border-b border-white/[0.04]`}>
       {['Time', 'Country', 'Impact', 'Event', 'Actual', 'Forecast', 'Prior'].map(col => (
-        <span key={col} className="text-[#606060] text-xs lg:text-[20px] font-acid">{col}</span>
+        <span key={col} className="text-gfx-neutral-300 text-xs lg:text-xl font-acid">{col}</span>
       ))}
     </div>
   )

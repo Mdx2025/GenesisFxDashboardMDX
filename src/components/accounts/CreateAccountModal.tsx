@@ -109,12 +109,12 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
       >
         {/* Modal background with decorative glows */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-[#064B34] rounded-full blur-[157px]" />
           <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-[#064B34] rounded-full blur-[157px]" />
-          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-[#0C1311] rounded-full blur-[157px]" />
+          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
         </div>
 
         {/* Close button */}
@@ -143,35 +143,35 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
                 <span className="cursor-pointer"><InfoIcon /></span>
                 {/* Tooltip on hover */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-50">
-                  <div className="bg-[#09241C] rounded-[14px] px-4 py-4 shadow-[0px_4px_8.9px_rgba(0,0,0,0.25)] text-center w-[221px]">
-                    <p className="text-[#ECECEC] text-[1rem] font-medium font-acid leading-[1.528rem]">Account Details Email</p>
-                    <p className="text-[#808080] text-[0.875rem] font-normal font-acid leading-[1.175rem] mt-2.5">Your TradeLocker account details will be emailed to you once your account is created.</p>
+                  <div className="bg-gfx-green-900 rounded-[14px] px-4 py-4 shadow-[0px_4px_8.9px_rgba(0,0,0,0.25)] text-center w-[221px]">
+                    <p className="text-[#ECECEC] text-base font-medium font-acid leading-[1.528rem]">Account Details Email</p>
+                    <p className="text-gfx-neutral-400 text-sm font-normal font-acid leading-[1.175rem] mt-2.5">Your TradeLocker account details will be emailed to you once your account is created.</p>
                   </div>
                 </div>
               </div>
-              <span className="text-[#808080] text-[1rem] font-medium font-acid leading-[1.528rem]">Account Details</span>
+              <span className="text-gfx-neutral-400 text-base font-medium font-acid leading-[1.528rem]">Account Details</span>
             </div>
           </div>
 
           {/* Form fields */}
           <div className="flex flex-col gap-[22px]">
             <div>
-              <label className="block text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem] mb-[0.375rem]">From Account</label>
+              <label className="block text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem] mb-[0.375rem]">From Account</label>
               <GlassInput placeholder="Gen.01" value={fromAccount} onChange={setFromAccount} />
             </div>
 
             <div>
-              <label className="block text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem] mb-[0.375rem]">Account Type</label>
+              <label className="block text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem] mb-[0.375rem]">Account Type</label>
               <GlassSelect options={ACCOUNT_TYPE_OPTIONS} placeholder="0.00" value={accountType} onChange={setAccountType} />
             </div>
 
             <div>
-              <label className="block text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem] mb-[0.375rem]">Leverage</label>
+              <label className="block text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem] mb-[0.375rem]">Leverage</label>
               <GlassSelect options={LEVERAGE_OPTIONS} placeholder="1200" value={leverage} onChange={setLeverage} />
             </div>
 
             <div>
-              <label className="block text-[#ECECEC] font-acid font-medium text-[1rem] leading-[1.528rem] mb-[0.375rem]">Demo Account Size</label>
+              <label className="block text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem] mb-[0.375rem]">Demo Account Size</label>
               <GlassSelect options={DEMO_SIZE_OPTIONS} placeholder="$10,000" value={demoSize} onChange={setDemoSize} />
             </div>
           </div>

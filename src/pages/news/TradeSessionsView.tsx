@@ -67,13 +67,13 @@ function SessionCard({ session }: { session: TradeSession }) {
               OPEN
             </span>
           ) : (
-            <span className="text-[#808080] text-[20px] font-acid leading-[20px]">CLOSED</span>
+            <span className="text-gfx-neutral-400 text-xl font-acid leading-[20px]">CLOSED</span>
           )}
         </div>
 
         {/* Time */}
         <div className="flex items-center gap-1 mt-2">
-          <span className="text-[#808080] text-[24px] font-acid leading-none">{session.time}</span>
+          <span className="text-gfx-neutral-400 text-[24px] font-acid leading-none">{session.time}</span>
         </div>
 
         {/* Countdown */}
@@ -167,17 +167,17 @@ export default function TradeSessionsView() {
           <h2 className="text-white text-[36px] sm:text-[48px] lg:text-[60px] font-acid leading-none">
             Trading Sessions
           </h2>
-          <p className="text-[#808080] text-[16px] font-acid font-medium">
+          <p className="text-gfx-neutral-400 text-[16px] font-acid font-medium">
             Real-time market session status with liquidity flow visualization
           </p>
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <GlobeIcon />
-              <span className="text-[#808080] text-[14px] font-acid leading-[18.8px]">Global Markets</span>
+              <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">Global Markets</span>
             </div>
             <div className="flex items-center gap-2">
               <NetworkIcon />
-              <span className="text-[#808080] text-[14px] font-acid leading-[18.8px]">
+              <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">
                 {activeCount} Active Session{activeCount !== 1 ? 's' : ''}
               </span>
             </div>

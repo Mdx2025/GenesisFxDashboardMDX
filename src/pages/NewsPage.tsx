@@ -172,8 +172,8 @@ function WebcamCard() {
                   </defs>
                 </svg>
                 <div className="flex flex-col">
-                  <span className="text-white text-[14px] font-acid leading-[18.8px]">{cam.label}</span>
-                  <span className="text-[#808080] text-[12px] font-acid leading-[18.8px]">{cam.source}</span>
+                  <span className="text-white text-sm font-acid leading-[18.8px]">{cam.label}</span>
+                  <span className="text-gfx-neutral-400 text-xs font-acid leading-[18.8px]">{cam.source}</span>
                 </div>
               </div>
             </div>
@@ -353,17 +353,17 @@ function ChevronDownIcon() {
 function EconEventRow() {
   return (
     <div className="flex items-center gap-0 py-3 border-b border-[#09241C] last:border-0 pl-[23px] pr-5">
-      <span className="text-white text-[14px] font-acid w-[86px] shrink-0">10:00</span>
-      <span className="text-[20px] shrink-0 leading-[20px]">🇺🇸</span>
-      <span className="text-white text-[14px] font-acid ml-[10px] shrink-0">US</span>
+      <span className="text-white text-sm font-acid w-[86px] shrink-0">10:00</span>
+      <span className="text-xl shrink-0 leading-[20px]">🇺🇸</span>
+      <span className="text-white text-sm font-acid ml-[10px] shrink-0">US</span>
       <span className="shrink-0 ml-[14px]"><ChartBarsIcon /></span>
-      <span className="text-white text-[14px] font-acid ml-[22px] shrink-0">Riyad Bank  PMI</span>
+      <span className="text-white text-sm font-acid ml-[22px] shrink-0">Riyad Bank  PMI</span>
       <span className="shrink-0 ml-[4px]"><ChevronDownIcon /></span>
-      <span className="text-white text-[14px] font-acid ml-auto shrink-0">53.3</span>
+      <span className="text-white text-sm font-acid ml-auto shrink-0">53.3</span>
       <span className="shrink-0 ml-[32px]">
         <svg width="19" height="1" viewBox="0 0 19 1" fill="none"><path d="M0 0.5H19" stroke="#A0A0A0"/></svg>
       </span>
-      <span className="text-[#606060] text-[14px] font-acid ml-[26px] shrink-0">52.8</span>
+      <span className="text-gfx-neutral-300 text-sm font-acid ml-[26px] shrink-0">52.8</span>
     </div>
   )
 }
@@ -376,18 +376,18 @@ function EconomicCalendarCard() {
         <EconEventRow />
 
         {/* Date bar */}
-        <div className="flex items-center gap-[21px] px-[35px] py-[14px] bg-[#09241C]">
+        <div className="flex items-center gap-[21px] px-[35px] py-[14px] bg-gfx-green-900">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="#00B38C"/></svg>
           <span className="text-white text-[16px] font-acid">Today, April 28</span>
         </div>
 
         {/* Column headers */}
         <div className="flex items-center border-b border-[#09241C] pl-6 pr-5 py-3.5">
-          <span className="text-[#606060] text-[14px] font-acid w-[85px] shrink-0">Time</span>
-          <span className="text-[#606060] text-[14px] font-acid flex-1">Event</span>
-          <span className="text-[#606060] text-[14px] font-acid w-[55px] shrink-0">Act</span>
-          <span className="text-[#606060] text-[14px] font-acid w-[67px] shrink-0">FCST</span>
-          <span className="text-[#606060] text-[14px] font-acid shrink-0">PREV</span>
+          <span className="text-gfx-neutral-300 text-sm font-acid w-[85px] shrink-0">Time</span>
+          <span className="text-gfx-neutral-300 text-sm font-acid flex-1">Event</span>
+          <span className="text-gfx-neutral-300 text-sm font-acid w-[55px] shrink-0">Act</span>
+          <span className="text-gfx-neutral-300 text-sm font-acid w-[67px] shrink-0">FCST</span>
+          <span className="text-gfx-neutral-300 text-sm font-acid shrink-0">PREV</span>
         </div>
 
         {/* Scrollable data rows */}
@@ -397,7 +397,7 @@ function EconomicCalendarCard() {
           ))}
 
           {/* Custom scrollbar track bg */}
-          <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#09241C] rounded-full pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-1 bg-gfx-green-900 rounded-full pointer-events-none" />
         </div>
       </div>
     </Card>

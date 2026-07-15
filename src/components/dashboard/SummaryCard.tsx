@@ -14,14 +14,14 @@ interface SummaryCardProps {
 }
 
 const colorMap = {
-  green: 'text-[#37C92E]',
+  green: 'text-gfx-bullish-light',
   red: 'text-[#D46356]',
   amber: 'text-gfx-amber',
 }
 
 const valueColorMap = {
   white: 'text-white',
-  green: 'text-[#37C92E]',
+  green: 'text-gfx-bullish-light',
   red: 'text-[#D46356]',
 }
 

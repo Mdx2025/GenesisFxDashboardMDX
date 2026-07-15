@@ -34,14 +34,14 @@ export function TradingAccountsTable() {
             className="grid items-center px-4 sm:px-6 xl:px-10 py-4 border-y border-white/5"
             style={{ gridTemplateColumns: GRID_COLS }} /* dynamic value */
           >
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Account</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Platform</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Type</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Balance</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Equity</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Closed P&L</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Open P&L</span>
-            <span className="text-[0.75rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Status</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Account</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Platform</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Type</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Balance</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Equity</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Closed P&L</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Open P&L</span>
+            <span className="text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase">Status</span>
             <span />
           </div>
 
@@ -65,10 +65,10 @@ export function TradingAccountsTable() {
               <p className={`text-[0.9375rem] font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</p>
               <div className="flex items-center gap-2">
                 <GreenDot size={8} />
-                <span className="text-gfx-neutral-300 text-[0.875rem]">{acc.status}</span>
+                <span className="text-gfx-neutral-300 text-sm">{acc.status}</span>
               </div>
               <div className="flex items-center justify-end gap-6">
-                <button className="text-gfx-neutral-300 text-[0.875rem] hover:text-white transition-colors cursor-pointer">View</button>
+                <button className="text-gfx-neutral-300 text-sm hover:text-white transition-colors cursor-pointer">View</button>
                 <GlowButton label="Trade" width={100} height={36} fontSize={14} />
                 <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

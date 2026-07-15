@@ -12,10 +12,10 @@ function AuthFooter() {
           2026 Genesis FX Markets. All rights reserved.
         </span>
         <nav className="flex flex-wrap items-center justify-center gap-x-4 lg:gap-x-6 gap-y-1" aria-label="Legal links">
-          <a href="#terms" className="text-[#a0a0a0] text-xs leading-[1.175rem] hover:text-white transition-colors">Terms &amp; Conditions</a>
-          <a href="#privacy" className="text-[#a0a0a0] text-xs leading-[1.175rem] hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#risk" className="text-[#a0a0a0] text-xs leading-[1.175rem] hover:text-white transition-colors">Risk Disclosure</a>
-          <a href="#aml" className="text-[#a0a0a0] text-xs leading-[1.175rem] hover:text-white transition-colors">Anti-Money Laundering</a>
+          <a href="#terms" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Terms &amp; Conditions</a>
+          <a href="#privacy" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#risk" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Risk Disclosure</a>
+          <a href="#aml" className="text-gfx-neutral-500 text-xs leading-[1.175rem] hover:text-white transition-colors">Anti-Money Laundering</a>
         </nav>
       </div>
     </footer>

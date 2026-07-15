@@ -41,7 +41,7 @@ export default function KycPage() {
           <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
             Withdraw Funds
           </h1>
-          <p className="text-gfx-neutral-300 text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
+          <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
             Choose your preferred withdrawal method to get started.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function KycPage() {
                       KYC Verification Required
                     </h2>
 
-                    <p className="text-gfx-neutral-500 text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
+                    <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
                       To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
                     </p>
 
@@ -92,19 +92,19 @@ export default function KycPage() {
                   className="w-auto h-[120px] 3xl:h-[160px] 4xl:h-[220px] object-contain mb-10 3xl:mb-14 4xl:mb-16"
                 />
 
-                <h3 className="text-[#606060] text-[1.75rem] xl:text-[2rem] 3xl:text-[2.625rem] 4xl:text-[3.5rem] font-normal text-center">
+                <h3 className="text-gfx-neutral-300 text-[1.75rem] xl:text-[2rem] 3xl:text-[2.625rem] 4xl:text-[3.5rem] font-normal text-center">
                   Choose Withdrawal Method
                 </h3>
 
-                <p className="text-[#606060] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Select your preferred withdrawal method to get started
                 </p>
 
-                <h4 className="text-[#606060] text-[1.5rem] 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
+                <h4 className="text-gfx-neutral-300 text-2xl 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
                   Cryptocurrency
                 </h4>
 
-                <p className="text-[#606060] text-[1rem] 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Bitcoin, Ethereum, USDT, USDC, and more
                 </p>
 
@@ -113,7 +113,7 @@ export default function KycPage() {
                     <circle cx="9" cy="9" r="8" stroke="#606060" strokeWidth="1.5"/>
                     <path d="M9 5v4l2.5 2.5" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-[#606060] text-[0.875rem] 3xl:text-[1.125rem] 4xl:text-[1.5rem] font-medium">Avrg 4 hours</span>
+                  <span className="text-gfx-neutral-300 text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-medium">Avrg 4 hours</span>
                 </div>
               </div>
             </div>

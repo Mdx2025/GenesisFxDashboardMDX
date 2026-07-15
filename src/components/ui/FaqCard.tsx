@@ -15,9 +15,9 @@ interface FaqCardProps {
 
 export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCardProps) {
   return (
-    <div className="rounded-[1.875rem] border border-[#303030] bg-[#000705] px-8 py-7">
+    <div className="rounded-3xl border border-[#303030] bg-[#000705] px-8 py-7">
       <div className="flex items-center justify-between gap-6">
-        <span className="text-[1.125rem] 3xl:text-[1.5rem] 4xl:text-[2rem] text-white font-normal leading-[1.406rem] 3xl:leading-[1.875rem] 4xl:leading-[2.5rem]">{question}</span>
+        <span className="text-[1.125rem] 3xl:text-2xl 4xl:text-[2rem] text-white font-normal leading-[1.406rem] 3xl:leading-[1.875rem] 4xl:leading-[2.5rem]">{question}</span>
         <button
           type="button"
           onClick={onToggle}
@@ -47,7 +47,7 @@ interface FaqSectionProps {
 export function FaqSection({ faqs, expandedFaq, onToggle }: FaqSectionProps) {
   return (
     <div className="w-full xl:basis-1/2 xl:min-w-0">
-      <h2 className="text-[1.5rem] font-normal mb-6 leading-[1.875rem]">FAQs</h2>
+      <h2 className="text-2xl font-normal mb-6 leading-[1.875rem]">FAQs</h2>
       <div className="space-y-4">
         {faqs.map((faq, i) => (
           <FaqCard

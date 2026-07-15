@@ -55,7 +55,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
       aria-live="polite"
     >
       <div
-        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden rounded-[1.16rem] bg-[#0C1311] font-acid shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] -outline-offset-[1.16px] outline-[#0C1311]"
+        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden rounded-[1.16rem] bg-gfx-green-800 font-acid shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] -outline-offset-[1.16px] outline-[#0C1311]"
       >
         {/* Decorative glows */}
         <div className="absolute pointer-events-none w-[587px] h-[435px] left-[477px] top-[-281px] rotate-[48deg] origin-top-left bg-[#064B34] rounded-full blur-[157px]" aria-hidden="true" />
@@ -67,14 +67,14 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
 
         {/* Content */}
         <div className="relative z-10 px-[1.4375rem] py-[2rem] flex flex-col gap-[0.25rem]">
-          <div className="flex items-center gap-[0.5rem]">
-            <span className="text-white text-[1rem] font-medium leading-[1.525rem]">Check your email</span>
+          <div className="flex items-center gap-2">
+            <span className="text-white text-base font-medium leading-[1.525rem]">Check your email</span>
             <EmailIcon />
           </div>
-          <p className="text-[#808080] text-[1rem] font-medium leading-[1.525rem]">
+          <p className="text-gfx-neutral-400 text-base font-medium leading-[1.525rem]">
             We've sent a verification link to your email.
           </p>
-          <p className="text-[#808080] text-[1rem] font-medium leading-[1.525rem]">
+          <p className="text-gfx-neutral-400 text-base font-medium leading-[1.525rem]">
             Please click it to confirm your account before<br />signing in
           </p>
         </div>

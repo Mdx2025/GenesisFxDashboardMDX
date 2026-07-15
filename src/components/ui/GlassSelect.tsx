@@ -81,7 +81,7 @@ export function GlassSelect({ options, defaultValue, value, placeholder = 'Selec
         type="button"
         onClick={() => setOpen(!open)}
         className={`w-full ${s.trigger} text-sm text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus:outline-none text-white bg-[#101E1A] ${
-          open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#064B34]'
+          open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-gfx-green-200'
         }`}
         aria-haspopup="listbox"
         aria-expanded={open}

@@ -16,7 +16,7 @@ function GoogleIcon() {
   )
 }
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-[1.875rem] bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-[#808080] outline-none focus:border-gfx-green-500/50 transition-colors"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors"
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -27,7 +27,7 @@ export default function LoginPage() {
       <div ref={fadeRef} className="w-full max-w-[34.125rem] px-4 sm:px-0 flex flex-col items-center gap-[2.6875rem]">
         <div className="flex flex-col items-center gap-[2.6875rem]">
           <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Trader's Room Log In</WaveText>
-          <WaveText as="p" className="text-[#a0a0a0] text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Welcome back! Sign in to your account below.</WaveText>
+          <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Welcome back! Sign in to your account below.</WaveText>
         </div>
 
         <div className="w-full flex flex-col items-center gap-7">
@@ -67,7 +67,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setShowPassword(v => !v)}
-              className="absolute right-5 top-1/2 -translate-y-1/2 text-[#808080] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
+              className="absolute right-5 top-1/2 -translate-y-1/2 text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
               <EyeIcon open={showPassword} />
@@ -85,7 +85,7 @@ export default function LoginPage() {
           </Link>
 
           <p className="text-base leading-[1.2]">
-            <span className="text-[#808080]">New to Genesis? </span>
+            <span className="text-gfx-neutral-400">New to Genesis? </span>
             <Link to="/register" className="text-white hover:underline">Register Now</Link>
           </p>
 
