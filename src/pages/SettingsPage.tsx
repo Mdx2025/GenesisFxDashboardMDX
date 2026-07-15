@@ -1,5 +1,5 @@
 import { useState, useRef, type ReactNode } from 'react'
-import { GlassCard, GlassInput, ModeToggle, GlowEllipse } from '@/components/ui'
+import { GlassCard, GlassInput, ModeToggle, GlowEllipse, StatCard, SparkleButton } from '@/components/ui'
 import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
@@ -358,22 +358,6 @@ function HelpCenterIcon() {
   )
 }
 
-function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode; title: string; subtitle: string; action: string }) {
-  return (
-    <div
-      className="bg-[#0C1311] rounded-[1.875rem] flex items-start gap-5 px-5 py-6"
-    >
-      <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
-        {icon}
-      </div>
-      <div>
-        <p className="text-white text-2xl font-acid leading-normal">{title}</p>
-        <p className="text-[#808080] text-base font-acid">{subtitle}</p>
-        <p className="text-[#10BC83] text-base font-acid">{action}</p>
-      </div>
-    </div>
-  )
-}
 
 function SupportTab() {
   return (
@@ -386,10 +370,10 @@ function SupportTab() {
         />
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
         <div className="grid grid-cols-2 gap-5">
-          <SupportContactCard icon={<ChatDialogIcon />} title="Live chat" subtitle="Available 24/7" action="Start Live Chat" />
-          <SupportContactCard icon={<EnvelopeIcon />} title="Email Support" subtitle="support@genesisfxmarkets.com" action="Send Email" />
-          <SupportContactCard icon={<WhatsappIcon />} title="Whatsapp" subtitle="Quick chat support" action="Open Whatsapp" />
-          <SupportContactCard icon={<HelpCenterIcon />} title="Help Center" subtitle="Browse common questions" action="Visit Help Center" />
+          <StatCard icon={<ChatDialogIcon />} value="Live chat" label="Available 24/7" action="Start Live Chat" />
+          <StatCard icon={<EnvelopeIcon />} value="Email Support" label="support@genesisfxmarkets.com" action="Send Email" />
+          <StatCard icon={<WhatsappIcon />} value="Whatsapp" label="Quick chat support" action="Open Whatsapp" />
+          <StatCard icon={<HelpCenterIcon />} value="Help Center" label="Browse common questions" action="Visit Help Center" />
         </div>
       </div>
     </GlassCard>
@@ -476,16 +460,6 @@ function SecurityTab() {
   )
 }
 
-function SettingsButton({ label }: { label: string }) {
-  return (
-    <button className="flex items-center gap-2 px-5 py-2.5 rounded-[1.875rem] border border-[#a0a0a0] bg-gradient-to-b from-[#09241c] to-[#0C1311] text-[#c6c6c6] text-base font-acid font-medium hover:border-gfx-green-300 transition-colors shrink-0">
-      {label}
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m9 18 6-6-6-6"/>
-      </svg>
-    </button>
-  )
-}
 
 function SettingsTab() {
   const [aiCoachEnabled, setAiCoachEnabled] = useState(true)
@@ -493,37 +467,34 @@ function SettingsTab() {
 
   return (
     <>
-      <div className="mt-10 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 py-8">
-        <div className="flex items-center gap-2 mb-6">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M16.07 12.5a1.33 1.33 0 0 0 .27 1.47l.05.05a1.61 1.61 0 1 1-2.28 2.28l-.05-.05a1.33 1.33 0 0 0-1.47-.27 1.33 1.33 0 0 0-.8 1.22v.13a1.61 1.61 0 1 1-3.23 0v-.07a1.33 1.33 0 0 0-.87-1.22 1.33 1.33 0 0 0-1.47.27l-.05.05a1.61 1.61 0 1 1-2.28-2.28l.05-.05a1.33 1.33 0 0 0 .27-1.47 1.33 1.33 0 0 0-1.22-.8h-.13a1.61 1.61 0 1 1 0-3.23h.07a1.33 1.33 0 0 0 1.22-.87 1.33 1.33 0 0 0-.27-1.47l-.05-.05a1.61 1.61 0 1 1 2.28-2.28l.05.05c.38.38.93.52 1.47.27h.07a1.33 1.33 0 0 0 .8-1.22v-.13a1.61 1.61 0 1 1 3.23 0v.07c.05.53.36 1 .8 1.22a1.33 1.33 0 0 0 1.47-.27l.05-.05a1.61 1.61 0 1 1 2.28 2.28l-.05.05a1.33 1.33 0 0 0-.27 1.47v.07c.22.44.69.75 1.22.8h.13a1.61 1.61 0 0 1 0 3.23h-.07a1.33 1.33 0 0 0-1.22.8Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <h3 className="text-white text-2xl font-acid">Username</h3>
-        </div>
-        <div className="relative">
-          <input
-            className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
-            placeholder="@ Not set"
-          />
-          <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gfx-green-300 flex items-center justify-center hover:opacity-90 transition-opacity">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0C1311" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 6 9 17l-5-5"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div className="mt-6 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 pt-8 pb-4">
+      <div className="mt-10 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 pt-8 pb-4">
         <h3 className="text-white text-2xl font-acid mb-8">Settings</h3>
 
         <div className="divide-y divide-[#09241c]">
           <div className="flex items-center justify-between py-6 first:pt-0">
+            <div className="mr-4">
+              <p className="text-white text-base font-acid font-medium">Username</p>
+              <p className="text-[#808080] text-base font-acid">Set your public username</p>
+            </div>
+            <div className="relative w-64 shrink-0">
+              <input
+                className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
+                placeholder="@ Not set"
+              />
+              <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gfx-green-300 flex items-center justify-center hover:opacity-90 transition-opacity">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0C1311" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between py-6">
             <div>
               <p className="text-white text-base font-acid font-medium">Profile Picture</p>
               <p className="text-[#808080] text-base font-acid">Change your profile picture</p>
             </div>
-            <SettingsButton label="Change Picture" />
+            <SparkleButton>Change Picture</SparkleButton>
           </div>
 
           <div className="flex items-center justify-between py-6">
@@ -539,7 +510,7 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Change Language</p>
               <p className="text-[#808080] text-base font-acid">Choose your preferred language</p>
             </div>
-            <SettingsButton label="Change Language" />
+            <SparkleButton>Change Language</SparkleButton>
           </div>
 
           <div className="flex items-center justify-between py-6">
@@ -555,7 +526,7 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Change Password</p>
               <p className="text-[#808080] text-base font-acid">Update your account password</p>
             </div>
-            <SettingsButton label="Change Password" />
+            <SparkleButton>Change Password</SparkleButton>
           </div>
 
           <div className="flex items-center justify-between py-6">
@@ -563,7 +534,7 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Change Email</p>
               <p className="text-[#808080] text-base font-acid">Update your email address</p>
             </div>
-            <SettingsButton label="Change Email" />
+            <SparkleButton>Change Email</SparkleButton>
           </div>
 
           <div className="flex items-center justify-between py-6">
@@ -571,7 +542,7 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Close Account</p>
               <p className="text-[#808080] text-base font-acid">Permanently delete your account and all data</p>
             </div>
-            <SettingsButton label="Close Account" />
+            <SparkleButton>Close Account</SparkleButton>
           </div>
         </div>
       </div>
