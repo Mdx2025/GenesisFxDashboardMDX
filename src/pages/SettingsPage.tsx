@@ -1,5 +1,6 @@
 import { useState, useRef, type ReactNode } from 'react'
 import { GlassCard, GlassInput, ModeToggle } from '@/components/ui'
+import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -422,6 +423,8 @@ function ToggleSwitch({ enabled = false, onClick }: { enabled?: boolean; onClick
 }
 
 function SecurityTab() {
+  const [show2fa, setShow2fa] = useState(false)
+
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
       <div className="relative overflow-hidden px-10 pt-10 pb-10">
@@ -446,9 +449,11 @@ function SecurityTab() {
                 <p className="text-gfx-neutral-400 text-base font-acid font-medium">Add an extra layer of security to your account</p>
               </div>
             </div>
-            <ToggleSwitch />
+            <ToggleSwitch onClick={() => setShow2fa(true)} />
           </div>
         </div>
+
+        <TwoFactorModal open={show2fa} onClose={() => setShow2fa(false)} />
 
         <div className="bg-[#09241c] border border-[#09241c] rounded-[2rem] overflow-hidden px-8 py-8 mt-5">
           <div className="flex items-start gap-5">
