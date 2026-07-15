@@ -15,14 +15,14 @@ interface SummaryCardProps {
 
 const colorMap = {
   green: 'text-gfx-bullish-light',
-  red: 'text-[#D46356]',
+  red: 'text-gfx-red-muted',
   amber: 'text-gfx-amber',
 }
 
 const valueColorMap = {
   white: 'text-white',
   green: 'text-gfx-bullish-light',
-  red: 'text-[#D46356]',
+  red: 'text-gfx-red-muted',
 }
 
 export function SummaryCard({ title, value, changeText, changeColor = 'green', valueColor = 'white', glowColor = GLOW_GREEN, chartClassName, children }: SummaryCardProps) {

@@ -72,19 +72,19 @@ function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
 
         {/* Content */}
         <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-12 py-8 lg:py-10">
-          <h2 className="text-white text-xl sm:text-2xl lg:text-[36px] font-acid font-normal leading-[1.05] relative">
+          <h2 className="text-white text-xl sm:text-2xl lg:text-4xl font-acid font-normal leading-[1.05] relative">
             {featuredEpisode.title}
           </h2>
 
           <div className="mt-5 relative">
-            <span className="inline-flex items-center justify-center px-[14px] py-[14px] rounded-[10px] bg-[#09241c] text-white text-[16px] font-acid font-medium">
+            <span className="inline-flex items-center justify-center px-[14px] py-3.5 rounded-md bg-gfx-green-900 text-white text-base font-acid font-medium">
               Latest episode
             </span>
           </div>
 
-          <p className="text-white text-[16px] font-acid font-medium mt-6 relative">What's Covered</p>
+          <p className="text-white text-base font-acid font-medium mt-6 relative">What's Covered</p>
 
-          <ul className="mt-3 space-y-1.5 text-gfx-neutral-400 text-[16px] font-acid leading-[1.2] list-disc pl-6 relative">
+          <ul className="mt-3 space-y-1.5 text-gfx-neutral-400 text-base font-acid leading-tight list-disc pl-6 relative">
             <li>Key forex pair movements &amp; technical setups</li>
             <li>Major economic data releases &amp; impact analysis</li>
             <li>Commodities, indices &amp; crypto market outlook</li>
@@ -119,10 +119,10 @@ function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClic
 
       {/* Info overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-8">
-        <h4 className="text-white text-[24px] font-acid font-normal leading-[1]">{episode.title}</h4>
+        <h4 className="text-white text-2xl font-acid font-normal leading-[1]">{episode.title}</h4>
         <div className="flex items-center gap-1.5 mt-2">
           <CalendarIcon />
-          <span className="text-gfx-neutral-300 text-[16px] font-acid font-medium">{episode.date}</span>
+          <span className="text-gfx-neutral-300 text-base font-acid font-medium">{episode.date}</span>
         </div>
       </div>
     </div>
@@ -173,9 +173,9 @@ function EpisodesCarousel({ onEpisodeClick }: { onEpisodeClick: () => void }) {
       {/* Progress bar + arrows */}
       <div className="flex items-center justify-between">
         {/* Progress bar */}
-        <div className="relative h-[4px] w-[619px] max-w-[50%] rounded-full bg-[#064b34]">
+        <div className="relative h-[4px] w-[619px] max-w-[50%] rounded-full bg-gfx-green-200">
           <div
-            className="absolute top-0 left-0 h-full rounded-full bg-[#00b38c] transition-all duration-200"
+            className="absolute top-0 left-0 h-full rounded-full bg-gfx-green-300 transition-all duration-200"
             style={{ width: `${Math.max(30, scrollProgress * 100)}%` }}
           />
         </div>
@@ -184,14 +184,14 @@ function EpisodesCarousel({ onEpisodeClick }: { onEpisodeClick: () => void }) {
         <div className="flex items-center gap-3">
           <button
             onClick={() => scroll('left')}
-            className="w-[45px] h-[45px] rounded-full border border-[#00b38c] flex items-center justify-center cursor-pointer hover:bg-[#00b38c]/10 transition-colors"
+            className="w-[45px] h-[45px] rounded-full border border-gfx-green-300 flex items-center justify-center cursor-pointer hover:bg-gfx-green-300/10 transition-colors"
             aria-label="Previous episodes"
           >
             <ChevronLeftIcon />
           </button>
           <button
             onClick={() => scroll('right')}
-            className="w-[45px] h-[45px] rounded-full border border-[#00b38c] flex items-center justify-center cursor-pointer hover:bg-[#00b38c]/10 transition-colors"
+            className="w-[45px] h-[45px] rounded-full border border-gfx-green-300 flex items-center justify-center cursor-pointer hover:bg-gfx-green-300/10 transition-colors"
             aria-label="Next episodes"
           >
             <ChevronRightIcon />

@@ -106,9 +106,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <button
             type="button"
             onClick={() => navigate('/settings')}
-            className="user-card user-card-gradient-border flex items-center gap-3 p-3 rounded-[0.875rem] bg-gfx-green-800 relative overflow-hidden cursor-pointer w-full text-left"
+            className="user-card user-card-gradient-border flex items-center gap-3 p-3 rounded-md bg-gfx-green-800 relative overflow-hidden cursor-pointer w-full text-left"
           >
-            <div className="relative z-10 w-9 h-9 3xl:w-12 3xl:h-12 4xl:w-16 4xl:h-16 rounded-2xl bg-[#064B34] flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
+            <div className="relative z-10 w-9 h-9 3xl:w-12 3xl:h-12 4xl:w-16 4xl:h-16 rounded-2xl bg-gfx-green-200 flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
               <svg className="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
                 <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="url(#blur-30)" />
               </svg>
@@ -163,7 +163,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>
-                              <Link to={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-6 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-md border-l-2 border-transparent hover:border-[#00B38C]">
+                              <Link to={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-6 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-md border-l-2 border-transparent hover:border-gfx-green-300">
                                 {sub.label}
                               </Link>
                             </li>

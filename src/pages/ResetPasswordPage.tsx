@@ -22,7 +22,7 @@ export default function ResetPasswordPage() {
       <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'blur(25.375rem)' }} aria-hidden="true" />
 
       {/* Card — Frame 2085662595 */}
-      <div className="relative w-full max-w-3xl h-[90vh] rounded-[3rem] overflow-hidden flex flex-col">
+      <div className="relative w-full max-w-3xl h-[90vh] rounded-2xl overflow-hidden flex flex-col">
         {/* GlowEllipse — top right corner */}
         <GlowEllipse className="-top-[6.25rem] -right-[10rem] scale-[1.8]" />
         {/* GlowEllipse — bottom left corner */}
@@ -50,7 +50,7 @@ export default function ResetPasswordPage() {
         />
 
         {/* Logo — top center */}
-        <div className="relative flex justify-center pt-[3rem] z-10">
+        <div className="relative flex justify-center pt-12 z-10">
           <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto" />
         </div>
 
@@ -106,7 +106,7 @@ export default function ResetPasswordPage() {
             <GlowButton label="Confirm" width="100%" disabled={!isValid} />
           </div>
 
-          <p className="text-base leading-[1.2] mt-[2.4375rem]">
+          <p className="text-base leading-tight mt-[2.4375rem]">
             <span className="text-gfx-neutral-400">Back to </span>
             <Link to="/" className="text-white font-medium hover:underline">Sign In</Link>
           </p>

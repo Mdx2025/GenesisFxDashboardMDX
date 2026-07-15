@@ -76,7 +76,7 @@ export default function DailySinglePage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/news')}
-            className="w-10 h-10 rounded-[10px] bg-[#09241c] flex items-center justify-center cursor-pointer hover:bg-[#0a714f] transition-colors shrink-0"
+            className="w-10 h-10 rounded-md bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0a714f] transition-colors shrink-0"
             aria-label="Back to news"
           >
             <BackArrow />
@@ -87,7 +87,7 @@ export default function DailySinglePage() {
         </div>
 
         {/* Video Container */}
-        <div className="relative rounded-[30px] 2xl:rounded-[60px] overflow-hidden bg-[#0c1311]">
+        <div className="relative rounded-2xl 2xl:rounded-[60px] overflow-hidden bg-gfx-green-800">
           <div className="relative aspect-[16/9] w-full">
             <img
               src="/images/news/daily-hero-thumbnail.png"
@@ -96,7 +96,7 @@ export default function DailySinglePage() {
             />
 
             {/* Video player controls bar */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[75%] max-w-[1165px] h-[78px] bg-[#0c1311] rounded-[28px] overflow-hidden flex flex-col px-6">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[75%] max-w-[1165px] h-[78px] bg-gfx-green-800 rounded-[28px] overflow-hidden flex flex-col px-6">
               {/* Controls row */}
               <div className="flex items-center gap-4 flex-1">
                 {/* Left: Skip back, Play, Skip forward */}
@@ -115,7 +115,7 @@ export default function DailySinglePage() {
                 </div>
 
                 {/* Timestamp */}
-                <span className="text-white text-[16px] font-acid font-medium shrink-0">0:19 / 0:50</span>
+                <span className="text-white text-base font-acid font-medium shrink-0">0:19 / 0:50</span>
 
                 {/* Spacer */}
                 <div className="flex-1" />
@@ -125,7 +125,7 @@ export default function DailySinglePage() {
                   <button className="cursor-pointer hover:opacity-80 transition-opacity shrink-0">
                     <VolumeIcon />
                   </button>
-                  <div className="w-[62px] h-[4px] bg-[#09241c] rounded-full overflow-hidden">
+                  <div className="w-[62px] h-[4px] bg-gfx-green-900 rounded-full overflow-hidden">
                     <div className="w-[20%] h-full bg-[#0a714f] rounded-full" />
                   </div>
                   <button className="cursor-pointer hover:opacity-80 transition-opacity">
@@ -138,7 +138,7 @@ export default function DailySinglePage() {
               </div>
 
               {/* Progress bar */}
-              <div className="w-full h-[4px] bg-[#09241c] rounded-full overflow-hidden mb-3">
+              <div className="w-full h-[4px] bg-gfx-green-900 rounded-full overflow-hidden mb-3">
                 <div className="w-[23%] h-full bg-[#0a714f] rounded-full" />
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function DailySinglePage() {
                 <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="1.5" />
                 <path d="M12 7v5l3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
-              <span className="text-white text-[16px] font-acid">00:02:30</span>
+              <span className="text-white text-base font-acid">00:02:30</span>
             </div>
           </div>
         </div>

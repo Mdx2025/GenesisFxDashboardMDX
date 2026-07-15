@@ -73,7 +73,7 @@ export function GlassSelectIcon({ options, defaultValue, value, placeholder = 'S
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className={`w-full flex items-center cursor-pointer focus:outline-none h-[50px] bg-[#101E1A] rounded-[30px] ${
+        className={`w-full flex items-center cursor-pointer focus:outline-none h-[50px] bg-gfx-green-100 rounded-2xl ${
           open ? 'border border-[rgba(16,188,131,0.5)]' : 'border border-[#404040]'
         }`}
         aria-haspopup="listbox"

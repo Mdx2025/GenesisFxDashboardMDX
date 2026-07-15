@@ -80,56 +80,56 @@ export function CalculatorSection() {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.65rem] pt-10 xl:pt-16 pb-10">
       {/* Left Card — Position Size Calculator */}
-      <div className="calc-card rounded-[26px] p-[2.75rem] xl:p-[4.4375rem]">
+      <div className="calc-card rounded-xl p-[2.75rem] xl:p-[4.4375rem]">
         <div className="flex items-start gap-5">
-          <div className="w-[50px] h-[50px] rounded-[9px] bg-gfx-green-900 flex items-center justify-center shrink-0">
+          <div className="w-[50px] h-[50px] rounded-sm bg-gfx-green-900 flex items-center justify-center shrink-0">
             <CodeScanIcon />
           </div>
           <div>
-            <h2 className="text-white text-[36px] font-acid leading-none">Position Size</h2>
-            <p className="text-gfx-neutral-400 text-[16px] font-acid mt-2">Trading Calculator</p>
+            <h2 className="text-white text-4xl font-acid leading-none">Position Size</h2>
+            <p className="text-gfx-neutral-400 text-base font-acid mt-2">Trading Calculator</p>
           </div>
         </div>
 
         {/* Recommended Position */}
         <div
-          className="mt-14 rounded-[20px] border border-[#09241C] px-8 py-6 flex flex-col gap-2"
+          className="mt-14 rounded-xl border border-gfx-green-900 px-8 py-6 flex flex-col gap-2"
           style={{ background: 'linear-gradient(45deg, #0C1311 10%, #09241C 66%)' }}
         >
-          <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">Recommended Position</span>
+          <span className="text-gfx-neutral-500 text-base font-acid font-medium">Recommended Position</span>
           <div className="flex items-baseline gap-2">
-            <span className="text-[#00B38C] text-[36px] font-acid">{result.positionSize.toFixed(2)}</span>
-            <span className="text-gfx-neutral-500 text-[16px] font-acid font-medium">lots</span>
+            <span className="text-gfx-green-300 text-4xl font-acid">{result.positionSize.toFixed(2)}</span>
+            <span className="text-gfx-neutral-500 text-base font-acid font-medium">lots</span>
           </div>
         </div>
 
         {/* Form */}
         <div className="mt-10 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[16px] font-acid font-medium">Currency Pair</label>
+            <label className="text-white text-base font-acid font-medium">Currency Pair</label>
             <GlassSelect options={CURRENCY_PAIRS} value={pair} onChange={(v) => setPair(v)} />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[16px] font-acid font-medium">Account Balance</label>
+            <label className="text-white text-base font-acid font-medium">Account Balance</label>
             <div className="h-[46px] px-5 rounded-full bg-gfx-green-800 border border-gfx-green-200 flex items-center">
-              <span className="text-gfx-neutral-400 text-[16px] font-acid mr-1">$</span>
+              <span className="text-gfx-neutral-400 text-base font-acid mr-1">$</span>
               <input
                 type="number"
                 value={balance}
                 onChange={e => setBalance(e.target.value)}
-                className="bg-transparent text-gfx-neutral-400 text-[16px] font-acid w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="bg-transparent text-gfx-neutral-400 text-base font-acid w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[16px] font-acid font-medium">Risk %</label>
+            <label className="text-white text-base font-acid font-medium">Risk %</label>
             <div className="grid grid-cols-4 gap-2">
               {RISK_OPTIONS.map((opt, i) => (
                 <button
                   key={opt}
-                  className={`h-[50px] rounded-[16px] border border-[#303030] text-[16px] font-acid cursor-pointer transition-colors opacity-80 ${
+                  className={`h-[50px] rounded-lg border border-gfx-neutral-250 text-base font-acid cursor-pointer transition-colors opacity-80 ${
                     riskIdx === i
                       ? 'bg-[#0A714F] text-white'
                       : 'bg-gfx-green-800 text-gfx-neutral-500 hover:bg-white/5'
@@ -143,13 +143,13 @@ export function CalculatorSection() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-white text-[16px] font-acid font-medium">Stop Loss</label>
+            <label className="text-white text-base font-acid font-medium">Stop Loss</label>
             <div className="h-[46px] px-5 rounded-full bg-gfx-green-800 border border-gfx-green-200 flex items-center">
               <input
                 type="number"
                 value={stopLoss}
                 onChange={e => setStopLoss(e.target.value)}
-                className="bg-transparent text-gfx-neutral-400 text-[16px] font-acid w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="bg-transparent text-gfx-neutral-400 text-base font-acid w-full outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
             </div>
           </div>
@@ -158,7 +158,7 @@ export function CalculatorSection() {
         {/* Actions */}
         <div className="mt-10 flex items-center gap-3">
           <button
-            className="h-[44px] w-[86px] rounded-[24px] bg-gfx-green-800 border border-[#303030] flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+            className="h-[44px] w-[86px] rounded-xl bg-gfx-green-800 border border-gfx-neutral-250 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => { setBalance('10000'); setStopLoss('50'); setRiskIdx(1) }}
             aria-label="Reset"
           >
@@ -171,19 +171,19 @@ export function CalculatorSection() {
       </div>
 
       {/* Right Card — Calculation Breakdown */}
-      <div className="calc-card rounded-[26px] p-[2.75rem] xl:p-[4.4375rem]">
+      <div className="calc-card rounded-xl p-[2.75rem] xl:p-[4.4375rem]">
         <div className="flex items-center gap-3 mb-10">
           <DangerIcon />
-          <h2 className="text-white text-[24px] font-acid">Calculation Breakdown</h2>
+          <h2 className="text-white text-2xl font-acid">Calculation Breakdown</h2>
         </div>
 
-        <div className="flex flex-col gap-[10px]">
+        <div className="flex flex-col gap-2.5">
           {breakdownRows.map(row => (
-            <div key={row.label} className="bg-gfx-green-900 rounded-[20px] px-[17px] py-[14px] h-[91px] flex flex-col justify-center">
+            <div key={row.label} className="bg-gfx-green-900 rounded-xl px-[17px] py-3.5 h-[91px] flex flex-col justify-center">
               <span className="text-gfx-neutral-400 text-xs font-acid font-bold uppercase tracking-[2.3px]">
                 {row.label}
               </span>
-              <span className="text-white text-[16px] font-acid font-medium mt-1">
+              <span className="text-white text-base font-acid font-medium mt-1">
                 {row.value}
               </span>
               <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] mt-0.5">
@@ -194,9 +194,9 @@ export function CalculatorSection() {
         </div>
 
         {/* Position Size Result */}
-        <div className="mt-8 calc-card rounded-[19px] px-[17px] py-[14px] h-[100px] flex flex-col justify-center">
-          <span className="text-[#00B38C] text-xs font-acid">Position size</span>
-          <span className="text-[#00B38C] text-[24px] font-acid mt-1">
+        <div className="mt-8 calc-card rounded-lg px-[17px] py-3.5 h-[100px] flex flex-col justify-center">
+          <span className="text-gfx-green-300 text-xs font-acid">Position size</span>
+          <span className="text-gfx-green-300 text-2xl font-acid mt-1">
             {result.positionSize.toFixed(2)} lots
           </span>
           <span className="text-gfx-neutral-400 text-sm font-acid mt-0.5">Min: 0.01 | Max: 50</span>

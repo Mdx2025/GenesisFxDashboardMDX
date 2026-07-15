@@ -75,7 +75,7 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full h-[3.8125rem] rounded-[0.75rem] overflow-hidden flex items-start gap-3 px-[0.8125rem] py-[0.75rem] cursor-pointer transition-colors text-left ${
+      className={`relative w-full h-[3.8125rem] rounded-md overflow-hidden flex items-start gap-3 px-[0.8125rem] py-[0.75rem] cursor-pointer transition-colors text-left ${
         isActive
           ? 'bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.3)]'
           : 'hover:bg-gfx-green-800/50'

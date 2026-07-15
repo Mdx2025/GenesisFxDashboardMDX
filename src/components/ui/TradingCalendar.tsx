@@ -156,7 +156,7 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-white text-[1.125rem] font-medium">Monthly stats:</span>
+            <span className="text-white text-lg font-medium">Monthly stats:</span>
             <div className="flex items-center gap-2">
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
                 <span className="text-sm" style={{ color: '#00B38C' }}>
@@ -190,7 +190,7 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
                   <tr key={weekIdx}>
                     {week.map((dayData, dayIdx) => {
                       if (!dayData) {
-                        return <td key={dayIdx} className="p-[5px]"><div className="h-[109px] rounded-[19px]" /></td>
+                        return <td key={dayIdx} className="p-1"><div className="h-[109px] rounded-lg" /></td>
                       }
 
                       const isOverflow = dayData.overflow
@@ -213,8 +213,8 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
                       }
 
                       return (
-                        <td key={dayIdx} className="p-[5px]">
-                          <div className={`${cellBg} rounded-[19px] h-[109px] px-3 py-3 relative flex items-center justify-center border ${cellBorder}`}>
+                        <td key={dayIdx} className="p-1">
+                          <div className={`${cellBg} rounded-lg h-[109px] px-3 py-3 relative flex items-center justify-center border ${cellBorder}`}>
                             <span className="absolute top-3 right-3 text-gfx-neutral-500 text-sm">{dayData.day}</span>
                             {hasTradeData && (
                               <div className="text-center">
@@ -233,8 +233,8 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
                         </td>
                       )
                     })}
-                    <td className="p-[5px]">
-                      <div className="bg-gfx-green-800 rounded-[19px] h-[109px] px-3 py-3 flex flex-col items-center justify-center border border-gfx-neutral-200">
+                    <td className="p-1">
+                      <div className="bg-gfx-green-800 rounded-lg h-[109px] px-3 py-3 flex flex-col items-center justify-center border border-gfx-neutral-200">
                         <span className="text-gfx-neutral-600 text-sm">Week {weekIdx + 1}</span>
                         <span className="text-gfx-neutral-500 text-sm">
                           {weekHasTrades ? `${weekTotal >= 0 ? '+' : ''}$${Math.abs(weekTotal).toFixed(2)}` : ''}

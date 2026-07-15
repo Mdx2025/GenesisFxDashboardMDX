@@ -59,13 +59,13 @@ function InfoIcon() {
 
 function SectionHeader({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
   return (
-    <div className="flex items-center gap-4 bg-[#09241c] rounded-[20px] p-5">
-      <div className="w-[51px] h-[51px] rounded-[20px] bg-[#0c1311] flex items-center justify-center flex-shrink-0">
+    <div className="flex items-center gap-4 bg-gfx-green-900 rounded-xl p-5">
+      <div className="w-[51px] h-[51px] rounded-xl bg-gfx-green-800 flex items-center justify-center flex-shrink-0">
         {icon}
       </div>
       <div>
         <h3 className="text-white text-2xl font-acid leading-normal">{title}</h3>
-        <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-0.5">{subtitle}</p>
+        <p className="text-gfx-neutral-500 text-base font-acid leading-tight mt-0.5">{subtitle}</p>
       </div>
     </div>
   )
@@ -181,7 +181,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
+      className="fixed inset-0 z-modal flex items-center justify-center bg-black/60 backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
       role="dialog"
@@ -190,11 +190,11 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
     >
       <div
         ref={modalRef}
-        className="glass-card relative w-3xl max-w-[95vw] max-h-[90vh] rounded-[30px] bg-gfx-green-800 flex flex-col overflow-hidden"
+        className="glass-card relative w-3xl max-w-[95vw] max-h-[90vh] rounded-2xl bg-gfx-green-800 flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-[#064b34] blur-[120px] opacity-20 pointer-events-none" />
-        <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-[#064b34] blur-[100px] opacity-15 pointer-events-none" />
+        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-gfx-green-200 blur-[120px] opacity-20 pointer-events-none" />
+        <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-gfx-green-200 blur-[100px] opacity-15 pointer-events-none" />
 
         {/* Close button */}
         <button
@@ -226,7 +226,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
 
             {/* Account */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Account</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Account</label>
               <GlassSelect
                 options={[
                   { value: 'anapinzon-genFX-716446', label: 'anapinzon.ux-GenFX  L#716446' },
@@ -239,7 +239,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
             </div>
 
             {/* Divider */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#064b34] to-transparent" />
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-gfx-green-200 to-transparent" />
 
             {/* Basic Details Section */}
             <SectionHeader
@@ -251,7 +251,7 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
             {/* Username */}
             <div>
               <div className="flex items-center gap-1.5 mb-2">
-                <label className="text-[#ececec] text-base font-acid leading-[1.2]">Username</label>
+                <label className="text-gfx-neutral-600 text-base font-acid leading-tight">Username</label>
                 <InfoIcon />
               </div>
               <GlassInput placeholder="Enter username" value={username} onChange={setUsername} />
@@ -259,33 +259,33 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
 
             {/* Strategy Name */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Strategy Name*</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Strategy Name*</label>
               <GlassInput placeholder="Enter Strategy Name" value={strategyName} onChange={(v) => setStrategyName(v.slice(0, 20))} />
-              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">{strategyName.length}/20 characters</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-tight mt-1">{strategyName.length}/20 characters</p>
             </div>
 
             {/* Description */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Description</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Description</label>
               <GlassTextarea placeholder="Enter Strategy Description" value={description} onChange={setDescription} rows={4} />
             </div>
 
             {/* Risk Profile */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Risk Profile</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Risk Profile</label>
               <GlassSelect options={riskOptions} placeholder="Select risk profile..." value={riskProfile} onChange={setRiskProfile} />
-              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">Choose the risk level that best describes your trading strategy</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-tight mt-1">Choose the risk level that best describes your trading strategy</p>
             </div>
 
             {/* Minimum Investment */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Minimum Investment(USD) *</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Minimum Investment(USD) *</label>
               <GlassSelect options={minInvestmentOptions} placeholder="Select minimum..." value={minInvestment} onChange={setMinInvestment} />
-              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">Minimun amount required to invest in this strategy</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-tight mt-1">Minimun amount required to invest in this strategy</p>
             </div>
 
             {/* Divider */}
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#064b34] to-transparent" />
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-gfx-green-200 to-transparent" />
 
             {/* Fee Structure Section */}
             <SectionHeader
@@ -296,21 +296,21 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
 
             {/* Performance Fee */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Performance Fee(%)</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Performance Fee(%)</label>
               <GlassSelect options={performanceFeeOptions} placeholder="Select..." value={performanceFee} onChange={setPerformanceFee} />
-              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">Charged on profits generated for followers</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-tight mt-1">Charged on profits generated for followers</p>
             </div>
 
             {/* Monthly Subscription */}
             <div>
-              <label className="text-[#ececec] text-base font-acid leading-[1.2] block mb-2">Monthly Subscription(%)</label>
+              <label className="text-gfx-neutral-600 text-base font-acid leading-tight block mb-2">Monthly Subscription(%)</label>
               <GlassSelect options={monthlySubOptions} placeholder="Select..." value={monthlySub} onChange={setMonthlySub} />
-              <p className="text-gfx-neutral-500 text-base font-acid leading-[1.2] mt-1">MAx $10,000/mo</p>
+              <p className="text-gfx-neutral-500 text-base font-acid leading-tight mt-1">MAx $10,000/mo</p>
             </div>
           </div>
 
           {/* Bottom actions */}
-          <div className="flex items-center justify-center gap-3 mt-[30px]">
+          <div className="flex items-center justify-center gap-3 mt-8">
             <SparkleButton onClick={handleClose}>
               Cancel
             </SparkleButton>

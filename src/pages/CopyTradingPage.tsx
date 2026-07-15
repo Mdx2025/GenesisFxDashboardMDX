@@ -345,7 +345,7 @@ export default function CopyTradingPage() {
               <h3 className="text-white text-2xl font-acid leading-normal mt-8">
                 No active Subscription
               </h3>
-              <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
+              <p className="text-gfx-neutral-400 text-base font-acid leading-tight text-center mt-2 max-w-[24.7500rem]">
                 {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
               </p>
               <div className="mt-8">
@@ -376,7 +376,7 @@ export default function CopyTradingPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="bg-gfx-green-800 rounded-[0.5rem] px-4 py-2 flex items-center gap-2.5">
+                  <div className="bg-gfx-green-800 rounded-sm px-4 py-2 flex items-center gap-2.5">
                     <WalletIcon />
                     <span className="text-gfx-neutral-400 text-sm font-acid">Social Wallet</span>
                     <span className="text-gfx-neutral-600 text-sm font-acid">$100.00</span>
@@ -418,7 +418,7 @@ export default function CopyTradingPage() {
                   <h3 className="text-white text-2xl font-acid leading-normal mt-8">
                     No Strategies Created
                   </h3>
-                  <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] text-center mt-2 max-w-[24.7500rem]">
+                  <p className="text-gfx-neutral-400 text-base font-acid leading-tight text-center mt-2 max-w-[24.7500rem]">
                     {`You haven't subscribed to any copy trading strategies yet. Browse available strategies and start copying successful traders`}
                   </p>
                   <div className="mt-8">

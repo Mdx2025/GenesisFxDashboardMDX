@@ -194,7 +194,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                 <path d="M19.2493 11.4444V11.9921C19.2493 12.6493 19.4369 13.2918 19.7884 13.8386L20.6497 15.1787C21.4365 16.4027 20.8359 18.0664 19.4675 18.4534C15.8879 19.466 12.1121 19.466 8.5325 18.4534C7.1641 18.0664 6.5635 16.4027 7.3503 15.1787L8.2116 13.8386C8.5631 13.2918 8.7507 12.6493 8.7507 11.9921V11.4444C8.7507 8.4376 11.1009 6 14 6C16.8991 6 19.2493 8.4376 19.2493 11.4444Z" fill="white"/>
               </svg>
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-[#00B38C] text-[10px] text-white font-medium">{unreadCount}</span>
+                <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-gfx-green-300 text-[10px] text-white font-medium">{unreadCount}</span>
               )}
             </button>
 
@@ -204,7 +204,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                   <div className="flex items-center justify-between px-4 py-3 border-b border-gfx-green-200/30">
                     <span className="text-white text-sm font-medium tracking-wide">Notifications</span>
                     {unreadCount > 0 && (
-                      <span className="text-[#00B38C] text-xs">{unreadCount} new</span>
+                      <span className="text-gfx-green-300 text-xs">{unreadCount} new</span>
                     )}
                   </div>
 
@@ -217,7 +217,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
                             <span className="text-white text-xs font-medium truncate">{n.title}</span>
-                            {n.unread && <span className="w-1.5 h-1.5 rounded-full bg-[#00B38C] shrink-0" />}
+                            {n.unread && <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-300 shrink-0" />}
                           </div>
                           <p className="text-gfx-neutral-300 text-[11px] leading-relaxed mt-0.5 line-clamp-2">{n.message}</p>
                           <span className="text-[#404040] text-[10px] mt-1 block">{n.time}</span>
@@ -227,7 +227,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                   </div>
 
                   <div className="flex items-center justify-center px-4 py-2.5 border-t border-gfx-green-200/30">
-                    <button className="text-[#00B38C] text-xs hover:text-[#10BC83] transition-colors cursor-pointer">View All Notifications</button>
+                    <button className="text-gfx-green-300 text-xs hover:text-gfx-green-500 transition-colors cursor-pointer">View All Notifications</button>
                   </div>
                 </div>
               </div>

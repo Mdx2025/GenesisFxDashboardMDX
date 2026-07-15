@@ -104,7 +104,7 @@ export default function WithdrawPage() {
             <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
               Withdraw Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
+            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
               Choose your preferred withdrawal method to get started.
             </p>
           </div>
@@ -141,12 +141,12 @@ export default function WithdrawPage() {
                         onClick={() => handleCoinSelect(coin.id)}
                         className={`h-[3.125rem] 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
-                            ? 'bg-[#064b34] border border-[#0a714f]'
+                            ? 'bg-gfx-green-200 border border-[#0a714f]'
                             : 'bg-[#111312] border border-transparent hover:bg-[#1a1c1b]'
                         }`}
                       >
                         {coin.icon}
-                        <span className="text-white text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium">{coin.label}</span>
+                        <span className="text-white text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium">{coin.label}</span>
                       </button>
                     ))}
                   </div>
@@ -226,7 +226,7 @@ export default function WithdrawPage() {
                           <div className="flex items-center justify-between">
                             <div className="flex flex-col gap-3">
                               <p className="text-gfx-neutral-300 text-base leading-none">Total Amount</p>
-                              <p className="text-white text-[2.25rem] font-normal leading-none">
+                              <p className="text-white text-4xl font-normal leading-none">
                                 {withdrawAmount || '0.00'} {coinLabel}
                               </p>
                               <p className="text-gfx-neutral-500 text-base">

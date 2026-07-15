@@ -127,7 +127,7 @@ const TRAIT_ICON_MAP: Record<TraderTrait['icon'], () => ReactNode> = {
 
 function SectionPillIcon({ children }: { children: React.ReactNode }) {
   return (
-    <span className="flex items-center justify-center w-[2.1250rem] h-[2.1250rem] rounded-[0.625rem] bg-[rgba(215,96,255,0.15)] border border-[rgba(168,85,247,0.25)]">
+    <span className="flex items-center justify-center w-[2.1250rem] h-[2.1250rem] rounded-md bg-[rgba(215,96,255,0.15)] border border-[rgba(168,85,247,0.25)]">
       {children}
     </span>
   )
@@ -203,7 +203,7 @@ function TraderPassportCard() {
           ].map((s, i) => (
             <div
               key={i}
-              className="h-[4.5625rem] rounded-[0.875rem] bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
+              className="h-[4.5625rem] rounded-md bg-white/3 border border-white/6 flex flex-col items-center justify-center gap-1"
             >
               <span className="text-2xl text-[#f3eef9] font-acid">{s.value}</span>
               <span className="text-xs text-gfx-neutral-400 font-acid">{s.label}</span>
@@ -246,7 +246,7 @@ function TraderPassportCard() {
 
         {/* Daily Streak */}
         <div
-          className="w-full rounded-[0.875rem] p-4 flex flex-col gap-3"
+          className="w-full rounded-md p-4 flex flex-col gap-3"
           style={{
             background: 'linear-gradient(135deg, rgba(242,153,74,0.14), rgba(242,153,74,0.03))',
             border: '1px solid rgba(242,153,74,0.3)',
@@ -296,7 +296,7 @@ function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' 
           {stat.label}
         </span>
         <div className="flex items-baseline gap-0.5">
-          <span className="text-[2.25rem] font-acid" style={{ color: valueColor }}>
+          <span className="text-4xl font-acid" style={{ color: valueColor }}>
             {stat.value}
           </span>
           {stat.unit && (

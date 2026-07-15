@@ -64,7 +64,7 @@ function TrophySmallIcon({ variant }: { variant: 'gold' | 'silver' | 'bronze' | 
 
 function UserAvatarIcon() {
   return (
-    <div className="w-[2rem] h-[2rem] rounded-full bg-[#064B34] flex items-center justify-center shrink-0">
+    <div className="w-[2rem] h-[2rem] rounded-full bg-gfx-green-200 flex items-center justify-center shrink-0">
       <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
         <circle cx="9" cy="4.5" r="3" fill="#00B38C"/>
         <ellipse cx="9" cy="12.75" rx="5.25" ry="3" fill="#00B38C"/>
@@ -126,19 +126,19 @@ function LeaderboardContent() {
                 <td className="px-4 sm:px-6 py-4 xl:py-5">
                   <div className="flex items-center gap-2">
                     <TrophySmallIcon variant={row.trophy} />
-                    <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.rank}</span>
+                    <span className="text-white text-sm 3xl:text-lg 4xl:text-2xl">{row.rank}</span>
                   </div>
                 </td>
                 <td className="py-4 xl:py-5">
                   <div className="flex items-center gap-3">
                     <UserAvatarIcon />
-                    <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.user}</span>
+                    <span className="text-white text-sm 3xl:text-lg 4xl:text-2xl">{row.user}</span>
                   </div>
                 </td>
-                <td className="text-gfx-neutral-500 text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{row.tier}</td>
-                <td className="text-[#10BC83] text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5">{row.returnPct}</td>
+                <td className="text-gfx-neutral-500 text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5">{row.tier}</td>
+                <td className="text-gfx-green-500 text-sm 3xl:text-lg 4xl:text-2xl font-semibold py-4 xl:py-5">{row.returnPct}</td>
                 <td className="py-4 xl:py-5"><Sparkline /></td>
-                <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{row.reward}</td>
+                <td className="text-white text-sm 3xl:text-lg 4xl:text-2xl font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{row.reward}</td>
               </tr>
             ))}
           </tbody>
@@ -191,16 +191,16 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
             {tiersData.map((row, i) => (
               <tr key={i} className={i > 0 ? 'border-t border-white/5' : ''}>
                 <td className="px-4 sm:px-6 py-4 xl:py-5">
-                  <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.tier}</span>
+                  <span className="text-white text-sm 3xl:text-lg 4xl:text-2xl">{row.tier}</span>
                 </td>
                 <td className="py-4 xl:py-5">
                   <div className="flex items-center gap-1">
-                    <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{row.deposit}</span>
+                    <span className="text-white text-sm 3xl:text-lg 4xl:text-2xl">{row.deposit}</span>
                     <ChevronRightTinyIcon />
                   </div>
                 </td>
-                <td className="text-[#10BC83] text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold py-4 xl:py-5">{row.equity}</td>
-                <td className="text-gfx-neutral-500 text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{row.maxDrawdown}</td>
+                <td className="text-gfx-green-500 text-sm 3xl:text-lg 4xl:text-2xl font-semibold py-4 xl:py-5">{row.equity}</td>
+                <td className="text-gfx-neutral-500 text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5">{row.maxDrawdown}</td>
                 <td className="py-4 xl:py-5">
                   {row.status === 'Active' ? (
                     <span className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1 bg-gfx-green-100 border border-gfx-green-200 text-gfx-green-500">
@@ -237,7 +237,7 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
           </p>
         </div>
         <div className="flex items-center gap-4 bg-gfx-green-900 rounded-3xl px-6 py-4 shrink-0">
-          <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-[#064B34] flex items-center justify-center">
+          <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-gfx-green-200 flex items-center justify-center">
             <TrophyIcon />
           </div>
           <div className="flex flex-col items-center gap-1">
@@ -336,20 +336,20 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
       role="dialog"
       aria-modal="true"
       aria-label="Prize Pool"
     >
-      <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-[30px] overflow-hidden">
+      <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-2xl overflow-hidden">
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[30px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
-          <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-[#064B34] rounded-full blur-[157px]" />
-          <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-[#064B34] rounded-full blur-[157px]" />
+          <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
+          <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-gfx-green-200 rounded-full blur-[157px]" />
           <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
         </div>
 
@@ -368,7 +368,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           {/* Header: Title + April 2026 badge + How it works */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <div className="flex flex-wrap items-center gap-3">
-              <h2 className="text-white font-acid font-normal text-[1.25rem] sm:text-[1.75rem] leading-none">
+              <h2 className="text-white font-acid font-normal text-xl sm:text-[1.75rem] leading-none">
                 Current Month Prize Pool
               </h2>
               <span className="px-3 py-1 rounded-full bg-gfx-green-900 border border-gfx-green-200 text-gfx-neutral-500 text-xs">
@@ -377,7 +377,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
             </div>
             <button
               type="button"
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#303030] bg-transparent text-gfx-neutral-500 text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors shrink-0"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-gfx-neutral-250 bg-transparent text-gfx-neutral-500 text-sm font-acid cursor-pointer hover:bg-white/5 transition-colors shrink-0"
             >
               <QuestionIcon />
               <span>How it works</span>
@@ -386,10 +386,10 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
 
           {/* Tier Leaderboard header + Top Prize */}
           <div className="flex items-center justify-between gap-4 mb-6">
-            <h3 className="text-white font-acid font-normal text-[1.25rem]">Tier Leaderboard</h3>
-            <div className="flex flex-col items-center px-5 py-2.5 rounded-[0.875rem] border border-[#10BC83]/30">
-              <span className="text-[#10BC83] text-2xl font-acid font-medium leading-tight">$500</span>
-              <span className="text-[#10BC83] text-xs font-acid">Top Prize</span>
+            <h3 className="text-white font-acid font-normal text-xl">Tier Leaderboard</h3>
+            <div className="flex flex-col items-center px-5 py-2.5 rounded-md border border-gfx-green-500/30">
+              <span className="text-gfx-green-500 text-2xl font-acid font-medium leading-tight">$500</span>
+              <span className="text-gfx-green-500 text-xs font-acid">Top Prize</span>
             </div>
           </div>
 
@@ -444,7 +444,7 @@ function ChallengeCheckbox({ checked, onChange }: { checked: boolean; onChange: 
 
 function LiveBadge() {
   return (
-    <div className="inline-flex items-center gap-[7px] px-3 py-2.5 rounded-[60px] border border-[#303030]">
+    <div className="inline-flex items-center gap-[7px] px-3 py-2.5 rounded-[60px] border border-gfx-neutral-250">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
         <defs>
           <filter id="live_glow" x="0" y="0" width="25.56" height="25.56" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -532,20 +532,20 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
       role="dialog"
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-[18.56px] overflow-hidden">
+      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-lg overflow-hidden">
         {/* Background layer */}
         <div
-          className="absolute inset-0 pointer-events-none bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]"
+          className="absolute inset-0 pointer-events-none bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
-          <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-[#064B34] rounded-full blur-[157px]" />
+          <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-gfx-green-200 rounded-full blur-[157px]" />
         </div>
 
         <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:pt-8 lg:pb-10 overflow-y-auto">
@@ -567,12 +567,12 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
               {/* Title + Rules */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 className="text-white font-acid font-normal text-2xl sm:text-[2.25rem] leading-none">
+                <h2 className="text-white font-acid font-normal text-2xl sm:text-4xl leading-none">
                   Start your 10x Challenge
                 </h2>
                 <button
                   type="button"
-                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-[10px] border border-[#A0A0A0] bg-transparent text-[#ECECEC] text-base font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
+                  className="flex items-center gap-3.5 px-2.5 py-2.5 rounded-md border border-[#A0A0A0] bg-transparent text-gfx-neutral-600 text-base font-acid font-medium cursor-pointer hover:bg-white/5 transition-colors"
                 >
                   <NotebookIcon />
                   <span>Rules</span>
@@ -583,7 +583,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Two panels */}
             <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
-            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-[18.56px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
               <GlowEllipse className="left-[36px] -top-[220px]" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
@@ -604,7 +604,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
                   <div>
                     <div className="flex items-baseline gap-2 mb-[0.125rem]">
-                      <span className="text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem]">Username</span>
+                      <span className="text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem]">Username</span>
                       <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-[1.528rem]">(On Leaderboard)</span>
                     </div>
                     <GlassInput
@@ -620,7 +620,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
                   <div className="flex items-center gap-3 mt-1">
                     <ChallengeCheckbox checked={agreed} onChange={() => setAgreed(v => !v)} />
                     <span className="text-gfx-neutral-400 text-base font-acid leading-[1.2rem]">
-                      I agree to the <span className="text-[#00B38C]">Terms & Conditions</span>
+                      I agree to the <span className="text-gfx-green-300">Terms & Conditions</span>
                     </span>
                   </div>
 
@@ -630,7 +630,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             </div>
 
             {/* Right — Account Preview */}
-            <div className="relative flex-1 overflow-hidden rounded-[18.56px] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-[#0C1311]">
+            <div className="relative flex-1 overflow-hidden rounded-lg bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-2xl mb-2">Account Preview</h3>
 
@@ -641,12 +641,12 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
                 <div className="flex flex-col">
                   {accountPreviewRows.map((row) => (
-                    <div key={row.label} className="flex items-center justify-between py-3 border-b border-[#09241C] last:border-b-0">
+                    <div key={row.label} className="flex items-center justify-between py-3 border-b border-gfx-green-900 last:border-b-0">
                       <span className="text-gfx-neutral-500 font-acid font-medium text-base leading-[1.528rem]">{row.label}</span>
                       {row.special === 'live' ? (
                         <LiveBadge />
                       ) : (
-                        <span className="text-[#ECECEC] font-acid font-medium text-base leading-[1.528rem]">
+                        <span className="text-gfx-neutral-600 font-acid font-medium text-base leading-[1.528rem]">
                           {row.value}
                         </span>
                       )}
@@ -695,7 +695,7 @@ export default function ChallengesPage() {
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <SearchInput placeholder="Search for" />
-            <button className="h-11 w-[2.9375rem] rounded-full border border-[#303030] bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
+            <button className="h-11 w-[2.9375rem] rounded-full border border-gfx-neutral-250 bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
               <FilterIcon />
             </button>
             <SparkleButton className="px-10" onClick={() => setPrizePoolOpen(true)}>

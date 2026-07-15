@@ -74,7 +74,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[0.25rem]"
+      className="fixed inset-0 z-modal flex items-center justify-center bg-black/60 backdrop-blur-[0.25rem]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
     >

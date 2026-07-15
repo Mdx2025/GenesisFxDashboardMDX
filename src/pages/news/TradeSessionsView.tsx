@@ -51,7 +51,7 @@ function SessionCard({ session }: { session: TradeSession }) {
       {/* Glow effect for open sessions */}
       {isOpen && (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-[#064b34]/40 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-gfx-green-200/40 via-transparent to-transparent pointer-events-none" />
           <div className="absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-[#00f0a0]/8 blur-[40px] mix-blend-screen pointer-events-none" />
         </>
       )}
@@ -59,11 +59,11 @@ function SessionCard({ session }: { session: TradeSession }) {
       <div className="relative p-6 sm:p-8 lg:p-10 flex flex-col gap-3 h-[218px]">
         {/* Header: City + Status */}
         <div className="flex items-start justify-between">
-          <h3 className={`text-white font-acid leading-none ${isOpen ? 'text-[30px]' : 'text-[36px]'}`}>
+          <h3 className={`text-white font-acid leading-none ${isOpen ? 'text-3xl' : 'text-4xl'}`}>
             {session.city}
           </h3>
           {isOpen ? (
-            <span className="px-3 py-3 rounded-full bg-[#09241c] text-[#ececec] text-[16px] font-acid leading-none">
+            <span className="px-3 py-3 rounded-full bg-gfx-green-900 text-gfx-neutral-600 text-base font-acid leading-none">
               OPEN
             </span>
           ) : (
@@ -73,11 +73,11 @@ function SessionCard({ session }: { session: TradeSession }) {
 
         {/* Time */}
         <div className="flex items-center gap-1 mt-2">
-          <span className="text-gfx-neutral-400 text-[24px] font-acid leading-none">{session.time}</span>
+          <span className="text-gfx-neutral-400 text-2xl font-acid leading-none">{session.time}</span>
         </div>
 
         {/* Countdown */}
-        <span className="text-[#00b38c] text-[24px] font-acid leading-none mt-auto">
+        <span className="text-gfx-green-300 text-2xl font-acid leading-none mt-auto">
           {session.countdownLabel}: {session.countdown}
         </span>
       </div>
@@ -95,7 +95,7 @@ function SessionCard({ session }: { session: TradeSession }) {
 function ActiveSessionPill({ city }: { city: string }) {
   return (
     <div
-      className="inline-flex items-center gap-3.5 px-[18px] py-2.5 rounded-[30px] backdrop-blur-[4.05px]"
+      className="inline-flex items-center gap-3.5 px-[18px] py-2.5 rounded-2xl backdrop-blur-[4.05px]"
       style={{
         background:
           'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, rgba(8, 18, 15, 0.50) 19%, rgba(17, 31, 27, 0.50) 73%)',
@@ -130,7 +130,7 @@ function ActiveSessionPill({ city }: { city: string }) {
           <circle cx="4.5" cy="4.5" r="4.5" fill="#CFF2E6" />
         </svg>
       </div>
-      <span className="text-[#ececec] text-[18px] font-acid leading-none">{city}</span>
+      <span className="text-gfx-neutral-600 text-lg font-acid leading-none">{city}</span>
     </div>
   )
 }
@@ -154,7 +154,7 @@ export default function TradeSessionsView() {
 
       {/* Bottom gradient fade — blends globe into background */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none z-[1]"
+        className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none z-base"
         style={{
           background: 'linear-gradient(to top, #000705 20%, transparent 100%)',
         }}
@@ -164,10 +164,10 @@ export default function TradeSessionsView() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[430px_1fr_430px] gap-5 items-start px-4">
         {/* Header — full width on mobile, center column on desktop */}
         <div className="flex flex-col items-center text-center gap-4 lg:order-2 lg:pt-6 mb-6 lg:mb-0">
-          <h2 className="text-white text-[36px] sm:text-[48px] lg:text-[60px] font-acid leading-none">
+          <h2 className="text-white text-4xl sm:text-5xl lg:text-[60px] font-acid leading-none">
             Trading Sessions
           </h2>
-          <p className="text-gfx-neutral-400 text-[16px] font-acid font-medium">
+          <p className="text-gfx-neutral-400 text-base font-acid font-medium">
             Real-time market session status with liquidity flow visualization
           </p>
           <div className="flex items-center gap-8">

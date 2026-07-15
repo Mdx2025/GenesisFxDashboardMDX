@@ -41,7 +41,7 @@ export default function KycPage() {
           <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
             Withdraw Funds
           </h1>
-          <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
+          <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
             Choose your preferred withdrawal method to get started.
           </p>
         </div>
@@ -68,11 +68,11 @@ export default function KycPage() {
                   <KycIllustration />
 
                   <div className="flex flex-col gap-6 3xl:gap-8 4xl:gap-12 items-center">
-                    <h2 className="text-white text-[1.75rem] xl:text-[2.25rem] 3xl:text-[3rem] 4xl:text-[4rem] font-normal text-center leading-none">
+                    <h2 className="text-white text-[1.75rem] xl:text-4xl 3xl:text-[3rem] 4xl:text-[4rem] font-normal text-center leading-none">
                       KYC Verification Required
                     </h2>
 
-                    <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
+                    <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center max-w-[609px] 3xl:max-w-[750px] 4xl:max-w-[1000px]">
                       To protect your account and comply with financial regulations, you must complete KYC verification before making withdrawals. Please submit your verification documents to unlock this feature.
                     </p>
 
@@ -96,7 +96,7 @@ export default function KycPage() {
                   Choose Withdrawal Method
                 </h3>
 
-                <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Select your preferred withdrawal method to get started
                 </p>
 
@@ -104,7 +104,7 @@ export default function KycPage() {
                   Cryptocurrency
                 </h4>
 
-                <p className="text-gfx-neutral-300 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem] text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Bitcoin, Ethereum, USDT, USDC, and more
                 </p>
 
@@ -113,7 +113,7 @@ export default function KycPage() {
                     <circle cx="9" cy="9" r="8" stroke="#606060" strokeWidth="1.5"/>
                     <path d="M9 5v4l2.5 2.5" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-gfx-neutral-300 text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-medium">Avrg 4 hours</span>
+                  <span className="text-gfx-neutral-300 text-sm 3xl:text-lg 4xl:text-2xl font-medium">Avrg 4 hours</span>
                 </div>
               </div>
             </div>

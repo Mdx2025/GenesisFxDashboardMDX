@@ -78,17 +78,17 @@ function HourglassIllustration() {
 
       <div className="absolute left-[72%] top-[17%] w-[3px] h-[3px] rounded-full bg-white [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[19%] w-[3px] h-[3px] rounded-full bg-white opacity-50 [filter:url(#blur-2)]" />
-      <div className="absolute left-[63%] top-[21%] w-[3px] h-[3px] rounded-full bg-[#ACACAC] [filter:url(#blur-2)]" />
-      <div className="absolute left-[67%] top-[12%] w-[3px] h-[3px] rounded-full bg-[#ACACAC] [filter:url(#blur-2)]" />
-      <div className="absolute left-[57%] top-[20%] w-[3px] h-[3px] rounded-full bg-[#ACACAC] [filter:url(#blur-2)]" />
+      <div className="absolute left-[63%] top-[21%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
+      <div className="absolute left-[67%] top-[12%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
+      <div className="absolute left-[57%] top-[20%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
       <div className="absolute left-[55%] top-[13%] w-[2px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
       <div className="absolute left-[42%] top-[18%] w-[3px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
 
       <div className="absolute left-[72%] top-[43%] w-[3px] h-[3px] rounded-full bg-white [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[45%] w-[3px] h-[3px] rounded-full bg-white opacity-50 [filter:url(#blur-2)]" />
-      <div className="absolute left-[63%] top-[47%] w-[3px] h-[3px] rounded-full bg-[#ACACAC] [filter:url(#blur-2)]" />
-      <div className="absolute left-[67%] top-[38%] w-[3px] h-[3px] rounded-full bg-[#ACACAC] [filter:url(#blur-2)]" />
-      <div className="absolute left-[57%] top-[46%] w-[3px] h-[3px] rounded-full bg-[#ACACAC] [filter:url(#blur-2)]" />
+      <div className="absolute left-[63%] top-[47%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
+      <div className="absolute left-[67%] top-[38%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
+      <div className="absolute left-[57%] top-[46%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
       <div className="absolute left-[55%] top-[39%] w-[2px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
       <div className="absolute left-[42%] top-[44%] w-[3px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
     </div>
@@ -133,13 +133,13 @@ export default function WithdrawProcessingPage() {
             </p>
 
             <div className="mt-8 3xl:mt-10 4xl:mt-14 space-y-1 3xl:space-y-2 4xl:space-y-3">
-              <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 Estimated completion time: {estimatedTime}
               </p>
-              <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 You will receive an email once withdrawal is completed.
               </p>
-              <p className="text-gfx-neutral-500 text-base 3xl:text-[1.25rem] 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 View History for the latest updates
               </p>
             </div>

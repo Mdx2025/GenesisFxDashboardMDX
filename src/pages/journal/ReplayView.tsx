@@ -53,7 +53,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
               radius={300}
             />
           ) : (
-            <div className="w-full max-w-[24.1875rem] h-[2.75rem] rounded-[18.75rem] border border-gfx-neutral-250 flex items-center justify-center">
+            <div className="w-full max-w-[24.1875rem] h-[2.75rem] rounded-full border border-gfx-neutral-250 flex items-center justify-center">
               <span className="text-gfx-neutral-300 text-sm font-acid">Coming soon</span>
             </div>
           )}

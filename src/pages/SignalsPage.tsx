@@ -152,7 +152,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
           {provider.following ? (
             <button
               onClick={() => onToggleFollow(provider.id)}
-              className="h-[2.1250rem] px-3 rounded-[0.75rem] bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-sm font-acid font-medium text-white transition-colors cursor-pointer"
+              className="h-[2.1250rem] px-3 rounded-md bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-sm font-acid font-medium text-white transition-colors cursor-pointer"
             >
               <CheckIcon />
               <span>Following</span>
@@ -160,7 +160,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
           ) : (
             <button
               onClick={() => onFollowClick(provider)}
-              className="px-3 py-2 rounded-[0.75rem] flex items-center gap-2.5 text-sm font-acid transition-colors cursor-pointer"
+              className="px-3 py-2 rounded-md flex items-center gap-2.5 text-sm font-acid transition-colors cursor-pointer"
               style={{ background: '#F1FFFA', color: 'black' }}
             >
               <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
@@ -182,7 +182,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
         </div>
 
         {/* P&L Chart Box */}
-        <div className="border border-gfx-neutral-250 rounded-[0.875rem] p-4 mt-4 flex flex-col">
+        <div className="border border-gfx-neutral-250 rounded-md p-4 mt-4 flex flex-col">
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="text-gfx-neutral-400 text-sm font-acid font-medium mb-1">30D P&L</p>
@@ -200,7 +200,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
         </div>
 
         {/* Metrics Row */}
-        <div className="grid grid-cols-3 mt-4 border border-gfx-neutral-250 rounded-[0.875rem] overflow-hidden">
+        <div className="grid grid-cols-3 mt-4 border border-gfx-neutral-250 rounded-md overflow-hidden">
           <div className="p-4 flex flex-col items-center gap-1.5">
             <span className="text-white text-base font-acid font-medium">{provider.pricePerMonth}</span>
             <span className="text-gfx-neutral-400 text-base font-acid font-medium">Price/mo</span>
@@ -251,8 +251,8 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
               <span className="text-white text-base font-acid font-medium">{provider.initials}</span>
             </div>
             <div className="flex flex-col gap-1">
-              <p className="text-[var(--signal-text-muted,#a0a0a0)] text-base font-acid font-medium leading-[1.2]">{provider.username}</p>
-              <span className="text-white text-base font-acid font-medium leading-[1.2]">{provider.tag}</span>
+              <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-tight">{provider.username}</p>
+              <span className="text-white text-base font-acid font-medium leading-tight">{provider.tag}</span>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -261,7 +261,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
             </span>
             <button
               onClick={() => onToggleFollow(provider.id)}
-              className="bg-gfx-green-900 rounded-[0.75rem] px-3 py-2 flex items-center gap-2.5 cursor-pointer"
+              className="bg-gfx-green-900 rounded-md px-3 py-2 flex items-center gap-2.5 cursor-pointer"
             >
               <CheckCircleIcon />
               <span className="text-gfx-green-300 text-sm font-acid leading-[18.8px]">Follow</span>
@@ -270,7 +270,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         </div>
 
         {/* Trading Pair */}
-        <div className="flex items-center gap-[0.4375rem]">
+        <div className="flex items-center gap-2">
           <XauusdIcon />
           <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-white text-sm font-acid font-medium">
             {provider.pair}
@@ -278,15 +278,15 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         </div>
 
         {/* P&L Chart */}
-        <div className="border border-gfx-neutral-250 rounded-[0.875rem] p-4 flex flex-col">
+        <div className="border border-gfx-neutral-250 rounded-md p-4 flex flex-col">
           <div className="flex items-start justify-between mb-2">
             <div>
-              <p className="text-[var(--signal-text-dim,#808080)] text-sm font-acid font-medium mb-1">{`30D P&L`}</p>
-              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-[var(--signal-pnl-negative,#d46356)]' : 'text-[var(--signal-pnl-positive,#10BC83)]'}`}>
+              <p className="text-gfx-neutral-400 text-sm font-acid font-medium mb-1">{`30D P&L`}</p>
+              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
               </p>
             </div>
-            <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-[var(--signal-text-dim,#808080)] text-xs font-acid font-medium">
+            <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-gfx-neutral-400 text-xs font-acid font-medium">
               {provider.trades} trades
             </span>
           </div>
@@ -296,18 +296,18 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-3 border border-gfx-neutral-250 rounded-[0.875rem] overflow-hidden">
+        <div className="grid grid-cols-3 border border-gfx-neutral-250 rounded-md overflow-hidden">
           <div className="p-4 flex flex-col items-center gap-1.5">
             <span className="text-white text-base font-acid font-medium">{provider.pricePerMonth}</span>
-            <span className="text-[var(--signal-text-dim,#808080)] text-base font-acid font-medium">Price/mo</span>
+            <span className="text-gfx-neutral-400 text-base font-acid font-medium">Price/mo</span>
           </div>
           <div className="p-4 flex flex-col items-center gap-1.5 border-x border-gfx-neutral-250">
             <span className="text-white text-base font-acid font-medium">{provider.profitShare}</span>
-            <span className="text-[var(--signal-text-dim,#808080)] text-base font-acid font-medium">Profit Share</span>
+            <span className="text-gfx-neutral-400 text-base font-acid font-medium">Profit Share</span>
           </div>
           <div className="p-4 flex flex-col items-center gap-1.5">
             <span className="text-white text-base font-acid font-medium">{provider.followers}</span>
-            <span className="text-[var(--signal-text-dim,#808080)] text-base font-acid font-medium">Followers</span>
+            <span className="text-gfx-neutral-400 text-base font-acid font-medium">Followers</span>
           </div>
         </div>
 
@@ -443,13 +443,13 @@ export default function SignalsPage() {
               />
               <button
                 onClick={() => setViewMode('list')}
-                className={`w-[2.9375rem] h-[2.75rem] rounded-[0.625rem] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-[2.9375rem] h-[2.75rem] rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
               >
                 <ListViewIcon active={viewMode === 'list'} />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`w-[2.9375rem] h-[2.75rem] rounded-[0.625rem] flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-[2.9375rem] h-[2.75rem] rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
               >
                 <GridViewIcon active={viewMode === 'grid'} />
               </button>
@@ -463,7 +463,7 @@ export default function SignalsPage() {
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#00b38c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3 className="text-white text-[1.125rem] font-acid-medium leading-tight mb-2">No signals</h3>
+                <h3 className="text-white text-lg font-acid-medium leading-tight mb-2">No signals</h3>
                 <p className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] max-w-[20rem]">
                   There are no signals from the past 7 days matching your filters. Check back soon or browse the marketplace for top providers.
                 </p>
@@ -496,7 +496,7 @@ export default function SignalsPage() {
                     <SignalPulseIcon />
                   </div>
                   <h3 className="text-white text-2xl font-acid leading-none mb-3 text-center">No signals taken yet</h3>
-                  <p className="text-gfx-neutral-400 text-base font-acid leading-[1.2] max-w-[24.7500rem] text-center mb-6">
+                  <p className="text-gfx-neutral-400 text-base font-acid leading-tight max-w-[24.7500rem] text-center mb-6">
                     Signals you execute will appear here
                   </p>
                   <GlowButton label="Trade" width={160} />

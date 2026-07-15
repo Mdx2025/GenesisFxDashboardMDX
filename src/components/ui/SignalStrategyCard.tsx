@@ -51,7 +51,7 @@ function FollowButton({ following, onClick }: { following: boolean; onClick?: ()
     return (
       <button
         onClick={onClick}
-        className="h-[34px] px-3 rounded-[12px] bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-sm font-acid font-medium text-white transition-colors cursor-pointer"
+        className="h-[34px] px-3 rounded-md bg-gfx-green-900 border border-gfx-neutral-250 flex items-center gap-1.5 text-sm font-acid font-medium text-white transition-colors cursor-pointer"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M3 7L6 10L11 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -64,7 +64,7 @@ function FollowButton({ following, onClick }: { following: boolean; onClick?: ()
   return (
     <button
       onClick={onClick}
-      className="px-3 py-2 rounded-[12px] flex items-center gap-[10px] text-sm font-acid transition-colors cursor-pointer"
+      className="px-3 py-2 rounded-md flex items-center gap-2.5 text-sm font-acid transition-colors cursor-pointer"
       style={{
         background: 'var(--color-button-primary-bg, #F1FFFA)',
         color: 'var(--color-button-primary-text, black)',
@@ -114,7 +114,7 @@ export function SignalStrategyCard({
       <div className="flex flex-col gap-[17px] pt-[31px] pb-[35px] px-[25px]">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-[22px]">
+          <div className="flex items-center gap-5.5">
             <div className="w-[63px] h-[63px] rounded-full bg-[var(--signal-avatar-bg,#064b34)] flex items-center justify-center flex-shrink-0 overflow-hidden">
               {avatarUrl ? (
                 <img src={avatarUrl} alt={username} className="w-full h-full object-cover" />
@@ -123,8 +123,8 @@ export function SignalStrategyCard({
               )}
             </div>
             <div className="flex flex-col gap-1">
-              <p className="text-[var(--signal-text-muted,#a0a0a0)] text-base font-acid font-medium leading-[1.2]">{username}</p>
-              <span className="text-white text-base font-acid font-medium leading-[1.2]">{tag}</span>
+              <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-tight">{username}</p>
+              <span className="text-white text-base font-acid font-medium leading-tight">{tag}</span>
             </div>
           </div>
           <FollowButton following={following} onClick={onFollow} />
@@ -139,15 +139,15 @@ export function SignalStrategyCard({
         </div>
 
         {/* P&L Chart */}
-        <div className="border border-gfx-neutral-250 rounded-[14px] p-4 flex flex-col">
+        <div className="border border-gfx-neutral-250 rounded-md p-4 flex flex-col">
           <div className="flex items-start justify-between mb-2">
             <div>
-              <p className="text-[var(--signal-text-dim,#808080)] text-sm font-acid font-medium mb-1">{pnlLabel}</p>
-              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-[var(--signal-pnl-negative,#d46356)]' : 'text-[var(--signal-pnl-positive,#10BC83)]'}`}>
+              <p className="text-gfx-neutral-400 text-sm font-acid font-medium mb-1">{pnlLabel}</p>
+              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(pnl).toFixed(2)}
               </p>
             </div>
-            <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-[var(--signal-text-dim,#808080)] text-xs font-acid font-medium">
+            <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-gfx-neutral-400 text-xs font-acid font-medium">
               {trades} trades
             </span>
           </div>
@@ -157,24 +157,24 @@ export function SignalStrategyCard({
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-3 border border-gfx-neutral-250 rounded-[14px] overflow-hidden">
+        <div className="grid grid-cols-3 border border-gfx-neutral-250 rounded-md overflow-hidden">
           <div className="p-4 flex flex-col items-center gap-1.5">
             <span className="text-white text-base font-acid font-medium">{pricePerMonth}</span>
-            <span className="text-[var(--signal-text-dim,#808080)] text-base font-acid font-medium">Price/mo</span>
+            <span className="text-gfx-neutral-400 text-base font-acid font-medium">Price/mo</span>
           </div>
           <div className="p-4 flex flex-col items-center gap-1.5 border-x border-gfx-neutral-250">
             <span className="text-white text-base font-acid font-medium">{profitShare}</span>
-            <span className="text-[var(--signal-text-dim,#808080)] text-base font-acid font-medium">Profit Share</span>
+            <span className="text-gfx-neutral-400 text-base font-acid font-medium">Profit Share</span>
           </div>
           <div className="p-4 flex flex-col items-center gap-1.5">
             <span className="text-white text-base font-acid font-medium">{followers}</span>
-            <span className="text-[var(--signal-text-dim,#808080)] text-base font-acid font-medium">Followers</span>
+            <span className="text-gfx-neutral-400 text-base font-acid font-medium">Followers</span>
           </div>
         </div>
 
         {/* View Strategy */}
         <SparkleButton fullWidth className="px-5" onClick={onViewStrategy}>
-          <span className="flex items-center justify-center text-[#C6C6C6]">View Strategy</span>
+          <span className="flex items-center justify-center text-gfx-neutral-550">View Strategy</span>
         </SparkleButton>
       </div>
     </div>

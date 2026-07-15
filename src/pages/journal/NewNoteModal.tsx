@@ -87,7 +87,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[300] flex items-center justify-center bg-black/60 backdrop-blur-[0.25rem]"
+      className="fixed inset-0 z-modal flex items-center justify-center bg-black/60 backdrop-blur-[0.25rem]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
     >
@@ -138,7 +138,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Date */}
             <div>
-              <label className="text-white text-base font-acid font-medium mb-[0.5rem] block">
+              <label className="text-white text-base font-acid font-medium mb-2 block">
                 Date
               </label>
               <input
@@ -185,7 +185,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Tags */}
             <div>
-              <label className="text-white text-base font-acid font-medium mb-[0.5rem] block">
+              <label className="text-white text-base font-acid font-medium mb-2 block">
                 Tags
               </label>
               <input
@@ -199,7 +199,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
 
             {/* Attachments */}
             <div>
-              <label className="text-white text-base font-acid font-medium mb-[0.5rem] block">
+              <label className="text-white text-base font-acid font-medium mb-2 block">
                 Attachments
               </label>
               <div className="h-[3.125rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center gap-2.5 cursor-pointer hover:border-gfx-green-300 transition-colors">

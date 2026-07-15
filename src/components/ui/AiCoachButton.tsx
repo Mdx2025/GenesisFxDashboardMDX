@@ -17,10 +17,10 @@ export function AiCoachButton({ className = '', onClick }: AiCoachButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-[14px] px-[19px] py-[14px] rounded-full bg-[linear-gradient(241deg,#100919_0%,#1D0E2F_100%)] hover:opacity-90 transition-opacity cursor-pointer ${className}`}
+      className={`flex items-center gap-3.5 px-[19px] py-3.5 rounded-full bg-[linear-gradient(241deg,#100919_0%,#1D0E2F_100%)] hover:opacity-90 transition-opacity cursor-pointer ${className}`}
     >
       <AiCoachIcon />
-      <span className="text-white text-[16px] font-acid font-medium leading-[24px]">AI Coach</span>
+      <span className="text-white text-base font-acid font-medium leading-[24px]">AI Coach</span>
     </button>
   )
 }

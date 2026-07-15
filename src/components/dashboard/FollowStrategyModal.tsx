@@ -76,7 +76,7 @@ export function FollowStrategyModal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -84,7 +84,7 @@ export function FollowStrategyModal({
     >
       <div
         ref={modalRef}
-        className="relative w-[510px] max-w-[95vw] bg-[#0c1311] rounded-[22px] border border-[#0c1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
+        className="relative w-[510px] max-w-[95vw] bg-gfx-green-800 rounded-[22px] border border-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
       >
         {/* Close button */}
         <button
@@ -99,52 +99,52 @@ export function FollowStrategyModal({
 
         <div className="px-[39px] pt-[46px] pb-[44px]">
           {/* Title */}
-          <h2 className="text-white font-acid text-[24px] leading-none">Follow Strategy</h2>
-          <p className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px] mt-[12px]">
+          <h2 className="text-white font-acid text-2xl leading-none">Follow Strategy</h2>
+          <p className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px] mt-3">
             Review the fees and terms before following this strategy
           </p>
 
           {/* Strategy info */}
-          <div className="flex items-center gap-[22px] mt-[27px]">
-            <div className="w-[40px] h-[40px] rounded-full bg-[#064b34] flex items-center justify-center flex-shrink-0">
+          <div className="flex items-center gap-5.5 mt-[27px]">
+            <div className="w-[40px] h-[40px] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
               <span className="text-white text-xs font-acid font-medium">{initials}</span>
             </div>
             <div>
-              <p className="text-white text-[18px] font-acid leading-none">{strategyName}</p>
+              <p className="text-white text-lg font-acid leading-none">{strategyName}</p>
               <p className="text-gfx-neutral-500 text-xs font-acid leading-[18.8px] mt-[4px]">{username}</p>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-[#303030] mt-[22px]" />
+          <div className="w-full h-px bg-gfx-neutral-250 mt-[22px]" />
 
           {/* Subscription Fees */}
           <p className="text-white text-xs font-acid leading-[18.8px] mt-[24px]">Subscription Fees</p>
 
-          <div className="border border-[#303030] rounded-[12px] mt-[12px] overflow-hidden">
+          <div className="border border-gfx-neutral-250 rounded-md mt-3 overflow-hidden">
             {/* Monthly subscription */}
-            <div className="flex items-center justify-between px-[24px] py-[14px]">
-              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">Monthly subscription</span>
-              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">
+            <div className="flex items-center justify-between px-6 py-3.5">
+              <span className="text-gfx-neutral-600 text-xs font-acid leading-[18.8px]">Monthly subscription</span>
+              <span className="text-gfx-neutral-600 text-xs font-acid leading-[18.8px]">
                 {monthlyAmount}<span className="text-gfx-neutral-500"> / mo</span>
               </span>
             </div>
 
             {/* Divider */}
-            <div className="w-full h-px bg-[#303030]" />
+            <div className="w-full h-px bg-gfx-neutral-250" />
 
             {/* Performance fee */}
-            <div className="flex items-center justify-between px-[24px] py-[14px]">
-              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">Perfomance fee</span>
-              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">
+            <div className="flex items-center justify-between px-6 py-3.5">
+              <span className="text-gfx-neutral-600 text-xs font-acid leading-[18.8px]">Perfomance fee</span>
+              <span className="text-gfx-neutral-600 text-xs font-acid leading-[18.8px]">
                 {perfFee}<span className="text-gfx-neutral-500"> of profits</span>
               </span>
             </div>
 
             {/* Charges today (highlighted row) */}
-            <div className="flex items-center justify-between px-[24px] py-[14px] bg-[rgba(16,188,131,0.08)]">
-              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">Charges today</span>
-              <span className="text-[#ececec] text-xs font-acid leading-[18.8px]">{monthlyAmount}</span>
+            <div className="flex items-center justify-between px-6 py-3.5 bg-[rgba(16,188,131,0.08)]">
+              <span className="text-gfx-neutral-600 text-xs font-acid leading-[18.8px]">Charges today</span>
+              <span className="text-gfx-neutral-600 text-xs font-acid leading-[18.8px]">{monthlyAmount}</span>
             </div>
           </div>
 
@@ -167,8 +167,8 @@ export function FollowStrategyModal({
           <div className="flex items-start gap-[12px] mt-[16px]">
             <button
               onClick={() => setAgreed(!agreed)}
-              className={`flex-shrink-0 w-[13px] h-[13px] rounded-[2.4px] mt-[3px] cursor-pointer flex items-center justify-center transition-colors ${
-                agreed ? 'bg-[#00b38c]' : 'border border-[#303030] bg-transparent'
+              className={`flex-shrink-0 w-[13px] h-[13px] rounded-[2.4px] mt-1 cursor-pointer flex items-center justify-center transition-colors ${
+                agreed ? 'bg-gfx-green-300' : 'border border-gfx-neutral-250 bg-transparent'
               }`}
             >
               {agreed && (
@@ -179,16 +179,16 @@ export function FollowStrategyModal({
             </button>
             <p className="text-white text-sm font-acid leading-[18.8px]">
               I have read and agree to the{' '}
-              <span className="text-[#00b38c] underline cursor-pointer">Signal Subscription Terms</span>
+              <span className="text-gfx-green-300 underline cursor-pointer">Signal Subscription Terms</span>
               <br />
-              <span className="text-[#00b38c] underline cursor-pointer">& Conditions</span>
+              <span className="text-gfx-green-300 underline cursor-pointer">& Conditions</span>
             </p>
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-[10px] mt-[30px] justify-center">
+          <div className="flex gap-2.5 mt-8 justify-center">
             <SparkleButton className="px-[22px] w-[152px]" onClick={handleClose}>
-              <span className="text-[#c6c6c6]">Cancel</span>
+              <span className="text-gfx-neutral-550">Cancel</span>
             </SparkleButton>
             <GlowButton
               label="Confirm Follow"

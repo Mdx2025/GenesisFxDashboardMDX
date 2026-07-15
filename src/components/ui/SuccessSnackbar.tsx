@@ -56,7 +56,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
   return (
     <div
       ref={ref}
-      className="fixed z-[200] overflow-hidden top-[1.5rem] right-[1.5rem] w-[24rem] h-[5rem] bg-[rgba(255,255,255,0.05)] rounded-full shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-[rgba(255,255,255,0.05)] backdrop-blur-[25px]"
+      className="fixed z-overlay overflow-hidden top-[1.5rem] right-[1.5rem] w-[24rem] h-[5rem] bg-[rgba(255,255,255,0.05)] rounded-full shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-[rgba(255,255,255,0.05)] backdrop-blur-[25px]"
       role="status"
       aria-live="polite"
     >
@@ -79,7 +79,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
       {/* Bottom progress bar */}
       <div className="absolute left-0 right-0 bottom-[6px] h-[4px]">
         {/* Track */}
-        <div className="absolute inset-0 bg-[#101E1A] rounded-2xl" />
+        <div className="absolute inset-0 bg-gfx-green-100 rounded-2xl" />
         {/* Animated fill */}
         <div
           ref={barRef}

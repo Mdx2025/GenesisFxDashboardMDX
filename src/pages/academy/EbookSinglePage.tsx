@@ -36,7 +36,7 @@ function ChapterItem({ chapter, isActive, onClick }: { chapter: EbookChapter; is
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full rounded-[0.75rem] overflow-hidden flex items-center gap-3 px-[0.8125rem] py-[0.8750rem] cursor-pointer transition-colors text-left ${
+      className={`relative w-full rounded-md overflow-hidden flex items-center gap-3 px-[0.8125rem] py-[0.8750rem] cursor-pointer transition-colors text-left ${
         isActive
           ? 'bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.3)]'
           : 'hover:bg-gfx-green-800/50'
@@ -159,7 +159,7 @@ export default function EbookSinglePage() {
               {ebook.sections.map((section, i) => (
                 <div
                   key={i}
-                  className="bg-[#0d1512] border border-[rgba(255,255,255,0.05)] rounded-[1rem] p-6"
+                  className="bg-[#0d1512] border border-[rgba(255,255,255,0.05)] rounded-lg p-6"
                 >
                   <h3 className="text-white text-base font-acid-medium leading-[24.44px] mb-2">
                     {section.title}

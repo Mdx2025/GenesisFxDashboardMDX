@@ -15,13 +15,13 @@ interface FaqCardProps {
 
 export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCardProps) {
   return (
-    <div className="rounded-3xl border border-[#303030] bg-[#000705] px-8 py-7">
+    <div className="rounded-3xl border border-gfx-neutral-250 bg-[#000705] px-8 py-7">
       <div className="flex items-center justify-between gap-6">
-        <span className="text-[1.125rem] 3xl:text-2xl 4xl:text-[2rem] text-white font-normal leading-[1.406rem] 3xl:leading-[1.875rem] 4xl:leading-[2.5rem]">{question}</span>
+        <span className="text-lg 3xl:text-2xl 4xl:text-[2rem] text-white font-normal leading-[1.406rem] 3xl:leading-[1.875rem] 4xl:leading-[2.5rem]">{question}</span>
         <button
           type="button"
           onClick={onToggle}
-          className={`w-11 h-11 rounded-[0.9375rem] bg-gradient-to-b from-[#011b12] to-[#08291e] flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-300 ease-in-out ${expanded ? 'rotate-180' : ''}`}
+          className={`w-11 h-11 rounded-lg bg-gradient-to-b from-[#011b12] to-[#08291e] flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-300 ease-in-out ${expanded ? 'rotate-180' : ''}`}
           aria-expanded={expanded}
         >
           <ChevronDownIcon size={14} color="#00f0a0" />

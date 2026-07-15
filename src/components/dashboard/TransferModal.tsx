@@ -89,7 +89,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -123,7 +123,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
           <h2 className="text-white font-acid font-normal text-[clamp(1.5rem,6vw,3.125rem)] leading-none">
             Internal Transfer
           </h2>
-          <p className="mx-auto font-acid font-medium text-gfx-neutral-500 text-[clamp(0.75rem,2.2vw,1rem)] leading-snug max-w-[352px] mt-[3px]">
+          <p className="mx-auto font-acid font-medium text-gfx-neutral-500 text-[clamp(0.75rem,2.2vw,1rem)] leading-snug max-w-[352px] mt-1">
             Transfer funds between your wallets and trading accounts instantly with no fees.
           </p>
         </div>
@@ -134,7 +134,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
         >
           {/* Card background with glows (clipped) */}
           <div
-            className="absolute inset-0 overflow-hidden pointer-events-none rounded-[20px] bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
+            className="absolute inset-0 overflow-hidden pointer-events-none rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
             aria-hidden="true"
           >
             <div className="absolute w-[587px] h-[435px] left-[304px] top-[-333px] rotate-[48deg] origin-top-left bg-[#00110B] rounded-full blur-[157px]" />

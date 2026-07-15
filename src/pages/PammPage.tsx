@@ -160,13 +160,13 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
         {/* Action Buttons */}
         <div className="flex gap-3 w-full px-6">
           <SparkleButton className="px-[1.375rem] flex-1" onClick={() => navigate('/gensocial/pamm/details-single-page')}>
-            <span className="flex items-center justify-center gap-[0.5625rem]">
+            <span className="flex items-center justify-center gap-2">
               <span>Details</span>
               <ChevronRightIcon size={27} color="#c6c6c6" />
             </span>
           </SparkleButton>
           <SparkleButton className="px-[1.375rem] flex-1">
-            <span className="flex items-center justify-center gap-[0.5625rem]">
+            <span className="flex items-center justify-center gap-2">
               <span>Connect</span>
               <ChevronRightIcon size={27} color="#c6c6c6" />
             </span>
@@ -339,7 +339,7 @@ export default function PammPage() {
 
             {/* My Investments Header */}
             <div className="flex items-center justify-between">
-              <h2 className="text-white text-[2.25rem] font-acid leading-none">My Investments</h2>
+              <h2 className="text-white text-4xl font-acid leading-none">My Investments</h2>
               <SearchInput
                 placeholder="Search for investments"
                 value={searchQuery}
@@ -358,10 +358,10 @@ export default function PammPage() {
                   </svg>
                 </div>
                 <p className="text-white text-2xl font-acid leading-none">No PAMM Investments</p>
-                <p className="text-gfx-neutral-400 text-base font-acid mt-4 leading-[1.2]">You don't have any active PAMM subscriptions yet</p>
+                <p className="text-gfx-neutral-400 text-base font-acid mt-4 leading-tight">You don't have any active PAMM subscriptions yet</p>
                 <button
                   onClick={() => setActiveTab(0)}
-                  className="mt-10 h-[2.75rem] px-[1.9375rem] rounded-[18.75rem] bg-[#f1fffa] text-black text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:bg-[#e0f5ec] transition-colors"
+                  className="mt-10 h-[2.75rem] px-[1.9375rem] rounded-full bg-[#f1fffa] text-black text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:bg-[#e0f5ec] transition-colors"
                 >
                   Browse strategies
                 </button>
@@ -373,7 +373,7 @@ export default function PammPage() {
         {activeTab === 2 && (
           <>
             {/* Manager Profile Banner */}
-            <div className="relative w-full h-[7.8125rem] rounded-[1.1875rem] bg-gfx-green-900 overflow-hidden">
+            <div className="relative w-full h-[7.8125rem] rounded-lg bg-gfx-green-900 overflow-hidden">
               <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[12.5rem]" />
               <div className="relative flex items-center justify-between h-full px-8">
                 <div className="flex items-center gap-5">

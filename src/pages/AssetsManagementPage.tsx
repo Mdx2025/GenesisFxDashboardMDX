@@ -309,7 +309,7 @@ export default function AssetsManagementPage() {
                           <td className="px-4 sm:px-6 py-4 xl:py-5">
                             <div className="flex items-center gap-3">
                               <Icon size={16} color="#A0A0A0" />
-                              <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl">{label}</span>
+                              <span className="text-white text-sm 3xl:text-lg 4xl:text-2xl">{label}</span>
                             </div>
                           </td>
                           <td className="py-4 xl:py-5">
@@ -318,18 +318,18 @@ export default function AssetsManagementPage() {
                               onClick={() => { navigator.clipboard.writeText(tx.address); setCopied(true) }}
                               className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100"
                             >
-                              <span className="text-sm 3xl:text-[1.125rem] 4xl:text-2xl text-white truncate">{tx.address}</span>
+                              <span className="text-sm 3xl:text-lg 4xl:text-2xl text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </button>
                           </td>
                           <td className="py-4 xl:py-5">
                             <div className="flex items-center gap-2">
                               <CoinLogo coin={tx.coin} />
-                              <span className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold">{tx.coin}</span>
+                              <span className="text-white text-sm 3xl:text-lg 4xl:text-2xl font-semibold">{tx.coin}</span>
                             </div>
                           </td>
-                          <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5">{tx.network}</td>
-                          <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl py-4 xl:py-5"><time>{tx.date}</time></td>
+                          <td className="text-white text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5">{tx.network}</td>
+                          <td className="text-white text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5"><time>{tx.date}</time></td>
                           <td className="py-4 xl:py-5">
                             <span
                               className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1"
@@ -338,7 +338,7 @@ export default function AssetsManagementPage() {
                               {tx.status}
                             </span>
                           </td>
-                          <td className="text-white text-sm 3xl:text-[1.125rem] 4xl:text-2xl font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
+                          <td className="text-white text-sm 3xl:text-lg 4xl:text-2xl font-semibold text-right pr-4 sm:pr-6 py-4 xl:py-5">{tx.amount}</td>
                         </tr>
                       )
                     })}

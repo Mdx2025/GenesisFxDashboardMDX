@@ -58,7 +58,7 @@ export default function TradesView() {
       </GlassCard>
 
       {/* Table Card */}
-      <div className="relative overflow-hidden rounded-[1.1875rem] bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]">
+      <div className="relative overflow-hidden rounded-lg bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]">
         <div className="absolute left-1/2 -translate-x-1/2 top-[-252px] w-[30.8125rem] h-[17.3750rem] rounded-full bg-gfx-green-200 blur-[9.8125rem]" />
         <div className="relative overflow-x-auto">
           <table className="w-full min-w-[50rem]">

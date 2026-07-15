@@ -111,7 +111,7 @@ export function CopySubscriptionModal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -126,8 +126,8 @@ export function CopySubscriptionModal({
         <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0, borderRight: '1px solid #303030' }}>
           {/* Step indicator + title */}
           <div className="flex items-center gap-4 mb-[39px]">
-            <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-[#00B38C] flex items-center justify-center flex-shrink-0">
-              <span className="text-[#00B38C] text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '20px' }}>1</span>
+            <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-gfx-green-300 flex items-center justify-center flex-shrink-0">
+              <span className="text-gfx-green-300 text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '20px' }}>1</span>
             </div>
             <h2 className="text-white text-2xl font-acid font-normal">Configure Subscription</h2>
           </div>
@@ -155,13 +155,13 @@ export function CopySubscriptionModal({
                   key={mode.id}
                   type="button"
                   onClick={() => setLotMode(mode.id)}
-                  className={`h-20 rounded-[8px] text-left px-[17px] flex flex-col justify-center cursor-pointer transition-colors ${
+                  className={`h-20 rounded-sm text-left px-[17px] flex flex-col justify-center cursor-pointer transition-colors ${
                     lotMode === mode.id
-                      ? 'bg-gfx-green-900 border border-[#00B38C]'
-                      : 'bg-gfx-green-800 border border-[#09241C] hover:border-gfx-green-200'
+                      ? 'bg-gfx-green-900 border border-gfx-green-300'
+                      : 'bg-gfx-green-800 border border-gfx-green-900 hover:border-gfx-green-200'
                   }`}
                 >
-                  <span className={`text-base font-acid font-medium leading-[24.44px] ${lotMode === mode.id ? 'text-[#00B38C]' : 'text-white'}`}>
+                  <span className={`text-base font-acid font-medium leading-[24.44px] ${lotMode === mode.id ? 'text-gfx-green-300' : 'text-white'}`}>
                     {mode.title}
                   </span>
                   <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px] mt-0.5">
@@ -178,7 +178,7 @@ export function CopySubscriptionModal({
               <label className="text-white text-[0.9375rem] font-semibold leading-[22.5px]" style={{ fontFamily: 'Inter, sans-serif' }}>Subscription Amount</label>
               <InfoIcon color="#808080" />
             </div>
-            <div className="h-[62px] rounded-[8px] bg-gfx-green-900 flex items-center justify-between px-[17px]">
+            <div className="h-[62px] rounded-sm bg-gfx-green-900 flex items-center justify-between px-[17px]">
               <span className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px]">Account Balance</span>
               <span className="text-white text-sm font-acid leading-[18.8px]">$0.00</span>
             </div>
@@ -199,7 +199,7 @@ export function CopySubscriptionModal({
         <div className="w-[460px] flex-shrink-0 p-10 flex flex-col">
           {/* Profile */}
           <div className="flex items-center gap-4 mb-[32px]">
-            <div className="w-14 h-14 rounded-full bg-[#064B34] flex items-center justify-center flex-shrink-0 border border-[#222]">
+            <div className="w-14 h-14 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 border border-[#222]">
               <span className="text-white text-sm font-acid font-medium">{traderInitials}</span>
             </div>
             <div>
@@ -210,22 +210,22 @@ export function CopySubscriptionModal({
 
           {/* AUM / ROI stat cards */}
           <div className="flex gap-4 mb-[32px]">
-            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-[8px] border border-gfx-green-200">
-              <span className="text-[#00B38C] text-xs font-acid leading-[18.8px]">AUM</span>
-              <span className="text-[#00B38C] text-base font-acid font-medium leading-[24.44px] mt-[8px]">{aum}</span>
+            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
+              <span className="text-gfx-green-300 text-xs font-acid leading-[18.8px]">AUM</span>
+              <span className="text-gfx-green-300 text-base font-acid font-medium leading-[24.44px] mt-2">{aum}</span>
             </div>
-            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-[8px] border border-gfx-green-200">
-              <span className="text-[#00B38C] text-xs font-acid leading-[18.8px]">ROI</span>
-              <span className="text-[#00B38C] text-base font-acid font-medium leading-[24.44px] mt-[8px]">{roi}</span>
+            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
+              <span className="text-gfx-green-300 text-xs font-acid leading-[18.8px]">ROI</span>
+              <span className="text-gfx-green-300 text-base font-acid font-medium leading-[24.44px] mt-2">{roi}</span>
             </div>
           </div>
 
           {/* Subscription Summary */}
-          <div className="flex-1 px-[29px] py-[29px] rounded-[12px] border border-[#303030]">
+          <div className="flex-1 px-[29px] py-[29px] rounded-md border border-gfx-neutral-250">
             <h3 className="text-white text-base font-acid font-medium leading-[24.44px] mb-[24.5px]">Subscription Summary</h3>
 
             <div className="space-y-[17.5px]">
-              <SummaryRow label="Strategy Status" value="Active" valueClass="text-[#00B38C]" />
+              <SummaryRow label="Strategy Status" value="Active" valueClass="text-gfx-green-300" />
               <SummaryRow label="Account" value={account ? ACCOUNT_OPTIONS.find(o => o.value === account)?.label ?? '-' : '-'} />
               <SummaryRow label="Lot Sizing" value={LOT_MODE_LABELS[lotMode] ?? '-'} />
               <SummaryRow label="Amount" value="-" />

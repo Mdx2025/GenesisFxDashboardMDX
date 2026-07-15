@@ -108,14 +108,14 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[110] flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
       role="dialog"
       aria-modal="true"
       aria-label="Transfer Processing"
     >
       <div
         ref={modalRef}
-        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-[#09090b] rounded-[20px] sm:rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
+        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-[#09090b] rounded-xl sm:rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
       >
         {/* SVG filter for circle glow */}
         <svg width="0" height="0" className="absolute">
@@ -142,7 +142,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         {/* Progress bar */}
         <div className="absolute left-[5.4%] right-[5.4%] top-[56.2%] h-[10px]">
           {/* Track */}
-          <div className="absolute inset-0 bg-[#101E1A] rounded-2xl" />
+          <div className="absolute inset-0 bg-gfx-green-100 rounded-2xl" />
           {/* Animated fill + glow (all scale together) */}
           <div ref={progressRef} className="absolute inset-0 scale-x-0 origin-left">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#064E3B_0%,#10B981_40%,#70D7B5_70%,#ffffff_100%)] rounded-2xl" />
@@ -153,13 +153,13 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
 
         {/* Endpoint 1 — center of progress bar */}
         <div ref={glow1Ref} className="absolute pointer-events-none w-[14%] sm:w-[10%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
-        <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-[#101E1A] rounded-full flex items-center justify-center" aria-hidden="true">
+        <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-100 rounded-full flex items-center justify-center" aria-hidden="true">
           <div ref={icon1Ref} className="w-1/2 h-1/2 text-gfx-neutral-300"><LinkCircleIcon /></div>
         </div>
 
         {/* Endpoint 2 — end of progress bar */}
         <div ref={glow2Ref} className="absolute pointer-events-none w-[14%] sm:w-[10%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-500 rounded-full [filter:url(#circle-glow)] opacity-0" aria-hidden="true" />
-        <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-[#101E1A] rounded-full flex items-center justify-center" aria-hidden="true">
+        <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-100 rounded-full flex items-center justify-center" aria-hidden="true">
           <div ref={icon2Ref} className="w-1/2 h-1/2 text-gfx-neutral-300"><CheckCircleIcon /></div>
         </div>
 

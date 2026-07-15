@@ -57,10 +57,10 @@ export function TransactionsPanel() {
           <SearchInput placeholder="Search transactions" />
 
           {/* Action buttons */}
-          <button className="w-11 h-11 rounded-full border border-[#2F2F2F] flex items-center justify-center hover:border-[#808080] transition-colors cursor-pointer">
+          <button className="w-11 h-11 rounded-full border border-gfx-neutral-200 flex items-center justify-center hover:border-gfx-neutral-400 transition-colors cursor-pointer">
             <ArchiveIcon />
           </button>
-          <button className="w-11 h-11 rounded-full border border-[#2F2F2F] flex items-center justify-center hover:border-[#808080] transition-colors cursor-pointer">
+          <button className="w-11 h-11 rounded-full border border-gfx-neutral-200 flex items-center justify-center hover:border-gfx-neutral-400 transition-colors cursor-pointer">
             <RefreshIcon />
           </button>
         </div>
@@ -68,13 +68,13 @@ export function TransactionsPanel() {
 
       {/* Table card */}
       <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[493px] h-[278px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)] will-change-transform opacity-30" aria-hidden="true" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[493px] h-[278px] rounded-full pointer-events-none bg-gfx-green-200 [filter:url(#blur-157)] will-change-transform opacity-30" aria-hidden="true" />
 
         <div className="relative z-10">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[900px]">
               <thead>
-                <tr className="border-b border-[#09241C]">
+                <tr className="border-b border-gfx-green-900">
                   <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase pl-6 py-4 w-[15%]">Type</th>
                   <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Date</th>
                   <th className="text-left text-xs font-bold tracking-[0.19em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Direction</th>
@@ -85,7 +85,7 @@ export function TransactionsPanel() {
               </thead>
               <tbody>
                 {MOCK_TRANSACTIONS.map((tx, i) => (
-                  <tr key={i} className={i > 0 ? 'border-t border-[#09241C]' : ''}>
+                  <tr key={i} className={i > 0 ? 'border-t border-gfx-green-900' : ''}>
                     <td className="pl-6 py-5">
                       <div className="flex items-center gap-2">
                         {tx.icon === 'in' ? <TransferInIcon /> : <TransferOutIcon />}
@@ -94,7 +94,7 @@ export function TransactionsPanel() {
                     </td>
                     <td className="py-5 text-white text-sm">{tx.date}</td>
                     <td className="py-5 text-white text-sm">{tx.direction}</td>
-                    <td className={`py-5 text-sm ${tx.amountColor === 'green' ? 'text-gfx-bullish-light' : 'text-[#D46356]'}`}>{tx.amount}</td>
+                    <td className={`py-5 text-sm ${tx.amountColor === 'green' ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>{tx.amount}</td>
                     <td className="py-5">
                       <span className="inline-block px-[18px] py-1 rounded-full border border-[#0C9104] text-gfx-bullish-light text-xs">
                         {tx.status}

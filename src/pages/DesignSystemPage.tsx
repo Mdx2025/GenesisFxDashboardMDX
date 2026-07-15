@@ -336,7 +336,7 @@ export default function DesignSystemPage() {
               <p className="text-caption text-gfx-neutral-300">Status (warning)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-[#5b9cf5]/15 text-[#5b9cf5]">Info</span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gfx-info/15 text-gfx-info">Info</span>
               <p className="text-caption text-gfx-neutral-300">Status (info)</p>
             </div>
           </div>
@@ -363,11 +363,11 @@ export default function DesignSystemPage() {
                 <p className="text-caption text-gfx-neutral-300">GlassCard (heavy, rounded: 30px)</p>
               </GlassCard>
               <GlassCard variant="purple" divider="none" className="p-6">
-                <p className="text-[#c8afff] text-sm mb-2">Purple variant — radial gradient with pink glow ellipses. Used for AI Coach / Trader Passport cards.</p>
+                <p className="text-gfx-purple-accent text-sm mb-2">Purple variant — radial gradient with pink glow ellipses. Used for AI Coach / Trader Passport cards.</p>
                 <p className="text-caption text-gfx-neutral-300">GlassCard (purple, divider: none)</p>
               </GlassCard>
               <GlassCard variant="purple" divider="none" rounded="14px" className="p-6">
-                <p className="text-[#c8afff] text-sm mb-2">Purple variant, 14px radius — compact.</p>
+                <p className="text-gfx-purple-accent text-sm mb-2">Purple variant, 14px radius — compact.</p>
                 <p className="text-caption text-gfx-neutral-300">GlassCard (purple, rounded: 14px)</p>
               </GlassCard>
             </div>
@@ -668,10 +668,10 @@ export default function DesignSystemPage() {
                 <p className="text-caption text-gfx-neutral-500">Failed to process withdrawal. Please try again.</p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#5b9cf5]/20 bg-[#5b9cf5]/5" role="status">
-              <span className="size-2 mt-1.5 rounded-full bg-[#5b9cf5] shrink-0 inline-block" />
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-gfx-info/20 bg-gfx-info/5" role="status">
+              <span className="size-2 mt-1.5 rounded-full bg-gfx-info shrink-0 inline-block" />
               <div>
-                <p className="text-sm text-[#5b9cf5] font-medium">Info</p>
+                <p className="text-sm text-gfx-info font-medium">Info</p>
                 <p className="text-caption text-gfx-neutral-500">Markets will be closed on Monday for maintenance.</p>
               </div>
             </div>

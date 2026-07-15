@@ -79,19 +79,19 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="flex items-start p-8 h-[198px]">
-        <div className="shrink-0 w-[70px] h-[70px] rounded-full border border-[#00b38c] flex items-center justify-center">
-          <span className="text-[#10bc83] text-[35px] font-acid">{episode.id}</span>
+        <div className="shrink-0 w-[70px] h-[70px] rounded-full border border-gfx-green-300 flex items-center justify-center">
+          <span className="text-gfx-green-500 text-[35px] font-acid">{episode.id}</span>
         </div>
 
         <div className="flex flex-col gap-2 flex-1 min-w-0 ml-6">
           <span className="text-white text-[21px] font-acid">{episode.date}</span>
-          <p className="text-gfx-neutral-400 text-[16px] font-acid font-medium leading-[24.44px] max-w-[362px]">
+          <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px] max-w-[362px]">
             {episode.description}
           </p>
         </div>
 
         <div className="shrink-0 flex items-center gap-4">
-          <span className="text-gfx-neutral-400 text-[16px] font-acid">{episode.duration}</span>
+          <span className="text-gfx-neutral-400 text-base font-acid">{episode.duration}</span>
           <button
             onClick={onPlay}
             className="relative w-[58px] h-[58px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
@@ -123,10 +123,10 @@ function PlayerBar() {
     <div className="sticky bottom-0 z-40 bg-[#0d1512] border-t border-[rgba(16,185,129,0.12)] -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-8 py-5">
       <div className="mx-auto container flex items-center gap-6">
       <div className="flex items-center gap-3 shrink-0">
-        <div className="w-[52px] h-[52px] rounded-[10px] bg-[#09241c] flex items-center justify-center">
-          <span className="text-white text-[16px] font-acid">1</span>
+        <div className="w-[52px] h-[52px] rounded-md bg-gfx-green-900 flex items-center justify-center">
+          <span className="text-white text-base font-acid">1</span>
         </div>
-        <span className="text-white text-[16px] font-acid">10.02.2026</span>
+        <span className="text-white text-base font-acid">10.02.2026</span>
       </div>
 
       <div className="flex items-center gap-4 flex-1 justify-center">
@@ -134,7 +134,7 @@ function PlayerBar() {
           <SkipBackIcon />
         </button>
 
-        <button className="w-[32px] h-[32px] rounded-full bg-[#00b38c] flex items-center justify-center cursor-pointer hover:bg-[#10bc83] transition-colors">
+        <button className="w-[32px] h-[32px] rounded-full bg-gfx-green-300 flex items-center justify-center cursor-pointer hover:bg-gfx-green-500 transition-colors">
           <PauseIcon />
         </button>
 
@@ -149,8 +149,8 @@ function PlayerBar() {
 
       <div className="flex items-center gap-3 flex-1 max-w-[400px]">
         <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">2:45</span>
-        <div className="flex-1 h-[4px] bg-[#09241c] rounded-full overflow-hidden">
-          <div className="w-[46%] h-full bg-[#00b38c] rounded-full" />
+        <div className="flex-1 h-[4px] bg-gfx-green-900 rounded-full overflow-hidden">
+          <div className="w-[46%] h-full bg-gfx-green-300 rounded-full" />
         </div>
         <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">3:33</span>
       </div>
@@ -159,8 +159,8 @@ function PlayerBar() {
         <button className="cursor-pointer hover:opacity-80 transition-opacity">
           <VolumeIcon />
         </button>
-        <div className="w-[80px] h-[4px] bg-[#09241c] rounded-full overflow-hidden">
-          <div className="w-[70%] h-full bg-[#00b38c] rounded-full" />
+        <div className="w-[80px] h-[4px] bg-gfx-green-900 rounded-full overflow-hidden">
+          <div className="w-[70%] h-full bg-gfx-green-300 rounded-full" />
         </div>
       </div>
       </div>
@@ -184,7 +184,7 @@ export default function PodcastView() {
 
           <div className="flex flex-col gap-4 px-8 py-10 relative z-10">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1.5 rounded-full bg-[#09241c] text-[#ececec] text-sm font-acid">
+              <span className="px-3 py-1.5 rounded-full bg-gfx-green-900 text-gfx-neutral-600 text-sm font-acid">
                 Basics
               </span>
               <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
@@ -192,7 +192,7 @@ export default function PodcastView() {
                 <path d="M5 11C5 14.866 8.134 18 12 18C15.866 18 19 14.866 19 11" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" />
                 <path d="M12 18V22" stroke="#808080" strokeWidth="1.5" />
               </svg>
-              <span className="text-[#ececec] text-[16px] font-acid">5 episodes</span>
+              <span className="text-gfx-neutral-600 text-base font-acid">5 episodes</span>
             </div>
 
             <h2 className="text-white text-2xl sm:text-3xl lg:text-[52px] font-acid leading-none">Deep Dive Podcast</h2>
@@ -201,7 +201,7 @@ export default function PodcastView() {
               Your daily dose of market clarity. The Deep Dive delivers sharp insights on stocks, crypto, commodities, and global trends—cutting through the noise to bring you what matters.
             </p>
 
-            <span className="text-gfx-neutral-400 text-[16px] font-acid">Total: 27 min</span>
+            <span className="text-gfx-neutral-400 text-base font-acid">Total: 27 min</span>
           </div>
         </div>
       </GlassCard>

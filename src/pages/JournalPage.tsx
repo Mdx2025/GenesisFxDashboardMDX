@@ -363,13 +363,13 @@ export default function JournalPage() {
                     </SparkleButton>
                     <button
                       onClick={() => swiperRef.current?.slidePrev()}
-                      className="w-[3.25rem] h-[3.25rem] rounded-[0.9375rem] bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                      className="w-[3.25rem] h-[3.25rem] rounded-lg bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
                     >
                       <ChevronLeftSmall />
                     </button>
                     <button
                       onClick={() => swiperRef.current?.slideNext()}
-                      className="w-[3.25rem] h-[3.25rem] rounded-[0.9375rem] bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
+                      className="w-[3.25rem] h-[3.25rem] rounded-lg bg-gfx-green-900 flex items-center justify-center hover:bg-[#0d2e24] transition-colors cursor-pointer"
                     >
                       <ChevronRightSmall />
                     </button>
@@ -414,7 +414,7 @@ export default function JournalPage() {
                       <span className="text-gfx-green-500 text-xs font-acid">24H +$0.00(0.0%)</span>
                     </div>
                   </div>
-                  <p className="text-gfx-bullish-light text-[2.25rem] font-acid mt-3">
+                  <p className="text-gfx-bullish-light text-4xl font-acid mt-3">
                     +${journalStats.totalPnl.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </p>
                   <p className="text-gfx-neutral-500 text-sm font-acid mt-1">Last 30 days</p>
@@ -426,13 +426,13 @@ export default function JournalPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <StatCard label="Most Traded Asset">
-                  <div className="flex items-center justify-center gap-4 rounded-[18.75rem] px-5 py-2.5 bg-stat-pill">
+                  <div className="flex items-center justify-center gap-4 rounded-full px-5 py-2.5 bg-stat-pill">
                     <XauusdIcon />
                     <span className="text-white text-xl sm:text-2xl font-acid">XAAUSD</span>
                   </div>
                 </StatCard>
                 <StatCard label="Total Trades">
-                  <div className="flex items-center justify-center gap-4 rounded-[18.75rem] px-5 py-2.5 h-[3.6250rem] bg-stat-pill">
+                  <div className="flex items-center justify-center gap-4 rounded-full px-5 py-2.5 h-[3.6250rem] bg-stat-pill">
                     <DiagramUpIcon />
                     <span className="text-white text-2xl font-acid">{journalStats.totalTrades}</span>
                   </div>

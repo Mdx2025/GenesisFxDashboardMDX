@@ -111,12 +111,12 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
                 className={`absolute pointer-events-none w-[98px] h-[45px] left-1/2 -translate-x-1/2 bottom-[-20px] bg-[#55FFC7] rounded-full [filter:url(#blur-20)] transition-opacity duration-300 ${isActive ? 'opacity-30' : 'opacity-0'}`}
                 aria-hidden="true"
               />
-              <div className={`absolute w-px h-px rounded-full bg-white pointer-events-none z-[1] right-[8px] top-[8px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
-              <div className={`absolute w-px h-px rounded-full bg-white/50 pointer-events-none z-[1] right-[16px] bottom-[6px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
-              <div className={`absolute w-px h-px rounded-full pointer-events-none z-[1] left-[30%] top-[4px] bg-[#acacac] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
-              <div className={`absolute w-px h-px rounded-full pointer-events-none z-[1] left-[60%] bottom-[4px] bg-[#acacac] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
-              <div className={`absolute w-px h-px rounded-full pointer-events-none z-[1] right-[25%] top-[6px] bg-[#acacac] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
-              <div className={`absolute w-px h-px rounded-full pointer-events-none z-[1] left-[15%] bottom-[8px] bg-[#8c8c8c] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full bg-white pointer-events-none z-base right-[8px] top-[8px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full bg-white/50 pointer-events-none z-base right-[16px] bottom-[6px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[30%] top-[4px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[60%] bottom-[4px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full pointer-events-none z-base right-[25%] top-[6px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[15%] bottom-[8px] bg-[#8c8c8c] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <span className="relative z-10 shrink-0 flex items-center justify-center size-[18px]">
                 {item.icon}
               </span>

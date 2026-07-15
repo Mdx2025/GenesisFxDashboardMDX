@@ -174,7 +174,7 @@ export default function SignalsDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/signals')}
-            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>

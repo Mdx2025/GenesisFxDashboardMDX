@@ -32,8 +32,8 @@ function ChevronRight({ className }: { className?: string }) {
 
 function StepBadge({ step, total }: { step: number; total: number }) {
   return (
-    <div className="h-[2.125rem] px-3.5 rounded-[2rem] border border-[#2f2f2f] flex items-center">
-      <span className="text-gfx-neutral-500 text-sm sm:text-base leading-[1.2]">Step {step} of {total}</span>
+    <div className="h-[2.125rem] px-3.5 rounded-2xl border border-gfx-neutral-200 flex items-center">
+      <span className="text-gfx-neutral-500 text-sm sm:text-base leading-tight">Step {step} of {total}</span>
     </div>
   )
 }
@@ -48,16 +48,16 @@ function AccountTypeCard({ icon, title, description, onClick }: {
     <button
       type="button"
       onClick={onClick}
-      className="glass-card group relative flex-1 min-w-[8rem] max-w-[10.8125rem] aspect-[173/222] flex flex-col items-center rounded-[2rem] bg-[#0c1311] cursor-pointer transition-all overflow-hidden shadow-[0px_2.8px_14px_rgba(0,0,0,0.03)]"
+      className="glass-card group relative flex-1 min-w-[8rem] max-w-[10.8125rem] aspect-[173/222] flex flex-col items-center rounded-2xl bg-gfx-green-800 cursor-pointer transition-all overflow-hidden shadow-[0px_2.8px_14px_rgba(0,0,0,0.03)]"
       aria-label={`Select ${title} account`}
     >
       <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-36 h-[8.4rem] rounded-full bg-[#40C99C] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[68px]" aria-hidden="true" />
       <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-36 h-[8.4rem] rounded-full bg-[#40C99C] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[74px]" aria-hidden="true" />
-      <div className="w-[4.125rem] h-[4.125rem] rounded-full bg-[#09241c] flex items-center justify-center relative z-10 mt-10">
+      <div className="w-[4.125rem] h-[4.125rem] rounded-full bg-gfx-green-900 flex items-center justify-center relative z-10 mt-10">
         {icon}
       </div>
-      <span className="text-white text-base leading-[1.2] relative z-10 mt-3">{title}</span>
-      <span className="text-gfx-neutral-400 text-sm sm:text-base text-center leading-[1.2] relative z-10 mt-1">{description}</span>
+      <span className="text-white text-base leading-tight relative z-10 mt-3">{title}</span>
+      <span className="text-gfx-neutral-400 text-sm sm:text-base text-center leading-tight relative z-10 mt-1">{description}</span>
     </button>
   )
 }
@@ -84,11 +84,11 @@ const COUNTRY_OPTIONS = [
   { value: 'other', label: 'Other' },
 ]
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors"
 
 function SignInLink() {
   return (
-    <p className="text-base leading-[1.2]">
+    <p className="text-base leading-tight">
       <span className="text-gfx-neutral-400">Already have an account? </span>
       <Link to="/" className="text-white hover:underline">Sign In</Link>
     </p>
@@ -158,11 +158,11 @@ function Step1({ setAccountType, onContinue }: {
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Create Account</WaveText>
+      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Create Account</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-12 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
-          <span className="text-[#ececec] text-base leading-[1.2]">Account Type</span>
+          <span className="text-gfx-neutral-600 text-base leading-tight">Account Type</span>
           <StepBadge step={1} total={3} />
         </div>
 
@@ -205,12 +205,12 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">{title}</WaveText>
+      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">{title}</WaveText>
       <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Enter your account credentials</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
-          <span className="text-[#ececec] text-base leading-[1.2]">Account Info</span>
+          <span className="text-gfx-neutral-600 text-base leading-tight">Account Info</span>
           <StepBadge step={2} total={3} />
         </div>
 
@@ -272,12 +272,12 @@ function Step3Corporate({ onBack, onCreateAccount }: { onBack: () => void; onCre
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Corporate Account</WaveText>
+      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Corporate Account</WaveText>
       <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your company information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
-          <span className="text-[#ececec] text-base leading-[1.2]">Company Info</span>
+          <span className="text-gfx-neutral-600 text-base leading-tight">Company Info</span>
           <StepBadge step={3} total={3} />
         </div>
 
@@ -311,12 +311,12 @@ function Step3Personal({ onBack, onCreateAccount }: { onBack: () => void; onCrea
 
   return (
     <div ref={fadeRef} className="w-full max-w-xl px-4 sm:px-0 flex flex-col items-center gap-6">
-      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Personal Account</WaveText>
+      <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Personal Account</WaveText>
       <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Complete your personal information</WaveText>
 
       <GlassCard variant="light" divider="none" rounded="1.25rem" className="w-full flex flex-col items-center gap-3 px-6 sm:px-25 py-8 sm:py-10 bg-transparent">
         <div className="w-full flex items-center justify-between">
-          <span className="text-[#ececec] text-base leading-[1.2]">Personal Info</span>
+          <span className="text-gfx-neutral-600 text-base leading-tight">Personal Info</span>
           <StepBadge step={3} total={3} />
         </div>
 

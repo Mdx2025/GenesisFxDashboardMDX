@@ -174,7 +174,7 @@ function PerformanceGrid() {
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
                 <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
-                <div className={`w-full h-[2.8125rem] rounded-[0.5rem] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
+                <div className={`w-full h-[2.8125rem] rounded-sm flex items-center justify-center ${CELL_STYLES[m.type]}`}>
                   {m.value && <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
@@ -182,7 +182,7 @@ function PerformanceGrid() {
             {/* Ann column */}
             <div className="flex flex-col items-center flex-1 min-w-0">
               <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">Ann</span>
-              <div className={`w-full h-[2.8125rem] rounded-[0.5rem] flex items-center justify-center ${CELL_STYLES.positive}`}>
+              <div className={`w-full h-[2.8125rem] rounded-sm flex items-center justify-center ${CELL_STYLES.positive}`}>
                 <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
@@ -339,7 +339,7 @@ export default function PammDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/pamm')}
-            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>

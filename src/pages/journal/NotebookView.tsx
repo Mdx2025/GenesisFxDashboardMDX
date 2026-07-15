@@ -48,7 +48,7 @@ function GalleryIcon() {
 
 function NoteCard({ note }: { note: NotebookNote }) {
   return (
-    <div className="flex-1 min-w-0 rounded-[0.9375rem] border border-gfx-green-900 bg-transparent">
+    <div className="flex-1 min-w-0 rounded-lg border border-gfx-green-900 bg-transparent">
       <div className="p-[1.125rem] flex flex-col gap-3 h-full">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">

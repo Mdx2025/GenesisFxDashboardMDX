@@ -176,14 +176,14 @@ function PerformanceGrid() {
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
                 <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
-                <div className={`w-full h-[2.8125rem] rounded-[0.5rem] flex items-center justify-center ${CELL_STYLES[m.type]}`}>
+                <div className={`w-full h-[2.8125rem] rounded-sm flex items-center justify-center ${CELL_STYLES[m.type]}`}>
                   {m.value && <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
             ))}
             <div className="flex flex-col items-center flex-1 min-w-0">
               <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">Ann</span>
-              <div className={`w-full h-[2.8125rem] rounded-[0.5rem] flex items-center justify-center ${CELL_STYLES.positive}`}>
+              <div className={`w-full h-[2.8125rem] rounded-sm flex items-center justify-center ${CELL_STYLES.positive}`}>
                 <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
@@ -307,7 +307,7 @@ export default function CopyTradingDetailsPage() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/gensocial/copy-trading')}
-            className="w-[2.375rem] h-[2.375rem] rounded-[0.5rem] bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
+            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0d3227] transition-colors flex-shrink-0"
           >
             <BackArrowIcon />
           </button>
@@ -351,7 +351,7 @@ export default function CopyTradingDetailsPage() {
                   </div>
                   <p className={`${stat.valueColor || 'text-white'} text-[1.5625rem] font-acid leading-none mt-3`}>{stat.value}</p>
                 </div>
-                <div className="w-[2.625rem] h-[2.625rem] rounded-[0.625rem] bg-gfx-green-900 flex items-center justify-center">
+                <div className="w-[2.625rem] h-[2.625rem] rounded-md bg-gfx-green-900 flex items-center justify-center">
                   {stat.icon}
                 </div>
               </div>
@@ -456,7 +456,7 @@ export default function CopyTradingDetailsPage() {
         </div>
 
         {/* Trades Table */}
-        <div className="rounded-[18.56px] overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
+        <div className="rounded-lg overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>

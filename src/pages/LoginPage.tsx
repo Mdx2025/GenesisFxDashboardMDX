@@ -16,7 +16,7 @@ function GoogleIcon() {
   )
 }
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-[#0c1311] border border-[#064b34] px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors"
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -26,14 +26,14 @@ export default function LoginPage() {
     <AuthLayout>
       <div ref={fadeRef} className="w-full max-w-[34.125rem] px-4 sm:px-0 flex flex-col items-center gap-[2.6875rem]">
         <div className="flex flex-col items-center gap-[2.6875rem]">
-          <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-[1.17] text-center">Trader's Room Log In</WaveText>
+          <WaveText as="h1" className="text-white text-[clamp(2rem,5vw,3.125rem)] font-normal leading-tight text-center">Trader's Room Log In</WaveText>
           <WaveText as="p" className="text-gfx-neutral-500 text-sm leading-[1.175rem] text-center" delay={0.4} stagger={0.015}>Welcome back! Sign in to your account below.</WaveText>
         </div>
 
         <div className="w-full flex flex-col items-center gap-7">
           <button
             type="button"
-            className="w-full h-12 rounded-[2rem] border border-[#2f2f2f] bg-transparent flex items-center justify-center gap-4 cursor-pointer hover:border-[#404040] transition-colors"
+            className="w-full h-12 rounded-2xl border border-gfx-neutral-200 bg-transparent flex items-center justify-center gap-4 cursor-pointer hover:border-[#404040] transition-colors"
             aria-label="Sign in with Google"
           >
             <GoogleIcon />
@@ -41,9 +41,9 @@ export default function LoginPage() {
           </button>
 
           <div className="w-full flex items-center" role="separator">
-            <div className="flex-1 h-px bg-[#09241c]" />
+            <div className="flex-1 h-px bg-gfx-green-900" />
             <span className="text-white text-sm leading-[1.175rem] px-6">Or</span>
-            <div className="flex-1 h-px bg-[#09241c]" />
+            <div className="flex-1 h-px bg-gfx-green-900" />
           </div>
         </div>
 
@@ -80,21 +80,21 @@ export default function LoginPage() {
         </form>
 
         <div className="flex flex-col items-center gap-5">
-          <Link to="/forgot-password" className="text-[#00b38c] text-base leading-[1.2] hover:underline">
+          <Link to="/forgot-password" className="text-gfx-green-300 text-base leading-tight hover:underline">
             Forgot Password?
           </Link>
 
-          <p className="text-base leading-[1.2]">
+          <p className="text-base leading-tight">
             <span className="text-gfx-neutral-400">New to Genesis? </span>
             <Link to="/register" className="text-white hover:underline">Register Now</Link>
           </p>
 
           <div className="flex items-center gap-3.5">
-            <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-3.5 rounded-[2rem] border border-[#2f2f2f]">
-              <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#00b38c]" aria-hidden="true" />
+            <div className="flex items-center gap-2 h-[2.125rem] px-3.5 rounded-2xl border border-gfx-neutral-200">
+              <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-gfx-green-300" aria-hidden="true" />
               <span className="text-white text-sm leading-[1.175rem]">Live</span>
             </div>
-            <div className="flex items-center gap-[0.4375rem] h-[2.125rem] px-3.5 rounded-[2rem] border border-[#2f2f2f]">
+            <div className="flex items-center gap-2 h-[2.125rem] px-3.5 rounded-2xl border border-gfx-neutral-200">
               <div className="w-[0.4375rem] h-[0.4375rem] rounded-full bg-[#9a4dff]" aria-hidden="true" />
               <span className="text-white text-sm leading-[1.175rem]">Demo</span>
             </div>

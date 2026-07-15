@@ -32,7 +32,7 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
-        <div className="absolute inset-0 bg-[#10BC83] mix-blend-color" />
+        <div className="absolute inset-0 bg-gfx-green-500 mix-blend-color" />
       </div>
 
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />

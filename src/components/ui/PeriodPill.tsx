@@ -55,14 +55,14 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           key={p}
           ref={(el) => { buttonRefs.current[i] = el }}
           onClick={() => setSelected(p)}
-          className={`relative px-3 py-1 rounded-full text-xs cursor-pointer z-[1] transition-colors ${
+          className={`relative px-3 py-1 rounded-full text-xs cursor-pointer z-base transition-colors ${
             selected === p ? 'text-white' : 'text-gfx-neutral-300 hover:text-white'
           }`}
         >
           {p}
         </button>
       ))}
-      <button className="p-1.5 text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer z-[1]" aria-label="Calendar">
+      <button className="p-1.5 text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer z-base" aria-label="Calendar">
         <CalendarIcon size={18} />
       </button>
     </div>

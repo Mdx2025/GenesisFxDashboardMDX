@@ -64,11 +64,11 @@ function MetricCard({ label, value, color, index }: { label: string; value: stri
         </div>
         <div className="flex-1 flex items-center mt-2">
           {isPill ? (
-            <span className="h-[2.25rem] px-5 rounded-full bg-gradient-to-t from-[#09241c] to-[#0c1311] border border-white/10 flex items-center text-white text-2xl font-acid">
+            <span className="h-[2.25rem] px-5 rounded-full bg-gradient-to-t from-gfx-green-900 to-gfx-green-800 border border-white/10 flex items-center text-white text-2xl font-acid">
               {value}
             </span>
           ) : (
-            <span className="text-[2.25rem] font-acid" style={{ color: COLOR_MAP[color] }}>
+            <span className="text-4xl font-acid" style={{ color: COLOR_MAP[color] }}>
               {value}
             </span>
           )}
@@ -190,11 +190,11 @@ function SessionAnalysis() {
         <h3 className="text-white text-base font-acid font-medium mb-5">Session & Time Analysis</h3>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="h-[6.4375rem] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
+          <div className="h-[6.4375rem] rounded-lg bg-gfx-green-900 p-4 flex flex-col justify-between">
             <span className="text-gfx-neutral-400 text-sm font-acid">Best Hour</span>
             <span className="text-gfx-green-300 text-base font-acid font-medium">14:00 — 15:00</span>
           </div>
-          <div className="h-[6.4375rem] rounded-[1.1875rem] bg-gfx-green-900 p-4 flex flex-col justify-between">
+          <div className="h-[6.4375rem] rounded-lg bg-gfx-green-900 p-4 flex flex-col justify-between">
             <span className="text-gfx-neutral-400 text-sm font-acid">Best Session</span>
             <span className="text-gfx-green-300 text-base font-acid font-medium">Asian Cross</span>
           </div>

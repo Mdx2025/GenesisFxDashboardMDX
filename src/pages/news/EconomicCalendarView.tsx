@@ -35,7 +35,7 @@ const GRID_COLS = 'grid-cols-[80px_160px_80px_1fr_120px_120px_100px]'
 /* ─── Calendar Row ─── */
 
 function CalendarRow({ event }: { event: EconomicEvent }) {
-  const actualColorClass = event.actualColor === 'red' ? 'text-[#d46356]' : 'text-[#37c92e]'
+  const actualColorClass = event.actualColor === 'red' ? 'text-gfx-red-muted' : 'text-[#37c92e]'
 
   return (
     <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[62px] border-b border-white/[0.04]`}>
@@ -76,7 +76,7 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
 
 function DateHeader({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-[60px] h-[56px] lg:h-[68px] bg-[#09241c]">
+    <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-[60px] h-[56px] lg:h-[68px] bg-gfx-green-900">
       <GreenDot size={10} />
       <span className="text-white text-sm lg:text-xl font-acid">{label}</span>
     </div>

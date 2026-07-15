@@ -40,11 +40,11 @@ function Card({ title, titleRight, children, className = '' }: { title: string; 
   return (
     <div className={`glass-card rounded-[1.16rem] overflow-hidden relative flex flex-col min-h-0 ${className}`}>
       <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[250px]" />
-      <div className="flex items-center justify-between px-[18px] py-5 border-b border-white/[0.04] relative z-[1] shrink-0">
+      <div className="flex items-center justify-between px-[18px] py-5 border-b border-white/[0.04] relative z-base shrink-0">
         <h3 className="text-white text-body1 font-normal">{title}</h3>
         {titleRight}
       </div>
-      <div className="relative z-[1] flex-1 min-h-0 overflow-y-auto">{children}</div>
+      <div className="relative z-base flex-1 min-h-0 overflow-y-auto">{children}</div>
     </div>
   )
 }
@@ -81,8 +81,8 @@ function LiveNewsCard() {
             <path d="M13 7l3-2v8l-3-2" stroke="#A0A0A0" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#ff4d6a] animate-pulse" />
-            <span className="text-[#ff4d6a] text-xs font-normal">LIVE</span>
+            <span className="w-2 h-2 rounded-full bg-gfx-danger animate-pulse" />
+            <span className="text-gfx-danger text-xs font-normal">LIVE</span>
           </div>
         </div>
       }
@@ -319,7 +319,7 @@ function TopMoversCard() {
                 </span>
                 <span className="text-white text-xs">{m.symbol}</span>
               </div>
-              <span className={`text-xs ${m.positive ? 'text-gfx-green-500' : 'text-[#ff4d6a]'}`}>
+              <span className={`text-xs ${m.positive ? 'text-gfx-green-500' : 'text-gfx-danger'}`}>
                 {m.change}
               </span>
             </div>
@@ -352,7 +352,7 @@ function ChevronDownIcon() {
 
 function EconEventRow() {
   return (
-    <div className="flex items-center gap-0 py-3 border-b border-[#09241C] last:border-0 pl-[23px] pr-5">
+    <div className="flex items-center gap-0 py-3 border-b border-gfx-green-900 last:border-0 pl-[23px] pr-5">
       <span className="text-white text-sm font-acid w-[86px] shrink-0">10:00</span>
       <span className="text-xl shrink-0 leading-[20px]">🇺🇸</span>
       <span className="text-white text-sm font-acid ml-[10px] shrink-0">US</span>
@@ -376,13 +376,13 @@ function EconomicCalendarCard() {
         <EconEventRow />
 
         {/* Date bar */}
-        <div className="flex items-center gap-[21px] px-[35px] py-[14px] bg-gfx-green-900">
+        <div className="flex items-center gap-[21px] px-[35px] py-3.5 bg-gfx-green-900">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="5" fill="#00B38C"/></svg>
-          <span className="text-white text-[16px] font-acid">Today, April 28</span>
+          <span className="text-white text-base font-acid">Today, April 28</span>
         </div>
 
         {/* Column headers */}
-        <div className="flex items-center border-b border-[#09241C] pl-6 pr-5 py-3.5">
+        <div className="flex items-center border-b border-gfx-green-900 pl-6 pr-5 py-3.5">
           <span className="text-gfx-neutral-300 text-sm font-acid w-[85px] shrink-0">Time</span>
           <span className="text-gfx-neutral-300 text-sm font-acid flex-1">Event</span>
           <span className="text-gfx-neutral-300 text-sm font-acid w-[55px] shrink-0">Act</span>
@@ -428,7 +428,7 @@ function TradeSessionsCard() {
               <span className={`px-2.5 py-0.5 rounded text-[0.625rem] font-normal ${
                 s.open
                   ? 'bg-gfx-green-500/15 text-gfx-green-500 border border-gfx-green-500/20'
-                  : 'bg-[#ff4d6a]/15 text-[#ff4d6a] border border-[#ff4d6a]/20'
+                  : 'bg-gfx-danger/15 text-gfx-danger border border-gfx-danger/20'
               }`}>
                 {s.open ? 'OPEN' : 'CLOSED'}
               </span>

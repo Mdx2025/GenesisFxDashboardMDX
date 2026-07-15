@@ -69,7 +69,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center transition-opacity duration-250"
+      className="fixed inset-0 z-overlay flex items-center justify-center transition-opacity duration-250"
       style={{ opacity: visible ? 1 : 0 }}
     >
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
