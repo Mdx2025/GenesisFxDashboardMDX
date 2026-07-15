@@ -271,7 +271,7 @@ function IdentityDetailCard() {
 
 function TradingFeaturesTable() {
   return (
-    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-2xl overflow-hidden px-10 pt-8 pb-6">
+    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-2xl overflow-hidden px-30 pt-8 pb-6">
       <h3 className="text-white text-2xl font-acid leading-normal mb-8">Verification – Trading</h3>
 
       <div className="flex items-center justify-between pb-4 border-b border-gfx-green-900">
@@ -310,7 +310,7 @@ function RewardsTab() {
           style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
           aria-hidden="true"
         />
-        <h3 className="text-white text-2xl font-acid leading-normal px-10 pt-10">My Rewards</h3>
+        <h3 className="text-white text-2xl font-acid leading-normal px-30 pt-10">My Rewards</h3>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="mt-4">
             <GiftIcon />
@@ -578,7 +578,7 @@ function ProfileTab() {
   return (
     <>
       <GlassCard className="mt-10 !rounded-lg">
-        <div className="px-20 pt-4 pb-10">
+        <div className="px-30 pt-4 pb-10">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
           <div className="grid grid-cols-2 gap-x-8 gap-y-6">
             <GlassInput label="First Name" placeholder="Joe" />
@@ -592,7 +592,7 @@ function ProfileTab() {
       </GlassCard>
 
       <GlassCard className="mt-8 !rounded-lg">
-        <div className="px-20 pt-4 pb-10">
+        <div className="px-30 pt-4 pb-10">
           <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
           <div className="grid grid-cols-2 gap-x-8">
             <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
@@ -608,11 +608,11 @@ function VerificationTab() {
   return (
     <>
       <GlassCard className="mt-10 !rounded-lg">
-        <div className="px-10 pt-8 pb-0">
+        <div className="px-30 pt-8 pb-0">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
           <VerificationStepper activeStep={0} />
         </div>
-        <div className="px-10 pb-10 pt-8">
+        <div className="px-30 pb-10 pt-8">
           <IdentityDetailCard />
         </div>
       </GlassCard>
