@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { GlassCard, GlassInput, ModeToggle } from '@/components/ui'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
@@ -54,6 +54,56 @@ function PammIcon() {
   )
 }
 
+function FileTextIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M4.16667 2.5C3.24619 2.5 2.5 3.24619 2.5 4.16667V15.8333C2.5 16.7538 3.24619 17.5 4.16667 17.5H15.8333C16.7538 17.5 17.5 16.7538 17.5 15.8333V4.16667C17.5 3.24619 16.7538 2.5 15.8333 2.5H4.16667ZM5.83333 6.66667H14.1667V5.83333H5.83333V6.66667ZM5.83333 10H14.1667V9.16667H5.83333V10ZM5.83333 13.3333H10.8333V12.5H5.83333V13.3333Z" fill="white" />
+    </svg>
+  )
+}
+
+function FolderCheckIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M2 4C2 2.89543 2.89543 2 4 2H6.34315C6.87358 2 7.38229 2.21071 7.75736 2.58579L8.58579 3.41421C8.96086 3.78929 9.46957 4 10 4H12C13.1046 4 14 4.89543 14 6V12C14 13.1046 13.1046 14 12 14H4C2.89543 14 2 13.1046 2 12V4ZM10.7071 8.70711L7.5 11.9142L5.29289 9.70711L6.70711 8.29289L7.5 9.08579L9.29289 7.29289L10.7071 8.70711Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+function UploadIcon() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <rect width="36" height="36" rx="8" fill="var(--color-gfx-green-900)" />
+      <path d="M18 12V24M18 12L13 17M18 12L23 17" stroke="var(--color-gfx-green-300)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function ClockIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M7 1.75C4.1005 1.75 1.75 4.1005 1.75 7C1.75 9.8995 4.1005 12.25 7 12.25C9.8995 12.25 12.25 9.8995 12.25 7C12.25 4.1005 9.8995 1.75 7 1.75ZM7.4375 4.375V6.8189L9.05923 8.44063L8.19077 9.30937L6.5625 7.6811V4.375H7.4375Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+function CloseSquareIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="var(--color-gfx-red-surface)" />
+      <path d="M9 9L15 15M15 9L9 15" stroke="var(--color-gfx-red-dark)" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function EyeScanIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M4 7C4 5.34315 5.34315 4 7 4H8V6H7C6.44772 6 6 6.44772 6 7V8H4V7ZM16 4H17C18.6569 4 20 5.34315 20 7V8H18V7C18 6.44772 17.5523 6 17 6H16V4ZM4 16V17C4 18.6569 5.34315 20 7 20H8V18H7C6.44772 18 6 17.5523 6 17V16H4ZM18 16V17C18 17.5523 17.5523 18 17 18H16V20H17C18.6569 20 20 18.6569 20 17V16H18ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
 interface ProfileBadgeProps {
   icon: React.ReactNode
   label: string
@@ -94,6 +144,202 @@ function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   )
 }
 
+const KYC_STEPS = [
+  { label: 'Identity', subtitle: 'Government-issued ID', icon: <FileTextIcon /> },
+  { label: 'Address', subtitle: 'Proof of residence', icon: <EyeScanIcon /> },
+  { label: 'Review', subtitle: 'Admin verification', icon: <EyeScanIcon /> },
+] as const
+
+const REQUIREMENTS = [
+  'Upload a valid passport, driver\'s license, or national ID card',
+  'Ensure all four corners are visible',
+  'Make sure text is clearly readable',
+  'File must be JPG, PNG, or PDF format',
+] as const
+
+const TRADING_FEATURES = [
+  'Trading Accounts (Lived)',
+  'Crypto Deposits',
+  'Crypto Withdrawals',
+  'Fiat Deposits',
+  'Fiat Withdrawals (Limits)',
+] as const
+
+function VerificationStepper({ activeStep = 0 }: { activeStep?: number }) {
+  return (
+    <div className="flex items-start justify-center gap-0">
+      {KYC_STEPS.map((step, i) => (
+        <div key={step.label} className="flex items-start">
+          <div className="flex flex-col items-center gap-2">
+            <div className={`w-[3.875rem] h-[3.875rem] rounded-full flex items-center justify-center ${
+              i <= activeStep
+                ? 'bg-gfx-green-200 border-2 border-gfx-green-300'
+                : 'bg-gfx-green-900 border-2 border-gfx-green-800'
+            }`}>
+              {step.icon}
+            </div>
+            <div className="text-center">
+              <p className={`text-base font-acid font-medium ${i <= activeStep ? 'text-white' : 'text-gfx-neutral-400'}`}>{step.label}</p>
+              <p className="text-gfx-neutral-400 text-sm font-acid">{step.subtitle}</p>
+            </div>
+          </div>
+          {i < KYC_STEPS.length - 1 && (
+            <div className={`w-[11.8125rem] h-px mt-[1.9375rem] mx-4 ${
+              i < activeStep ? 'bg-gfx-green-300' : 'bg-gfx-neutral-350'
+            }`} />
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function IdentityDetailCard() {
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [dragOver, setDragOver] = useState(false)
+
+  return (
+    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-2xl overflow-hidden">
+      <div className="flex">
+        {/* Left side — Identity info + Requirements */}
+        <div className="flex-1 p-10 border-r border-gfx-green-900/50">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-[3.875rem] h-[3.875rem] rounded-full bg-gfx-green-200 border-2 border-gfx-green-300 flex items-center justify-center">
+              <FileTextIcon />
+            </div>
+            <div>
+              <p className="text-white text-lg font-acid font-medium">Identity</p>
+              <p className="text-gfx-neutral-400 text-sm font-acid">Government-issued ID</p>
+            </div>
+          </div>
+
+          <p className="text-white text-lg font-acid font-medium mb-4">Requirements</p>
+          <div className="flex flex-col gap-4">
+            {REQUIREMENTS.map((req) => (
+              <div key={req} className="flex items-start gap-3">
+                <FolderCheckIcon />
+                <p className="text-gfx-neutral-500 text-sm font-acid leading-relaxed">{req}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 bg-gfx-green-900 rounded-[1.25rem] px-6 py-4">
+            <p className="text-gfx-neutral-500 text-sm font-acid leading-relaxed">
+              Tip: Take the photo in a well-lit area without glare or shadows
+            </p>
+          </div>
+        </div>
+
+        {/* Right side — Upload area */}
+        <div className="flex-1 p-10 flex flex-col">
+          <div className="flex items-center gap-4 mb-8">
+            <UploadIcon />
+            <div>
+              <p className="text-white text-lg font-acid font-medium">Upload Your Document</p>
+              <p className="text-gfx-neutral-400 text-sm font-acid">Drag and drop or click to browse</p>
+            </div>
+          </div>
+
+          <div
+            className={`flex-1 border-2 border-dashed rounded-xl flex flex-col items-center justify-center gap-4 cursor-pointer transition-colors ${
+              dragOver ? 'border-gfx-green-300 bg-gfx-green-200/10' : 'border-gfx-neutral-350'
+            }`}
+            onClick={() => fileInputRef.current?.click()}
+            onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+            onDragLeave={() => setDragOver(false)}
+            onDrop={(e) => { e.preventDefault(); setDragOver(false) }}
+          >
+            <input ref={fileInputRef} type="file" className="hidden" accept=".jpg,.jpeg,.png,.pdf" />
+            <button
+              type="button"
+              className="h-11 px-8 rounded-full bg-gfx-green-lightest text-black text-base font-acid font-medium cursor-pointer hover:bg-gfx-green-lightest-hover transition-colors"
+            >
+              Choose File
+            </button>
+            <p className="text-gfx-neutral-400 text-sm font-acid">JPG, PNG or PDF • Max 10MB</p>
+          </div>
+
+          <div className="mt-4 flex items-center gap-3 bg-gfx-green-900 rounded-[1.375rem] px-3 py-2.5 w-fit">
+            <ClockIcon />
+            <p className="text-gfx-neutral-500 text-sm font-acid">Verification typically takes within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TradingFeaturesTable() {
+  return (
+    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-2xl overflow-hidden px-10 pt-8 pb-6">
+      <h3 className="text-white text-2xl font-acid leading-normal mb-8">Verification – Trading</h3>
+
+      <div className="flex items-center justify-between pb-4 border-b border-gfx-green-900">
+        <span className="text-gfx-green-300 text-base font-acid font-medium">Features</span>
+        <span className="text-gfx-green-300 text-base font-acid font-medium">Allowed</span>
+      </div>
+
+      {TRADING_FEATURES.map((feature) => (
+        <div key={feature} className="flex items-center justify-between py-5 border-b border-gfx-green-900">
+          <span className="text-white text-base font-acid font-medium">{feature}</span>
+          <CloseSquareIcon />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ProfileTab() {
+  return (
+    <>
+      <GlassCard className="mt-10 !rounded-lg">
+        <div className="px-20 pt-4 pb-10">
+          <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+            <GlassInput label="First Name" placeholder="Joe" />
+            <GlassInput label="First Name" placeholder="Cedeno" />
+            <GlassInput label="Email Address" placeholder="joedoe@gmail.com" />
+            <GlassInput label="Phone Number" placeholder="88565242" />
+            <GlassInput label="Address" placeholder="3400 Ocee Street APT 1103" />
+            <GlassInput label="Country" placeholder="United states" />
+          </div>
+        </div>
+      </GlassCard>
+
+      <GlassCard className="mt-8 !rounded-lg">
+        <div className="px-20 pt-4 pb-10">
+          <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
+          <div className="grid grid-cols-2 gap-x-8">
+            <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
+            <KycStatusItem title="Proof of Address" subtitle="Not Submitted" />
+          </div>
+        </div>
+      </GlassCard>
+    </>
+  )
+}
+
+function VerificationTab() {
+  return (
+    <>
+      <GlassCard className="mt-10 !rounded-lg">
+        <div className="px-10 pt-8 pb-10">
+          <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
+          <VerificationStepper activeStep={0} />
+        </div>
+      </GlassCard>
+
+      <div className="mt-8">
+        <IdentityDetailCard />
+      </div>
+
+      <div className="mt-8">
+        <TradingFeaturesTable />
+      </div>
+    </>
+  )
+}
+
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState(0)
   const { sidebarOpen, setSidebarOpen } = useSidebar()
@@ -108,7 +354,7 @@ export default function SettingsPage() {
         ]}
       />
 
-      <div className="container mx-auto font-acid mt-[5%]">
+      <div className="w-6xl font-acid mt-[5%]">
       {/* Profile Header Card */}
       <div className="relative bg-gfx-green-800 border border-gfx-green-300/12 rounded-lg overflow-hidden">
         {/* Banner area */}
@@ -170,31 +416,8 @@ export default function SettingsPage() {
         />
       </div>
 
-      {/* Personal Information */}
-      <GlassCard className="mt-10 !rounded-lg">
-        <div className="px-20 pt-4 pb-10">
-          <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-            <GlassInput label="First Name" placeholder="Joe" />
-            <GlassInput label="First Name" placeholder="Cedeno" />
-            <GlassInput label="Email Address" placeholder="joedoe@gmail.com" />
-            <GlassInput label="Phone Number" placeholder="88565242" />
-            <GlassInput label="Address" placeholder="3400 Ocee Street APT 1103" />
-            <GlassInput label="Country" placeholder="United states" />
-          </div>
-        </div>
-      </GlassCard>
-
-      {/* KYC Status */}
-      <GlassCard className="mt-8 !rounded-lg">
-        <div className="px-20 pt-4 pb-10">
-          <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
-          <div className="grid grid-cols-2 gap-x-8">
-            <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
-            <KycStatusItem title="Proof of Address" subtitle="Not Submitted" />
-          </div>
-        </div>
-      </GlassCard>
+      {activeTab === 0 && <ProfileTab />}
+      {activeTab === 1 && <VerificationTab />}
       </div>
     </div>
   )
