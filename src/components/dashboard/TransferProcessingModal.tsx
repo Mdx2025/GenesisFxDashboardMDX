@@ -108,7 +108,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
+      className="fixed inset-0 z-modal flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-label="Transfer Processing"

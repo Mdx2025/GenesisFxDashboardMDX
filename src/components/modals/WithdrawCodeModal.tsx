@@ -99,7 +99,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
 
   return (
     <div
-      className="fixed inset-0 z-sticky flex items-center justify-center transition-opacity duration-250"
+      className="fixed inset-0 z-modal flex items-center justify-center transition-opacity duration-250"
       style={{ opacity: visible ? 1 : 0 }}
     >
       <div

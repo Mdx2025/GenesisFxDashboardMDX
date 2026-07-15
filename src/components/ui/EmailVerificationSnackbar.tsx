@@ -50,7 +50,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
   return (
     <div
       ref={ref}
-      className="fixed z-overlay top-6 left-1/2 -translate-x-1/2"
+      className="fixed z-toast top-6 left-1/2 -translate-x-1/2"
       role="status"
       aria-live="polite"
     >
