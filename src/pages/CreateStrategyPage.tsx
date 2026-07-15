@@ -166,7 +166,7 @@ export default function CreateStrategyPage() {
               <button
                 type="button"
                 onClick={() => navigate('/gensocial/pamm')}
-                className="w-[44px] h-[44px] rounded-full bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-[#0c2e22] transition-colors flex-shrink-0 mt-1"
+                className="w-[44px] h-[44px] rounded-full bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0 mt-1"
               >
                 <BackArrowIcon />
               </button>

@@ -73,7 +73,7 @@ export function CourseCard({ image, title, description, lessons, duration, level
       <div className="px-[27px] 3xl:px-[34px] 4xl:px-10 pt-[9px] 3xl:pt-[11px] 4xl:pt-[14px] pb-[27px] 3xl:pb-[34px] 4xl:pb-[40px]">
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-col gap-2">
-            <h3 className="text-white text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-tight">
+            <h3 className="text-white text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-tight">
               {title}
             </h3>
 

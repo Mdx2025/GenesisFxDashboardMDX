@@ -92,7 +92,7 @@ export default function KycPage() {
                   className="w-auto h-[120px] 3xl:h-[160px] 4xl:h-[220px] object-contain mb-10 3xl:mb-14 4xl:mb-16"
                 />
 
-                <h3 className="text-gfx-neutral-300 text-3xl xl:text-3xl 3xl:text-[2.625rem] 4xl:text-[3.5rem] font-normal text-center">
+                <h3 className="text-gfx-neutral-300 text-3xl xl:text-3xl 3xl:text-title-4xl 4xl:text-[3.5rem] font-normal text-center">
                   Choose Withdrawal Method
                 </h3>
 
@@ -100,7 +100,7 @@ export default function KycPage() {
                   Select your preferred withdrawal method to get started
                 </p>
 
-                <h4 className="text-gfx-neutral-300 text-2xl 3xl:text-3xl 4xl:text-[2.75rem] font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
+                <h4 className="text-gfx-neutral-300 text-2xl 3xl:text-3xl 4xl:text-subtitle-4xl font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
                   Cryptocurrency
                 </h4>
 

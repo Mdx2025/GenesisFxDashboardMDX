@@ -182,6 +182,12 @@
   --font-size-stat--line-height: 1.3;
   --font-size-tiny: 0.625rem;
   --font-size-tiny--line-height: 1.4;
+  --font-size-title-4xl: 2.625rem;
+  --font-size-title-4xl--line-height: 110%;
+  --font-size-subtitle-4xl: 2.75rem;
+  --font-size-subtitle-4xl--line-height: 110%;
+  --font-size-section-title: 2.5rem;
+  --font-size-section-title--line-height: 100%;
 }
 
 @layer base {
@@ -299,6 +305,9 @@
   .text-hero-lg { font-size: var(--font-size-hero-lg); line-height: var(--font-size-hero-lg--line-height); }
   .text-stat { font-size: var(--font-size-stat); line-height: var(--font-size-stat--line-height); }
   .text-tiny { font-size: var(--font-size-tiny); line-height: var(--font-size-tiny--line-height); }
+  .text-title-4xl { font-size: var(--font-size-title-4xl); line-height: var(--font-size-title-4xl--line-height); }
+  .text-subtitle-4xl { font-size: var(--font-size-subtitle-4xl); line-height: var(--font-size-subtitle-4xl--line-height); }
+  .text-section-title { font-size: var(--font-size-section-title); line-height: var(--font-size-section-title--line-height); }
 }
 
 ::-webkit-scrollbar { width: 4px; }

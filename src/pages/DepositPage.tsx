@@ -198,7 +198,7 @@ export default function DepositPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -241,7 +241,7 @@ export default function DepositPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Select Network
                     </h3>
 
@@ -264,7 +264,7 @@ export default function DepositPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Deposit Address
                     </h3>
 

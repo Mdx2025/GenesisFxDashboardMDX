@@ -104,7 +104,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
               }`}
             >
               <div
-                className={`absolute inset-0 rounded-full pointer-events-none border border-[#14b8a6] [mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+                className={`absolute inset-0 rounded-full pointer-events-none border border-gfx-green-300 [mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}
                 aria-hidden="true"
               />
               <div

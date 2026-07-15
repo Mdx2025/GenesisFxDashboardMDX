@@ -167,7 +167,7 @@ export function FollowStrategyModal({
           <div className="flex items-start gap-3 mt-4">
             <button
               onClick={() => setAgreed(!agreed)}
-              className={`flex-shrink-0 w-[13px] h-[13px] rounded-[2.4px] mt-1 cursor-pointer flex items-center justify-center transition-colors ${
+              className={`flex-shrink-0 w-[13px] h-[13px] rounded mt-1 cursor-pointer flex items-center justify-center transition-colors ${
                 agreed ? 'bg-gfx-green-300' : 'border border-gfx-neutral-250 bg-transparent'
               }`}
             >

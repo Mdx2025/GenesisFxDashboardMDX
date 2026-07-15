@@ -127,7 +127,7 @@ export default function WithdrawProcessingPage() {
           <div className="relative z-10 text-center max-w-[500px] 3xl:max-w-[700px] 4xl:max-w-[900px] w-full animate-[fadeInStep_0.5s_ease-out]">
             <HourglassIllustration />
 
-            <p className="text-gfx-neutral-500 text-2xl 3xl:text-3xl 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
+            <p className="text-gfx-neutral-500 text-2xl 3xl:text-3xl 4xl:text-subtitle-4xl font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
             <p className="text-white text-hero 3xl:text-6xl 4xl:text-[5.25rem] font-normal mt-2 leading-tight">
               {amount} {coin}
             </p>

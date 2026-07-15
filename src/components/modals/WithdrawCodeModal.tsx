@@ -177,7 +177,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
                     ? 'border-red-500'
                     : digit
                       ? 'border-gfx-green-500'
-                      : 'border-[#3d3d3d]'
+                      : 'border-gfx-neutral-350'
                 }`}
                 aria-label={`Digit ${i + 1}`}
               />

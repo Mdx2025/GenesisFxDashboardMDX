@@ -199,7 +199,7 @@ export function CopySubscriptionModal({
         <div className="w-[460px] flex-shrink-0 p-10 flex flex-col">
           {/* Profile */}
           <div className="flex items-center gap-4 mb-[32px]">
-            <div className="w-14 h-14 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 border border-[#222]">
+            <div className="w-14 h-14 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 border border-gfx-neutral-200">
               <span className="text-white text-sm font-acid font-medium">{traderInitials}</span>
             </div>
             <div>

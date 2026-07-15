@@ -235,7 +235,7 @@ export default function PammPage() {
             <GlassBannerCard>
               <div className="flex items-center justify-between gap-8">
                 <div>
-                  <h2 className="text-white text-[2.5rem] xl:text-5xl font-acid leading-none">Browse Strategies</h2>
+                  <h2 className="text-white text-section-title xl:text-5xl font-acid leading-none">Browse Strategies</h2>
                   <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
                     Invest with proven money managers. Browse PAMM strategies, pick a manager, and let your capital trade alongside theirs.
                   </p>

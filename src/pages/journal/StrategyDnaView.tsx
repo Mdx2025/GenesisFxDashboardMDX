@@ -172,7 +172,7 @@ function TraderPassportCard() {
             boxShadow: '0 0 0 6px rgba(168,85,247,0.12), 0 0 40px rgba(168,85,247,0.35)',
           }}
         >
-          <span className="text-white text-[2.8750rem] font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-white text-subtitle-4xl font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
             T
           </span>
         </div>
