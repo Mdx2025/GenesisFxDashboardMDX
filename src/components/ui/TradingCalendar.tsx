@@ -219,7 +219,7 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
                             {hasTradeData && (
                               <div className="text-center">
                                 <div className="flex items-center justify-center gap-1">
-                                  <span className={`text-[0.6875rem] font-bold ${isProfitable ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>
+                                  <span className={`text-xs font-bold ${isProfitable ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>
                                     {isProfitable ? '▲' : '▼'}
                                   </span>
                                   <span className={`text-sm ${isProfitable ? 'text-gfx-green-300' : 'text-gfx-red-muted'}`}>

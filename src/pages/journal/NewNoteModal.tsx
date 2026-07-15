@@ -123,7 +123,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           </div>
 
           {/* Form fields */}
-          <div className="flex flex-col gap-[1.125rem] mt-6">
+          <div className="flex flex-col gap-4.5 mt-6">
             {/* Note Type */}
             <GlassSelect
               label="Note Type"

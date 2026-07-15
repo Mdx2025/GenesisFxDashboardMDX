@@ -31,7 +31,7 @@ export function SecondaryButton({ children, onClick, className }: SecondaryButto
       <svg className="absolute left-[85%] top-[62%] opacity-50" width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
         <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#sec_sparkle)" />
       </svg>
-      <span className="relative flex items-center justify-center gap-2 text-gfx-neutral-550 text-base font-medium font-acid leading-6 z-10 px-[1.375rem]">
+      <span className="relative flex items-center justify-center gap-2 text-gfx-neutral-550 text-base font-medium font-acid leading-6 z-10 px-5.5">
         {children}
       </span>
       <svg className="absolute w-0 h-0" aria-hidden="true">

@@ -109,7 +109,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
       >
         {/* Modal background with decorative glows */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -137,7 +137,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
           </h2>
 
           {/* Subtitle with info icon + hover tooltip */}
-          <div className="flex justify-center mt-3 mb-[24px]">
+          <div className="flex justify-center mt-3 mb-6">
             <div className="flex items-center gap-1.5">
               <div className="relative group flex items-center">
                 <span className="cursor-pointer"><InfoIcon /></span>
@@ -177,7 +177,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
           </div>
 
           {/* Create Account button */}
-          <div className="mt-[44px]">
+          <div className="mt-11">
             <GlowButton
               label="Create Account"
               width="100%"

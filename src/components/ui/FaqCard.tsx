@@ -15,7 +15,7 @@ interface FaqCardProps {
 
 export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCardProps) {
   return (
-    <div className="rounded-3xl border border-gfx-neutral-250 bg-[#000705] px-8 py-7">
+    <div className="rounded-3xl border border-gfx-neutral-250 bg-gfx-sidebar px-8 py-7">
       <div className="flex items-center justify-between gap-6">
         <span className="text-lg 3xl:text-2xl 4xl:text-[2rem] text-white font-normal leading-[1.406rem] 3xl:leading-[1.875rem] 4xl:leading-[2.5rem]">{question}</span>
         <button
@@ -31,7 +31,7 @@ export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCar
         className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
-          <p className="pt-4 text-gfx-neutral-300 text-[0.9375rem] leading-relaxed">{answer}</p>
+          <p className="pt-4 text-gfx-neutral-300 text-base leading-relaxed">{answer}</p>
         </div>
       </div>
     </div>

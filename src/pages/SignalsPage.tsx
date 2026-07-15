@@ -243,7 +243,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
       }}
     >
-      <div className="flex flex-col gap-[1.0625rem] pt-[1.9375rem] pb-[2.1875rem] px-[1.5625rem]">
+      <div className="flex flex-col gap-4 pt-[1.9375rem] pb-9 px-[1.5625rem]">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[1.375rem]">
@@ -392,7 +392,7 @@ export default function SignalsPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
                     <h2 className="text-white text-[clamp(1.25rem,1rem+0.5vw,1.75rem)] font-acid leading-tight">Live Signal Feed</h2>
-                    <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-[0.6875rem] font-acid">
+                    <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-xs font-acid">
                       Online
                     </span>
                   </div>
@@ -420,7 +420,7 @@ export default function SignalsPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <p className="text-white text-base font-acid-medium leading-[24.44px]">Enable push notifications</p>
-                      <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-[0.6875rem] font-acid">
+                      <span className="inline-flex items-center h-[1.375rem] px-2.5 rounded-full bg-gfx-green-900 border border-gfx-green-300 text-gfx-green-300 text-xs font-acid">
                         Active
                       </span>
                     </div>

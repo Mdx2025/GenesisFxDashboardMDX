@@ -214,7 +214,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
           <StepBadge step={2} total={3} />
         </div>
 
-        <form className="w-full flex flex-col gap-[1.0625rem]" onSubmit={e => e.preventDefault()}>
+        <form className="w-full flex flex-col gap-4" onSubmit={e => e.preventDefault()}>
           <input type="email" placeholder="Email" autoComplete="email" aria-label="Email address" className={INPUT_CLASS} value={email} onChange={e => setEmail(e.target.value)} />
 
           <div className="w-full relative">
@@ -223,7 +223,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
               placeholder="Password"
               autoComplete="new-password"
               aria-label="Password"
-              className={`${INPUT_CLASS} pr-[3.25rem]`}
+              className={`${INPUT_CLASS} pr-13`}
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
@@ -238,7 +238,7 @@ function Step2({ accountType, showPassword, setShowPassword, showConfirmPassword
               placeholder="Confirm Password"
               autoComplete="new-password"
               aria-label="Confirm password"
-              className={`${INPUT_CLASS} pr-[3.25rem]`}
+              className={`${INPUT_CLASS} pr-13`}
               value={confirmPassword}
               onChange={e => setConfirmPassword(e.target.value)}
             />
@@ -281,7 +281,7 @@ function Step3Corporate({ onBack, onCreateAccount }: { onBack: () => void; onCre
           <StepBadge step={3} total={3} />
         </div>
 
-        <form className="w-full flex flex-col gap-[1.0625rem]" onSubmit={e => e.preventDefault()}>
+        <form className="w-full flex flex-col gap-4" onSubmit={e => e.preventDefault()}>
           <input type="text" placeholder="Company Name" aria-label="Company name" className={INPUT_CLASS} value={companyName} onChange={e => setCompanyName(e.target.value)} />
           <input type="text" placeholder="Registration Number" aria-label="Registration number" className={INPUT_CLASS} value={regNumber} onChange={e => setRegNumber(e.target.value)} />
           <GlassSelect options={BUSINESS_TYPE_OPTIONS} placeholder="Business Type" onChange={setBusinessType} />
@@ -320,7 +320,7 @@ function Step3Personal({ onBack, onCreateAccount }: { onBack: () => void; onCrea
           <StepBadge step={3} total={3} />
         </div>
 
-        <form className="w-full flex flex-col gap-[1.0625rem]" onSubmit={e => e.preventDefault()}>
+        <form className="w-full flex flex-col gap-4" onSubmit={e => e.preventDefault()}>
           <div className="flex flex-col sm:flex-row gap-[0.375rem]">
             <input type="text" placeholder="First Name" autoComplete="given-name" aria-label="First name" className={`flex-1 ${INPUT_CLASS}`} value={firstName} onChange={e => setFirstName(e.target.value)} />
             <input type="text" placeholder="Last Name" autoComplete="family-name" aria-label="Last name" className={`flex-1 ${INPUT_CLASS}`} value={lastName} onChange={e => setLastName(e.target.value)} />

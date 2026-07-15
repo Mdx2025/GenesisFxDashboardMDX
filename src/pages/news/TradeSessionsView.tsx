@@ -95,7 +95,7 @@ function SessionCard({ session }: { session: TradeSession }) {
 function ActiveSessionPill({ city }: { city: string }) {
   return (
     <div
-      className="inline-flex items-center gap-3.5 px-[18px] py-2.5 rounded-2xl backdrop-blur-[4.05px]"
+      className="inline-flex items-center gap-3.5 px-4.5 py-2.5 rounded-2xl backdrop-blur-[4.05px]"
       style={{
         background:
           'radial-gradient(ellipse 88.35% 307.01% at 65.73% 3.01%, rgba(8, 18, 15, 0.50) 19%, rgba(17, 31, 27, 0.50) 73%)',
@@ -164,7 +164,7 @@ export default function TradeSessionsView() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[430px_1fr_430px] gap-5 items-start px-4">
         {/* Header — full width on mobile, center column on desktop */}
         <div className="flex flex-col items-center text-center gap-4 lg:order-2 lg:pt-6 mb-6 lg:mb-0">
-          <h2 className="text-white text-4xl sm:text-5xl lg:text-[60px] font-acid leading-none">
+          <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-acid leading-none">
             Trading Sessions
           </h2>
           <p className="text-gfx-neutral-400 text-base font-acid font-medium">

@@ -66,7 +66,7 @@ function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
               <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="1.5" />
               <path d="M12 7v5l3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            <span className="text-white text-[13px] font-acid">{featuredEpisode.duration}</span>
+            <span className="text-white text-xs font-acid">{featuredEpisode.duration}</span>
           </div>
         </div>
 

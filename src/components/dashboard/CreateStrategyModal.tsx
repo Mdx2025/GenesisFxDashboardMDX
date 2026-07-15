@@ -210,12 +210,12 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
           style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
         >
           {/* Title */}
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-[50px] font-acid font-normal text-center leading-none">
+          <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-acid font-normal text-center leading-none">
             Create Copy Trading Strategy
           </h2>
 
           {/* Form */}
-          <div className="flex flex-col gap-[18px] mt-[24px]">
+          <div className="flex flex-col gap-[18px] mt-6">
 
             {/* Master Account Section */}
             <SectionHeader

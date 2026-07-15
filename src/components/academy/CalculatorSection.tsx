@@ -78,9 +78,9 @@ export function CalculatorSection() {
   ]
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.65rem] pt-10 xl:pt-16 pb-10">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-7 pt-10 xl:pt-16 pb-10">
       {/* Left Card — Position Size Calculator */}
-      <div className="calc-card rounded-xl p-[2.75rem] xl:p-[4.4375rem]">
+      <div className="calc-card rounded-xl p-11 xl:p-[4.4375rem]">
         <div className="flex items-start gap-5">
           <div className="w-[50px] h-[50px] rounded-sm bg-gfx-green-900 flex items-center justify-center shrink-0">
             <CodeScanIcon />
@@ -171,7 +171,7 @@ export function CalculatorSection() {
       </div>
 
       {/* Right Card — Calculation Breakdown */}
-      <div className="calc-card rounded-xl p-[2.75rem] xl:p-[4.4375rem]">
+      <div className="calc-card rounded-xl p-11 xl:p-[4.4375rem]">
         <div className="flex items-center gap-3 mb-10">
           <DangerIcon />
           <h2 className="text-white text-2xl font-acid">Calculation Breakdown</h2>
@@ -179,7 +179,7 @@ export function CalculatorSection() {
 
         <div className="flex flex-col gap-2.5">
           {breakdownRows.map(row => (
-            <div key={row.label} className="bg-gfx-green-900 rounded-xl px-[17px] py-3.5 h-[91px] flex flex-col justify-center">
+            <div key={row.label} className="bg-gfx-green-900 rounded-xl px-4 py-3.5 h-[91px] flex flex-col justify-center">
               <span className="text-gfx-neutral-400 text-xs font-acid font-bold uppercase tracking-[2.3px]">
                 {row.label}
               </span>
@@ -194,7 +194,7 @@ export function CalculatorSection() {
         </div>
 
         {/* Position Size Result */}
-        <div className="mt-8 calc-card rounded-lg px-[17px] py-3.5 h-[100px] flex flex-col justify-center">
+        <div className="mt-8 calc-card rounded-lg px-4 py-3.5 h-[100px] flex flex-col justify-center">
           <span className="text-gfx-green-300 text-xs font-acid">Position size</span>
           <span className="text-gfx-green-300 text-2xl font-acid mt-1">
             {result.positionSize.toFixed(2)} lots

@@ -219,7 +219,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                             <span className="text-white text-xs font-medium truncate">{n.title}</span>
                             {n.unread && <span className="w-1.5 h-1.5 rounded-full bg-gfx-green-300 shrink-0" />}
                           </div>
-                          <p className="text-gfx-neutral-300 text-[11px] leading-relaxed mt-0.5 line-clamp-2">{n.message}</p>
+                          <p className="text-gfx-neutral-300 text-xs leading-relaxed mt-0.5 line-clamp-2">{n.message}</p>
                           <span className="text-[#404040] text-[10px] mt-1 block">{n.time}</span>
                         </div>
                       </div>

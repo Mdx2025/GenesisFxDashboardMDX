@@ -340,7 +340,7 @@ export default function CopyTradingPage() {
         {/* Follower Tab — Empty State */}
         {activeTab === 1 && (
           <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-            <div className="flex flex-col items-center justify-center py-[3.75rem] px-8 min-h-[26.3125rem]">
+            <div className="flex flex-col items-center justify-center py-15 px-8 min-h-[26.3125rem]">
               <SubscriptionIcon />
               <h3 className="text-white text-2xl font-acid leading-normal mt-8">
                 No active Subscription
@@ -413,7 +413,7 @@ export default function CopyTradingPage() {
                 <div className="h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent" />
 
                 {/* Empty State */}
-                <div className="flex flex-col items-center justify-center py-[3.75rem] px-8">
+                <div className="flex flex-col items-center justify-center py-15 px-8">
                   <CourseUpIcon />
                   <h3 className="text-white text-2xl font-acid leading-normal mt-8">
                     No Strategies Created

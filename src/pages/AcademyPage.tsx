@@ -101,7 +101,7 @@ function GlossarySection() {
           onClick={() => setActiveLetter('All')}
           className={`h-[2.0625rem] px-[0.6875rem] rounded-full text-lg leading-[17.6px] font-normal cursor-pointer transition-colors ${
             activeLetter === 'All'
-              ? 'bg-gfx-green-300 text-[#021b13]'
+              ? 'bg-gfx-green-300 text-gfx-green-100'
               : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
           }`}
         >
@@ -113,7 +113,7 @@ function GlossarySection() {
             onClick={() => setActiveLetter(letter)}
             className={`w-[2.0625rem] h-[2.0625rem] rounded-full text-lg leading-[17.6px] font-normal cursor-pointer transition-colors flex items-center justify-center ${
               activeLetter === letter
-                ? 'bg-gfx-green-300 text-[#021b13]'
+                ? 'bg-gfx-green-300 text-gfx-green-100'
                 : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
             }`}
           >
@@ -123,7 +123,7 @@ function GlossarySection() {
       </div>
 
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[1.125rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4.5">
           {filtered.map(term => (
             <GlossaryCard key={term.id} term={term.term} definition={term.definition} />
           ))}

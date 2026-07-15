@@ -47,7 +47,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <form className="w-full flex flex-col gap-[1.125rem]" onSubmit={e => e.preventDefault()}>
+        <form className="w-full flex flex-col gap-4.5" onSubmit={e => e.preventDefault()}>
           <input
             type="email"
             placeholder="Email"
@@ -62,7 +62,7 @@ export default function LoginPage() {
               placeholder="Password"
               autoComplete="current-password"
               aria-label="Password"
-              className={`${INPUT_CLASS} pr-[3.25rem]`}
+              className={`${INPUT_CLASS} pr-13`}
             />
             <button
               type="button"

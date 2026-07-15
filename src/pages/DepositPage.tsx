@@ -277,8 +277,8 @@ export default function DepositPage() {
                               <filter id="deposit-glow-sm" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="50" /></filter>
                             </defs>
                           </svg>
-                          <div className="absolute w-[200px] h-[200px] -top-[30%] -right-[15%] rounded-full pointer-events-none bg-[#104030] opacity-40 [filter:url(#deposit-glow-lg)]" aria-hidden="true" />
-                          <div className="absolute w-[120px] h-[120px] -bottom-[20%] -left-[10%] rounded-full pointer-events-none bg-[#104030] opacity-30 [filter:url(#deposit-glow-sm)]" aria-hidden="true" />
+                          <div className="absolute w-[200px] h-[200px] -top-[30%] -right-[15%] rounded-full pointer-events-none bg-gfx-glow-green opacity-40 [filter:url(#deposit-glow-lg)]" aria-hidden="true" />
+                          <div className="absolute w-[120px] h-[120px] -bottom-[20%] -left-[10%] rounded-full pointer-events-none bg-gfx-glow-green opacity-30 [filter:url(#deposit-glow-sm)]" aria-hidden="true" />
                           <div className="relative z-10 p-5 flex flex-col sm:flex-row gap-5">
                             <div className="w-[9.8125rem] h-[9.9375rem] shrink-0 rounded-[0.3125rem] overflow-hidden">
                               <QrCodePlaceholder />

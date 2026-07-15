@@ -47,7 +47,7 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
 
           <div className="flex items-center gap-1.5">
             <ClockIcon />
-            <span className="text-gfx-neutral-400 text-[13px] font-normal">{readTime}</span>
+            <span className="text-gfx-neutral-400 text-xs font-normal">{readTime}</span>
           </div>
         </div>
       </div>

@@ -235,7 +235,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
     <div className="flex-1">
       {rows.map((row, i) => (
         <div key={row.label}>
-          <div className="flex items-center justify-between py-[1.1rem] px-[1.75rem]">
+          <div className="flex items-center justify-between py-4 px-[1.75rem]">
             <div className="flex items-center gap-2.5">
               <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">{row.label}</span>
               <StatInfoIcon />
@@ -254,7 +254,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
               )}
             </div>
           </div>
-          {i < rows.length - 1 && <div className="mx-[1.75rem] h-[0.61px] bg-gfx-green-900" />}
+          {i < rows.length - 1 && <div className="mx-7 h-[0.61px] bg-gfx-green-900" />}
         </div>
       ))}
     </div>
@@ -349,7 +349,7 @@ export default function CopyTradingDetailsPage() {
                     <p className="text-gfx-neutral-400 text-[0.625rem] font-acid uppercase tracking-wider">{stat.label}</p>
                     <InfoIcon />
                   </div>
-                  <p className={`${stat.valueColor || 'text-white'} text-[1.5625rem] font-acid leading-none mt-3`}>{stat.value}</p>
+                  <p className={`${stat.valueColor || 'text-white'} text-2xl font-acid leading-none mt-3`}>{stat.value}</p>
                 </div>
                 <div className="w-[2.625rem] h-[2.625rem] rounded-md bg-gfx-green-900 flex items-center justify-center">
                   {stat.icon}
@@ -368,7 +368,7 @@ export default function CopyTradingDetailsPage() {
                 <div>
                   <p className="text-gfx-neutral-400 text-[0.625rem] font-acid">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
-                    <span className="text-white text-[1.5625rem] font-acid">$3,000.30</span>
+                    <span className="text-white text-2xl font-acid">$3,000.30</span>
                     <span className="text-gfx-green-500 text-[0.625rem] font-acid">+$400.53 (194.12%)</span>
                   </div>
                 </div>
@@ -382,7 +382,7 @@ export default function CopyTradingDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-white text-[1.0625rem] font-acid">Trader Details</h3>
+                <h3 className="text-white text-base font-acid">Trader Details</h3>
               </div>
               <div className="flex flex-col">
                 {[
@@ -484,7 +484,7 @@ export default function CopyTradingDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-[1.125rem] h-[1.5rem] rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-[1.5rem] rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span></td>
                     <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openPrice}</span></td>

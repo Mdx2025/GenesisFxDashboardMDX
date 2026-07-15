@@ -104,7 +104,7 @@ function LeaderboardContent() {
       <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
       <div className="relative z-10 p-6">
         <div className="flex items-center gap-3">
-          <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Monthly Tier Leaderboard</h2>
+          <h2 className="text-lg font-bold tracking-tight text-white">Monthly Tier Leaderboard</h2>
           <Badge variant="status">April 2026</Badge>
         </div>
       </div>
@@ -171,7 +171,7 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
       <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
       <div className="relative z-10 p-6">
         <div className="flex items-center gap-3">
-          <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">10X Challenge Tiers</h2>
+          <h2 className="text-lg font-bold tracking-tight text-white">10X Challenge Tiers</h2>
           <Badge variant="status">April 2026</Badge>
         </div>
       </div>
@@ -203,7 +203,7 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
                 <td className="text-gfx-neutral-500 text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5">{row.maxDrawdown}</td>
                 <td className="py-4 xl:py-5">
                   {row.status === 'Active' ? (
-                    <span className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1 bg-gfx-green-100 border border-gfx-green-200 text-gfx-green-500">
+                    <span className="inline-flex items-center text-xs font-normal capitalize tracking-wider rounded-full px-3 py-1 bg-gfx-green-100 border border-gfx-green-200 text-gfx-green-500">
                       Active
                     </span>
                   ) : (
@@ -345,7 +345,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
     >
       <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-2xl overflow-hidden">
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -542,7 +542,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-lg overflow-hidden">
         {/* Background layer */}
         <div
-          className="absolute inset-0 pointer-events-none bg-[#000705] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 pointer-events-none bg-gfx-sidebar shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -583,7 +583,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Two panels */}
             <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
-            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
+            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
               <GlowEllipse className="left-[36px] -top-[220px]" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
@@ -630,7 +630,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             </div>
 
             {/* Right — Account Preview */}
-            <div className="relative flex-1 overflow-hidden rounded-lg bg-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
+            <div className="relative flex-1 overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-2xl mb-2">Account Preview</h3>
 

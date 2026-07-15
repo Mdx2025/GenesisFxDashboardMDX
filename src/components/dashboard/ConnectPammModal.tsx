@@ -181,13 +181,13 @@ export function ConnectPammModal({
             <h2 className="text-white text-4xl font-acid font-normal">Connect to PAMM</h2>
 
             {/* Available Balance */}
-            <div className="mt-[38px] h-[50px] rounded-2xl bg-gfx-green-100 border border-[#404040] flex items-center justify-between px-[18px]">
+            <div className="mt-10 h-[50px] rounded-2xl bg-gfx-green-100 border border-[#404040] flex items-center justify-between px-4.5">
               <span className="text-gfx-neutral-400 text-base font-acid">Available Balance</span>
               <span className="text-white text-base font-acid">{availableBalance}</span>
             </div>
 
             {/* Investment Input */}
-            <div className="mt-[35px]">
+            <div className="mt-9">
               <GlassInput
                 label="Investment"
                 type="number"
@@ -206,7 +206,7 @@ export function ConnectPammModal({
             </div>
 
             {/* Checkboxes */}
-            <div className="mt-[38px] flex flex-col gap-[20px]">
+            <div className="mt-10 flex flex-col gap-5">
               <label className="flex items-start gap-3.5 cursor-pointer">
                 <button
                   onClick={() => setAgreedTerms(!agreedTerms)}
@@ -245,7 +245,7 @@ export function ConnectPammModal({
             </div>
 
             {/* Invest Now button */}
-            <div className="mt-[38px]">
+            <div className="mt-10">
               <GlowButton
                 label="Invest Now"
                 width="100%"

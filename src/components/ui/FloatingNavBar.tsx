@@ -99,7 +99,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
               aria-current={isActive ? 'page' : undefined}
               className={`relative flex items-center rounded-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 overflow-hidden will-change-transform transition-[padding,gap,background-color,color] duration-[400ms] ease-[cubic-bezier(0.4,0,0.15,1)] ${
                 isActive
-                  ? 'text-white bg-[rgba(20,184,166,0.2)] py-[10px] pr-[18px] pl-[12px] gap-[8px]'
+                  ? 'text-white bg-[rgba(20,184,166,0.2)] py-[10px] pr-[18px] pl-[12px] gap-2'
                   : 'text-gfx-neutral-300 hover:text-white bg-transparent p-[10px] gap-0'
               }`}
             >
@@ -111,7 +111,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
                 className={`absolute pointer-events-none w-[98px] h-[45px] left-1/2 -translate-x-1/2 bottom-[-20px] bg-[#55FFC7] rounded-full [filter:url(#blur-20)] transition-opacity duration-300 ${isActive ? 'opacity-30' : 'opacity-0'}`}
                 aria-hidden="true"
               />
-              <div className={`absolute w-px h-px rounded-full bg-white pointer-events-none z-base right-[8px] top-[8px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
+              <div className={`absolute w-px h-px rounded-full bg-white pointer-events-none z-base right-[8px] top-2 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <div className={`absolute w-px h-px rounded-full bg-white/50 pointer-events-none z-base right-[16px] bottom-[6px] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[30%] top-[4px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />
               <div className={`absolute w-px h-px rounded-full pointer-events-none z-base left-[60%] bottom-[4px] bg-gfx-neutral-550 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true" />

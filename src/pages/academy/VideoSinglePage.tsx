@@ -75,7 +75,7 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full h-[3.8125rem] rounded-md overflow-hidden flex items-start gap-3 px-[0.8125rem] py-[0.75rem] cursor-pointer transition-colors text-left ${
+      className={`relative w-full h-[3.8125rem] rounded-md overflow-hidden flex items-start gap-3 px-[0.8125rem] py-3 cursor-pointer transition-colors text-left ${
         isActive
           ? 'bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.3)]'
           : 'hover:bg-gfx-green-800/50'
@@ -173,7 +173,7 @@ export default function VideoSinglePage() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col min-w-0 px-4 xl:px-0 xl:pr-5 2xl:pr-7 3xl:pr-10 4xl:pr-14 pb-4">
             {/* Video Player */}
-            <div className="relative w-full rounded-[1.75rem] overflow-hidden bg-gfx-green-800 aspect-video">
+            <div className="relative w-full rounded-2xl overflow-hidden bg-gfx-green-800 aspect-video">
               <div className="absolute inset-0 bg-gradient-to-br from-[#1a3a4a] to-[#0c2030]" />
               <VideoPlayerControls />
             </div>
@@ -227,7 +227,7 @@ export default function VideoSinglePage() {
         {/* Fixed Bottom Bar */}
         <div className="shrink-0 border-t border-gfx-neutral-250 bg-gfx-green-800 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14">
           <div className="flex items-center justify-between h-[5.5rem] gap-4">
-            <SparkleButton onClick={() => setActiveLesson(prev => Math.max(1, prev - 1))} className="px-[1.375rem] shrink-0">
+            <SparkleButton onClick={() => setActiveLesson(prev => Math.max(1, prev - 1))} className="px-5.5 shrink-0">
               <ChevronLeftIcon /> Previous Lesson
             </SparkleButton>
 

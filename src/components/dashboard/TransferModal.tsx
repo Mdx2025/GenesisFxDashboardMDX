@@ -130,7 +130,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
 
         {/* Inner glass card */}
         <div
-          className="relative mx-auto w-[701px] max-w-[90%] mt-[35px] mb-[46px]"
+          className="relative mx-auto w-[701px] max-w-[90%] mt-9 mb-[46px]"
         >
           {/* Card background with glows (clipped) */}
           <div

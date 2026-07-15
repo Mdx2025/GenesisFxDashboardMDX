@@ -80,11 +80,11 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="flex items-start p-8 h-[198px]">
         <div className="shrink-0 w-[70px] h-[70px] rounded-full border border-gfx-green-300 flex items-center justify-center">
-          <span className="text-gfx-green-500 text-[35px] font-acid">{episode.id}</span>
+          <span className="text-gfx-green-500 text-4xl font-acid">{episode.id}</span>
         </div>
 
         <div className="flex flex-col gap-2 flex-1 min-w-0 ml-6">
-          <span className="text-white text-[21px] font-acid">{episode.date}</span>
+          <span className="text-white text-xl font-acid">{episode.date}</span>
           <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px] max-w-[362px]">
             {episode.description}
           </p>
@@ -195,7 +195,7 @@ export default function PodcastView() {
               <span className="text-gfx-neutral-600 text-base font-acid">5 episodes</span>
             </div>
 
-            <h2 className="text-white text-2xl sm:text-3xl lg:text-[52px] font-acid leading-none">Deep Dive Podcast</h2>
+            <h2 className="text-white text-2xl sm:text-3xl lg:text-5xl font-acid leading-none">Deep Dive Podcast</h2>
 
             <p className="text-gfx-neutral-400 text-sm sm:text-base font-acid leading-relaxed max-w-full lg:max-w-[725px]">
               Your daily dose of market clarity. The Deep Dive delivers sharp insights on stocks, crypto, commodities, and global trends—cutting through the noise to bring you what matters.

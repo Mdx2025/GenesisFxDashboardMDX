@@ -155,7 +155,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
         stat.active ? 'border border-gfx-green-300 weekly-stat-active' : 'weekly-stat-inactive'
       }`}
     >
-      <div className="h-full px-[1.375rem] py-[0.8750rem]">
+      <div className="h-full px-5.5 py-[0.8750rem]">
         <div className="flex flex-col gap-1.5">
           <div className="flex justify-between items-center">
             <p className="text-gfx-neutral-400 text-base font-acid font-medium">{stat.day}</p>
@@ -255,7 +255,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
           {news.map((event, i) => (
             <div key={i} className="flex items-center gap-4 px-4 h-[4.25rem] border-t border-white/5">
               <div className="w-[2.9375rem] h-[3rem] rounded-lg bg-gfx-red-surface flex items-center justify-center flex-shrink-0">
-                <span className="text-gfx-red-muted text-[1.0625rem] font-acid">{event.countryCode}</span>
+                <span className="text-gfx-red-muted text-base font-acid">{event.countryCode}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white text-base font-acid font-medium">{event.title}</p>

@@ -155,7 +155,7 @@ export function CopySubscriptionModal({
                   key={mode.id}
                   type="button"
                   onClick={() => setLotMode(mode.id)}
-                  className={`h-20 rounded-sm text-left px-[17px] flex flex-col justify-center cursor-pointer transition-colors ${
+                  className={`h-20 rounded-sm text-left px-4 flex flex-col justify-center cursor-pointer transition-colors ${
                     lotMode === mode.id
                       ? 'bg-gfx-green-900 border border-gfx-green-300'
                       : 'bg-gfx-green-800 border border-gfx-green-900 hover:border-gfx-green-200'
@@ -175,10 +175,10 @@ export function CopySubscriptionModal({
           {/* Subscription Amount */}
           <div className="mb-10">
             <div className="flex items-center gap-1.5 mb-[12.5px]">
-              <label className="text-white text-[0.9375rem] font-semibold leading-[22.5px]" style={{ fontFamily: 'Inter, sans-serif' }}>Subscription Amount</label>
+              <label className="text-white text-base font-semibold leading-[22.5px]" style={{ fontFamily: 'Inter, sans-serif' }}>Subscription Amount</label>
               <InfoIcon color="#808080" />
             </div>
-            <div className="h-[62px] rounded-sm bg-gfx-green-900 flex items-center justify-between px-[17px]">
+            <div className="h-[62px] rounded-sm bg-gfx-green-900 flex items-center justify-between px-4">
               <span className="text-gfx-neutral-500 text-sm font-acid leading-[18.8px]">Account Balance</span>
               <span className="text-white text-sm font-acid leading-[18.8px]">$0.00</span>
             </div>
@@ -210,11 +210,11 @@ export function CopySubscriptionModal({
 
           {/* AUM / ROI stat cards */}
           <div className="flex gap-4 mb-[32px]">
-            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
+            <div className="flex-1 py-4 px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
               <span className="text-gfx-green-300 text-xs font-acid leading-[18.8px]">AUM</span>
               <span className="text-gfx-green-300 text-base font-acid font-medium leading-[24.44px] mt-2">{aum}</span>
             </div>
-            <div className="flex-1 py-[17px] px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
+            <div className="flex-1 py-4 px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
               <span className="text-gfx-green-300 text-xs font-acid leading-[18.8px]">ROI</span>
               <span className="text-gfx-green-300 text-base font-acid font-medium leading-[24.44px] mt-2">{roi}</span>
             </div>

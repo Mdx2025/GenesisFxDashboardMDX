@@ -100,7 +100,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
   const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
-      <div className="relative pt-[1.9375rem] pb-[2.1875rem] pl-[1.5625rem] pr-[1.5rem] flex flex-col items-center gap-[1.375rem]">
+      <div className="relative pt-[1.9375rem] pb-9 pl-[1.5625rem] pr-[1.5rem] flex flex-col items-center gap-[1.375rem]">
         {/* Header: Avatar + Name + Verified + Stats */}
         <div className="flex items-start gap-3 w-full">
           <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
@@ -159,13 +159,13 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
 
         {/* Action Buttons */}
         <div className="flex gap-3 w-full px-6">
-          <SparkleButton className="px-[1.375rem] flex-1" onClick={() => navigate('/gensocial/pamm/details-single-page')}>
+          <SparkleButton className="px-5.5 flex-1" onClick={() => navigate('/gensocial/pamm/details-single-page')}>
             <span className="flex items-center justify-center gap-2">
               <span>Details</span>
               <ChevronRightIcon size={27} color="#c6c6c6" />
             </span>
           </SparkleButton>
-          <SparkleButton className="px-[1.375rem] flex-1">
+          <SparkleButton className="px-5.5 flex-1">
             <span className="flex items-center justify-center gap-2">
               <span>Connect</span>
               <ChevronRightIcon size={27} color="#c6c6c6" />
@@ -378,7 +378,7 @@ export default function PammPage() {
               <div className="relative flex items-center justify-between h-full px-8">
                 <div className="flex items-center gap-5">
                   <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-[1.0625rem] font-acid">M</span>
+                    <span className="text-white text-base font-acid">M</span>
                   </div>
                   <div>
                     <p className="text-white text-2xl font-acid">marcelo cedeno</p>
@@ -419,7 +419,7 @@ export default function PammPage() {
 
             {/* Manager Dashboard Header */}
             <div className="flex items-center justify-between">
-              <h2 className="text-white text-[1.5625rem] font-acid leading-none">Manager Dashboard</h2>
+              <h2 className="text-white text-2xl font-acid leading-none">Manager Dashboard</h2>
               <SearchInput
                 placeholder="Search strategies"
                 value={searchQuery}

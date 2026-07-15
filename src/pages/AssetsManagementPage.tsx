@@ -282,7 +282,7 @@ export default function AssetsManagementPage() {
               <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-[1.1875rem] font-bold tracking-tight text-white">Assets History</h2>
+                  <h2 className="text-lg font-bold tracking-tight text-white">Assets History</h2>
                   <Badge variant="status">Total ({filteredTransactions.length} records)</Badge>
                 </div>
               </div>
@@ -332,7 +332,7 @@ export default function AssetsManagementPage() {
                           <td className="text-white text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5"><time>{tx.date}</time></td>
                           <td className="py-4 xl:py-5">
                             <span
-                              className="inline-flex items-center text-[0.6875rem] font-normal capitalize tracking-wider rounded-full px-3 py-1"
+                              className="inline-flex items-center text-xs font-normal capitalize tracking-wider rounded-full px-3 py-1"
                               style={{ background: status.bg, border: status.border, color: status.color }} /* dynamic */
                             >
                               {tx.status}

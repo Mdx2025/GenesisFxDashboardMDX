@@ -134,7 +134,7 @@ export function ManageSubscriptionModal({
           {/* Close button */}
           <button
             onClick={handleClose}
-            className="absolute z-20 cursor-pointer hover:opacity-80 transition-opacity right-[24px] top-[24px]"
+            className="absolute z-20 cursor-pointer hover:opacity-80 transition-opacity right-[24px] top-6"
             aria-label="Close modal"
           >
             <CloseIcon />

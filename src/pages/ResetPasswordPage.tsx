@@ -60,14 +60,14 @@ export default function ResetPasswordPage() {
             Reset Your Password
           </h1>
 
-          <div className="w-full max-w-[34.125rem] mt-[5.625rem] flex flex-col gap-[1.125rem]">
+          <div className="w-full max-w-[34.125rem] mt-[5.625rem] flex flex-col gap-4.5">
             <div className="w-full relative">
               <input
                 type={showNew ? 'text' : 'password'}
                 placeholder="New Password"
                 autoComplete="new-password"
                 aria-label="New password"
-                className={`${INPUT_CLASS} pr-[3.25rem]`}
+                className={`${INPUT_CLASS} pr-13`}
                 value={newPassword}
                 onChange={e => setNewPassword(e.target.value)}
               />
@@ -87,7 +87,7 @@ export default function ResetPasswordPage() {
                 placeholder="Repeat Password"
                 autoComplete="new-password"
                 aria-label="Repeat password"
-                className={`${INPUT_CLASS} pr-[3.25rem]`}
+                className={`${INPUT_CLASS} pr-13`}
                 value={confirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
               />

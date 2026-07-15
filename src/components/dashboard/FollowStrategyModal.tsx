@@ -84,7 +84,7 @@ export function FollowStrategyModal({
     >
       <div
         ref={modalRef}
-        className="relative w-[510px] max-w-[95vw] bg-gfx-green-800 rounded-[22px] border border-gfx-green-800 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden"
+        className="relative w-[510px] max-w-[95vw] bg-gfx-green-800 rounded-[22px] border border-gfx-green-800 shadow-md overflow-hidden"
       >
         {/* Close button */}
         <button
@@ -119,7 +119,7 @@ export function FollowStrategyModal({
           <div className="w-full h-px bg-gfx-neutral-250 mt-[22px]" />
 
           {/* Subscription Fees */}
-          <p className="text-white text-xs font-acid leading-[18.8px] mt-[24px]">Subscription Fees</p>
+          <p className="text-white text-xs font-acid leading-[18.8px] mt-6">Subscription Fees</p>
 
           <div className="border border-gfx-neutral-250 rounded-md mt-3 overflow-hidden">
             {/* Monthly subscription */}
@@ -149,7 +149,7 @@ export function FollowStrategyModal({
           </div>
 
           {/* Legal notice */}
-          <div className="flex gap-[12px] mt-[20px]">
+          <div className="flex gap-3 mt-5">
             <div className="flex-shrink-0 mt-[2px]">
               <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
                 <path d="M16 2H2C0.9 2 0 2.9 0 4V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V4C18 2.9 17.1 2 16 2ZM16 16H2V4H16V16Z" fill="#00b38c"/>
@@ -164,7 +164,7 @@ export function FollowStrategyModal({
           </div>
 
           {/* Checkbox */}
-          <div className="flex items-start gap-[12px] mt-[16px]">
+          <div className="flex items-start gap-3 mt-4">
             <button
               onClick={() => setAgreed(!agreed)}
               className={`flex-shrink-0 w-[13px] h-[13px] rounded-[2.4px] mt-1 cursor-pointer flex items-center justify-center transition-colors ${
