@@ -361,7 +361,6 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
   return (
     <div
       className="bg-[#0C1311] rounded-[1.875rem] flex items-start gap-5 px-5 py-6"
-      style={{ boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)' }}
     >
       <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
         {icon}
@@ -378,7 +377,7 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
 function SupportTab() {
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
-      <div className="relative overflow-hidden px-10 pt-10 pb-10">
+      <div className="relative overflow-hidden px-30 pt-10 pb-10">
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
           style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
