@@ -94,7 +94,7 @@ export default function NewFolderModal({ open, onClose, onSave }: NewFolderModal
         </button>
 
         {/* Title */}
-        <h2 className="relative text-white text-[2rem] font-acid font-normal text-center mb-[1.875rem]">
+        <h2 className="relative text-white text-3xl font-acid font-normal text-center mb-[1.875rem]">
           Create a New Folder
         </h2>
 

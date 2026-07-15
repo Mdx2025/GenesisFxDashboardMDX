@@ -38,7 +38,7 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
   const actualColorClass = event.actualColor === 'red' ? 'text-gfx-red-muted' : 'text-[#37c92e]'
 
   return (
-    <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[62px] border-b border-white/[0.04]`}>
+    <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-15 h-[62px] border-b border-white/[0.04]`}>
       <span className="text-white text-sm lg:text-xl font-acid">{event.time}</span>
 
       <div className="flex items-center gap-2 lg:gap-3">
@@ -76,7 +76,7 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
 
 function DateHeader({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-[60px] h-[56px] lg:h-[68px] bg-gfx-green-900">
+    <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-15 h-[56px] lg:h-[68px] bg-gfx-green-900">
       <GreenDot size={10} />
       <span className="text-white text-sm lg:text-xl font-acid">{label}</span>
     </div>
@@ -87,7 +87,7 @@ function DateHeader({ label }: { label: string }) {
 
 function ColumnHeaders() {
   return (
-    <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-[60px] h-[48px] lg:h-[56px] border-b border-white/[0.04]`}>
+    <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-15 h-[48px] lg:h-[56px] border-b border-white/[0.04]`}>
       {['Time', 'Country', 'Impact', 'Event', 'Actual', 'Forecast', 'Prior'].map(col => (
         <span key={col} className="text-gfx-neutral-300 text-xs lg:text-xl font-acid">{col}</span>
       ))}

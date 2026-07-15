@@ -11,7 +11,7 @@ function Toggle({ enabled, onChange }: { enabled: boolean; onChange: (v: boolean
     <button
       type="button"
       onClick={() => onChange(!enabled)}
-      className={`relative w-[44px] h-[22px] rounded-[60px] transition-colors cursor-pointer flex-shrink-0 ${
+      className={`relative w-[44px] h-[22px] rounded-full transition-colors cursor-pointer flex-shrink-0 ${
         enabled ? 'bg-[#40c99c]' : 'bg-gfx-green-900'
       }`}
     >

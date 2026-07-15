@@ -66,7 +66,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
           )}
 
           <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-white text-2xl sm:text-3xl lg:text-5xl font-acid font-normal leading-[1.05]">{article.title}</h2>
+          <h2 className="text-white text-2xl sm:text-3xl lg:text-5xl font-acid font-normal leading-none">{article.title}</h2>
 
           <p className="text-gfx-neutral-400 text-sm sm:text-base font-acid mt-4 leading-normal max-w-full lg:max-w-[470px]">
             {article.description}
@@ -116,7 +116,7 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
             </span>
           </div>
 
-          <h3 className="text-white text-xl sm:text-2xl lg:text-4xl font-acid font-normal leading-[1.1] max-w-full lg:max-w-[535px]">
+          <h3 className="text-white text-xl sm:text-2xl lg:text-4xl font-acid font-normal leading-tight max-w-full lg:max-w-[535px]">
             {article.title}
           </h3>
 

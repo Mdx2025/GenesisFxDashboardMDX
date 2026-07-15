@@ -38,7 +38,7 @@ function LiveStreamIcon() {
 
 function Card({ title, titleRight, children, className = '' }: { title: string; titleRight?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <div className={`glass-card rounded-[1.16rem] overflow-hidden relative flex flex-col min-h-0 ${className}`}>
+    <div className={`glass-card rounded-lg overflow-hidden relative flex flex-col min-h-0 ${className}`}>
       <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[250px]" />
       <div className="flex items-center justify-between px-4.5 py-5 border-b border-white/[0.04] relative z-base shrink-0">
         <h3 className="text-white text-body1 font-normal">{title}</h3>
@@ -287,7 +287,7 @@ function NewsFeedCard() {
         {items.map((item, i) => (
           <div key={i} className="grid grid-cols-[3.5rem_1fr_4.5rem_2.5rem] gap-x-3 items-center py-3 border-b border-white/[0.04] last:border-0">
             <div className="flex items-center gap-1.5">
-              <span className="w-5 h-[2px] bg-gfx-neutral-500" />
+              <span className="w-5 h-0.5 bg-gfx-neutral-500" />
               <span className="text-gfx-neutral-500 text-xs">{item.bias}</span>
             </div>
             <span className="text-white text-xs truncate">{item.headline}</span>
@@ -354,7 +354,7 @@ function EconEventRow() {
   return (
     <div className="flex items-center gap-0 py-3 border-b border-gfx-green-900 last:border-0 pl-[23px] pr-5">
       <span className="text-white text-sm font-acid w-[86px] shrink-0">10:00</span>
-      <span className="text-xl shrink-0 leading-[20px]">🇺🇸</span>
+      <span className="text-xl shrink-0 leading-5">🇺🇸</span>
       <span className="text-white text-sm font-acid ml-[10px] shrink-0">US</span>
       <span className="shrink-0 ml-[14px]"><ChartBarsIcon /></span>
       <span className="text-white text-sm font-acid ml-[22px] shrink-0">Riyad Bank  PMI</span>

@@ -155,7 +155,7 @@ function TraderPassportCard() {
         <div className="flex justify-between items-center w-full">
           <div className="flex items-center gap-2">
             <SparkleIcon />
-            <span className="text-xs text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+            <span className="text-xs text-gfx-purple-accent uppercase tracking-[2.32px] font-acid font-bold">
               Trader Passport
             </span>
           </div>
@@ -187,7 +187,7 @@ function TraderPassportCard() {
 
         {/* Archetype box */}
         <div className="w-full rounded-full bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
-          <span className="text-xs text-gfx-purple-accent uppercase tracking-[2.3px] font-acid font-bold">
+          <span className="text-xs text-gfx-purple-accent uppercase tracking-[2.32px] font-acid font-bold">
             &#10022; ARCHETYPE
           </span>
           <span className="text-2xl text-white font-acid">{p.archetype}</span>
@@ -214,7 +214,7 @@ function TraderPassportCard() {
         {/* XP Progress */}
         <div className="w-full flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.3px]">
+            <span className="text-xs text-gfx-purple-accent font-acid font-bold uppercase tracking-[2.32px]">
               XP Progress
             </span>
             <span className="text-xs text-gfx-neutral-400 font-acid">
@@ -253,7 +253,7 @@ function TraderPassportCard() {
           }}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gfx-amber font-acid font-bold uppercase tracking-[2.3px]">
+            <span className="text-xs text-gfx-amber font-acid font-bold uppercase tracking-[2.32px]">
               &#128293; Daily Streak
             </span>
           </div>
@@ -292,7 +292,7 @@ function StatCard({ stat, glowCorner }: { stat: DnaStat; glowCorner: 'top-left' 
     <GlassCard variant="purple" divider="none" rounded="20px" className="h-[8.3125rem]" glow={false}>
       <GlowEllipse variant="purple" className={ellipsePos} />
       <div className="relative p-[1.375rem] h-full flex flex-col justify-between">
-        <span className="text-xs text-gfx-neutral-400 uppercase tracking-[2.3px] font-acid font-bold">
+        <span className="text-xs text-gfx-neutral-400 uppercase tracking-[2.32px] font-acid font-bold">
           {stat.label}
         </span>
         <div className="flex items-baseline gap-0.5">
@@ -477,7 +477,7 @@ function AiStrategySummaryCard() {
 
         {/* Body */}
         <p
-          className="text-gfx-neutral-400 leading-[1.5rem]"
+          className="text-gfx-neutral-400 leading-6"
           style={{ fontSize: '14.5px', fontFamily: 'Inter, sans-serif' }}
         >
           {aiStrategySummary}

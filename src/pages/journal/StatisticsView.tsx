@@ -304,7 +304,7 @@ function AvgPnlByDayChart() {
         </div>
 
         <div className="flex">
-          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.3px] h-[16.1250rem]">
+          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-[2.32px] h-[16.1250rem]">
             {Y_LABELS.map(l => <span key={l}>{l}</span>)}
           </div>
 

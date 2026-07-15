@@ -55,7 +55,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
       aria-live="polite"
     >
       <div
-        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden rounded-[1.16rem] bg-gfx-green-800 font-acid shadow-md outline outline-[1.16px] -outline-offset-[1.16px] outline-gfx-green-800"
+        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden rounded-lg bg-gfx-green-800 font-acid shadow-md outline outline-1 -outline-offset-[1.16px] outline-gfx-green-800"
       >
         {/* Decorative glows */}
         <div className="absolute pointer-events-none w-[587px] h-[435px] left-[477px] top-[-281px] rotate-[48deg] origin-top-left bg-gfx-green-200 rounded-full blur-[157px]" aria-hidden="true" />
@@ -66,7 +66,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
         <div className="absolute left-4 top-0 w-[calc(100%-2rem)] h-[1.25px] bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)]" aria-hidden="true" />
 
         {/* Content */}
-        <div className="relative z-10 px-[1.4375rem] py-[2rem] flex flex-col gap-1">
+        <div className="relative z-10 px-6 py-[2rem] flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <span className="text-white text-base font-medium leading-[1.525rem]">Check your email</span>
             <EmailIcon />

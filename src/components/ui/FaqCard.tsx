@@ -17,7 +17,7 @@ export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCar
   return (
     <div className="rounded-3xl border border-gfx-neutral-250 bg-gfx-sidebar px-8 py-7">
       <div className="flex items-center justify-between gap-6">
-        <span className="text-lg 3xl:text-2xl 4xl:text-[2rem] text-white font-normal leading-[1.406rem] 3xl:leading-[1.875rem] 4xl:leading-[2.5rem]">{question}</span>
+        <span className="text-lg 3xl:text-2xl 4xl:text-3xl text-white font-normal leading-[1.406rem] 3xl:leading-8 4xl:leading-10">{question}</span>
         <button
           type="button"
           onClick={onToggle}
@@ -47,7 +47,7 @@ interface FaqSectionProps {
 export function FaqSection({ faqs, expandedFaq, onToggle }: FaqSectionProps) {
   return (
     <div className="w-full xl:basis-1/2 xl:min-w-0">
-      <h2 className="text-2xl font-normal mb-6 leading-[1.875rem]">FAQs</h2>
+      <h2 className="text-2xl font-normal mb-6 leading-8">FAQs</h2>
       <div className="space-y-4">
         {faqs.map((faq, i) => (
           <FaqCard

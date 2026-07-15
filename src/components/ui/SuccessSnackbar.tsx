@@ -56,7 +56,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
   return (
     <div
       ref={ref}
-      className="fixed z-overlay overflow-hidden top-6 right-[1.5rem] w-[24rem] h-[5rem] bg-[rgba(255,255,255,0.05)] rounded-full shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-[rgba(255,255,255,0.05)] backdrop-blur-[25px]"
+      className="fixed z-overlay overflow-hidden top-6 right-[1.5rem] w-[24rem] h-[5rem] bg-[rgba(255,255,255,0.05)] rounded-full shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-1 outline-offset-[-1.25px] outline-[rgba(255,255,255,0.05)] backdrop-blur-[25px]"
       role="status"
       aria-live="polite"
     >
@@ -77,7 +77,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
       </div>
 
       {/* Bottom progress bar */}
-      <div className="absolute left-0 right-0 bottom-[6px] h-[4px]">
+      <div className="absolute left-0 right-0 bottom-[6px] h-1">
         {/* Track */}
         <div className="absolute inset-0 bg-gfx-green-100 rounded-2xl" />
         {/* Animated fill */}
@@ -87,7 +87,7 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
         />
         {/* Glow layers */}
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(16,185,129,0.4),rgba(4,120,87,0.3))] rounded-2xl blur-[2px]" aria-hidden="true" />
-        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(16,185,129,0.2),rgba(4,120,87,0.2))] rounded-2xl blur-[4px]" aria-hidden="true" />
+        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(16,185,129,0.2),rgba(4,120,87,0.2))] rounded-2xl blur-sm" aria-hidden="true" />
       </div>
     </div>
   )

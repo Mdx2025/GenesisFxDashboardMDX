@@ -141,7 +141,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
         {/* Header: Avatar + Username + Tag + Follow */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
               <span className="text-white text-base font-acid font-medium">{provider.initials}</span>
             </div>
             <div>
@@ -186,7 +186,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="text-gfx-neutral-400 text-sm font-acid font-medium mb-1">30D P&L</p>
-              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
+              <p className={`text-4xl font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
               </p>
             </div>
@@ -243,11 +243,11 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
       }}
     >
-      <div className="flex flex-col gap-4 pt-[1.9375rem] pb-9 px-[1.5625rem]">
+      <div className="flex flex-col gap-4 pt-8 pb-9 px-[1.5625rem]">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[1.375rem]">
-            <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-[var(--signal-avatar-bg,#064b34)] flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <div className="w-16 h-16 rounded-full bg-[var(--signal-avatar-bg,#064b34)] flex items-center justify-center flex-shrink-0 overflow-hidden">
               <span className="text-white text-base font-acid font-medium">{provider.initials}</span>
             </div>
             <div className="flex flex-col gap-1">
@@ -282,7 +282,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="text-gfx-neutral-400 text-sm font-acid font-medium mb-1">{`30D P&L`}</p>
-              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
+              <p className={`text-4xl font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(provider.pnl30d).toFixed(2)}
               </p>
             </div>
@@ -411,7 +411,7 @@ export default function SignalsPage() {
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <div className="relative p-6 lg:p-8 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-[2.75rem] h-[2.75rem] rounded-full bg-gfx-green-900 flex items-center justify-center shrink-0">
+                  <div className="w-[2.75rem] h-11 rounded-full bg-gfx-green-900 flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path d="M18 8A6 6 0 1 0 6 8c0 7-3 9-3 9h18s-3-2-3-9Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -443,13 +443,13 @@ export default function SignalsPage() {
               />
               <button
                 onClick={() => setViewMode('list')}
-                className={`w-[2.9375rem] h-[2.75rem] rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-12 h-11 rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'list' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
               >
                 <ListViewIcon active={viewMode === 'list'} />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`w-[2.9375rem] h-[2.75rem] rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
+                className={`w-12 h-11 rounded-md flex items-center justify-center transition-colors cursor-pointer ${viewMode === 'grid' ? 'bg-gfx-green-200' : 'bg-gfx-green-900 hover:bg-[#0d2e24]'}`}
               >
                 <GridViewIcon active={viewMode === 'grid'} />
               </button>
@@ -574,7 +574,7 @@ export default function SignalsPage() {
         <GlassBannerCard>
           <div className="flex items-center justify-between gap-8">
             <div>
-              <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Trade Signals</h2>
+              <h2 className="text-white text-[2.5rem] xl:text-5xl font-acid leading-none">Trade Signals</h2>
               <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
                 Follow expert signal providers, execute trade ideas in one click, and join active trading communities — all from one feed.
               </p>
@@ -610,7 +610,7 @@ export default function SignalsPage() {
             />
             <button
               onClick={() => {}}
-              className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+              className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
             >
               <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
@@ -621,7 +621,7 @@ export default function SignalsPage() {
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+              className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
             >
               <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'list' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -643,7 +643,7 @@ export default function SignalsPage() {
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+              className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
             >
               <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'grid' ? '#064b34' : '#303030'} strokeWidth="1.2"/>

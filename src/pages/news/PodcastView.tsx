@@ -149,7 +149,7 @@ function PlayerBar() {
 
       <div className="flex items-center gap-3 flex-1 max-w-[400px]">
         <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">2:45</span>
-        <div className="flex-1 h-[4px] bg-gfx-green-900 rounded-full overflow-hidden">
+        <div className="flex-1 h-1 bg-gfx-green-900 rounded-full overflow-hidden">
           <div className="w-[46%] h-full bg-gfx-green-300 rounded-full" />
         </div>
         <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">3:33</span>
@@ -159,7 +159,7 @@ function PlayerBar() {
         <button className="cursor-pointer hover:opacity-80 transition-opacity">
           <VolumeIcon />
         </button>
-        <div className="w-[80px] h-[4px] bg-gfx-green-900 rounded-full overflow-hidden">
+        <div className="w-[80px] h-1 bg-gfx-green-900 rounded-full overflow-hidden">
           <div className="w-[70%] h-full bg-gfx-green-300 rounded-full" />
         </div>
       </div>

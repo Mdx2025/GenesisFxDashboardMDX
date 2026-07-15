@@ -111,7 +111,7 @@ export function CopySubscriptionModal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -119,7 +119,7 @@ export function CopySubscriptionModal({
     >
       <div
         ref={modalRef}
-        className="w-[1024px] max-w-[95vw] rounded-[22px] flex overflow-hidden"
+        className="w-[1024px] max-w-[95vw] rounded-xl flex overflow-hidden"
         style={{ background: '#0C1311', boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03), 0px 25px 50px -12px rgba(0,0,0,0.25)', outline: '1.16px solid #0C1311' }}
       >
         {/* Left Column — Configuration Form */}
@@ -233,10 +233,10 @@ export function CopySubscriptionModal({
             </div>
 
             <div className="mt-[21.5px] space-y-[17.5px]">
-              <div className="border-b border-[#6B7280] pb-[3px]">
+              <div className="border-b border-[#6B7280] pb-1">
                 <SummaryRow label="Performance Fee" value={performanceFee} />
               </div>
-              <div className="border-b border-[#6B7280] pb-[3px]">
+              <div className="border-b border-[#6B7280] pb-1">
                 <SummaryRow label="Monthly Subscription" value={monthlySubscription} />
               </div>
             </div>

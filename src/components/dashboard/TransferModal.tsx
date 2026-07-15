@@ -89,7 +89,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -101,7 +101,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
       >
         {/* Modal background (clipped to contain glows) */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none bg-gfx-main rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
+          className="absolute inset-0 overflow-hidden pointer-events-none bg-gfx-main rounded-2xl backdrop-blur-[23.23px] border border-gfx-green-200"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] left-[190px] top-[682px] bg-[#114131] rounded-full blur-[157px]" />
@@ -110,7 +110,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[28px] top-[28px] w-[24px] h-[24px]"
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[28px] top-[28px] w-6 h-6"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -134,7 +134,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
         >
           {/* Card background with glows (clipped) */}
           <div
-            className="absolute inset-0 overflow-hidden pointer-events-none rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-[1.25px] outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
+            className="absolute inset-0 overflow-hidden pointer-events-none rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-1 outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
             aria-hidden="true"
           >
             <div className="absolute w-[587px] h-[435px] left-[304px] top-[-333px] rotate-[48deg] origin-top-left bg-[#00110B] rounded-full blur-[157px]" />

@@ -75,7 +75,7 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full h-[3.8125rem] rounded-md overflow-hidden flex items-start gap-3 px-[0.8125rem] py-3 cursor-pointer transition-colors text-left ${
+      className={`relative w-full h-[3.8125rem] rounded-md overflow-hidden flex items-start gap-3 px-3 py-3 cursor-pointer transition-colors text-left ${
         isActive
           ? 'bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.3)]'
           : 'hover:bg-gfx-green-800/50'
@@ -89,7 +89,7 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
           </div>
         </>
       )}
-      <div className="w-[1.5rem] h-[1.5rem] rounded-[0.4375rem] bg-gfx-green-800 flex items-center justify-center shrink-0">
+      <div className="w-[1.5rem] h-6 rounded-sm bg-gfx-green-800 flex items-center justify-center shrink-0">
         <span className={`text-xs font-acid leading-none ${isActive ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
           {lesson.id}
         </span>
@@ -151,7 +151,7 @@ export default function VideoSinglePage() {
               </p>
             </div>
 
-            <div className="h-[0.25rem] bg-gfx-green-900 rounded-full mb-6 overflow-hidden">
+            <div className="h-1 bg-gfx-green-900 rounded-full mb-6 overflow-hidden">
               <div
                 className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                 style={{ width: `${Math.max(progress, 0)}%` }}
@@ -204,7 +204,7 @@ export default function VideoSinglePage() {
               <p className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px] mb-4">
                 {completedCount} of {totalLessons} chapters completed
               </p>
-              <div className="h-[0.25rem] bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
+              <div className="h-1 bg-gfx-green-900 rounded-full mb-4 overflow-hidden">
                 <div
                   className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                   style={{ width: `${Math.max(progress, 0)}%` }}
@@ -235,7 +235,7 @@ export default function VideoSinglePage() {
               <div className="hidden sm:flex flex-col items-end gap-0.5">
                 <span className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">PROGRESS</span>
                 <span className="text-base font-acid-medium text-white leading-[24.44px]">{progress}%</span>
-                <div className="w-[10rem] h-[0.25rem] bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
+                <div className="w-[10rem] h-1 bg-gfx-green-900 rounded-full overflow-hidden mt-0.5">
                   <div
                     className="h-full bg-gfx-green-500 rounded-full transition-all duration-500"
                     style={{ width: `${Math.max(progress, 0)}%` }}

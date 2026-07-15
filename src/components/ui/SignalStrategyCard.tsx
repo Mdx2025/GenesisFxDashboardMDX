@@ -143,7 +143,7 @@ export function SignalStrategyCard({
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="text-gfx-neutral-400 text-sm font-acid font-medium mb-1">{pnlLabel}</p>
-              <p className={`text-[2.125rem] font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
+              <p className={`text-4xl font-acid leading-none ${isNegative ? 'text-gfx-red-muted' : 'text-gfx-green-500'}`}>
                 {isNegative ? '-' : '+'}${Math.abs(pnl).toFixed(2)}
               </p>
             </div>

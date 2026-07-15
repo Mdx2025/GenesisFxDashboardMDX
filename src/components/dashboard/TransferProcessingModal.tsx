@@ -108,14 +108,14 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-label="Transfer Processing"
     >
       <div
         ref={modalRef}
-        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-[#09090b] rounded-xl sm:rounded-[40px] backdrop-blur-[23.23px] border border-gfx-green-200"
+        className="relative overflow-hidden w-[793px] max-w-[95vw] aspect-[793/479] bg-[#09090b] rounded-xl sm:rounded-2xl backdrop-blur-[23.23px] border border-gfx-green-200"
       >
         {/* SVG filter for circle glow */}
         <svg width="0" height="0" className="absolute">

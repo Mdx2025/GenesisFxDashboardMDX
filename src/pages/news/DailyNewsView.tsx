@@ -72,7 +72,7 @@ function HeroCard({ onVideoClick }: { onVideoClick: () => void }) {
 
         {/* Content */}
         <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-12 py-8 lg:py-10">
-          <h2 className="text-white text-xl sm:text-2xl lg:text-4xl font-acid font-normal leading-[1.05] relative">
+          <h2 className="text-white text-xl sm:text-2xl lg:text-4xl font-acid font-normal leading-none relative">
             {featuredEpisode.title}
           </h2>
 
@@ -119,7 +119,7 @@ function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClic
 
       {/* Info overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-8">
-        <h4 className="text-white text-2xl font-acid font-normal leading-[1]">{episode.title}</h4>
+        <h4 className="text-white text-2xl font-acid font-normal leading-none">{episode.title}</h4>
         <div className="flex items-center gap-1.5 mt-2">
           <CalendarIcon />
           <span className="text-gfx-neutral-300 text-base font-acid font-medium">{episode.date}</span>
@@ -173,7 +173,7 @@ function EpisodesCarousel({ onEpisodeClick }: { onEpisodeClick: () => void }) {
       {/* Progress bar + arrows */}
       <div className="flex items-center justify-between">
         {/* Progress bar */}
-        <div className="relative h-[4px] w-[619px] max-w-[50%] rounded-full bg-gfx-green-200">
+        <div className="relative h-1 w-[619px] max-w-[50%] rounded-full bg-gfx-green-200">
           <div
             className="absolute top-0 left-0 h-full rounded-full bg-gfx-green-300 transition-all duration-200"
             style={{ width: `${Math.max(30, scrollProgress * 100)}%` }}

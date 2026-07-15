@@ -112,7 +112,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
         >
           {/* Title */}
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-[3.125rem] font-acid font-normal text-center leading-none">
+          <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-acid font-normal text-center leading-none">
             New Note
           </h2>
 
@@ -145,7 +145,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
                 type="text"
                 value={date}
                 onChange={e => setDate(e.target.value)}
-                className="w-full h-[3.125rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-[1.6250rem] text-gfx-neutral-400 text-base font-acid outline-none focus:border-gfx-green-300 transition-colors"
+                className="w-full h-12 rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-6.5 text-gfx-neutral-400 text-base font-acid outline-none focus:border-gfx-green-300 transition-colors"
               />
             </div>
 
@@ -193,7 +193,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
                 value={tags}
                 onChange={e => setTags(e.target.value)}
                 placeholder="Add a tag"
-                className="w-full h-[3.125rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-[1.6250rem] text-gfx-neutral-400 text-base font-acid outline-none focus:border-gfx-green-300 transition-colors placeholder:text-gfx-neutral-400"
+                className="w-full h-12 rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-6.5 text-gfx-neutral-400 text-base font-acid outline-none focus:border-gfx-green-300 transition-colors placeholder:text-gfx-neutral-400"
               />
             </div>
 
@@ -202,7 +202,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
               <label className="text-white text-base font-acid font-medium mb-2 block">
                 Attachments
               </label>
-              <div className="h-[3.125rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center gap-2.5 cursor-pointer hover:border-gfx-green-300 transition-colors">
+              <div className="h-12 rounded-3xl bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center gap-2.5 cursor-pointer hover:border-gfx-green-300 transition-colors">
                 <UploadIcon />
                 <span className="text-gfx-neutral-400 text-base font-acid">Upload file</span>
               </div>

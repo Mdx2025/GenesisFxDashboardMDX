@@ -170,7 +170,7 @@ export default function AssetsManagementPage() {
                   </div>
 
                   <div className="flex items-baseline gap-2">
-                    <span className="text-white text-[3.125rem] font-normal leading-none">{balanceVisible ? '$100.00' : '****'}</span>
+                    <span className="text-white text-5xl font-normal leading-none">{balanceVisible ? '$100.00' : '****'}</span>
                     <span className="text-gfx-neutral-500 text-2xl font-normal">{balanceVisible ? 'USD' : ''}</span>
                   </div>
 
@@ -291,13 +291,13 @@ export default function AssetsManagementPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Deposit Address</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Coin</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Network</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Date</th>
-                      <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Status</th>
-                      <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
+                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
+                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Deposit Address</th>
+                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Coin</th>
+                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[10%]">Network</th>
+                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Date</th>
+                      <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[12%]">Status</th>
+                      <th className="text-right text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
                     </tr>
                   </thead>
                   <tbody>

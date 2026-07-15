@@ -55,7 +55,7 @@ export function GlassInput({ label, placeholder = '0.00', type = 'text', value: 
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className={`w-full bg-gfx-green-800 font-acid text-white placeholder:text-gfx-neutral-400 h-[3.125rem] rounded-3xl px-4 ${hasRight ? 'pr-12' : ''} text-base outline-none transition-[border-color] duration-200 ${
+          className={`w-full bg-gfx-green-800 font-acid text-white placeholder:text-gfx-neutral-400 h-12 rounded-3xl px-4 ${hasRight ? 'pr-12' : ''} text-base outline-none transition-[border-color] duration-200 ${
             focused ? 'border border-gfx-green-300/50' : 'border border-gfx-green-200'
           }`}
         />

@@ -261,7 +261,7 @@ export default function SignalsDetailsPage() {
               <h3 className="text-white text-2xl font-acid font-normal">Performance & Frequency</h3>
               <div className="flex flex-col items-end">
                 <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px] mb-2">Most Traded</p>
-                <div className="flex items-center gap-2 bg-gfx-green-800 rounded-[0.496rem] border-[1.32px] border-gfx-green-900 px-3 py-2">
+                <div className="flex items-center gap-2 bg-gfx-green-800 rounded-sm border-[1.32px] border-gfx-green-900 px-3 py-2">
                   <XauusdSmallIcon />
                   <span className="text-white text-[1.075rem] font-bold tracking-[0.43px]" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
                   <span className="text-gfx-neutral-400 text-sm font-acid leading-[18.8px]">2</span>
@@ -341,7 +341,7 @@ export default function SignalsDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-[1.5rem] rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4">
                       <span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span>

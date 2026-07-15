@@ -97,7 +97,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -109,7 +109,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
       >
         {/* Modal background with decorative glows */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -120,7 +120,7 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[31px] w-[24px] h-[24px]"
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[31px] w-6 h-6"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

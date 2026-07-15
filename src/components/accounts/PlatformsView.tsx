@@ -30,7 +30,7 @@ export function PlatformsView() {
 
           <div className="flex-1 min-w-0">
             <p className="text-white font-acid font-normal text-base sm:text-2xl leading-tight truncate">{platform.name}</p>
-            <p className="text-gfx-neutral-400 font-acid font-medium text-[0.8125rem] sm:text-base mt-0.5">{platform.subtitle}</p>
+            <p className="text-gfx-neutral-400 font-acid font-medium text-sm sm:text-base mt-0.5">{platform.subtitle}</p>
           </div>
 
           <div className="flex-shrink-0 w-[7.5rem] sm:w-[8.5rem]">

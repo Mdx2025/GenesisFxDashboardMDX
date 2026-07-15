@@ -2,7 +2,7 @@ export function StepCircle({ stepNumber, status }: { stepNumber: number; status:
   if (status === 'inactive') {
     return (
       <div className="w-10 h-10 3xl:w-14 3xl:h-14 4xl:w-18 4xl:h-18 rounded-full bg-[#404040] flex items-center justify-center">
-        <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium">{stepNumber}</span>
+        <span className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium">{stepNumber}</span>
       </div>
     )
   }
@@ -14,7 +14,7 @@ export function StepCircle({ stepNumber, status }: { stepNumber: number; status:
           <path d="M1 3.5L3.5 6L9 1" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ) : (
-        <span className="text-black text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium">{stepNumber}</span>
+        <span className="text-black text-base 3xl:text-xl 4xl:text-3xl font-medium">{stepNumber}</span>
       )}
     </div>
   )

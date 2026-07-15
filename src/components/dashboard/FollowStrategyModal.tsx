@@ -76,7 +76,7 @@ export function FollowStrategyModal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -84,12 +84,12 @@ export function FollowStrategyModal({
     >
       <div
         ref={modalRef}
-        className="relative w-[510px] max-w-[95vw] bg-gfx-green-800 rounded-[22px] border border-gfx-green-800 shadow-md overflow-hidden"
+        className="relative w-[510px] max-w-[95vw] bg-gfx-green-800 rounded-xl border border-gfx-green-800 shadow-md overflow-hidden"
       >
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[26px] w-[24px] h-[24px]"
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[26px] w-6 h-6"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -150,7 +150,7 @@ export function FollowStrategyModal({
 
           {/* Legal notice */}
           <div className="flex gap-3 mt-5">
-            <div className="flex-shrink-0 mt-[2px]">
+            <div className="flex-shrink-0 mt-0.5">
               <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
                 <path d="M16 2H2C0.9 2 0 2.9 0 4V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V4C18 2.9 17.1 2 16 2ZM16 16H2V4H16V16Z" fill="#00b38c"/>
                 <path d="M9 14L4 9L5.4 7.6L9 11.2L14.6 5.6L16 7L9 14Z" fill="#00b38c"/>

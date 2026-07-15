@@ -100,10 +100,10 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
   const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
-      <div className="relative pt-[1.9375rem] pb-9 pl-[1.5625rem] pr-[1.5rem] flex flex-col items-center gap-[1.375rem]">
+      <div className="relative pt-8 pb-9 pl-[1.5625rem] pr-[1.5rem] flex flex-col items-center gap-[1.375rem]">
         {/* Header: Avatar + Name + Verified + Stats */}
         <div className="flex items-start gap-3 w-full">
-          <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+          <div className="w-16 h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
             <span className="text-white text-base font-acid font-medium">{strategy.initials}</span>
           </div>
           <div className="flex-1 min-w-0 pt-1">
@@ -133,7 +133,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
             <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">ROI</p>
             <p className="text-gfx-green-500 text-2xl font-acid">{strategy.roi}%</p>
           </div>
-          <div className="border border-gfx-neutral-250 rounded-full px-[0.6875rem] py-[0.6875rem]">
+          <div className="border border-gfx-neutral-250 rounded-full px-3 py-[0.6875rem]">
             <span className="text-white text-base font-acid font-medium leading-[24.44px]">{strategy.roiDays}D</span>
           </div>
         </div>
@@ -144,7 +144,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
         </div>
 
         {/* Bottom Stats */}
-        <div className="w-full bg-gfx-green-900 rounded-[0.5625rem] px-5 py-4">
+        <div className="w-full bg-gfx-green-900 rounded-sm px-5 py-4">
           <div className="flex justify-between">
             <div>
               <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px]">Min Investment</p>
@@ -235,7 +235,7 @@ export default function PammPage() {
             <GlassBannerCard>
               <div className="flex items-center justify-between gap-8">
                 <div>
-                  <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Browse Strategies</h2>
+                  <h2 className="text-white text-[2.5rem] xl:text-5xl font-acid leading-none">Browse Strategies</h2>
                   <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
                     Invest with proven money managers. Browse PAMM strategies, pick a manager, and let your capital trade alongside theirs.
                   </p>
@@ -271,7 +271,7 @@ export default function PammPage() {
                 />
                 <button
                   onClick={() => {}}
-                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
@@ -282,7 +282,7 @@ export default function PammPage() {
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'list' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -304,7 +304,7 @@ export default function PammPage() {
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
-                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'grid' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -361,7 +361,7 @@ export default function PammPage() {
                 <p className="text-gfx-neutral-400 text-base font-acid mt-4 leading-tight">You don't have any active PAMM subscriptions yet</p>
                 <button
                   onClick={() => setActiveTab(0)}
-                  className="mt-10 h-[2.75rem] px-[1.9375rem] rounded-full bg-[#f1fffa] text-black text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:bg-[#e0f5ec] transition-colors"
+                  className="mt-10 h-11 px-[1.9375rem] rounded-full bg-[#f1fffa] text-black text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:bg-[#e0f5ec] transition-colors"
                 >
                   Browse strategies
                 </button>
@@ -377,7 +377,7 @@ export default function PammPage() {
               <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[12.5rem]" />
               <div className="relative flex items-center justify-between h-full px-8">
                 <div className="flex items-center gap-5">
-                  <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
                     <span className="text-white text-base font-acid">M</span>
                   </div>
                   <div>
@@ -470,10 +470,10 @@ export default function PammPage() {
                         </td>
                         <td className="px-7 py-5">
                           <div className="flex items-center gap-2">
-                            <SparkleButton className="!px-[2.3750rem] !h-[2.8750rem]">
+                            <SparkleButton className="!px-10 !h-[2.8750rem]">
                               <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-[24.44px]">View</span>
                             </SparkleButton>
-                            <SparkleButton className="!px-[2.3750rem] !h-[2.8750rem]">
+                            <SparkleButton className="!px-10 !h-[2.8750rem]">
                               <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-[24.44px]">Edit</span>
                             </SparkleButton>
                           </div>

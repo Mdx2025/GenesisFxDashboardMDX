@@ -67,7 +67,7 @@ function SessionCard({ session }: { session: TradeSession }) {
               OPEN
             </span>
           ) : (
-            <span className="text-gfx-neutral-400 text-xl font-acid leading-[20px]">CLOSED</span>
+            <span className="text-gfx-neutral-400 text-xl font-acid leading-5">CLOSED</span>
           )}
         </div>
 

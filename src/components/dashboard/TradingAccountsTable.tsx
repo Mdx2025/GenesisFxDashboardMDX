@@ -53,7 +53,7 @@ export function TradingAccountsTable() {
             >
               <div>
                 <p className="text-white text-base font-bold leading-tight">{acc.account}</p>
-                <p className="text-gfx-neutral-300 text-[0.8125rem] mt-0.5">{acc.username}</p>
+                <p className="text-gfx-neutral-300 text-sm mt-0.5">{acc.username}</p>
               </div>
               <p className="text-base text-white/60">{acc.platform}</p>
               <div>

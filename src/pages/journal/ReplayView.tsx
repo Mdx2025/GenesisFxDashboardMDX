@@ -39,7 +39,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
         <h4 className="text-white text-base font-acid font-medium text-center -mt-2">{title}</h4>
 
         {/* Description */}
-        <p className="text-gfx-neutral-400 text-sm font-acid text-center mt-3 max-w-[22.5000rem] leading-[1.125rem]">
+        <p className="text-gfx-neutral-400 text-sm font-acid text-center mt-3 max-w-[22.5000rem] leading-5">
           {description}
         </p>
 
@@ -53,7 +53,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
               radius={300}
             />
           ) : (
-            <div className="w-full max-w-[24.1875rem] h-[2.75rem] rounded-full border border-gfx-neutral-250 flex items-center justify-center">
+            <div className="w-full max-w-[24.1875rem] h-11 rounded-full border border-gfx-neutral-250 flex items-center justify-center">
               <span className="text-gfx-neutral-300 text-sm font-acid">Coming soon</span>
             </div>
           )}
@@ -80,7 +80,7 @@ export default function ReplayView() {
               Relive and analyze your trading sessions with interactive playback
             </p>
           </div>
-          <button className="flex items-center gap-3 h-[2.75rem] px-3 pr-5 rounded-sm bg-transparent transition-colors cursor-pointer border border-gfx-neutral-250">
+          <button className="flex items-center gap-3 h-11 px-3 pr-5 rounded-sm bg-transparent transition-colors cursor-pointer border border-gfx-neutral-250">
             <QuestionIcon />
             <span className="text-white text-sm font-acid">How it works</span>
           </button>

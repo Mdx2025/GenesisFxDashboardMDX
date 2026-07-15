@@ -70,7 +70,7 @@ function NoteCard({ note }: { note: NotebookNote }) {
           {note.tags.map(tag => (
             <div
               key={tag}
-              className="h-[1.5rem] px-4.5 rounded-full border border-gfx-green-200 bg-gfx-green-800 flex items-center justify-center"
+              className="h-6 px-4.5 rounded-full border border-gfx-green-200 bg-gfx-green-800 flex items-center justify-center"
             >
               <span className="text-gfx-green-300 text-xs font-acid">{tag}</span>
             </div>

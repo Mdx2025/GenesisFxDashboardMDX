@@ -5,7 +5,7 @@ import { GlowEllipse } from '@/components/ui/GlowEllipse'
 import { EyeIcon } from '@/components/icons'
 import { useFadeIn } from '@/hooks/useFadeIn'
 
-const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-[1.625rem] text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors font-acid"
+const INPUT_CLASS = "w-full h-[2.875rem] rounded-3xl bg-gfx-green-800 border border-gfx-green-200 px-6.5 text-white text-base placeholder:text-gfx-neutral-400 outline-none focus:border-gfx-green-500/50 transition-colors font-acid"
 
 export default function ResetPasswordPage() {
   const [newPassword, setNewPassword] = useState('')
@@ -51,7 +51,7 @@ export default function ResetPasswordPage() {
 
         {/* Logo — top center */}
         <div className="relative flex justify-center pt-12 z-10">
-          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-[2.8125rem] w-auto" />
+          <img src="/images/genesis-logo.png" alt="Genesis FX" className="h-11 w-auto" />
         </div>
 
         {/* Centered content */}

@@ -118,7 +118,7 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         {/* Header: Avatar + Name + Username + Star */}
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
-            <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
               <span className="text-white text-base font-acid font-medium">{trader.initials}</span>
             </div>
             <div className="flex-1 min-w-0 pt-1">
@@ -158,7 +158,7 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
         </div>
 
         {/* Stats Box */}
-        <div className="bg-gfx-green-900 rounded-[0.5625rem] p-5 mt-4">
+        <div className="bg-gfx-green-900 rounded-sm p-5 mt-4">
           <div className="flex flex-col gap-3.5">
             <div className="flex justify-between items-center">
               <span className="text-gfx-neutral-400 text-base font-acid font-medium">Total P&L</span>
@@ -245,7 +245,7 @@ export default function CopyTradingPage() {
             <GlassBannerCard>
               <div className="flex items-center justify-between gap-8">
                 <div>
-                  <h2 className="text-white text-[2.5rem] xl:text-[3.125rem] font-acid leading-none">Copy Trading</h2>
+                  <h2 className="text-white text-[2.5rem] xl:text-5xl font-acid leading-none">Copy Trading</h2>
                   <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
                     Mirror trades from top-performing traders automatically. Browse the leaderboard, pick a strategy, and start copying in minutes.
                   </p>
@@ -281,7 +281,7 @@ export default function CopyTradingPage() {
                 />
                 <button
                   onClick={() => {}}
-                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
@@ -292,7 +292,7 @@ export default function CopyTradingPage() {
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'list' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -314,7 +314,7 @@ export default function CopyTradingPage() {
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
-                  className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'grid' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -367,7 +367,7 @@ export default function CopyTradingPage() {
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <div className="relative flex items-center justify-between p-6 lg:p-8">
                 <div className="flex items-center gap-5">
-                  <div className="w-[3.9375rem] h-[3.9375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
                     <span className="text-white text-2xl font-acid">M</span>
                   </div>
                   <div>

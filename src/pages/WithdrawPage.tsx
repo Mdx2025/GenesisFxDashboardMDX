@@ -104,7 +104,7 @@ export default function WithdrawPage() {
             <h1 className="text-white font-normal leading-none text-[clamp(1.5rem,0.75rem+1.5vw,3.5rem)]">
               Withdraw Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-[1.875rem] 4xl:leading-[2.625rem]">
+            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-[1.528rem] 3xl:leading-8 4xl:leading-[2.625rem]">
               Choose your preferred withdrawal method to get started.
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function WithdrawPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-[3.25rem] ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -139,14 +139,14 @@ export default function WithdrawPage() {
                         key={coin.id}
                         type="button"
                         onClick={() => handleCoinSelect(coin.id)}
-                        className={`h-[3.125rem] 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
+                        className={`h-12 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
                             ? 'bg-gfx-green-200 border border-[#0a714f]'
                             : 'bg-[#111312] border border-transparent hover:bg-[#1a1c1b]'
                         }`}
                       >
                         {coin.icon}
-                        <span className="text-white text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium">{coin.label}</span>
+                        <span className="text-white text-base 3xl:text-xl 4xl:text-3xl font-medium">{coin.label}</span>
                       </button>
                     ))}
                   </div>
@@ -163,7 +163,7 @@ export default function WithdrawPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-[3.25rem] ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Withdraw to
                     </h3>
 
@@ -191,7 +191,7 @@ export default function WithdrawPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-[1.875rem] 3xl:leading-[2.5rem] 4xl:leading-[3.25rem] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-8 3xl:leading-10 4xl:leading-[3.25rem] ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
                       Withdraw Amount
                     </h3>
 

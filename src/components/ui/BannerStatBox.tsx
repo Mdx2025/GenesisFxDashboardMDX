@@ -20,7 +20,7 @@ export function BannerStatBox({ value, label, icon, className = '' }: BannerStat
         {icon ?? <CommandIcon />}
       </div>
       <div>
-        <p className="text-white text-[3.125rem] font-acid leading-none">{value}</p>
+        <p className="text-white text-5xl font-acid leading-none">{value}</p>
         <p className="text-gfx-neutral-400 text-body1 font-acid font-medium mt-1">{label}</p>
       </div>
     </div>

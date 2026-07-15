@@ -40,7 +40,7 @@ export default function TradesView() {
         <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-10">
           <div>
             <h3 className="text-white text-[1.375rem] font-acid font-normal leading-tight">Trade History</h3>
-            <p className="text-gfx-neutral-400 text-[0.8125rem] font-acid mt-0.5">
+            <p className="text-gfx-neutral-400 text-sm font-acid mt-0.5">
               <span className="text-white">{filtered.length}</span>{' '}
               Trade{filtered.length !== 1 ? 's' : ''} Found
             </p>

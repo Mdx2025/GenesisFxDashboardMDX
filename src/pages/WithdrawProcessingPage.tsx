@@ -73,24 +73,24 @@ function HourglassIllustration() {
         </defs>
       </svg>
 
-      <div className="absolute left-1/2 -translate-x-1/2 top-[11%] w-[39%] h-[4%] bg-[#3A3A3A]" />
-      <div className="absolute left-1/2 -translate-x-1/2 top-[67%] w-[39%] h-[4%] bg-[#3A3A3A]" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-[11%] w-[39%] h-[4%] bg-gfx-neutral-250" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-[67%] w-[39%] h-[4%] bg-gfx-neutral-250" />
 
       <div className="absolute left-[72%] top-[17%] w-[3px] h-[3px] rounded-full bg-white [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[19%] w-[3px] h-[3px] rounded-full bg-white opacity-50 [filter:url(#blur-2)]" />
       <div className="absolute left-[63%] top-[21%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[12%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
       <div className="absolute left-[57%] top-[20%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
-      <div className="absolute left-[55%] top-[13%] w-[2px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
-      <div className="absolute left-[42%] top-[18%] w-[3px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
+      <div className="absolute left-[55%] top-[13%] w-[2px] h-0.5 rounded-full bg-gfx-neutral-400 [filter:url(#blur-2)]" />
+      <div className="absolute left-[42%] top-[18%] w-[3px] h-0.5 rounded-full bg-gfx-neutral-400 [filter:url(#blur-2)]" />
 
       <div className="absolute left-[72%] top-[43%] w-[3px] h-[3px] rounded-full bg-white [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[45%] w-[3px] h-[3px] rounded-full bg-white opacity-50 [filter:url(#blur-2)]" />
       <div className="absolute left-[63%] top-[47%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
       <div className="absolute left-[67%] top-[38%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
       <div className="absolute left-[57%] top-[46%] w-[3px] h-[3px] rounded-full bg-gfx-neutral-550 [filter:url(#blur-2)]" />
-      <div className="absolute left-[55%] top-[39%] w-[2px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
-      <div className="absolute left-[42%] top-[44%] w-[3px] h-[2px] rounded-full bg-[#8C8C8C] [filter:url(#blur-2)]" />
+      <div className="absolute left-[55%] top-[39%] w-[2px] h-0.5 rounded-full bg-gfx-neutral-400 [filter:url(#blur-2)]" />
+      <div className="absolute left-[42%] top-[44%] w-[3px] h-0.5 rounded-full bg-gfx-neutral-400 [filter:url(#blur-2)]" />
     </div>
   )
 }
@@ -127,19 +127,19 @@ export default function WithdrawProcessingPage() {
           <div className="relative z-10 text-center max-w-[500px] 3xl:max-w-[700px] 4xl:max-w-[900px] w-full animate-[fadeInStep_0.5s_ease-out]">
             <HourglassIllustration />
 
-            <p className="text-gfx-neutral-500 text-2xl 3xl:text-[2rem] 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
+            <p className="text-gfx-neutral-500 text-2xl 3xl:text-3xl 4xl:text-[2.75rem] font-normal mt-4 3xl:mt-6 4xl:mt-10">Withdrawal Processing</p>
             <p className="text-white text-[clamp(2rem,8vw,50px)] 3xl:text-[4rem] 4xl:text-[5.25rem] font-normal mt-2 leading-tight">
               {amount} {coin}
             </p>
 
             <div className="mt-8 3xl:mt-10 4xl:mt-14 space-y-1 3xl:space-y-2 4xl:space-y-3">
-              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 Estimated completion time: {estimatedTime}
               </p>
-              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 You will receive an email once withdrawal is completed.
               </p>
-              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-[1.75rem] font-medium leading-6 3xl:leading-8 4xl:leading-10">
+              <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10">
                 View History for the latest updates
               </p>
             </div>

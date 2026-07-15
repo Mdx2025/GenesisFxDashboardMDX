@@ -102,7 +102,7 @@ export function ConnectPammModal({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -118,7 +118,7 @@ export function ConnectPammModal({
           {/* Close button */}
           <button
             onClick={handleClose}
-            className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[40px] top-[33px] w-[24px] h-[24px]"
+            className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[40px] top-[33px] w-6 h-6"
             aria-label="Close modal"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -131,16 +131,16 @@ export function ConnectPammModal({
           <div className="w-[534px] flex-shrink-0 flex flex-col items-center relative">
             {/* Glass card background */}
             <div
-              className="absolute left-[32px] top-[33px] right-0 bottom-[33px] rounded-[18.67px] border-[1.167px] border-[rgba(255,255,255,0.06)] overflow-hidden"
+              className="absolute left-[32px] top-[33px] right-0 bottom-[33px] rounded-lg border-[1.167px] border-[rgba(255,255,255,0.06)] overflow-hidden"
               style={{ boxShadow: '0px 9.34px 37.34px rgba(0, 0, 0, 0.3)' }}
               aria-hidden="true"
             >
-              <div className="absolute inset-0 bg-gfx-green-800 rounded-[18.67px]" />
+              <div className="absolute inset-0 bg-gfx-green-800 rounded-lg" />
               <div className="absolute inset-0 rounded-[inherit] shadow-[inset_0px_1.167px_0px_1.167px_rgba(255,255,255,0.05)]" />
             </div>
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col items-center pt-[55px] px-[40px] w-full">
+            <div className="relative z-10 flex flex-col items-center pt-[55px] px-10 w-full">
               {/* Avatar */}
               <div className="w-[150px] h-[150px] rounded-full bg-gfx-green-900 flex items-center justify-center">
                 <span className="text-white text-4xl font-acid">{strategyInitials}</span>
@@ -210,7 +210,7 @@ export function ConnectPammModal({
               <label className="flex items-start gap-3.5 cursor-pointer">
                 <button
                   onClick={() => setAgreedTerms(!agreedTerms)}
-                  className={`w-[20px] h-[20px] rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center mt-[2px] cursor-pointer transition-colors ${
+                  className={`w-[20px] h-[20px] rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center mt-0.5 cursor-pointer transition-colors ${
                     agreedTerms ? 'border-gfx-green-500 bg-gfx-green-500' : 'border-[#404040] bg-transparent'
                   }`}
                 >
@@ -228,7 +228,7 @@ export function ConnectPammModal({
               <label className="flex items-start gap-3.5 cursor-pointer">
                 <button
                   onClick={() => setAgreedRisk(!agreedRisk)}
-                  className={`w-[20px] h-[20px] rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center mt-[2px] cursor-pointer transition-colors ${
+                  className={`w-[20px] h-[20px] rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center mt-0.5 cursor-pointer transition-colors ${
                     agreedRisk ? 'border-gfx-green-500 bg-gfx-green-500' : 'border-[#404040] bg-transparent'
                   }`}
                 >

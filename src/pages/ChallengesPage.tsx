@@ -112,12 +112,12 @@ function LeaderboardContent() {
         <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-y border-white/5">
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">User</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Current Tier</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Return %</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Chart</th>
-              <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">User</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Current Tier</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Return %</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[20%]">Chart</th>
+              <th className="text-right text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
             </tr>
           </thead>
           <tbody>
@@ -179,12 +179,12 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
         <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-y border-white/5">
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[14%]">Deposit</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">10x Equity</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Max Drawdown</th>
-              <th className="text-left text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">Status</th>
-              <th className="text-right text-[0.7rem] font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[14%]">Deposit</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">10x Equity</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[18%]">Max Drawdown</th>
+              <th className="text-left text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase py-4 w-[16%]">Status</th>
+              <th className="text-right text-xs font-bold tracking-[0.22em] text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -336,7 +336,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
       role="dialog"
@@ -345,7 +345,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
     >
       <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-2xl overflow-hidden">
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -355,7 +355,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
 
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[31px] w-[24px] h-[24px]"
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[26px] top-[31px] w-6 h-6"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -368,7 +368,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           {/* Header: Title + April 2026 badge + How it works */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
             <div className="flex flex-wrap items-center gap-3">
-              <h2 className="text-white font-acid font-normal text-xl sm:text-[1.75rem] leading-none">
+              <h2 className="text-white font-acid font-normal text-xl sm:text-3xl leading-none">
                 Current Month Prize Pool
               </h2>
               <span className="px-3 py-1 rounded-full bg-gfx-green-900 border border-gfx-green-200 text-gfx-neutral-500 text-xs">
@@ -396,8 +396,8 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           {/* Rank / Prize table */}
           <div className="w-full">
             <div className="flex items-center pb-3 mb-1">
-              <div className="w-[30%] text-gfx-neutral-300 text-xs font-medium tracking-[0.08em]">Rank</div>
-              <div className="w-[70%] text-gfx-neutral-300 text-xs font-medium tracking-[0.08em] text-right">Prize</div>
+              <div className="w-[30%] text-gfx-neutral-300 text-xs font-medium tracking-wider">Rank</div>
+              <div className="w-[70%] text-gfx-neutral-300 text-xs font-medium tracking-wider text-right">Prize</div>
             </div>
             {leaderboardPrizes.map((row, i) => (
               <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">
@@ -444,7 +444,7 @@ function ChallengeCheckbox({ checked, onChange }: { checked: boolean; onChange: 
 
 function LiveBadge() {
   return (
-    <div className="inline-flex items-center gap-[7px] px-3 py-2.5 rounded-[60px] border border-gfx-neutral-250">
+    <div className="inline-flex items-center gap-[7px] px-3 py-2.5 rounded-full border border-gfx-neutral-250">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
         <defs>
           <filter id="live_glow" x="0" y="0" width="25.56" height="25.56" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -532,7 +532,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-[4px]"
+      className="fixed inset-0 z-sticky flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       onWheel={(e) => e.stopPropagation()}
       role="dialog"
@@ -542,7 +542,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-lg overflow-hidden">
         {/* Background layer */}
         <div
-          className="absolute inset-0 pointer-events-none bg-gfx-sidebar shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 pointer-events-none bg-gfx-sidebar shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -555,7 +555,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
               <div className="flex justify-end">
                 <button
                   onClick={handleClose}
-                  className="cursor-pointer hover:opacity-70 transition-opacity w-[1.5rem] h-[1.5rem]"
+                  className="cursor-pointer hover:opacity-70 transition-opacity w-[1.5rem] h-6"
                   aria-label="Close modal"
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -583,7 +583,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Two panels */}
             <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
-            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
+            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800">
               <GlowEllipse className="left-[36px] -top-[220px]" />
               <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-[#0D4532] rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
@@ -612,14 +612,14 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
                       value={username}
                       onChange={setUsername}
                     />
-                    <span className="text-gfx-neutral-400 text-base font-acid mt-2 block leading-[1.2rem]">
+                    <span className="text-gfx-neutral-400 text-base font-acid mt-2 block leading-5">
                       0/25 characters
                     </span>
                   </div>
 
                   <div className="flex items-center gap-3 mt-1">
                     <ChallengeCheckbox checked={agreed} onChange={() => setAgreed(v => !v)} />
-                    <span className="text-gfx-neutral-400 text-base font-acid leading-[1.2rem]">
+                    <span className="text-gfx-neutral-400 text-base font-acid leading-5">
                       I agree to the <span className="text-gfx-green-300">Terms & Conditions</span>
                     </span>
                   </div>
@@ -630,7 +630,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             </div>
 
             {/* Right — Account Preview */}
-            <div className="relative flex-1 overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-[1.16px] outline-offset-[-1.16px] outline-gfx-green-800">
+            <div className="relative flex-1 overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800">
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-2xl mb-2">Account Preview</h3>
 
@@ -695,7 +695,7 @@ export default function ChallengesPage() {
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <SearchInput placeholder="Search for" />
-            <button className="h-11 w-[2.9375rem] rounded-full border border-gfx-neutral-250 bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
+            <button className="h-11 w-12 rounded-full border border-gfx-neutral-250 bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
               <FilterIcon />
             </button>
             <SparkleButton className="px-10" onClick={() => setPrizePoolOpen(true)}>

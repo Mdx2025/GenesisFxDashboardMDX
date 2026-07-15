@@ -27,7 +27,7 @@ export function LiveAccountsCard({
       <div className="relative z-10 flex flex-col h-full px-4 pt-4 sm:px-6 sm:pt-6">
         <div className="flex justify-between items-center">
           <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">Live Accounts</h3>
-          <div className="px-2.5 py-1.5 bg-teal-700/25 rounded-[20.83px] outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex justify-start items-start gap-1.5">
+          <div className="px-2.5 py-1.5 bg-teal-700/25 rounded-xl outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex justify-start items-start gap-1.5">
             <span className="text-white text-card-change font-normal leading-5">{totalBalance}</span>
           </div>
         </div>
@@ -48,7 +48,7 @@ export function LiveAccountsCard({
                 />
               </div>
               <span
-                className={`whitespace-nowrap ${align} text-[0.7rem] ${i < 2 ? 'text-gfx-neutral-300' : 'text-white'}`}
+                className={`whitespace-nowrap ${align} text-xs ${i < 2 ? 'text-gfx-neutral-300' : 'text-white'}`}
               >{acc.label}</span>
             </div>
           )

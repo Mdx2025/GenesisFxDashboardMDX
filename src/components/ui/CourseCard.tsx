@@ -46,7 +46,7 @@ function VideoLibraryIcon() {
 
 function ClockIcon() {
   return (
-    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" className="shrink-0 3xl:w-[24px] 3xl:h-[24px] 4xl:w-[29px] 4xl:h-[29px]">
+    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" className="shrink-0 3xl:w-6 3xl:h-6 4xl:w-[29px] 4xl:h-[29px]">
       <path d="M18.2899 9.14495C18.2899 14.1956 14.1956 18.2899 9.14495 18.2899C4.09433 18.2899 0 14.1956 0 9.14495C0 4.09433 4.09433 0 9.14495 0C14.1956 0 18.2899 4.09433 18.2899 9.14495Z" fill="#A0A0A0" />
       <path fillRule="evenodd" clipRule="evenodd" d="M9.14495 4.8011C9.52374 4.8011 9.83082 5.10817 9.83082 5.48697V8.86085L11.9162 10.9462C12.184 11.2141 12.184 11.6483 11.9162 11.9162C11.6483 12.184 11.2141 12.184 10.9462 11.9162L8.65996 9.62993C8.53134 9.50131 8.45908 9.32685 8.45908 9.14495V5.48697C8.45908 5.10817 8.76615 4.8011 9.14495 4.8011Z" fill="#021B13" />
     </svg>
@@ -56,12 +56,12 @@ function ClockIcon() {
 export function CourseCard({ image, title, description, lessons, duration, level, onClick }: CourseCardProps) {
   return (
     <div
-      className="group relative rounded-[27px] overflow-hidden border border-[rgba(0,66,44,0.5)] cursor-pointer hover:border-[rgba(0,66,44,0.8)] transition-colors"
+      className="group relative rounded-2xl overflow-hidden border border-[rgba(0,66,44,0.5)] cursor-pointer hover:border-[rgba(0,66,44,0.8)] transition-colors"
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
     >
-      <div className="relative aspect-[501/334] overflow-hidden rounded-[27px]">
+      <div className="relative aspect-[501/334] overflow-hidden rounded-2xl">
         <img
           src={image}
           alt={title}
@@ -70,14 +70,14 @@ export function CourseCard({ image, title, description, lessons, duration, level
         />
       </div>
 
-      <div className="px-[27px] 3xl:px-[34px] 4xl:px-[40px] pt-[9px] 3xl:pt-[11px] 4xl:pt-[14px] pb-[27px] 3xl:pb-[34px] 4xl:pb-[40px]">
+      <div className="px-[27px] 3xl:px-[34px] 4xl:px-10 pt-[9px] 3xl:pt-[11px] 4xl:pt-[14px] pb-[27px] 3xl:pb-[34px] 4xl:pb-[40px]">
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-col gap-2">
-            <h3 className="text-white text-2xl 3xl:text-[2rem] 4xl:text-[2.625rem] font-normal leading-tight">
+            <h3 className="text-white text-2xl 3xl:text-3xl 4xl:text-[2.625rem] font-normal leading-tight">
               {title}
             </h3>
 
-            <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-normal leading-[24.44px] 3xl:leading-[30px] 4xl:leading-[37px] line-clamp-2">
+            <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-2xl font-normal leading-[24.44px] 3xl:leading-8 4xl:leading-9 line-clamp-2">
               {description}
             </p>
           </div>

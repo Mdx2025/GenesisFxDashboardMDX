@@ -19,7 +19,7 @@ function ClockIcon() {
 export function EBookCard({ category, image, readTime, onClick }: EBookCardProps) {
   return (
     <div
-      className="group relative rounded-[22px] overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+      className="group relative rounded-xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300"
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}

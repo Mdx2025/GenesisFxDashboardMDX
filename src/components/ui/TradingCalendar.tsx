@@ -176,9 +176,9 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
             <thead>
               <tr>
                 {DAYS_OF_WEEK.map(day => (
-                  <th key={day} className="text-gfx-neutral-500 text-[0.96rem] font-medium pb-3 text-center" style={{ width: '12.5%' }}>{day}</th>
+                  <th key={day} className="text-gfx-neutral-500 text-base font-medium pb-3 text-center" style={{ width: '12.5%' }}>{day}</th>
                 ))}
-                <th className="text-gfx-neutral-500 text-[0.96rem] font-medium pb-3 text-center" style={{ width: '12.5%' }}>Week Total</th>
+                <th className="text-gfx-neutral-500 text-base font-medium pb-3 text-center" style={{ width: '12.5%' }}>Week Total</th>
               </tr>
             </thead>
             <tbody>

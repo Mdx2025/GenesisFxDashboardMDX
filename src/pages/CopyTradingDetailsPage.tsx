@@ -168,7 +168,7 @@ function PerformanceGrid() {
         <div className="flex items-start">
           <div className="flex flex-col items-start w-[3.75rem] flex-shrink-0">
             <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px]">Year</span>
-            <div className="h-[2.8125rem] flex items-center mt-3">
+            <div className="h-11 flex items-center mt-3">
               <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px]">2026</span>
             </div>
           </div>
@@ -176,14 +176,14 @@ function PerformanceGrid() {
             {monthlyPerformance.map(m => (
               <div key={m.month} className="flex flex-col items-center flex-1 min-w-0">
                 <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">{m.month}</span>
-                <div className={`w-full h-[2.8125rem] rounded-sm flex items-center justify-center ${CELL_STYLES[m.type]}`}>
+                <div className={`w-full h-11 rounded-sm flex items-center justify-center ${CELL_STYLES[m.type]}`}>
                   {m.value && <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES[m.type]}`}>{m.value}</span>}
                 </div>
               </div>
             ))}
             <div className="flex flex-col items-center flex-1 min-w-0">
               <span className="text-gfx-neutral-600 text-base font-acid font-medium leading-[24.44px] mb-3">Ann</span>
-              <div className={`w-full h-[2.8125rem] rounded-sm flex items-center justify-center ${CELL_STYLES.positive}`}>
+              <div className={`w-full h-11 rounded-sm flex items-center justify-center ${CELL_STYLES.positive}`}>
                 <span className={`text-base font-acid font-medium leading-[24.44px] ${TEXT_STYLES.positive}`}>+3.42%</span>
               </div>
             </div>
@@ -235,7 +235,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
     <div className="flex-1">
       {rows.map((row, i) => (
         <div key={row.label}>
-          <div className="flex items-center justify-between py-4 px-[1.75rem]">
+          <div className="flex items-center justify-between py-4 px-7">
             <div className="flex items-center gap-2.5">
               <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-[24.44px]">{row.label}</span>
               <StatInfoIcon />
@@ -244,8 +244,8 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
               {row.progressBar && (
                 <div className="flex items-center gap-2">
                   <span className="text-white text-base font-acid font-medium leading-[24.44px]">{row.value}</span>
-                  <div className="w-[5.5rem] h-[0.5625rem] rounded-[3.75rem] bg-gfx-green-900 relative">
-                    <div className="h-full rounded-[4.5px] bg-gfx-green-200" style={{ width: `${(row.progressBar.percent / 100) * 88}px` }} />
+                  <div className="w-[5.5rem] h-[0.5625rem] rounded-full bg-gfx-green-900 relative">
+                    <div className="h-full rounded bg-gfx-green-200" style={{ width: `${(row.progressBar.percent / 100) * 88}px` }} />
                   </div>
                 </div>
               )}
@@ -321,7 +321,7 @@ export default function CopyTradingDetailsPage() {
             <Badge variant="active">Rank 2</Badge>
           </div>
           <div className="ml-auto flex items-center gap-3">
-            <button className="relative w-[2.9375rem] h-[2.75rem] flex items-center justify-center cursor-pointer">
+            <button className="relative w-12 h-11 flex items-center justify-center cursor-pointer">
               <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none">
                 <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
               </svg>
@@ -484,7 +484,7 @@ export default function CopyTradingDetailsPage() {
                       </div>
                     </td>
                     <td className="px-12 py-4">
-                      <span className="inline-flex items-center justify-center px-4.5 h-[1.5rem] rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
+                      <span className="inline-flex items-center justify-center px-4.5 h-6 rounded-full text-gfx-bullish-light text-xs font-acid leading-[18.8px]" style={{ outline: '1.16px solid #0C9104', outlineOffset: '-1.16px' }}>{trade.side}</span>
                     </td>
                     <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.volume}</span></td>
                     <td className="px-12 py-4"><span className="text-white text-base font-acid font-medium leading-[24.44px]">{trade.openPrice}</span></td>

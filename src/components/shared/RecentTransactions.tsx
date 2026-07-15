@@ -16,7 +16,7 @@ interface RecentTransactionsProps {
 export function RecentTransactions({ transactions, className = '' }: RecentTransactionsProps) {
   return (
     <div className={className}>
-      <h2 className="text-2xl font-normal mb-6 leading-[1.875rem]">Recent Transactions</h2>
+      <h2 className="text-2xl font-normal mb-6 leading-8">Recent Transactions</h2>
       <GlassCard variant="heavy" rounded="19px">
         <div className="relative z-10">
           <div className="overflow-x-auto">

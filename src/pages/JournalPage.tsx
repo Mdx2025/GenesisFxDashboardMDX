@@ -155,7 +155,7 @@ function WeeklyStatCard({ stat }: { stat: DayStatCard }) {
         stat.active ? 'border border-gfx-green-300 weekly-stat-active' : 'weekly-stat-inactive'
       }`}
     >
-      <div className="h-full px-5.5 py-[0.8750rem]">
+      <div className="h-full px-5.5 py-3.5">
         <div className="flex flex-col gap-1.5">
           <div className="flex justify-between items-center">
             <p className="text-gfx-neutral-400 text-base font-acid font-medium">{stat.day}</p>
@@ -254,7 +254,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
         <div className="flex flex-col mt-5">
           {news.map((event, i) => (
             <div key={i} className="flex items-center gap-4 px-4 h-[4.25rem] border-t border-white/5">
-              <div className="w-[2.9375rem] h-[3rem] rounded-lg bg-gfx-red-surface flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-[3rem] rounded-lg bg-gfx-red-surface flex items-center justify-center flex-shrink-0">
                 <span className="text-gfx-red-muted text-base font-acid">{event.countryCode}</span>
               </div>
               <div className="flex-1 min-w-0">
@@ -327,8 +327,8 @@ export default function JournalPage() {
                 <div className="w-[0.625rem] h-[0.625rem] rounded-full bg-gfx-bullish-light shadow-[0_0_4px_rgba(12,145,4,1)]" />
               </div>
               <div className="flex flex-col items-start">
-                <span className="text-white text-base font-acid font-medium leading-[1.5rem]">All Accounts</span>
-                <span className="text-white text-base font-acid font-medium leading-[1.5rem]">$0.00</span>
+                <span className="text-white text-base font-acid font-medium leading-6">All Accounts</span>
+                <span className="text-white text-base font-acid font-medium leading-6">$0.00</span>
               </div>
               <ChevronRightIcon size={20} color="#808080" />
             </button>
