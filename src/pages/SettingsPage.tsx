@@ -303,24 +303,14 @@ function GiftIcon() {
 
 function RewardsTab() {
   return (
-    <div className="mt-10 relative">
-      <div className="relative bg-gfx-green-800 border border-gfx-green-800 rounded-[1.16rem] overflow-hidden shadow-[0_0.29rem_1.45rem_0_rgba(0,0,0,0.03)] h-[29.6875rem]">
-        {/* Bottom highlight glows */}
+    <GlassCard className="mt-10 !rounded-[1.16rem] h-[29.6875rem] mx-auto">
+      <div className="relative h-full overflow-hidden">
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[75%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
           style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
           aria-hidden="true"
         />
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[120%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-40"
-          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.1) 0%, transparent 70%)' }}
-          aria-hidden="true"
-        />
-
-        {/* Title */}
-        <h3 className="text-white text-2xl font-acid leading-normal absolute left-[7.8rem] top-12">My Rewards</h3>
-
-        {/* Empty state content */}
+        <h3 className="text-white text-2xl font-acid leading-normal px-10 pt-10">My Rewards</h3>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="mt-4">
             <GiftIcon />
@@ -329,7 +319,104 @@ function RewardsTab() {
           <p className="text-gfx-neutral-400 text-base font-acid font-medium mt-3">Use a promo code when signing up to get exclusive bonuses!</p>
         </div>
       </div>
+    </GlassCard>
+  )
+}
+
+function ChatDialogIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M2 6C2 3.79086 3.79086 2 6 2H18C20.2091 2 22 3.79086 22 6V14C22 16.2091 20.2091 18 18 18H13.4142L9.70711 21.7071C9.07714 22.3371 8 21.8909 8 21V18H6C3.79086 18 2 16.2091 2 14V6ZM7 8.5C7 8.22386 7.22386 8 7.5 8H16.5C16.7761 8 17 8.22386 17 8.5C17 8.77614 16.7761 9 16.5 9H7.5C7.22386 9 7 8.77614 7 8.5ZM7 12.5C7 12.2239 7.22386 12 7.5 12H12.5C12.7761 12 13 12.2239 13 12.5C13 12.7761 12.7761 13 12.5 13H7.5C7.22386 13 7 12.7761 7 12.5Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+function EnvelopeIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M3 5C3 4.44772 3.44772 4 4 4H20C20.5523 4 21 4.44772 21 5V19C21 19.5523 20.5523 20 20 20H4C3.44772 20 3 19.5523 3 19V5ZM5.5 7.5L12 12.5L18.5 7.5L17.5 6.5L12 10.5L6.5 6.5L5.5 7.5Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+function WhatsappIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z" fill="#25D366" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" fill="#25D366" />
+    </svg>
+  )
+}
+
+function HelpCenterIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm-.004 4c-1.657 0-3 1.343-3 3h2c0-.552.448-1 1-1s1 .448 1 1c0 .374-.187.724-.5.928l-.625.375A2.498 2.498 0 0 0 10.996 12.5V13h2v-.5c0-.374.187-.724.5-.928l.625-.375a2.998 2.998 0 0 0 .875-4.197c-.625-.883-1.66-1.5-2.996-1.5h-.004ZM11 15v2h2v-2h-2Z" fill="var(--color-gfx-green-300)" />
+    </svg>
+  )
+}
+
+interface SupportCardProps {
+  icon: React.ReactNode
+  title: string
+  subtitle: string
+  actionLabel?: string
+}
+
+function SupportCard({ icon, title, subtitle, actionLabel }: SupportCardProps) {
+  return (
+    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-[1.875rem] p-5 h-[7.8125rem] relative shadow-[0_0.29rem_0.725rem_0_rgba(0,0,0,0.03)]">
+      <div className="flex items-start gap-5">
+        <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0">
+          {icon}
+        </div>
+        <div className="pt-1">
+          <h4 className="text-white text-2xl font-acid leading-normal">{title}</h4>
+          <p className="text-gfx-neutral-400 text-base font-acid mt-2">{subtitle}</p>
+          {actionLabel && (
+            <p className="text-gfx-green-500 text-base font-acid mt-2">{actionLabel}</p>
+          )}
+        </div>
+      </div>
     </div>
+  )
+}
+
+function SupportTab() {
+  return (
+    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
+      <div className="relative overflow-hidden px-10 pt-10 pb-10">
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
+          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
+          aria-hidden="true"
+        />
+        <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
+        <div className="grid grid-cols-2 gap-5">
+          <SupportCard
+            icon={<ChatDialogIcon />}
+            title="Live chat"
+            subtitle="Available 24/7"
+            actionLabel="Start  Live Chat"
+          />
+          <SupportCard
+            icon={<EnvelopeIcon />}
+            title="Email Support"
+            subtitle="support@genesisfxmarkets.com"
+          />
+          <SupportCard
+            icon={<WhatsappIcon />}
+            title="Whatsapp"
+            subtitle="Quick chat support"
+          />
+          <SupportCard
+            icon={<HelpCenterIcon />}
+            title="Help Center"
+            subtitle="Browse common questions"
+          />
+        </div>
+      </div>
+    </GlassCard>
   )
 }
 
@@ -367,19 +454,18 @@ function VerificationTab() {
   return (
     <>
       <GlassCard className="mt-10 !rounded-lg">
-        <div className="px-10 pt-8 pb-10">
+        <div className="px-10 pt-8 pb-0">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
           <VerificationStepper activeStep={0} />
         </div>
+        <div className="px-10 pb-10 pt-8">
+          <IdentityDetailCard />
+        </div>
       </GlassCard>
 
-      <div className="mt-8">
-        <IdentityDetailCard />
-      </div>
-
-      <div className="mt-8">
+      <GlassCard className="mt-8 !rounded-lg !p-0">
         <TradingFeaturesTable />
-      </div>
+      </GlassCard>
     </>
   )
 }
@@ -463,6 +549,7 @@ export default function SettingsPage() {
       {activeTab === 0 && <ProfileTab />}
       {activeTab === 1 && <VerificationTab />}
       {activeTab === 2 && <RewardsTab />}
+      {activeTab === 3 && <SupportTab />}
       </div>
     </div>
   )
