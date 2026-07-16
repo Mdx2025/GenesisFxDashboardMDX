@@ -46,13 +46,13 @@ const defaultItems: FloatingNavItem[] = [
 ]
 
 const NAV_ROUTES: Record<string, string> = {
-  Home: '/',
+  Home: '/home',
   Deposit: '/deposit',
   Withdraw: '/withdraw',
 }
 
 const ROUTE_TO_INDEX: Record<string, number> = {
-  '/': 0,
+  '/home': 0,
   '/deposit': 1,
   '/withdraw': 2,
 }
