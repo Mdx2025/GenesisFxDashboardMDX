@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlassCard } from '../ui'
+import { GlassCard, SparkleButton, GlowButton } from '../ui'
 
 interface TwoFactorModalProps {
   open: boolean
@@ -150,15 +150,8 @@ export function TwoFactorModal({ open, onClose }: TwoFactorModalProps) {
             </div>
 
             <div className="flex items-center gap-4">
-              <button
-                onClick={handleClose}
-                className="px-6 py-3 rounded-[1.875rem] border border-[#a0a0a0] bg-gradient-to-b from-[#09241c] to-[#0C1311] text-[#c6c6c6] text-base font-acid font-medium hover:border-gfx-green-300 transition-colors"
-              >
-                Cancel
-              </button>
-              <button className="px-8 py-2.5 rounded-[18.75rem] bg-[#F1FFFA] text-black text-base font-acid font-medium hover:opacity-90 transition-opacity">
-                Verify & Enable
-              </button>
+              <SparkleButton onClick={handleClose}>Cancel</SparkleButton>
+              <GlowButton label="Verify & Enable" width={193} height={44} />
             </div>
           </div>
         </GlassCard>
