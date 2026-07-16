@@ -237,7 +237,7 @@ function IdentityDetailCard() {
   const [dragOver, setDragOver] = useState(false)
 
   return (
-    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-[1.16rem] overflow-hidden">
+    <div className="bg-[#0C1311] rounded-[1.16rem] overflow-hidden shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] border-[1.16px] border-[#0C1311]">
       <div className="flex relative">
         {/* Left side — Identity info + Requirements */}
         <div className="flex-1 p-10">
@@ -618,19 +618,21 @@ function ProfileTab() {
 function VerificationTab() {
   return (
     <>
-      <div className="mt-10 relative bg-gfx-green-800 rounded-[1.16rem] overflow-hidden border border-gfx-green-800">
-        {/* Bottom highlight glows */}
-        <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
-        <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
+      <GlassCard className="mt-10 !rounded-[1.16rem]">
+        <div className="relative overflow-hidden">
+          {/* Bottom highlight glows */}
+          <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
+          <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
 
-        <div className="px-30 pt-12 pb-0">
-          <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
-          <VerificationStepper activeStep={0} />
+          <div className="px-30 pt-12 pb-0">
+            <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
+            <VerificationStepper activeStep={0} />
+          </div>
+          <div className="px-30 pb-10 pt-8 relative z-10">
+            <IdentityDetailCard />
+          </div>
         </div>
-        <div className="px-30 pb-10 pt-8 relative z-10">
-          <IdentityDetailCard />
-        </div>
-      </div>
+      </GlassCard>
 
       <GlassCard className="mt-8 !rounded-lg !p-0">
         <TradingFeaturesTable />
@@ -660,21 +662,13 @@ export default function SettingsPage() {
         <div
           className="relative h-[11.875rem] border-b border-white/5"
           style={{
-            background: 'radial-gradient(ellipse 81.46% 637.01% at 20% 120%, rgba(16,185,129,0.35) 0%, rgba(16,185,129,0) 60%), linear-gradient(177deg, #0A1F18 0%, #071410 70%)',
+            backgroundImage: 'url(/images/settings-hero-bg.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
-          {/* Texture overlay */}
-          <div
-            className="absolute w-[41.5rem] h-[19.875rem] -left-2.5 -top-32 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse 57.50% 33.85% at 51.43% 51.34%, black 0%, rgba(102,102,102,0) 100%)', borderRadius: '44.8rem' }}
-            aria-hidden="true"
-          />
-          {/* Pixels */}
-          <div
-            className="absolute w-[31.25rem] h-[20.79rem] left-[10.25rem] -top-[8.77rem] opacity-20 pointer-events-none"
-            style={{ backgroundImage: 'url(/images/pixels.png)', backgroundSize: 'cover' }}
-            aria-hidden="true"
-          />
+          {/* Name over banner */}
+          <h2 className="absolute left-10 top-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
 
           {/* Avatar */}
           <div className="absolute left-10" style={{ top: '7.4375rem' }}>
@@ -696,7 +690,6 @@ export default function SettingsPage() {
 
         {/* Profile info */}
         <div className="pl-44 pt-4 pb-6">
-          <h2 className="text-white text-2xl font-acid leading-normal">Joe Doe</h2>
           <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-2">joedoe@gmail.com</p>
           <div className="flex flex-wrap items-center gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
