@@ -655,12 +655,14 @@ function SettingsTab() {
             <SparkleButton onClick={() => setShowChangePicture(true)}>Change Picture</SparkleButton>
           </div>
 
-          <div className="w-xs flex flex-row justify-between items-center py-6">
+          <div className="w-full flex flex-row justify-between items-center py-6">
             <div>
               <p className="text-white text-base font-acid font-medium">Theme</p>
               <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
             </div>
-            <ModeToggle options={['Light', 'Dark', 'Auto']} activeIndex={themeIndex} onChange={setThemeIndex} />
+            <div className="w-xs">
+              <ModeToggle options={['Light', 'Dark', 'Auto']} activeIndex={themeIndex} onChange={setThemeIndex} />
+            </div>
           </div>
 
           <div className="flex items-center justify-between py-6">
