@@ -3,6 +3,7 @@ import { GlassCard, GlassInput, ModeToggle, GlowEllipse, StatCard, SparkleButton
 import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { ChangePictureModal } from '@/components/modals/ChangePictureModal'
 import { ChangePasswordModal } from '@/components/modals/ChangePasswordModal'
+import { ChangeEmailModal } from '@/components/modals/ChangeEmailModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -521,6 +522,7 @@ function SettingsTab() {
   const [themeIndex, setThemeIndex] = useState(1)
   const [showChangePicture, setShowChangePicture] = useState(false)
   const [showChangePw, setShowChangePw] = useState(false)
+  const [showChangeEmail, setShowChangeEmail] = useState(false)
 
   return (
     <>
@@ -593,8 +595,9 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Change Email</p>
               <p className="text-[#808080] text-base font-acid">Update your email address</p>
             </div>
-            <SparkleButton>Change Email</SparkleButton>
+            <SparkleButton onClick={() => setShowChangeEmail(true)}>Change Email</SparkleButton>
           </div>
+          <ChangeEmailModal open={showChangeEmail} onClose={() => setShowChangeEmail(false)} />
 
           <div className="flex items-center justify-between py-6">
             <div>
