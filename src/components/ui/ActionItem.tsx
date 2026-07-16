@@ -9,7 +9,7 @@ interface ActionItemProps {
 }
 
 export function ActionItem({ title, subtitle, icon, href }: ActionItemProps) {
-  const className = "w-full h-14 xl:h-[3.75rem] 2xl:h-20 rounded-md outline outline-1 outline-white/5 flex items-center gap-3 2xl:gap-4 px-4 2xl:px-5 bg-transparent hover:bg-white/[0.02] transition-colors text-left cursor-pointer"
+  const className = "w-full flex-1 rounded-md outline outline-1 outline-white/5 flex items-center gap-3 2xl:gap-4 px-4 2xl:px-5 bg-transparent hover:bg-white/[0.02] transition-colors text-left cursor-pointer"
 
   const content = (
     <>
