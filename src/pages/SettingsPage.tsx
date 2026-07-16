@@ -799,40 +799,42 @@ export default function SettingsPage() {
       <div className="relative bg-[#0D1512] border border-gfx-green-300/12 rounded-[1.125rem] overflow-hidden">
         {/* Banner area */}
         <div
-          className="relative h-[17rem] border-b border-white/5"
+          className="relative h-[11.875rem] border-b border-white/5"
           style={{
             backgroundImage: 'url(/images/settings-hero-bg.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {/* Avatar + Profile info row */}
-          <div className="absolute left-10 bottom-6 flex items-end gap-5">
-            <div className="relative shrink-0">
-              <div className="relative w-[7.25rem] h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
-                <span className="text-white text-[1.975rem] font-acid font-bold relative z-10">JD</span>
-                <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'blur(9.88rem)' }} aria-hidden="true" />
-                <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(8.7rem)' }} aria-hidden="true" />
-                <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(9.45rem)' }} aria-hidden="true" />
-              </div>
-              {/* Camera button */}
-              <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M6.99935 5.97917C7.24097 5.97917 7.43685 6.17504 7.43685 6.41667V7.14583H8.16602C8.40764 7.14583 8.60352 7.34171 8.60352 7.58333C8.60352 7.82496 8.40764 8.02083 8.16602 8.02083H7.43685V8.75C7.43685 8.99162 7.24097 9.1875 6.99935 9.1875C6.75772 9.1875 6.56185 8.99162 6.56185 8.75V8.02083H5.83268C5.59106 8.02083 5.39518 7.82496 5.39518 7.58333C5.39518 7.34171 5.59106 7.14583 5.83268 7.14583H6.56185V6.41667C6.56185 6.17504 6.75772 5.97917 6.99935 5.97917Z" fill="white"/>
-                  <path fillRule="evenodd" clipRule="evenodd" d="M5.70305 12.25H8.29565C10.1162 12.25 11.0265 12.25 11.6805 11.821C11.9635 11.6353 12.2066 11.3967 12.3958 11.1187C12.8327 10.4767 12.8327 9.58295 12.8327 7.79545C12.8327 6.00796 12.8327 5.11421 12.3958 4.47218C12.2066 4.19425 11.9635 3.95561 11.6805 3.7699C11.2603 3.49424 10.7342 3.39572 9.92885 3.3605C9.54452 3.3605 9.21361 3.07456 9.13824 2.70455C9.02518 2.14952 8.52882 1.75 7.95232 1.75H6.04638C5.46988 1.75 4.97352 2.14952 4.86046 2.70455C4.78509 3.07456 4.45418 3.3605 4.06985 3.3605C3.26446 3.39572 2.73842 3.49424 2.31824 3.7699C2.03516 3.95561 1.7921 4.19425 1.60295 4.47218C1.16602 5.11421 1.16602 6.00796 1.16602 7.79545C1.16602 9.58295 1.16602 10.4767 1.60295 11.1187C1.7921 11.3967 2.03516 11.6353 2.31824 11.821C2.97215 12.25 3.88245 12.25 5.70305 12.25ZM9.33268 7.58333C9.33268 8.872 8.28801 9.91667 6.99935 9.91667C5.71068 9.91667 4.66602 8.872 4.66602 7.58333C4.66602 6.29467 5.71068 5.25 6.99935 5.25C8.28801 5.25 9.33268 6.29467 9.33268 7.58333ZM10.4993 5.39583C10.2577 5.39583 10.0618 5.59171 10.0618 5.83333C10.0618 6.07496 10.2577 6.27083 10.4993 6.27083H11.0827C11.3243 6.27083 11.5202 6.07496 11.5202 5.83333C11.5202 5.59171 11.3243 5.39583 11.0827 5.39583H10.4993Z" fill="white"/>
-                </svg>
-              </div>
+          {/* Name on banner */}
+          <h2 className="absolute left-10 bottom-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+
+          {/* Avatar */}
+          <div className="absolute left-10" style={{ top: '7.4375rem' }}>
+            <div className="relative w-[7.25rem] h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
+              <span className="text-white text-[1.975rem] font-acid font-bold relative z-10">JD</span>
+              <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'blur(9.88rem)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(8.7rem)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(9.45rem)' }} aria-hidden="true" />
             </div>
-            <div className="pb-1">
-              <h2 className="text-white text-2xl font-acid leading-normal">Joe Doe</h2>
-              <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-1">joedoe@gmail.com</p>
-              <div className="flex flex-wrap items-center gap-2 mt-2">
-                <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
-                <ProfileBadge icon={<KycIcon />} label="KYC Required" />
-                <ProfileBadge icon={<PartnerDotIcon />} label="Partner" variant="green" />
-                <ProfileBadge icon={<PammIcon />} label="PAMM Manager" variant="purple" />
-              </div>
+            {/* Camera button */}
+            <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path fillRule="evenodd" clipRule="evenodd" d="M6.99935 5.97917C7.24097 5.97917 7.43685 6.17504 7.43685 6.41667V7.14583H8.16602C8.40764 7.14583 8.60352 7.34171 8.60352 7.58333C8.60352 7.82496 8.40764 8.02083 8.16602 8.02083H7.43685V8.75C7.43685 8.99162 7.24097 9.1875 6.99935 9.1875C6.75772 9.1875 6.56185 8.99162 6.56185 8.75V8.02083H5.83268C5.59106 8.02083 5.39518 7.82496 5.39518 7.58333C5.39518 7.34171 5.59106 7.14583 5.83268 7.14583H6.56185V6.41667C6.56185 6.17504 6.75772 5.97917 6.99935 5.97917Z" fill="white"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M5.70305 12.25H8.29565C10.1162 12.25 11.0265 12.25 11.6805 11.821C11.9635 11.6353 12.2066 11.3967 12.3958 11.1187C12.8327 10.4767 12.8327 9.58295 12.8327 7.79545C12.8327 6.00796 12.8327 5.11421 12.3958 4.47218C12.2066 4.19425 11.9635 3.95561 11.6805 3.7699C11.2603 3.49424 10.7342 3.39572 9.92885 3.3605C9.54452 3.3605 9.21361 3.07456 9.13824 2.70455C9.02518 2.14952 8.52882 1.75 7.95232 1.75H6.04638C5.46988 1.75 4.97352 2.14952 4.86046 2.70455C4.78509 3.07456 4.45418 3.3605 4.06985 3.3605C3.26446 3.39572 2.73842 3.49424 2.31824 3.7699C2.03516 3.95561 1.7921 4.19425 1.60295 4.47218C1.16602 5.11421 1.16602 6.00796 1.16602 7.79545C1.16602 9.58295 1.16602 10.4767 1.60295 11.1187C1.7921 11.3967 2.03516 11.6353 2.31824 11.821C2.97215 12.25 3.88245 12.25 5.70305 12.25ZM9.33268 7.58333C9.33268 8.872 8.28801 9.91667 6.99935 9.91667C5.71068 9.91667 4.66602 8.872 4.66602 7.58333C4.66602 6.29467 5.71068 5.25 6.99935 5.25C8.28801 5.25 9.33268 6.29467 9.33268 7.58333ZM10.4993 5.39583C10.2577 5.39583 10.0618 5.59171 10.0618 5.83333C10.0618 6.07496 10.2577 6.27083 10.4993 6.27083H11.0827C11.3243 6.27083 11.5202 6.07496 11.5202 5.83333C11.5202 5.59171 11.3243 5.39583 11.0827 5.39583H10.4993Z" fill="white"/>
+              </svg>
             </div>
+          </div>
+        </div>
+
+        {/* Profile info */}
+        <div className="pl-44 pt-4 pb-6">
+          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-2">joedoe@gmail.com</p>
+          <div className="flex flex-wrap items-center gap-2 mt-3">
+            <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
+            <ProfileBadge icon={<KycIcon />} label="KYC Required" />
+            <ProfileBadge icon={<PartnerDotIcon />} label="Partner" variant="green" />
+            <ProfileBadge icon={<PammIcon />} label="PAMM Manager" variant="purple" />
           </div>
         </div>
       </div>
