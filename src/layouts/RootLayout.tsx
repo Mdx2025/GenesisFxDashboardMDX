@@ -38,6 +38,11 @@ export default function RootLayout() {
 
   useEffect(() => {
     const wrapper = mainRef.current
+    if (wrapper) wrapper.scrollTo({ top: 0 })
+  }, [pathname])
+
+  useEffect(() => {
+    const wrapper = mainRef.current
     if (!wrapper) return
 
     const lenis = new Lenis({

@@ -1,5 +1,5 @@
 import './Sidebar.css'
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useState, useRef, useLayoutEffect, useEffect } from 'react'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
@@ -35,6 +35,18 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
   const submenuInitialized = useRef<Set<string>>(new Set())
   const navListRef = useRef<HTMLUListElement>(null)
+
+  useEffect(() => {
+    onClose()
+    setOpenMenus({})
+  }, [location.pathname])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const handler = () => { if (mq.matches) onClose() }
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [onClose])
 
   useLayoutEffect(() => {
     for (const [id, isOpen] of Object.entries(openMenus)) {
@@ -136,7 +148,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                   <NavButton
                     active={isActive}
                     expanded={item.submenu ? !!openMenus[item.id] : undefined}
-                    onClick={item.submenu ? () => !collapsed && setOpenMenus(prev => ({ ...prev, [item.id]: !prev[item.id] })) : undefined}
+                    onClick={item.submenu ? () => !collapsed && setOpenMenus(prev => {
+                      const wasOpen = !!prev[item.id]
+                      const next: Record<string, boolean> = {}
+                      if (!wasOpen) next[item.id] = true
+                      return next
+                    }) : undefined}
                     as={item.submenu ? 'button' : 'div'}
                   >
                     {Icon && <Icon />}
