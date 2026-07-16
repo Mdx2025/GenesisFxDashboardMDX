@@ -49,12 +49,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   }, [onClose])
 
   useLayoutEffect(() => {
-    for (const [id, isOpen] of Object.entries(openMenus)) {
-      const el = submenuRefs.current[id]
+    for (const [id, el] of Object.entries(submenuRefs.current)) {
       if (!el) continue
-      if (!submenuInitialized.current.has(id)) {
-        submenuInitialized.current.add(id)
-      }
+      const isOpen = !!openMenus[id]
       if (isOpen) {
         gsap.set(el, { height: 'auto', opacity: 1 })
         gsap.from(el, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.out' })
