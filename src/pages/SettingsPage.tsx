@@ -238,7 +238,7 @@ function IdentityDetailCard() {
   const [dragOver, setDragOver] = useState(false)
 
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] !p-0 overflow-hidden">
+    <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] pb-10 overflow-hidden">
       <div className="flex relative">
         {/* Left side — Identity info + Requirements */}
         <div className="flex-1 p-10">
@@ -273,8 +273,8 @@ function IdentityDetailCard() {
         <div className="w-px self-stretch my-20 shrink-0" style={{ background: 'linear-gradient(to bottom, #064B34 0%, #0C1311 100%)' }} />
 
         {/* Right side — Upload area */}
-        <div className="flex-1 p-10 flex flex-col">
-          <div className="flex items-center justify-center gap-4 mb-8">
+        <div className="flex-1 p-10 flex flex-col items-center justify-center gap-10">
+          <div className="flex items-center justify-center gap-4">
             <UploadSquareIcon />
             <div>
               <p className="text-white text-base font-acid">Upload Your Document</p>
@@ -282,7 +282,7 @@ function IdentityDetailCard() {
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center gap-4">
+          <div className="flex flex-col items-center gap-4">
             <GlowButton
               label="Choose File"
               icon={
@@ -298,7 +298,7 @@ function IdentityDetailCard() {
             <p className="text-gfx-neutral-400 text-base font-acid">JPG, PNG or PDF • Max 10MB</p>
           </div>
 
-          <div className="mt-4 flex items-center justify-center gap-3 bg-[#09241C] rounded-[1.375rem] px-3 py-2.5 w-fit mx-auto">
+          <div className="flex items-center justify-center gap-3 bg-[#09241C] rounded-[1.375rem] px-3 py-2.5 w-fit mx-auto">
             <ClockIcon />
             <p className="text-gfx-neutral-400 text-sm font-acid">Verification typically takes within 24 hours</p>
           </div>
@@ -321,13 +321,13 @@ function TradingFeaturesTable() {
       </div>
       <div className="w-full h-px bg-[#09241C]" />
 
-      {TRADING_FEATURES.map((feature) => (
+      {TRADING_FEATURES.map((feature, i) => (
         <div key={feature}>
           <div className="flex items-center justify-between px-[7.1875rem] py-[1.3125rem]">
             <span className="text-[#808080] text-base font-acid font-medium">{feature}</span>
             <CloseSquareIcon />
           </div>
-          <div className="w-full h-px bg-[#09241C]" />
+          {i < TRADING_FEATURES.length - 1 && <div className="w-full h-px bg-[#09241C]" />}
         </div>
       ))}
     </div>
@@ -613,7 +613,7 @@ function ProfileTab() {
       </GlassCard>
 
       <GlassCard className="mt-8 !rounded-lg relative overflow-hidden">
-        <div className="relative px-30 pt-10 pb-20">
+        <div className="relative z-10 px-30 pt-10 pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
           <div className="grid grid-cols-2 gap-x-8">
             <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
