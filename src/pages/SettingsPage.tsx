@@ -618,24 +618,34 @@ export default function SettingsPage() {
 
       <div className="w-6xl mx-auto font-acid mt-[5%]">
       {/* Profile Header Card */}
-      <div className="relative bg-gfx-green-800 border border-gfx-green-300/12 rounded-lg overflow-hidden">
+      <div className="relative bg-[#0D1512] border border-gfx-green-300/12 rounded-[1.125rem] overflow-hidden">
         {/* Banner area */}
         <div
-          className="relative h-48 border-b border-white/5"
+          className="relative h-[11.875rem] border-b border-white/5"
           style={{
-            backgroundImage: 'url(/images/settings-hero-bg.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background: 'radial-gradient(ellipse 81.46% 637.01% at 20% 120%, rgba(16,185,129,0.35) 0%, rgba(16,185,129,0) 60%), linear-gradient(177deg, #0A1F18 0%, #071410 70%)',
           }}
         >
-          {/* Name over banner */}
-          <h2 className="absolute left-10 top-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+          {/* Texture overlay */}
+          <div
+            className="absolute w-[41.5rem] h-[19.875rem] -left-2.5 -top-32 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse 57.50% 33.85% at 51.43% 51.34%, black 0%, rgba(102,102,102,0) 100%)', borderRadius: '44.8rem' }}
+            aria-hidden="true"
+          />
+          {/* Pixels */}
+          <div
+            className="absolute w-[31.25rem] h-[20.79rem] left-[10.25rem] -top-[8.77rem] opacity-20 pointer-events-none"
+            style={{ backgroundImage: 'url(/images/pixels.png)', backgroundSize: 'cover' }}
+            aria-hidden="true"
+          />
 
           {/* Avatar */}
-          <div className="absolute left-10 -bottom-12">
-            <div className="relative w-28 h-28 rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
-              <span className="text-white text-3xl font-acid font-bold relative z-10">JD</span>
-              <div className="absolute inset-0 rounded-full pointer-events-none" style={{ boxShadow: 'inset 0 0 40px 15px rgba(16,185,129,0.35), 0 0 60px 20px rgba(16,185,129,0.25)' }} aria-hidden="true" />
+          <div className="absolute left-10" style={{ top: '7.4375rem' }}>
+            <div className="relative w-[7.25rem] h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
+              <span className="text-white text-[1.975rem] font-acid font-bold relative z-10">JD</span>
+              <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'blur(9.88rem)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(8.7rem)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(9.45rem)' }} aria-hidden="true" />
             </div>
             {/* Camera button */}
             <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">
@@ -648,8 +658,9 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile info */}
-        <div className="pl-44 pt-2.5 pb-6">
-          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-3">joedoe@gmail.com</p>
+        <div className="pl-44 pt-4 pb-6">
+          <h2 className="text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-2">joedoe@gmail.com</p>
           <div className="flex flex-wrap items-center gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
             <ProfileBadge icon={<KycIcon />} label="KYC Required" />
