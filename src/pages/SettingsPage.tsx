@@ -4,6 +4,7 @@ import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { ChangePictureModal } from '@/components/modals/ChangePictureModal'
 import { ChangePasswordModal } from '@/components/modals/ChangePasswordModal'
 import { ChangeEmailModal } from '@/components/modals/ChangeEmailModal'
+import { CloseAccountModal } from '@/components/modals/CloseAccountModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -523,6 +524,7 @@ function SettingsTab() {
   const [showChangePicture, setShowChangePicture] = useState(false)
   const [showChangePw, setShowChangePw] = useState(false)
   const [showChangeEmail, setShowChangeEmail] = useState(false)
+  const [showCloseAccount, setShowCloseAccount] = useState(false)
 
   return (
     <>
@@ -604,8 +606,9 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Close Account</p>
               <p className="text-[#808080] text-base font-acid">Permanently delete your account and all data</p>
             </div>
-            <SparkleButton>Close Account</SparkleButton>
+            <SparkleButton onClick={() => setShowCloseAccount(true)}>Close Account</SparkleButton>
           </div>
+          <CloseAccountModal open={showCloseAccount} onClose={() => setShowCloseAccount(false)} />
         </div>
       </div>
     </>
