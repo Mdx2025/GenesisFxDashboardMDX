@@ -807,7 +807,7 @@ export default function SettingsPage() {
           }}
         >
           {/* Name on banner */}
-          <h2 className="absolute left-10 bottom-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+          <h2 className="absolute left-24 bottom-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
 
           {/* Avatar */}
           <div className="absolute left-10" style={{ top: '7.4375rem' }}>
