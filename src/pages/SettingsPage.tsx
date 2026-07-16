@@ -91,8 +91,7 @@ function ClockIcon() {
 function CloseSquareIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <rect x="2" y="2" width="20" height="20" rx="5" fill="var(--color-gfx-red-surface)" />
-      <path d="M9 9L15 15M15 9L9 15" stroke="var(--color-gfx-red-dark)" strokeWidth="1.5" strokeLinecap="round" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM8.96965 8.96967C9.26254 8.67678 9.73742 8.67678 10.0303 8.96967L12 10.9394L13.9696 8.96969C14.2625 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0303L13.0606 12L15.0303 13.9697C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0303 15.0303C9.73744 15.3232 9.26256 15.3232 8.96967 15.0303C8.67678 14.7374 8.67678 14.2626 8.96967 13.9697L10.9393 12L8.96965 10.0303C8.67676 9.73744 8.67676 9.26256 8.96965 8.96967Z" fill="#D46356"/>
     </svg>
   )
 }
@@ -305,18 +304,24 @@ function IdentityDetailCard() {
 
 function TradingFeaturesTable() {
   return (
-    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-2xl overflow-hidden px-30 pt-8 pb-6">
-      <h3 className="text-white text-2xl font-acid leading-normal mb-8">Verification – Trading</h3>
-
-      <div className="flex items-center justify-between pb-4 border-b border-gfx-green-900">
-        <span className="text-gfx-green-300 text-base font-acid font-medium">Features</span>
-        <span className="text-gfx-green-300 text-base font-acid font-medium">Allowed</span>
+    <div className="relative overflow-hidden">
+      <div className="px-[7.875rem] pt-12 pb-8">
+        <h3 className="text-white text-2xl font-acid leading-normal mb-8">Verification – Trading</h3>
       </div>
 
+      <div className="flex items-center justify-between px-[7.1875rem] pb-4">
+        <span className="text-[#00B38C] text-base font-acid font-medium">Features</span>
+        <span className="text-[#00B38C] text-base font-acid font-medium">Allowed</span>
+      </div>
+      <div className="w-full h-px bg-[#09241C]" />
+
       {TRADING_FEATURES.map((feature) => (
-        <div key={feature} className="flex items-center justify-between py-5 border-b border-gfx-green-900">
-          <span className="text-white text-base font-acid font-medium">{feature}</span>
-          <CloseSquareIcon />
+        <div key={feature}>
+          <div className="flex items-center justify-between px-[7.1875rem] py-[1.3125rem]">
+            <span className="text-[#808080] text-base font-acid font-medium">{feature}</span>
+            <CloseSquareIcon />
+          </div>
+          <div className="w-full h-px bg-[#09241C]" />
         </div>
       ))}
     </div>
@@ -634,7 +639,7 @@ function VerificationTab() {
         </div>
       </GlassCard>
 
-      <GlassCard className="mt-8 !rounded-lg !p-0">
+      <GlassCard className="mt-8 !rounded-[1.16rem] !p-0">
         <TradingFeaturesTable />
       </GlassCard>
     </>
