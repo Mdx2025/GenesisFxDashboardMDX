@@ -672,9 +672,6 @@ export default function SettingsPage() {
             backgroundPosition: 'center',
           }}
         >
-          {/* Name over banner */}
-          <h2 className="absolute left-10 top-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
-
           {/* Avatar */}
           <div className="absolute left-10" style={{ top: '7.4375rem' }}>
             <div className="relative w-[7.25rem] h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
@@ -695,6 +692,7 @@ export default function SettingsPage() {
 
         {/* Profile info */}
         <div className="pl-44 pt-4 pb-6">
+          <h2 className="text-white text-2xl font-acid leading-normal">Joe Doe</h2>
           <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-2">joedoe@gmail.com</p>
           <div className="flex flex-wrap items-center gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
