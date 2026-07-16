@@ -1,5 +1,5 @@
 import { useState, useRef, type ReactNode } from 'react'
-import { GlassCard, GlassInput, ModeToggle, GlowEllipse, StatCard, SparkleButton } from '@/components/ui'
+import { GlassCard, GlassInput, ModeToggle, GlowEllipse, StatCard, SparkleButton, GlowButton } from '@/components/ui'
 import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
@@ -132,15 +132,17 @@ interface KycStatusItemProps {
 
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
-    <div className="h-[4.6875rem] bg-[#0C1311] border border-gfx-green-300/12 rounded-[1.125rem]">
-      <div className="flex items-start gap-2.5 px-6 pt-5">
-        <WarningTriangleIcon />
+    <GlassCard variant="light" divider="none" className="!rounded-[1.125rem] !bg-[#0C1311] !p-0 h-[4.6875rem]">
+      <div className="flex items-center gap-2.5 px-6 h-full">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+          <path fillRule="evenodd" clipRule="evenodd" d="M3.76181 7.62273C5.82898 3.95758 6.86257 2.125 8.49935 2.125C10.1361 2.125 11.1697 3.95757 13.2369 7.62272L13.4945 8.07944C15.2123 11.1252 16.0712 12.648 15.2949 13.7615C14.5186 14.875 12.5981 14.875 8.75694 14.875H8.24175C4.40062 14.875 2.48005 14.875 1.70378 13.7615C0.927508 12.648 1.78641 11.1252 3.50422 8.07944L3.76181 7.62273ZM8.49935 5.13542C8.79275 5.13542 9.0306 5.37327 9.0306 5.66667V9.20833C9.0306 9.50173 8.79275 9.73958 8.49935 9.73958C8.20595 9.73958 7.9681 9.50173 7.9681 9.20833V5.66667C7.9681 5.37327 8.20595 5.13542 8.49935 5.13542ZM8.49935 12.0417C8.89055 12.0417 9.20768 11.7245 9.20768 11.3333C9.20768 10.9421 8.89055 10.625 8.49935 10.625C8.10815 10.625 7.79102 10.9421 7.79102 11.3333C7.79102 11.7245 8.10815 12.0417 8.49935 12.0417Z" fill="#808080" />
+        </svg>
         <div>
           <p className="text-white text-base font-acid font-medium leading-relaxed">{title}</p>
           <p className="text-gfx-neutral-400 text-sm font-acid leading-tight">{subtitle}</p>
         </div>
       </div>
-    </div>
+    </GlassCard>
   )
 }
 
@@ -236,7 +238,7 @@ function IdentityDetailCard() {
   const [dragOver, setDragOver] = useState(false)
 
   return (
-    <div className="bg-[#0C1311] rounded-[1.16rem] overflow-hidden shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] border-[1.16px] border-[#0C1311]">
+    <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] !p-0 overflow-hidden">
       <div className="flex relative">
         {/* Left side — Identity info + Requirements */}
         <div className="flex-1 p-10">
@@ -251,7 +253,7 @@ function IdentityDetailCard() {
           </div>
 
           <p className="text-white text-base font-acid font-medium mb-4">Requirements</p>
-          <div className="flex flex-col gap-[2.1875rem]">
+          <div className="flex flex-col gap-2">
             {REQUIREMENTS.map((req) => (
               <div key={req} className="flex items-start gap-3">
                 <FolderCheckIcon />
@@ -298,15 +300,15 @@ function IdentityDetailCard() {
           </div>
         </div>
       </div>
-    </div>
+    </GlassCard>
   )
 }
 
 function TradingFeaturesTable() {
   return (
     <div className="relative overflow-hidden">
-      <div className="px-[7.875rem] pt-12 pb-8">
-        <h3 className="text-white text-2xl font-acid leading-normal mb-8">Verification – Trading</h3>
+      <div className="px-[7.875rem] py-12">
+        <h3 className="text-white text-2xl font-acid leading-normal">Verification – Trading</h3>
       </div>
 
       <div className="flex items-center justify-between px-[7.1875rem] pb-4">
@@ -639,7 +641,7 @@ function VerificationTab() {
         </div>
       </GlassCard>
 
-      <GlassCard className="mt-8 !rounded-[1.16rem] !p-0">
+      <GlassCard className="mt-8 !rounded-[1.16rem] !pb-10">
         <TradingFeaturesTable />
       </GlassCard>
     </>
