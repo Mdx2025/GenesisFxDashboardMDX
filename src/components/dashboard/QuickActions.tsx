@@ -25,6 +25,7 @@ export function QuickActions() {
               title={action.title}
               subtitle={action.subtitle}
               icon={iconRender[action.icon] || <span>?</span>}
+              href={action.href}
             />
           ))}
         </div>
