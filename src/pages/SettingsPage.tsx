@@ -2,6 +2,7 @@ import { useState, useRef, type ReactNode } from 'react'
 import { GlassCard, GlassInput, ModeToggle, GlowEllipse, StatCard, SparkleButton, GlowButton } from '@/components/ui'
 import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
 import { ChangePictureModal } from '@/components/modals/ChangePictureModal'
+import { ChangePasswordModal } from '@/components/modals/ChangePasswordModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -461,6 +462,7 @@ function ToggleSwitch({ enabled = false, onClick }: { enabled?: boolean; onClick
 
 function SecurityTab() {
   const [show2fa, setShow2fa] = useState(false)
+  const [showChangePassword, setShowChangePassword] = useState(false)
 
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
@@ -518,6 +520,7 @@ function SettingsTab() {
   const [aiCoachEnabled, setAiCoachEnabled] = useState(true)
   const [themeIndex, setThemeIndex] = useState(1)
   const [showChangePicture, setShowChangePicture] = useState(false)
+  const [showChangePw, setShowChangePw] = useState(false)
 
   return (
     <>
@@ -581,8 +584,9 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Change Password</p>
               <p className="text-[#808080] text-base font-acid">Update your account password</p>
             </div>
-            <SparkleButton>Change Password</SparkleButton>
+            <SparkleButton onClick={() => setShowChangePw(true)}>Change Password</SparkleButton>
           </div>
+          <ChangePasswordModal open={showChangePw} onClose={() => setShowChangePw(false)} />
 
           <div className="flex items-center justify-between py-6">
             <div>
