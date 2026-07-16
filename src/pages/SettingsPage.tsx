@@ -419,9 +419,7 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
 function SupportTab() {
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto" style={{ background: '#0C1311' }}>
-      <div className="relative overflow-hidden px-30 pt-12 pb-10">
-        <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
-        <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
+      <div className="relative overflow-hidden px-30 pt-12 pb-15">
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
         <div className="grid grid-cols-2 gap-5 relative z-10">
           <SupportContactCard icon={<ChatDialogIcon />} title="Live chat" subtitle="Available 24/7" action="Start  Live Chat" />
