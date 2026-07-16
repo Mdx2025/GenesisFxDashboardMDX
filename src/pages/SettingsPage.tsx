@@ -518,6 +518,100 @@ function SecurityTab() {
 }
 
 
+const LANGUAGES = [
+  { name: 'English', flag: <UkFlag /> },
+  { name: 'Spanish', flag: <SpainFlag /> },
+  { name: 'French', flag: <FranceFlag /> },
+  { name: 'Russian', flag: <RussiaFlag /> },
+  { name: 'Chinese', flag: <ChinaFlag /> },
+] as const
+
+function LanguageDropdown({ selected, onSelect }: { selected: string; onSelect: (lang: string) => void }) {
+  return (
+    <div
+      className="absolute right-0 top-full mt-2 z-50 w-[11rem] bg-[#0C1311] rounded-[1.16rem] overflow-hidden"
+      style={{ boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}
+    >
+      {LANGUAGES.map((lang, i) => (
+        <button
+          key={lang.name}
+          onClick={() => onSelect(lang.name)}
+          className={`w-full flex items-center gap-3 px-[0.875rem] h-[2.125rem] cursor-pointer transition-colors ${
+            i === 0 ? 'mt-[0.875rem]' : ''
+          } ${selected === lang.name
+            ? 'rounded-[0.625rem] mx-[0.875rem] w-[calc(100%-1.75rem)]'
+            : 'hover:bg-white/5 mx-[0.875rem] w-[calc(100%-1.75rem)] rounded-[0.5rem]'
+          } ${i === LANGUAGES.length - 1 ? 'mb-[0.875rem]' : ''}`}
+          style={selected === lang.name ? {
+            background: 'linear-gradient(173deg, #064B34 0%, #0C1311 100%)',
+            boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)',
+            border: '1.16px solid #0C1311',
+          } : undefined}
+        >
+          <span className="w-[1.4375rem] h-[1.4375rem] flex items-center justify-center shrink-0">{lang.flag}</span>
+          <span className="text-white text-base font-acid leading-[1.2rem]">{lang.name}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function UkFlag() {
+  return (
+    <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
+      <g clipPath="url(#uk)">
+        <path d="M0 5.736V8.232H3.564L0 5.736ZM2.954 19.632H8.233V15.935L2.954 19.632ZM14.567 15.936V19.632H19.846L14.567 15.936ZM0 14.565V17.061L3.566 14.565H0ZM19.847 3.165H14.567V6.862L19.847 3.165ZM22.8 17.062V14.565H19.234L22.8 17.062ZM22.8 8.232V5.736L19.235 8.232H22.8ZM8.233 3.165H2.954L8.233 6.862V3.165Z" fill="#00247D"/>
+        <path d="M15.921 14.566L22.072 18.874C22.373 18.564 22.589 18.183 22.699 17.766L18.13 14.566H15.921ZM8.233 14.566H6.877L0.727 18.873C1.056 19.209 1.48 19.449 1.954 19.56L8.233 15.164V14.566ZM14.566 8.233H15.922L22.072 3.926C21.737 3.586 21.311 3.348 20.846 3.239L14.566 7.636V8.233ZM6.877 8.233L0.727 3.926C0.426 4.236 0.21 4.617 0.099 5.034L4.668 8.233H6.877Z" fill="#CF1B2B"/>
+        <path d="M22.8 13.298H13.3V19.632H14.567V15.936L19.846 19.632H20.267C21.248 19.632 22.109 19.085 22.573 18.307L15.922 14.565H18.13L22.7 17.765C22.759 17.551 22.8 17.33 22.8 17.098V17.062L19.234 14.565H22.8V13.298ZM0 13.298V14.565H3.566L0 17.061V17.098C0 17.789 0.278 18.414 0.727 18.872L6.877 14.565H8.233V15.162L1.954 19.558C2.141 19.603 2.333 19.632 2.533 19.632H2.954L8.233 15.935V19.632H9.5V13.298H0ZM22.8 5.698C22.8 5.035 22.539 4.397 22.073 3.925L15.923 8.232H14.567V7.634L20.846 3.238C20.657 3.191 20.462 3.167 20.267 3.165H19.847L14.567 6.862V3.165H13.3V9.498H22.8V8.232H19.235L22.8 5.736V5.698ZM8.233 3.165V6.862L2.954 3.165H2.533C1.864 3.165 1.253 3.431 0.727 3.925L6.877 8.232H4.669L0.099 5.033C0.037 5.249 0.003 5.473 0 5.698V5.736L3.564 8.232H0V9.498H9.5V3.165H8.233Z" fill="#EEE"/>
+        <path d="M13.3 9.498V3.165H9.5V9.498H0V13.298H9.5V19.632H13.3V13.298H22.8V9.498H13.3Z" fill="#CF1B2B"/>
+      </g>
+      <defs><clipPath id="uk"><rect width="22.8" height="22.8" fill="white"/></clipPath></defs>
+    </svg>
+  )
+}
+
+function SpainFlag() {
+  return (
+    <svg width="23" height="16" viewBox="0 0 23 16" fill="none">
+      <path d="M22.8 0H0V15.2H22.8V0Z" fill="#AD1519"/>
+      <path d="M22.8 3.8H0V11.4H22.8V3.8Z" fill="#FABD00"/>
+    </svg>
+  )
+}
+
+function FranceFlag() {
+  return (
+    <svg width="23" height="16" viewBox="0 0 23 16" fill="none">
+      <path d="M0 0H7.6V15.2H0V0Z" fill="#002395"/>
+      <path d="M7.6 0H15.2V15.2H7.6V0Z" fill="white"/>
+      <path d="M15.2 0H22.8V15.2H15.2V0Z" fill="#ED2939"/>
+    </svg>
+  )
+}
+
+function RussiaFlag() {
+  return (
+    <svg width="23" height="16" viewBox="0 0 23 16" fill="none">
+      <path d="M0 0H22.8V5.067H0V0Z" fill="white"/>
+      <path d="M0 5.067H22.8V10.133H0V5.067Z" fill="#0039A6"/>
+      <path d="M0 10.133H22.8V15.2H0V10.133Z" fill="#D52B1E"/>
+    </svg>
+  )
+}
+
+function ChinaFlag() {
+  return (
+    <svg width="23" height="16" viewBox="0 0 23 16" fill="none">
+      <path d="M0 0H22.8V15.2H0V0Z" fill="#DE2910"/>
+      <path d="M3.42 2.28L4.56 5.7H2.28L3.42 2.28Z" fill="#FFDE00"/>
+      <path d="M7.22 1.52L6.84 2.66L7.6 1.9L6.46 1.9L7.22 2.66L7.22 1.52Z" fill="#FFDE00"/>
+      <path d="M8.74 3.04L8.36 4.18L9.12 3.42L7.98 3.42L8.74 4.18L8.74 3.04Z" fill="#FFDE00"/>
+      <path d="M8.74 5.32L8.36 6.46L9.12 5.7L7.98 5.7L8.74 6.46L8.74 5.32Z" fill="#FFDE00"/>
+      <path d="M7.22 6.84L6.84 7.98L7.6 7.22L6.46 7.22L7.22 7.98L7.22 6.84Z" fill="#FFDE00"/>
+    </svg>
+  )
+}
+
 function SettingsTab() {
   const [aiCoachEnabled, setAiCoachEnabled] = useState(true)
   const [themeIndex, setThemeIndex] = useState(1)
@@ -525,6 +619,8 @@ function SettingsTab() {
   const [showChangePw, setShowChangePw] = useState(false)
   const [showChangeEmail, setShowChangeEmail] = useState(false)
   const [showCloseAccount, setShowCloseAccount] = useState(false)
+  const [showLangDropdown, setShowLangDropdown] = useState(false)
+  const [selectedLang, setSelectedLang] = useState('English')
 
   return (
     <>
@@ -572,7 +668,18 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Change Language</p>
               <p className="text-[#808080] text-base font-acid">Choose your preferred language</p>
             </div>
-            <SparkleButton>Change Language</SparkleButton>
+            <div className="relative">
+              <SparkleButton onClick={() => setShowLangDropdown(v => !v)}>Change Language</SparkleButton>
+              {showLangDropdown && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setShowLangDropdown(false)} />
+                  <LanguageDropdown
+                    selected={selectedLang}
+                    onSelect={(lang) => { setSelectedLang(lang); setShowLangDropdown(false) }}
+                  />
+                </>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center justify-between py-6">
