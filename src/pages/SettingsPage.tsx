@@ -147,7 +147,7 @@ function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
 
 const KYC_STEPS = [
   { label: 'Identity', subtitle: 'Government-issued ID', icon: <FileTextIcon /> },
-  { label: 'Address', subtitle: 'Proof of residence', icon: <EyeScanIcon /> },
+  { label: 'Address', subtitle: 'Proof of residence', icon: <MapPointIcon /> },
   { label: 'Review', subtitle: 'Admin verification', icon: <EyeScanIcon /> },
 ] as const
 
@@ -166,18 +166,49 @@ const TRADING_FEATURES = [
   'Fiat Withdrawals (Limits)',
 ] as const
 
+function MapPointIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M9.99967 1.66699C6.31778 1.66699 3.33301 5.00248 3.33301 8.75033C3.33301 12.4688 5.46078 16.5107 8.78056 18.0624C9.55446 18.4241 10.4449 18.4241 11.2188 18.0624C14.5386 16.5107 16.6663 12.4688 16.6663 8.75033C16.6663 5.00248 13.6816 1.66699 9.99967 1.66699ZM9.99967 10.0003C10.9201 10.0003 11.6663 9.25413 11.6663 8.33366C11.6663 7.41318 10.9201 6.66699 9.99967 6.66699C9.0792 6.66699 8.33301 7.41318 8.33301 8.33366C8.33301 9.25413 9.0792 10.0003 9.99967 10.0003Z" fill="#808080"/>
+    </svg>
+  )
+}
+
+function StepperGradientRing() {
+  return (
+    <svg className="absolute inset-0" width="62" height="62" viewBox="0 0 62 62" fill="none">
+      <circle cx="31" cy="31" r="30.5" stroke="url(#stepperGrad)" strokeOpacity="0.5" strokeLinecap="round"/>
+      <defs>
+        <linearGradient id="stepperGrad" x1="-6.658" y1="0.276" x2="75.105" y2="16.896" gradientUnits="userSpaceOnUse">
+          <stop offset="0.2" stopColor="#00B38C"/>
+          <stop offset="0.477" stopColor="#064B34"/>
+          <stop offset="0.966" stopColor="#00B38C"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
 function VerificationStepper({ activeStep = 0 }: { activeStep?: number }) {
   return (
     <div className="flex items-start justify-center gap-0">
       {KYC_STEPS.map((step, i) => (
         <div key={step.label} className="flex items-start">
           <div className="flex flex-col items-center gap-2">
-            <div className={`w-[3.875rem] h-[3.875rem] rounded-full flex items-center justify-center ${
-              i <= activeStep
-                ? 'bg-gfx-green-200 border-2 border-gfx-green-300'
-                : 'bg-gfx-green-900 border-2 border-gfx-green-800'
-            }`}>
-              {step.icon}
+            <div className="relative w-[3.875rem] h-[3.875rem]">
+              {i <= activeStep ? (
+                <>
+                  <StepperGradientRing />
+                  <div className="absolute inset-0 rounded-full" style={{ boxShadow: '0 0 6px rgba(0,179,140,0.3)' }} />
+                </>
+              ) : (
+                <svg className="absolute inset-0" width="62" height="62" viewBox="0 0 62 62" fill="none">
+                  <circle cx="31" cy="31" r="31" fill="#09241C"/>
+                </svg>
+              )}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {step.icon}
+              </div>
             </div>
             <div className="text-center">
               <p className={`text-base font-acid font-medium ${i <= activeStep ? 'text-white' : 'text-gfx-neutral-400'}`}>{step.label}</p>
@@ -185,13 +216,19 @@ function VerificationStepper({ activeStep = 0 }: { activeStep?: number }) {
             </div>
           </div>
           {i < KYC_STEPS.length - 1 && (
-            <div className={`w-[11.8125rem] h-px mt-[1.9375rem] mx-4 ${
-              i < activeStep ? 'bg-gfx-green-300' : 'bg-gfx-neutral-350'
-            }`} />
+            <div className="w-[11.8125rem] h-px mt-[1.9375rem] mx-4 bg-[#303030]" />
           )}
         </div>
       ))}
     </div>
+  )
+}
+
+function UploadSquareIcon() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M3 18C3 10.9289 3 7.3934 5.1967 5.1967C7.3934 3 10.9289 3 18 3C25.0711 3 28.6066 3 30.8033 5.1967C33 7.3934 33 10.9289 33 18C33 25.0711 33 28.6066 30.8033 30.8033C28.6066 33 25.0711 33 18 33C10.9289 33 7.3934 33 5.1967 30.8033C3 28.6066 3 25.0711 3 18ZM18 26.625C18.6213 26.625 19.125 26.1213 19.125 25.5V17.716L21.7045 20.2955C22.1438 20.7348 22.8562 20.7348 23.2955 20.2955C23.7348 19.8562 23.7348 19.1438 23.2955 18.7045L18.7955 14.2045C18.5845 13.9935 18.2984 13.875 18 13.875C17.7016 13.875 17.4155 13.9935 17.2045 14.2045L12.7045 18.7045C12.2652 19.1438 12.2652 19.8562 12.7045 20.2955C13.1438 20.7348 13.8562 20.7348 14.2955 20.2955L16.875 17.716V25.5C16.875 26.1213 17.3787 26.625 18 26.625ZM12 11.625C11.3787 11.625 10.875 11.1213 10.875 10.5C10.875 9.87868 11.3787 9.375 12 9.375H24C24.6213 9.375 25.125 9.87868 25.125 10.5C25.125 11.1213 24.6213 11.625 24 11.625H12Z" fill="#808080"/>
+    </svg>
   )
 }
 
@@ -200,69 +237,65 @@ function IdentityDetailCard() {
   const [dragOver, setDragOver] = useState(false)
 
   return (
-    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-2xl overflow-hidden">
-      <div className="flex">
+    <div className="bg-gfx-green-800 border border-gfx-green-800 rounded-[1.16rem] overflow-hidden">
+      <div className="flex relative">
         {/* Left side — Identity info + Requirements */}
-        <div className="flex-1 p-10 border-r border-gfx-green-900/50">
+        <div className="flex-1 p-10">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-[3.875rem] h-[3.875rem] rounded-full bg-gfx-green-200 border-2 border-gfx-green-300 flex items-center justify-center">
+            <div className="w-[3.875rem] h-[3.875rem] rounded-full bg-[#09241C] flex items-center justify-center">
               <FileTextIcon />
             </div>
             <div>
-              <p className="text-white text-lg font-acid font-medium">Identity</p>
-              <p className="text-gfx-neutral-400 text-sm font-acid">Government-issued ID</p>
+              <p className="text-white text-base font-acid font-medium">Identity</p>
+              <p className="text-gfx-neutral-400 text-base font-acid">Government-issued ID</p>
             </div>
           </div>
 
-          <p className="text-white text-lg font-acid font-medium mb-4">Requirements</p>
-          <div className="flex flex-col gap-4">
+          <p className="text-white text-base font-acid font-medium mb-4">Requirements</p>
+          <div className="flex flex-col gap-[2.1875rem]">
             {REQUIREMENTS.map((req) => (
               <div key={req} className="flex items-start gap-3">
                 <FolderCheckIcon />
-                <p className="text-gfx-neutral-500 text-sm font-acid leading-relaxed">{req}</p>
+                <p className="text-gfx-neutral-400 text-base font-acid leading-relaxed">{req}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 bg-gfx-green-900 rounded-[1.25rem] px-6 py-4">
-            <p className="text-gfx-neutral-500 text-sm font-acid leading-relaxed">
+          <div className="mt-8 bg-[#09241C] rounded-[1.25rem] px-8 py-7">
+            <p className="text-gfx-green-300 text-base font-acid leading-relaxed">
               Tip: Take the photo in a well-lit area without glare or shadows
             </p>
           </div>
         </div>
 
+        {/* Vertical gradient divider */}
+        <div className="w-px self-stretch my-20 shrink-0" style={{ background: 'linear-gradient(to bottom, #064B34 0%, #0C1311 100%)' }} />
+
         {/* Right side — Upload area */}
         <div className="flex-1 p-10 flex flex-col">
           <div className="flex items-center gap-4 mb-8">
-            <UploadIcon />
+            <UploadSquareIcon />
             <div>
-              <p className="text-white text-lg font-acid font-medium">Upload Your Document</p>
-              <p className="text-gfx-neutral-400 text-sm font-acid">Drag and drop or click to browse</p>
+              <p className="text-white text-base font-acid">Upload Your Document</p>
+              <p className="text-gfx-neutral-400 text-base font-acid">Drag and drop or click to browse</p>
             </div>
           </div>
 
-          <div
-            className={`flex-1 border-2 border-dashed rounded-xl flex flex-col items-center justify-center gap-4 cursor-pointer transition-colors ${
-              dragOver ? 'border-gfx-green-300 bg-gfx-green-200/10' : 'border-gfx-neutral-350'
-            }`}
-            onClick={() => fileInputRef.current?.click()}
-            onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
-            onDragLeave={() => setDragOver(false)}
-            onDrop={(e) => { e.preventDefault(); setDragOver(false) }}
-          >
-            <input ref={fileInputRef} type="file" className="hidden" accept=".jpg,.jpeg,.png,.pdf" />
+          <div className="flex-1 flex flex-col items-center justify-center gap-4">
             <button
               type="button"
               className="h-11 px-8 rounded-full bg-gfx-green-lightest text-black text-base font-acid font-medium cursor-pointer hover:bg-gfx-green-lightest-hover transition-colors"
+              onClick={() => fileInputRef.current?.click()}
             >
               Choose File
             </button>
-            <p className="text-gfx-neutral-400 text-sm font-acid">JPG, PNG or PDF • Max 10MB</p>
+            <input ref={fileInputRef} type="file" className="hidden" accept=".jpg,.jpeg,.png,.pdf" />
+            <p className="text-gfx-neutral-400 text-base font-acid">JPG, PNG or PDF • Max 10MB</p>
           </div>
 
-          <div className="mt-4 flex items-center gap-3 bg-gfx-green-900 rounded-[1.375rem] px-3 py-2.5 w-fit">
+          <div className="mt-4 flex items-center gap-3 bg-[#09241C] rounded-[1.375rem] px-3 py-2.5 w-fit">
             <ClockIcon />
-            <p className="text-gfx-neutral-500 text-sm font-acid">Verification typically takes within 24 hours</p>
+            <p className="text-gfx-neutral-400 text-sm font-acid">Verification typically takes within 24 hours</p>
           </div>
         </div>
       </div>
@@ -585,15 +618,19 @@ function ProfileTab() {
 function VerificationTab() {
   return (
     <>
-      <GlassCard className="mt-10 !rounded-lg">
-        <div className="px-30 pt-8 pb-0">
+      <div className="mt-10 relative bg-gfx-green-800 rounded-[1.16rem] overflow-hidden border border-gfx-green-800">
+        {/* Bottom highlight glows */}
+        <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
+        <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
+
+        <div className="px-30 pt-12 pb-0">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
           <VerificationStepper activeStep={0} />
         </div>
-        <div className="px-30 pb-10 pt-8">
+        <div className="px-30 pb-10 pt-8 relative z-10">
           <IdentityDetailCard />
         </div>
-      </GlassCard>
+      </div>
 
       <GlassCard className="mt-8 !rounded-lg !p-0">
         <TradingFeaturesTable />
