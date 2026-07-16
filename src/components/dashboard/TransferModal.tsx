@@ -89,7 +89,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-modal flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
+      className="fixed inset-0 z-modal flex items-center justify-center bg-black/70 backdrop-blur-sm"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -97,7 +97,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
     >
       <div
         ref={modalRef}
-        className="relative w-[793px] max-w-[95vw]"
+        className="relative w-[793px] max-w-[95vw] bg-gfx-main rounded-2xl"
       >
         {/* Modal background (clipped to contain glows) */}
         <div

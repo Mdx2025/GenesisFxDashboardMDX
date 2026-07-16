@@ -121,15 +121,15 @@
   --shadow-glow-green: 0 0 6px rgba(0,240,160,0.6), 0 0 12px rgba(0,240,160,0.3);
   --shadow-drop-glow-green: drop-shadow(0 0 6px rgba(16,188,131,0.5));
 
-  /* Z-index tokens */
-  --z-base: 1;
-  --z-dropdown: 50;
-  --z-sticky: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
-  --z-popover: 400;
-  --z-toast: 500;
-  --z-tooltip: 600;
+  /* Z-index tokens (--z-index-* namespace for Tailwind v4 z-* utilities) */
+  --z-index-base: 1;
+  --z-index-dropdown: 50;
+  --z-index-sticky: 100;
+  --z-index-overlay: 200;
+  --z-index-modal: 300;
+  --z-index-popover: 400;
+  --z-index-toast: 500;
+  --z-index-tooltip: 600;
 
   /* Motion tokens */
   --duration-fast: 150ms;
