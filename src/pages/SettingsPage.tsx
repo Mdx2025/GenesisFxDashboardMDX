@@ -1,6 +1,7 @@
 import { useState, useRef, type ReactNode } from 'react'
 import { GlassCard, GlassInput, ModeToggle, GlowEllipse, StatCard, SparkleButton, GlowButton } from '@/components/ui'
 import { TwoFactorModal } from '@/components/modals/TwoFactorModal'
+import { ChangePictureModal } from '@/components/modals/ChangePictureModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
 
@@ -516,9 +517,11 @@ function SecurityTab() {
 function SettingsTab() {
   const [aiCoachEnabled, setAiCoachEnabled] = useState(true)
   const [themeIndex, setThemeIndex] = useState(1)
+  const [showChangePicture, setShowChangePicture] = useState(false)
 
   return (
     <>
+      <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
       <div className="mt-10 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 pt-8 pb-4">
         <h3 className="text-white text-2xl font-acid mb-8">Settings</h3>
 
@@ -546,7 +549,7 @@ function SettingsTab() {
               <p className="text-white text-base font-acid font-medium">Profile Picture</p>
               <p className="text-[#808080] text-base font-acid">Change your profile picture</p>
             </div>
-            <SparkleButton>Change Picture</SparkleButton>
+            <SparkleButton onClick={() => setShowChangePicture(true)}>Change Picture</SparkleButton>
           </div>
 
           <div className="flex items-center justify-between py-6">
