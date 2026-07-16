@@ -86,7 +86,7 @@ export function CloseAccountModal({ open, onClose }: CloseAccountModalProps) {
             </svg>
           </button>
 
-          <div className="relative flex flex-col items-center px-[7.1875rem] pt-[7.9375rem] pb-[17.8125rem]">
+          <div className="relative flex flex-col items-center px-[7.1875rem] pt-[7.9375rem] pb-40">
             {/* Title — danger red */}
             <h3 className="text-[#D46356] text-[2.25rem] font-acid mb-[0.9375rem]">Close Account</h3>
 
