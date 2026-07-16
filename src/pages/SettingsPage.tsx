@@ -132,7 +132,7 @@ interface KycStatusItemProps {
 
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.125rem] !p-0 h-[4.6875rem]" style={{ background: '#0C1311' }}>
+    <GlassCard variant="light" divider="none" className="!rounded-[1.125rem] !p-0 h-[4.6875rem] !shadow-none" style={{ background: '#0C1311' }}>
       <div className="flex items-center gap-2.5 px-6 h-full">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
           <path fillRule="evenodd" clipRule="evenodd" d="M3.76181 7.62273C5.82898 3.95758 6.86257 2.125 8.49935 2.125C10.1361 2.125 11.1697 3.95757 13.2369 7.62272L13.4945 8.07944C15.2123 11.1252 16.0712 12.648 15.2949 13.7615C14.5186 14.875 12.5981 14.875 8.75694 14.875H8.24175C4.40062 14.875 2.48005 14.875 1.70378 13.7615C0.927508 12.648 1.78641 11.1252 3.50422 8.07944L3.76181 7.62273ZM8.49935 5.13542C8.79275 5.13542 9.0306 5.37327 9.0306 5.66667V9.20833C9.0306 9.50173 8.79275 9.73958 8.49935 9.73958C8.20595 9.73958 7.9681 9.50173 7.9681 9.20833V5.66667C7.9681 5.37327 8.20595 5.13542 8.49935 5.13542ZM8.49935 12.0417C8.89055 12.0417 9.20768 11.7245 9.20768 11.3333C9.20768 10.9421 8.89055 10.625 8.49935 10.625C8.10815 10.625 7.79102 10.9421 7.79102 11.3333C7.79102 11.7245 8.10815 12.0417 8.49935 12.0417Z" fill="#808080" />
@@ -238,7 +238,7 @@ function IdentityDetailCard() {
   const [dragOver, setDragOver] = useState(false)
 
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] pb-10 overflow-hidden">
+    <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] pb-8 overflow-hidden">
       <div className="flex relative">
         {/* Left side — Identity info + Requirements */}
         <div className="flex-1 p-10">
@@ -350,11 +350,6 @@ function RewardsTab() {
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] h-[29.6875rem] mx-auto">
       <div className="relative h-full overflow-hidden">
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[75%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
-          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
-          aria-hidden="true"
-        />
         <h3 className="text-white text-2xl font-acid leading-normal px-30 pt-10">My Rewards</h3>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="mt-4">
@@ -363,6 +358,7 @@ function RewardsTab() {
           <p className="text-gfx-neutral-400 text-base font-acid font-medium mt-6">No promotions found</p>
           <p className="text-gfx-neutral-400 text-base font-acid font-medium mt-3">Use a promo code when signing up to get exclusive bonuses!</p>
         </div>
+        <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 !blur-[5rem] opacity-60" />
       </div>
     </GlassCard>
   )
@@ -403,21 +399,35 @@ function HelpCenterIcon() {
 }
 
 
+function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode; title: string; subtitle: string; action?: string }) {
+  return (
+    <GlassCard variant="light" divider="none" className="!rounded-[1.875rem] !p-0" style={{ background: '#0C1311' }}>
+      <div className="flex items-center gap-5 px-5 py-6">
+        <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
+          {icon}
+        </div>
+        <div className="flex flex-col">
+          <p className="text-white text-2xl font-acid">{title}</p>
+          <p className="text-[#808080] text-base font-acid">{subtitle}</p>
+          {action && <p className="text-[#10BC83] text-base font-acid">{action}</p>}
+        </div>
+      </div>
+    </GlassCard>
+  )
+}
+
 function SupportTab() {
   return (
-    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
-      <div className="relative overflow-hidden px-30 pt-10 pb-10">
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
-          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
-          aria-hidden="true"
-        />
+    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto" style={{ background: '#0C1311' }}>
+      <div className="relative overflow-hidden px-30 pt-12 pb-10">
+        <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
+        <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
-        <div className="grid grid-cols-2 gap-5">
-          <StatCard icon={<ChatDialogIcon />} value="Live chat" label="Available 24/7" action="Start Live Chat" />
-          <StatCard icon={<EnvelopeIcon />} value="Email Support" label="support@genesisfxmarkets.com" action="Send Email" />
-          <StatCard icon={<WhatsappIcon />} value="Whatsapp" label="Quick chat support" action="Open Whatsapp" />
-          <StatCard icon={<HelpCenterIcon />} value="Help Center" label="Browse common questions" action="Visit Help Center" />
+        <div className="grid grid-cols-2 gap-5 relative z-10">
+          <SupportContactCard icon={<ChatDialogIcon />} title="Live chat" subtitle="Available 24/7" action="Start  Live Chat" />
+          <SupportContactCard icon={<EnvelopeIcon />} title="Email Support" subtitle="support@genesisfxmarkets.com" />
+          <SupportContactCard icon={<WhatsappIcon />} title="Whatsapp" subtitle="Quick chat support" />
+          <SupportContactCard icon={<HelpCenterIcon />} title="Help Center" subtitle="Browse common questions" />
         </div>
       </div>
     </GlassCard>
