@@ -133,7 +133,7 @@ interface KycStatusItemProps {
 
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
-    <GlassCard className="!p-0 h-[4.6875rem] !bg-[#0C1311]">
+    <div className="h-[4.6875rem] bg-[#0C1311] border border-gfx-green-300/12 rounded-[1.125rem]">
       <div className="flex items-start gap-2.5 px-6 pt-5">
         <WarningTriangleIcon />
         <div>
@@ -141,7 +141,7 @@ function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
           <p className="text-gfx-neutral-400 text-sm font-acid leading-tight">{subtitle}</p>
         </div>
       </div>
-    </GlassCard>
+    </div>
   )
 }
 
@@ -623,28 +623,18 @@ export default function SettingsPage() {
         <div
           className="relative h-48 border-b border-white/5"
           style={{
-            backgroundImage: `url("data:image/svg+xml;utf8,<svg viewBox='0 0 1545 190' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%25' width='100%25' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(125.85 0 0 121.03 309 228)'><stop stop-color='rgba(16,185,129,0.35)' offset='0'/><stop stop-color='rgba(16,185,129,0)' offset='0.6'/></radialGradient></defs></svg>"), linear-gradient(160.71deg, #0A1F18 0%, #071410 70%)`,
+            backgroundImage: 'url(/images/settings-hero-bg.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
-          {/* Pixel texture */}
-          <div
-            className="absolute right-0 top-0 w-[31.25rem] h-full opacity-20 pointer-events-none"
-            style={{
-              backgroundImage: 'url(/images/pixels.png)',
-              backgroundSize: '41.5rem',
-              backgroundPosition: '-10.875rem 0.7rem',
-              maskImage: 'linear-gradient(to left, black 60%, transparent)',
-              WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent)',
-            }}
-            aria-hidden="true"
-          />
+          {/* Name over banner */}
+          <h2 className="absolute left-10 top-6 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
 
           {/* Avatar */}
           <div className="absolute left-10 -bottom-12">
             <div className="relative w-28 h-28 rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
               <span className="text-white text-3xl font-acid font-bold relative z-10">JD</span>
-              {/* Avatar glow */}
-              <div className="absolute -bottom-18 left-1/2 -translate-x-1/2 w-[17.1875rem] h-[7.27rem] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.4) 0%, transparent 70%)' }} aria-hidden="true" />
             </div>
             {/* Camera button */}
             <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">
@@ -658,7 +648,6 @@ export default function SettingsPage() {
 
         {/* Profile info */}
         <div className="pl-44 pt-2.5 pb-6">
-          <h2 className="text-white text-2xl font-acid leading-normal">Joe Doe</h2>
           <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-3">joedoe@gmail.com</p>
           <div className="flex flex-wrap items-center gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
