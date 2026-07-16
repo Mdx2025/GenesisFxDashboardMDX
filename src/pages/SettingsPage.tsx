@@ -274,7 +274,7 @@ function IdentityDetailCard() {
 
         {/* Right side — Upload area */}
         <div className="flex-1 p-10 flex flex-col">
-          <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center justify-center gap-4 mb-8">
             <UploadSquareIcon />
             <div>
               <p className="text-white text-base font-acid">Upload Your Document</p>
@@ -283,18 +283,22 @@ function IdentityDetailCard() {
           </div>
 
           <div className="flex-1 flex flex-col items-center justify-center gap-4">
-            <button
-              type="button"
-              className="h-11 px-8 rounded-full bg-gfx-green-lightest text-black text-base font-acid font-medium cursor-pointer hover:bg-gfx-green-lightest-hover transition-colors"
+            <GlowButton
+              label="Choose File"
+              icon={
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M1.5 9C1.5 13.1421 4.85786 16.5 9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9ZM11.6477 9.35225C11.8674 9.57192 11.8674 9.92808 11.6477 10.1477L9.39775 12.3977C9.17808 12.6174 8.82192 12.6174 8.60225 12.3977L6.35225 10.1477C6.13258 9.92808 6.13258 9.57192 6.35225 9.35225C6.57192 9.13258 6.92808 9.13258 7.14775 9.35225L8.4375 10.642V6C8.4375 5.68934 8.68934 5.4375 9 5.4375C9.31066 5.4375 9.5625 5.68934 9.5625 6V10.642L10.8523 9.35225C11.0719 9.13258 11.4281 9.13258 11.6477 9.35225Z" fill="black" />
+                </svg>
+              }
+              width={193}
+              height={44}
               onClick={() => fileInputRef.current?.click()}
-            >
-              Choose File
-            </button>
+            />
             <input ref={fileInputRef} type="file" className="hidden" accept=".jpg,.jpeg,.png,.pdf" />
             <p className="text-gfx-neutral-400 text-base font-acid">JPG, PNG or PDF • Max 10MB</p>
           </div>
 
-          <div className="mt-4 flex items-center gap-3 bg-[#09241C] rounded-[1.375rem] px-3 py-2.5 w-fit">
+          <div className="mt-4 flex items-center justify-center gap-3 bg-[#09241C] rounded-[1.375rem] px-3 py-2.5 w-fit mx-auto">
             <ClockIcon />
             <p className="text-gfx-neutral-400 text-sm font-acid">Verification typically takes within 24 hours</p>
           </div>
