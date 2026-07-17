@@ -28,6 +28,7 @@ import TradesPage from '@/pages/partner/TradesPage'
 import CommissionsPage from '@/pages/partner/CommissionsPage'
 import PayoutsPage from '@/pages/partner/PayoutsPage'
 import MarketingPage from '@/pages/partner/MarketingPage'
+import StatisticsPage from '@/pages/partner/StatisticsPage'
 import VideoSinglePage from '@/pages/academy/VideoSinglePage'
 import EbookSinglePage from '@/pages/academy/EbookSinglePage'
 import {
@@ -75,6 +76,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/partner/comissions', label: 'Comissions', description: 'Partner commission tracking by level', icon: GenSocialIcon, component: CommissionsPage, showInDirectory: false },
   { path: '/partner/payouts', label: 'Payouts', description: 'Partner payout requests and history', icon: GenSocialIcon, component: PayoutsPage, showInDirectory: false },
   { path: '/partner/marketing', label: 'Marketing', description: 'Partner marketing materials and tools', icon: GenSocialIcon, component: MarketingPage, showInDirectory: false },
+  { path: '/partner/statistics', label: 'Statistics', description: 'Partner performance analytics and trends', icon: GenSocialIcon, component: StatisticsPage, showInDirectory: false },
   { path: '/settings', label: 'Settings', description: 'User profile, verification, and account settings', icon: UserIcon, component: SettingsPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
 ]
