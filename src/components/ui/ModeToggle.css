@@ -15,7 +15,7 @@
   border: none;
   background: transparent;
   color: var(--color-gfx-neutral-300);
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 400;
   cursor: pointer;
   z-index: var(--z-base);
