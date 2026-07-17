@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SearchInput, GlowEllipse, ModeToggle } from '@/components/ui'
+import { GlassCard, SearchInput, GlowEllipse, ModeToggle, SparkleButton } from '@/components/ui'
 
 const TABS = ['Marketing Library', 'Landing Pages', 'Referral Links']
 
@@ -192,9 +192,7 @@ export default function MarketingPage() {
                       <span className="text-xs font-acid text-[#808080] leading-[18.8px] truncate">https://dashboard.genesisfxmarkets.com/a</span>
                     </div>
 
-                    <button className="flex items-center justify-center h-[2.875rem] rounded-[30px] border border-[#A0A0A0] cursor-pointer hover:border-gfx-green-300 transition-colors" style={{ background: 'linear-gradient(0deg, #09241C 29%, #0C1311 88%)' }}>
-                      <span className="text-base font-acid font-medium text-[#C6C6C6] leading-[24.44px]">View Comission Rates</span>
-                    </button>
+                    <SparkleButton fullWidth>View Comission Rates</SparkleButton>
                   </div>
                 </GlassCard>
               </div>
