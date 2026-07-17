@@ -383,19 +383,27 @@ export default function StatisticsView() {
       {/* Genesis Score + Stats Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6">
         {/* Genesis Score */}
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-2">
+        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
+          <div className="p-6 flex flex-col h-full">
+            <div className="flex flex-row items-center gap-3 mb-2">
               <h3 className="text-white text-2xl font-acid">Genesis Score</h3>
-              <div className="flex items-center gap-2 h-[1.875rem] px-3 rounded-full border border-[rgba(0,240,160,0.15)] bg-[rgba(0,240,160,0.1)]">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 17L9 11L13 15L21 7" stroke="#10BC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="text-gfx-green-500 text-xs font-acid">24H +$0.00(0.0%)</span>
-              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <g clipPath="url(#clip0_gs)">
+                  <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 12V9" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 6H9.00833" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_gs">
+                    <rect width="18" height="18" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
             </div>
-            <RadarChart />
-            <ScoreBar score={15} />
+            <div className="flex-1 min-h-0 flex flex-col">
+              <RadarChart />
+              <ScoreBar score={15} />
+            </div>
           </div>
         </GlassCard>
 
