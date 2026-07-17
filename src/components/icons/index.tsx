@@ -390,15 +390,10 @@ export function ShareIcon({ size = 18, color = '#808080', className }: IconProps
 export function IBDashboardIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <rect x="2" y="2" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="8.75" y="2" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="15.5" y="2" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="2" y="8.75" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="8.75" y="8.75" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="15.5" y="8.75" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="2" y="15.5" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="8.75" y="15.5" width="3.5" height="3.5" rx="1" fill={color} />
-      <rect x="15.5" y="15.5" width="3.5" height="3.5" rx="1" fill={color} />
+      <circle cx="5.65" cy="5.65" r="3.95" fill={color} />
+      <circle cx="14.8" cy="14.8" r="3.95" fill={color} />
+      <rect x="11.08" y="1.7" width="8.22" height="8.22" rx="2" fill={color} />
+      <rect x="1.7" y="11.08" width="8.22" height="8.22" rx="2" fill={color} />
     </svg>
   )
 }
@@ -406,10 +401,10 @@ export function IBDashboardIcon({ size = 21, color = 'currentColor', className }
 export function ReferralsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <circle cx="8" cy="5.5" r="3" fill={color} />
-      <ellipse cx="8" cy="15" rx="5.5" ry="3" fill={color} />
-      <circle cx="15.5" cy="6.5" r="2" fill={color} opacity="0.6" />
-      <ellipse cx="15.5" cy="14.5" rx="3.5" ry="2" fill={color} opacity="0.6" />
+      <circle cx="8.5" cy="5" r="3.2" fill={color} />
+      <ellipse cx="8.5" cy="16" rx="5.8" ry="3.2" fill={color} />
+      <circle cx="15" cy="6.5" r="2.2" fill={color} opacity="0.55" />
+      <ellipse cx="15" cy="15.5" rx="4" ry="2.5" fill={color} opacity="0.55" />
     </svg>
   )
 }
@@ -417,9 +412,9 @@ export function ReferralsIcon({ size = 21, color = 'currentColor', className }: 
 export function LinksIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <path d="M8.5 12.5L12.5 8.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M11.5 13.5L13.5 11.5C15.157 9.843 15.157 7.157 13.5 5.5C11.843 3.843 9.157 3.843 7.5 5.5L5.5 7.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M9.5 7.5L7.5 9.5C5.843 11.157 5.843 13.843 7.5 15.5C9.157 17.157 11.843 17.157 13.5 15.5L15.5 13.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 12L12 9" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M12.5 13.5L14 12C15.933 10.067 15.933 6.933 14 5C12.067 3.067 8.933 3.067 7 5L5.5 6.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M8.5 7.5L7 9C5.067 10.933 5.067 14.067 7 16C8.933 17.933 12.067 17.933 14 16L15.5 14.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   )
 }
@@ -427,9 +422,9 @@ export function LinksIcon({ size = 21, color = 'currentColor', className }: Icon
 export function TradesIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <rect x="3" y="11" width="3" height="7" rx="1" fill={color} />
-      <rect x="9" y="7" width="3" height="11" rx="1" fill={color} />
-      <rect x="15" y="3" width="3" height="15" rx="1" fill={color} />
+      <rect x="2.5" y="12" width="3.5" height="6.5" rx="1" fill={color} />
+      <rect x="8.75" y="7" width="3.5" height="11.5" rx="1" fill={color} />
+      <rect x="15" y="2.5" width="3.5" height="16" rx="1" fill={color} />
     </svg>
   )
 }
@@ -437,8 +432,7 @@ export function TradesIcon({ size = 21, color = 'currentColor', className }: Ico
 export function ComissionsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <circle cx="10.5" cy="10.5" r="8" stroke={color} strokeWidth="1.5" />
-      <path d="M10.5 6.5V14.5M12.5 8.5H9.5C8.672 8.5 8 9.172 8 10C8 10.828 8.672 11.5 9.5 11.5H11.5C12.328 11.5 13 12.172 13 13C13 13.828 12.328 14.5 11.5 14.5H8.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M10.5 2C5.806 2 2 5.806 2 10.5S5.806 19 10.5 19 19 15.194 19 10.5 15.194 2 10.5 2Zm.75 4.25a.75.75 0 0 0-1.5 0V7h-.25a2.5 2.5 0 0 0 0 5h.25v1.5H9a.75.75 0 0 0 0 1.5h1.5v.75a.75.75 0 0 0 1.5 0V15H12a2.5 2.5 0 0 0 0-5h-.25V8.5H12a.75.75 0 0 0 0-1.5h-.75v-.75ZM9.75 8.5h-.25a1 1 0 0 0 0 2h.25V8.5Zm1.5 3.5V13.5h.25a1 1 0 0 0 0-2h-.25Z" fill={color} />
     </svg>
   )
 }
@@ -446,9 +440,7 @@ export function ComissionsIcon({ size = 21, color = 'currentColor', className }:
 export function PayoutsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <rect x="2" y="5" width="17" height="12" rx="3" fill={color} />
-      <path d="M2 9h17" stroke="black" strokeWidth="1.5" />
-      <rect x="4" y="12" width="5" height="2" rx="0.5" fill="black" opacity="0.4" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M2 7.5C2 5.29 3.79 3.5 6 3.5h9c2.21 0 4 1.79 4 4v6c0 2.21-1.79 4-4 4H6c-2.21 0-4-1.79-4-4v-6Zm2 1.5h13v-1.5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2V9Zm0 2v2c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-2H4Zm1.5 2.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0 0 1Z" fill={color} />
     </svg>
   )
 }
@@ -456,8 +448,8 @@ export function PayoutsIcon({ size = 21, color = 'currentColor', className }: Ic
 export function MarketingIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <path d="M17 4L7 8H4C3.448 8 3 8.448 3 9V11C3 11.552 3.448 12 4 12H5L6.5 17H8.5L7 12L17 16V4Z" fill={color} />
-      <path d="M17 4C17 4 19 6 19 10C19 14 17 16 17 16" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M16.5 3.5L7 7.5H4.5C3.672 7.5 3 8.172 3 9v2c0 .828.672 1.5 1.5 1.5H5l1.8 5.5h2L7 12.5l9.5 4V3.5Z" fill={color} />
+      <path d="M16.5 3.5c0 0 2.5 2.5 2.5 6.5s-2.5 6.5-2.5 6.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   )
 }
@@ -465,10 +457,10 @@ export function MarketingIcon({ size = 21, color = 'currentColor', className }: 
 export function StatisticsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
-      <rect x="3" y="13" width="2.5" height="5" rx="0.5" fill={color} />
-      <rect x="7.5" y="9" width="2.5" height="9" rx="0.5" fill={color} />
-      <rect x="12" y="6" width="2.5" height="12" rx="0.5" fill={color} />
-      <rect x="16.5" y="3" width="2.5" height="15" rx="0.5" fill={color} />
+      <rect x="2" y="13" width="3" height="5.5" rx="1" fill={color} />
+      <rect x="7" y="9" width="3" height="9.5" rx="1" fill={color} />
+      <rect x="12" y="5.5" width="3" height="13" rx="1" fill={color} />
+      <rect x="17" y="2.5" width="3" height="16" rx="1" fill={color} />
     </svg>
   )
 }
