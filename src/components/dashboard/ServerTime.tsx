@@ -19,20 +19,20 @@ export function ServerTime() {
   }, [])
 
   return (
-    <div className="mt-2 2xl:mt-3 relative bg-gfx-green-50 rounded-lg outline outline-1 outline-offset-[-1.25px] outline-teal-500/10 px-4.5 py-3 2xl:py-5">
-      <div className="flex items-center justify-between mb-2 2xl:mb-3">
-        <span className="text-gfx-neutral-300 text-sm">Server Time</span>
-        <div className="flex items-center gap-1.5">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <div className="flex flex-col gap-2 relative bg-[#09241C] rounded-lg border-1 border-[#064B34] p-5">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[#A0A0A0] text-xs xl:text-sm leading-tight">Server Time</span>
+        <div className="flex items-center gap-1 shrink-0">
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
             <circle cx="6" cy="6" r="3" fill="#10BC83" />
             <circle cx="6" cy="6" r="5" stroke="#10BC83" strokeWidth="0.5" opacity="0.3" />
           </svg>
-          <span className="text-gfx-green-500 text-xs">Markets Open</span>
+          <span className="text-gfx-green-500 text-[10px] xl:text-sm leading-tight">Markets Open</span>
         </div>
       </div>
-      <div className="flex items-baseline gap-2">
-        <span className="text-white text-2xl">{time}</span>
-        <span className="text-white/30 text-xs">UTC-3</span>
+      <div className="flex flex-row items-center gap-6">
+        <span className="text-white text-lg xl:text-xl 2xl:text-2xl leading-none tabular-nums">{time}</span>
+        <span className="text-[#A0A0A0] text-xs">UTC-3</span>
       </div>
     </div>
   )

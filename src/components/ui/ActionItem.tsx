@@ -9,16 +9,16 @@ interface ActionItemProps {
 }
 
 export function ActionItem({ title, subtitle, icon, href }: ActionItemProps) {
-  const className = "w-full flex-1 py-3 rounded-md outline outline-1 outline-white/5 flex items-center gap-3 2xl:gap-4 px-4 2xl:px-5 bg-transparent hover:bg-white/[0.02] transition-colors text-left cursor-pointer"
+  const className = 'w-full flex-1 min-h-0 py-1.5 xl:py-2 rounded-md outline outline-1 outline-white/5 flex items-center gap-2.5 xl:gap-3 px-2.5 xl:px-3 bg-transparent hover:bg-white/[0.02] transition-colors text-left cursor-pointer'
 
   const content = (
     <>
-      <div className="size-10 2xl:size-14 bg-teal-500/5 rounded-md outline outline-1 outline-offset-[-1.25px] outline-teal-500/10 flex items-center justify-center shrink-0">
+      <div className="size-8 xl:size-10 bg-teal-500/5 rounded-md outline outline-1 outline-offset-[-1.25px] outline-teal-500/10 flex items-center justify-center shrink-0">
         {icon}
       </div>
-      <div>
-        <span className="text-btn text-white block">{title}</span>
-        <span className="text-gfx-neutral-300 text-body1 block">{subtitle}</span>
+      <div className="flex flex-col gap-1">
+        <span className="text-base xl:text-btn text-white block leading-tight truncate">{title}</span>
+        <span className="text-gfx-neutral-300 text-sm xl:text-body2 block leading-tight truncate">{subtitle}</span>
       </div>
     </>
   )

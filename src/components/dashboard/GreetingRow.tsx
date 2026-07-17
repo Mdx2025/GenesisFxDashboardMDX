@@ -14,7 +14,7 @@ export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagl
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 sm:mt-0 mb-5 gap-4">
       <div>
-        <time className="text-gfx-neutral-500 text-base sm:text-body2 mb-1 block">{date}</time>
+        <time className="text-gfx-neutral-500 text-base sm:text-body2 mb-1 block">Command Center — {date}</time>
         <h1 className="text-white font-normal leading-none mb-1 text-hero-lg">Good afternoon, {userName}</h1>
         <p className="text-gfx-neutral-500 text-base sm:text-body2">{tagline}</p>
       </div>

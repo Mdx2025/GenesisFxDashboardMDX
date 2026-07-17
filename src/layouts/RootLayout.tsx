@@ -33,21 +33,10 @@ export default function RootLayout() {
   const [transferOpen, setTransferOpen] = useState(false)
   const [transferProcessing, setTransferProcessing] = useState(false)
   const lenisRef = useRef<Lenis | null>(null)
-  const mainRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const wrapper = mainRef.current
-    if (wrapper) wrapper.scrollTo({ top: 0 })
-  }, [pathname])
-
-  useEffect(() => {
-    const wrapper = mainRef.current
-    if (!wrapper) return
-
     const lenis = new Lenis({
-      wrapper,
-      content: wrapper.firstElementChild as HTMLElement,
       smoothWheel: true,
       lerp: 0.1,
       autoResize: true,
@@ -67,14 +56,18 @@ export default function RootLayout() {
       lenis.destroy()
       lenisRef.current = null
     }
+  }, [])
+
+  useEffect(() => {
+    lenisRef.current?.scrollTo(0, { immediate: true })
   }, [pathname])
 
   return (
     <SidebarContext.Provider value={{ sidebarOpen, setSidebarOpen }}>
       <TransferContext.Provider value={{ openTransfer: () => setTransferOpen(true) }}>
-        <div className="flex w-full min-h-screen bg-gfx-main text-white font-acid">
+        <div className="flex w-full min-h-dvh bg-gfx-main text-white font-acid">
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-          <main ref={mainRef} className="flex-1 min-w-0 h-screen overflow-y-auto overflow-x-hidden relative">
+          <main className="flex-1 min-w-0 relative">
             <Outlet />
           </main>
           <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
