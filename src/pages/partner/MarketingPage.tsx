@@ -122,7 +122,7 @@ export default function MarketingPage() {
     <>
       <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
-      <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6 flex flex-col gap-4 3xl:gap-6 4xl:gap-8">
+      <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6 pb-30 flex flex-col gap-4 3xl:gap-6 4xl:gap-8">
         <TopBar
           menuOpen={sidebarOpen}
           onMenuClick={() => setSidebarOpen(v => !v)}
@@ -131,8 +131,8 @@ export default function MarketingPage() {
 
         <h1 className="text-5xl font-acid text-white">Partner Marketing Tools</h1>
 
-        <div className="max-w-5xl mx-auto flex flex-col gap-8 w-full">
-          <div className="max-w-sm">
+        <div className="w-5xl mx-auto flex flex-col gap-8 w-full">
+          <div className="w-sm">
             <ModeToggle options={TABS} activeIndex={activeTabIndex} onChange={setActiveTabIndex} size="sm" />
           </div>
 
