@@ -322,13 +322,15 @@ export default function JournalPage() {
           <div className="flex items-center gap-3 flex-wrap">
             <AiCoachButton />
             <ChatButton />
-            <button className="flex items-center gap-3 h-12 lg:h-[4.5000rem] px-3 lg:px-[1.1875rem] rounded-2xl lg:rounded-full border border-gfx-neutral-250 hover:border-gfx-neutral-350 transition-colors cursor-pointer">
-              <div className="relative w-[1.125rem] h-[1.125rem] flex items-center justify-center">
-                <div className="w-[0.625rem] h-[0.625rem] rounded-full bg-gfx-bullish-light shadow-[0_0_4px_rgba(12,145,4,1)]" />
-              </div>
-              <div className="flex flex-col items-start">
-                <span className="text-white text-base font-acid font-medium leading-6">All Accounts</span>
-                <span className="text-white text-base font-acid font-medium leading-6">$0.00</span>
+            <button className="w-3xs flex items-center justify-between gap-3 p-3 rounded-lg border border-gfx-neutral-250 hover:border-gfx-neutral-350 transition-colors cursor-pointer">
+              <div className="flex flex-row gap-4">
+                <div className="relative w-[1.125rem] h-[1.125rem] flex items-center justify-center">
+                  <div className="w-[0.625rem] h-[0.625rem] rounded-full bg-gfx-bullish-light shadow-[0_0_4px_rgba(12,145,4,1)]" />
+                </div>
+                <div className="flex flex-col items-start">
+                  <span className="text-white text-base font-acid font-medium leading-6">All Accounts</span>
+                  <span className="text-white text-base font-acid font-medium leading-6">$0.00</span>
+                </div>
               </div>
               <ChevronRightIcon size={20} color="#808080" />
             </button>
