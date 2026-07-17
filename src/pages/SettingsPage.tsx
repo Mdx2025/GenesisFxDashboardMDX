@@ -801,20 +801,20 @@ export default function SettingsPage() {
       <div className="relative bg-[#0D1512] border border-gfx-green-300/12 rounded-[1.125rem] overflow-hidden">
         {/* Banner area */}
         <div
-          className="relative h-[11.875rem] border-b border-white/5"
+          className="relative h-[8rem] lg:h-[11.875rem] border-b border-white/5"
           style={{
             backgroundImage: 'url(/images/settings-hero-bg.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {/* Name on banner */}
-          <h2 className="absolute left-6 lg:left-45 bottom-1 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+          {/* Name on banner - desktop only */}
+          <h2 className="absolute left-45 bottom-1 text-white text-2xl font-acid leading-normal hidden lg:flex">Joe Doe</h2>
 
           {/* Avatar */}
-          <div className="absolute left-10" style={{ top: '7.4375rem' }}>
-            <div className="relative w-[7.25rem] h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
-              <span className="text-white text-[1.975rem] font-acid font-bold relative z-10">JD</span>
+          <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10" style={{ top: '4rem' }}>
+            <div className="relative w-[5.5rem] h-[5.5rem] lg:w-[7.25rem] lg:h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
+              <span className="text-white text-[1.5rem] lg:text-[1.975rem] font-acid font-bold relative z-10">JD</span>
               <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'blur(9.88rem)' }} aria-hidden="true" />
               <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(8.7rem)' }} aria-hidden="true" />
               <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'blur(9.45rem)' }} aria-hidden="true" />
@@ -830,9 +830,10 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile info */}
-        <div className="pl-6 lg:pl-44 pt-1 pb-6">
-          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-2">joedoe@gmail.com</p>
-          <div className="flex flex-wrap items-center gap-2 mt-3">
+        <div className="flex flex-col items-center lg:items-start pt-12 lg:pt-1 pb-4 lg:pb-6 px-4 lg:pl-44 lg:px-0">
+          <h2 className="text-white text-xl font-acid leading-normal lg:hidden">Joe Doe</h2>
+          <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-1 lg:mt-2">joedoe@gmail.com</p>
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
             <ProfileBadge icon={<KycIcon />} label="KYC Required" />
             <ProfileBadge icon={<PartnerDotIcon />} label="Partner" variant="green" />
@@ -842,7 +843,7 @@ export default function SettingsPage() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="mt-10 w-2xl">
+      <div className="mt-10 w-full lg:w-2xl">
         <ModeToggle
           options={[...TABS]}
           activeIndex={activeTab}
