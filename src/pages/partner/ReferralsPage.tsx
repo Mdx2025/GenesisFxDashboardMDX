@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SearchInput, GlowEllipse } from '@/components/ui'
+import { GlassCard, SearchInput, GlowEllipse, ModeToggle } from '@/components/ui'
 
 const LEVELS = ['All Levels', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
 
@@ -21,43 +21,6 @@ const REFERRALS: Referral[] = [
   { name: 'Ana Pinzón', email: 'anakpinzon72@gmail.com', initials: 'AP', level: 'Level 3', country: 'Italy', totalBalance: '$8,120.50', dateJoined: 'Dec 05, 2025' },
 ]
 
-function LevelTabs({ active, onChange }: { active: string; onChange: (level: string) => void }) {
-  return (
-    <div className="bg-gfx-green-800 rounded-[60px] inline-flex items-center gap-[31px] px-4 py-[3px]">
-      {LEVELS.map(level => {
-        const isActive = active === level
-        return (
-          <button
-            key={level}
-            type="button"
-            onClick={() => onChange(level)}
-            className={`relative text-xs font-acid whitespace-nowrap cursor-pointer transition-all leading-[18.8px] ${
-              isActive
-                ? 'bg-gfx-green-200 border-[1.35px] border-gfx-green-500 text-white rounded-[60px] px-4 py-1.5 overflow-hidden'
-                : 'text-gfx-neutral-300 hover:text-white'
-            }`}
-          >
-            <span className="relative z-10">{level}</span>
-            {isActive && (
-              <svg className="absolute left-1/2 -translate-x-1/2 bottom-[-12px]" width="54" height="33" viewBox="0 0 54 33" fill="none" style={{ mixBlendMode: 'plus-lighter' }}>
-                <g filter="url(#lvl_glow)">
-                  <ellipse cx="27" cy="35" rx="14.5" ry="8" fill="#CFF2E6" />
-                </g>
-                <defs>
-                  <filter id="lvl_glow" x="-27.5" y="-13" width="109" height="96" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood floodOpacity="0" result="bg" />
-                    <feBlend in="SourceGraphic" in2="bg" result="shape" />
-                    <feGaussianBlur stdDeviation="20" result="blur" />
-                  </filter>
-                </defs>
-              </svg>
-            )}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
 
 function DropdownSelect() {
   return (
@@ -108,7 +71,7 @@ function DetailsButton() {
 
 export default function ReferralsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeLevel, setActiveLevel] = useState('L10')
+  const [activeLevelIndex, setActiveLevelIndex] = useState(LEVELS.length - 1)
 
   const breadcrumbItems = [
     { label: 'Referrals', current: true },
@@ -144,8 +107,8 @@ export default function ReferralsPage() {
 
             {/* Filters row */}
             <div className="flex items-center justify-between gap-4 flex-wrap px-4 sm:px-6 py-4">
-              <div className="overflow-x-auto max-w-full">
-                <LevelTabs active={activeLevel} onChange={setActiveLevel} />
+              <div className="overflow-x-auto max-w-full w-[556px]">
+                <ModeToggle options={LEVELS} activeIndex={activeLevelIndex} onChange={setActiveLevelIndex} size="sm" />
               </div>
               <div className="flex items-center gap-3">
                 <SearchInput placeholder="Search " className="w-[200px] sm:w-[287px]" />

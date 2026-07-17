@@ -3,27 +3,25 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SearchInput, GlowEllipse, ModeToggle } from '@/components/ui'
 
-interface Trade {
+const LEVELS = ['All Levels', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
+
+interface Commission {
   name: string
   email: string
   initials: string
   account: string
   instrument: string
-  side: 'Buy' | 'Sell'
-  size: string
-  openPrice: string
-  currentPrice: string
+  dateTime: string
+  lots: string
+  rate: string
+  commission: string
   openTime: string
-  pnl: string
-  pnlPositive: boolean
+  status: 'Paid' | 'Pending'
 }
 
-const TRADES: Trade[] = [
-  { name: 'Ana Pinzón', email: 'anakpinzon72@gmail.com', initials: 'AP', account: 'MT5-88210', instrument: 'NAS100', side: 'Buy', size: '1.50', openPrice: '1.08420', currentPrice: '1.08650', openTime: '2026-06-05 08:14', pnl: '+$345.00', pnlPositive: true },
-  { name: 'Ana Pinzón', email: 'anakpinzon72@gmail.com', initials: 'AP', account: 'MT5-88210', instrument: 'NAS100', side: 'Buy', size: '1.50', openPrice: '1.08420', currentPrice: '1.08650', openTime: '2026-06-05 08:14', pnl: '$-165.20', pnlPositive: false },
+const COMMISSIONS: Commission[] = [
+  { name: 'Ana Pinzón', email: 'anakpinzon72@gmail.com', initials: 'AP', account: 'MT5-88210', instrument: 'AUDUSD', dateTime: '2026-06-05 10:24', lots: '2.50', rate: '$5.00', commission: '+$12.50', openTime: '2026-06-05 08:14', status: 'Paid' },
 ]
-
-const TRADE_TABS = ['Open Positions', 'Closed Trades']
 
 function AvatarCircle({ initials }: { initials: string }) {
   return (
@@ -33,15 +31,15 @@ function AvatarCircle({ initials }: { initials: string }) {
   )
 }
 
-function SideBadge({ side }: { side: 'Buy' | 'Sell' }) {
-  const isBuy = side === 'Buy'
+function StatusBadge({ status }: { status: 'Paid' | 'Pending' }) {
+  const isPaid = status === 'Paid'
   return (
     <span className={`inline-flex items-center justify-center px-[18px] h-[24px] rounded-[30px] border-[1.16px] text-xs font-acid leading-[18.8px] ${
-      isBuy
+      isPaid
         ? 'border-[#0C9104] text-[#37C92E]'
-        : 'border-[#D46356] text-[#ff717e]'
+        : 'border-[#303030] text-gfx-neutral-400'
     }`}>
-      {side}
+      {status}
     </span>
   )
 }
@@ -67,14 +65,14 @@ function RefreshButton() {
   )
 }
 
-const GRID_COLS = 'grid-cols-[minmax(14rem,2fr)_minmax(6rem,0.8fr)_minmax(6rem,0.8fr)_minmax(4.5rem,0.6fr)_minmax(4rem,0.5fr)_minmax(6rem,0.8fr)_minmax(7rem,0.9fr)_minmax(9rem,1.1fr)_minmax(5.5rem,0.7fr)]'
+const GRID_COLS = 'grid-cols-[minmax(14rem,2fr)_minmax(6rem,0.8fr)_minmax(6rem,0.8fr)_minmax(9rem,1.1fr)_minmax(4rem,0.5fr)_minmax(4.5rem,0.6fr)_minmax(5.5rem,0.7fr)_minmax(9rem,1.1fr)_minmax(4.5rem,0.6fr)]'
 
-export default function TradesPage() {
+export default function CommissionsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeLevelIndex, setActiveLevelIndex] = useState(LEVELS.length - 1)
 
   const breadcrumbItems = [
-    { label: 'Trades', current: true },
+    { label: 'Comissions', current: true },
   ]
 
   return (
@@ -88,7 +86,7 @@ export default function TradesPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white">Referral Trades</h1>
+        <h1 className="text-5xl font-acid text-white">Comissions</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">
@@ -99,12 +97,12 @@ export default function TradesPage() {
             <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
 
             <div className="border-b border-gfx-green-800 px-6 py-0 h-[84px] flex items-center">
-              <h2 className="text-2xl font-acid text-white">Trade Data</h2>
+              <h2 className="text-2xl font-acid text-white">All Comissions</h2>
             </div>
 
             <div className="flex items-center justify-between gap-4 flex-wrap px-4 sm:px-6 py-4">
-              <div className="w-[298px]">
-                <ModeToggle options={TRADE_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
+              <div className="overflow-x-auto max-w-full w-[556px]">
+                <ModeToggle options={LEVELS} activeIndex={activeLevelIndex} onChange={setActiveLevelIndex} size="sm" />
               </div>
               <div className="flex items-center gap-3">
                 <SearchInput placeholder="Search " className="w-[200px] sm:w-[287px]" />
@@ -116,46 +114,46 @@ export default function TradesPage() {
             <div className="overflow-x-auto">
               <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6 min-w-[56rem]">
                 <div className={`grid ${GRID_COLS} w-full items-center`}>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Referred Client</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Client</span>
                   <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Account</span>
                   <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Instrument</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Side</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Size</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Open Price</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Current Price</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Date & Time</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Lots</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Rate</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Comission</span>
                   <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Open Time</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">P&L</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Status</span>
                 </div>
               </div>
 
-              {TRADES.map((trade, i) => (
+              {COMMISSIONS.map((item, i) => (
                 <div key={i} className="border-b border-gfx-green-800 last:border-b-0 h-[76px] flex items-center px-6 min-w-[56rem]">
                   <div className={`grid ${GRID_COLS} w-full items-center`}>
                     <div className="flex items-center gap-4">
-                      <AvatarCircle initials={trade.initials} />
+                      <AvatarCircle initials={item.initials} />
                       <div>
-                        <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{trade.name}</p>
-                        <p className="text-sm font-acid text-[#606060] leading-[18.8px]">{trade.email}</p>
+                        <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{item.name}</p>
+                        <p className="text-sm font-acid text-[#606060] leading-[18.8px]">{item.email}</p>
                       </div>
                     </div>
 
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{trade.account}</span>
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.account}</span>
 
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{trade.instrument}</span>
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.instrument}</span>
+
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.dateTime}</span>
+
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.lots}</span>
+
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.rate}</span>
+
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.commission}</span>
+
+                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.openTime}</span>
 
                     <div>
-                      <SideBadge side={trade.side} />
+                      <StatusBadge status={item.status} />
                     </div>
-
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{trade.size}</span>
-
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{trade.openPrice}</span>
-
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{trade.currentPrice}</span>
-
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{trade.openTime}</span>
-
-                    <span className={`text-sm font-acid leading-[18.8px] ${trade.pnlPositive ? 'text-[#37C92E]' : 'text-[#D46356]'}`}>{trade.pnl}</span>
                   </div>
                 </div>
               ))}
