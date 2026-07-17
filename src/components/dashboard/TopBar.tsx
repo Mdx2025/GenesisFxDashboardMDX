@@ -151,7 +151,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
         </div>
 
         <div className="flex items-center gap-1 xs:gap-2 sm:gap-3 shrink-0 min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none" className="shrink-0" aria-hidden="true">
               <g filter="url(#glow_market)">
                 <rect x="12.5333" y="12.5333" width="8.77332" height="8.77332" rx="4.38666" fill="#10BC83"/>
@@ -231,9 +231,11 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
             )}
           </div>
 
-          <LanguageDropdown />
+          <div className="hidden lg:block">
+            <LanguageDropdown />
+          </div>
 
-          <button className="text-gfx-neutral-500 hover:text-white transition-colors rounded" aria-label="Help">
+          <button className="hidden lg:block text-gfx-neutral-500 hover:text-white transition-colors rounded" aria-label="Help">
             <HelpIcon />
           </button>
         </div>
