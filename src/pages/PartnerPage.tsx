@@ -314,7 +314,7 @@ export default function PartnerPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <div className="flex items-center justify-between shrink-0 flex-wrap gap-4 pb-20">
+        <div className="flex items-center justify-between shrink-0 flex-wrap gap-4 pb-15">
           <h1 className="text-4xl lg:text-5xl font-acid text-white">Partner Program</h1>
           <div className="hidden lg:flex items-center gap-3">
             <SparkleButton onClick={() => navigate('/deposit')}>
