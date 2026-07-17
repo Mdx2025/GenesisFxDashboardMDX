@@ -1,7 +1,8 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, StatCard, SecondaryButton, SparkleButton, GlowButton, PeriodPill } from '@/components/ui'
+import { GlassCard, GlassBannerCard, StatCard, SecondaryButton, SparkleButton, GlowButton, PeriodPill, ModeToggle } from '@/components/ui'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { ChevronRightIcon, DepositIcon, WithdrawIcon, TransferIcon } from '@/components/icons'
 import './PartnerPage.css'
@@ -250,43 +251,58 @@ function PortfolioEquitySection() {
   )
 }
 
-const TABLE_HEADERS = [
-  'Referral Name', 'Email Address', 'Country', 'Status',
-  'Type', 'Total Deposit', 'Commission', 'Date',
-]
+const ACTIVITY_TABS = ['Referrals', 'Comissions', 'Payouts']
+
+function ViewAllArrow() {
+  return (
+    <svg width="17" height="15" viewBox="0 0 17 15" fill="none">
+      <path d="M1 6.363a1 1 0 0 0 0 2V6.363Zm15.707 1.707a1 1 0 0 0 0-1.414l-6.364-6.364a1 1 0 0 0-1.414 1.415L14.586 7.363l-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364ZM1 7.363v1h15v-1-1H1v1Z" fill="#00B38C" />
+    </svg>
+  )
+}
 
 function RecentActivity() {
+  const [activeTab, setActiveTab] = useState(0)
+
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="relative p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-tab uppercase tracking-tab text-gfx-neutral-300">Recent Activity</h2>
-          <SecondaryButton>
-            <CalendarIcon size={16} color="#c6c6c6" />
-            Filter
-          </SecondaryButton>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="partner-table w-full font-acid">
-            <thead>
-              <tr className="border-b border-zinc-800/60">
-                {TABLE_HEADERS.map(h => <th key={h}>{h}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colSpan={TABLE_HEADERS.length}>
-                  <div className="flex flex-col items-center justify-center py-16 gap-3">
-                    <EmptyIcon />
-                    <p className="text-white text-base font-acid font-medium">No referrals yet</p>
-                    <p className="text-gfx-neutral-500 text-sm font-acid text-center">
-                      Start inviting people with your referral link to see them here
-                    </p>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ background: '#0C1311' }}>
+      <div className="relative overflow-hidden">
+        <div className="absolute w-[493px] h-[278px] right-0 -top-[252px] rounded-full pointer-events-none bg-[#064B34] [filter:blur(157px)]" aria-hidden="true" />
+        <div className="absolute w-[493px] h-[278px] -left-[415px] -top-[213px] rounded-full pointer-events-none bg-[#064B34] [filter:blur(157px)]" aria-hidden="true" />
+        <div className="absolute w-[639px] h-[361px] left-1/4 bottom-0 translate-y-full rounded-full pointer-events-none bg-[#0C1311] [filter:blur(150px)]" aria-hidden="true" />
+
+        <div className="p-7 flex flex-col gap-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-acid text-white">Recent Activity</h2>
+            <button type="button" className="flex items-center gap-2.5 px-6 h-[2.875rem] rounded-[36px] bg-[#0C1311] cursor-pointer hover:opacity-80 transition-opacity">
+              <span className="text-base font-acid font-medium text-[#00B38C] leading-[24.44px]">View all</span>
+              <ViewAllArrow />
+            </button>
+          </div>
+
+          <ModeToggle options={ACTIVITY_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
+
+          <div className="flex flex-col items-center justify-center py-12 gap-3">
+            <p className="text-white text-base font-acid font-medium leading-[24.44px]">No referrals yet</p>
+            <p className="text-[#808080] text-sm font-acid leading-[18.8px] text-center">
+              Start inviting people with your referral link to see them here
+            </p>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-lg border border-[#1476CB] bg-[#021C32]" />
+              <span className="text-base font-acid font-medium text-[#1476CB] leading-[24.44px]">Referrals</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-lg border border-[#00B38C] bg-[#09241C]" />
+              <span className="text-base font-acid font-medium text-[#00B38C] leading-[24.44px]">Comissions</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-lg border border-[#A456D8] bg-[#2E0C45]" />
+              <span className="text-base font-acid font-medium text-[#A456D8] leading-[24.44px]">Volume</span>
+            </div>
+          </div>
         </div>
       </div>
     </GlassCard>
