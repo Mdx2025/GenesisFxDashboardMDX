@@ -315,11 +315,11 @@ function IdentityDetailCard() {
 function TradingFeaturesTable() {
   return (
     <div className="relative overflow-hidden">
-      <div className="px-[7.875rem] py-12">
+      <div className="px-6 lg:px-[7.875rem] py-12">
         <h3 className="text-white text-2xl font-acid leading-normal">Verification – Trading</h3>
       </div>
 
-      <div className="flex items-center justify-between px-[7.1875rem] pb-4">
+      <div className="flex items-center justify-between px-6 lg:px-[7.1875rem] pb-4">
         <span className="text-[#00B38C] text-base font-acid font-medium">Features</span>
         <span className="text-[#00B38C] text-base font-acid font-medium">Allowed</span>
       </div>
@@ -327,7 +327,7 @@ function TradingFeaturesTable() {
 
       {TRADING_FEATURES.map((feature, i) => (
         <div key={feature}>
-          <div className="flex items-center justify-between px-[7.1875rem] py-[1.3125rem]">
+          <div className="flex items-center justify-between px-6 lg:px-[7.1875rem] py-[1.3125rem]">
             <span className="text-[#808080] text-base font-acid font-medium">{feature}</span>
             <CloseSquareIcon />
           </div>
@@ -354,7 +354,7 @@ function RewardsTab() {
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] h-[29.6875rem] mx-auto">
       <div className="relative h-full overflow-hidden">
-        <h3 className="text-white text-2xl font-acid leading-normal px-30 pt-10">My Rewards</h3>
+        <h3 className="text-white text-2xl font-acid leading-normal px-6 lg:px-30 pt-6 lg:pt-10">My Rewards</h3>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="mt-4">
             <GiftIcon />
@@ -423,9 +423,9 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
 function SupportTab() {
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto" style={{ background: '#0C1311' }}>
-      <div className="relative overflow-hidden px-30 pt-12 pb-15">
+      <div className="relative overflow-hidden px-6 lg:px-30 pt-6 lg:pt-12 pb-8 lg:pb-15">
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
-        <div className="grid grid-cols-2 gap-5 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 relative z-10">
           <SupportContactCard icon={<ChatDialogIcon />} title="Live chat" subtitle="Available 24/7" action="Start  Live Chat" />
           <SupportContactCard icon={<EnvelopeIcon />} title="Email Support" subtitle="support@genesisfxmarkets.com" />
           <SupportContactCard icon={<WhatsappIcon />} title="Whatsapp" subtitle="Quick chat support" />
@@ -468,7 +468,7 @@ function SecurityTab() {
 
   return (
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
-      <div className="relative overflow-hidden px-10 pt-10 pb-10">
+      <div className="relative overflow-hidden px-4 lg:px-10 pt-6 lg:pt-10 pb-6 lg:pb-10">
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
           style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
@@ -479,7 +479,7 @@ function SecurityTab() {
           Manage your account security and two-factor authentication
         </p>
 
-        <div className="border border-[#09241c] rounded-[2rem] overflow-hidden px-8 py-8">
+        <div className="border border-[#09241c] rounded-[2rem] overflow-hidden px-4 lg:px-8 py-4 lg:py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-5">
               <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0">
@@ -496,7 +496,7 @@ function SecurityTab() {
 
         <TwoFactorModal open={show2fa} onClose={() => setShow2fa(false)} />
 
-        <div className="bg-[#09241c] border border-[#09241c] rounded-[2rem] overflow-hidden px-8 py-8 mt-5">
+        <div className="bg-[#09241c] border border-[#09241c] rounded-[2rem] overflow-hidden px-4 lg:px-8 py-4 lg:py-8 mt-5">
           <div className="flex items-start gap-5">
             <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0 mt-1">
               <SmartphoneIcon />
@@ -625,7 +625,7 @@ function SettingsTab() {
   return (
     <>
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
-      <div className="mt-10 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-8 pt-8 pb-4">
+      <div className="mt-10 bg-[#0C1311] border border-[#09241c] rounded-[2rem] px-4 lg:px-8 pt-4 lg:pt-8 pb-4">
         <h3 className="text-white text-2xl font-acid mb-8">Settings</h3>
 
         <div className="divide-y divide-[#09241c]">
@@ -728,9 +728,9 @@ function ProfileTab() {
   return (
     <>
       <GlassCard className="mt-10 !rounded-lg relative overflow-hidden">
-        <div className="relative px-30 pt-10 pb-20">
+        <div className="relative px-6 lg:px-30 pt-6 lg:pt-10 pb-10 lg:pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
             <GlassInput label="First Name" placeholder="Joe" />
             <GlassInput label="First Name" placeholder="Cedeno" />
             <GlassInput label="Email Address" placeholder="joedoe@gmail.com" />
@@ -743,9 +743,9 @@ function ProfileTab() {
       </GlassCard>
 
       <GlassCard className="mt-8 !rounded-lg relative overflow-hidden">
-        <div className="relative z-10 px-30 pt-10 pb-20">
+        <div className="relative z-10 px-6 lg:px-30 pt-6 lg:pt-10 pb-10 lg:pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
-          <div className="grid grid-cols-2 gap-x-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
             <KycStatusItem title="Identify Document" subtitle="Not Submitted" />
             <KycStatusItem title="Proof of Address" subtitle="Not Submitted" />
           </div>
@@ -765,11 +765,11 @@ function VerificationTab() {
           <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
           <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
 
-          <div className="px-30 pt-12 pb-0">
+          <div className="px-6 lg:px-30 pt-6 lg:pt-12 pb-0">
             <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
             <VerificationStepper activeStep={0} />
           </div>
-          <div className="px-30 pb-10 pt-8 relative z-10">
+          <div className="px-6 lg:px-30 pb-6 lg:pb-10 pt-4 lg:pt-8 relative z-10">
             <IdentityDetailCard />
           </div>
         </div>
@@ -809,7 +809,7 @@ export default function SettingsPage() {
           }}
         >
           {/* Name on banner */}
-          <h2 className="absolute left-45 bottom-1 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
+          <h2 className="absolute left-6 lg:left-45 bottom-1 text-white text-2xl font-acid leading-normal">Joe Doe</h2>
 
           {/* Avatar */}
           <div className="absolute left-10" style={{ top: '7.4375rem' }}>
@@ -830,7 +830,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile info */}
-        <div className="pl-44 pt-1 pb-6">
+        <div className="pl-6 lg:pl-44 pt-1 pb-6">
           <p className="text-gfx-neutral-400 text-sm font-acid leading-tight mt-2">joedoe@gmail.com</p>
           <div className="flex flex-wrap items-center gap-2 mt-3">
             <ProfileBadge icon={<IdIcon />} label="ID: f00e4a5d" />
