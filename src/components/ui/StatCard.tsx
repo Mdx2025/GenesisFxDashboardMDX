@@ -13,7 +13,7 @@ export function StatCard({ label, value, valueColor = 'text-white', icon, action
                 <p className={`${valueColor} text-4xl font-acid leading-normal mt-2`}>{value}</p>
                 {action && <p className="text-gfx-green-300 text-base font-acid mt-1">{action}</p>}
               </div>
-              <div className="w-10 h-10 rounded-sm bg-gfx-green-900 flex items-center justify-center">
+              <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
                 {icon}
               </div>
             </div>
