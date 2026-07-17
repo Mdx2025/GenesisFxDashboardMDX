@@ -22,6 +22,7 @@ import SignalsPage from '@/pages/SignalsPage'
 import SignalsDetailsPage from '@/pages/SignalsDetailsPage'
 import SettingsPage from '@/pages/SettingsPage'
 import PartnerPage from '@/pages/PartnerPage'
+import ReferralsPage from '@/pages/partner/ReferralsPage'
 import VideoSinglePage from '@/pages/academy/VideoSinglePage'
 import EbookSinglePage from '@/pages/academy/EbookSinglePage'
 import {
@@ -63,6 +64,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/gensocial/signals', label: 'Signals', description: 'Follow expert signal providers and trade ideas', icon: GenSocialIcon, component: SignalsPage },
   { path: '/gensocial/signals/details-single-page', label: 'Signal Details', description: 'Signal provider single page details', icon: GenSocialIcon, component: SignalsDetailsPage, showInDirectory: false },
   { path: '/partner', label: 'Partner Program', description: 'IB partnership, referrals, and commission tracking', icon: GenSocialIcon, component: PartnerPage },
+  { path: '/partner/referrals', label: 'Referrals', description: 'All referrals overview and level tracking', icon: GenSocialIcon, component: ReferralsPage, showInDirectory: false },
   { path: '/settings', label: 'Settings', description: 'User profile, verification, and account settings', icon: UserIcon, component: SettingsPage },
   { path: '/design-system', label: 'Design System', description: 'UI components, tokens, and guidelines', icon: TradelockerIcon, component: DesignSystemPage },
 ]
