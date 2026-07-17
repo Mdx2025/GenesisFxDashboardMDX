@@ -131,8 +131,10 @@ export default function MarketingPage() {
 
         <h1 className="text-5xl font-acid text-white">Partner Marketing Tools</h1>
 
-        <div className="container mx-auto flex flex-col gap-8">
-          <ModeToggle options={TABS} activeIndex={activeTabIndex} onChange={setActiveTabIndex} size="sm" />
+        <div className="max-w-5xl mx-auto flex flex-col gap-8 w-full">
+          <div className="max-w-sm">
+            <ModeToggle options={TABS} activeIndex={activeTabIndex} onChange={setActiveTabIndex} size="sm" />
+          </div>
 
         {activeTabIndex === 1 ? (
           <GlassCard variant="light" divider="none" rounded="19px" className="w-full overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
