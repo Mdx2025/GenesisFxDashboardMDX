@@ -86,7 +86,7 @@ export function CloseAccountModal({ open, onClose }: CloseAccountModalProps) {
             </svg>
           </button>
 
-          <div className="relative flex flex-col items-center px-[7.1875rem] pt-[7.9375rem] pb-40">
+          <div className="relative flex flex-col items-center px-5 sm:px-10 lg:px-[7.1875rem] pt-10 lg:pt-[7.9375rem] pb-10 lg:pb-40">
             {/* Title — danger red */}
             <h3 className="text-[#D46356] text-[2.25rem] font-acid mb-[0.9375rem]">Close Account</h3>
 
@@ -103,7 +103,7 @@ export function CloseAccountModal({ open, onClose }: CloseAccountModalProps) {
             </p>
 
             {/* Type CLOSE to confirm */}
-            <div className="w-[34.125rem] mt-[2.625rem]">
+            <div className="w-full max-w-[34.125rem] mt-[2.625rem]">
               <div className="flex items-center mb-[0.6875rem]">
                 <span className="text-white text-base font-acid font-medium leading-[1.5275rem]">Type</span>
                 <span className="text-[#D46356] text-base font-acid font-medium leading-[1.5275rem]">&nbsp;CLOSE</span>

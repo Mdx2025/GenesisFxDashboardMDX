@@ -113,7 +113,7 @@ export function ChangePasswordModal({ open, onClose }: ChangePasswordModalProps)
             </svg>
           </button>
 
-          <div className="relative flex flex-col items-center px-[7.75rem] pt-[4.1875rem] pb-[4.6875rem]">
+          <div className="relative flex flex-col items-center px-5 sm:px-10 lg:px-[7.75rem] pt-8 lg:pt-[4.1875rem] pb-8 lg:pb-[4.6875rem]">
             {/* Lock icon circle */}
             <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-[#09241C] flex items-center justify-center mb-[1.3125rem]">
               <LockIcon />
@@ -128,7 +128,7 @@ export function ChangePasswordModal({ open, onClose }: ChangePasswordModalProps)
             </p>
 
             {/* New password field */}
-            <div className="w-[34.125rem] mt-[2.1875rem]">
+            <div className="w-full max-w-[34.125rem] mt-[2.1875rem]">
               <label className="text-white text-base font-acid font-medium leading-[1.5275rem] mb-[0.6875rem] block">
                 New password
               </label>
@@ -152,7 +152,7 @@ export function ChangePasswordModal({ open, onClose }: ChangePasswordModalProps)
             </div>
 
             {/* Confirm password field */}
-            <div className="w-[34.125rem] mt-[1.5rem]">
+            <div className="w-full max-w-[34.125rem] mt-[1.5rem]">
               <label className="text-white text-base font-acid font-medium leading-[1.5275rem] mb-[0.6875rem] block">
                 Confirm Password
               </label>
@@ -176,7 +176,7 @@ export function ChangePasswordModal({ open, onClose }: ChangePasswordModalProps)
             </div>
 
             {/* Password requirements */}
-            <div className="w-[34.125rem] mt-[1.5rem]">
+            <div className="w-full max-w-[34.125rem] mt-[1.5rem]">
               <p className="text-white text-base font-acid font-medium leading-[1.5275rem]">Password requirements:</p>
               <div className="flex flex-col gap-[0.375rem] mt-[0.375rem]">
                 <RequirementLine met={hasMinLength} label="At least 6 characters" />

@@ -92,7 +92,7 @@ export function ChangeEmailModal({ open, onClose }: ChangeEmailModalProps) {
             </svg>
           </button>
 
-          <div className="relative flex flex-col items-center px-[7.75rem] pt-[9.6875rem] pb-[13.75rem]">
+          <div className="relative flex flex-col items-center px-5 sm:px-10 lg:px-[7.75rem] pt-10 lg:pt-[9.6875rem] pb-10 lg:pb-[13.75rem]">
             {/* Letter icon circle */}
             <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-[#09241C] flex items-center justify-center mb-[1.625rem]">
               <LetterIcon />
@@ -107,7 +107,7 @@ export function ChangeEmailModal({ open, onClose }: ChangeEmailModalProps) {
             </p>
 
             {/* Email field */}
-            <div className="w-[34.125rem] mt-[1.375rem]">
+            <div className="w-full max-w-[34.125rem] mt-[1.375rem]">
               <label className="text-white text-base font-acid font-medium leading-[1.5275rem] mb-[0.6875rem] block">
                 New Email Address
               </label>
