@@ -2,11 +2,8 @@ import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SearchInput } from '@/components/ui'
-import { ChevronRightIcon } from '@/components/icons'
 
 const LEVELS = ['All Levels', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
-
-const TABLE_HEADERS = ['USER', 'LEVEL', 'COUNTRY', 'TOTAL BALANCE', 'DATE JOINED', 'ACTIONS']
 
 interface Referral {
   name: string
@@ -26,59 +23,84 @@ const REFERRALS: Referral[] = [
 
 function LevelTabs({ active, onChange }: { active: string; onChange: (level: string) => void }) {
   return (
-    <div className="bg-gfx-green-800 rounded-[60px] px-4 py-1 flex items-center gap-0 flex-wrap">
-      {LEVELS.map(level => (
-        <button
-          key={level}
-          type="button"
-          onClick={() => onChange(level)}
-          className={`relative px-3 py-1.5 rounded-[60px] text-xs font-acid whitespace-nowrap cursor-pointer transition-all ${
-            active === level
-              ? 'bg-gfx-green-200 border border-gfx-green-500 text-white'
-              : 'text-gfx-neutral-300 hover:text-white'
-          }`}
-        >
-          {level}
-          {active === level && (
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-7 h-4 rounded-full bg-gfx-green-500 mix-blend-plus-lighter blur-md" />
-          )}
-        </button>
-      ))}
+    <div className="bg-gfx-green-800 rounded-[60px] inline-flex items-center gap-[31px] px-4 py-[3px]">
+      {LEVELS.map(level => {
+        const isActive = active === level
+        return (
+          <button
+            key={level}
+            type="button"
+            onClick={() => onChange(level)}
+            className={`relative text-xs font-acid whitespace-nowrap cursor-pointer transition-all leading-[18.8px] ${
+              isActive
+                ? 'bg-gfx-green-200 border-[1.35px] border-gfx-green-500 text-white rounded-[60px] px-4 py-1.5 overflow-hidden'
+                : 'text-gfx-neutral-300 hover:text-white'
+            }`}
+          >
+            <span className="relative z-10">{level}</span>
+            {isActive && (
+              <svg className="absolute left-1/2 -translate-x-1/2 bottom-[-12px]" width="54" height="33" viewBox="0 0 54 33" fill="none" style={{ mixBlendMode: 'plus-lighter' }}>
+                <g filter="url(#lvl_glow)">
+                  <ellipse cx="27" cy="35" rx="14.5" ry="8" fill="#CFF2E6" />
+                </g>
+                <defs>
+                  <filter id="lvl_glow" x="-27.5" y="-13" width="109" height="96" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="bg" />
+                    <feBlend in="SourceGraphic" in2="bg" result="shape" />
+                    <feGaussianBlur stdDeviation="20" result="blur" />
+                  </filter>
+                </defs>
+              </svg>
+            )}
+          </button>
+        )
+      })}
     </div>
   )
 }
 
 function DropdownSelect() {
   return (
-    <div className="relative bg-[#0c1311] border border-gfx-green-200 rounded-full h-[2.875rem] w-[16.1875rem] flex items-center px-4">
-      <span className="text-gfx-neutral-300 text-base font-acid">All Referrals</span>
-      <ChevronRightIcon size={16} className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-gfx-neutral-300" />
+    <div className="relative bg-[#0c1311] border border-gfx-green-200 rounded-[30px] h-[46px] w-[259px] flex items-center">
+      <div className="flex items-center gap-2.5 pl-4 py-2.5">
+        <span className="text-gfx-neutral-300 text-base font-acid">All Referrals</span>
+      </div>
+      <svg className="absolute right-6 top-1/2 -translate-y-1/2" width="13" height="8" viewBox="0 0 13 8" fill="none">
+        <path d="M5.036 7.107L0.433 2.504C-0.49 1.58 0.164 0 1.47 0h9.206c1.306 0 1.961 1.58 1.037 2.504L7.11 7.107a1.465 1.465 0 0 1-2.074 0z" fill="#808080" />
+      </svg>
     </div>
   )
 }
 
 function AvatarCircle({ initials }: { initials: string }) {
   return (
-    <div className="w-[2.9375rem] h-[2.9375rem] rounded-full bg-gfx-green-800 border border-gfx-green-200 flex items-center justify-center shrink-0">
-      <span className="text-gfx-green-500 text-base font-acid">{initials}</span>
+    <div className="w-[47px] h-[47px] rounded-full bg-gfx-green-800 flex items-center justify-center shrink-0">
+      <span className="text-gfx-green-500 text-[16.3px] font-acid">{initials}</span>
     </div>
   )
 }
 
 function LevelBadge({ level }: { level: string }) {
   return (
-    <span className="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-[#303030] text-white text-sm font-acid">
+    <span className="inline-flex items-center justify-center px-[26px] py-2.5 rounded-[32px] border border-[#303030] text-white text-sm font-acid leading-[18.8px]">
       {level}
     </span>
   )
 }
 
+function EyeIcon() {
+  return (
+    <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+      <path d="M4.263 4.4a1.237 1.237 0 1 1 2.475 0 1.237 1.237 0 0 1-2.475 0z" fill="white" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M0 4.4c0 .902.234 1.206.701 1.813C1.635 7.426 3.2 8.8 5.5 8.8c2.3 0 3.866-1.374 4.8-2.587.467-.607.7-.911.7-1.813s-.233-1.205-.7-1.813C9.366 1.375 7.8 0 5.5 0S1.635 1.375.701 2.588C.234 3.195 0 3.499 0 4.4zm5.5-2.063a2.063 2.063 0 1 0 0 4.126 2.063 2.063 0 0 0 0-4.126z" fill="white" />
+    </svg>
+  )
+}
+
 function DetailsButton() {
   return (
-    <button type="button" className="inline-flex items-center gap-3.5 px-4.5 h-[2.875rem] rounded-full border border-[#303030] text-gfx-neutral-100 text-base font-acid font-medium cursor-pointer hover:border-gfx-green-200 transition-colors">
-      <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-        <path d="M5.5 0C3 0 0.88 1.49 0 3.6C0.88 5.71 3 7.2 5.5 7.2C8 7.2 10.12 5.71 11 3.6C10.12 1.49 8 0 5.5 0ZM5.5 6C4.17 6 3.1 4.93 3.1 3.6C3.1 2.27 4.17 1.2 5.5 1.2C6.83 1.2 7.9 2.27 7.9 3.6C7.9 4.93 6.83 6 5.5 6ZM5.5 2.16C4.7 2.16 4.06 2.8 4.06 3.6C4.06 4.4 4.7 5.04 5.5 5.04C6.3 5.04 6.94 4.4 6.94 3.6C6.94 2.8 6.3 2.16 5.5 2.16Z" fill="#ECECEC"/>
-      </svg>
+    <button type="button" className="inline-flex items-center gap-3.5 h-[46px] px-[18px] rounded-[32px] border border-[#303030] text-[#ececec] text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-200 transition-colors">
+      <EyeIcon />
       Details
     </button>
   )
@@ -105,43 +127,50 @@ export default function ReferralsPage() {
 
         <h1 className="text-5xl font-acid text-white">Referrals</h1>
 
-        <GlassCard variant="heavy" divider="none" rounded="19px" className="overflow-hidden">
-          <div className="relative p-6">
-            {/* Header */}
-            <div className="border-b border-gfx-green-800 pb-6 mb-6">
+        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+          <div className="relative">
+            {/* Green glow inside card */}
+            <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+
+            {/* Green gradient divider at top */}
+            <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
+
+            {/* Header: "All Referals" */}
+            <div className="border-b border-gfx-green-800 px-6 py-0 h-[84px] flex items-center">
               <h2 className="text-2xl font-acid text-white">All Referals</h2>
             </div>
 
             {/* Filters row */}
-            <div className="flex items-center justify-between gap-4 flex-wrap mb-6">
+            <div className="flex items-center justify-between gap-4 flex-wrap px-6 py-4">
               <LevelTabs active={activeLevel} onChange={setActiveLevel} />
               <div className="flex items-center gap-3">
-                <SearchInput placeholder="Search " className="w-[17.9375rem]" />
+                <SearchInput placeholder="Search " className="w-[287px]" />
                 <DropdownSelect />
               </div>
             </div>
 
-            {/* Table header */}
-            <div className="border-b border-gfx-green-800">
-              <div className="grid grid-cols-[minmax(15rem,1.5fr)_minmax(6rem,0.7fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] gap-4 py-3 px-4">
-                {TABLE_HEADERS.map(header => (
-                  <span key={header} className="text-xs font-acid font-bold uppercase tracking-[0.145rem] text-[#606060]">
-                    {header}
-                  </span>
-                ))}
+            {/* Table header row */}
+            <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6">
+              <div className="grid grid-cols-[minmax(15rem,2fr)_minmax(6rem,0.8fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] w-full items-center">
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">User</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">LEvel</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">country</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">total balance</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">date joined</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">actions</span>
               </div>
             </div>
 
             {/* Table rows */}
             {REFERRALS.map((referral, i) => (
-              <div key={i} className="border-b border-gfx-green-800 last:border-b-0">
-                <div className="grid grid-cols-[minmax(15rem,1.5fr)_minmax(6rem,0.7fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] gap-4 py-3.5 px-4 items-center">
+              <div key={i} className="border-b border-gfx-green-800 last:border-b-0 h-[76px] flex items-center px-6">
+                <div className="grid grid-cols-[minmax(15rem,2fr)_minmax(6rem,0.8fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] w-full items-center">
                   {/* User */}
                   <div className="flex items-center gap-4">
                     <AvatarCircle initials={referral.initials} />
                     <div>
-                      <p className="text-base font-acid font-medium text-gfx-neutral-100">{referral.name}</p>
-                      <p className="text-sm font-acid text-[#606060]">{referral.email}</p>
+                      <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{referral.name}</p>
+                      <p className="text-sm font-acid text-[#606060] leading-[18.8px]">{referral.email}</p>
                     </div>
                   </div>
 
@@ -151,13 +180,13 @@ export default function ReferralsPage() {
                   </div>
 
                   {/* Country */}
-                  <span className="text-sm font-acid text-white">{referral.country}</span>
+                  <span className="text-sm font-acid text-white leading-[18.8px]">{referral.country}</span>
 
                   {/* Total Balance */}
-                  <span className="text-sm font-acid text-white">{referral.totalBalance}</span>
+                  <span className="text-sm font-acid text-white leading-[18.8px]">{referral.totalBalance}</span>
 
                   {/* Date Joined */}
-                  <span className="text-sm font-acid text-white">{referral.dateJoined}</span>
+                  <span className="text-sm font-acid text-white leading-[18.8px]">{referral.dateJoined}</span>
 
                   {/* Actions */}
                   <div>
