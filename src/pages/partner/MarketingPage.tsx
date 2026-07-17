@@ -35,6 +35,17 @@ function DownloadIcon() {
   )
 }
 
+function BentoIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path fillRule="evenodd" clipRule="evenodd" d="M0 4.63415C0 2.07478 2.07478 0 4.63415 0C7.19351 0 9.26829 2.07478 9.26829 4.63415C9.26829 7.19351 7.19351 9.26829 4.63415 9.26829C2.07478 9.26829 0 7.19351 0 4.63415Z" fill="currentColor"/>
+      <path fillRule="evenodd" clipRule="evenodd" d="M10.7317 15.3659C10.7317 12.8065 12.8065 10.7317 15.3659 10.7317C17.9252 10.7317 20 12.8065 20 15.3659C20 17.9252 17.9252 20 15.3659 20C12.8065 20 10.7317 17.9252 10.7317 15.3659Z" fill="currentColor"/>
+      <path d="M0 15.5C0 13.3787 0 12.318 0.65901 11.659C1.31802 11 2.37868 11 4.5 11C6.62132 11 7.68198 11 8.34099 11.659C9 12.318 9 13.3787 9 15.5C9 17.6213 9 18.682 8.34099 19.341C7.68198 20 6.62132 20 4.5 20C2.37868 20 1.31802 20 0.65901 19.341C0 18.682 0 17.6213 0 15.5Z" fill="currentColor"/>
+      <path d="M11 4.5C11 2.37868 11 1.31802 11.659 0.65901C12.318 0 13.3787 0 15.5 0C17.6213 0 18.682 0 19.341 0.65901C20 1.31802 20 2.37868 20 4.5C20 6.62132 20 7.68198 19.341 8.34099C18.682 9 17.6213 9 15.5 9C13.3787 9 12.318 9 11.659 8.34099C11 7.68198 11 6.62132 11 4.5Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
 function CategoryBadge({ label }: { label: string }) {
   return (
     <span className="inline-flex items-center justify-center px-3 h-[24px] rounded-[30px] border-[1.16px] border-[#303030] bg-gfx-dark text-xs font-acid text-white leading-[18.8px]">
@@ -82,50 +93,64 @@ export default function MarketingPage() {
 
         <ModeToggle options={TABS} activeIndex={activeTabIndex} onChange={setActiveTabIndex} size="sm" />
 
-        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-          <div className="relative">
-            <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
-
-            <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
-
-            <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
-
-            <div className="px-6 pt-6 pb-4 flex flex-col gap-4">
-              <h2 className="text-base font-acid font-medium text-white leading-[24.44px]">Marketing Materials Library</h2>
-              <SearchInput placeholder="Search materials..." value={search} onChange={setSearch} className="w-full max-w-[417px]" />
+        {activeTabIndex === 1 ? (
+          <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+            <div className="flex flex-col items-center justify-center h-[23.75rem]">
+              <div className="flex items-center justify-center w-[3.375rem] h-[3.375rem] rounded-full bg-gfx-green-900 text-gfx-green-300">
+                <BentoIcon />
+              </div>
+              <h2 className="mt-7 text-2xl font-acid text-white">Landing pages coming soon</h2>
+              <p className="mt-4 text-base font-acid text-gfx-neutral-400 text-center max-w-[22.625rem] leading-[1.2]">
+                Custom branded landing pages to convert your audience into traders. Stay tuned!
+              </p>
             </div>
+          </GlassCard>
+        ) : (
+          <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+            <div className="relative">
+              <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
-            <div className="overflow-x-auto">
-              <div className="border-b border-[#09241C] h-[40px] flex items-center px-6 min-w-[48rem]">
-                <div className={`grid ${GRID_COLS} w-full items-center`}>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Type</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Title</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Category</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Description</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Action</span>
-                </div>
+              <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+
+              <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
+
+              <div className="px-6 pt-6 pb-4 flex flex-col gap-4">
+                <h2 className="text-base font-acid font-medium text-white leading-[24.44px]">Marketing Materials Library</h2>
+                <SearchInput placeholder="Search materials..." value={search} onChange={setSearch} className="w-full max-w-[417px]" />
               </div>
 
-              {filtered.map((item, i) => (
-                <div key={i} className="border-b border-[#09241C] last:border-b-0 h-[76px] flex items-center px-6 min-w-[48rem]">
+              <div className="overflow-x-auto">
+                <div className="border-b border-[#09241C] h-[40px] flex items-center px-6 min-w-[48rem]">
                   <div className={`grid ${GRID_COLS} w-full items-center`}>
-                    <div>
-                      <GalleryIcon />
-                    </div>
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.title}</span>
-                    <div>
-                      <CategoryBadge label={item.category} />
-                    </div>
-                    <span className="text-sm font-acid text-white leading-[18.8px]">{item.description}</span>
-                    <div>
-                      <DownloadButton />
-                    </div>
+                    <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Type</span>
+                    <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Title</span>
+                    <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Category</span>
+                    <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Description</span>
+                    <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Action</span>
                   </div>
                 </div>
-              ))}
+
+                {filtered.map((item, i) => (
+                  <div key={i} className="border-b border-[#09241C] last:border-b-0 h-[76px] flex items-center px-6 min-w-[48rem]">
+                    <div className={`grid ${GRID_COLS} w-full items-center`}>
+                      <div>
+                        <GalleryIcon />
+                      </div>
+                      <span className="text-sm font-acid text-white leading-[18.8px]">{item.title}</span>
+                      <div>
+                        <CategoryBadge label={item.category} />
+                      </div>
+                      <span className="text-sm font-acid text-white leading-[18.8px]">{item.description}</span>
+                      <div>
+                        <DownloadButton />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </GlassCard>
+          </GlassCard>
+        )}
       </div>
     </>
   )
