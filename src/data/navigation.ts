@@ -25,3 +25,14 @@ export const navItems: NavItem[] = [
   { id: 'news', label: 'Market News', icon: 'news', href: '/news' },
   { id: 'academy', label: 'Genesis Academy', icon: 'academy', href: '/academy' },
 ]
+
+export const partnerNavItems: NavItem[] = [
+  { id: 'ib-dashboard', label: 'IB Dashboard', icon: 'ib-dashboard', href: '/partner' },
+  { id: 'referrals', label: 'Referrals', icon: 'referrals', href: '/partner/referrals' },
+  { id: 'links', label: 'Links', icon: 'links', href: '/partner/links' },
+  { id: 'trades', label: 'Trades', icon: 'trades', href: '/partner/trades' },
+  { id: 'comissions', label: 'Comissions', icon: 'comissions', href: '/partner/comissions' },
+  { id: 'payouts', label: 'Payouts', icon: 'payouts', href: '/partner/payouts' },
+  { id: 'marketing', label: 'Marketing', icon: 'marketing', href: '/partner/marketing' },
+  { id: 'statistics', label: 'Statistics', icon: 'statistics', href: '/partner/statistics' },
+]

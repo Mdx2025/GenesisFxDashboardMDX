@@ -387,6 +387,92 @@ export function ShareIcon({ size = 18, color = '#808080', className }: IconProps
   )
 }
 
+export function IBDashboardIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <rect x="2" y="2" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="8.75" y="2" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="15.5" y="2" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="2" y="8.75" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="8.75" y="8.75" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="15.5" y="8.75" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="2" y="15.5" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="8.75" y="15.5" width="3.5" height="3.5" rx="1" fill={color} />
+      <rect x="15.5" y="15.5" width="3.5" height="3.5" rx="1" fill={color} />
+    </svg>
+  )
+}
+
+export function ReferralsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <circle cx="8" cy="5.5" r="3" fill={color} />
+      <ellipse cx="8" cy="15" rx="5.5" ry="3" fill={color} />
+      <circle cx="15.5" cy="6.5" r="2" fill={color} opacity="0.6" />
+      <ellipse cx="15.5" cy="14.5" rx="3.5" ry="2" fill={color} opacity="0.6" />
+    </svg>
+  )
+}
+
+export function LinksIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <path d="M8.5 12.5L12.5 8.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M11.5 13.5L13.5 11.5C15.157 9.843 15.157 7.157 13.5 5.5C11.843 3.843 9.157 3.843 7.5 5.5L5.5 7.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9.5 7.5L7.5 9.5C5.843 11.157 5.843 13.843 7.5 15.5C9.157 17.157 11.843 17.157 13.5 15.5L15.5 13.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function TradesIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <rect x="3" y="11" width="3" height="7" rx="1" fill={color} />
+      <rect x="9" y="7" width="3" height="11" rx="1" fill={color} />
+      <rect x="15" y="3" width="3" height="15" rx="1" fill={color} />
+    </svg>
+  )
+}
+
+export function ComissionsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <circle cx="10.5" cy="10.5" r="8" stroke={color} strokeWidth="1.5" />
+      <path d="M10.5 6.5V14.5M12.5 8.5H9.5C8.672 8.5 8 9.172 8 10C8 10.828 8.672 11.5 9.5 11.5H11.5C12.328 11.5 13 12.172 13 13C13 13.828 12.328 14.5 11.5 14.5H8.5" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function PayoutsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <rect x="2" y="5" width="17" height="12" rx="3" fill={color} />
+      <path d="M2 9h17" stroke="black" strokeWidth="1.5" />
+      <rect x="4" y="12" width="5" height="2" rx="0.5" fill="black" opacity="0.4" />
+    </svg>
+  )
+}
+
+export function MarketingIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <path d="M17 4L7 8H4C3.448 8 3 8.448 3 9V11C3 11.552 3.448 12 4 12H5L6.5 17H8.5L7 12L17 16V4Z" fill={color} />
+      <path d="M17 4C17 4 19 6 19 10C19 14 17 16 17 16" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function StatisticsIcon({ size = 21, color = 'currentColor', className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className}>
+      <rect x="3" y="13" width="2.5" height="5" rx="0.5" fill={color} />
+      <rect x="7.5" y="9" width="2.5" height="9" rx="0.5" fill={color} />
+      <rect x="12" y="6" width="2.5" height="12" rx="0.5" fill={color} />
+      <rect x="16.5" y="3" width="2.5" height="15" rx="0.5" fill={color} />
+    </svg>
+  )
+}
+
 export function FollowPersonIcon({ className }: { className?: string }) {
   return (
     <svg width="14" height="18" viewBox="0 0 14 18" fill="none" className={className}>

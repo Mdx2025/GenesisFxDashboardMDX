@@ -1,8 +1,9 @@
-import { useSidebar } from '@/layouts/RootLayout'
+import { useNavigate } from 'react-router-dom'
+import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, StatCard, SecondaryButton, PeriodPill } from '@/components/ui'
+import { GlassCard, GlassBannerCard, StatCard, SecondaryButton, SparkleButton, GlowButton, PeriodPill } from '@/components/ui'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
-import { ChevronRightIcon } from '@/components/icons'
+import { ChevronRightIcon, DepositIcon, WithdrawIcon, TransferIcon } from '@/components/icons'
 import './PartnerPage.css'
 
 function WalletIcon({ size = 24, color = 'currentColor' }: { size?: number; color?: string }) {
@@ -294,6 +295,8 @@ function RecentActivity() {
 
 export default function PartnerPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
+  const { openTransfer } = useTransfer()
+  const navigate = useNavigate()
 
   const breadcrumbItems = [
     { label: 'Dashboard', href: '/home' },
@@ -304,7 +307,7 @@ export default function PartnerPage() {
     <>
       <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
-      <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6 flex flex-col gap-4 3xl:gap-6 4xl:gap-8">
+      <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6 pb-20 flex flex-col gap-4 3xl:gap-6 4xl:gap-8">
         <TopBar
           menuOpen={sidebarOpen}
           onMenuClick={() => setSidebarOpen(v => !v)}
@@ -313,26 +316,63 @@ export default function PartnerPage() {
 
         <div className="flex items-center justify-between shrink-0 flex-wrap gap-4">
           <h1 className="text-4xl lg:text-5xl font-acid text-white">Partner Program</h1>
-          <div className="hidden lg:flex gap-3">
-            <SecondaryButton>
-              <ChevronRightIcon size={18} />
-              New Account
-              <ChevronRightIcon size={18} />
-            </SecondaryButton>
-            <SecondaryButton>
-              <ChevronRightIcon size={18} />
-              New Account
-              <ChevronRightIcon size={18} />
-            </SecondaryButton>
-            <SecondaryButton>
-              <ChevronRightIcon size={18} />
-              New Account
-              <ChevronRightIcon size={18} />
-            </SecondaryButton>
+          <div className="hidden lg:flex items-center gap-3">
+            <SparkleButton onClick={() => navigate('/deposit')}>
+              <span className="flex items-center gap-2">
+                <DepositIcon />
+                <span className="hidden sm:inline">Deposit</span>
+              </span>
+            </SparkleButton>
+            <SparkleButton onClick={() => navigate('/withdraw')}>
+              <span className="flex items-center gap-2">
+                <WithdrawIcon />
+                <span className="hidden sm:inline">Withdraw</span>
+              </span>
+            </SparkleButton>
+            <SparkleButton onClick={openTransfer}>
+              <span className="flex items-center gap-2">
+                <TransferIcon />
+                <span className="hidden sm:inline">Transfer</span>
+              </span>
+            </SparkleButton>
           </div>
         </div>
 
-        <HeroBanner />
+        <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
+          <div className="flex-1 flex flex-col justify-center">
+            <h2 className="text-4xl lg:text-5xl font-acid text-white leading-tight mb-4">Partner Program</h2>
+            <p className="text-base text-gfx-neutral-500 leading-relaxed max-w-[572px] mb-8">
+              Grow your network and earn industry-leading commissions. Track referrals, monitor performance, and unlock new revenue streams.
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <GlowButton label="Trade" icon={<ShareIcon size={16} color="black" />} width={160} />
+              <SparkleButton>
+                <span className="flex items-center gap-2">
+                  <ChevronRightIcon size={18} />
+                  New Account
+                  <ChevronRightIcon size={18} />
+                </span>
+              </SparkleButton>
+            </div>
+          </div>
+          <div className="w-full lg:w-[359px] shrink-0">
+            <div className="bg-gradient-to-b from-gfx-green-900 to-gfx-main border border-gfx-green-800 rounded-[30px] p-6 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-gfx-green-900 border border-gfx-green-300 rounded-[20px] px-3.5 py-2 flex items-center gap-3">
+                  <MagicStickIcon size={18} color="#00b38c" />
+                  <span className="text-gfx-green-300 text-sm font-acid">Marketing</span>
+                </div>
+              </div>
+              <h3 className="text-white text-base font-acid font-medium mb-2 text-center">Real Time Statistics</h3>
+              <p className="text-gfx-neutral-500 text-sm font-acid leading-relaxed mb-auto">
+                Track signups, FTDs, lots, and revenue by referral link or sub-
+              </p>
+              <div className="mt-4">
+                <span className="text-gfx-green-300 text-sm font-acid cursor-pointer hover:underline">Open library</span>
+              </div>
+            </div>
+          </div>
+        </GlassBannerCard>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8">
           <StatCard

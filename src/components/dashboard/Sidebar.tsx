@@ -7,8 +7,10 @@ import {
   DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
   GenSocialIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
   ChevronDownIcon,
+  IBDashboardIcon, ReferralsIcon, LinksIcon, TradesIcon,
+  ComissionsIcon, PayoutsIcon, MarketingIcon, StatisticsIcon,
 } from '@/components/icons'
-import { navItems } from '@/data/navigation'
+import { navItems, partnerNavItems } from '@/data/navigation'
 import { GLOW_GREEN } from '@/constants/colors'
 import type { ComponentType } from 'react'
 
@@ -20,6 +22,14 @@ const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> 
   gensocial: GenSocialIcon,
   news: MarketNewsIcon,
   academy: AcademyIcon,
+  'ib-dashboard': IBDashboardIcon,
+  referrals: ReferralsIcon,
+  links: LinksIcon,
+  trades: TradesIcon,
+  comissions: ComissionsIcon,
+  payouts: PayoutsIcon,
+  marketing: MarketingIcon,
+  statistics: StatisticsIcon,
 }
 
 interface SidebarProps {
@@ -30,6 +40,7 @@ interface SidebarProps {
 export function Sidebar({ open, onClose }: SidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
+  const isPartner = location.pathname.startsWith('/partner')
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
   const [collapsed, setCollapsed] = useState(false)
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
@@ -138,7 +149,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
           <nav aria-label="Main menu">
             <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
-              {navItems.map((item) => {
+              {(isPartner ? partnerNavItems : navItems).map((item) => {
                 const Icon = iconMap[item.icon]
                 const isActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname) || !!item.submenu?.some(sub => location.pathname === sub.href || location.pathname.startsWith(sub.href + '/'))
                 const navContent = (
