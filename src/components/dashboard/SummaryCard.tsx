@@ -29,7 +29,7 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', v
   const arrow = changeColor === 'red' ? '▼' : '▲'
 
   return (
-    <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden h-full isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
+    <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden h-full pb-13 isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none [filter:url(#blur-157)] will-change-transform"
         style={{ background: glowColor }}
