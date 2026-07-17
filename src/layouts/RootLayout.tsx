@@ -67,7 +67,7 @@ export default function RootLayout() {
       <TransferContext.Provider value={{ openTransfer: () => setTransferOpen(true) }}>
         <div className="flex w-full min-h-dvh bg-gfx-main text-white font-acid">
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-          <main className="flex-1 min-w-0 relative overflow-x-hidden">
+          <main className="flex-1 min-w-0 relative" style={{ overflowX: 'clip' }}>
             <Outlet />
           </main>
           <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
