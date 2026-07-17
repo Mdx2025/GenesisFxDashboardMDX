@@ -54,21 +54,18 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
     const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
     mq.addEventListener('change', onChange)
 
-    const main = document.querySelector('main')
-    if (!main) return () => mq.removeEventListener('change', onChange)
-
     function onScroll() {
-      const y = main!.scrollTop
+      const y = window.scrollY
       setScrolled(y > 10)
       if (Math.abs(y - lastY.current) < SCROLL_THRESHOLD) return
       setHidden(y > lastY.current && y > 56)
       lastY.current = y
     }
 
-    main.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     return () => {
-      main.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', onScroll)
       mq.removeEventListener('change', onChange)
     }
   }, [])
