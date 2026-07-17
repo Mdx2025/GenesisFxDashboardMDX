@@ -129,7 +129,7 @@ export default function MarketingPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white">Partner Marketing Tools</h1>
+        <h1 className="text-5xl font-acid text-white pb-15">Partner Marketing Tools</h1>
 
         <div className="w-full lg:w-5xl mx-auto flex flex-col gap-8">
           <div className="w-sm">
