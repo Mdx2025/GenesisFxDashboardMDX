@@ -272,12 +272,12 @@ export default function CopyTradingPage() {
                   onChange={setFilterTab}
                 />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                 <SearchInput
                   placeholder="Search traders"
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  className="w-[17.9375rem]"
+                  className="w-full sm:w-[17.9375rem]"
                 />
                 <button
                   onClick={() => {}}
@@ -406,7 +406,7 @@ export default function CopyTradingPage() {
                 {/* Dashboard Header */}
                 <div className="flex items-center justify-between p-6 lg:p-8 pb-6">
                   <h3 className="text-white text-2xl font-acid leading-normal">Master Dashboard</h3>
-                  <SearchInput placeholder="Search strategies" className="w-[17.9375rem]" />
+                  <SearchInput placeholder="Search strategies" className="w-full sm:w-[17.9375rem]" />
                 </div>
 
                 {/* Divider */}

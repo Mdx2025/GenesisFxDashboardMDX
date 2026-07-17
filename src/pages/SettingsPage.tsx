@@ -796,7 +796,7 @@ export default function SettingsPage() {
         ]}
       />
 
-      <div className="w-6xl mx-auto font-acid mt-[5%]">
+      <div className="w-full max-w-6xl mx-auto font-acid mt-[5%] px-4 sm:px-6">
       {/* Profile Header Card */}
       <div className="relative bg-[#0D1512] border border-gfx-green-300/12 rounded-[1.125rem] overflow-hidden">
         {/* Banner area */}

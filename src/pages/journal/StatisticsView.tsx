@@ -100,9 +100,19 @@ function RadarChart() {
     return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) }
   })
 
+  const dataVertices = Array.from({ length: n }, (_, i) => {
+    const a = startAngle + i * angleStep
+    return { x: cx + 15 * Math.cos(a), y: cy + 15 * Math.sin(a) }
+  })
+
   return (
     <div className="relative flex items-center justify-center">
       <svg width="320" height="320" viewBox="0 0 320 320">
+        <defs>
+          <filter id="glow_dot" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur stdDeviation="2.4" />
+          </filter>
+        </defs>
         {levels.map((r, i) => (
           <polygon
             key={i}
@@ -132,6 +142,9 @@ function RadarChart() {
           stroke="#10BC83"
           strokeWidth="1.5"
         />
+        {dataVertices.map((v, i) => (
+          <circle key={`gd${i}`} cx={v.x} cy={v.y} r="3.5" fill="white" filter="url(#glow_dot)" />
+        ))}
         {labelPositions.map((pos, i) => (
           <text
             key={i}
@@ -153,28 +166,34 @@ function RadarChart() {
 
 /* ─── Score Bar ─── */
 
-function ScoreBar({ score }: { score: number }) {
+function ScoreSection({ score }: { score: number }) {
   const pct = Math.min(100, Math.max(0, score))
 
   return (
-    <div className="w-full mt-4">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-gfx-neutral-400 text-base font-acid">Your Genesis Score</span>
-        <span className="text-white text-2xl font-acid">15.00</span>
-      </div>
-      <div className="relative h-[0.5rem] rounded-full overflow-hidden">
-        <div className="absolute inset-0 rounded-full" style={{
-          background: 'linear-gradient(to right, #EE4741, #EC7F23, #DCB40E, #28C45B)',
-        }} />
-        <div
-          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border-2 border-gfx-green-800"
-          style={{ left: `${pct}%` }}
-        />
-      </div>
-      <div className="flex justify-between mt-2">
-        {[0, 20, 40, 60, 80, 100].map(v => (
-          <span key={v} className="text-white text-xs font-acid">{v}</span>
-        ))}
+    <div className="mt-auto">
+      <div className="w-full h-px bg-[#09241C]" />
+      <div className="flex gap-0 pt-4">
+        <div className="flex flex-col justify-center pr-4 shrink-0">
+          <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-snug">Your Genesis Score</span>
+          <span className="text-white text-2xl font-acid mt-1">15.00</span>
+        </div>
+        <div className="w-px bg-[#09241C] self-stretch shrink-0" />
+        <div className="flex-1 flex flex-col justify-center pl-4">
+          <div className="relative h-2.5 rounded-full overflow-hidden">
+            <div className="absolute inset-0 rounded-full" style={{
+              background: 'linear-gradient(90deg, #EE4741 0%, #EC7F23 37%, #DCB40E 60%, #28C45B 100%)',
+            }} />
+            <div
+              className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border border-black"
+              style={{ left: `${pct}%` }}
+            />
+          </div>
+          <div className="flex justify-between mt-2">
+            {[0, 20, 40, 60, 80, 100].map(v => (
+              <span key={v} className="text-white text-base font-acid leading-tight">{v}</span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -384,10 +403,11 @@ export default function StatisticsView() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6">
         {/* Genesis Score */}
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
-          <div className="p-6 flex flex-col h-full">
+          <div className="absolute w-[493px] h-[278px] -right-[60px] top-[182px] rounded-full pointer-events-none bg-[#064B34] blur-[157px]" aria-hidden="true" />
+          <div className="p-6 flex flex-col h-full relative z-10">
             <div className="flex flex-row items-center gap-3 mb-2">
               <h3 className="text-white text-2xl font-acid">Genesis Score</h3>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <g clipPath="url(#clip0_gs)">
                   <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M9 12V9" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -402,7 +422,7 @@ export default function StatisticsView() {
             </div>
             <div className="flex-1 min-h-0 flex flex-col">
               <RadarChart />
-              <ScoreBar score={15} />
+              <ScoreSection score={15} />
             </div>
           </div>
         </GlassCard>

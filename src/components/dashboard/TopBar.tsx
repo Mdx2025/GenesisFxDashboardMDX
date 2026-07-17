@@ -150,7 +150,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-1 xs:gap-2 sm:gap-3 shrink-0 min-w-0 overflow-hidden">
           <div className="flex items-center gap-2">
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none" className="shrink-0" aria-hidden="true">
               <g filter="url(#glow_market)">

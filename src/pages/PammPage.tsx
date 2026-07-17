@@ -262,16 +262,16 @@ export default function PammPage() {
                   onChange={setFilterTab}
                 />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                 <SearchInput
                   placeholder="Search strategies"
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  className="w-[17.9375rem]"
+                  className="w-full sm:w-[17.9375rem]"
                 />
                 <button
                   onClick={() => {}}
-                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
+                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer hidden sm:flex"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
@@ -344,7 +344,7 @@ export default function PammPage() {
                 placeholder="Search for investments"
                 value={searchQuery}
                 onChange={setSearchQuery}
-                className="w-[17.9375rem]"
+                className="w-full sm:w-[17.9375rem]"
               />
             </div>
 
@@ -424,7 +424,7 @@ export default function PammPage() {
                 placeholder="Search strategies"
                 value={searchQuery}
                 onChange={setSearchQuery}
-                className="w-[17.9375rem]"
+                className="w-full sm:w-[17.9375rem]"
               />
             </div>
 

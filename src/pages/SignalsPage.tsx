@@ -439,7 +439,7 @@ export default function SignalsPage() {
                 placeholder="Search instrument or analyst"
                 value={searchQuery}
                 onChange={setSearchQuery}
-                className="w-[17.9375rem]"
+                className="w-full sm:w-[17.9375rem]"
               />
               <button
                 onClick={() => setViewMode('list')}
@@ -486,7 +486,7 @@ export default function SignalsPage() {
                   <h3 className="text-white text-2xl font-acid leading-none">Signals Executed</h3>
                   <SearchInput
                     placeholder="Search strategies"
-                    className="w-[17.9375rem]"
+                    className="w-full sm:w-[17.9375rem]"
                   />
                 </div>
 
@@ -606,7 +606,7 @@ export default function SignalsPage() {
               placeholder="Search signals"
               value={searchQuery}
               onChange={setSearchQuery}
-              className="w-[17.9375rem]"
+              className="w-full sm:w-[17.9375rem]"
             />
             <button
               onClick={() => {}}

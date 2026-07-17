@@ -143,16 +143,20 @@ export default function ReferralsPage() {
             </div>
 
             {/* Filters row */}
-            <div className="flex items-center justify-between gap-4 flex-wrap px-6 py-4">
-              <LevelTabs active={activeLevel} onChange={setActiveLevel} />
+            <div className="flex items-center justify-between gap-4 flex-wrap px-4 sm:px-6 py-4">
+              <div className="overflow-x-auto max-w-full">
+                <LevelTabs active={activeLevel} onChange={setActiveLevel} />
+              </div>
               <div className="flex items-center gap-3">
-                <SearchInput placeholder="Search " className="w-[287px]" />
+                <SearchInput placeholder="Search " className="w-[200px] sm:w-[287px]" />
                 <DropdownSelect />
               </div>
             </div>
 
+            {/* Table (scrollable on small screens) */}
+            <div className="overflow-x-auto">
             {/* Table header row */}
-            <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6">
+            <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6 min-w-[52rem]">
               <div className="grid grid-cols-[minmax(15rem,2fr)_minmax(6rem,0.8fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] w-full items-center">
                 <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">User</span>
                 <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">LEvel</span>
@@ -165,7 +169,7 @@ export default function ReferralsPage() {
 
             {/* Table rows */}
             {REFERRALS.map((referral, i) => (
-              <div key={i} className="border-b border-gfx-green-800 last:border-b-0 h-[76px] flex items-center px-6">
+              <div key={i} className="border-b border-gfx-green-800 last:border-b-0 h-[76px] flex items-center px-6 min-w-[52rem]">
                 <div className="grid grid-cols-[minmax(15rem,2fr)_minmax(6rem,0.8fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] w-full items-center">
                   {/* User */}
                   <div className="flex items-center gap-4">
@@ -197,6 +201,7 @@ export default function ReferralsPage() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </GlassCard>
       </div>
