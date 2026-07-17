@@ -99,16 +99,16 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
       <header
         className={`flex items-center justify-between gap-2 ${
           isMobile
-            ? 'fixed top-0 left-0 right-0 z-40 px-4 py-3'
-            : 'sticky top-0 z-40 py-4 -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14'
+            ? 'fixed left-0 right-0 z-40 px-4 py-3'
+            : 'sticky z-40 py-4 -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14'
         }`}
         style={{
+          top: hidden ? '-5rem' : '0',
           background: scrolled ? 'var(--color-gfx-surface-blur)' : 'transparent',
           backdropFilter: scrolled ? 'url(#blur-23)' : 'none',
           WebkitBackdropFilter: scrolled ? 'url(#blur-23)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : '1px solid transparent',
-          transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
-          transition: 'transform 400ms cubic-bezier(0.4, 0, 0.15, 1), background 300ms ease, border-bottom 300ms ease, backdrop-filter 300ms ease',
+          transition: 'top 400ms cubic-bezier(0.4, 0, 0.15, 1), background 300ms ease, border-bottom 300ms ease, backdrop-filter 300ms ease',
         }}
       >
         <div className="flex items-center gap-3 min-w-0">

@@ -166,31 +166,31 @@ export default function MarketingPage() {
                   </p>
                 </div>
 
-                <div className="w-full lg:w-[31.8rem] shrink-0 rounded-[1.16rem] border-[1.16px] border-gfx-green-800 bg-gfx-green-800 overflow-hidden" style={{ boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+                <div className="w-full lg:w-[31.8rem] shrink-0 rounded-[1.16rem] border-[1.16px] border-[#0C1311] bg-[#0C1311] overflow-hidden" style={{ boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
                   <div className="p-[2.5rem_2.6rem] flex flex-col gap-5">
                     <div className="flex items-center gap-3">
-                      <div className="inline-flex items-center h-7 px-[1.125rem] rounded-[30px] border-[1.16px] border-gfx-green-200">
-                        <span className="text-xs font-acid text-gfx-green-300 leading-[18.8px]">GFX605D9D38</span>
+                      <div className="inline-flex items-center h-7 px-[1.125rem] rounded-[30px] bg-[#0C1311] border-[1.16px] border-[#064B34]">
+                        <span className="text-xs font-acid text-[#00B38C] leading-[18.8px]">GFX605D9D38</span>
                       </div>
                       <div className="flex items-center gap-2 ml-auto">
-                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-gfx-green-900 cursor-pointer hover:opacity-80 transition-opacity">
+                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
                           <QRCodeIcon />
                         </button>
-                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-gfx-green-900 cursor-pointer hover:opacity-80 transition-opacity">
+                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
                           <ShareIcon />
                         </button>
-                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-gfx-green-900 cursor-pointer hover:opacity-80 transition-opacity">
+                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
                           <CopyIcon />
                         </button>
                       </div>
                     </div>
 
-                    <div className="flex items-center h-[2.875rem] px-4 rounded-[2.5rem] border border-gfx-green-200 bg-gfx-green-800">
-                      <span className="text-xs font-acid text-gfx-neutral-400 leading-[18.8px] truncate">https://dashboard.genesisfxmarkets.com/a</span>
+                    <div className="flex items-center h-[2.875rem] px-4 rounded-[2.5rem] border border-[#064B34] bg-[#0C1311]">
+                      <span className="text-xs font-acid text-[#808080] leading-[18.8px] truncate">https://dashboard.genesisfxmarkets.com/a</span>
                     </div>
 
-                    <button className="flex items-center justify-center h-[2.875rem] rounded-[30px] border border-gfx-neutral-500 cursor-pointer hover:border-gfx-green-300 transition-colors" style={{ background: 'linear-gradient(0deg, var(--color-gfx-green-900) 29%, var(--color-gfx-green-800) 88%)' }}>
-                      <span className="text-base font-acid font-medium text-gfx-neutral-550 leading-[24.44px]">View Comission Rates</span>
+                    <button className="flex items-center justify-center h-[2.875rem] rounded-[30px] border border-[#A0A0A0] cursor-pointer hover:border-gfx-green-300 transition-colors" style={{ background: 'linear-gradient(0deg, #09241C 29%, #0C1311 88%)' }}>
+                      <span className="text-base font-acid font-medium text-[#C6C6C6] leading-[24.44px]">View Comission Rates</span>
                     </button>
                   </div>
                 </div>
