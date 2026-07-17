@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SearchInput } from '@/components/ui'
+import { GlassCard, SearchInput, GlowEllipse } from '@/components/ui'
 
 const LEVELS = ['All Levels', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
 
@@ -129,6 +129,8 @@ export default function ReferralsPage() {
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">
+            <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
+
             {/* Green glow inside card */}
             <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
