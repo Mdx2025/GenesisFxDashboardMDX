@@ -169,7 +169,7 @@ export default function MarketingPage() {
                   </p>
                 </div>
 
-                <div className="w-full lg:w-[31.8rem] shrink-0 rounded-[1.16rem] border-[1.16px] border-[#0C1311] bg-[#0C1311] overflow-hidden" style={{ boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+                <GlassCard variant="light" divider="none" rounded="1.16rem" className="w-full lg:w-[31.8rem] shrink-0 overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
                   <div className="p-[2.5rem_2.6rem] flex flex-col gap-5">
                     <div className="flex items-center gap-3">
                       <div className="inline-flex items-center h-7 px-[1.125rem] rounded-[30px] bg-[#0C1311] border-[1.16px] border-[#064B34]">
@@ -196,7 +196,7 @@ export default function MarketingPage() {
                       <span className="text-base font-acid font-medium text-[#C6C6C6] leading-[24.44px]">View Comission Rates</span>
                     </button>
                   </div>
-                </div>
+                </GlassCard>
               </div>
             </div>
           </GlassCard>
