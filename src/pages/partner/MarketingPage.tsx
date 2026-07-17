@@ -131,10 +131,11 @@ export default function MarketingPage() {
 
         <h1 className="text-5xl font-acid text-white">Partner Marketing Tools</h1>
 
-        <ModeToggle options={TABS} activeIndex={activeTabIndex} onChange={setActiveTabIndex} size="sm" />
+        <div className="container mx-auto flex flex-col gap-8">
+          <ModeToggle options={TABS} activeIndex={activeTabIndex} onChange={setActiveTabIndex} size="sm" />
 
         {activeTabIndex === 1 ? (
-          <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+          <GlassCard variant="light" divider="none" rounded="19px" className="w-full overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
             <div className="flex flex-col items-center justify-center h-[23.75rem]">
               <div className="flex items-center justify-center w-[3.375rem] h-[3.375rem] rounded-full bg-gfx-green-900 text-gfx-green-300">
                 <BentoIcon />
@@ -146,7 +147,7 @@ export default function MarketingPage() {
             </div>
           </GlassCard>
         ) : activeTabIndex === 2 ? (
-          <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+          <GlassCard variant="light" divider="none" rounded="19px" className="w-full overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
             <div className="relative">
               <div className="absolute top-0 left-[14%] right-0 h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
               <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-green-200 [filter:blur(157px)]" aria-hidden="true" />
@@ -198,7 +199,7 @@ export default function MarketingPage() {
             </div>
           </GlassCard>
         ) : (
-          <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+          <GlassCard variant="light" divider="none" rounded="19px" className="w-full overflow-hidden">
             <div className="relative">
               <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
@@ -243,6 +244,7 @@ export default function MarketingPage() {
             </div>
           </GlassCard>
         )}
+        </div>
       </div>
     </>
   )
