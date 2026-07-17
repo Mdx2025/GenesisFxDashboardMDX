@@ -88,7 +88,7 @@ export default function ReferralsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white">Referrals</h1>
+        <h1 className="text-5xl font-acid text-white pb-15">Referrals</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">

@@ -86,7 +86,7 @@ export default function CommissionsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white">Comissions</h1>
+        <h1 className="text-5xl font-acid text-white pb-15">Comissions</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">

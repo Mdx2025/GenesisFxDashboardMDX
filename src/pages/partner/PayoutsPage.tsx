@@ -45,7 +45,7 @@ export default function PayoutsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white">Partner Payouts</h1>
+        <h1 className="text-5xl font-acid text-white pb-15">Partner Payouts</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 3xl:gap-6">
           <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">

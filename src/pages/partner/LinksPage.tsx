@@ -78,7 +78,7 @@ export default function LinksPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white">Partner Link</h1>
+        <h1 className="text-5xl font-acid text-white pb-15">Partner Link</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">
