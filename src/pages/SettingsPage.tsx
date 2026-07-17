@@ -196,9 +196,9 @@ function StepperGradientRing() {
 
 function VerificationStepper({ activeStep = 0 }: { activeStep?: number }) {
   return (
-    <div className="flex items-start justify-center gap-0">
+    <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-4 sm:gap-0">
       {KYC_STEPS.map((step, i) => (
-        <div key={step.label} className="flex items-start">
+        <div key={step.label} className="flex flex-col sm:flex-row items-center">
           <div className="flex flex-col items-center gap-2">
             <div className="relative w-[3.875rem] h-[3.875rem]">
               {i <= activeStep ? (
@@ -221,7 +221,10 @@ function VerificationStepper({ activeStep = 0 }: { activeStep?: number }) {
             </div>
           </div>
           {i < KYC_STEPS.length - 1 && (
-            <div className="w-[11.8125rem] h-px mt-[1.9375rem] mx-4 bg-[#303030]" />
+            <>
+              <div className="hidden sm:block w-[5rem] lg:w-[11.8125rem] h-px mt-[1.9375rem] mx-2 lg:mx-4 bg-[#303030]" />
+              <div className="sm:hidden w-px h-6 bg-[#303030]" />
+            </>
           )}
         </div>
       ))}
@@ -243,9 +246,9 @@ function IdentityDetailCard() {
 
   return (
     <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] pb-8 overflow-hidden">
-      <div className="flex relative">
+      <div className="flex flex-col lg:flex-row relative">
         {/* Left side — Identity info + Requirements */}
-        <div className="flex-1 p-10">
+        <div className="flex-1 p-5 lg:p-10">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-[3.875rem] h-[3.875rem] rounded-full bg-[#09241C] flex items-center justify-center">
               <FileTextIcon />
@@ -266,18 +269,19 @@ function IdentityDetailCard() {
             ))}
           </div>
 
-          <div className="mt-8 bg-[#09241C] rounded-[1.25rem] px-8 py-7">
+          <div className="mt-8 bg-[#09241C] rounded-[1.25rem] px-5 lg:px-8 py-5 lg:py-7">
             <p className="text-gfx-green-300 text-base font-acid leading-relaxed">
               Tip: Take the photo in a well-lit area without glare or shadows
             </p>
           </div>
         </div>
 
-        {/* Vertical gradient divider */}
-        <div className="w-px self-stretch my-20 shrink-0" style={{ background: 'linear-gradient(to bottom, #064B34 0%, #0C1311 100%)' }} />
+        {/* Gradient divider — vertical on desktop, horizontal on mobile */}
+        <div className="hidden lg:block w-px self-stretch my-20 shrink-0" style={{ background: 'linear-gradient(to bottom, #064B34 0%, #0C1311 100%)' }} />
+        <div className="lg:hidden h-px mx-5 shrink-0" style={{ background: 'linear-gradient(to right, #064B34 0%, #0C1311 100%)' }} />
 
         {/* Right side — Upload area */}
-        <div className="flex-1 p-10 flex flex-col items-center justify-center gap-10">
+        <div className="flex-1 p-5 lg:p-10 flex flex-col items-center justify-center gap-6 lg:gap-10">
           <div className="flex items-center justify-center gap-4">
             <UploadSquareIcon />
             <div>
@@ -766,7 +770,7 @@ function VerificationTab() {
           <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(9.82rem)' }} aria-hidden="true" />
 
           <div className="px-6 lg:px-30 pt-6 lg:pt-12 pb-0">
-            <h3 className="text-white text-2xl font-acid leading-normal mb-10">KYC Verification Status</h3>
+            <h3 className="text-white text-2xl font-acid leading-normal mb-6 lg:mb-10">KYC Verification Status</h3>
             <VerificationStepper activeStep={0} />
           </div>
           <div className="px-6 lg:px-30 pb-6 lg:pb-10 pt-4 lg:pt-8 relative z-10">
