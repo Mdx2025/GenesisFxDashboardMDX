@@ -633,12 +633,9 @@ function SettingsTab() {
         <h3 className="text-white text-2xl font-acid mb-8">Settings</h3>
 
         <div className="divide-y divide-[#09241c]">
-          <div className="flex items-center justify-between py-6 first:pt-0">
-            <div className="mr-4">
-              <p className="text-white text-base font-acid font-medium">Username</p>
-              <p className="text-[#808080] text-base font-acid">Set your public username</p>
-            </div>
-            <div className="relative w-64 shrink-0">
+          <div className="w-full flex flex-col gap-6 py-6 first:pt-0">
+            <p className="text-white text-base font-acid font-medium">Username</p>
+            <div className="relative w-full">
               <input
                 className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
                 placeholder="@ Not set"
