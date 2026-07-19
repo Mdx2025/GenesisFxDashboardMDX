@@ -630,98 +630,103 @@ function SettingsTab() {
     <>
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
-      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem] !bg-[#0C1311]">
-        <div className="px-4 lg:px-8 pt-6 lg:pt-8 pb-4">
-          <div className="w-full flex flex-col gap-6 pb-6">
-            <p className="text-white text-base font-acid font-medium">Username</p>
-            <div className="relative w-full">
-              <input
-                className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
-                placeholder="@ Not set"
-              />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gfx-green-300 flex items-center justify-center hover:opacity-90 transition-opacity">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0C1311" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 6 9 17l-5-5"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <h3 className="text-white text-2xl font-acid mb-4">Settings</h3>
-
-          <div className="divide-y divide-[#09241c]">
-            <div className="flex items-center justify-between py-6 first:pt-0">
-              <div>
-                <p className="text-white text-base font-acid font-medium">Profile Picture</p>
-                <p className="text-[#808080] text-base font-acid">Change your profile picture</p>
-              </div>
-              <SparkleButton onClick={() => setShowChangePicture(true)}>Change Picture</SparkleButton>
-            </div>
-
-            <div className="w-full flex flex-row justify-between items-center py-6">
-              <div>
-                <p className="text-white text-base font-acid font-medium">Theme</p>
-                <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
-              </div>
-              <div className="w-xs">
-                <ModeToggle options={['Light', 'Dark', 'Auto']} activeIndex={themeIndex} onChange={setThemeIndex} />
+      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem]" style={{ background: '#0C1311' }}>
+        <div className="px-4 lg:px-8 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
+          <StatCard>
+            <div className="px-6 py-6 flex flex-col gap-6">
+              <p className="text-white text-base font-acid font-medium">Username</p>
+              <div className="relative w-full">
+                <input
+                  className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
+                  placeholder="@ Not set"
+                />
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gfx-green-300 flex items-center justify-center hover:opacity-90 transition-opacity">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0C1311" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6 9 17l-5-5"/>
+                  </svg>
+                </button>
               </div>
             </div>
+          </StatCard>
 
-            <div className="flex items-center justify-between py-6">
-              <div>
-                <p className="text-white text-base font-acid font-medium">Change Language</p>
-                <p className="text-[#808080] text-base font-acid">Choose your preferred language</p>
-              </div>
-              <div className="relative">
-                <SparkleButton onClick={() => setShowLangDropdown(v => !v)}>Change Language</SparkleButton>
-                {showLangDropdown && (
-                  <>
-                    <div className="fixed inset-0 z-40" onClick={() => setShowLangDropdown(false)} />
-                    <LanguageDropdown
-                      selected={selectedLang}
-                      onSelect={(lang) => { setSelectedLang(lang); setShowLangDropdown(false) }}
-                    />
-                  </>
-                )}
+          <StatCard>
+            <div className="px-6 py-4">
+              <h3 className="text-white text-2xl font-acid mb-4">Settings</h3>
+              <div className="divide-y divide-[#09241c]">
+                <div className="flex items-center justify-between py-6 first:pt-0">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">Profile Picture</p>
+                    <p className="text-[#808080] text-base font-acid">Change your profile picture</p>
+                  </div>
+                  <SparkleButton onClick={() => setShowChangePicture(true)}>Change Picture</SparkleButton>
+                </div>
+
+                <div className="w-full flex flex-row justify-between items-center py-6">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">Theme</p>
+                    <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
+                  </div>
+                  <div className="w-xs">
+                    <ModeToggle options={['Light', 'Dark', 'Auto']} activeIndex={themeIndex} onChange={setThemeIndex} />
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between py-6">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">Change Language</p>
+                    <p className="text-[#808080] text-base font-acid">Choose your preferred language</p>
+                  </div>
+                  <div className="relative">
+                    <SparkleButton onClick={() => setShowLangDropdown(v => !v)}>Change Language</SparkleButton>
+                    {showLangDropdown && (
+                      <>
+                        <div className="fixed inset-0 z-40" onClick={() => setShowLangDropdown(false)} />
+                        <LanguageDropdown
+                          selected={selectedLang}
+                          onSelect={(lang) => { setSelectedLang(lang); setShowLangDropdown(false) }}
+                        />
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between py-6">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">AI Coach Widget</p>
+                    <p className="text-[#808080] text-base font-acid">Show the floating AI Coach button on every page</p>
+                  </div>
+                  <ToggleSwitch enabled={aiCoachEnabled} onClick={() => setAiCoachEnabled(v => !v)} />
+                </div>
+
+                <div className="flex items-center justify-between py-6">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">Change Password</p>
+                    <p className="text-[#808080] text-base font-acid">Update your account password</p>
+                  </div>
+                  <SparkleButton onClick={() => setShowChangePw(true)}>Change Password</SparkleButton>
+                </div>
+                <ChangePasswordModal open={showChangePw} onClose={() => setShowChangePw(false)} />
+
+                <div className="flex items-center justify-between py-6">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">Change Email</p>
+                    <p className="text-[#808080] text-base font-acid">Update your email address</p>
+                  </div>
+                  <SparkleButton onClick={() => setShowChangeEmail(true)}>Change Email</SparkleButton>
+                </div>
+                <ChangeEmailModal open={showChangeEmail} onClose={() => setShowChangeEmail(false)} />
+
+                <div className="flex items-center justify-between py-6">
+                  <div>
+                    <p className="text-white text-base font-acid font-medium">Close Account</p>
+                    <p className="text-[#808080] text-base font-acid">Permanently delete your account and all data</p>
+                  </div>
+                  <SparkleButton onClick={() => setShowCloseAccount(true)}>Close Account</SparkleButton>
+                </div>
+                <CloseAccountModal open={showCloseAccount} onClose={() => setShowCloseAccount(false)} />
               </div>
             </div>
-
-            <div className="flex items-center justify-between py-6">
-              <div>
-                <p className="text-white text-base font-acid font-medium">AI Coach Widget</p>
-                <p className="text-[#808080] text-base font-acid">Show the floating AI Coach button on every page</p>
-              </div>
-              <ToggleSwitch enabled={aiCoachEnabled} onClick={() => setAiCoachEnabled(v => !v)} />
-            </div>
-
-            <div className="flex items-center justify-between py-6">
-              <div>
-                <p className="text-white text-base font-acid font-medium">Change Password</p>
-                <p className="text-[#808080] text-base font-acid">Update your account password</p>
-              </div>
-              <SparkleButton onClick={() => setShowChangePw(true)}>Change Password</SparkleButton>
-            </div>
-            <ChangePasswordModal open={showChangePw} onClose={() => setShowChangePw(false)} />
-
-            <div className="flex items-center justify-between py-6">
-              <div>
-                <p className="text-white text-base font-acid font-medium">Change Email</p>
-                <p className="text-[#808080] text-base font-acid">Update your email address</p>
-              </div>
-              <SparkleButton onClick={() => setShowChangeEmail(true)}>Change Email</SparkleButton>
-            </div>
-            <ChangeEmailModal open={showChangeEmail} onClose={() => setShowChangeEmail(false)} />
-
-            <div className="flex items-center justify-between py-6">
-              <div>
-                <p className="text-white text-base font-acid font-medium">Close Account</p>
-                <p className="text-[#808080] text-base font-acid">Permanently delete your account and all data</p>
-              </div>
-              <SparkleButton onClick={() => setShowCloseAccount(true)}>Close Account</SparkleButton>
-            </div>
-            <CloseAccountModal open={showCloseAccount} onClose={() => setShowCloseAccount(false)} />
-          </div>
+          </StatCard>
         </div>
       </GlassCard>
     </>
