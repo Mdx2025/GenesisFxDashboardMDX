@@ -631,8 +631,8 @@ function SettingsTab() {
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
       <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem] !bg-[#0C1311]">
-        <div className="px-4 lg:px-8 py-6 lg:py-8">
-          <div className="w-full flex flex-col gap-6">
+        <div className="px-4 lg:px-8 pt-6 lg:pt-8 pb-4">
+          <div className="w-full flex flex-col gap-6 pb-6">
             <p className="text-white text-base font-acid font-medium">Username</p>
             <div className="relative w-full">
               <input
@@ -646,13 +646,9 @@ function SettingsTab() {
               </button>
             </div>
           </div>
-        </div>
-      </GlassCard>
 
-      <h3 className="text-white text-2xl font-acid mt-8 mb-4">Settings</h3>
+          <h3 className="text-white text-2xl font-acid mb-4">Settings</h3>
 
-      <GlassCard variant="light" divider="none" className="!rounded-[2rem] !bg-[#0C1311]">
-        <div className="px-4 lg:px-8 py-4">
           <div className="divide-y divide-[#09241c]">
             <div className="flex items-center justify-between py-6 first:pt-0">
               <div>
