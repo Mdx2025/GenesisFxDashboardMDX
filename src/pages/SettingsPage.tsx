@@ -666,8 +666,14 @@ function SettingsTab() {
                     <p className="text-white text-base font-acid font-medium">Theme</p>
                     <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
                   </div>
-                  <div className="w-xs">
-                    <ModeToggle options={['Light', 'Dark', 'Auto']} activeIndex={themeIndex} onChange={setThemeIndex} />
+                  <div className="flex items-center gap-2">
+                    {['Light', 'Dark', 'Auto'].map((theme, i) =>
+                      themeIndex === i ? (
+                        <GlowButton key={theme} label={theme} width={90} height={38} fontSize={14} />
+                      ) : (
+                        <SparkleButton key={theme} onClick={() => setThemeIndex(i)}>{theme}</SparkleButton>
+                      )
+                    )}
                   </div>
                 </div>
 
