@@ -352,23 +352,11 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                       <a
                         key={item.label}
                         href={item.href}
-                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem]' : ''} hover:opacity-80 transition-opacity`}
+                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-xl' : ''} hover:opacity-80 transition-opacity`}
+                        style={item.active ? { backgroundImage: 'url(/active-item-bg.png)', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' } : undefined}
                         onClick={() => setUserMenuOpen(false)}
                       >
-                        {item.active && (
-                          <svg width="258" height="40" viewBox="0 0 258 40" fill="none" className="absolute inset-0 w-full h-full" aria-hidden="true">
-                            <foreignObject x="-20" y="-20" width="298" height="80"><div style={{ backdropFilter: 'blur(10px)', clipPath: 'url(#bgblur_active_clip)', height: '100%', width: '100%' }} /></foreignObject>
-                            <rect data-figma-bg-blur-radius="20" width="258" height="40" rx="12" fill="url(#active_item_grad)" fillOpacity="0.8"/>
-                            <defs>
-                              <clipPath id="bgblur_active_clip" transform="translate(20 20)"><rect width="258" height="40" rx="12"/></clipPath>
-                              <radialGradient id="active_item_grad" cx="0" cy="0" r="1" gradientTransform="matrix(-12.221 203.5 -490.877 -15.9876 175.847 -38)" gradientUnits="userSpaceOnUse">
-                                <stop offset="0.365335" stopColor="#0C1311"/>
-                                <stop offset="0.729862" stopColor="#0A714F"/>
-                              </radialGradient>
-                            </defs>
-                          </svg>
-                        )}
-                        <span className="relative text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
+                        <span className="text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
                         <ChevronRight />
                       </a>
                     ))}
