@@ -352,8 +352,8 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                       <a
                         key={item.label}
                         href={item.href}
-                        className={`flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-xl' : ''} hover:opacity-80 transition-opacity`}
-                        style={item.active ? { background: 'radial-gradient(ellipse 509% 194% at 68% -95%, rgba(12,19,17,0.8) 37%, rgba(10,113,79,0.8) 73%)' } : undefined}
+                        className={`flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-xl backdrop-blur-[10px]' : ''} hover:opacity-80 transition-opacity`}
+                        style={item.active ? { background: 'radial-gradient(ellipse 508.77% 194.42% at 68.16% -95%, rgba(12,19,17,0.80) 37%, rgba(10,113,79,0.80) 73%)' } : undefined}
                         onClick={() => setUserMenuOpen(false)}
                       >
                         <span className="text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
