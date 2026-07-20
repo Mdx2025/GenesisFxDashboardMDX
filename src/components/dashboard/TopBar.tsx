@@ -39,12 +39,64 @@ function NotificationIcon({ type }: { type: 'trade' | 'alert' | 'system' }) {
   )
 }
 
+function ChevronRight() {
+  return (
+    <svg width="4" height="7" viewBox="0 0 4 7" fill="none" aria-hidden="true">
+      <path d="M0.5 6.5L3.5 3.5L0.5 0.5" stroke="#808080" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function LogoutIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+      <path d="M6.1953 14.4541H3.44205C3.07695 14.4541 2.7268 14.309 2.46863 14.0509C2.21047 13.7927 2.06543 13.4425 2.06543 13.0774V3.44108C2.06543 3.07597 2.21047 2.72582 2.46863 2.46766C2.7268 2.20949 3.07695 2.06445 3.44205 2.06445H6.1953" stroke="#808080" strokeWidth="1.239"/>
+      <path d="M11.0117 11.6995L14.4533 8.25797L11.0117 4.81641" stroke="#808080" strokeWidth="1.239"/>
+      <path d="M14.456 8.25977H6.19629" stroke="#808080" strokeWidth="1.239"/>
+    </svg>
+  )
+}
+
+function CopyIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M7.62 1H5.67292C4.7908 0.999993 4.09209 0.999987 3.54527 1.0738C2.98251 1.14977 2.52701 1.30982 2.1678 1.67048C1.80858 2.03114 1.64917 2.48846 1.57351 3.05348C1.49999 3.6025 1.49999 4.30401 1.5 5.18967V8.10843C1.5 8.8625 1.95998 9.50869 2.61358 9.77961C2.57994 9.32488 2.57997 8.68684 2.58 8.15602L2.58 5.6988L2.58 5.65121C2.57996 5.01037 2.57993 4.45822 2.63914 4.01606C2.7026 3.54219 2.84569 3.08796 3.21265 2.71953C3.57961 2.3511 4.03202 2.20743 4.50399 2.14372C4.94439 2.08427 5.49433 2.0843 6.1326 2.08434L6.18 2.08434H7.62L7.6674 2.08434C8.30567 2.0843 8.85442 2.08427 9.29481 2.14372C9.03135 1.47389 8.3808 1 7.62 1Z" fill="#808080"/>
+      <path d="M3.2998 5.69821C3.2998 4.33511 3.2998 3.65356 3.72157 3.2301C4.14334 2.80664 4.82216 2.80664 6.1798 2.80664H7.6198C8.97745 2.80664 9.65627 2.80664 10.078 3.2301C10.4998 3.65356 10.4998 4.33511 10.4998 5.69821V8.10785C10.4998 9.47094 10.4998 10.1525 10.078 10.576C9.65627 10.9994 8.97745 10.9994 7.6198 10.9994H6.1798C4.82216 10.9994 4.14334 10.9994 3.72157 10.576C3.2998 10.1525 3.2998 9.47094 3.2998 8.10785V5.69821Z" fill="#808080"/>
+    </svg>
+  )
+}
+
+function MoonToggle() {
+  return (
+    <div className="relative w-[4.2rem] h-[2.27rem]">
+      <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(176deg, #0C1311 0%, #00B38C 100%)', boxShadow: 'inset 0px -0.79px 1.26px rgba(255,255,255,0.25)' }} />
+      <div className="absolute right-[0.25rem] top-1/2 -translate-y-1/2 w-[1.875rem] h-[1.875rem] rounded-full" style={{ background: 'linear-gradient(180deg, #99FFDD 0%, #064B34 100%)', border: '0.79px solid #00B38C' }} />
+      <div className="absolute right-[0.55rem] top-1/2 -translate-y-1/2">
+        <svg width="14" height="14" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+          <path d="M14.4402 9.66381C14.3482 10.6589 13.9748 11.6073 13.3635 12.3979C12.7522 13.1886 11.9284 13.7887 10.9885 14.1282C10.0485 14.4678 9.03133 14.5326 8.05591 14.3151C7.08049 14.0976 6.18719 13.6068 5.48052 12.9001C4.77386 12.1934 4.28306 11.3001 4.06557 10.3247C3.84807 9.3493 3.91287 8.33211 4.25238 7.39217C4.59189 6.45223 5.19208 5.62843 5.9827 5.01715C6.77332 4.40587 7.72169 4.03239 8.71682 3.94043C8.1342 4.72865 7.85384 5.6998 7.92673 6.67726C7.99962 7.65471 8.42092 8.57354 9.11401 9.26662C9.80709 9.95971 10.7259 10.381 11.7034 10.4539C12.6808 10.5268 13.652 10.2464 14.4402 9.66381Z" fill="white" stroke="white" strokeWidth="0.788" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  )
+}
+
+const USER_MENU_ITEMS = [
+  { label: 'Profile', href: '/settings', active: true },
+  { label: 'Verification', href: '/kyc' },
+  { label: 'Partner', href: '/partner' },
+  { label: 'Support', href: '#' },
+  { label: 'Settings', href: '/settings' },
+  { label: 'Language', href: '#' },
+]
+
 export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBarProps) {
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [notifOpen, setNotifOpen] = useState(false)
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
   const notifRef = useRef<HTMLDivElement>(null)
+  const userMenuRef = useRef<HTMLDivElement>(null)
   const lastY = useRef(0)
 
   useEffect(() => {
@@ -75,10 +127,13 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
       if (notifRef.current && !notifRef.current.contains(e.target as Node)) {
         setNotifOpen(false)
       }
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false)
+      }
     }
-    if (notifOpen) document.addEventListener('mousedown', handleClickOutside)
+    if (notifOpen || userMenuOpen) document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [notifOpen])
+  }, [notifOpen, userMenuOpen])
 
   const unreadCount = MOCK_NOTIFICATIONS.filter(n => n.unread).length
 
@@ -238,6 +293,113 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
           <button className="hidden lg:block text-gfx-neutral-500 hover:text-white transition-colors rounded" aria-label="Help">
             <HelpIcon />
           </button>
+
+          <div className="relative" ref={userMenuRef}>
+            <button
+              className="flex items-center justify-center w-[2.3rem] h-[2.3rem] rounded-full overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              style={{ background: '#064B34' }}
+              onClick={() => setUserMenuOpen(prev => !prev)}
+              aria-label="User menu"
+            >
+              <svg width="37" height="37" viewBox="0 0 37 37" fill="none" className="absolute -top-1 left-[0.5625rem]" aria-hidden="true">
+                <g filter="url(#avatar_glow)">
+                  <ellipse cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4"/>
+                </g>
+                <defs>
+                  <filter id="avatar_glow" x="-51" y="-64" width="139" height="131" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                    <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur"/>
+                  </filter>
+                </defs>
+              </svg>
+              <span className="relative text-white text-[1.0625rem] font-acid">J</span>
+            </button>
+
+            {userMenuOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />
+                <div className="absolute right-0 top-[calc(100%+0.5rem)] w-[17.25rem] z-50 rounded-[0.9375rem] overflow-hidden" style={{ background: '#0C1311', border: '1px solid #0C1311' }}>
+                  {/* User info */}
+                  <div className="flex items-center gap-3 px-[0.9375rem] pt-[1.375rem] pb-4">
+                    <div className="relative w-[1.875rem] h-[1.875rem] rounded-full overflow-hidden shrink-0" style={{ background: '#064B34' }}>
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" className="absolute left-[0.458rem] -top-[0.204rem]" aria-hidden="true">
+                        <g filter="url(#avatar_glow_sm)">
+                          <ellipse cx="15.07" cy="1.22" rx="7.74" ry="4.48" fill="#4CFFC4"/>
+                        </g>
+                        <defs>
+                          <filter id="avatar_glow_sm" x="-41.56" y="-52.15" width="113.26" height="106.74" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                            <feGaussianBlur stdDeviation="24.44" result="effect1_foregroundBlur"/>
+                          </filter>
+                        </defs>
+                      </svg>
+                      <span className="relative flex items-center justify-center w-full h-full text-white text-[0.866rem] font-acid">J</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white text-xs font-acid leading-[1.175rem]">Joe Doe</p>
+                      <p className="text-[#808080] text-xs font-acid leading-[1.175rem]">joedoe@gmail.com</p>
+                    </div>
+                    <button className="shrink-0 text-[#808080] hover:text-white transition-colors cursor-pointer" aria-label="Copy email">
+                      <CopyIcon />
+                    </button>
+                  </div>
+
+                  {/* Menu items */}
+                  <div className="flex flex-col">
+                    {USER_MENU_ITEMS.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className={`flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-xl' : ''} hover:opacity-80 transition-opacity`}
+                        style={item.active ? { background: 'radial-gradient(ellipse 509% 194% at 68% -95%, rgba(12,19,17,0.8) 37%, rgba(10,113,79,0.8) 73%)' } : undefined}
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        <span className="text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
+                        <ChevronRight />
+                      </a>
+                    ))}
+                  </div>
+
+                  {/* Theme */}
+                  <div className="flex items-center justify-between px-5 mt-3">
+                    <span className="text-white text-sm font-acid leading-[1.175rem]">Theme</span>
+                    <MoonToggle />
+                  </div>
+
+                  {/* Logout */}
+                  <button
+                    className="flex items-center gap-2 px-5 mt-4 pb-5 text-[#808080] hover:text-white transition-colors cursor-pointer"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    <LogoutIcon />
+                    <span className="text-[0.831rem] font-acid leading-[1.116rem]">Logout</span>
+                  </button>
+
+                  {/* Bottom decorative glow */}
+                  <div className="absolute bottom-0 right-0 w-full h-[6rem] pointer-events-none overflow-hidden" aria-hidden="true">
+                    <svg width="276" height="148" viewBox="0 0 276 148" fill="none" className="absolute right-[-0.5rem] bottom-[-8.5rem]">
+                      <g opacity="0.2" filter="url(#usermenu_glow1)">
+                        <path d="M249.717 52.9467C238.492 50.3744 228.866 70.5826 225.456 81.0083L31.3633 274.292H220.194C222.825 264.158 255.271 92.5255 262.286 76.6239C269.302 60.7224 256.83 54.2135 249.717 52.9467Z" fill="url(#usermenu_grad1)"/>
+                      </g>
+                      <defs>
+                        <filter id="usermenu_glow1" x="-21.36" y="0" width="338.44" height="327.02" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                          <feGaussianBlur stdDeviation="26.36" result="effect1_foregroundBlur"/>
+                        </filter>
+                        <linearGradient id="usermenu_grad1" x1="197.62" y1="75.46" x2="113.5" y2="227.23" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#06AE76"/>
+                          <stop offset="1" stopColor="#CBFFF4" stopOpacity="0"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </header>
       {isMobile && <div className="h-14" aria-hidden="true" />}
