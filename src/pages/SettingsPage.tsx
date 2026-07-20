@@ -632,7 +632,7 @@ function SettingsTab() {
 
       <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem]" style={{ background: '#0C1311' }}>
         <div className="px-4 lg:px-30 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
-          <StatCard>
+          <StatCard className="!bg-transparent !border-[#09241C] !shadow-none [&::after]:hidden">
             <div className="px-6 py-6 flex flex-col gap-6">
               <p className="text-white text-base font-acid font-medium">Username</p>
               <div className="relative w-full">
@@ -649,7 +649,7 @@ function SettingsTab() {
             </div>
           </StatCard>
 
-          <StatCard>
+          <StatCard className="!bg-transparent !border-[#09241C] !shadow-none [&::after]:hidden">
             <div className="px-6 py-4">
               <h3 className="text-white text-2xl font-acid mb-4">Settings</h3>
               <div className="divide-y divide-[#09241c]">
