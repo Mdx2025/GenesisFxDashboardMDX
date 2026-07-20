@@ -640,7 +640,7 @@ function SettingsTab() {
                   className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
                   placeholder="@ Not set"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gfx-green-300 flex items-center justify-center hover:opacity-90 transition-opacity">
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-transparent flex items-center justify-center hover:opacity-90 transition-opacity">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M6.64989 10.5944L6.6499 10.5943L10.9641 6.28009C10.377 6.03571 9.68153 5.63428 9.0238 4.97656C8.36598 4.31873 7.96452 3.62316 7.72015 3.03593L3.40582 7.35027L3.4058 7.35029C3.06914 7.68694 2.9008 7.85529 2.75603 8.0409C2.58525 8.25985 2.43883 8.49676 2.31937 8.74742C2.2181 8.95992 2.14281 9.18577 1.99225 9.63747L1.19827 12.0194C1.12417 12.2417 1.18202 12.4868 1.34771 12.6525C1.51339 12.8181 1.75846 12.876 1.98074 12.8019L4.36269 12.0079C4.81439 11.8574 5.04024 11.7821 5.25274 11.6808C5.50341 11.5613 5.74031 11.4149 5.95927 11.2441C6.14487 11.0994 6.31323 10.931 6.64989 10.5944Z" fill="#808080"/>
                     <path d="M12.1613 5.08294C13.0571 4.18711 13.0571 2.73469 12.1613 1.83886C11.2655 0.943035 9.81305 0.943035 8.91722 1.83886L8.39978 2.3563C8.40687 2.3777 8.41422 2.39939 8.42184 2.42137C8.6115 2.96803 8.96935 3.68466 9.64252 4.35784C10.3157 5.03101 11.0323 5.38886 11.579 5.57852C11.6009 5.58611 11.6225 5.59342 11.6438 5.60048L12.1613 5.08294Z" fill="#808080"/>
