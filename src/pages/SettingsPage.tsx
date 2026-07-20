@@ -632,7 +632,7 @@ function SettingsTab() {
 
       <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem]" style={{ background: '#0C1311' }}>
         <div className="px-4 lg:px-8 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
-          <StatCard className="!bg-transparent !shadow-none">
+          <StatCard>
             <div className="px-6 py-6 flex flex-col gap-6">
               <p className="text-white text-base font-acid font-medium">Username</p>
               <div className="relative w-full">
@@ -649,7 +649,7 @@ function SettingsTab() {
             </div>
           </StatCard>
 
-          <StatCard className="!bg-transparent !shadow-none">
+          <StatCard>
             <div className="px-6 py-4">
               <h3 className="text-white text-2xl font-acid mb-4">Settings</h3>
               <div className="divide-y divide-[#09241c]">
@@ -827,7 +827,7 @@ export default function SettingsPage() {
           <h2 className="absolute left-45 bottom-1 text-white text-2xl font-acid leading-normal hidden lg:flex">Joe Doe</h2>
 
           {/* Avatar */}
-          <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10" style={{ top: '4rem' }}>
+          <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10" style={{ top: '7rem' }}>
             <div className="relative w-[5.5rem] h-[5.5rem] lg:w-[7.25rem] lg:h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
               <span className="text-white text-[1.5rem] lg:text-[1.975rem] font-acid font-bold relative z-10">JD</span>
               <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'blur(9.88rem)' }} aria-hidden="true" />
