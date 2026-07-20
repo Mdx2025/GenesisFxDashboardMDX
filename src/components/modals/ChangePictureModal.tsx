@@ -111,13 +111,16 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
             <div className="absolute left-1/2 translate-x-[1.625rem] top-[8.5625rem] w-8 h-8 rounded-full bg-[#40C99C] border-[3px] border-[#0C1311] flex items-center justify-center">
               <CameraAddIcon />
             </div>
+
+            {/* Title + subtitle inside hero, pinned to bottom */}
+            <div className="absolute bottom-5 left-[3.125rem] right-[3.125rem]">
+              <h3 className="text-white text-2xl font-acid mb-2">Profile Picture</h3>
+              <p className="text-[#808080] text-base font-acid leading-[1.2]">Upload a photo or pick a generated avatar.</p>
+            </div>
           </div>
 
           {/* Content */}
           <div className="relative px-[3.125rem] pt-5 pb-8">
-            <h3 className="text-white text-2xl font-acid mb-2">Profile Picture</h3>
-            <p className="text-[#808080] text-base font-acid leading-[1.2]">Upload a photo or pick a generated avatar.</p>
-
             {/* Option cards */}
             <div className="grid grid-cols-2 gap-[0.3125rem] mt-[3.4375rem]">
               {/* Upload */}
