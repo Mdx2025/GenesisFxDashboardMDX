@@ -630,7 +630,7 @@ function SettingsTab() {
     <>
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
-      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem]" style={{ background: '#0C1311' }}>
+      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem] relative overflow-hidden" style={{ background: '#0C1311' }}>
         <div className="px-4 lg:px-30 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
           <StatCard className="!bg-transparent !border-[#09241C] !shadow-none [&::after]:hidden">
             <div className="px-6 py-6 flex flex-col gap-6">
@@ -735,6 +735,7 @@ function SettingsTab() {
             </div>
           </StatCard>
         </div>
+        <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 !blur-[5rem] opacity-60" />
       </GlassCard>
     </>
   )
