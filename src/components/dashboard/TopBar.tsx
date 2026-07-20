@@ -352,11 +352,23 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                       <a
                         key={item.label}
                         href={item.href}
-                        className={`flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-xl backdrop-blur-[10px]' : ''} hover:opacity-80 transition-opacity`}
-                        style={item.active ? { background: 'radial-gradient(ellipse 508.77% 194.42% at 68.16% -95%, rgba(12,19,17,0.80) 37%, rgba(10,113,79,0.80) 73%)' } : undefined}
+                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem]' : ''} hover:opacity-80 transition-opacity`}
                         onClick={() => setUserMenuOpen(false)}
                       >
-                        <span className="text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
+                        {item.active && (
+                          <svg width="258" height="40" viewBox="0 0 258 40" fill="none" className="absolute inset-0 w-full h-full" aria-hidden="true">
+                            <foreignObject x="-20" y="-20" width="298" height="80"><div style={{ backdropFilter: 'blur(10px)', clipPath: 'url(#bgblur_active_clip)', height: '100%', width: '100%' }} /></foreignObject>
+                            <rect data-figma-bg-blur-radius="20" width="258" height="40" rx="12" fill="url(#active_item_grad)" fillOpacity="0.8"/>
+                            <defs>
+                              <clipPath id="bgblur_active_clip" transform="translate(20 20)"><rect width="258" height="40" rx="12"/></clipPath>
+                              <radialGradient id="active_item_grad" cx="0" cy="0" r="1" gradientTransform="matrix(-12.221 203.5 -490.877 -15.9876 175.847 -38)" gradientUnits="userSpaceOnUse">
+                                <stop offset="0.365335" stopColor="#0C1311"/>
+                                <stop offset="0.729862" stopColor="#0A714F"/>
+                              </radialGradient>
+                            </defs>
+                          </svg>
+                        )}
+                        <span className="relative text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
                         <ChevronRight />
                       </a>
                     ))}
