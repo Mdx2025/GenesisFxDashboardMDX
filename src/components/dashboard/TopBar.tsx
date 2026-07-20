@@ -290,7 +290,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
             <LanguageDropdown />
           </div>
 
-          <button className="hidden lg:block text-gfx-neutral-500 hover:text-white transition-colors rounded" aria-label="Help">
+          <button className="hidden lg:flex items-center justify-center h-9 w-12 rounded-sm bg-gfx-green-800 hover:opacity-90 transition-opacity cursor-pointer" aria-label="Help">
             <HelpIcon />
           </button>
 
