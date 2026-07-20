@@ -631,7 +631,7 @@ function SettingsTab() {
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
       <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem]" style={{ background: '#0C1311' }}>
-        <div className="px-4 lg:px-8 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
+        <div className="px-4 lg:px-30 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
           <StatCard>
             <div className="px-6 py-6 flex flex-col gap-6">
               <p className="text-white text-base font-acid font-medium">Username</p>
