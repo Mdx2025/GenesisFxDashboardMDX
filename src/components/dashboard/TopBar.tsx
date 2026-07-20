@@ -352,7 +352,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                       <a
                         key={item.label}
                         href={item.href}
-                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-xl' : ''} hover:opacity-80 transition-opacity`}
+                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-sm' : ''} hover:opacity-80 transition-opacity`}
                         style={item.active ? { backgroundImage: 'url(/active-item-bg.png)', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' } : undefined}
                         onClick={() => setUserMenuOpen(false)}
                       >
