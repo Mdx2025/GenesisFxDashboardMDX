@@ -406,16 +406,22 @@ export default function PartnerPage() {
             />
             <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
           </div>
-          <StatCard
-            label="Comission Earned"
-            value="$200.00"
-            icon={<CommissionIcon size={20} color="white" />}
-          />
-          <StatCard
-            label="Active Clients"
-            value="$900.00"
-            icon={<PieChartIcon size={20} color="white" />}
-          />
+          <div className="relative overflow-hidden rounded-[19px]">
+            <StatCard
+              label="Comission Earned"
+              value="$200.00"
+              icon={<CommissionIcon size={20} color="white" />}
+            />
+            <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 right-0 translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
+          </div>
+          <div className="relative overflow-hidden rounded-[19px]">
+            <StatCard
+              label="Active Clients"
+              value="$900.00"
+              icon={<PieChartIcon size={20} color="white" />}
+            />
+            <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8">

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
+import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SearchInput, GlowEllipse, ModeToggle } from '@/components/ui'
@@ -60,9 +61,143 @@ function EyeIcon() {
   )
 }
 
-function DetailsButton() {
+function InfoRow({ label, value }: { label: string; value: string }) {
   return (
-    <button type="button" className="inline-flex items-center gap-3.5 h-[46px] px-[18px] rounded-[32px] border border-[#303030] text-[#ececec] text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-200 transition-colors">
+    <div className="flex items-center justify-between py-[0.66rem]">
+      <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">{label}</span>
+      <span className="text-white text-base font-acid leading-[1.2rem]">{value}</span>
+    </div>
+  )
+}
+
+function InfoBadge({ text }: { text: string }) {
+  return (
+    <span className="inline-flex items-center px-5 py-3 rounded-[2.554rem] border border-[#303030] text-[#ECECEC] text-base font-acid leading-[1.2rem]">
+      {text}
+    </span>
+  )
+}
+
+function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onClose: () => void; referral: Referral | null }) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  const handleClose = useCallback(() => {
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) { onClose(); return }
+    gsap.to(modal, { opacity: 0, scale: 0.96, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlay, { opacity: 0, duration: 0.2, ease: 'power2.in', onComplete: () => { setMounted(false); onClose() } })
+  }, [onClose])
+
+  useEffect(() => { if (open) setMounted(true) }, [open])
+
+  useLayoutEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) return
+    gsap.set(overlay, { opacity: 0 })
+    gsap.set(modal, { opacity: 0, scale: 0.96 })
+    gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
+  }, [mounted])
+
+  useEffect(() => {
+    if (!mounted) return
+    function handleKey(e: KeyboardEvent) { if (e.key === 'Escape') handleClose() }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [mounted, handleClose])
+
+  if (!mounted || !referral) return null
+
+  return (
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
+      onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Referral Details"
+    >
+      <div ref={modalRef} className="relative w-[51.636rem] max-w-[95vw] rounded-[1.481rem] overflow-hidden" style={{ background: '#0C1311', border: '1.48px solid #0C1311', boxShadow: '0px 5.93px 29.63px rgba(0,0,0,0.03)' }}>
+        {/* Hero banner */}
+        <div className="relative h-[14.924rem] overflow-hidden" style={{ background: '#0C1311' }}>
+          <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(200.67px)' }} aria-hidden="true" />
+          <h2 className="absolute left-[2.394rem] top-[3.411rem] text-white text-2xl font-acid">Referral Details</h2>
+          <div className="absolute right-[2.394rem] top-[8.522rem]">
+            <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">Joined</span>
+          </div>
+          <div className="absolute right-[2.394rem] top-[10.278rem]">
+            <span className="text-[#ECECEC] text-base font-acid font-medium leading-[1.527rem]">June 5, 2026</span>
+          </div>
+        </div>
+
+        {/* Avatar + user info */}
+        <div className="absolute left-[1.996rem] top-[7.502rem] flex items-center gap-[4.625rem]">
+          <div className="w-[3.75rem] h-[3.75rem] rounded-full bg-[#0C1311] flex items-center justify-center">
+            <span className="text-gfx-green-300 text-2xl font-acid">{referral.initials}</span>
+          </div>
+          <div className="-ml-[2.5rem]">
+            <p className="text-[#ECECEC] text-base font-acid font-medium leading-[1.527rem]">{referral.name}</p>
+            <p className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">{referral.email}</p>
+          </div>
+        </div>
+
+        {/* Info cards */}
+        <div className="grid grid-cols-2 gap-4 px-[2.234rem] pb-[2.394rem] -mt-[1.5rem]">
+          {/* Personal Info */}
+          <div className="rounded-[1.481rem] p-6" style={{ background: '#0C1311', border: '1.48px solid #0C1311', boxShadow: '0px 5.93px 29.63px rgba(0,0,0,0.03)' }}>
+            <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
+            <InfoRow label="NAME" value={referral.name} />
+            <InfoRow label="EMAIL" value={referral.email} />
+            <InfoRow label="PHONE" value="04263942342" />
+            <InfoRow label="COUNTRY" value="AR Argentina" />
+          </div>
+
+          {/* Referral Info */}
+          <div className="rounded-[1.481rem] p-6" style={{ background: '#0C1311', border: '1.48px solid #0C1311', boxShadow: '0px 5.93px 29.63px rgba(0,0,0,0.03)' }}>
+            <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">REFERRAL INFO</h3>
+            <div className="flex items-center justify-between py-[0.66rem]">
+              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">LEVEL</span>
+              <span className="text-white text-base font-acid leading-[1.2rem]">{referral.level}</span>
+            </div>
+            <div className="flex items-center justify-between py-[0.66rem]">
+              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">STATUS</span>
+              <InfoBadge text="Active" />
+            </div>
+            <div className="flex items-center justify-between py-[0.66rem]">
+              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">CODE</span>
+              <InfoBadge text="GFX605D9386" />
+            </div>
+            <div className="flex items-center justify-between py-[0.66rem]">
+              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">COUNTRY</span>
+              <InfoBadge text="Inactive" />
+            </div>
+          </div>
+        </div>
+
+        {/* Close button */}
+        <button
+          onClick={handleClose}
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-5 top-5 w-6 h-6"
+          aria-label="Close modal"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function DetailsButton({ onClick }: { onClick?: () => void }) {
+  return (
+    <button type="button" onClick={onClick} className="inline-flex items-center gap-3.5 h-[46px] px-[18px] rounded-[32px] border border-[#303030] text-[#ececec] text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-200 transition-colors">
       <EyeIcon />
       Details
     </button>
@@ -72,6 +207,8 @@ function DetailsButton() {
 export default function ReferralsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeLevelIndex, setActiveLevelIndex] = useState(LEVELS.length - 1)
+  const [detailsOpen, setDetailsOpen] = useState(false)
+  const [selectedReferral, setSelectedReferral] = useState<Referral | null>(null)
 
   const breadcrumbItems = [
     { label: 'Referrals', current: true },
@@ -79,6 +216,7 @@ export default function ReferralsPage() {
 
   return (
     <>
+      <ReferralDetailsModal open={detailsOpen} onClose={() => setDetailsOpen(false)} referral={selectedReferral} />
       <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6 flex flex-col gap-4 3xl:gap-6 4xl:gap-8">
@@ -159,7 +297,7 @@ export default function ReferralsPage() {
 
                   {/* Actions */}
                   <div>
-                    <DetailsButton />
+                    <DetailsButton onClick={() => { setSelectedReferral(referral); setDetailsOpen(true) }} />
                   </div>
                 </div>
               </div>
