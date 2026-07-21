@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowEllipse, ModeToggle, PeriodPill } from '@/components/ui'
+import { GlassCard, GlowEllipse, ModeToggle, PeriodPill, StatCard } from '@/components/ui'
 import { TradingCalendar } from '@/components/ui/TradingCalendar'
 
 function DollarCircleIcon({ size = 24, color = '#00B38C' }: { size?: number; color?: string }) {
@@ -58,17 +58,8 @@ function RevenueCard() {
             <DollarCircleIcon size={22} color="#00B38C" />
           </div>
         </div>
+        <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid mb-2">GenFX</span>
         <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
-        <p className="text-gfx-green-300 text-sm font-acid mt-1">This year: <span className="text-gfx-green-300">$0.00</span></p>
-
-        <div className="grid grid-cols-3 gap-x-6 gap-y-5 mt-6 pt-6 border-t border-[#09241C]">
-          <MiniStat label="Referrals" value="$0.00" />
-          <MiniStat label="Clicks" value="$0.00" />
-          <MiniStat label="Trading vol" value="$0.00" />
-          <MiniStat label="Deposits" value="$0.00" />
-          <MiniStat label="This year" value="$0.00" />
-          <MiniStat label="2 Mo Ret" value="$0.00" />
-        </div>
       </div>
     </GlassCard>
   )
@@ -91,30 +82,52 @@ function TopReferralsCard() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-[47px] h-[47px] rounded-full bg-gfx-green-800 flex items-center justify-center shrink-0">
-            <span className="text-gfx-green-500 text-[16.3px] font-acid">AP</span>
-          </div>
-          <div>
-            <p className="text-white text-sm font-acid leading-[18.8px]">Ana Pinzón · <span className="text-[#606060]">All</span></p>
-          </div>
-        </div>
+        <GlassCard variant="light" divider="none" rounded="[1.16rem]" className="overflow-hidden">
+          <div className="relative p-5">
+            <div className="absolute w-[493px] h-[278px] left-[47px] top-[12px] rounded-full pointer-events-none bg-[#064B34] [filter:blur(157px)]" aria-hidden="true" />
 
-        <div className="flex gap-2 mb-6">
-          {['AP', 'JD', 'MR'].map((initials, i) => (
-            <div key={i} className="w-[32px] h-[32px] rounded-full bg-gfx-green-800 flex items-center justify-center border-2 border-gfx-dark">
-              <span className="text-gfx-green-500 text-[10px] font-acid">{initials}</span>
+            <div className="relative z-10 flex items-start gap-5">
+              <div className="w-[58px] h-[58px] rounded-full bg-gfx-green-900 border border-[#064B34] flex items-center justify-center shrink-0">
+                <span className="text-gfx-green-300 text-[1.25rem] font-acid">AP</span>
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-white text-base font-acid leading-[1.2rem]">Ana Pinzon</span>
+                  <span className="text-white text-base font-acid font-medium leading-[24.44px]">AR</span>
+                </div>
+                <div className="inline-flex items-center gap-[11px] px-3.5 py-2.5 bg-gfx-green-900 rounded-[32px] border border-[#064B34] mb-3">
+                  <svg width="19" height="11" viewBox="0 0 19 11" fill="none">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12.3994 0.645C12.3994 0.288776 12.6881 0 13.0444 0H17.845C18.2012 0 18.49 0.288776 18.49 0.645V5.41442C18.49 5.77064 18.2012 6.05942 17.845 6.05942C17.4888 6.05942 17.2 5.77064 17.2 5.41442V2.19546L11.9232 7.44011C11.5199 7.841 11.1723 8.18654 10.8566 8.42603C10.5182 8.68275 10.1422 8.87695 9.67931 8.8769C9.21646 8.87685 8.84051 8.68256 8.50216 8.42576C8.18654 8.1862 7.839 7.84059 7.43581 7.43962L7.19994 7.20509C6.75777 6.7654 6.47109 6.48226 6.23238 6.3011C6.00858 6.13126 5.90395 6.11231 5.83466 6.11234C5.76538 6.11236 5.66076 6.13139 5.43709 6.30139C5.19851 6.48273 4.91203 6.76608 4.47018 7.20608L1.10013 10.562C0.847711 10.8134 0.439321 10.8125 0.187961 10.5601C-0.0633985 10.3077 -0.0625425 9.89932 0.189873 9.64796L3.58993 6.26213C3.9932 5.86049 4.34078 5.51433 4.65649 5.27438C4.9949 5.01716 5.37101 4.82251 5.83419 4.82234C6.29738 4.82217 6.67363 5.01655 7.01223 5.27352C7.32811 5.51324 7.67593 5.85914 8.0795 6.26048L8.31537 6.49502C8.75716 6.93432 9.04357 7.2172 9.28206 7.39821C9.50565 7.56791 9.6102 7.58689 9.67946 7.5869C9.74872 7.58691 9.85328 7.56795 10.0769 7.3983C10.3154 7.21735 10.6019 6.93453 11.0438 6.49534L16.2811 1.29H13.0444C12.6881 1.29 12.3994 1.00122 12.3994 0.645Z" fill="#00B38C"/>
+                  </svg>
+                  <span className="text-gfx-green-300 text-[1.019rem] font-acid">Top performer</span>
+                </div>
+                <div className="flex items-center gap-4 text-[#808080] text-[1.019rem] font-acid">
+                  <div className="flex items-center gap-1.5">
+                    <svg width="21" height="18" viewBox="0 0 21 18" fill="none">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M19.1009 5.00353C19.0442 4.99996 18.9825 4.99998 18.9186 5L18.9026 5.00001H16.3941C14.3264 5.00001 12.5572 6.62757 12.5572 8.75001C12.5572 10.8724 14.3264 12.5 16.3941 12.5H18.9026L18.9186 12.5C18.9825 12.5 19.0442 12.5001 19.1009 12.4965C19.9408 12.4434 20.6835 11.7862 20.746 10.8682C20.7501 10.808 20.75 10.7431 20.75 10.683L20.75 10.6667V6.83334L20.75 6.81702C20.75 6.75688 20.7501 6.69199 20.746 6.6318C20.6835 5.71381 19.9408 5.05657 19.1009 5.00353ZM16.1717 9.75C16.704 9.75 17.1355 9.30229 17.1355 8.75C17.1355 8.19771 16.704 7.75 16.1717 7.75C15.6394 7.75 15.2078 8.19771 15.2078 8.75C15.2078 9.30229 15.6394 9.75 16.1717 9.75Z" fill="#808080"/>
+                      <path fillRule="evenodd" clipRule="evenodd" d="M18.9179 14C19.067 13.9961 19.1799 14.1342 19.1394 14.2778C18.9387 14.9902 18.62 15.5975 18.1088 16.1088C17.3604 16.8571 16.4114 17.1892 15.239 17.3469C14.0998 17.5 12.6442 17.5 10.8064 17.5H8.69359C6.85583 17.5 5.40019 17.5 4.26098 17.3469C3.08856 17.1892 2.13961 16.8571 1.39124 16.1088C0.642881 15.3604 0.310764 14.4114 0.153135 13.239C-2.8044e-05 12.0998 -1.54718e-05 10.6442 3.23433e-07 8.80642V8.69358C-1.5591e-05 6.85583 -2.82824e-05 5.40019 0.153135 4.26098C0.310763 3.08856 0.64288 2.13961 1.39124 1.39124C2.13961 0.642881 3.08856 0.310764 4.26098 0.153136C5.40019 -2.78056e-05 6.85582 -1.5293e-05 8.69358 4.4264e-07L10.8064 3.23431e-07C12.6442 -1.5591e-05 14.0998 -2.82824e-05 15.239 0.153135C16.4114 0.310763 17.3604 0.64288 18.1088 1.39124C18.62 1.90252 18.9386 2.50974 19.1394 3.22218C19.1799 3.36575 19.067 3.50387 18.9179 3.5L16.394 3.50001C13.5574 3.50001 11.0571 5.74091 11.0571 8.75001C11.0571 11.7591 13.5574 14 16.394 14L18.9179 14ZM3.75 4C3.33579 4 3 4.33579 3 4.75C3 5.16421 3.33579 5.5 3.75 5.5H7.75C8.16421 5.5 8.5 5.16421 8.5 4.75C8.5 4.33579 8.16421 4 7.75 4H3.75Z" fill="#808080"/>
+                    </svg>
+                    <span>L1</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M16.5 10.5V9C16.5 8.37072 16.5 7.81145 16.4903 7.3125H1.50968C1.5 7.81145 1.5 8.37072 1.5 9V10.5C1.5 13.3284 1.5 14.7426 2.37868 15.6213C3.25736 16.5 4.67157 16.5 7.5 16.5H10.5C13.3284 16.5 14.7426 16.5 15.6213 15.6213C16.5 14.7426 16.5 13.3284 16.5 10.5Z" fill="#808080"/>
+                      <path d="M5.8125 1.875C5.8125 1.56434 5.56066 1.3125 5.25 1.3125C4.93934 1.3125 4.6875 1.56434 4.6875 1.875V3.05944C3.608 3.14588 2.89933 3.35803 2.37868 3.87868C1.85803 4.39933 1.64588 5.108 1.55944 6.1875H16.4406C16.3541 5.108 16.142 4.39933 15.6213 3.87868C15.1007 3.35803 14.392 3.14588 13.3125 3.05944V1.875C13.3125 1.56434 13.0607 1.3125 12.75 1.3125C12.4393 1.3125 12.1875 1.56434 12.1875 1.875V3.00968C11.6886 3 11.1293 3 10.5 3H7.5C6.87072 3 6.31145 3 5.8125 3.00968V1.875Z" fill="#808080"/>
+                    </svg>
+                    <span>0d</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-right shrink-0">
+                <p className="text-white text-base font-acid font-medium leading-[24.44px]">Commission Earned</p>
+                <p className="text-gfx-green-300 text-2xl font-acid mt-1">$0</p>
+                <p className="text-[#A0A0A0] text-sm font-acid leading-[18.8px] mt-1">Bal <span className="ml-1">$0</span></p>
+              </div>
             </div>
-          ))}
-          <div className="w-[32px] h-[32px] rounded-full bg-gfx-green-800 flex items-center justify-center border-2 border-gfx-dark">
-            <span className="text-[#606060] text-[10px] font-acid">+2</span>
           </div>
-        </div>
-
-        <div className="border-t border-[#09241C] pt-4">
-          <p className="text-[#606060] text-xs font-acid uppercase tracking-[1px]">Commission Earned</p>
-          <p className="text-white text-2xl font-acid mt-1">$0.00</p>
-        </div>
+        </GlassCard>
       </div>
     </GlassCard>
   )
@@ -130,7 +143,7 @@ function MonthlyTrendCard() {
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Monthly Trend</h2>
-          <PeriodPill periods={['1M', '3M', '6M', '1Y']} defaultActive="1Y" />
+          <span className="text-[#606060] text-sm font-acid">Last 12 months</span>
         </div>
 
         <div className="w-full overflow-hidden" style={{ height: '160px' }}>
@@ -370,6 +383,15 @@ export default function StatisticsPage() {
           <StatBannerCard label="Referral Received" value="+$0.00" color="#00B38C" />
           <StatBannerCard label="Referral Withdrawals" value="$0.00" color="#00B38C" />
           <StatBannerCard label="Commission Earned" value="+$0.00" color="#00B38C" />
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 3xl:gap-6">
+          <StatCard label="Referrals" value="$0.00" />
+          <StatCard label="Clicks" value="$0.00" />
+          <StatCard label="Trading vol" value="$0.00" />
+          <StatCard label="Deposits" value="$0.00" />
+          <StatCard label="This year" value="$0.00" />
+          <StatCard label="2 Mo Ret" value="$0.00" />
         </div>
 
         <CommissionCalendarSection />
