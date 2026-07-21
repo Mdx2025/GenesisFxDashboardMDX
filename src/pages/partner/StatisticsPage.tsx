@@ -4,14 +4,6 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlowEllipse, ModeToggle, PeriodPill } from '@/components/ui'
 import { TradingCalendar } from '@/components/ui/TradingCalendar'
 
-function DollarCircleIcon({ size = 24, color = '#00B38C' }: { size?: number; color?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill={color} fillOpacity="0.15" />
-      <path d="M12 6v1.5m0 9V18m3-6c0-1.657-1.343-3-3-3s-3 .672-3 1.5S10.343 12 12 12s3 .828 3 1.5-1.343 1.5-3 1.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  )
-}
 
 function InfoIcon() {
   return (
@@ -54,8 +46,12 @@ function RevenueCard() {
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex flex-row justify-between items-center mb-2">
           <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
-          <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
-            <DollarCircleIcon size={22} color="#00B38C" />
+          <div className="w-[59px] h-[59px] rounded-[20px] bg-[#09241C] border border-[#064B34] flex items-center justify-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M11.25 7.847C10.314 8.103 9.75 8.822 9.75 9.5c0 .679.564 1.397 1.5 1.653V7.847Z" fill="#00B38C" />
+              <path d="M12.75 12.847v3.306c.936-.256 1.5-.974 1.5-1.653 0-.678-.564-1.397-1.5-1.652Z" fill="#00B38C" />
+              <path fillRule="evenodd" clipRule="evenodd" d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-10-6.75c.414 0 .75.336.75.75v.317c1.63.292 3 1.517 3 3.183a.75.75 0 1 1-1.5 0c0-.678-.564-1.397-1.5-1.652v3.469c1.63.292 3 1.517 3 3.183s-1.37 2.891-3 3.183V18a.75.75 0 1 1-1.5 0v-.317c-1.63-.292-3-1.517-3-3.183a.75.75 0 1 1 1.5 0c0 .679.564 1.397 1.5 1.653v-3.47c-1.63-.292-3-1.516-3-3.183 0-1.666 1.37-2.891 3-3.183V6c0-.414.336-.75.75-.75Z" fill="#00B38C" />
+            </svg>
           </div>
         </div>
         <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
