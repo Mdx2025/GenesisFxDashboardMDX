@@ -105,7 +105,7 @@ export default function LinksPage() {
 
               {/* Right section — Referral code card */}
               <div className="lg:w-[587px] shrink-0 p-5">
-                <GlassCard variant="light" divider="none" rounded="18.56px" className="h-full flex flex-col justify-center px-[76px] py-[50px] gap-6">
+                <GlassCard variant="light" divider="none" rounded="18.56px" className="h-full flex flex-col justify-center px-[76px] py-[50px] gap-6" style={{ background: '#0C1311' }}>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex items-center h-[28px] px-[18px] rounded-[30px] border-[1.16px] border-gfx-green-200 bg-gfx-main text-gfx-green-300 text-xs font-acid leading-[18.8px]">
                       GFX605D9D38
