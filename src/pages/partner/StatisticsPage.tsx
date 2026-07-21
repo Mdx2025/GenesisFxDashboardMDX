@@ -318,7 +318,7 @@ function SymbolExposureCard() {
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <h2 className="text-white text-base font-acid font-medium leading-[24.44px] mb-6">Symbol Exposure</h2>
 
-        <div className="bg-[#0C1311] rounded-[18.56px] border-1 border-[#0C1311] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden p-6">
+        <div className="bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden p-6">
           <div className="flex items-center gap-4 mb-4">
             <svg width="38" height="38" viewBox="0 0 38 38" fill="none" className="shrink-0 rounded-full">
               <g clipPath="url(#xau-clip)">
