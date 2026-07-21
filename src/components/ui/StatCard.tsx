@@ -17,7 +17,7 @@ export function StatCard({ label, value, valueColor = 'text-white', icon, action
       {children ? (
         children
       ) : (
-        <div className="relative p-6 min-h-[148px] flex flex-col justify-center">
+        <div className="relative z-10 p-6 min-h-[148px] flex flex-col justify-center">
           {icon ? (
             <div className="flex justify-between items-start">
               <div>
