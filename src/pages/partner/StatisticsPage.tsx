@@ -53,7 +53,7 @@ function RevenueCard() {
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex justify-between items-start mb-1">
-          <p className="text-[#606060] text-sm font-acid">Revenue</p>
+
           <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
             <DollarCircleIcon size={22} color="#00B38C" />
           </div>
