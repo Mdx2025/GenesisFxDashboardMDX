@@ -59,6 +59,7 @@ function RevenueCard() {
           </div>
         </div>
         <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
+        <p className="text-[#808080] text-sm font-acid mt-1">This year: <span className="text-white">$0.00</span></p>
 
         <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#09241C]">
           {[
