@@ -91,7 +91,7 @@ function TopReferralsCard() {
           </div>
         </div>
 
-        <GlassCard variant="light" divider="none" rounded="[1.16rem]" className="overflow-hidden">
+        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative p-5">
             <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
