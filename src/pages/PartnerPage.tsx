@@ -165,20 +165,16 @@ function PartnerWalletCard() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center shrink-0">
-            <WalletIcon size={24} color="white" />
-          </div>
-          <div>
+        <div className="flex flex-row items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center shrink-0">
+              <WalletIcon size={24} color="white" />
+            </div>
             <p className="text-white text-base font-acid font-medium">Partner Wallet</p>
-            <p className="text-gfx-neutral-500 text-sm font-acid mt-1">$0.00</p>
           </div>
+          <p className="text-gfx-neutral-500 text-sm font-acid">$0.00</p>
         </div>
-        <SecondaryButton className="w-full">
-          <ChevronRightIcon size={18} />
-          New Account
-          <ChevronRightIcon size={18} />
-        </SecondaryButton>
+        <SparkleButton fullWidth>Request Payout</SparkleButton>
       </div>
     </GlassCard>
   )
@@ -217,11 +213,7 @@ function ReferralLinkCard() {
           value="https://dashboard.genesisfxmarkets.com/a"
         />
 
-        <SecondaryButton className="w-full">
-          <ChevronRightIcon size={18} />
-          New Account
-          <ChevronRightIcon size={18} />
-        </SecondaryButton>
+        <SparkleButton fullWidth>View Commission Rates</SparkleButton>
       </div>
     </GlassCard>
   )
@@ -280,28 +272,15 @@ function RecentActivity() {
             </button>
           </div>
 
-          <ModeToggle options={ACTIVITY_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
+          <div className="w-md">
+            <ModeToggle options={ACTIVITY_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
+          </div>
 
           <div className="flex flex-col items-center justify-center py-12 gap-3">
             <p className="text-white text-base font-acid font-medium leading-[24.44px]">No referrals yet</p>
             <p className="text-[#808080] text-sm font-acid leading-[18.8px] text-center">
               Start inviting people with your referral link to see them here
             </p>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-lg border border-[#1476CB] bg-[#021C32]" />
-              <span className="text-base font-acid font-medium text-[#1476CB] leading-[24.44px]">Referrals</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-lg border border-[#00B38C] bg-[#09241C]" />
-              <span className="text-base font-acid font-medium text-[#00B38C] leading-[24.44px]">Comissions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-lg border border-[#A456D8] bg-[#2E0C45]" />
-              <span className="text-base font-acid font-medium text-[#A456D8] leading-[24.44px]">Volume</span>
-            </div>
           </div>
         </div>
       </div>
@@ -371,19 +350,24 @@ export default function PartnerPage() {
             </div>
           </div>
           <div className="w-full lg:w-[359px] shrink-0">
-            <div className="bg-gradient-to-b from-gfx-green-900 to-gfx-main border border-gfx-green-800 rounded-[30px] p-6 h-full flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-gfx-green-900 border border-gfx-green-300 rounded-[20px] px-3.5 py-2 flex items-center gap-3">
-                  <MagicStickIcon size={18} color="#00b38c" />
-                  <span className="text-gfx-green-300 text-sm font-acid">Marketing</span>
-                </div>
+            <div className="relative w-full h-[242px] bg-gradient-to-b from-[#09241C] to-[#0C1311] rounded-[30px] border border-[#09241C]">
+              <div className="absolute left-[22px] top-[38px] bg-[#09241C] rounded-[20px] border border-gfx-green-300 px-3.5 py-2 inline-flex items-center gap-3">
+                <MagicStickIcon size={18} color="#00b38c" />
+                <span className="text-gfx-green-300 text-sm font-acid">Marketing</span>
               </div>
-              <h3 className="text-white text-base font-acid font-medium mb-2 text-center">Real Time Statistics</h3>
-              <p className="text-gfx-neutral-500 text-sm font-acid leading-relaxed mb-auto">
-                Track signups, FTDs, lots, and revenue by referral link or sub-
-              </p>
-              <div className="mt-4">
-                <span className="text-gfx-green-300 text-sm font-acid cursor-pointer hover:underline">Open library</span>
+              <p className="absolute left-[22px] top-[114px] text-center text-[#ECECEC] text-base font-acid font-medium leading-[24.44px]">Real Time Statistics</p>
+              <p className="absolute left-[22px] top-[139px] w-[228px] text-[#808080] text-sm font-acid font-normal leading-[18.8px]">Track signups, FTDs, lots, and revenue by referral link or sub-</p>
+              <div className="absolute left-[25px] top-[195px] flex items-center gap-2">
+                <span className="text-gfx-green-300 text-sm font-acid leading-[18.8px] cursor-pointer hover:underline">Open library</span>
+                <svg width="5" height="9" viewBox="0 0 5 9" fill="none">
+                  <path d="M0.582031 7.58398L4.08203 4.08398L0.582031 0.583984" stroke="#00B38C" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div className="absolute right-[22px] top-[197px] flex items-center gap-[10px]">
+                <svg width="25" height="7" viewBox="0 0 25 7" fill="none"><path d="M0 3.5C0 1.567 1.567 0 3.5 0H21.5C23.433 0 25 1.567 25 3.5C25 5.433 23.433 7 21.5 7H3.5C1.567 7 0 5.433 0 3.5Z" fill="#00B38C"/></svg>
+                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="#00B38C"/></svg>
+                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="#00B38C"/></svg>
+                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="#00B38C"/></svg>
               </div>
             </div>
           </div>

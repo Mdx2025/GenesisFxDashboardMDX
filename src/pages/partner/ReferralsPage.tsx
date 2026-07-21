@@ -122,7 +122,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
       aria-modal="true"
       aria-label="Referral Details"
     >
-      <div ref={modalRef} className="relative w-[51.636rem] max-w-[95vw] rounded-[1.481rem] overflow-hidden" style={{ background: '#0C1311', border: '1.48px solid #0C1311', boxShadow: '0px 5.93px 29.63px rgba(0,0,0,0.03)' }}>
+      <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="w-[51.636rem] max-w-[95vw] overflow-hidden" style={{ background: '#0C1311' }}>
         {/* Hero banner */}
         <div className="relative h-[14.924rem] overflow-hidden" style={{ background: '#0C1311' }}>
           <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(200.67px)' }} aria-hidden="true" />
@@ -149,16 +149,16 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         {/* Info cards */}
         <div className="grid grid-cols-2 gap-4 px-[2.234rem] pb-[2.394rem] -mt-[1.5rem]">
           {/* Personal Info */}
-          <div className="rounded-[1.481rem] p-6" style={{ background: '#0C1311', border: '1.48px solid #0C1311', boxShadow: '0px 5.93px 29.63px rgba(0,0,0,0.03)' }}>
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6" style={{ background: '#0C1311' }}>
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
             <InfoRow label="NAME" value={referral.name} />
             <InfoRow label="EMAIL" value={referral.email} />
             <InfoRow label="PHONE" value="04263942342" />
             <InfoRow label="COUNTRY" value="AR Argentina" />
-          </div>
+          </GlassCard>
 
           {/* Referral Info */}
-          <div className="rounded-[1.481rem] p-6" style={{ background: '#0C1311', border: '1.48px solid #0C1311', boxShadow: '0px 5.93px 29.63px rgba(0,0,0,0.03)' }}>
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6" style={{ background: '#0C1311' }}>
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">REFERRAL INFO</h3>
             <div className="flex items-center justify-between py-[0.66rem]">
               <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">LEVEL</span>
@@ -176,7 +176,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
               <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">COUNTRY</span>
               <InfoBadge text="Inactive" />
             </div>
-          </div>
+          </GlassCard>
         </div>
 
         {/* Close button */}
@@ -190,7 +190,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
             <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
-      </div>
+      </GlassCard>
     </div>
   )
 }

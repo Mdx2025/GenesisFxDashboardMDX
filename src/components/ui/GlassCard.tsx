@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { DividerGlow } from './DividerGlow'
 import { GlowEllipse } from './GlowEllipse'
 
@@ -18,9 +18,10 @@ const VARIANT_CLASS = {
   purple: 'glass-card-purple',
 } as const
 
-export function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '1.125rem', className = '', style, children }: GlassCardProps) {
+export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '1.125rem', className = '', style, children }, ref) {
   return (
     <div
+      ref={ref}
       className={`${VARIANT_CLASS[variant]} relative ${className}`}
       style={{ borderRadius: rounded, ...style }}
     >
@@ -34,4 +35,4 @@ export function GlassCard({ variant = 'light', divider = 'white', glow = true, r
       {children}
     </div>
   )
-}
+})
