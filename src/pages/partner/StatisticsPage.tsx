@@ -60,6 +60,15 @@ function RevenueCard() {
         </div>
         <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid mb-2">GenFX</span>
         <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
+
+        <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#09241C]">
+          <StatCard label="Referrals" value="$0.00" />
+          <StatCard label="Clicks" value="$0.00" />
+          <StatCard label="Trading vol" value="$0.00" />
+          <StatCard label="Deposits" value="$0.00" />
+          <StatCard label="This year" value="$0.00" />
+          <StatCard label="2 Mo Ret" value="$0.00" />
+        </div>
       </div>
     </GlassCard>
   )
@@ -383,15 +392,6 @@ export default function StatisticsPage() {
           <StatBannerCard label="Referral Received" value="+$0.00" color="#00B38C" />
           <StatBannerCard label="Referral Withdrawals" value="$0.00" color="#00B38C" />
           <StatBannerCard label="Commission Earned" value="+$0.00" color="#00B38C" />
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 3xl:gap-6">
-          <StatCard label="Referrals" value="$0.00" />
-          <StatCard label="Clicks" value="$0.00" />
-          <StatCard label="Trading vol" value="$0.00" />
-          <StatCard label="Deposits" value="$0.00" />
-          <StatCard label="This year" value="$0.00" />
-          <StatCard label="2 Mo Ret" value="$0.00" />
         </div>
 
         <CommissionCalendarSection />
