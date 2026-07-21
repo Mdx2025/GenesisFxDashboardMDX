@@ -93,7 +93,7 @@ function TopReferralsCard() {
 
         <GlassCard variant="light" divider="none" rounded="[1.16rem]" className="overflow-hidden">
           <div className="relative p-5">
-            <div className="absolute w-[493px] h-[278px] left-[47px] top-[12px] rounded-full pointer-events-none bg-[#064B34] [filter:blur(157px)]" aria-hidden="true" />
+            <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
             <div className="relative z-10 flex items-start gap-5">
               <div className="w-[58px] h-[58px] rounded-full bg-gfx-green-900 border border-[#064B34] flex items-center justify-center shrink-0">
