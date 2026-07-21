@@ -58,8 +58,10 @@ function RevenueCard() {
             <DollarCircleIcon size={22} color="#00B38C" />
           </div>
         </div>
-        <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid mb-2">GenFX</span>
-        <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
+        <div className="flex flex-row justify-between items-center">
+          <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
+          <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
+        </div>
 
         <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#09241C]">
           {[
