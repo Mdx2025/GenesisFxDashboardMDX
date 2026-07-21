@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowEllipse } from '@/components/ui'
+import { GlassCard, GlowButton } from '@/components/ui'
 
 function EnvelopeIcon() {
   return (
@@ -50,8 +50,6 @@ export default function PayoutsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 3xl:gap-6">
           <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
             <div className="relative p-6 sm:p-10 min-h-[462px]">
-              <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
-
               <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
               <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
@@ -89,12 +87,7 @@ export default function PayoutsPage() {
               <div className="flex items-center justify-between mb-6">
                 <p className="text-base font-acid font-medium text-gfx-neutral-500 leading-[24.44px]">Available balance:$0.00</p>
 
-                <button
-                  type="button"
-                  className="h-[44px] px-8 rounded-[300px] bg-[#f1fffa] text-black text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:opacity-90 transition-opacity"
-                >
-                  Submit Request
-                </button>
+                <GlowButton label="Submit Request" width={210} />
               </div>
 
               <label className="flex items-center gap-3 cursor-pointer">
