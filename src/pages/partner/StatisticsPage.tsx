@@ -42,38 +42,44 @@ function MiniStat({ label, value }: { label: string; value: string }) {
 function RevenueCard() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="relative p-6">
-        <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
-        <div className="flex flex-row justify-between items-center mb-2">
-          <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
-          <div className="w-[59px] h-[59px] rounded-[20px] bg-[#09241C] border border-[#064B34] flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M11.25 7.847C10.314 8.103 9.75 8.822 9.75 9.5c0 .679.564 1.397 1.5 1.653V7.847Z" fill="#00B38C" />
-              <path d="M12.75 12.847v3.306c.936-.256 1.5-.974 1.5-1.653 0-.678-.564-1.397-1.5-1.652Z" fill="#00B38C" />
-              <path fillRule="evenodd" clipRule="evenodd" d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-10-6.75c.414 0 .75.336.75.75v.317c1.63.292 3 1.517 3 3.183a.75.75 0 1 1-1.5 0c0-.678-.564-1.397-1.5-1.652v3.469c1.63.292 3 1.517 3 3.183s-1.37 2.891-3 3.183V18a.75.75 0 1 1-1.5 0v-.317c-1.63-.292-3-1.517-3-3.183a.75.75 0 1 1 1.5 0c0 .679.564 1.397 1.5 1.653v-3.47c-1.63-.292-3-1.516-3-3.183 0-1.666 1.37-2.891 3-3.183V6c0-.414.336-.75.75-.75Z" fill="#00B38C" />
-            </svg>
-          </div>
-        </div>
-        <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
-        <p className="text-[#808080] text-sm font-acid mt-1">This year: <span className="text-white">$0.00</span></p>
-
-        <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#09241C]">
-          {[
-            { label: 'Referrals', value: '$0.00' },
-            { label: 'Clicks', value: '$0.00' },
-            { label: 'Trading vol', value: '$0.00' },
-            { label: 'Deposits', value: '$0.00' },
-            { label: 'This year', value: '$0.00' },
-            { label: '2 Mo Ret', value: '$0.00' },
-          ].map(s => (
-            <div
-              key={s.label}
-              className="flex flex-col justify-center px-[1.5625rem] py-[1.75rem] bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] min-h-[6.75rem]"
-            >
-              <p className="text-[#A0A0A0] text-sm font-acid leading-[1.175rem]">{s.label}</p>
-              <p className="text-white text-2xl font-acid mt-1">{s.value}</p>
+      <div className="flex flex-col">
+        {/* Container 1: Revenue summary */}
+        <div className="relative p-6 overflow-hidden">
+          <div className="flex flex-row justify-between items-center mb-2">
+            <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
+            <div className="w-[59px] h-[59px] rounded-[20px] bg-[#09241C] border border-[#064B34] flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11.25 7.847C10.314 8.103 9.75 8.822 9.75 9.5c0 .679.564 1.397 1.5 1.653V7.847Z" fill="#00B38C" />
+                <path d="M12.75 12.847v3.306c.936-.256 1.5-.974 1.5-1.653 0-.678-.564-1.397-1.5-1.652Z" fill="#00B38C" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-10-6.75c.414 0 .75.336.75.75v.317c1.63.292 3 1.517 3 3.183a.75.75 0 1 1-1.5 0c0-.678-.564-1.397-1.5-1.652v3.469c1.63.292 3 1.517 3 3.183s-1.37 2.891-3 3.183V18a.75.75 0 1 1-1.5 0v-.317c-1.63-.292-3-1.517-3-3.183a.75.75 0 1 1 1.5 0c0 .679.564 1.397 1.5 1.653v-3.47c-1.63-.292-3-1.516-3-3.183 0-1.666 1.37-2.891 3-3.183V6c0-.414.336-.75.75-.75Z" fill="#00B38C" />
+              </svg>
             </div>
-          ))}
+          </div>
+          <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
+          <p className="text-[#808080] text-sm font-acid mt-1">This year: <span className="text-white">$0.00</span></p>
+          <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[6.25rem]" />
+        </div>
+
+        {/* Container 2: Stat cards grid */}
+        <div className="p-6 pt-0">
+          <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#09241C]">
+            {[
+              { label: 'Referrals', value: '$0.00' },
+              { label: 'Clicks', value: '$0.00' },
+              { label: 'Trading vol', value: '$0.00' },
+              { label: 'Deposits', value: '$0.00' },
+              { label: 'This year', value: '$0.00' },
+              { label: '2 Mo Ret', value: '$0.00' },
+            ].map(s => (
+              <div
+                key={s.label}
+                className="flex flex-col justify-center px-[1.5625rem] py-[1.75rem] bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] min-h-[6.75rem]"
+              >
+                <p className="text-[#A0A0A0] text-sm font-acid leading-[1.175rem]">{s.label}</p>
+                <p className="text-white text-2xl font-acid mt-1">{s.value}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </GlassCard>
