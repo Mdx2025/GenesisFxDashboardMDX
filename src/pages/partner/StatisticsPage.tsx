@@ -78,7 +78,6 @@ function TopReferralsCard() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6">
-        <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Top Referrals</h2>
           <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
