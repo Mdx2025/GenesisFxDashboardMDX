@@ -52,15 +52,14 @@ function RevenueCard() {
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
-        <div className="flex justify-between items-start mb-1">
-
-          <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
-            <DollarCircleIcon size={22} color="#00B38C" />
-          </div>
-        </div>
         <div className="flex flex-row justify-between items-center">
           <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
-          <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
+            <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
+              <DollarCircleIcon size={22} color="#00B38C" />
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#09241C]">
