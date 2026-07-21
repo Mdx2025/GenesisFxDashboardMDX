@@ -256,6 +256,10 @@ function CommissionCalendarSection() {
 
         <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
           <div className="flex items-center gap-3">
+            <span className="text-[#606060] text-[0.875rem] font-acid">0 commissions this month</span>
+            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-[0.875rem] font-acid">Total:$0.00</span>
+          </div>
+          <div className="flex items-center gap-3">
             <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
               <ChevronLeftIcon />
             </button>
@@ -263,10 +267,6 @@ function CommissionCalendarSection() {
             <button onClick={nextMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
               <ChevronRightIcon />
             </button>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-[#606060] text-[0.875rem] font-acid">0 commissions this month</span>
-            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-[0.875rem] font-acid">Total:$0.00</span>
           </div>
         </div>
 
