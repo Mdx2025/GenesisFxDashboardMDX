@@ -318,21 +318,25 @@ function SymbolExposureCard() {
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <h2 className="text-white text-base font-acid font-medium leading-[24.44px] mb-6">Symbol Exposure</h2>
 
-        <div className="bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden p-6">
-          <div className="flex items-center gap-4 mb-4">
-            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" className="shrink-0 rounded-full">
-              <g clipPath="url(#xau-clip)">
-                <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
-                <path d="M14.42 14.626h9.353l-1.364-3.66a1.16 1.16 0 0 0-.278-.435L14.42 14.626Zm-.026-4.344c.331-.89 1.06-1.462 1.863-1.462h5.531c.804 0 1.532.571 1.864 1.462l1.363 3.66c.41 1.097-.25 2.343-1.241 2.343H14.273c-.99 0-1.651-1.245-1.242-2.343l1.364-3.66Zm-7.448 13.844h9.335l-1.364-3.66a1.16 1.16 0 0 0-.278-.435L6.946 24.126Zm-.026-4.344c.332-.89 1.061-1.462 1.864-1.462h5.513c.803 0 1.532.571 1.864 1.462l1.363 3.66c.41 1.097-.25 2.343-1.242 2.343H6.799c-.99 0-1.651-1.245-1.242-2.343l1.364-3.66Zm24.354 4.344h-9.398l7.756-4.034c.121.086.22.214.28.375l1.362 3.66Zm-7.56-5.806c-.803 0-1.533.571-1.864 1.462l-1.363 3.66c-.41 1.097.25 2.343 1.242 2.343h9.546c.99 0 1.65-1.245 1.241-2.343l-1.364-3.66c-.33-.89-1.06-1.462-1.863-1.462h-5.576Z" fill="white" />
-              </g>
-              <defs><clipPath id="xau-clip"><rect width="38" height="38" rx="19" fill="white" /></clipPath></defs>
-            </svg>
-            <span className="text-white text-base font-acid font-medium leading-[24.44px]">XAUUSD</span>
-          </div>
-          <p className="text-white text-xs font-acid leading-[1.175rem] mb-3">45.2 Lots</p>
-          <div className="relative w-full h-1 bg-[#09241C] rounded-full">
-            <div className="absolute left-0 top-0 h-1 w-[37%] bg-[#0A714F] rounded-full" />
-          </div>
+        <div className="grid grid-cols-3 gap-4">
+          {[
+            { symbol: 'XAUUSD', lots: '45.2 Lots', fill: '37%', color: '#D69A00' },
+            { symbol: 'EURUSD', lots: '12.8 Lots', fill: '18%', color: '#2563EB' },
+            { symbol: 'GBPUSD', lots: '8.5 Lots', fill: '12%', color: '#7C3AED' },
+          ].map(s => (
+            <div key={s.symbol} className="bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-[38px] h-[38px] rounded-full shrink-0 flex items-center justify-center" style={{ background: s.color }}>
+                  <span className="text-white text-xs font-bold">{s.symbol.slice(0, 2)}</span>
+                </div>
+                <span className="text-white text-base font-acid font-medium leading-[24.44px]">{s.symbol}</span>
+              </div>
+              <p className="text-white text-xs font-acid leading-[1.175rem] mb-3">{s.lots}</p>
+              <div className="relative w-full h-1 bg-[#09241C] rounded-full">
+                <div className="absolute left-0 top-0 h-1 bg-[#0A714F] rounded-full" style={{ width: s.fill }} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </GlassCard>
