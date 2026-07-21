@@ -193,8 +193,8 @@ function StatBannerCard({ label, value }: { label: string; value: string; color:
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6 min-h-[7rem] flex flex-col justify-center">
-        <p className="text-[#606060] text-sm font-acid">{label}</p>
-        <p className="text-white text-3xl font-acid mt-1">{value}</p>
+        <p className="relative z-10 text-[#606060] text-sm font-acid">{label}</p>
+        <p className="relative z-10 text-white text-3xl font-acid mt-1">{value}</p>
         <GlowEllipse className="left-0 -bottom-[6.25rem]" />
       </div>
     </GlassCard>
