@@ -247,6 +247,15 @@
     pointer-events: none;
   }
 
+  .stat-card-flat.glass-card {
+    background: transparent;
+    border: 1.16px solid #0C1311;
+    box-shadow: none;
+  }
+  .stat-card-flat.glass-card::after {
+    display: none;
+  }
+
   .weekly-stat-active.glass-card {
     background: var(--color-gfx-green-800);
     box-shadow: none;
