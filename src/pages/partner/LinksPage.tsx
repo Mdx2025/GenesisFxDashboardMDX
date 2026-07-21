@@ -1,6 +1,6 @@
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowEllipse } from '@/components/ui'
+import { GlassCard, GlowEllipse, SparkleButton } from '@/components/ui'
 
 function LinkIcon() {
   return (
@@ -105,8 +105,7 @@ export default function LinksPage() {
 
               {/* Right section — Referral code card */}
               <div className="lg:w-[587px] shrink-0 p-5">
-                <div className="relative bg-gfx-main rounded-[18.56px] border-[1.16px] border-gfx-main shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden h-full flex flex-col justify-center px-[76px] py-[50px] gap-6">
-                  {/* Referral code badge + action buttons */}
+                <GlassCard variant="light" divider="none" rounded="18.56px" className="h-full flex flex-col justify-center px-[76px] py-[50px] gap-6">
                   <div className="flex items-center gap-3">
                     <span className="inline-flex items-center h-[28px] px-[18px] rounded-[30px] border-[1.16px] border-gfx-green-200 bg-gfx-main text-gfx-green-300 text-xs font-acid leading-[18.8px]">
                       GFX605D9D38
@@ -119,22 +118,14 @@ export default function LinksPage() {
                     </div>
                   </div>
 
-                  {/* URL field */}
                   <div className="flex items-center h-[46px] px-4 rounded-[40px] border border-gfx-green-200 bg-gfx-main">
                     <span className="text-xs font-acid text-[#808080] leading-[18.8px] truncate">
                       https://dashboard.genesisfxmarkets.com/a
                     </span>
                   </div>
 
-                  {/* View Commission Rates button */}
-                  <button
-                    type="button"
-                    className="flex items-center justify-center h-[46px] px-[22px] rounded-[30px] border border-[#A0A0A0] text-[#C6C6C6] text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-300 transition-colors"
-                    style={{ background: 'linear-gradient(0deg, #09241C 29%, #0C1311 88%)' }}
-                  >
-                    View Comission Rates
-                  </button>
-                </div>
+                  <SparkleButton fullWidth>View Commission Rates</SparkleButton>
+                </GlassCard>
               </div>
             </div>
           </div>
