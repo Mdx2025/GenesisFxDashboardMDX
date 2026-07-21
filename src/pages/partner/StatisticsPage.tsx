@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowEllipse, ModeToggle, PeriodPill, StatCard } from '@/components/ui'
+import { GlassCard, GlowEllipse, ModeToggle, PeriodPill } from '@/components/ui'
 import { TradingCalendar } from '@/components/ui/TradingCalendar'
 
 function DollarCircleIcon({ size = 24, color = '#00B38C' }: { size?: number; color?: string }) {
@@ -62,12 +62,19 @@ function RevenueCard() {
         <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
 
         <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#09241C]">
-          <StatCard label="Referrals" value="$0.00" className="stat-card-flat" />
-          <StatCard label="Clicks" value="$0.00" className="stat-card-flat" />
-          <StatCard label="Trading vol" value="$0.00" className="stat-card-flat" />
-          <StatCard label="Deposits" value="$0.00" className="stat-card-flat" />
-          <StatCard label="This year" value="$0.00" className="stat-card-flat" />
-          <StatCard label="2 Mo Ret" value="$0.00" className="stat-card-flat" />
+          {[
+            { label: 'Referrals', value: '$0.00' },
+            { label: 'Clicks', value: '$0.00' },
+            { label: 'Trading vol', value: '$0.00' },
+            { label: 'Deposits', value: '$0.00' },
+            { label: 'This year', value: '$0.00' },
+            { label: '2 Mo Ret', value: '$0.00' },
+          ].map(s => (
+            <div key={s.label} className="rounded-[19px] border border-[#0C1311] p-6 min-h-[9.25rem] flex flex-col justify-center">
+              <p className="text-gfx-neutral-500 text-sm font-acid leading-tight">{s.label}</p>
+              <p className="text-white text-4xl font-acid leading-normal mt-2">{s.value}</p>
+            </div>
+          ))}
         </div>
       </div>
     </GlassCard>
