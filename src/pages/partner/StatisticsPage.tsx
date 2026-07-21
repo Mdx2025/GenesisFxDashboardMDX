@@ -76,7 +76,7 @@ function RevenueCard() {
 
 function TopReferralsCard() {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ boxShadow: 'none' }}>
       <div className="relative p-6">
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Top Referrals</h2>
