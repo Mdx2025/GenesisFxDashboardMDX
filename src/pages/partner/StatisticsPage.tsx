@@ -72,15 +72,7 @@ function RevenueCard() {
           ].map(s => (
             <div
               key={s.label}
-              className="flex flex-col justify-center px-[1.5625rem] py-[1.75rem]"
-              style={{
-                background: '#0C1311',
-                borderRadius: '18.56px',
-                outline: '1.16px solid #0C1311',
-                outlineOffset: '-1.16px',
-                boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
-                minHeight: '6.75rem',
-              }}
+              className="flex flex-col justify-center px-[1.5625rem] py-[1.75rem] bg-[#0C1311] rounded-[18.56px] outline-[1.16px] outline-solid outline-[#0C1311] -outline-offset-[1.16px] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] min-h-[6.75rem]"
             >
               <p className="text-[#A0A0A0] text-sm font-acid leading-[1.175rem]">{s.label}</p>
               <p className="text-white text-2xl font-acid mt-1">{s.value}</p>
