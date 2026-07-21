@@ -249,7 +249,7 @@ function CommissionCalendarSection() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center py-8 mb-6">
+        <div className="relative z-10 flex flex-col items-center justify-center py-8 mb-6">
           <p className="text-white text-lg font-acid mb-2">No data yet</p>
           <p className="text-[#606060] text-sm font-acid">You have not earned any commissions yet.</p>
         </div>
