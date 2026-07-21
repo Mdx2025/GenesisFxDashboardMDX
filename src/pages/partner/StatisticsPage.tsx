@@ -195,6 +195,7 @@ function StatBannerCard({ label, value }: { label: string; value: string; color:
       <div className="relative p-6 min-h-[7rem] flex flex-col justify-center">
         <p className="text-[#606060] text-sm font-acid">{label}</p>
         <p className="text-white text-3xl font-acid mt-1">{value}</p>
+        <GlowEllipse className="left-0 -bottom-[6.25rem]" />
       </div>
     </GlassCard>
   )
