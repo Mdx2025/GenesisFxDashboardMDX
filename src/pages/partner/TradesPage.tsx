@@ -88,7 +88,7 @@ export default function TradesPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white pb-15">Referral Trades</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-acid text-white pb-6 lg:pb-15">Referral Trades</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">

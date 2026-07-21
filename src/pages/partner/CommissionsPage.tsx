@@ -86,7 +86,7 @@ export default function CommissionsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white pb-15">Comissions</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-acid text-white pb-6 lg:pb-15">Comissions</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">
@@ -101,7 +101,7 @@ export default function CommissionsPage() {
             </div>
 
             <div className="flex items-center justify-between gap-4 flex-wrap px-4 sm:px-6 py-4">
-              <div className="overflow-x-auto max-w-full w-[556px]">
+              <div className="overflow-x-auto max-w-full w-full lg:w-[556px]">
                 <ModeToggle options={LEVELS} activeIndex={activeLevelIndex} onChange={setActiveLevelIndex} size="sm" />
               </div>
               <div className="flex items-center gap-3">

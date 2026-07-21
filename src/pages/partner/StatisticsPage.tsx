@@ -62,7 +62,7 @@ function RevenueCard() {
 
         {/* Container 2: Stat cards grid */}
         <div className="p-6 pt-0">
-          <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#09241C]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-[#09241C]">
             {[
               { label: 'Referrals', value: '$0.00' },
               { label: 'Clicks', value: '$0.00' },
@@ -320,7 +320,7 @@ function SymbolExposureCard() {
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <h2 className="text-white text-base font-acid font-medium leading-[24.44px] mb-6">Symbol Exposure</h2>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { symbol: 'XAUUSD', lots: '45.2 Lots', fill: '37%', color: '#D69A00' },
             { symbol: 'EURUSD', lots: '12.8 Lots', fill: '18%', color: '#2563EB' },
@@ -396,7 +396,7 @@ export default function StatisticsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white pb-15">Partner Statistics</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-acid text-white pb-6 lg:pb-15">Partner Statistics</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 3xl:gap-6">
           <div className="flex flex-col gap-4 3xl:gap-6">

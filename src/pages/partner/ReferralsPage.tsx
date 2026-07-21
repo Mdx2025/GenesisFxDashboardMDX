@@ -147,7 +147,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         </div>
 
         {/* Info cards */}
-        <div className="grid grid-cols-2 gap-4 px-[2.234rem] pb-[2.394rem] relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] pb-[2.394rem] relative z-10">
           {/* Personal Info */}
           <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6" style={{ background: '#0C1311' }}>
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
@@ -226,7 +226,7 @@ export default function ReferralsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white pb-15">Referrals</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-acid text-white pb-6 lg:pb-15">Referrals</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">
@@ -245,7 +245,7 @@ export default function ReferralsPage() {
 
             {/* Filters row */}
             <div className="flex items-center justify-between gap-4 flex-wrap px-4 sm:px-6 py-4">
-              <div className="overflow-x-auto max-w-full w-[556px]">
+              <div className="overflow-x-auto max-w-full w-full lg:w-[556px]">
                 <ModeToggle options={LEVELS} activeIndex={activeLevelIndex} onChange={setActiveLevelIndex} size="sm" />
               </div>
               <div className="flex items-center gap-3">

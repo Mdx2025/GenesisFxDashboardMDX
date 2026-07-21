@@ -78,7 +78,7 @@ export default function LinksPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white pb-15">Partner Link</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-acid text-white pb-6 lg:pb-15">Partner Link</h1>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <div className="relative">
@@ -90,7 +90,7 @@ export default function LinksPage() {
 
             <div className="flex flex-col lg:flex-row">
               {/* Left section — Referral Link info */}
-              <div className="flex-1 px-[53px] py-[77px] flex flex-col gap-6">
+              <div className="flex-1 px-6 py-10 lg:px-[53px] lg:py-[77px] flex flex-col gap-6">
                 <div className="flex items-center gap-3">
                   <LinkIcon />
                   <h2 className="text-2xl font-acid text-white">Referral Link</h2>
@@ -105,7 +105,7 @@ export default function LinksPage() {
 
               {/* Right section — Referral code card */}
               <div className="lg:w-[587px] shrink-0 p-5">
-                <GlassCard variant="light" divider="none" rounded="18.56px" className="h-full flex flex-col justify-center px-[76px] py-[50px] gap-6" style={{ background: '#0C1311', boxShadow: 'none' }}>
+                <GlassCard variant="light" divider="none" rounded="18.56px" className="h-full flex flex-col justify-center px-6 py-8 lg:px-[76px] lg:py-[50px] gap-6" style={{ background: '#0C1311', boxShadow: 'none' }}>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex items-center h-[28px] px-[18px] rounded-[30px] border-[1.16px] border-gfx-green-200 bg-gfx-main text-gfx-green-300 text-xs font-acid leading-[18.8px]">
                       GFX605D9D38

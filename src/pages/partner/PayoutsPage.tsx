@@ -45,7 +45,7 @@ export default function PayoutsPage() {
           breadcrumbItems={breadcrumbItems}
         />
 
-        <h1 className="text-5xl font-acid text-white pb-15">Partner Payouts</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-acid text-white pb-6 lg:pb-15">Partner Payouts</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 3xl:gap-6">
           <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
@@ -56,7 +56,7 @@ export default function PayoutsPage() {
 
               <h2 className="text-2xl font-acid text-white mb-8">Request Payout</h2>
 
-              <div className="flex items-start justify-between mb-6">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-0 mb-6">
                 <div className="flex items-center gap-3">
                   <EnvelopeIcon />
                   <span className="text-base font-acid text-white leading-[1.2]">Withdraw to Main Wallet</span>
