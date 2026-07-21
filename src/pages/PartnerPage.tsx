@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, StatCard, SecondaryButton, SparkleButton, GlowButton, PeriodPill, ModeToggle } from '@/components/ui'
+import { GlassCard, GlassBannerCard, StatCard, SecondaryButton, SparkleButton, GlowButton, PeriodPill, ModeToggle, GlowEllipse } from '@/components/ui'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { ChevronRightIcon, DepositIcon, WithdrawIcon, TransferIcon } from '@/components/icons'
 import './PartnerPage.css'
@@ -390,16 +390,22 @@ export default function PartnerPage() {
         </GlassBannerCard>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8">
-          <StatCard
-            label="Total Referrals"
-            value="16"
-            icon={<UsersGroupIcon size={22} color="white" />}
-          />
-          <StatCard
-            label="Total Business"
-            value="$900.00"
-            icon={<WalletIcon size={24} color="white" />}
-          />
+          <div className="relative overflow-hidden rounded-[19px]">
+            <StatCard
+              label="Total Referrals"
+              value="16"
+              icon={<UsersGroupIcon size={22} color="white" />}
+            />
+            <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 right-0 translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
+          </div>
+          <div className="relative overflow-hidden rounded-[19px]">
+            <StatCard
+              label="Total Business"
+              value="$900.00"
+              icon={<WalletIcon size={24} color="white" />}
+            />
+            <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
+          </div>
           <StatCard
             label="Comission Earned"
             value="$200.00"
