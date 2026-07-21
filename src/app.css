@@ -248,12 +248,14 @@
   }
 
   .stat-card-flat.glass-card {
-    background: transparent;
-    border: 1.16px solid #0C1311;
-    box-shadow: none;
+    background: transparent !important;
+    border: 1px solid #0C1311 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .stat-card-flat.glass-card::after {
-    display: none;
+    display: none !important;
   }
 
   .weekly-stat-active.glass-card {
