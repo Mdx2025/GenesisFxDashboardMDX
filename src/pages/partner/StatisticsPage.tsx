@@ -156,20 +156,12 @@ function MonthlyTrendCard() {
   )
 }
 
-function StatBannerCard({ label, value, color }: { label: string; value: string; color: string }) {
+function StatBannerCard({ label, value }: { label: string; value: string; color: string }) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="relative p-6 flex items-center gap-5 min-h-[7rem]">
-        <div className="w-[5rem] h-[5rem] rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: color + '20' }}>
-          <svg width="35" height="35" viewBox="0 0 35 35" fill="none">
-            <circle cx="17.5" cy="17.5" r="14" fill={color} fillOpacity="0.3" />
-            <path d="M17.5 10v2.5m0 10V25m5-7.5c0-2.761-2.239-5-5-5s-5 1.119-5 2.5 2.239 2.5 5 2.5 5 1.381 5 2.5-2.239 2.5-5 2.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </div>
-        <div>
-          <p className="text-[#606060] text-sm font-acid">{label}</p>
-          <p className="text-white text-3xl font-acid mt-1">{value}</p>
-        </div>
+      <div className="relative p-6 min-h-[7rem] flex flex-col justify-center">
+        <p className="text-[#606060] text-sm font-acid">{label}</p>
+        <p className="text-white text-3xl font-acid mt-1">{value}</p>
       </div>
     </GlassCard>
   )
@@ -216,33 +208,31 @@ function CommissionCalendarSection() {
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
-        <h2 className="text-white text-base font-acid font-medium leading-[24.44px] mb-6">Partner Commission Calendar</h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Partner Commission Calendar</h2>
+          <div className="w-sm">
+            <ModeToggle options={CALENDAR_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
+          </div>
+        </div>
 
         <div className="flex flex-col items-center justify-center py-8 mb-6">
           <p className="text-white text-lg font-acid mb-2">No data yet</p>
           <p className="text-[#606060] text-sm font-acid">You have not earned any commissions yet.</p>
         </div>
 
-        <div className="mb-6">
-          <ModeToggle options={CALENDAR_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
-        </div>
-
         <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
           <div className="flex items-center gap-3">
-            <h3 className="text-white text-lg font-acid">{MONTHS[month]} {year}</h3>
-            <span className="text-[#606060] text-sm font-acid">0 commissions this month</span>
-            <span className="text-gfx-green-300 text-sm font-acid cursor-pointer hover:underline">View report</span>
+            <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
+              <ChevronLeftIcon />
+            </button>
+            <h3 className="text-white text-[1.125rem] font-acid">{MONTHS[month]} {year}</h3>
+            <button onClick={nextMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
+              <ChevronRightIcon />
+            </button>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-[#606060] text-sm font-acid">April {year}</span>
-            <div className="flex items-center gap-2">
-              <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
-                <ChevronLeftIcon />
-              </button>
-              <button onClick={nextMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
-                <ChevronRightIcon />
-              </button>
-            </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[#606060] text-[0.875rem] font-acid">0 commissions this month</span>
+            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-[0.875rem] font-acid">Total:$0.00</span>
           </div>
         </div>
 
@@ -364,12 +354,17 @@ export default function StatisticsPage() {
 
         <h1 className="text-5xl font-acid text-white pb-15">Partner Statistics</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 3xl:gap-6">
-          <RevenueCard />
-          <TopReferralsCard />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 3xl:gap-6">
+          <div className="flex flex-col gap-4 3xl:gap-6">
+            <RevenueCard />
+            <MonthlyTrendCard />
+          </div>
+          <div className="flex flex-col">
+            <div className="flex-1 [&>*]:h-full">
+              <TopReferralsCard />
+            </div>
+          </div>
         </div>
-
-        <MonthlyTrendCard />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 3xl:gap-6">
           <StatBannerCard label="Referral Received" value="+$0.00" color="#00B38C" />
