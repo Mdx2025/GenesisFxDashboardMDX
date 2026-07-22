@@ -103,8 +103,8 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
                 <span className="text-white text-[1.975rem] font-bold font-['Segoe_UI']">JD</span>
               </div>
               {/* Green glow beneath avatar */}
-              <div className="absolute w-[17.1875rem] h-[7.27rem] left-1/2 -translate-x-1/2 bottom-[-7rem] rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'blur(9.88rem)' }} aria-hidden="true" />
-              <div className="absolute w-[8.6375rem] h-[6rem] left-1/2 -translate-x-1/2 bottom-[-6.38rem] rounded-full pointer-events-none mix-blend-plus-lighter" style={{ background: '#40C99C', filter: 'blur(8.71rem)' }} aria-hidden="true" />
+              <div className="absolute w-[17.1875rem] h-[7.27rem] left-1/2 -translate-x-1/2 bottom-[-7rem] rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'url(#blur-157)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] left-1/2 -translate-x-1/2 bottom-[-6.38rem] rounded-full pointer-events-none mix-blend-plus-lighter" style={{ background: '#40C99C', filter: 'url(#blur-139)' }} aria-hidden="true" />
             </div>
 
             {/* Camera button */}

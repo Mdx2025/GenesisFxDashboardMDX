@@ -235,7 +235,7 @@ function TraderPassportCard() {
                 width: `${xpPct}%`,
                 height: '14px',
                 background: 'linear-gradient(270deg, #D760FF 50%, #D760FF 58.39%, rgba(152, 119, 226, 0.00) 77.98%)',
-                filter: 'blur(2.7px)',
+                filter: 'url(#blur-3)',
               }}
             />
           </div>

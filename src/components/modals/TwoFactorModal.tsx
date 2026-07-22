@@ -90,7 +90,7 @@ export function TwoFactorModal({ open, onClose }: TwoFactorModalProps) {
             className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.875rem]"
             aria-hidden="true"
           >
-            <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 bg-[#064B34] rounded-full" style={{ filter: 'blur(157px)' }} />
+            <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2 bg-[#064B34] rounded-full" style={{ filter: 'url(#blur-157)' }} />
           </div>
 
           <button

@@ -118,7 +118,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
       <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="w-[51.636rem] max-w-[95vw] overflow-hidden" style={{ background: '#0C1311' }}>
         {/* Hero banner */}
         <div className="relative h-[14.924rem] overflow-hidden" style={{ background: '#0C1311' }}>
-          <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'blur(200.67px)' }} aria-hidden="true" />
+          <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'url(#blur-201)' }} aria-hidden="true" />
           <h2 className="absolute left-[2.394rem] top-[3.411rem] text-white text-2xl font-acid">Referral Details</h2>
           <div className="absolute right-[2.394rem] top-[8.522rem]">
             <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">Joined</span>
