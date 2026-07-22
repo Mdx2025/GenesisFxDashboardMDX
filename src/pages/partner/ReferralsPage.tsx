@@ -149,7 +149,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] py-10 relative z-10">
           {/* Personal Info */}
-          <div className="bg-[#0C1311] rounded-[1.481rem] border-[1.48px] border-[#0C1311] p-6 shadow-[0px_5.93px_29.63px_rgba(0,0,0,0.03)] flex flex-col">
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col" style={{ background: '#0C1311' }}>
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
             <div className="flex flex-col justify-between flex-1">
               <InfoRow label="NAME" value={referral.name} />
@@ -157,10 +157,10 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
               <InfoRow label="PHONE" value="04263942342" />
               <InfoRow label="COUNTRY" value="AR Argentina" />
             </div>
-          </div>
+          </GlassCard>
 
           {/* Referral Info */}
-          <div className="bg-[#0C1311] rounded-[1.481rem] border-[1.48px] border-[#0C1311] p-6 shadow-[0px_5.93px_29.63px_rgba(0,0,0,0.03)] flex flex-col">
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col" style={{ background: '#0C1311' }}>
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">REFERRAL INFO</h3>
             <div className="flex flex-col justify-between flex-1">
               <div className="flex items-center justify-between">
@@ -180,7 +180,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
                 <InfoBadge text="Inactive" />
               </div>
             </div>
-          </div>
+          </GlassCard>
         </div>
 
         {/* Close button */}
