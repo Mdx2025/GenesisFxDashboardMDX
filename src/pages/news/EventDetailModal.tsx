@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
+import { GlassCard } from '@/components/ui'
 import type { EconomicEvent } from '@/data/economicCalendar'
 
 function GlobalIcon() {
@@ -105,9 +106,12 @@ export function EventDetailModal({ open, onClose, event }: EventDetailModalProps
       aria-modal="true"
       aria-label={event.event}
     >
-      <div
+      <GlassCard
         ref={modalRef}
-        className="relative w-[460px] max-w-[95vw] rounded-[22px] bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
+        variant="light"
+        divider="none"
+        rounded="22px"
+        className="w-[460px] max-w-[95vw] !bg-gfx-green-800"
       >
         {/* Header */}
         <div className="flex items-center gap-[18px] px-[25px] pt-7">
@@ -169,7 +173,7 @@ export function EventDetailModal({ open, onClose, event }: EventDetailModalProps
             <ExternalLinkIcon />
           </a>
         </div>
-      </div>
+      </GlassCard>
     </div>
   )
 }
