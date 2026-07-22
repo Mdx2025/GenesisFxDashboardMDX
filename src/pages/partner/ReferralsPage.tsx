@@ -147,7 +147,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         </div>
 
         {/* Info cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] pb-[2.394rem] relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] py-10 relative z-10">
           {/* Personal Info */}
           <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6" style={{ background: '#0C1311' }}>
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
