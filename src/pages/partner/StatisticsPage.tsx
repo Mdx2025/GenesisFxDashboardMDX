@@ -45,7 +45,7 @@ function RevenueCard() {
       <div className="flex flex-col">
         {/* Container 1: Revenue summary */}
         <div className="relative p-6 overflow-hidden">
-          <div className="flex flex-row justify-between items-center mb-2">
+          <div className="flex flex-row justify-between items-center">
             <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
             <div className="w-[59px] h-[59px] rounded-[20px] bg-[#09241C] border border-[#064B34] flex items-center justify-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -55,8 +55,10 @@ function RevenueCard() {
               </svg>
             </div>
           </div>
-          <p className="text-white text-5xl font-acid leading-normal">$0.00</p>
-          <p className="text-[#808080] text-sm font-acid mt-1">This year: <span className="text-white">$0.00</span></p>
+          <div className="flex flex-col gap-2">
+            <p className="text-white text-5xl font-acid leading-none">$0.00</p>
+            <p className="text-[#808080] text-sm font-acid">This year: <span className="text-white">$0.00</span></p>
+          </div>
           <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[6.25rem]" />
         </div>
 
