@@ -149,34 +149,38 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] py-10 relative z-10">
           {/* Personal Info */}
-          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6" style={{ background: '#0C1311' }}>
+          <div className="bg-[#0C1311] rounded-[1.481rem] border-[1.48px] border-[#0C1311] p-6 shadow-[0px_5.93px_29.63px_rgba(0,0,0,0.03)] flex flex-col">
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
-            <InfoRow label="NAME" value={referral.name} />
-            <InfoRow label="EMAIL" value={referral.email} />
-            <InfoRow label="PHONE" value="04263942342" />
-            <InfoRow label="COUNTRY" value="AR Argentina" />
-          </GlassCard>
+            <div className="flex flex-col justify-between flex-1">
+              <InfoRow label="NAME" value={referral.name} />
+              <InfoRow label="EMAIL" value={referral.email} />
+              <InfoRow label="PHONE" value="04263942342" />
+              <InfoRow label="COUNTRY" value="AR Argentina" />
+            </div>
+          </div>
 
           {/* Referral Info */}
-          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6" style={{ background: '#0C1311' }}>
+          <div className="bg-[#0C1311] rounded-[1.481rem] border-[1.48px] border-[#0C1311] p-6 shadow-[0px_5.93px_29.63px_rgba(0,0,0,0.03)] flex flex-col">
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">REFERRAL INFO</h3>
-            <div className="flex items-center justify-between py-[0.66rem]">
-              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">LEVEL</span>
-              <span className="text-white text-base font-acid leading-[1.2rem]">{referral.level}</span>
+            <div className="flex flex-col justify-between flex-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">LEVEL</span>
+                <span className="text-white text-base font-acid leading-[1.2rem]">{referral.level}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">STATUS</span>
+                <InfoBadge text="Active" />
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">CODE</span>
+                <InfoBadge text="GFX605D9386" />
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">COUNTRY</span>
+                <InfoBadge text="Inactive" />
+              </div>
             </div>
-            <div className="flex items-center justify-between py-[0.66rem]">
-              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">STATUS</span>
-              <InfoBadge text="Active" />
-            </div>
-            <div className="flex items-center justify-between py-[0.66rem]">
-              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">CODE</span>
-              <InfoBadge text="GFX605D9386" />
-            </div>
-            <div className="flex items-center justify-between py-[0.66rem]">
-              <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">COUNTRY</span>
-              <InfoBadge text="Inactive" />
-            </div>
-          </GlassCard>
+          </div>
         </div>
 
         {/* Close button */}
