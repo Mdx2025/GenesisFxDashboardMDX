@@ -93,7 +93,7 @@ function TopReferralsCard() {
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ boxShadow: 'none' }}>
       <div className="relative p-6">
         <div className="flex justify-between items-start mb-6">
-          <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Top Referrals</h2>
+          <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Top Referrals</h2>
           <Badge variant="status">1 total</Badge>
         </div>
 
@@ -157,7 +157,7 @@ function MonthlyTrendCard() {
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Monthly Trend</h2>
+          <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Monthly Trend</h2>
           <span className="text-[#606060] text-sm font-acid">Last 12 months</span>
         </div>
 
@@ -313,7 +313,10 @@ function SymbolExposureCard() {
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
-        <h2 className="text-white text-base font-acid font-medium leading-[24.44px] mb-6">Symbol Exposure</h2>
+        <div className="flex items-center gap-2 mb-6">
+          <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Symbol Exposure</h2>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><g clipPath="url(#clip_se)"><path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 6H9.00833" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></g><defs><clipPath id="clip_se"><rect width="18" height="18" fill="white"/></clipPath></defs></svg>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
@@ -346,7 +349,10 @@ function ReferralGrowthCard() {
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Referral Growth</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Referral Growth</h2>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><g clipPath="url(#clip_rg)"><path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 6H9.00833" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></g><defs><clipPath id="clip_rg"><rect width="18" height="18" fill="white"/></clipPath></defs></svg>
+          </div>
           <PeriodPill periods={['1M', '3M', '6M', '1Y']} defaultActive="6M" />
         </div>
 
