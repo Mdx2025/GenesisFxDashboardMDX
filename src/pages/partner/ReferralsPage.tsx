@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SearchInput, GlowEllipse, ModeToggle, GlassSelect } from '@/components/ui'
+import { AvatarCircle } from '@/components/partner/shared'
 
 const LEVELS = ['All Levels', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
 
@@ -28,14 +29,6 @@ const REFERRAL_FILTER_OPTIONS = [
   { value: 'active', label: 'Active' },
   { value: 'inactive', label: 'Inactive' },
 ]
-
-function AvatarCircle({ initials }: { initials: string }) {
-  return (
-    <div className="w-[47px] h-[47px] rounded-full bg-gfx-green-800 flex items-center justify-center shrink-0">
-      <span className="text-gfx-green-500 text-[16.3px] font-acid">{initials}</span>
-    </div>
-  )
-}
 
 function LevelBadge({ level }: { level: string }) {
   return (
