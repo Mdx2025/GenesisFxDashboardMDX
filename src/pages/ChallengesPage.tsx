@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse, BannerStatBox } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -225,25 +225,37 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
   )
 }
 
+function DownloadIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7 10L12 15L17 10" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 15V3" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void }) {
   return (
-    <div className="flex flex-col gap-8">
-      {/* Hero Banner */}
-      <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
-        <div className="flex flex-col">
-          <h2 className="text-white text-h2 font-normal">10x Challenge</h2>
-          <p className="text-gfx-neutral-400 text-body2">
-            Turn $125 into $1,000,000 — prove your skill, level up your capital
-          </p>
-        </div>
-        <div className="flex items-center gap-4 bg-gfx-green-900 rounded-3xl px-6 py-4 shrink-0">
-          <div className="w-[6.125rem] h-[6.125rem] rounded-xl bg-gfx-green-200 flex items-center justify-center">
-            <TrophyIcon />
+    <div className="flex flex-col gap-6">
+      {/* Hero Banner — Active Strategies style */}
+      <GlassBannerCard>
+        <div className="flex items-center justify-between gap-8">
+          <div>
+            <h2 className="text-white text-section-title xl:text-5xl font-acid leading-none">10x Challenge</h2>
+            <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
+              Turn $125 into $1,000,000 — prove your skill, level up your capital
+            </p>
+            <div className="mt-6">
+              <SparkleButton className="px-6">
+                <span className="flex items-center gap-2">
+                  <DownloadIcon />
+                  <span>Download App</span>
+                </span>
+              </SparkleButton>
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            <span className="text-white text-h2 font-normal">0</span>
-            <span className="text-gfx-neutral-400 text-base font-medium">My challenges</span>
-          </div>
+          <BannerStatBox value={0} label="My challenges" />
         </div>
       </GlassBannerCard>
 
