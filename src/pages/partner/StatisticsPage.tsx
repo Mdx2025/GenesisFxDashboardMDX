@@ -97,9 +97,9 @@ function TopReferralsCard() {
           <Badge variant="status">1 total</Badge>
         </div>
 
-        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ boxShadow: 'none' }}>
           <div className="relative px-[1.5625rem] py-[1.4375rem]">
-            <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
+            <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[6.25rem]" />
 
             <div className="relative z-10 flex items-start gap-[1.375rem]">
               <div className="w-[3.625rem] h-[3.625rem] rounded-full bg-gfx-green-900 border border-[#064B34] flex items-center justify-center shrink-0">
@@ -107,7 +107,7 @@ function TopReferralsCard() {
               </div>
 
               <div className="flex-1 min-w-0 flex flex-col gap-[0.375rem]">
-                <div className="flex items-center gap-[5.75rem]">
+                <div className="flex items-center gap-3">
                   <span className="text-white text-base font-acid leading-[1.2rem]">Ana Pinzon</span>
                   <span className="text-white text-base font-acid font-medium leading-[1.527rem]">AR</span>
                 </div>
