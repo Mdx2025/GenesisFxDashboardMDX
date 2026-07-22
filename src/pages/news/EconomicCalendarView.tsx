@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { GlassCard, GreenDot } from '@/components/ui'
 import { economicCalendarDays } from '@/data/economicCalendar'
 import type { EconomicEvent } from '@/data/economicCalendar'
+import { EventDetailModal } from './EventDetailModal'
 
 /* ─── Icons ─── */
 
@@ -34,7 +36,7 @@ const GRID_COLS = 'grid-cols-[80px_160px_80px_1fr_120px_120px_100px]'
 
 /* ─── Calendar Row ─── */
 
-function CalendarRow({ event }: { event: EconomicEvent }) {
+function CalendarRow({ event, onFolderClick }: { event: EconomicEvent; onFolderClick: (e: EconomicEvent) => void }) {
   const actualColorClass = event.actualColor === 'red' ? 'text-gfx-red-muted' : 'text-gfx-bullish-light'
 
   return (
@@ -48,7 +50,14 @@ function CalendarRow({ event }: { event: EconomicEvent }) {
       </div>
 
       <div className="flex items-center">
-        <FolderIcon />
+        <button
+          type="button"
+          className="cursor-pointer hover:opacity-70 transition-opacity"
+          onClick={() => onFolderClick(event)}
+          aria-label={`View details for ${event.event}`}
+        >
+          <FolderIcon />
+        </button>
       </div>
 
       <span className="text-white text-sm lg:text-xl font-acid truncate">{event.event}</span>
@@ -98,23 +107,39 @@ function ColumnHeaders() {
 /* ─── Main Component ─── */
 
 export default function EconomicCalendarView() {
+  const [selectedEvent, setSelectedEvent] = useState<EconomicEvent | null>(null)
+  const [modalOpen, setModalOpen] = useState(false)
+
+  function handleFolderClick(event: EconomicEvent) {
+    setSelectedEvent(event)
+    setModalOpen(true)
+  }
+
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="overflow-x-auto">
-        <div className="min-w-[700px]">
-          {economicCalendarDays.map((day, dayIdx) => (
-            <div key={day.label}>
-              <DateHeader label={day.label} />
+    <>
+      <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
+        <div className="overflow-x-auto">
+          <div className="min-w-[700px]">
+            {economicCalendarDays.map((day, dayIdx) => (
+              <div key={day.label}>
+                <DateHeader label={day.label} />
 
-              {dayIdx === 0 && <ColumnHeaders />}
+                {dayIdx === 0 && <ColumnHeaders />}
 
-              {day.events.map(event => (
-                <CalendarRow key={event.id} event={event} />
-              ))}
-            </div>
-          ))}
+                {day.events.map(event => (
+                  <CalendarRow key={event.id} event={event} onFolderClick={handleFolderClick} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </GlassCard>
+      </GlassCard>
+
+      <EventDetailModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        event={selectedEvent}
+      />
+    </>
   )
 }
