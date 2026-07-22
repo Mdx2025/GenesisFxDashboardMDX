@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SearchInput, GlowEllipse, ModeToggle } from '@/components/ui'
+import { GlassCard, SearchInput, GlowEllipse, ModeToggle, GlassSelect } from '@/components/ui'
 
 const LEVELS = ['All Levels', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10']
 
@@ -23,18 +23,11 @@ const REFERRALS: Referral[] = [
 ]
 
 
-function DropdownSelect() {
-  return (
-    <div className="relative bg-[#0c1311] border border-gfx-green-200 rounded-[30px] h-[46px] w-[259px] flex items-center">
-      <div className="flex items-center gap-2.5 pl-4 py-2.5">
-        <span className="text-gfx-neutral-300 text-base font-acid">All Referrals</span>
-      </div>
-      <svg className="absolute right-6 top-1/2 -translate-y-1/2" width="13" height="8" viewBox="0 0 13 8" fill="none">
-        <path d="M5.036 7.107L0.433 2.504C-0.49 1.58 0.164 0 1.47 0h9.206c1.306 0 1.961 1.58 1.037 2.504L7.11 7.107a1.465 1.465 0 0 1-2.074 0z" fill="#808080" />
-      </svg>
-    </div>
-  )
-}
+const REFERRAL_FILTER_OPTIONS = [
+  { value: 'all', label: 'All Referrals' },
+  { value: 'active', label: 'Active' },
+  { value: 'inactive', label: 'Inactive' },
+]
 
 function AvatarCircle({ initials }: { initials: string }) {
   return (
@@ -254,7 +247,7 @@ export default function ReferralsPage() {
               </div>
               <div className="flex items-center gap-3">
                 <SearchInput placeholder="Search " className="w-[200px] sm:w-[287px]" />
-                <DropdownSelect />
+                <GlassSelect options={REFERRAL_FILTER_OPTIONS} defaultValue="all" placeholder="All Referrals" />
               </div>
             </div>
 
