@@ -115,10 +115,10 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
       aria-modal="true"
       aria-label="Referral Details"
     >
-      <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="w-[51.636rem] max-w-[95vw] overflow-hidden" style={{ background: '#0C1311' }}>
+      <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="w-[51.636rem] max-w-[95vw] overflow-hidden bg-[#0C1311]">
         {/* Hero banner */}
-        <div className="relative h-[14.924rem] overflow-hidden" style={{ background: '#0C1311' }}>
-          <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'url(#blur-201)' }} aria-hidden="true" />
+        <div className="relative h-[14.924rem] overflow-hidden bg-[#0C1311]">
+          <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-201)' }} aria-hidden="true" />
           <h2 className="absolute left-[2.394rem] top-[3.411rem] text-white text-2xl font-acid">Referral Details</h2>
           <div className="absolute right-[2.394rem] top-[8.522rem]">
             <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">Joined</span>
@@ -142,7 +142,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] py-10 relative z-10">
           {/* Personal Info */}
-          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col" style={{ background: '#0C1311' }}>
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col bg-[#0C1311]">
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
             <div className="flex flex-col justify-between flex-1">
               <InfoRow label="NAME" value={referral.name} />
@@ -153,7 +153,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
           </GlassCard>
 
           {/* Referral Info */}
-          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col" style={{ background: '#0C1311' }}>
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col bg-[#0C1311]">
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">REFERRAL INFO</h3>
             <div className="flex flex-col justify-between flex-1">
               <div className="flex items-center justify-between">

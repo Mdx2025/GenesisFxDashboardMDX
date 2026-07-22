@@ -136,7 +136,7 @@ interface KycStatusItemProps {
 
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.125rem] !p-0 h-[4.6875rem] !shadow-none" style={{ background: '#0C1311' }}>
+    <GlassCard variant="light" divider="none" className="!rounded-[1.125rem] !p-0 h-[4.6875rem] !shadow-none bg-[#0C1311]">
       <div className="flex items-center gap-2.5 px-6 h-full">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
           <path fillRule="evenodd" clipRule="evenodd" d="M3.76181 7.62273C5.82898 3.95758 6.86257 2.125 8.49935 2.125C10.1361 2.125 11.1697 3.95757 13.2369 7.62272L13.4945 8.07944C15.2123 11.1252 16.0712 12.648 15.2949 13.7615C14.5186 14.875 12.5981 14.875 8.75694 14.875H8.24175C4.40062 14.875 2.48005 14.875 1.70378 13.7615C0.927508 12.648 1.78641 11.1252 3.50422 8.07944L3.76181 7.62273ZM8.49935 5.13542C8.79275 5.13542 9.0306 5.37327 9.0306 5.66667V9.20833C9.0306 9.50173 8.79275 9.73958 8.49935 9.73958C8.20595 9.73958 7.9681 9.50173 7.9681 9.20833V5.66667C7.9681 5.37327 8.20595 5.13542 8.49935 5.13542ZM8.49935 12.0417C8.89055 12.0417 9.20768 11.7245 9.20768 11.3333C9.20768 10.9421 8.89055 10.625 8.49935 10.625C8.10815 10.625 7.79102 10.9421 7.79102 11.3333C7.79102 11.7245 8.10815 12.0417 8.49935 12.0417Z" fill="#808080" />
@@ -409,7 +409,7 @@ function HelpCenterIcon() {
 
 function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode; title: string; subtitle: string; action?: string }) {
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.875rem] !p-0" style={{ background: '#0C1311' }}>
+    <GlassCard variant="light" divider="none" className="!rounded-[1.875rem] !p-0 bg-[#0C1311]">
       <div className="flex items-center gap-5 px-5 py-6">
         <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
           {icon}
@@ -426,7 +426,7 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
 
 function SupportTab() {
   return (
-    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto" style={{ background: '#0C1311' }}>
+    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto bg-[#0C1311]">
       <div className="relative overflow-hidden px-6 lg:px-30 pt-6 lg:pt-12 pb-8 lg:pb-15">
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 relative z-10">
@@ -533,8 +533,7 @@ const LANGUAGES = [
 function LanguageDropdown({ selected, onSelect }: { selected: string; onSelect: (lang: string) => void }) {
   return (
     <div
-      className="absolute right-0 top-full mt-2 z-50 w-[11rem] bg-[#0C1311] rounded-[1.16rem] overflow-hidden"
-      style={{ boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)', outline: '1.16px solid #0C1311' }}
+      className="absolute right-0 top-full mt-2 z-50 w-[11rem] bg-[#0C1311] rounded-[1.16rem] overflow-hidden shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-[#0C1311]"
     >
       {LANGUAGES.map((lang, i) => (
         <button
@@ -630,7 +629,7 @@ function SettingsTab() {
     <>
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
-      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem] relative overflow-hidden" style={{ background: '#0C1311' }}>
+      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem] relative overflow-hidden bg-[#0C1311]">
         <div className="px-4 lg:px-15 2xl:px-30 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
           <StatCard className="!bg-transparent !border-[#09241C] !shadow-none [&::after]:hidden">
             <div className="px-6 py-6 flex flex-col gap-6">
@@ -779,8 +778,8 @@ function VerificationTab() {
       <GlassCard className="mt-10 !rounded-[1.16rem]">
         <div className="relative overflow-hidden">
           {/* Bottom highlight glows */}
-          <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'url(#blur-157)' }} aria-hidden="true" />
-          <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none" style={{ background: '#064B34', filter: 'url(#blur-157)' }} aria-hidden="true" />
+          <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
+          <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
 
           <div className="px-6 lg:px-30 pt-6 lg:pt-12 pb-0">
             <h3 className="text-white text-2xl font-acid leading-normal mb-6 lg:mb-10">KYC Verification Status</h3>
@@ -829,12 +828,12 @@ export default function SettingsPage() {
           <h2 className="absolute left-45 bottom-1 text-white text-2xl font-acid leading-normal hidden lg:flex">Joe Doe</h2>
 
           {/* Avatar */}
-          <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10" style={{ top: '7rem' }}>
+          <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10 top-[7rem]">
             <div className="relative w-[5.5rem] h-[5.5rem] lg:w-[7.25rem] lg:h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
               <span className="text-white text-[1.5rem] lg:text-[1.975rem] font-acid font-bold relative z-10">JD</span>
-              <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ background: '#00B38C', filter: 'url(#blur-157)' }} aria-hidden="true" />
-              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'url(#blur-139)' }} aria-hidden="true" />
-              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none" style={{ background: '#40C99C', filter: 'url(#blur-151)' }} aria-hidden="true" />
+              <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none bg-[#00B38C]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none bg-[#40C99C]" style={{ filter: 'url(#blur-139)' }} aria-hidden="true" />
+              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none bg-[#40C99C]" style={{ filter: 'url(#blur-151)' }} aria-hidden="true" />
             </div>
             {/* Camera button */}
             <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">

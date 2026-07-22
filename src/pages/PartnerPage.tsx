@@ -257,11 +257,11 @@ function RecentActivity() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ background: '#0C1311' }}>
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden bg-[#0C1311]">
       <div className="relative overflow-hidden">
-        <div className="absolute w-[493px] h-[278px] right-0 -top-[252px] rounded-full pointer-events-none bg-[#064B34] [filter:blur(157px)]" aria-hidden="true" />
-        <div className="absolute w-[493px] h-[278px] -left-[415px] -top-[213px] rounded-full pointer-events-none bg-[#064B34] [filter:blur(157px)]" aria-hidden="true" />
-        <div className="absolute w-[639px] h-[361px] left-1/4 bottom-0 translate-y-full rounded-full pointer-events-none bg-[#0C1311] [filter:blur(150px)]" aria-hidden="true" />
+        <div className="absolute w-[493px] h-[278px] right-0 -top-[252px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
+        <div className="absolute w-[493px] h-[278px] -left-[415px] -top-[213px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
+        <div className="absolute w-[639px] h-[361px] left-1/4 bottom-0 translate-y-full rounded-full pointer-events-none bg-[#0C1311] [filter:url(#blur-151)]" aria-hidden="true" />
 
         <div className="p-7 flex flex-col gap-6">
           <div className="flex items-center justify-between">

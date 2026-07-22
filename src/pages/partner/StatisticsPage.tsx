@@ -90,14 +90,14 @@ function RevenueCard() {
 
 function TopReferralsCard() {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ boxShadow: 'none' }}>
+    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden shadow-none">
       <div className="relative p-6">
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Top Referrals</h2>
           <Badge variant="status">1 total</Badge>
         </div>
 
-        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden" style={{ boxShadow: 'none' }}>
+        <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden shadow-none">
           <div className="relative px-[1.5625rem] py-[1.4375rem]">
             <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[6.25rem]" />
 
@@ -161,7 +161,7 @@ function MonthlyTrendCard() {
           <span className="text-[#606060] text-sm font-acid">Last 12 months</span>
         </div>
 
-        <div className="w-full overflow-hidden" style={{ height: '160px' }}>
+        <div className="w-full overflow-hidden h-[160px]">
           <svg width="100%" height="100%" viewBox="0 0 960 140" preserveAspectRatio="none">
             <defs>
               <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
@@ -267,13 +267,13 @@ function CommissionCalendarSection() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse" style={{ minWidth: '800px' }}>
+          <table className="w-full border-collapse min-w-[800px]">
             <thead>
               <tr>
                 {DAYS.map(day => (
-                  <th key={day} className="text-[#606060] text-sm font-acid font-medium pb-3 text-center" style={{ width: '12.5%' }}>{day}</th>
+                  <th key={day} className="text-[#606060] text-sm font-acid font-medium pb-3 text-center w-[12.5%]">{day}</th>
                 ))}
-                <th className="text-[#606060] text-sm font-acid font-medium pb-3 text-center" style={{ width: '12.5%' }}>Week Total</th>
+                <th className="text-[#606060] text-sm font-acid font-medium pb-3 text-center w-[12.5%]">Week Total</th>
               </tr>
             </thead>
             <tbody>
@@ -356,7 +356,7 @@ function ReferralGrowthCard() {
           <PeriodPill periods={['1M', '3M', '6M', '1Y']} defaultActive="6M" />
         </div>
 
-        <div className="w-full overflow-hidden" style={{ height: '120px' }}>
+        <div className="w-full overflow-hidden h-[120px]">
           <svg width="100%" height="100%" viewBox="0 0 720 120" preserveAspectRatio="none">
             <defs>
               <linearGradient id="growthGrad" x1="0" y1="0" x2="0" y2="1">
