@@ -134,19 +134,19 @@ export function EventDetailModal({ open, onClose, event }: EventDetailModalProps
         {/* Stat cards */}
         <div className="flex gap-[10px] px-[25px] mt-[16px]">
           {/* Actual */}
-          <div className="w-[130px] h-[67px] rounded-xl bg-gradient-to-b from-gfx-green-800 to-gfx-green-900 outline outline-1 outline-offset-[-1px] outline-gfx-green-900 p-[15px]">
+          <div className="w-[130px] h-[67px] rounded-sm bg-gradient-to-b from-gfx-green-800 to-gfx-green-900 outline outline-1 outline-offset-[-1px] outline-gfx-green-900 p-[15px]">
             <span className="block text-gfx-neutral-400 text-xs font-acid leading-[18.8px]">Actual</span>
             <span className={`block text-base font-acid font-medium leading-[24.44px] mt-[3px] ${actualColor}`}>{event.actual ?? '—'}</span>
           </div>
 
           {/* Forecast */}
-          <div className="w-[130px] h-[67px] rounded-xl bg-gfx-green-800 outline outline-1 outline-offset-[-1px] outline-gfx-green-900 p-[15px]">
+          <div className="w-[130px] h-[67px] rounded-sm bg-gfx-green-800 outline outline-1 outline-offset-[-1px] outline-gfx-green-900 p-[15px]">
             <span className="block text-gfx-neutral-400 text-xs font-acid leading-[18.8px]">Forecast</span>
             <span className="block text-gfx-neutral-400 text-base font-acid font-medium leading-[24.44px] mt-[3px]">{event.forecast ?? '—'}</span>
           </div>
 
           {/* Previous */}
-          <div className="w-[130px] h-[67px] rounded-xl bg-gfx-green-800 outline outline-1 outline-offset-[-1px] outline-gfx-green-900 p-[15px]">
+          <div className="w-[130px] h-[67px] rounded-sm bg-gfx-green-800 outline outline-1 outline-offset-[-1px] outline-gfx-green-900 p-[15px]">
             <span className="block text-gfx-neutral-400 text-xs font-acid leading-[18.8px]">Previous</span>
             <span className="block text-white text-base font-acid font-medium leading-[24.44px] mt-[3px]">{event.prior ?? '—'}</span>
           </div>
