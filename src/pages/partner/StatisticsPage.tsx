@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlowEllipse, ModeToggle, PeriodPill } from '@/components/ui'
+import { GlassCard, GlowEllipse, ModeToggle, PeriodPill, Badge } from '@/components/ui'
 import { TradingCalendar } from '@/components/ui/TradingCalendar'
 
 
@@ -94,14 +94,7 @@ function TopReferralsCard() {
       <div className="relative p-6">
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-white text-base font-acid font-medium leading-[24.44px]">Top Referrals</h2>
-          <div className="w-[42px] h-[42px] rounded-xl bg-gfx-green-900 flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="7" cy="5.5" r="3" fill="#00B38C" />
-              <ellipse cx="7" cy="14" rx="5" ry="3" fill="#00B38C" />
-              <circle cx="14.5" cy="6.5" r="2.2" fill="#00B38C" opacity="0.5" />
-              <ellipse cx="14.5" cy="14.5" rx="3.5" ry="2.2" fill="#00B38C" opacity="0.5" />
-            </svg>
-          </div>
+          <Badge variant="status">1 total</Badge>
         </div>
 
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
