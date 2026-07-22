@@ -66,12 +66,12 @@ function RevenueCard() {
         <div className="p-6 pt-0">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-[#09241C]">
             {[
-              { label: 'Referrals', value: '$0.00' },
-              { label: 'Clicks', value: '$0.00' },
-              { label: 'Trading vol', value: '$0.00' },
-              { label: 'Deposits', value: '$0.00' },
+              { label: '24 hours', value: '$0.00' },
+              { label: '7 Days', value: '$0.00' },
+              { label: '30 Days', value: '$0.00' },
+              { label: '3 Months', value: '$0.00' },
               { label: 'This year', value: '$0.00' },
-              { label: '2 Mo Ret', value: '$0.00' },
+              { label: '12 Months', value: '$0.00' },
             ].map(s => (
               <div
                 key={s.label}
