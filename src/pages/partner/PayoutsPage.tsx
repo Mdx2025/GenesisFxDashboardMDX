@@ -84,7 +84,7 @@ export default function PayoutsPage() {
                 <span className="absolute right-6 top-1/2 -translate-y-1/2 text-base font-acid text-white">Max</span>
               </div>
 
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 mb-6">
                 <p className="text-base font-acid font-medium text-gfx-neutral-500 leading-[24.44px]">Available balance:$0.00</p>
 
                 <GlowButton label="Submit Request" width={210} />

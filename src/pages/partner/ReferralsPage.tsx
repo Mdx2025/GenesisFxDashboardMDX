@@ -110,25 +110,25 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
     >
       <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="w-[51.636rem] max-w-[95vw] overflow-hidden bg-[#0C1311]">
         {/* Hero banner */}
-        <div className="relative h-[14.924rem] overflow-hidden bg-[#0C1311]">
+        <div className="relative h-[10rem] sm:h-[14.924rem] overflow-hidden bg-[#0C1311]">
           <div className="absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-201)' }} aria-hidden="true" />
-          <h2 className="absolute left-[2.394rem] top-[3.411rem] text-white text-2xl font-acid">Referral Details</h2>
-          <div className="absolute right-[2.394rem] top-[8.522rem]">
+          <h2 className="absolute left-4 sm:left-[2.394rem] top-4 sm:top-[3.411rem] text-white text-2xl font-acid">Referral Details</h2>
+          <div className="absolute right-4 sm:right-[2.394rem] top-[5.5rem] sm:top-[8.522rem]">
             <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">Joined</span>
           </div>
-          <div className="absolute right-[2.394rem] top-[10.278rem]">
+          <div className="absolute right-4 sm:right-[2.394rem] top-[7rem] sm:top-[10.278rem]">
             <span className="text-[#ECECEC] text-base font-acid font-medium leading-[1.527rem]">June 5, 2026</span>
           </div>
         </div>
 
         {/* Avatar + user info */}
-        <div className="absolute left-[1.996rem] top-[7.502rem] flex items-center gap-[4.625rem]">
-          <div className="w-[3.75rem] h-[3.75rem] rounded-full bg-[#0C1311] flex items-center justify-center">
+        <div className="relative sm:absolute px-4 py-3 sm:px-0 sm:py-0 sm:left-[1.996rem] sm:top-[7.502rem] flex items-center gap-3 sm:gap-[4.625rem]">
+          <div className="w-[3.75rem] h-[3.75rem] rounded-full bg-[#0C1311] flex items-center justify-center shrink-0">
             <span className="text-gfx-green-300 text-2xl font-acid">{referral.initials}</span>
           </div>
-          <div className="-ml-[2.5rem]">
+          <div className="sm:-ml-[2.5rem]">
             <p className="text-[#ECECEC] text-base font-acid font-medium leading-[1.527rem]">{referral.name}</p>
-            <p className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">{referral.email}</p>
+            <p className="text-[#A0A0A0] text-sm sm:text-base font-acid font-medium leading-[1.527rem] break-all sm:break-normal">{referral.email}</p>
           </div>
         </div>
 

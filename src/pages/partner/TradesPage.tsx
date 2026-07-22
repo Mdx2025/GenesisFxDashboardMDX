@@ -75,7 +75,7 @@ export default function TradesPage() {
             </div>
 
             <div className="flex items-center justify-between gap-4 flex-wrap px-4 sm:px-6 py-4">
-              <div className="w-[298px]">
+              <div className="w-full sm:w-[298px]">
                 <ModeToggle options={TRADE_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
               </div>
               <div className="flex items-center gap-3">

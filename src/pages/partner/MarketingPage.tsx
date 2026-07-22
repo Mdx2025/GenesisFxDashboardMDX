@@ -123,7 +123,7 @@ export default function MarketingPage() {
               <div className="absolute top-0 left-[14%] right-0 h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
               <div className="absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-green-200 [filter:url(#blur-157)]" aria-hidden="true" />
 
-              <div className="flex flex-col lg:flex-row gap-6 p-[3.3rem_3.3rem_3.3rem_3.3rem]">
+              <div className="flex flex-col lg:flex-row gap-6 p-6 sm:p-[3.3rem]">
                 <div className="flex flex-col gap-5 flex-1 min-w-0 justify-center">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center justify-center w-[2.625rem] h-[2.625rem] rounded-[0.73rem] bg-gfx-green-900 shrink-0">

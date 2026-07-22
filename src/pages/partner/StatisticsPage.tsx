@@ -237,9 +237,9 @@ function CommissionCalendarSection() {
       <div className="relative p-6">
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Partner Commission Calendar</h2>
-          <div className="w-sm">
+          <div className="w-full sm:w-sm">
             <ModeToggle options={CALENDAR_TABS} activeIndex={activeTab} onChange={setActiveTab} size="sm" />
           </div>
         </div>
@@ -250,8 +250,8 @@ function CommissionCalendarSection() {
         </div>
 
         <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
-          <div className="flex items-center gap-3">
-            <span className="text-white text-[1.5rem] font-acid">{MONTHS[month]} {year}</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-white text-lg sm:text-[1.5rem] font-acid">{MONTHS[month]} {year}</span>
             <span className="text-white text-[0.875rem] font-acid">0 commissions this month</span>
             <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-[0.875rem] font-acid">Total:$0.00</span>
           </div>
