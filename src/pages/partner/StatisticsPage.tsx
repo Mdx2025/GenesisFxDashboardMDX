@@ -266,7 +266,7 @@ function CommissionCalendarSection() {
             <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">
               <ChevronLeftIcon />
             </button>
-            <h3 className="text-white text-[1.125rem] font-acid">{MONTHS[month]} {year}</h3>
+            <h3 className="text-white text-[1.5rem] font-acid">{MONTHS[month]} {year}</h3>
             <button onClick={nextMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
               <ChevronRightIcon />
             </button>
