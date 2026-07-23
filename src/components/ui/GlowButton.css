@@ -1,0 +1,183 @@
+/* Glow Button — Huly.io-style cursor-follow CTA
+   Ported from GenesisFxMarketMDX extracted components. */
+
+.glow-btn {
+  position: relative;
+  overflow: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-family: 'Acid Grotesk', sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.25s;
+  --gb-edge: linear-gradient(
+    103.7deg,
+    hsla(160, 45%, 60%, 0.1) 38.66%,
+    rgba(56, 200, 150, 0.12) 68.55%,
+    #2fd9a3 85.01%,
+    #fff 92.12%
+  );
+  --gb-near: linear-gradient(
+    97.68deg,
+    rgba(150, 255, 220, 0) 38.1%,
+    rgba(150, 255, 220, 0.2) 82.47%,
+    #38ffbd 93.3%
+  );
+  --gb-far: linear-gradient(
+    91.88deg,
+    rgba(80, 255, 200, 0.2) 46.45%,
+    #00b374 98.59%
+  );
+}
+
+.glow-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Opaque pill fill */
+.glow-btn__fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(54deg, #D1D1D1 18%, #D2F5ED 64%, #D5FFF1 80%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+/* Border-glow rings */
+.glow-btn__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: calc(100% + 8px);
+  width: calc(100% + 8px);
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.glow-btn__ring--r {
+  opacity: 1;
+}
+
+.glow-btn__ring--l {
+  transform: translate(-50%, -50%) scaleX(-1);
+  opacity: 0;
+}
+
+.glow-btn__ring::before,
+.glow-btn__ring::after {
+  content: "";
+  position: absolute;
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  border-color: transparent;
+}
+
+.glow-btn__ring::before {
+  left: -2px;
+  top: -2px;
+  border: 2px solid transparent;
+  filter: blur(1.5px);
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    var(--gb-near) border-box;
+}
+
+.glow-btn__ring::after {
+  left: -3px;
+  top: -3px;
+  border: 3px solid transparent;
+  filter: blur(10px);
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    var(--gb-far) border-box;
+}
+
+.glow-btn__edge {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    var(--gb-edge) border-box;
+}
+
+/* Moving inner light */
+.glow-btn__clip {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow-btn__light {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 160px;
+  transform: translate(var(--lx, 0px), -50%);
+  pointer-events: none;
+}
+
+.glow-btn__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 96px;
+  height: 96px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 3.5%,
+    #7cffd4 26.5%,
+    #4dffc4 37.5%,
+    rgba(56, 255, 189, 0.5) 49%,
+    rgba(56, 255, 189, 0) 92.5%
+  );
+}
+
+.glow-btn__spread {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  filter: blur(4px);
+  background: radial-gradient(
+    43.3% 44.23% at 50% 49.51%,
+    #ffffff 29%,
+    #e6fff6 48.5%,
+    #c6f5e6 60.71%,
+    rgba(214, 255, 245, 0) 100%
+  );
+}
+
+.glow-btn__label,
+.glow-btn > svg,
+.glow-btn > img,
+.glow-btn > .glow-btn__icon {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-btn__ring,
+  .glow-btn__light {
+    transition: none;
+  }
+}

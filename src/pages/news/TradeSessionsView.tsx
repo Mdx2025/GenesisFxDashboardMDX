@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { GlassCard } from '@/components/ui'
 import { tradeSessions } from '@/data/tradeSessions'
 import type { TradeSession } from '@/data/tradeSessions'
+import { TradingGlobe } from '@/components/globe/TradingGlobe'
 
 /* ─── Icons ─── */
 
@@ -38,26 +40,34 @@ function SessionStatusIcon() {
 
 /* ─── Session Card ─── */
 
-function SessionCard({ session }: { session: TradeSession }) {
+function SessionCard({ session, isActive, onClick }: { session: TradeSession; isActive?: boolean; onClick?: () => void }) {
   const isOpen = session.status === 'open'
 
   return (
+    <div role="button" tabIndex={0} onClick={onClick} onKeyDown={e => e.key === 'Enter' && onClick?.()} className="cursor-pointer">
     <GlassCard
       variant="light"
       divider="none"
       rounded="19px"
-      className={`overflow-hidden relative ${isOpen ? '!border-gfx-green-300/30' : ''}`}
+      className={`overflow-hidden relative transition-all duration-300 ${isActive ? '!border-gfx-green-300/30 -translate-y-1' : ''} ${isOpen ? '!border-gfx-green-300/30' : ''}`}
     >
-      {/* Glow effect for open sessions */}
-      {isOpen && (
+      {(isOpen || isActive) && (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-gfx-green-200/40 via-transparent to-transparent pointer-events-none" />
           <div className="absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-gfx-green-glow/8 blur-[40px] mix-blend-screen pointer-events-none" />
         </>
       )}
 
+      {isActive && (
+        <div
+          className="absolute inset-0 z-[-1] rounded-[inherit] pointer-events-none transition-opacity duration-500"
+          style={{
+            background: `url("/images/sessions/session_card_bck.webp") center / cover no-repeat, rgba(4, 33, 24, 0.85)`,
+          }}
+        />
+      )}
+
       <div className="relative p-6 sm:p-8 lg:p-10 flex flex-col gap-3 h-[218px]">
-        {/* Header: City + Status */}
         <div className="flex items-start justify-between">
           <h3 className={`text-white font-acid leading-none ${isOpen ? 'text-3xl' : 'text-4xl'}`}>
             {session.city}
@@ -71,22 +81,21 @@ function SessionCard({ session }: { session: TradeSession }) {
           )}
         </div>
 
-        {/* Time */}
         <div className="flex items-center gap-1 mt-2">
+          <img src="/images/sessions/clock.svg" alt="" className="w-4 h-4" aria-hidden="true" />
           <span className="text-gfx-neutral-400 text-2xl font-acid leading-none">{session.time}</span>
         </div>
 
-        {/* Countdown */}
         <span className="text-gfx-green-300 text-2xl font-acid leading-none mt-auto">
           {session.countdownLabel}: {session.countdown}
         </span>
       </div>
 
-      {/* Status indicator line */}
       <div className="absolute right-5 top-1/2 -translate-y-1/2 opacity-30">
         <SessionStatusIcon />
       </div>
     </GlassCard>
+    </div>
   )
 }
 
@@ -140,19 +149,16 @@ function ActiveSessionPill({ city }: { city: string }) {
 export default function TradeSessionsView() {
   const activeSessions = tradeSessions.filter(s => s.status === 'open')
   const activeCount = activeSessions.length
+  const [focusedId, setFocusedId] = useState<string>('')
 
   return (
     <div className="relative w-full min-h-[700px] overflow-hidden">
-      {/* Globe background — centered behind everything */}
-      <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-square pointer-events-none z-0">
-        <img
-          src="/images/sessions/globe.png"
-          alt=""
-          className="w-full h-full object-contain opacity-90"
-        />
+      {/* 3D Globe background */}
+      <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-square z-0">
+        <TradingGlobe sessions={tradeSessions} onSessionFocus={setFocusedId} />
       </div>
 
-      {/* Bottom gradient fade — blends globe into background */}
+      {/* Bottom gradient fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none z-base"
         style={{
@@ -162,7 +168,7 @@ export default function TradeSessionsView() {
 
       {/* Content */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[430px_1fr_430px] gap-5 items-start px-4">
-        {/* Header — full width on mobile, center column on desktop */}
+        {/* Header */}
         <div className="flex flex-col items-center text-center gap-4 lg:order-2 lg:pt-6 mb-6 lg:mb-0">
           <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-acid leading-none">
             Trading Sessions
@@ -189,22 +195,22 @@ export default function TradeSessionsView() {
           </div>
         </div>
 
-        {/* Left column: Sydney + Tokyo — desktop only */}
+        {/* Left column: Sydney + Tokyo */}
         <div className="hidden lg:flex flex-col gap-5 lg:order-1">
-          <SessionCard session={tradeSessions[0]} />
-          <SessionCard session={tradeSessions[2]} />
+          <SessionCard session={tradeSessions[0]} isActive={focusedId === tradeSessions[0].id} onClick={() => setFocusedId(tradeSessions[0].id)} />
+          <SessionCard session={tradeSessions[2]} isActive={focusedId === tradeSessions[2].id} onClick={() => setFocusedId(tradeSessions[2].id)} />
         </div>
 
-        {/* Right column: New York + London — desktop only */}
+        {/* Right column: New York + London */}
         <div className="hidden lg:flex flex-col gap-5 lg:order-3">
-          <SessionCard session={tradeSessions[1]} />
-          <SessionCard session={tradeSessions[3]} />
+          <SessionCard session={tradeSessions[1]} isActive={focusedId === tradeSessions[1].id} onClick={() => setFocusedId(tradeSessions[1].id)} />
+          <SessionCard session={tradeSessions[3]} isActive={focusedId === tradeSessions[3].id} onClick={() => setFocusedId(tradeSessions[3].id)} />
         </div>
 
-        {/* Mobile/Tablet: 2-col grid */}
+        {/* Mobile: 2-col grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full lg:hidden">
           {tradeSessions.map(session => (
-            <SessionCard key={session.city} session={session} />
+            <SessionCard key={session.city} session={session} isActive={focusedId === session.id} onClick={() => setFocusedId(session.id)} />
           ))}
         </div>
       </div>

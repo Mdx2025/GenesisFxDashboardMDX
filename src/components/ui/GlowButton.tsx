@@ -1,4 +1,5 @@
-import { useRef, useEffect, useCallback, type ReactNode } from 'react'
+import { useRef, useCallback, type ReactNode } from 'react'
+import './GlowButton.css'
 
 interface GlowButtonProps {
   label?: string
@@ -6,6 +7,12 @@ interface GlowButtonProps {
   width?: number | string
   height?: number
   radius?: number
+  fontSize?: number
+  fontWeight?: number
+  onClick?: () => void
+  disabled?: boolean
+  className?: string
+  // Legacy props accepted for compatibility but ignored by the new visual
   smoothing?: number
   intensity?: number
   glowBlur?: number
@@ -13,107 +20,69 @@ interface GlowButtonProps {
   surfaceAngle?: number
   glow?: [string, string, string, string]
   textColor?: string
-  fontSize?: number
-  fontWeight?: number
-  onClick?: () => void
-  disabled?: boolean
 }
 
 export function GlowButton({
   label = 'Transfer Funds',
   width = 300,
   height = 44,
-  radius = 300,
-  smoothing = 0.15,
-  intensity = 0.75,
-  glowBlur = 0.5,
-  surface = ['#D1D1D1', '#D2F5ED', '#D5FFF1'],
-  surfaceAngle = 54,
-  glow = ['#38846B', '#38FFBD', '#D1D1D1', '#F0FEFE'],
-  textColor = '#000000',
   fontSize = 16,
   fontWeight = 500,
   icon,
   onClick,
   disabled = false,
+  className = '',
 }: GlowButtonProps) {
-  const stageRef = useRef<HTMLDivElement>(null)
-  const glowRRef = useRef<HTMLDivElement>(null)
-  const glowLRef = useRef<HTMLDivElement>(null)
-  const uRef = useRef(1)
-  const tRef = useRef(1)
-  const rafRef = useRef(0)
+  const lightRef = useRef<HTMLSpanElement>(null)
+  const ringRRef = useRef<HTMLSpanElement>(null)
+  const ringLRef = useRef<HTMLSpanElement>(null)
 
-  useEffect(() => {
-    const tick = () => {
-      const cur = uRef.current
-      const t = tRef.current
-      const next = cur + (t - cur) * smoothing
-      uRef.current = Math.abs(next - t) < 0.0005 ? t : next
-      const u = uRef.current
-      if (glowRRef.current) glowRRef.current.style.opacity = String(u * intensity)
-      if (glowLRef.current) glowLRef.current.style.opacity = String((1 - u) * intensity)
-      rafRef.current = requestAnimationFrame(tick)
+  const handleMove = useCallback((e: React.PointerEvent<HTMLButtonElement>) => {
+    if (disabled) return
+    const btn = e.currentTarget
+    const r = btn.getBoundingClientRect()
+    const x = e.clientX - r.left
+
+    if (lightRef.current) {
+      const offset = x - lightRef.current.offsetWidth / 2
+      lightRef.current.style.setProperty('--lx', `${Math.round(offset)}px`)
     }
-    rafRef.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(rafRef.current)
-  }, [smoothing, intensity])
 
-  const handleMove = useCallback((e: React.PointerEvent) => {
-    const el = stageRef.current
-    if (!el) return
-    const r = el.getBoundingClientRect()
-    tRef.current = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width))
-  }, [])
-
-  const b = (px: number) => `blur(${px * glowBlur}px)`
-  const cTop = (lh: number) => (height - lh) / 2
-
-  const layers = (
-    <>
-      <div
-        className="absolute pointer-events-none w-[90%] left-[5%]"
-        style={{ height, top: cTop(height), borderRadius: radius, filter: b(25), background: `linear-gradient(92deg, rgba(209,209,210,0) 0%, ${glow[0]} 100%)` }} /* dynamic */
-      />
-      <div
-        className="absolute pointer-events-none w-full left-0"
-        style={{ height: height + 8, top: cTop(height + 8), borderRadius: radius, filter: b(12.65), background: `linear-gradient(118deg, rgba(209,209,210,0) 0%, ${glow[1]} 100%)` }} /* dynamic */
-      />
-      <div
-        className="absolute pointer-events-none w-full left-0"
-        style={{ height, top: cTop(height), borderRadius: radius, filter: b(4.65), background: `linear-gradient(270deg, ${glow[2]} 0%, rgba(162,245,227,0) 100%)` }} /* dynamic */
-      />
-      <div
-        className="absolute pointer-events-none w-full left-0"
-        style={{ height, top: cTop(height), borderRadius: radius, filter: b(4.65), background: `linear-gradient(270deg, ${glow[3]} 0%, rgba(162,245,227,0) 100%)` }} /* dynamic */
-      />
-    </>
-  )
+    const frac = Math.min(1, Math.max(0, x / r.width))
+    if (ringRRef.current) ringRRef.current.style.opacity = frac.toFixed(3)
+    if (ringLRef.current) ringLRef.current.style.opacity = (1 - frac).toFixed(3)
+  }, [disabled])
 
   return (
-    <div ref={stageRef} className="relative" style={{ width }} /* dynamic */>
-      <div ref={glowRRef} className="absolute inset-0 pointer-events-none" style={{ opacity: intensity }} /* dynamic */>{layers}</div>
-      <div ref={glowLRef} className="absolute inset-0 pointer-events-none -scale-x-100" style={{ opacity: 0 }} /* dynamic */>{layers}</div>
-      <button
-        type="button"
-        onPointerMove={disabled ? undefined : handleMove}
-        onClick={disabled ? undefined : onClick}
-        disabled={disabled}
-        className={`relative w-full flex items-center justify-center select-none border-none font-acid ${disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
-        style={{
-          height,
-          borderRadius: radius,
-          color: textColor,
-          fontSize,
-          fontWeight,
-          lineHeight: '24.44px',
-          paddingInline: typeof width === 'string' ? '1.25rem' : undefined,
-          background: `linear-gradient(${surfaceAngle}deg, ${surface[0]} 18%, ${surface[1]} 64%, ${surface[2]} 80%)`,
-        }} /* dynamic */
-      >
-        {icon && <span className="flex items-center mr-2">{icon}</span>}
-        {label}
-      </button>
-    </div>
+    <button
+      type="button"
+      className={`glow-btn ${className}`}
+      style={{
+        width,
+        height,
+        fontSize,
+        fontWeight,
+        paddingInline: typeof width === 'string' ? '1.25rem' : undefined,
+      }}
+      onPointerMove={handleMove}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
+    >
+      <span className="glow-btn__ring glow-btn__ring--r" ref={ringRRef} aria-hidden="true">
+        <span className="glow-btn__edge" />
+      </span>
+      <span className="glow-btn__ring glow-btn__ring--l" ref={ringLRef} aria-hidden="true">
+        <span className="glow-btn__edge" />
+      </span>
+      <span className="glow-btn__fill" aria-hidden="true" />
+      <span className="glow-btn__clip" aria-hidden="true">
+        <span className="glow-btn__light" ref={lightRef}>
+          <span className="glow-btn__core" />
+          <span className="glow-btn__spread" />
+        </span>
+      </span>
+      {icon && <span className="glow-btn__icon">{icon}</span>}
+      <span className="glow-btn__label">{label}</span>
+    </button>
   )
 }
