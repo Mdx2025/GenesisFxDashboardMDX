@@ -65,7 +65,7 @@ export default function RootLayout() {
   return (
     <SidebarContext.Provider value={{ sidebarOpen, setSidebarOpen }}>
       <TransferContext.Provider value={{ openTransfer: () => setTransferOpen(true) }}>
-        <div className="flex w-full min-h-dvh bg-gfx-main text-white font-acid">
+        <div className="theme-root flex w-full min-h-dvh bg-gfx-main text-white font-acid">
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
           <main className="flex-1 min-w-0 relative" style={{ overflowX: 'clip' }}>
             <Outlet />

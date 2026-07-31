@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import { Breadcrumb } from '@/components/ui'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import gsap from 'gsap'
+import { Breadcrumb, ThemeSwitch } from '@/components/ui'
 import { LanguageDropdown } from '@/components/ui/LanguageDropdown'
 import { HelpIcon } from '@/components/icons'
 import './NotificationPanel.css'
@@ -66,20 +68,6 @@ function CopyIcon() {
   )
 }
 
-function MoonToggle() {
-  return (
-    <div className="relative w-[4.2rem] h-[2.27rem]">
-      <div className="absolute inset-0 rounded-full" style={{ background: 'linear-gradient(176deg, #0C1311 0%, #00B38C 100%)', boxShadow: 'inset 0px -0.79px 1.26px rgba(255,255,255,0.25)' }} />
-      <div className="absolute right-[0.25rem] top-1/2 -translate-y-1/2 w-[1.875rem] h-[1.875rem] rounded-full" style={{ background: 'linear-gradient(180deg, #99FFDD 0%, #064B34 100%)', border: '0.79px solid #00B38C' }} />
-      <div className="absolute right-[0.55rem] top-1/2 -translate-y-1/2">
-        <svg width="14" height="14" viewBox="0 0 19 19" fill="none" aria-hidden="true">
-          <path d="M14.4402 9.66381C14.3482 10.6589 13.9748 11.6073 13.3635 12.3979C12.7522 13.1886 11.9284 13.7887 10.9885 14.1282C10.0485 14.4678 9.03133 14.5326 8.05591 14.3151C7.08049 14.0976 6.18719 13.6068 5.48052 12.9001C4.77386 12.1934 4.28306 11.3001 4.06557 10.3247C3.84807 9.3493 3.91287 8.33211 4.25238 7.39217C4.59189 6.45223 5.19208 5.62843 5.9827 5.01715C6.77332 4.40587 7.72169 4.03239 8.71682 3.94043C8.1342 4.72865 7.85384 5.6998 7.92673 6.67726C7.99962 7.65471 8.42092 8.57354 9.11401 9.26662C9.80709 9.95971 10.7259 10.381 11.7034 10.4539C12.6808 10.5268 13.652 10.2464 14.4402 9.66381Z" fill="white" stroke="white" strokeWidth="0.788" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </div>
-    </div>
-  )
-}
-
 const USER_MENU_ITEMS = [
   { label: 'Profile', href: '/settings', active: true },
   { label: 'Verification', href: '/kyc' },
@@ -95,9 +83,24 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
   const [isMobile, setIsMobile] = useState(false)
   const [notifOpen, setNotifOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [userMenuMounted, setUserMenuMounted] = useState(false)
   const notifRef = useRef<HTMLDivElement>(null)
   const userMenuRef = useRef<HTMLDivElement>(null)
+  const userMenuPanelRef = useRef<HTMLDivElement>(null)
+  const userMenuBackdropRef = useRef<HTMLDivElement>(null)
+  const userMenuTriggerRef = useRef<HTMLButtonElement>(null)
+  const userMenuTimelineRef = useRef<gsap.core.Timeline | null>(null)
   const lastY = useRef(0)
+
+  function openUserMenu() {
+    setUserMenuMounted(true)
+    setUserMenuOpen(true)
+  }
+
+  function closeUserMenu(restoreFocus = true) {
+    setUserMenuOpen(false)
+    if (restoreFocus) requestAnimationFrame(() => userMenuTriggerRef.current?.focus())
+  }
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 1279px)')
@@ -128,12 +131,77 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
         setNotifOpen(false)
       }
       if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
-        setUserMenuOpen(false)
+        closeUserMenu()
       }
     }
     if (notifOpen || userMenuOpen) document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [notifOpen, userMenuOpen])
+
+  useEffect(() => {
+    if (!userMenuMounted) return
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        closeUserMenu()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [userMenuMounted])
+
+  useLayoutEffect(() => {
+    if (!userMenuMounted || !userMenuPanelRef.current || !userMenuBackdropRef.current) return
+
+    const panel = userMenuPanelRef.current
+    const backdrop = userMenuBackdropRef.current
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let focusTimer: number | undefined
+    userMenuTimelineRef.current?.kill()
+
+    if (reduceMotion) {
+      gsap.set(panel, { autoAlpha: userMenuOpen ? 1 : 0, y: 0, scale: 1 })
+      gsap.set(backdrop, { autoAlpha: userMenuOpen ? 1 : 0 })
+      if (!userMenuOpen) setUserMenuMounted(false)
+      return
+    }
+
+    if (userMenuOpen) {
+      userMenuTimelineRef.current = gsap
+        .timeline()
+        .set([panel, backdrop], { visibility: 'visible' })
+        .fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: 'power2.out' }, 0)
+        .fromTo(
+          panel,
+          { autoAlpha: 0, y: -9, scale: 0.975, transformOrigin: 'top right' },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.34, ease: 'power3.out' },
+          0,
+        )
+        .fromTo(
+          panel.querySelectorAll('[data-user-menu-item]'),
+          { autoAlpha: 0, y: -3 },
+          { autoAlpha: 1, y: 0, duration: 0.24, stagger: 0.018, ease: 'power2.out' },
+          0.07,
+        )
+
+      focusTimer = window.setTimeout(() => {
+        panel.querySelector<HTMLElement>('[data-user-menu-item]')?.focus()
+      }, 120)
+
+    } else {
+      userMenuTimelineRef.current = gsap
+        .timeline({ onComplete: () => setUserMenuMounted(false) })
+        .to(panel, { autoAlpha: 0, y: -6, scale: 0.985, duration: 0.2, ease: 'power2.in' }, 0)
+        .to(backdrop, { opacity: 0, duration: 0.18, ease: 'power2.in' }, 0)
+    }
+
+    return () => {
+      if (focusTimer) window.clearTimeout(focusTimer)
+      userMenuTimelineRef.current?.kill()
+    }
+  }, [userMenuMounted, userMenuOpen])
 
   const unreadCount = MOCK_NOTIFICATIONS.filter(n => n.unread).length
 
@@ -296,10 +364,14 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
 
           <div className="relative" ref={userMenuRef}>
             <button
+              ref={userMenuTriggerRef}
               className="flex items-center justify-center w-[2.3rem] h-[2.3rem] rounded-full overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
               style={{ background: '#064B34' }}
-              onClick={() => setUserMenuOpen(prev => !prev)}
+              onClick={() => (userMenuOpen ? closeUserMenu(false) : openUserMenu())}
               aria-label="User menu"
+              aria-haspopup="dialog"
+              aria-expanded={userMenuOpen}
+              aria-controls="user-account-menu"
             >
               <svg width="37" height="37" viewBox="0 0 37 37" fill="none" className="absolute -top-1 left-[0.5625rem]" aria-hidden="true">
                 <g filter="url(#avatar_glow)">
@@ -313,13 +385,21 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                   </filter>
                 </defs>
               </svg>
-              <span className="relative text-white text-[1.0625rem] font-acid">J</span>
+              <span className="theme-preserve-light relative text-white text-[1.0625rem] font-acid">J</span>
             </button>
 
-            {userMenuOpen && (
+            {userMenuMounted && (
               <>
-                <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />
-                <div className="absolute right-0 top-[calc(100%+0.5rem)] w-[17.25rem] z-50 rounded-[0.9375rem] overflow-hidden" style={{ background: '#0C1311', border: '1px solid #0C1311' }}>
+                <div ref={userMenuBackdropRef} className="fixed inset-0 z-40" onClick={() => closeUserMenu()} aria-hidden="true" />
+                <div
+                  ref={userMenuPanelRef}
+                  id="user-account-menu"
+                  data-user-menu-panel
+                  role="dialog"
+                  aria-modal="false"
+                  aria-label="Account options"
+                  className="user-menu-panel absolute right-0 top-[calc(100%+0.5rem)] w-[17.25rem] z-50 rounded-[0.9375rem] overflow-hidden"
+                >
                   {/* User info */}
                   <div className="flex items-center gap-3 px-[0.9375rem] pt-[1.375rem] pb-4">
                     <div className="relative w-[1.875rem] h-[1.875rem] rounded-full overflow-hidden shrink-0" style={{ background: '#064B34' }}>
@@ -335,7 +415,7 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                           </filter>
                         </defs>
                       </svg>
-                      <span className="relative flex items-center justify-center w-full h-full text-white text-[0.866rem] font-acid">J</span>
+                      <span className="theme-preserve-light relative flex items-center justify-center w-full h-full text-white text-[0.866rem] font-acid">J</span>
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-xs font-acid leading-[1.175rem]">Joe Doe</p>
@@ -349,29 +429,30 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                   {/* Menu items */}
                   <div className="flex flex-col">
                     {USER_MENU_ITEMS.map((item) => (
-                      <a
+                      <Link
                         key={item.label}
-                        href={item.href}
-                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'mx-[0.5625rem] rounded-sm' : ''} hover:opacity-80 transition-opacity`}
-                        style={item.active ? { backgroundImage: 'url(/active-item-bg.png)', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' } : undefined}
-                        onClick={() => setUserMenuOpen(false)}
+                        to={item.href}
+                        data-user-menu-item
+                        className={`relative flex items-center justify-between px-5 h-[2.5rem] ${item.active ? 'user-menu-link-active mx-[0.5625rem] rounded-sm' : ''} hover:opacity-80 transition-opacity`}
+                        onClick={() => closeUserMenu(false)}
                       >
                         <span className="text-white text-sm font-acid leading-[1.175rem]">{item.label}</span>
                         <ChevronRight />
-                      </a>
+                      </Link>
                     ))}
                   </div>
 
                   {/* Theme */}
-                  <div className="flex items-center justify-between px-5 mt-3">
+                  <div className="flex items-center justify-between px-5 mt-3 min-h-11">
                     <span className="text-white text-sm font-acid leading-[1.175rem]">Theme</span>
-                    <MoonToggle />
+                    <ThemeSwitch />
                   </div>
 
                   {/* Logout */}
                   <button
                     className="flex items-center gap-2 px-5 mt-4 pb-5 text-[#808080] hover:text-white transition-colors cursor-pointer"
-                    onClick={() => setUserMenuOpen(false)}
+                    data-user-menu-item
+                    onClick={() => closeUserMenu(false)}
                   >
                     <LogoutIcon />
                     <span className="text-[0.831rem] font-acid leading-[1.116rem]">Logout</span>
