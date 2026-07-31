@@ -23,6 +23,25 @@
   border-radius: inherit;
   overflow: hidden;
   pointer-events: none;
+  z-index: 1;
+}
+
+.theme-switch__reference-glow {
+  position: absolute;
+  left: -164px;
+  top: 1px;
+  width: 276px;
+  height: 148px;
+  pointer-events: none;
+  transform-origin: 230px 18px;
+  z-index: 0;
+}
+
+.theme-switch__reference-glow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
 .theme-switch__track::after {
@@ -63,6 +82,7 @@
   filter: blur(8px);
   opacity: 0.65;
   pointer-events: none;
+  z-index: 2;
 }
 
 .theme-switch__knob {
@@ -79,7 +99,7 @@
     0 8px 18px rgba(0, 0, 0, 0.28),
     inset 0 1px 1px rgba(255, 255, 255, 0.54);
   overflow: hidden;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -118,7 +138,7 @@
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 0 5px #fff;
-  z-index: 3;
+  z-index: 4;
   pointer-events: none;
 }
 

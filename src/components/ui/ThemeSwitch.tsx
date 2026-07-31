@@ -40,6 +40,47 @@ function SunIcon() {
   )
 }
 
+function ReferenceGradientGlow() {
+  return (
+    <svg viewBox="0 0 276 148" fill="none" aria-hidden="true">
+      <defs>
+        <filter
+          id="theme-switch-reference-blur"
+          x="-21.3594"
+          y="0"
+          width="338.44"
+          height="327.015"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="26.3613" result="referenceBlur" />
+        </filter>
+        <linearGradient
+          id="theme-switch-reference-gradient"
+          x1="197.623"
+          y1="75.4587"
+          x2="113.502"
+          y2="227.23"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#06AE76" />
+          <stop offset="1" stopColor="#CBFFF4" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {[0, 1, 2].map((layer) => (
+        <g key={layer} opacity="0.2" filter="url(#theme-switch-reference-blur)">
+          <path
+            d="M249.717 52.9467C238.492 50.3744 228.866 70.5826 225.456 81.0083L31.3633 274.292H220.194C222.825 264.158 255.271 92.5255 262.286 76.6239C269.302 60.7224 256.83 54.2135 249.717 52.9467Z"
+            fill="url(#theme-switch-reference-gradient)"
+          />
+        </g>
+      ))}
+    </svg>
+  )
+}
+
 export function ThemeSwitch() {
   const [theme, setTheme] = useState<Theme>(readTheme)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -49,15 +90,22 @@ export function ThemeSwitch() {
   const moonRef = useRef<HTMLSpanElement>(null)
   const sunRef = useRef<HTMLSpanElement>(null)
   const glowRef = useRef<HTMLSpanElement>(null)
+  const referenceGlowRef = useRef<HTMLSpanElement>(null)
   const bloomRef = useRef<HTMLSpanElement>(null)
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
   const firstRender = useRef(true)
 
   useLayoutEffect(() => {
     const isDark = theme === 'dark'
-    const targets = [knobRef.current, darkLayerRef.current, lightLayerRef.current, moonRef.current, sunRef.current, glowRef.current].filter(
-      (target): target is HTMLElement => target !== null,
-    )
+    const targets = [
+      knobRef.current,
+      darkLayerRef.current,
+      lightLayerRef.current,
+      moonRef.current,
+      sunRef.current,
+      glowRef.current,
+      referenceGlowRef.current,
+    ].filter((target): target is HTMLElement => target !== null)
 
     if (firstRender.current) {
       gsap.set(knobRef.current, { x: isDark ? 30 : 0 })
@@ -66,6 +114,7 @@ export function ThemeSwitch() {
       gsap.set(moonRef.current, { autoAlpha: isDark ? 1 : 0, rotate: isDark ? 0 : 55, scale: isDark ? 1 : 0.55 })
       gsap.set(sunRef.current, { autoAlpha: isDark ? 0 : 1, rotate: isDark ? -55 : 0, scale: isDark ? 0.55 : 1 })
       gsap.set(glowRef.current, { x: isDark ? 29 : 0, backgroundColor: isDark ? '#55ffc7' : '#f5c77a' })
+      gsap.set(referenceGlowRef.current, { opacity: isDark ? 1 : 0.32, x: isDark ? 0 : 8, scale: isDark ? 1 : 0.96 })
     } else {
       const transition = { duration: 0.46, ease: 'power3.inOut', overwrite: true }
       gsap.to(knobRef.current, { x: isDark ? 30 : 0, ...transition })
@@ -74,6 +123,7 @@ export function ThemeSwitch() {
       gsap.to(moonRef.current, { autoAlpha: isDark ? 1 : 0, rotate: isDark ? 0 : 55, scale: isDark ? 1 : 0.55, ...transition })
       gsap.to(sunRef.current, { autoAlpha: isDark ? 0 : 1, rotate: isDark ? -55 : 0, scale: isDark ? 0.55 : 1, ...transition })
       gsap.to(glowRef.current, { x: isDark ? 29 : 0, backgroundColor: isDark ? '#55ffc7' : '#f5c77a', ...transition })
+      gsap.to(referenceGlowRef.current, { opacity: isDark ? 1 : 0.32, x: isDark ? 0 : 8, scale: isDark ? 1 : 0.96, ...transition })
     }
 
     firstRender.current = false
@@ -146,6 +196,9 @@ export function ThemeSwitch() {
         className="theme-switch"
         onClick={handleToggle}
       >
+        <span ref={referenceGlowRef} className="theme-switch__reference-glow" aria-hidden="true">
+          <ReferenceGradientGlow />
+        </span>
         <span ref={darkLayerRef} className="theme-switch__track theme-switch__track--dark" aria-hidden="true" />
         <span ref={lightLayerRef} className="theme-switch__track theme-switch__track--light" aria-hidden="true" />
         <span ref={glowRef} className="theme-switch__travel-glow" aria-hidden="true" />
