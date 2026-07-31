@@ -82,7 +82,9 @@ export function ThemeSwitch() {
   }, [theme])
 
   useLayoutEffect(() => {
-    return () => timelineRef.current?.kill()
+    return () => {
+      timelineRef.current?.kill()
+    }
   }, [])
 
   function applyTheme(nextTheme: Theme) {
