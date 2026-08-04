@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-08-04
+
+- Rebuilt the Total Balance mini chart with Chart.js to match the supplied six-month equalizer reference, including bar geometry, rounded tops, emerald-to-dark gradients, and compact month labels.
+- Preserved the existing Total Balance title, value, and change copy.
+- Refactored the reusable Period Selector active item to the supplied Tailwind geometry, colors, border, typography, and clipped bottom bloom.
+
 ## 2026-07-31
 
 - Replaced the static profile-menu theme mockup with an accessible, persisted light/dark switch.

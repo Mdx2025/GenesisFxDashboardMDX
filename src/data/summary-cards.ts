@@ -21,7 +21,7 @@ export const summaryCards: SummaryCardData[] = [
     changeText: '+$6,437.21 (56.1%)',
     changeColor: 'green',
     chartType: 'bar',
-    chartData: [45, 60, 90, 30, 65, 35],
+    chartData: [42, 64, 100, 27, 74, 9],
   },
   {
     title: 'Total Equity',

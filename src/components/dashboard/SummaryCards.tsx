@@ -20,7 +20,7 @@ export function SummaryCards() {
           changeColor={card.changeColor}
           glowColor={GLOW_COLORS[i]}
           chartClassName={
-            card.title === 'Total Balance' ? 'h-[40%]' :
+            card.title === 'Total Balance' ? '!h-auto !w-[min(181px,58%)] aspect-[181/89]' :
             card.title === 'Total Equity' ? 'h-[45%]' :
             card.title === 'Closed P&L (30D)' ? '!bottom-0 !right-0' :
             undefined

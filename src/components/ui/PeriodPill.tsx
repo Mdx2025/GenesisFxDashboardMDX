@@ -1,5 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react'
-import gsap from 'gsap'
+import { useState } from 'react'
 import { CalendarIcon } from '@/components/icons'
 
 interface PeriodPillProps {
@@ -9,60 +8,35 @@ interface PeriodPillProps {
 
 export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], defaultActive = 'ALL' }: PeriodPillProps) {
   const [selected, setSelected] = useState(defaultActive)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const indicatorRef = useRef<HTMLDivElement>(null)
-  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
-  const isFirst = useRef(true)
-
-  useLayoutEffect(() => {
-    const idx = periods.indexOf(selected)
-    const btn = buttonRefs.current[idx]
-    const indicator = indicatorRef.current
-    if (!btn || !indicator) return
-
-    const place = (animate: boolean) => {
-      const left = btn.offsetLeft
-      const width = btn.offsetWidth
-      if (animate) {
-        gsap.to(indicator, { x: left, width, duration: 0.35, ease: 'power2.inOut' })
-      } else {
-        gsap.set(indicator, { x: left, width })
-      }
-    }
-
-    if (isFirst.current) {
-      place(false)
-      document.fonts?.ready.then(() => place(false))
-      isFirst.current = false
-    } else {
-      place(true)
-    }
-  }, [selected, periods])
 
   return (
-    <div ref={containerRef} className="inline-flex items-center gap-1 bg-[rgba(255,255,255,0.04)] rounded-full py-1 px-2 relative overflow-hidden">
-      <div
-        ref={indicatorRef}
-        className="absolute left-0 top-1 bottom-1 rounded-full pointer-events-none bg-[rgba(0,240,160,0.15)]"
-        aria-hidden="true"
-      >
-        <div
-          className="absolute inset-0 rounded-full border-[0.5px] border-gfx-green-glow [mask:linear-gradient(to_bottom,black_0%,transparent_60%)] [-webkit-mask:linear-gradient(to_bottom,black_0%,transparent_60%)]"
-        />
-      </div>
-      {periods.map((p, i) => (
+    <div className="relative inline-flex items-center gap-1 overflow-hidden rounded-full bg-white/[0.04] px-2 py-1">
+      {periods.map((p) => (
         <button
           key={p}
-          ref={(el) => { buttonRefs.current[i] = el }}
+          type="button"
           onClick={() => setSelected(p)}
-          className={`relative px-3 py-1 rounded-full text-xs cursor-pointer z-base transition-colors ${
-            selected === p ? 'text-white' : 'text-gfx-neutral-300 hover:text-white'
+          aria-pressed={selected === p}
+          className={`relative h-[32.35px] cursor-pointer rounded-full px-3 text-center font-acid text-xs font-normal leading-[18.8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500 ${
+            selected === p ? 'z-10 text-white' : 'z-base text-gfx-neutral-300 hover:text-white'
           }`}
         >
-          {p}
+          {selected === p && (
+            <span
+              data-layer="Button"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[32.35px] w-[53.06px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[60px] bg-[#064B34] [outline:1.35px_solid_#00B38C] [outline-offset:-1.35px]"
+              aria-hidden="true"
+            >
+              <span
+                data-layer="Ellipse 15"
+                className="absolute left-[24.94px] top-[54px] h-4 w-[29px] rounded-full bg-[#CFF2E6] blur-[20px] mix-blend-plus-lighter"
+              />
+            </span>
+          )}
+          <span className="relative z-base">{p}</span>
         </button>
       ))}
-      <button className="p-1.5 text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer z-base" aria-label="Calendar">
+      <button type="button" className="z-base cursor-pointer rounded-full p-1.5 text-gfx-neutral-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500" aria-label="Calendar">
         <CalendarIcon size={18} />
       </button>
     </div>
