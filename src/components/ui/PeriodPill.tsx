@@ -24,9 +24,10 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           {selected === p && (
             <span
               data-layer="Button"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[32.35px] w-[53.06px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[60px] bg-[#064B34] [outline:1.35px_solid_#00B38C] [outline-offset:-1.35px]"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[32.35px] w-[53.06px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[60px] bg-[#064B34]"
               aria-hidden="true"
             >
+              <span className="absolute inset-0 rounded-[60px] border-[0.5px] border-gfx-green-glow [mask:linear-gradient(to_bottom,black_0%,transparent_60%)] [-webkit-mask:linear-gradient(to_bottom,black_0%,transparent_60%)]" />
               <span
                 data-layer="Ellipse 15"
                 className="absolute left-[24.94px] top-[54px] h-4 w-[29px] rounded-full bg-[#CFF2E6] blur-[20px] mix-blend-plus-lighter"

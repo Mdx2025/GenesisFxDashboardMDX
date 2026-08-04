@@ -21,7 +21,7 @@ export function SummaryCards() {
           glowColor={GLOW_COLORS[i]}
           chartClassName={
             card.title === 'Total Balance' ? '!h-auto !w-[min(181px,58%)] aspect-[181/89]' :
-            card.title === 'Total Equity' ? 'h-[45%]' :
+            card.title === 'Total Equity' ? '!h-auto !w-[min(181px,58%)] aspect-[181/80]' :
             card.title === 'Closed P&L (30D)' ? '!bottom-0 !right-0' :
             undefined
           }
@@ -30,7 +30,10 @@ export function SummaryCards() {
             <MiniBarChart data={card.chartData as number[]} />
           )}
           {card.chartType === 'candlestick' && card.chartData && (
-            <CandlestickChart data={card.chartData as CandleData[]} />
+            <CandlestickChart
+              data={card.chartData as CandleData[]}
+              ariaLabel="Total equity candlestick chart with eight green and red candles matching the supplied market pattern"
+            />
           )}
           {card.chartType === 'area' && (
             <AreaChart color={card.changeColor === 'amber' ? '#e29d58' : '#10BC83'} />

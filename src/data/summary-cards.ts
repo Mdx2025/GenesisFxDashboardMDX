@@ -1,6 +1,10 @@
 export interface CandleData {
+  x?: number
   wickTop: number
-  body: number
+  body?: number
+  bodyTop?: number
+  bodyBottom?: number
+  bodyWidth?: number
   wickBottom: number
   bullish: boolean
 }
@@ -21,7 +25,7 @@ export const summaryCards: SummaryCardData[] = [
     changeText: '+$6,437.21 (56.1%)',
     changeColor: 'green',
     chartType: 'bar',
-    chartData: [42, 64, 100, 27, 74, 9],
+    chartData: [42, 64, 27, 100, 74, 9],
   },
   {
     title: 'Total Equity',
@@ -30,14 +34,14 @@ export const summaryCards: SummaryCardData[] = [
     changeColor: 'red',
     chartType: 'candlestick',
     chartData: [
-      { wickTop: 80, body: 60, wickBottom: 40, bullish: true },
-      { wickTop: 90, body: 50, wickBottom: 30, bullish: false },
-      { wickTop: 70, body: 55, wickBottom: 35, bullish: true },
-      { wickTop: 85, body: 65, wickBottom: 45, bullish: false },
-      { wickTop: 75, body: 45, wickBottom: 25, bullish: true },
-      { wickTop: 95, body: 70, wickBottom: 50, bullish: false },
-      { wickTop: 80, body: 60, wickBottom: 40, bullish: true },
-      { wickTop: 88, body: 58, wickBottom: 38, bullish: false },
+      { x: 11, wickTop: 0, bodyTop: 15, bodyBottom: 39, bodyWidth: 7, wickBottom: 54, bullish: true },
+      { x: 34, wickTop: 20, bodyTop: 33, bodyBottom: 49, bodyWidth: 7, wickBottom: 60, bullish: false },
+      { x: 57, wickTop: 40, bodyTop: 52, bodyBottom: 68, bodyWidth: 7, wickBottom: 79, bullish: false },
+      { x: 80, wickTop: 15, bodyTop: 30, bodyBottom: 54, bodyWidth: 7, wickBottom: 69, bullish: true },
+      { x: 103, wickTop: 0, bodyTop: 14, bodyBottom: 30, bodyWidth: 7, wickBottom: 41, bullish: false },
+      { x: 126, wickTop: 20, bodyTop: 33, bodyBottom: 49, bodyWidth: 7, wickBottom: 60, bullish: false },
+      { x: 148, wickTop: 0, bodyTop: 16, bodyBottom: 40, bodyWidth: 6, wickBottom: 55, bullish: true },
+      { x: 169, wickTop: 36, bodyTop: 38, bodyBottom: 44, bodyWidth: 6, wickBottom: 48, bullish: false },
     ],
   },
   {

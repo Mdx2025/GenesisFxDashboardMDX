@@ -111,7 +111,7 @@ export function MiniBarChart({ data, className = 'h-full' }: MiniBarChartProps) 
       <canvas
         ref={canvasRef}
         className="pointer-events-none h-full w-full text-[#ECECEC]"
-        aria-label="Total balance from June to November: June 42, July 64, August 100, September 27, October 74, November 9"
+        aria-label="Total balance from June to November: June 42, July 64, August 27, September 100, October 74, November 9"
         role="img"
       />
     </div>
