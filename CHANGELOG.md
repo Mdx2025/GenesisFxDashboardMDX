@@ -2,6 +2,7 @@
 
 ## 2026-08-05
 
+- Replaced the Academy E Book artwork with the supplied Crypto, Forex, and Stocks assets and introduced category-specific green surfaces so Crypto is lighter than the page while Forex and Stocks are lighter still.
 - Refactored the Academy E Books card reference into reusable Tailwind CSS, including its two-stage media composition, green color blend, exact radius, CTA geometry, timing metadata, focus state, and mobile-safe grid.
 - Added a subtle bottom-centered `GlowEllipse` reveal to Academy course cards on hover and keyboard focus, with a reduced-motion-safe transition.
 - Migrated Academy course cards to the reusable light `GlassCard` surface while preserving their existing content and layout.

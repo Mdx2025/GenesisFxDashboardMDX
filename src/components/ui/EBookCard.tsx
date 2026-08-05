@@ -1,11 +1,26 @@
 import { SparkleButton } from './SparkleButton'
 
 interface EBookCardProps {
-  category: string
+  category: 'Crypto' | 'Forex' | 'Stocks'
   image: string
   readTime: string
   onClick?: () => void
 }
+
+const CATEGORY_STYLES = {
+  Crypto: {
+    surface: 'bg-gfx-green-900',
+    mediaShade: 'to-black/75',
+  },
+  Forex: {
+    surface: 'bg-gfx-green-150',
+    mediaShade: 'to-black/50',
+  },
+  Stocks: {
+    surface: 'bg-gfx-green-150',
+    mediaShade: 'to-black/50',
+  },
+} as const
 
 function ClockIcon() {
   return (
@@ -17,9 +32,11 @@ function ClockIcon() {
 }
 
 export function EBookCard({ category, image, readTime, onClick }: EBookCardProps) {
+  const categoryStyle = CATEGORY_STYLES[category]
+
   return (
     <article
-      className="group relative aspect-[376/443] overflow-hidden rounded-[21.99px] bg-[#000720] cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1 focus-within:ring-2 focus-within:ring-gfx-green-500 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className={`group relative aspect-[376/443] overflow-hidden rounded-[21.99px] ${categoryStyle.surface} cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1 focus-within:ring-2 focus-within:ring-gfx-green-500 motion-reduce:transition-none motion-reduce:hover:translate-y-0`}
       onClick={onClick}
       data-ebook-card
       data-ebook-category={category}
@@ -31,7 +48,7 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
           className="h-full w-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" aria-hidden="true" />
+        <div className={`absolute inset-0 bg-gradient-to-b from-transparent ${categoryStyle.mediaShade}`} aria-hidden="true" />
       </div>
 
       <div className="absolute inset-0 bg-gfx-green-500 mix-blend-color pointer-events-none" aria-hidden="true" />
