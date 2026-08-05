@@ -27,6 +27,22 @@ function ExpandIcon() {
   )
 }
 
+function XauusdIcon() {
+  return (
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+      <g clipPath="url(#most-profitable-xau-clip)">
+        <path d="M0 0H38V38H0V0Z" fill="#D69A00" />
+        <path d="M14.42 14.63H23.77L22.41 10.97C22.36 10.82 22.26 10.69 22.13 10.59L14.42 14.63ZM14.39 10.28C14.73 9.39 15.45 8.82 16.26 8.82H21.79C22.59 8.82 23.32 9.39 23.65 10.28L25.02 13.94C25.42 15.04 24.76 16.28 23.77 16.28H14.27C13.28 16.28 12.62 15.04 13.03 13.94L14.39 10.28ZM6.95 24.13H16.28L14.92 20.47C14.86 20.32 14.77 20.19 14.64 20.09L6.95 24.13ZM6.92 19.78C7.25 18.89 7.98 18.32 8.78 18.32H14.3C15.1 18.32 15.83 18.89 16.16 19.78L17.52 23.44C17.93 24.54 17.27 25.78 16.28 25.78H6.8C5.81 25.78 5.15 24.54 5.56 23.44L6.92 19.78ZM31.27 24.13H21.88L29.63 20.09C29.75 20.18 29.85 20.31 29.91 20.47L31.27 24.13ZM23.71 18.32C22.91 18.32 22.18 18.89 21.85 19.78L20.49 23.44C20.08 24.54 20.74 25.78 21.73 25.78H31.27C32.27 25.78 32.93 24.54 32.52 23.44L31.15 19.78C30.82 18.89 30.09 18.32 29.29 18.32H23.71Z" fill="white" />
+      </g>
+      <defs>
+        <clipPath id="most-profitable-xau-clip">
+          <rect width="38" height="38" rx="19" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
 /* ─── Stat Card ─── */
 
 const COLOR_MAP = {
@@ -58,15 +74,16 @@ function MetricCard({ label, value, color, index }: { label: string; value: stri
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[9.1875rem]">
       <GlowEllipse className={`!w-[10rem] !h-[6rem] !blur-[3rem] ${GLOW_POSITIONS[index % GLOW_POSITIONS.length]}`} />
       <div className="p-5 h-full flex flex-col">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
           <span className="text-gfx-neutral-500 text-base font-acid font-medium">{label}</span>
           <InfoIcon />
         </div>
         <div className="flex-1 flex items-center mt-2">
           {isPill ? (
-            <span className="h-[2.25rem] px-5 rounded-full bg-gradient-to-t from-gfx-green-900 to-gfx-green-800 border border-white/10 flex items-center text-white text-2xl font-acid">
-              {value}
-            </span>
+            <div className="flex items-center justify-center gap-4 rounded-full px-5 py-2.5 bg-stat-pill">
+              <XauusdIcon />
+              <span className="text-white text-xl sm:text-2xl font-acid">{value}</span>
+            </div>
           ) : (
             <span className="text-4xl font-acid" style={{ color: COLOR_MAP[color] }}>
               {value}
@@ -181,11 +198,11 @@ function SessionAnalysis() {
         <h3 className="text-white text-base font-acid font-medium mb-5">Session & Time Analysis</h3>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="h-[6.4375rem] rounded-lg bg-gfx-green-900 p-4 flex flex-col justify-between">
+          <div className="relative z-10 h-[6.4375rem] rounded-lg bg-gfx-green-900 p-4 flex flex-col justify-between shadow-[0_8px_24px_rgba(0,0,0,0.18)]">
             <span className="text-gfx-neutral-400 text-sm font-acid">Best Hour</span>
             <span className="text-gfx-green-300 text-base font-acid font-medium">14:00 — 15:00</span>
           </div>
-          <div className="h-[6.4375rem] rounded-lg bg-gfx-green-900 p-4 flex flex-col justify-between">
+          <div className="relative z-10 h-[6.4375rem] rounded-lg bg-gfx-green-900 p-4 flex flex-col justify-between shadow-[0_8px_24px_rgba(0,0,0,0.18)]">
             <span className="text-gfx-neutral-400 text-sm font-acid">Best Session</span>
             <span className="text-gfx-green-300 text-base font-acid font-medium">Asian Cross</span>
           </div>

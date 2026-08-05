@@ -25,7 +25,7 @@ export const statsGrid: StatMetric[][] = [
   [
     { label: 'Average Loss', value: '$0.00', color: 'red' },
     { label: 'Max Consecutive Wins', value: '0', color: 'red' },
-    { label: 'Most Profitable Asset', value: 'NAS100', color: 'white' },
+    { label: 'Most Profitable Asset', value: 'XAAUSD', color: 'white' },
   ],
 ]
 
