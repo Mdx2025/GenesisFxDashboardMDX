@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { GlassCard } from './GlassCard'
 
 interface CourseCardProps {
   image: string
@@ -55,11 +55,15 @@ function ClockIcon() {
 
 export function CourseCard({ image, title, description, lessons, duration, level, onClick }: CourseCardProps) {
   return (
-    <div
-      className="group relative rounded-2xl overflow-hidden border border-[rgba(0,66,44,0.5)] cursor-pointer hover:border-[rgba(0,66,44,0.8)] transition-colors"
+    <GlassCard
+      variant="light"
+      divider="none"
+      rounded="16px"
+      className="group overflow-hidden cursor-pointer"
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
+      data-course-card
     >
       <div className="relative aspect-[501/334] overflow-hidden rounded-2xl">
         <img
@@ -103,6 +107,6 @@ export function CourseCard({ image, title, description, lessons, duration, level
           </div>
         </div>
       </div>
-    </div>
+    </GlassCard>
   )
 }
