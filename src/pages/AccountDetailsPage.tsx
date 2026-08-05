@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
@@ -50,20 +50,65 @@ function BackArrow() {
   )
 }
 
-function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () => void; children: React.ReactNode }) {
+function ModalOverlay({ open, onClose, ariaLabel, children }: { open: boolean; onClose: () => void; ariaLabel: string; children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
   const [visible, setVisible] = useState(false)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     if (open) {
+      triggerRef.current = document.activeElement as HTMLElement | null
       setMounted(true)
-      requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)))
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        setVisible(true)
+      }))
     } else if (mounted) {
       setVisible(false)
-      const t = setTimeout(() => setMounted(false), 250)
+      const t = setTimeout(() => {
+        setMounted(false)
+        const returnTarget = document.querySelector<HTMLElement>('button[aria-label="Settings"]')
+          ?? (triggerRef.current?.isConnected ? triggerRef.current : null)
+        returnTarget?.focus()
+      }, 250)
       return () => clearTimeout(t)
     }
   }, [open])
+
+  useEffect(() => {
+    if (!mounted || !open) return
+    const frame = requestAnimationFrame(() => closeButtonRef.current?.focus())
+    return () => cancelAnimationFrame(frame)
+  }, [mounted, open])
+
+  useEffect(() => {
+    if (!mounted) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        onClose()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+      const focusable = panelRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), [href], select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      if (!focusable?.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [mounted, onClose])
 
   if (!mounted) return null
 
@@ -74,6 +119,10 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
     >
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
       <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={ariaLabel}
         className="relative z-10 w-full max-w-[50rem] mx-4 transition-transform duration-300"
         style={{ transform: visible ? 'scale(1)' : 'scale(0.95)' }}
         onClick={(e) => e.stopPropagation()}
@@ -81,6 +130,7 @@ function ModalOverlay({ open, onClose, children }: { open: boolean; onClose: () 
         <div className="relative bg-gfx-surface-dark rounded-2xl glass-card shadow-lg backdrop-blur-xl">
           <div className="absolute left-1/2 -translate-x-1/2 -top-[20%] w-[400px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <button
+            ref={closeButtonRef}
             onClick={(e) => { e.stopPropagation(); onClose() }}
             className="absolute top-6 right-6 text-white hover:text-gfx-neutral-300 transition-colors cursor-pointer z-20"
             aria-label="Close"
@@ -159,7 +209,7 @@ export default function AccountDetailsPage() {
         </div>
 
         {/* Stat Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 [&_.text-card-label]:!text-xs [&_.text-card-change]:!text-xs">
         <SummaryCard title="Balance" value="$1,200.00" changeText="+12.4% this month" changeColor="green" />
         <SummaryCard title="Credit" value="$5,000.00" changeText="+$3,517.30" changeColor="red" />
         <SummaryCard title="Equity" value="$200.00" changeText="+12.4% this month" changeColor="green" />
@@ -243,7 +293,7 @@ export default function AccountDetailsPage() {
 
       {/* Trading Calendar */}
       <div className="mt-6 3xl:mt-8">
-        <TradingCalendar trades={MOCK_CALENDAR_TRADES} initialYear={2026} initialMonth={3} />
+        <TradingCalendar trades={MOCK_CALENDAR_TRADES} initialYear={2026} initialMonth={3} showShareButton />
       </div>
 
       {/* Transactions Panel */}
@@ -252,7 +302,7 @@ export default function AccountDetailsPage() {
       </div>
 
       {/* Edit Account Modal */}
-      <ModalOverlay open={editModal} onClose={() => setEditModal(false)}>
+      <ModalOverlay open={editModal} onClose={() => setEditModal(false)} ariaLabel="Edit account details">
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
           <div className="w-[59px] h-[59px] rounded-full bg-gfx-green-900 flex items-center justify-center mb-6">
             <SettingsIcon />
@@ -269,7 +319,7 @@ export default function AccountDetailsPage() {
       </ModalOverlay>
 
       {/* Change Password Modal */}
-      <ModalOverlay open={passwordModal} onClose={() => setPasswordModal(false)}>
+      <ModalOverlay open={passwordModal} onClose={() => setPasswordModal(false)} ariaLabel="Change account password">
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
           <div className="w-[59px] h-[59px] rounded-full bg-gfx-green-900 flex items-center justify-center mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
@@ -300,15 +350,18 @@ export default function AccountDetailsPage() {
       </ModalOverlay>
 
       {/* Change Leverage Modal */}
-      <ModalOverlay open={leverageModal} onClose={() => setLeverageModal(false)}>
+      <ModalOverlay open={leverageModal} onClose={() => setLeverageModal(false)} ariaLabel="Change account leverage">
         <div className="relative z-10 flex flex-col items-center p-8 sm:p-12">
           <h2 className="text-white text-h2 font-normal mb-6">Change Leverage</h2>
           <div className="flex items-center gap-8 mb-8 text-sm">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-start text-left">
               <span className="text-gfx-neutral-500">Account</span>
               <span className="text-white font-medium">{account.account}</span>
             </div>
-            <div className="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1" height="30" viewBox="0 0 1 30" fill="none" aria-hidden="true">
+              <path d="M0.5 0.5V29.5" stroke="#09241C" strokeLinecap="square"/>
+            </svg>
+            <div className="flex flex-col items-start text-left">
               <span className="text-gfx-neutral-500">Current</span>
               <span className="text-white font-medium">1200</span>
             </div>

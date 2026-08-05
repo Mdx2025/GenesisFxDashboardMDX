@@ -12,6 +12,7 @@
 - Corrected the Quick Actions links for New Account and Journal to use their registered TradeLocker routes.
 - Changed the Quick Actions heading color to the existing neutral-500 token (`#A0A0A0`).
 - Removed the nested glass treatment from `EmptyState` and replaced the Assets Management table control with the supplied rounded archive-download button.
+- Updated the TradeLocker account flow with the external Trade redirect, leverage summary alignment, account-card spacing, calendar sharing control, and empty Open Positions/Closed Trades states.
 
 ## 2026-07-31
 

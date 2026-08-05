@@ -12,6 +12,8 @@ import { PlatformsView } from '@/components/accounts/PlatformsView'
 
 const FILTER_TABS = ['All Accounts', 'Live', 'Demo', 'Platforms'] as const
 
+const TRADELOCKER_AUTH_URL = 'https://auth.tradelocker.com/realms/tradelocker/protocol/openid-connect/auth?client_id=frontend-web-live&redirect_uri=https%3A%2F%2Flive.tradelocker.com%2Fes%2Fauth%2Flogin&scope=openid&response_type=code&state=Z7Q47IxNVirBk8Df&nonce=VArphfrP6k4G&code_challenge=wJrcfXsXiHzGARZ7-FnBp29diszBwGEt3StM7rICgnQ&code_challenge_method=S256'
+
 const TYPE_OPTIONS: GlassSelectOption[] = [
   { value: 'all', label: 'All Types' },
   { value: 'genfx', label: 'GenFX' },
@@ -136,7 +138,13 @@ export default function AccountsPage() {
                         <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
                           <div className="flex items-center justify-end gap-6">
                             <button onClick={() => navigate(`/tradelocker/accounts/${encodeURIComponent(acc.account)}`)} className="text-gfx-neutral-300 text-sm hover:text-white transition-colors cursor-pointer">View</button>
-                            <GlowButton label="Trade" width={100} height={36} fontSize={14} />
+                            <GlowButton
+                              label="Trade"
+                              width={100}
+                              height={36}
+                              fontSize={14}
+                              onClick={() => window.location.assign(TRADELOCKER_AUTH_URL)}
+                            />
                             <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M4.66667 7.99935C4.66667 8.73573 4.06971 9.33268 3.33333 9.33268C2.59695 9.33268 2 8.73573 2 7.99935C2 7.26297 2.59695 6.66602 3.33333 6.66602C4.06971 6.66602 4.66667 7.26297 4.66667 7.99935Z" fill="white"/>

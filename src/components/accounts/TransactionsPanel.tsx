@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GlassCard, ModeToggle, SearchInput } from '@/components/ui'
+import { EmptyState, GlassCard, GlowEllipse, ModeToggle, SearchInput } from '@/components/ui'
 
 const TABS = ['Open Positions', 'Closed Trades', 'Transactions']
 
@@ -41,7 +41,7 @@ function TransferOutIcon() {
 }
 
 export function TransactionsPanel() {
-  const [activeTab, setActiveTab] = useState(2)
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
     <div>
@@ -57,10 +57,10 @@ export function TransactionsPanel() {
           <SearchInput placeholder="Search transactions" />
 
           {/* Action buttons */}
-          <button className="w-11 h-11 rounded-full border border-gfx-neutral-200 flex items-center justify-center hover:border-gfx-neutral-400 transition-colors cursor-pointer">
+          <button className="w-11 h-11 rounded-full border border-gfx-neutral-200 flex items-center justify-center hover:border-gfx-neutral-400 transition-colors cursor-pointer" aria-label="Export transactions">
             <ArchiveIcon />
           </button>
-          <button className="w-11 h-11 rounded-full border border-gfx-neutral-200 flex items-center justify-center hover:border-gfx-neutral-400 transition-colors cursor-pointer">
+          <button className="w-11 h-11 rounded-full border border-gfx-neutral-200 flex items-center justify-center hover:border-gfx-neutral-400 transition-colors cursor-pointer" aria-label="Refresh transactions">
             <RefreshIcon />
           </button>
         </div>
@@ -68,10 +68,11 @@ export function TransactionsPanel() {
 
       {/* Table card */}
       <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[493px] h-[278px] rounded-full pointer-events-none bg-gfx-green-200 [filter:url(#blur-157)] will-change-transform opacity-30" aria-hidden="true" />
+        <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
 
         <div className="relative z-10">
-          <div className="overflow-x-auto">
+          {activeTab === 2 ? (
+          <div className="overflow-x-auto" role="region" aria-label="Transactions table, scrollable">
             <table className="w-full min-w-[900px]">
               <thead>
                 <tr className="border-b border-gfx-green-900">
@@ -106,6 +107,14 @@ export function TransactionsPanel() {
               </tbody>
             </table>
           </div>
+          ) : (
+            <EmptyState
+              title={activeTab === 0 ? 'No open positions' : 'No closed trades'}
+              description={activeTab === 0
+                ? 'Open positions will appear here when trades are active.'
+                : 'Closed trades will appear here after positions are settled.'}
+            />
+          )}
         </div>
       </GlassCard>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { GlassCard } from './GlassCard'
 import { GlowEllipse } from './GlowEllipse'
+import { SparkleButton } from './SparkleButton'
 
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -16,6 +17,7 @@ export interface TradingCalendarProps {
   initialMonth?: number
   onMonthChange?: (year: number, month: number) => void
   className?: string
+  showShareButton?: boolean
 }
 
 interface DayTrade {
@@ -75,7 +77,7 @@ function hasWeekTrades(trades: Record<string, TradingCalendarTrade>, year: numbe
   })
 }
 
-export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChange, className }: TradingCalendarProps) {
+export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChange, className, showShareButton = false }: TradingCalendarProps) {
   const [year, setYear] = useState(initialYear ?? new Date().getFullYear())
   const [month, setMonth] = useState(initialMonth ?? new Date().getMonth())
 
@@ -135,6 +137,25 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
 
   const tradingDays = Object.keys(trades).filter(k => k.startsWith(`${year}-${month}-`)).length
 
+  const shareCalendar = async () => {
+    const shareData = {
+      title: `${MONTH_NAMES[month]} ${year} trading calendar`,
+      url: window.location.href,
+    }
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData)
+        return
+      }
+
+      await navigator.clipboard?.writeText(shareData.url)
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') return
+      throw error
+    }
+  }
+
   return (
     <GlassCard variant="light" divider="white" rounded="19px" className={`overflow-hidden ${className ?? ''}`}>
       <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-30px]" />
@@ -150,7 +171,7 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
             <button onClick={nextMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Next month">
               <ChevronRightIcon />
             </button>
-            <div className="px-3.5 py-2.5 rounded-lg border border-gfx-neutral-500 text-gfx-neutral-500 text-sm font-medium">
+            <div className="px-3.5 py-2.5 rounded-md border border-gfx-neutral-500 text-gfx-neutral-500 text-sm font-medium">
               This month
             </div>
           </div>
@@ -166,6 +187,14 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
               <div className="px-5 py-1 rounded-full bg-gfx-green-800 border border-gfx-green-200">
                 <span className="text-sm text-gfx-neutral-600">0 days</span>
               </div>
+              {showShareButton && (
+                <SparkleButton className="!w-12 !min-w-12 !p-0" onClick={() => void shareCalendar()}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M10.3523 4C10.3523 2.61929 11.4766 1.5 12.8636 1.5C14.2506 1.5 15.375 2.61929 15.375 4C15.375 5.38071 14.2506 6.5 12.8636 6.5C12.1633 6.5 11.5303 6.21447 11.0753 5.7551L7.59875 8.12216C7.63089 8.28186 7.64773 8.44684 7.64773 8.61539C7.64773 8.94916 7.58178 9.26818 7.46219 9.55977L11.2743 12.0644C11.7069 11.712 12.2605 11.5 12.8636 11.5C14.2506 11.5 15.375 12.6193 15.375 14C15.375 15.3807 14.2506 16.5 12.8636 16.5C11.4766 16.5 10.3523 15.3807 10.3523 14C10.3523 13.6384 10.4297 13.2941 10.5688 12.9834L6.78755 10.499C6.34647 10.8824 5.7687 11.1154 5.13636 11.1154C3.74938 11.1154 2.625 9.9961 2.625 8.61539C2.625 7.23467 3.74938 6.11539 5.13636 6.11539C5.93393 6.11539 6.64389 6.48544 7.10359 7.06138L10.4729 4.76732C10.3946 4.5252 10.3523 4.2672 10.3523 4Z" fill="#C6C6C6"/>
+                  </svg>
+                  <span className="sr-only">Share trading calendar</span>
+                </SparkleButton>
+              )}
             </div>
             <InfoIcon />
           </div>

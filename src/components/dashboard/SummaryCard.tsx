@@ -29,13 +29,13 @@ export function SummaryCard({ title, value, changeText, changeColor = 'green', v
   const arrow = changeColor === 'red' ? '▼' : '▲'
 
   return (
-    <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden h-full pb-20 isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
+    <GlassCard variant="light" divider="white" rounded="16px" className={`overflow-hidden h-full isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)] ${children ? 'pb-20' : ''}`}>
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none [filter:url(#blur-157)] will-change-transform"
         style={{ background: glowColor }}
         aria-hidden="true"
       />
-      <div className="relative z-10 px-4 pt-4 sm:px-6 sm:pt-6">
+      <div className="relative z-10 px-4 py-5 sm:px-6 sm:py-10">
         <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">{title}</h3>
         <p className={`text-card-value ${valueColorMap[valueColor]} mb-2`}>{value}</p>
         <div className="flex items-center gap-1.5">
