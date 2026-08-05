@@ -18,39 +18,38 @@ function ClockIcon() {
 
 export function EBookCard({ category, image, readTime, onClick }: EBookCardProps) {
   return (
-    <div
-      className="group relative rounded-xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+    <article
+      className="group relative aspect-[376/443] overflow-hidden rounded-[21.99px] bg-[#000720] cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1 focus-within:ring-2 focus-within:ring-gfx-green-500 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
       onClick={onClick}
-      role={onClick ? 'button' : undefined}
-      tabIndex={onClick ? 0 : undefined}
+      data-ebook-card
+      data-ebook-category={category}
     >
-      <div className="relative aspect-[376/443]">
+      <div className="absolute inset-x-0 bottom-0 h-[61.65%] overflow-hidden rounded-b-[21.99px]">
         <img
           src={image}
-          alt={category}
-          className="absolute inset-0 w-full h-full object-cover"
+          alt={`${category} ebook cover`}
+          className="h-full w-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
-        <div className="absolute inset-0 bg-gfx-green-500 mix-blend-color" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" aria-hidden="true" />
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gfx-green-500 mix-blend-color pointer-events-none" aria-hidden="true" />
 
-      <div className="absolute inset-0 flex flex-col justify-between p-[22px]">
-        <h3 className="text-white text-h1 font-normal leading-none text-center mt-[50px]">
-          {category}
-        </h3>
+      <h3 className="absolute inset-x-5 top-[16.36%] text-center font-acid text-[2.749rem] font-normal leading-none text-white">
+        {category}
+      </h3>
 
-        <div className="relative flex items-center justify-between">
-          <SparkleButton>Read More</SparkleButton>
+      <div className="absolute bottom-[4.38%] left-[5.32%] right-[5.45%] flex items-end justify-between">
+        <SparkleButton className="!h-[46px] !w-[142px] !rounded-[30px] !px-[38px] [&>span]:!font-medium [&>span]:whitespace-nowrap">
+          Read more<span className="sr-only"> about {category}</span>
+        </SparkleButton>
 
-          <div className="flex items-center gap-1.5">
-            <ClockIcon />
-            <span className="text-gfx-neutral-400 text-xs font-normal">{readTime}</span>
-          </div>
+        <div className="mb-2 flex items-center gap-1.5">
+          <ClockIcon />
+          <span className="whitespace-nowrap font-acid text-[13.19px] font-normal leading-none text-gfx-neutral-400">{readTime}</span>
         </div>
       </div>
-    </div>
+    </article>
   )
 }

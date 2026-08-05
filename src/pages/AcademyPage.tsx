@@ -187,7 +187,7 @@ export default function AcademyPage() {
         )}
 
         {activeTab === 1 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 3xl:gap-5 4xl:gap-6 pt-10 xl:pt-16 pb-10 3xl:pb-14 4xl:pb-18">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 3xl:gap-5 4xl:gap-6 pt-10 xl:pt-16 pb-10 3xl:pb-14 4xl:pb-18">
             {EBOOKS.slice(0, 4).map(ebook => (
               <EBookCard
                 key={ebook.id}

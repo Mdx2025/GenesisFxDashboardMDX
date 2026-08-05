@@ -2,6 +2,7 @@
 
 ## 2026-08-05
 
+- Refactored the Academy E Books card reference into reusable Tailwind CSS, including its two-stage media composition, green color blend, exact radius, CTA geometry, timing metadata, focus state, and mobile-safe grid.
 - Added a subtle bottom-centered `GlowEllipse` reveal to Academy course cards on hover and keyboard focus, with a reduced-motion-safe transition.
 - Migrated Academy course cards to the reusable light `GlassCard` surface while preserving their existing content and layout.
 - Replaced the 10X Challenges empty state with a responsive four-card account grid matching Figma Frame 2085662554 and using the reusable light `GlassCard` surface.
