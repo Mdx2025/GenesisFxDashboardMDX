@@ -8,7 +8,7 @@
 - repository: `/home/clawd/.openclaw/workspace/GenesisFxDashboardMDX`
 - branch: `main`
 - target_route: `/tradelocker/journal`
-- status: `in_progress`
+- status: `done`
 
 ## Active Task — Journal chart refinement
 
@@ -52,10 +52,10 @@ dials:
 
 ### Active Execution
 
-- current_phase: `ready-to-deploy`
-- completed: independent reference verification passed; Net P&L reuses `PortfolioChart`; SparkleButton content layer centers all children; Genesis Score uses a responsive empty five-ring SVG; TypeScript and local responsive/fidelity/zoom QA passed.
-- blockers: local foreground `pnpm build` was rejected before execution by host admission pressure (`event_loop_p99 825.8ms`); Dokploy Docker build is the final integration gate.
-- next_exact_action: review/stage source and durable reference files, commit, push, verify Dokploy `done`, then run production DOM/layout smoke.
+- current_phase: `done`
+- completed: independent reference verification passed; Net P&L reuses `PortfolioChart`; SparkleButton content layer centers all children; Genesis Score uses a responsive empty five-ring SVG; TypeScript and local responsive/fidelity/zoom QA passed; commit `300d697` pushed; Dokploy rebuild `ZzqAgLn1jhDYFIUFpHlTh` completed `done`; production responsive QA and HTTP/bundle smoke passed.
+- blockers: none. The local foreground `pnpm build` was rejected before execution by host admission pressure (`event_loop_p99 825.8ms`); Dokploy's successful Docker build and production runtime were used as the integration gate.
+- next_exact_action: none; await user review.
 
 ### Active Validation Evidence
 
@@ -68,6 +68,9 @@ dials:
 - `200%` zoom: all five SVG text bounding boxes remain inside the viewBox.
 - fidelity: normalized live SVG versus supplied PNG MAE `0.0138396`; opaque white source artifacts intentionally excluded.
 - evidence: `/home/clawd/genesis-journal-qa.json`, `/home/clawd/genesis-journal-overview-local.png`, `/home/clawd/genesis-journal-statistics-local.png`, `/home/clawd/genesis-score-radar-normalized.png`.
+- `2026-08-04 09:58 PM AST` — Dokploy rebuild `ZzqAgLn1jhDYFIUFpHlTh` — `done`, no error.
+- `2026-08-04 10:00 PM AST` — production Playwright — same three-viewport assertions passed with zero runtime errors; evidence `/home/clawd/genesis-journal-production-qa.json`.
+- production smoke: HTTP `200` on `/`, `/home`, `/tradelocker/journal`, and SPA fallback; assets `index-CJ-DUPoT.js` and `index-DZ6PVyqm.css`; all four feature markers present.
 
 ## Scope
 
