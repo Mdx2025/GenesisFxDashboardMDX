@@ -96,6 +96,10 @@ interface NotebookViewProps {
 
 export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewProps) {
   const [activeFolder, setActiveFolder] = useState(0)
+  const selectedFolder = notebookFolders[activeFolder]
+  const filteredNotes = selectedFolder === 'All notes'
+    ? notebookNotes
+    : notebookNotes.filter(note => note.folder === selectedFolder)
 
   return (
     <div className="flex flex-col gap-4">
@@ -140,10 +144,20 @@ export default function NotebookView({ onNewNote, onNewFolder }: NotebookViewPro
         {/* Notes Grid */}
         <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
           <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-80px]" />
-          <div className="relative p-3 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-            {notebookNotes.map(note => (
+          <div
+            className="relative p-3 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5"
+            aria-live="polite"
+            data-active-folder={selectedFolder}
+            data-visible-notes={filteredNotes.length}
+          >
+            {filteredNotes.map(note => (
               <NoteCard key={note.id} note={note} />
             ))}
+            {filteredNotes.length === 0 && (
+              <p className="col-span-full py-10 text-center text-gfx-neutral-500 text-sm font-acid">
+                No notes in this folder
+              </p>
+            )}
           </div>
         </GlassCard>
       </div>

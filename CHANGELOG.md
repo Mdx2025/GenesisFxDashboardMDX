@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-05
+
+- Matched the Journal Trades table container border to the reusable light glass card and enabled Notebook folder filtering for All notes, Trade, Day, Account, and Text1.
+
 ## 2026-08-04
 
 - Promoted all base `text-gfx-neutral-300` source classes to `text-gfx-neutral-500` for clearer secondary text across the dashboard.
