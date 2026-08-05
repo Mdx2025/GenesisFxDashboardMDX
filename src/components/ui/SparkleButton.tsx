@@ -39,7 +39,7 @@ export function SparkleButton({ children, onClick, fullWidth, className }: Spark
       <svg className="absolute left-[85%] top-[62%]" width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
         <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#sparkle_blur)" />
       </svg>
-      <span className="relative flex items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
+      <span className="relative z-10 flex h-full w-full items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6">
         {children}
       </span>
       <svg className="absolute w-0 h-0" aria-hidden="true">

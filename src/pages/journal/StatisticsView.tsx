@@ -81,82 +81,54 @@ function MetricCard({ label, value, color, index }: { label: string; value: stri
 /* ─── Radar Chart ─── */
 
 function RadarChart() {
-  const cx = 160, cy = 160
-  const levels = [140, 117, 91, 67, 42]
-  const n = 5
-  const angleStep = (2 * Math.PI) / n
-  const startAngle = -Math.PI / 2
+  const rings = [
+    '229,29 384,147 325,318 135,318 76,147',
+    '229,56 356,153 308,294 151,294 103,153',
+    '229,85 329,160 291,272 168,272 130,160',
+    '229,113 302,168 274,250 185,250 157,168',
+    '229,142 275,176 257,228 202,228 184,176',
+  ]
 
-  function polyPoints(r: number) {
-    return Array.from({ length: n }, (_, i) => {
-      const a = startAngle + i * angleStep
-      return `${cx + r * Math.cos(a)},${cy + r * Math.sin(a)}`
-    }).join(' ')
-  }
-
-  const labelPositions = radarAxes.map((_, i) => {
-    const a = startAngle + i * angleStep
-    const r = 155
-    return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) }
-  })
-
-  const dataVertices = Array.from({ length: n }, (_, i) => {
-    const a = startAngle + i * angleStep
-    return { x: cx + 15 * Math.cos(a), y: cy + 15 * Math.sin(a) }
-  })
+  const labels = [
+    { label: radarAxes[0], x: 229, y: 13, anchor: 'middle' },
+    { label: radarAxes[1], x: 361, y: 132, anchor: 'start' },
+    { label: radarAxes[2], x: 289, y: 347, anchor: 'start' },
+    { label: radarAxes[3], x: 164, y: 347, anchor: 'end' },
+    { label: radarAxes[4], x: 96, y: 132, anchor: 'end' },
+  ] as const
 
   return (
-    <div className="relative flex items-center justify-center">
-      <svg width="320" height="320" viewBox="0 0 320 320">
-        <defs>
-          <filter id="glow_dot" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur stdDeviation="2.4" />
-          </filter>
-        </defs>
-        {levels.map((r, i) => (
+    <div className="relative flex h-full min-h-[18rem] w-full items-center justify-center">
+      <svg
+        className="h-full w-full"
+        viewBox="0 0 454 357"
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        aria-label="Empty Genesis Score radar chart with Win percentage, Profit factor, Average win loss, Risk to Reward, and Consistency axes"
+      >
+        {rings.map((points, i) => (
           <polygon
             key={i}
-            points={polyPoints(r)}
+            points={points}
             fill="none"
-            stroke="#09241c"
+            stroke="#303030"
             strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
           />
         ))}
-        {Array.from({ length: n }, (_, i) => {
-          const a = startAngle + i * angleStep
-          return (
-            <line
-              key={i}
-              x1={cx} y1={cy}
-              x2={cx + 140 * Math.cos(a)}
-              y2={cy + 140 * Math.sin(a)}
-              stroke="#09241c"
-              strokeWidth="1"
-            />
-          )
-        })}
-        <polygon
-          points={polyPoints(15)}
-          fill="#10BC83"
-          fillOpacity="0.15"
-          stroke="#10BC83"
-          strokeWidth="1.5"
-        />
-        {dataVertices.map((v, i) => (
-          <circle key={`gd${i}`} cx={v.x} cy={v.y} r="3.5" fill="white" filter="url(#glow_dot)" />
-        ))}
-        {labelPositions.map((pos, i) => (
+        {labels.map(({ label, x, y, anchor }) => (
           <text
-            key={i}
-            x={pos.x}
-            y={pos.y}
-            textAnchor="middle"
+            key={label}
+            x={x}
+            y={y}
+            textAnchor={anchor}
             dominantBaseline="middle"
             fill="#808080"
-            fontSize="13"
-            fontFamily="Acid Grotesk, sans-serif"
+            fontSize="16"
+            fontWeight="600"
+            fontFamily="Acid Grotesk, Arial, sans-serif"
           >
-            {radarAxes[i]}
+            {label}
           </text>
         ))}
       </svg>
@@ -400,7 +372,7 @@ export default function StatisticsView() {
       </GlassCard>
 
       {/* Genesis Score + Stats Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-6">
         {/* Genesis Score */}
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
           <div className="absolute w-[493px] h-[278px] -right-[60px] top-[182px] rounded-full pointer-events-none bg-[#064B34] blur-[157px]" aria-hidden="true" />
@@ -421,7 +393,9 @@ export default function StatisticsView() {
               </svg>
             </div>
             <div className="flex-1 min-h-0 flex flex-col">
-              <RadarChart />
+              <div className="flex-1 min-h-0">
+                <RadarChart />
+              </div>
               <ScoreSection score={15} />
             </div>
           </div>

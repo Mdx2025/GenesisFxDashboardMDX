@@ -3,6 +3,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, GreenDot, ModeToggle, AiCoachButton, ChatButton, GlowEllipse } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { weeklyStats, recentTrades, highImpactNews, journalStats, journalTabs } from '@/data/journal'
 import type { DayStatCard, RecentTrade, NewsEvent } from '@/data/journal'
 import StatisticsView from '@/pages/journal/StatisticsView'
@@ -103,38 +104,6 @@ function XauusdIcon() {
       <defs>
         <clipPath id="xauClip"><rect width="38" height="38" rx="19" fill="white" /></clipPath>
       </defs>
-    </svg>
-  )
-}
-
-/* ─── P&L Area Chart ─── */
-
-function PnlAreaChart() {
-  const points = [
-    [0, 85], [30, 75], [55, 80], [80, 65], [110, 70], [140, 50],
-    [170, 55], [200, 40], [230, 45], [260, 35], [290, 42],
-    [320, 30], [350, 35], [380, 25], [410, 30], [440, 20],
-  ]
-  const w = 460
-  const h = 120
-  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ')
-  const areaD = `${pathD} L${w},${h} L0,${h} Z`
-
-  const dotX = 350
-  const dotY = 35
-
-  return (
-    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" className="mt-auto">
-      <defs>
-        <linearGradient id="pnlGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#10BC83" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#10BC83" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d={areaD} fill="url(#pnlGrad)" />
-      <path d={pathD} stroke="#10BC83" strokeWidth="2" fill="none" />
-      <circle cx={dotX} cy={dotY} r="4" fill="#10BC83" />
-      <circle cx={dotX} cy={dotY} r="8" fill="#10BC83" fillOpacity="0.2" />
     </svg>
   )
 }
@@ -362,6 +331,7 @@ export default function JournalPage() {
                   <div className="flex items-center gap-3">
                     <SparkleButton className="!w-[3.25rem] !h-[3.25rem] !rounded-full px-0 hidden lg:flex">
                       <ShareIcon />
+                      <span className="sr-only">Share journal summary</span>
                     </SparkleButton>
                     <button
                       onClick={() => swiperRef.current?.slidePrev()}
@@ -420,8 +390,8 @@ export default function JournalPage() {
                     +${journalStats.totalPnl.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </p>
                   <p className="text-gfx-neutral-500 text-sm font-acid mt-1">Last 30 days</p>
-                  <div className="flex-1 flex items-end mt-4">
-                    <PnlAreaChart />
+                  <div className="flex-1 min-h-0 mt-4">
+                    <PortfolioChart config={defaultChartConfig} />
                   </div>
                 </div>
               </GlassCard>

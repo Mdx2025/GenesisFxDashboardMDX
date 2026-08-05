@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "site": "GenesisFxDashboardMDX",
+  "updated_at": "2026-08-04T18:36:00-04:00",
+  "owner": "matrix",
+  "assets": [
+    {
+      "id": "total-balance-chart-reference",
+      "section": "/home Total Balance summary card",
+      "role": "Pixel-fidelity reference for the six-month Chart.js bar chart",
+      "status": "approved",
+      "source_type": "supplied",
+      "provenance": {
+        "url_or_path": "/home/clawd/.openclaw/media/inbound/Group_2085662829---fc0b34c3-aa22-47df-bc39-209928842975.png",
+        "reference_or_prompt_receipt": "discord:1534321246077190194",
+        "license_status": "user-supplied for project implementation"
+      },
+      "output": {
+        "path": "src/components/charts/MiniBarChart.tsx",
+        "format": "code-native Chart.js canvas",
+        "width": 181,
+        "height": 89
+      },
+      "treatment": {
+        "desktop": "Responsive 181:89 composition with six 20px-equivalent bars and compact labels",
+        "mobile": "Scale to the card width without changing the six-column rhythm or clipping labels",
+        "focal_point": "August peak bar",
+        "reduced_data_fallback": "Static canvas rendering; no remote asset or motion required",
+        "failure_fallback": "Accessible canvas label retains the six-month trend description"
+      },
+      "validation_evidence": [
+        "Reference geometry extracted at 181x89: six 20px bars, shared baseline near y=66, month-label band 23px high",
+        "Final Chart.js canvas is 181x89 at 390, 1024, and 1920 viewport widths",
+        "ImageMagick MAE versus supplied raster: 0.0428886",
+        "/home/clawd/.openclaw/media/outbound/genesis-total-balance-card-local.png"
+      ]
+    },
+    {
+      "id": "genesis-score-radar-reference",
+      "section": "/tradelocker/journal Statistics Genesis Score card",
+      "role": "Visual-fidelity reference for the empty five-axis Genesis Score radar chart",
+      "status": "approved",
+      "source_type": "supplied",
+      "provenance": {
+        "url_or_path": "/home/clawd/.openclaw/media/inbound/Group_2085662830---ee487db5-c8dd-45d8-b51c-d95cd56c71d0.png",
+        "reference_or_prompt_receipt": "discord:1534373444890792069",
+        "license_status": "user-supplied for project implementation"
+      },
+      "output": {
+        "path": "src/pages/journal/StatisticsView.tsx",
+        "format": "code-native responsive SVG",
+        "width": 454,
+        "height": 357
+      },
+      "treatment": {
+        "desktop": "Full available card-chart height with centered 454:357 pentagonal geometry",
+        "mobile": "Scale down proportionally without clipping the five perimeter labels",
+        "focal_point": "Empty five-ring radar scaffold",
+        "reduced_data_fallback": "Empty chart is the intended no-data state; no animation required",
+        "failure_fallback": "Accessible SVG name communicates the five-axis empty state"
+      },
+      "validation_evidence": [
+        "Independent reference verification: five nested pentagon rings, no radial spokes, no plotted data, two opaque white artifacts excluded",
+        "Responsive Playwright passed at 390x844, 1024x768, and 1536x864 with zero overflow or runtime errors",
+        "Normalized live SVG versus supplied PNG MAE: 0.0138396",
+        "/home/clawd/genesis-score-radar-normalized.png"
+      ]
+    }
+  ]
+}

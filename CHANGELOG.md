@@ -2,6 +2,7 @@
 
 ## 2026-08-04
 
+- Reused the `/home` Portfolio Equity chart for Journal Net P&L, centered all `SparkleButton` content, and rebuilt the Statistics Genesis Score visual as the supplied empty five-ring radar reference at full available card height.
 - Rebuilt the Total Balance mini chart with Chart.js to match the supplied six-month equalizer reference, including bar geometry, rounded tops, emerald-to-dark gradients, and compact month labels.
 - Preserved the existing Total Balance title, value, and change copy.
 - Refactored the reusable Period Selector active item to the supplied Tailwind geometry, colors, border, typography, and clipped bottom bloom.
