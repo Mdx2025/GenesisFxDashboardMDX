@@ -182,7 +182,7 @@ export default function DepositPage() {
             <h1 className="text-white font-normal leading-none text-hero-lg">
               Deposit Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
+            <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
               All payments will be credited to your main wallet. You can then transfer funds to your trading accounts.
             </p>
           </div>
@@ -198,7 +198,7 @@ export default function DepositPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-500' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -241,7 +241,7 @@ export default function DepositPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-500' : 'text-white'}`}>
                       Select Network
                     </h3>
 
@@ -264,7 +264,7 @@ export default function DepositPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-500' : 'text-white'}`}>
                       Deposit Address
                     </h3>
 
@@ -284,7 +284,7 @@ export default function DepositPage() {
                               <QrCodePlaceholder />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <span className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-300 leading-5 3xl:leading-6 4xl:leading-8">Address</span>
+                              <span className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-500 leading-5 3xl:leading-6 4xl:leading-8">Address</span>
                               <div className="flex items-start gap-2 mt-3">
                                 <p className="text-base text-white leading-6 break-all">
                                   {DEPOSIT_ADDRESS}
@@ -298,7 +298,7 @@ export default function DepositPage() {
                                   <CopyIcon size={24} color={copied ? '#10BC83' : '#A0A0A0'} />
                                 </button>
                               </div>
-                              <p className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-300 leading-5 3xl:leading-6 4xl:leading-8 mt-3">
+                              <p className="text-sm 3xl:text-lg 4xl:text-2xl text-gfx-neutral-500 leading-5 3xl:leading-6 4xl:leading-8 mt-3">
                                 Send exactly the amount shown above to this address. Your deposit will be credited automatically after blockchain confirmation.
                               </p>
                             </div>

@@ -34,14 +34,14 @@ export function TradingAccountsTable() {
             className="grid items-center px-4 sm:px-6 xl:px-10 py-4 border-y border-white/5"
             style={{ gridTemplateColumns: GRID_COLS }} /* dynamic value */
           >
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Account</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Platform</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Type</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Balance</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Equity</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Closed P&L</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Open P&L</span>
-            <span className="text-xs font-bold tracking-label text-gfx-neutral-300 uppercase">Status</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Account</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Platform</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Type</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Balance</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Equity</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Closed P&L</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Open P&L</span>
+            <span className="text-xs font-bold tracking-label text-gfx-neutral-500 uppercase">Status</span>
             <span />
           </div>
 
@@ -53,7 +53,7 @@ export function TradingAccountsTable() {
             >
               <div>
                 <p className="text-white text-base font-bold leading-tight">{acc.account}</p>
-                <p className="text-gfx-neutral-300 text-sm mt-0.5">{acc.username}</p>
+                <p className="text-gfx-neutral-500 text-sm mt-0.5">{acc.username}</p>
               </div>
               <p className="text-base text-white/60">{acc.platform}</p>
               <div>
@@ -65,12 +65,12 @@ export function TradingAccountsTable() {
               <p className={`text-base font-semibold ${acc.openPLColor === 'green' ? 'text-gfx-green-500' : 'text-gfx-red'}`}>{acc.openPL}</p>
               <div className="flex items-center gap-2">
                 <GreenDot size={8} />
-                <span className="text-gfx-neutral-300 text-sm">{acc.status}</span>
+                <span className="text-gfx-neutral-500 text-sm">{acc.status}</span>
               </div>
               <div className="flex items-center justify-end gap-6">
-                <button className="text-gfx-neutral-300 text-sm hover:text-white transition-colors cursor-pointer">View</button>
+                <button className="text-gfx-neutral-500 text-sm hover:text-white transition-colors cursor-pointer">View</button>
                 <GlowButton label="Trade" width={100} height={36} fontSize={14} />
-                <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
+                <button className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M4.66667 7.99935C4.66667 8.73573 4.06971 9.33268 3.33333 9.33268C2.59695 9.33268 2 8.73573 2 7.99935C2 7.26297 2.59695 6.66602 3.33333 6.66602C4.06971 6.66602 4.66667 7.26297 4.66667 7.99935Z" fill="white"/>
                     <path d="M9.33333 7.99935C9.33333 8.73573 8.73638 9.33268 8 9.33268C7.26362 9.33268 6.66667 8.73573 6.66667 7.99935C6.66667 7.26297 7.26362 6.66602 8 6.66602C8.73638 6.66602 9.33333 7.26297 9.33333 7.99935Z" fill="white"/>

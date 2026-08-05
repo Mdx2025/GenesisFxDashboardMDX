@@ -18,7 +18,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           onClick={() => setSelected(p)}
           aria-pressed={selected === p}
           className={`relative h-[32.35px] cursor-pointer rounded-full px-3 text-center font-acid text-xs font-normal leading-[18.8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500 ${
-            selected === p ? 'z-10 text-white' : 'z-base text-gfx-neutral-300 hover:text-white'
+            selected === p ? 'z-10 text-white' : 'z-base text-gfx-neutral-500 hover:text-white'
           }`}
         >
           {selected === p && (
@@ -37,7 +37,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           <span className="relative z-base">{p}</span>
         </button>
       ))}
-      <button type="button" className="z-base cursor-pointer rounded-full p-1.5 text-gfx-neutral-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500" aria-label="Calendar">
+      <button type="button" className="z-base cursor-pointer rounded-full p-1.5 text-gfx-neutral-500 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500" aria-label="Calendar">
         <CalendarIcon size={18} />
       </button>
     </div>

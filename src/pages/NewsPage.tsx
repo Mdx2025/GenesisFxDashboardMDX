@@ -363,7 +363,7 @@ function EconEventRow() {
       <span className="shrink-0 ml-[32px]">
         <svg width="19" height="1" viewBox="0 0 19 1" fill="none"><path d="M0 0.5H19" stroke="#A0A0A0"/></svg>
       </span>
-      <span className="text-gfx-neutral-300 text-sm font-acid ml-[26px] shrink-0">52.8</span>
+      <span className="text-gfx-neutral-500 text-sm font-acid ml-[26px] shrink-0">52.8</span>
     </div>
   )
 }
@@ -383,11 +383,11 @@ function EconomicCalendarCard() {
 
         {/* Column headers */}
         <div className="flex items-center border-b border-gfx-green-900 pl-6 pr-5 py-3.5">
-          <span className="text-gfx-neutral-300 text-sm font-acid w-[85px] shrink-0">Time</span>
-          <span className="text-gfx-neutral-300 text-sm font-acid flex-1">Event</span>
-          <span className="text-gfx-neutral-300 text-sm font-acid w-[55px] shrink-0">Act</span>
-          <span className="text-gfx-neutral-300 text-sm font-acid w-[67px] shrink-0">FCST</span>
-          <span className="text-gfx-neutral-300 text-sm font-acid shrink-0">PREV</span>
+          <span className="text-gfx-neutral-500 text-sm font-acid w-[85px] shrink-0">Time</span>
+          <span className="text-gfx-neutral-500 text-sm font-acid flex-1">Event</span>
+          <span className="text-gfx-neutral-500 text-sm font-acid w-[55px] shrink-0">Act</span>
+          <span className="text-gfx-neutral-500 text-sm font-acid w-[67px] shrink-0">FCST</span>
+          <span className="text-gfx-neutral-500 text-sm font-acid shrink-0">PREV</span>
         </div>
 
         {/* Scrollable data rows */}

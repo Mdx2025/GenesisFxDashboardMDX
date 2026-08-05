@@ -78,7 +78,7 @@ function CopyIcon() {
 function FilterDropdown({ label, wide }: { label: string; wide?: boolean }) {
   return (
     <button
-      className={`flex items-center justify-between gap-4 px-4 py-2.5 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-300 text-sm hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none ${wide ? 'min-w-[160px]' : 'min-w-[100px]'}`}
+      className={`flex items-center justify-between gap-4 px-4 py-2.5 rounded-sm border border-white/[0.06] bg-white/[0.03] text-gfx-neutral-500 text-sm hover:border-white/10 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none ${wide ? 'min-w-[160px]' : 'min-w-[100px]'}`}
       aria-label={`Filter by ${label}`}
       aria-haspopup="listbox"
     >
@@ -293,13 +293,13 @@ export default function AssetsManagementPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
-                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Deposit Address</th>
-                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Coin</th>
-                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[10%]">Network</th>
-                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Date</th>
-                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Status</th>
-                      <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase px-4 sm:px-6 py-4 w-[8%]">Type</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[18%]">Deposit Address</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[12%]">Coin</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[10%]">Network</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[18%]">Date</th>
+                      <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[12%]">Status</th>
+                      <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-500 uppercase pr-4 sm:pr-6 py-4 w-[10%]">Amount</th>
                     </tr>
                   </thead>
                   <tbody>

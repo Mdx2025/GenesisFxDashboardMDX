@@ -42,7 +42,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
     >
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
-        <span className="text-xs uppercase tracking-tab text-gfx-neutral-300 font-medium">Chart Editor</span>
+        <span className="text-xs uppercase tracking-tab text-gfx-neutral-500 font-medium">Chart Editor</span>
         <button onClick={() => setOpen(false)} className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M11 3L3 11M3 3l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -63,7 +63,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
                   className={`px-2.5 py-1 rounded-md text-xs cursor-pointer transition-all ${
                     active
                       ? 'bg-gfx-green-500/20 text-white border border-gfx-green-500/40'
-                      : 'bg-white/[0.04] text-gfx-neutral-300 border border-white/[0.06]'
+                      : 'bg-white/[0.04] text-gfx-neutral-500 border border-white/[0.06]'
                   }`}
                 >
                   {p.label}
@@ -138,7 +138,7 @@ export function ChartEditorPanel({ config, onChange }: ChartEditorPanelProps) {
         {/* Reset */}
         <button
           onClick={() => onChange(defaultChartConfig)}
-          className="w-full py-2 rounded-lg text-xs uppercase tracking-wide text-gfx-neutral-300 hover:text-white cursor-pointer transition-colors bg-white/[0.03] border border-white/[0.06]"
+          className="w-full py-2 rounded-lg text-xs uppercase tracking-wide text-gfx-neutral-500 hover:text-white cursor-pointer transition-colors bg-white/[0.03] border border-white/[0.06]"
         >
           Reset Defaults
         </button>

@@ -437,7 +437,7 @@ export default function PammPage() {
                   <thead>
                     <tr className="border-b border-[rgba(255,255,255,0.04)]">
                       {['Strategy name', 'aum', 'Investors', 'P&L', 'Min Investment', 'managment fee', 'perfomance fee', 'status', 'actions'].map(h => (
-                        <th key={h} className="text-left text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-7 py-4 first:pl-7">{h}</th>
+                        <th key={h} className="text-left text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-7 py-4 first:pl-7">{h}</th>
                       ))}
                     </tr>
                   </thead>

@@ -49,7 +49,7 @@ export default function AccountsPage() {
         <div className="flex flex-col gap-5 sm:gap-8">
           <div>
             <h1 className="text-white text-h1 font-normal">TradeLocker Accounts</h1>
-            <p className="text-gfx-neutral-300 text-body2 mt-1 sm:mt-2">
+            <p className="text-gfx-neutral-500 text-body2 mt-1 sm:mt-2">
               {activeTab === 3
                 ? 'Advanced trading platform with powerful charting tools and real-time market data'
                 : 'Choose your preferred withdrawal method to get started'}
@@ -101,15 +101,15 @@ export default function AccountsPage() {
                 <table className="w-full min-w-[900px]">
                   <thead>
                     <tr className="border-y border-white/5">
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[11%]">Platform</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[8%]">Type</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Balance</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[12%]">Equity</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[11%]">Closed P&L</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[10%]">Open P&L</th>
-                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[7%]">Status</th>
-                      <th className="text-right text-caption font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4" />
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase px-4 sm:px-6 py-4 w-[15%]">Account</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[11%]">Platform</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[8%]">Type</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[12%]">Balance</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[12%]">Equity</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[11%]">Closed P&L</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[10%]">Open P&L</th>
+                      <th className="text-left text-caption font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[7%]">Status</th>
+                      <th className="text-right text-caption font-bold tracking-label text-gfx-neutral-500 uppercase pr-4 sm:pr-6 py-4" />
                     </tr>
                   </thead>
                   <tbody>
@@ -118,7 +118,7 @@ export default function AccountsPage() {
                         <td className="px-4 sm:px-6 py-4 xl:py-5">
                           <div>
                             <p className="text-white text-sm 3xl:text-lg 4xl:text-2xl font-bold leading-tight">{acc.account}</p>
-                            <p className="text-gfx-neutral-300 text-label mt-0.5">{acc.username}</p>
+                            <p className="text-gfx-neutral-500 text-label mt-0.5">{acc.username}</p>
                           </div>
                         </td>
                         <td className="text-white/60 text-sm 3xl:text-lg 4xl:text-2xl py-4 xl:py-5">{acc.platform}</td>
@@ -132,12 +132,12 @@ export default function AccountsPage() {
                         <td className="py-4 xl:py-5">
                           <div className="flex items-center gap-2">
                             <GreenDot size={8} />
-                            <span className="text-gfx-neutral-300 text-sm 3xl:text-lg 4xl:text-2xl">{acc.status}</span>
+                            <span className="text-gfx-neutral-500 text-sm 3xl:text-lg 4xl:text-2xl">{acc.status}</span>
                           </div>
                         </td>
                         <td className="text-right pr-4 sm:pr-6 py-4 xl:py-5">
                           <div className="flex items-center justify-end gap-6">
-                            <button onClick={() => navigate(`/tradelocker/accounts/${encodeURIComponent(acc.account)}`)} className="text-gfx-neutral-300 text-sm hover:text-white transition-colors cursor-pointer">View</button>
+                            <button onClick={() => navigate(`/tradelocker/accounts/${encodeURIComponent(acc.account)}`)} className="text-gfx-neutral-500 text-sm hover:text-white transition-colors cursor-pointer">View</button>
                             <GlowButton
                               label="Trade"
                               width={100}
@@ -145,7 +145,7 @@ export default function AccountsPage() {
                               fontSize={14}
                               onClick={() => window.location.assign(TRADELOCKER_AUTH_URL)}
                             />
-                            <button className="text-gfx-neutral-300 hover:text-white transition-colors cursor-pointer" aria-label="More options">
+                            <button className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="More options">
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M4.66667 7.99935C4.66667 8.73573 4.06971 9.33268 3.33333 9.33268C2.59695 9.33268 2 8.73573 2 7.99935C2 7.26297 2.59695 6.66602 3.33333 6.66602C4.06971 6.66602 4.66667 7.26297 4.66667 7.99935Z" fill="white"/>
                                 <path d="M9.33333 7.99935C9.33333 8.73573 8.73638 9.33268 8 9.33268C7.26362 9.33268 6.66667 8.73573 6.66667 7.99935C6.66667 7.26297 7.26362 6.66602 8 6.66602C8.73638 6.66602 9.33333 7.26297 9.33333 7.99935Z" fill="white"/>

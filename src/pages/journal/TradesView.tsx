@@ -67,7 +67,7 @@ export default function TradesView() {
                 {COLUMNS.map(col => (
                   <th
                     key={col}
-                    className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-tab"
+                    className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase text-left h-[3.6250rem] px-4 sm:px-7 tracking-tab"
                   >
                     {col}
                   </th>

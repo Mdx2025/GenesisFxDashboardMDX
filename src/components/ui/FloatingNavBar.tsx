@@ -100,7 +100,7 @@ export function FloatingNavBar({ items = defaultItems }: FloatingNavBarProps) {
               className={`relative flex items-center rounded-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 overflow-hidden will-change-transform transition-[padding,gap,background-color,color] duration-[400ms] ease-[cubic-bezier(0.4,0,0.15,1)] ${
                 isActive
                   ? 'text-white bg-gfx-green-500/20 py-[10px] pr-[18px] pl-[12px] gap-2'
-                  : 'text-gfx-neutral-300 hover:text-white bg-transparent p-[10px] gap-0'
+                  : 'text-gfx-neutral-500 hover:text-white bg-transparent p-[10px] gap-0'
               }`}
             >
               <div

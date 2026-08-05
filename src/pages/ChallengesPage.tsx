@@ -112,12 +112,12 @@ function LeaderboardContent() {
         <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-y border-white/5">
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">User</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Current Tier</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Return %</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[20%]">Chart</th>
-              <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase px-4 sm:px-6 py-4 w-[10%]">Rank</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[18%]">User</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[18%]">Current Tier</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[18%]">Return %</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[20%]">Chart</th>
+              <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-500 uppercase pr-4 sm:pr-6 py-4 w-[16%]">Reward</th>
             </tr>
           </thead>
           <tbody>
@@ -179,12 +179,12 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
         <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-y border-white/5">
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[14%]">Deposit</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[16%]">10x Equity</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[18%]">Max Drawdown</th>
-              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[16%]">Status</th>
-              <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase px-4 sm:px-6 py-4 w-[12%]">Tier</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[14%]">Deposit</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[16%]">10x Equity</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[18%]">Max Drawdown</th>
+              <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[16%]">Status</th>
+              <th className="text-right text-xs font-bold tracking-label text-gfx-neutral-500 uppercase pr-4 sm:pr-6 py-4 w-[24%]">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -408,8 +408,8 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           {/* Rank / Prize table */}
           <div className="w-full">
             <div className="flex items-center pb-3 mb-1">
-              <div className="w-[30%] text-gfx-neutral-300 text-xs font-medium tracking-wider">Rank</div>
-              <div className="w-[70%] text-gfx-neutral-300 text-xs font-medium tracking-wider text-right">Prize</div>
+              <div className="w-[30%] text-gfx-neutral-500 text-xs font-medium tracking-wider">Rank</div>
+              <div className="w-[70%] text-gfx-neutral-500 text-xs font-medium tracking-wider text-right">Prize</div>
             </div>
             {leaderboardPrizes.map((row, i) => (
               <div key={i} className="flex items-center py-4 border-b border-white/[0.04] last:border-b-0">

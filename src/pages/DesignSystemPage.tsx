@@ -52,7 +52,7 @@ function TokenSwatch({ name, value, className }: { name: string; value: string; 
       </div>
       <div>
         <p className="text-sm text-white">{name}</p>
-        <p className="text-caption text-gfx-neutral-300">{value}</p>
+        <p className="text-caption text-gfx-neutral-500">{value}</p>
       </div>
     </div>
   )
@@ -140,7 +140,7 @@ export default function DesignSystemPage() {
               ].map((r) => (
                 <div key={r.name} className="flex flex-col items-center gap-2">
                   <div className={`size-16 border border-white/10 bg-white/[0.04] ${r.twClass}`} />
-                  <p className="text-caption text-gfx-neutral-300">{r.name}</p>
+                  <p className="text-caption text-gfx-neutral-500">{r.name}</p>
                   <p className="text-caption text-gfx-neutral-500">{r.value}</p>
                 </div>
               ))}
@@ -168,21 +168,21 @@ export default function DesignSystemPage() {
         {/* Typography */}
         <Section id="typography" title="Typography">
           <div className="space-y-6">
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Display</p><p className="text-display text-white">The quick brown fox</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">H1</p><p className="text-h1 text-white">Heading One</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">H2</p><p className="text-h2 text-white">Heading Two</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">H3</p><p className="text-h3 text-white">Heading Three</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">H4</p><p className="text-h4 text-white">Heading Four</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">H5</p><p className="text-h5 text-white">Heading Five</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">H6</p><p className="text-h6 text-white">Heading Six</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Display</p><p className="text-display text-white">The quick brown fox</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">H1</p><p className="text-h1 text-white">Heading One</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">H2</p><p className="text-h2 text-white">Heading Two</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">H3</p><p className="text-h3 text-white">Heading Three</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">H4</p><p className="text-h4 text-white">Heading Four</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">H5</p><p className="text-h5 text-white">Heading Five</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">H6</p><p className="text-h6 text-white">Heading Six</p></div>
             <div className="divider-glow" aria-hidden="true" />
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Body Large</p><p className="text-body-lg text-gfx-neutral-500">The quick brown fox jumps over the lazy dog. This is body large text used for lead paragraphs.</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Body 1</p><p className="text-body1 text-gfx-neutral-500">Standard body text for general content and descriptions.</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Body 2</p><p className="text-body2 text-gfx-neutral-500">Smaller body text for secondary information and metadata.</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Caption</p><p className="text-caption text-gfx-neutral-500">Caption text for annotations and supplementary details.</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Label</p><p className="text-label text-gfx-neutral-500">Form labels and input descriptors.</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Eyebrow</p><p className="text-eyebrow text-gfx-green-500">Category Label</p></div>
-            <div><p className="text-caption text-gfx-neutral-300 mb-1">Tab</p><p className="text-tab text-gfx-neutral-500 uppercase tracking-tab">TAB LABEL</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Body Large</p><p className="text-body-lg text-gfx-neutral-500">The quick brown fox jumps over the lazy dog. This is body large text used for lead paragraphs.</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Body 1</p><p className="text-body1 text-gfx-neutral-500">Standard body text for general content and descriptions.</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Body 2</p><p className="text-body2 text-gfx-neutral-500">Smaller body text for secondary information and metadata.</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Caption</p><p className="text-caption text-gfx-neutral-500">Caption text for annotations and supplementary details.</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Label</p><p className="text-label text-gfx-neutral-500">Form labels and input descriptors.</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Eyebrow</p><p className="text-eyebrow text-gfx-green-500">Category Label</p></div>
+            <div><p className="text-caption text-gfx-neutral-500 mb-1">Tab</p><p className="text-tab text-gfx-neutral-500 uppercase tracking-tab">TAB LABEL</p></div>
           </div>
         </Section>
 
@@ -192,35 +192,35 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex flex-col items-center gap-2">
                 <SparkleButton>Deposit</SparkleButton>
-                <p className="text-caption text-gfx-neutral-300">SparkleButton</p>
+                <p className="text-caption text-gfx-neutral-500">SparkleButton</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <SparkleButton>Withdraw</SparkleButton>
-                <p className="text-caption text-gfx-neutral-300">SparkleButton</p>
+                <p className="text-caption text-gfx-neutral-500">SparkleButton</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <button className="h-12 px-6 rounded-full bg-gfx-green-500 text-black text-sm font-medium hover:bg-gfx-green-500/90 transition-colors cursor-pointer">
                   Primary
                 </button>
-                <p className="text-caption text-gfx-neutral-300">Primary</p>
+                <p className="text-caption text-gfx-neutral-500">Primary</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <button className="h-12 px-6 rounded-full border border-white/10 text-white text-sm hover:bg-white/[0.04] transition-colors cursor-pointer">
                   Outline
                 </button>
-                <p className="text-caption text-gfx-neutral-300">Outline</p>
+                <p className="text-caption text-gfx-neutral-500">Outline</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <button className="h-12 px-6 rounded-full text-gfx-neutral-500 text-sm hover:text-white hover:bg-white/[0.04] transition-colors cursor-pointer">
                   Ghost
                 </button>
-                <p className="text-caption text-gfx-neutral-300">Ghost</p>
+                <p className="text-caption text-gfx-neutral-500">Ghost</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <button className="h-12 px-6 rounded-full bg-gfx-red-dark/20 text-gfx-red text-sm hover:bg-gfx-red-dark/30 transition-colors cursor-pointer">
                   Destructive
                 </button>
-                <p className="text-caption text-gfx-neutral-300">Destructive</p>
+                <p className="text-caption text-gfx-neutral-500">Destructive</p>
               </div>
             </div>
           </Subsection>
@@ -253,7 +253,7 @@ export default function DesignSystemPage() {
               <button className="h-10 px-5 rounded-full bg-gfx-green-500/80 text-black text-sm font-medium cursor-pointer">Hover</button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500/60 text-black text-sm font-medium cursor-pointer">Active</button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium ring-2 ring-gfx-green-500 ring-offset-2 ring-offset-gfx-main cursor-pointer">Focus</button>
-              <button className="h-10 px-5 rounded-full bg-white/10 text-gfx-neutral-300 text-sm cursor-not-allowed" disabled>Disabled</button>
+              <button className="h-10 px-5 rounded-full bg-white/10 text-gfx-neutral-500 text-sm cursor-not-allowed" disabled>Disabled</button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium flex items-center gap-2" disabled>
                 <svg className="animate-spin size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                 Loading
@@ -265,11 +265,11 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap items-end gap-8">
               <div className="flex flex-col items-center gap-2">
                 <GlowButton label="Transfer Funds" onClick={() => {}} />
-                <p className="text-caption text-gfx-neutral-300">GlowButton (default)</p>
+                <p className="text-caption text-gfx-neutral-500">GlowButton (default)</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <GlowButton label="Confirm" width={200} height={40} onClick={() => {}} />
-                <p className="text-caption text-gfx-neutral-300">GlowButton (compact)</p>
+                <p className="text-caption text-gfx-neutral-500">GlowButton (compact)</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <GlowButton
@@ -280,7 +280,7 @@ export default function DesignSystemPage() {
                   textColor="#ffffff"
                   onClick={() => {}}
                 />
-                <p className="text-caption text-gfx-neutral-300">GlowButton (custom colors)</p>
+                <p className="text-caption text-gfx-neutral-500">GlowButton (custom colors)</p>
               </div>
             </div>
             <p className="text-caption text-gfx-neutral-500 mt-2">Pill button with 4-layer cursor-following glow — hover and move your cursor to see the effect</p>
@@ -290,15 +290,15 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex flex-col items-center gap-2">
                 <GreenPillButton>Reset</GreenPillButton>
-                <p className="text-caption text-gfx-neutral-300">GreenPillButton</p>
+                <p className="text-caption text-gfx-neutral-500">GreenPillButton</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <GreenPillButton>Apply</GreenPillButton>
-                <p className="text-caption text-gfx-neutral-300">GreenPillButton</p>
+                <p className="text-caption text-gfx-neutral-500">GreenPillButton</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <GreenPillButton>Clear All</GreenPillButton>
-                <p className="text-caption text-gfx-neutral-300">GreenPillButton</p>
+                <p className="text-caption text-gfx-neutral-500">GreenPillButton</p>
               </div>
             </div>
             <p className="text-caption text-gfx-neutral-500 mt-2">Dark green pill with subtle sparkle dust — used for filter actions</p>
@@ -311,33 +311,33 @@ export default function DesignSystemPage() {
           <div className="flex flex-wrap items-center gap-6">
             <div className="flex flex-col items-center gap-2">
               <Badge variant="genfx">GenFX</Badge>
-              <p className="text-caption text-gfx-neutral-300">Badge (genfx)</p>
+              <p className="text-caption text-gfx-neutral-500">Badge (genfx)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Badge variant="10x">10X</Badge>
-              <p className="text-caption text-gfx-neutral-300">Badge (10x)</p>
+              <p className="text-caption text-gfx-neutral-500">Badge (10x)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Badge variant="status">Active</Badge>
-              <p className="text-caption text-gfx-neutral-300">Badge (status)</p>
+              <p className="text-caption text-gfx-neutral-500">Badge (status)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs bg-gfx-green-500/12 text-gfx-green-500">
                 <GreenDot size={6} /> Online
               </span>
-              <p className="text-caption text-gfx-neutral-300">Status (success)</p>
+              <p className="text-caption text-gfx-neutral-500">Status (success)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gfx-red/15 text-gfx-red">Error</span>
-              <p className="text-caption text-gfx-neutral-300">Status (error)</p>
+              <p className="text-caption text-gfx-neutral-500">Status (error)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gfx-amber/15 text-gfx-amber">Warning</span>
-              <p className="text-caption text-gfx-neutral-300">Status (warning)</p>
+              <p className="text-caption text-gfx-neutral-500">Status (warning)</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-gfx-info/15 text-gfx-info">Info</span>
-              <p className="text-caption text-gfx-neutral-300">Status (info)</p>
+              <p className="text-caption text-gfx-neutral-500">Status (info)</p>
             </div>
           </div>
         </Section>
@@ -348,27 +348,27 @@ export default function DesignSystemPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <GlassCard className="p-6">
                 <p className="text-gfx-neutral-500 text-sm mb-2">Light variant — default glass card with subtle blur and divider glow.</p>
-                <p className="text-caption text-gfx-neutral-300">GlassCard (light, divider: white)</p>
+                <p className="text-caption text-gfx-neutral-500">GlassCard (light, divider: white)</p>
               </GlassCard>
               <GlassCard variant="heavy" divider="none" className="p-6">
                 <p className="text-gfx-neutral-500 text-sm mb-2">Heavy variant — stronger blur, shadow, no divider.</p>
-                <p className="text-caption text-gfx-neutral-300">GlassCard (heavy, divider: none)</p>
+                <p className="text-caption text-gfx-neutral-500">GlassCard (heavy, divider: none)</p>
               </GlassCard>
               <GlassCard divider="none" rounded="12px" className="p-6">
                 <p className="text-gfx-neutral-500 text-sm mb-2">No divider, 12px radius.</p>
-                <p className="text-caption text-gfx-neutral-300">GlassCard (light, rounded: 12px)</p>
+                <p className="text-caption text-gfx-neutral-500">GlassCard (light, rounded: 12px)</p>
               </GlassCard>
               <GlassCard variant="heavy" rounded="30px" className="p-6">
                 <p className="text-gfx-neutral-500 text-sm mb-2">Heavy variant, 30px radius (pill-like).</p>
-                <p className="text-caption text-gfx-neutral-300">GlassCard (heavy, rounded: 30px)</p>
+                <p className="text-caption text-gfx-neutral-500">GlassCard (heavy, rounded: 30px)</p>
               </GlassCard>
               <GlassCard variant="purple" divider="none" className="p-6">
                 <p className="text-gfx-purple-accent text-sm mb-2">Purple variant — radial gradient with pink glow ellipses. Used for AI Coach / Trader Passport cards.</p>
-                <p className="text-caption text-gfx-neutral-300">GlassCard (purple, divider: none)</p>
+                <p className="text-caption text-gfx-neutral-500">GlassCard (purple, divider: none)</p>
               </GlassCard>
               <GlassCard variant="purple" divider="none" rounded="14px" className="p-6">
                 <p className="text-gfx-purple-accent text-sm mb-2">Purple variant, 14px radius — compact.</p>
-                <p className="text-caption text-gfx-neutral-300">GlassCard (purple, rounded: 14px)</p>
+                <p className="text-caption text-gfx-neutral-500">GlassCard (purple, rounded: 14px)</p>
               </GlassCard>
             </div>
           </Subsection>
@@ -390,7 +390,7 @@ export default function DesignSystemPage() {
             <GlassBannerCard>
               <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
                 <div>
-                  <p className="text-gfx-neutral-300 text-body2 mb-2">Reusable banner card</p>
+                  <p className="text-gfx-neutral-500 text-body2 mb-2">Reusable banner card</p>
                   <p className="text-white text-h2 font-normal">GlassBannerCard</p>
                   <p className="text-gfx-neutral-500 text-body2 mt-2">Heavy glass card with green divider, SVG glow overlay, and internal glow ellipses. Used in Fiat Wallet and Learning Journey.</p>
                 </div>
@@ -404,7 +404,7 @@ export default function DesignSystemPage() {
               <GlowEllipse className="right-[-120px] bottom-[-60px]" />
               <div className="relative z-10 p-6">
                 <p className="text-gfx-neutral-500 text-sm">Reusable gradient ellipse glow. Pass position via <code className="text-gfx-green-500/80">className</code>.</p>
-                <p className="text-caption text-gfx-neutral-300 mt-2">{'<GlowEllipse className="-left-[120px] -top-[60px]" />'}</p>
+                <p className="text-caption text-gfx-neutral-500 mt-2">{'<GlowEllipse className="-left-[120px] -top-[60px]" />'}</p>
               </div>
             </div>
           </Subsection>
@@ -412,7 +412,7 @@ export default function DesignSystemPage() {
           <Subsection title="Dividers — DividerGlow">
             <div className="space-y-6">
               <div>
-                <p className="text-caption text-gfx-neutral-300 mb-2">DividerGlow (white)</p>
+                <p className="text-caption text-gfx-neutral-500 mb-2">DividerGlow (white)</p>
                 <DividerGlow />
               </div>
             </div>
@@ -429,11 +429,11 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap gap-4">
               <div className="flex flex-col gap-2">
                 <PeriodPill />
-                <p className="text-caption text-gfx-neutral-300">PeriodPill (default)</p>
+                <p className="text-caption text-gfx-neutral-500">PeriodPill (default)</p>
               </div>
               <div className="flex flex-col gap-2">
                 <PeriodPill periods={['1H', '4H', '1D', '1W']} defaultActive="1D" />
-                <p className="text-caption text-gfx-neutral-300">PeriodPill (custom periods)</p>
+                <p className="text-caption text-gfx-neutral-500">PeriodPill (custom periods)</p>
               </div>
             </div>
           </Subsection>
@@ -456,11 +456,11 @@ export default function DesignSystemPage() {
             <div className="flex flex-wrap gap-4">
               <div className="flex flex-col gap-2">
                 <SearchInput value={searchValue} onChange={setSearchValue} />
-                <p className="text-caption text-gfx-neutral-300">SearchInput (default)</p>
+                <p className="text-caption text-gfx-neutral-500">SearchInput (default)</p>
               </div>
               <div className="flex flex-col gap-2">
                 <SearchInput placeholder="Filter accounts..." />
-                <p className="text-caption text-gfx-neutral-300">SearchInput (custom placeholder)</p>
+                <p className="text-caption text-gfx-neutral-500">SearchInput (custom placeholder)</p>
               </div>
             </div>
           </Subsection>
@@ -473,7 +473,7 @@ export default function DesignSystemPage() {
                   id="ds-input-default"
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full h-12 px-4 rounded-xl bg-transparent border border-white/10 text-white text-sm placeholder:text-gfx-neutral-300 focus:border-gfx-green-500/50 focus:outline-none transition-colors"
+                  className="w-full h-12 px-4 rounded-xl bg-transparent border border-white/10 text-white text-sm placeholder:text-gfx-neutral-500 focus:border-gfx-green-500/50 focus:outline-none transition-colors"
                 />
               </div>
               <div className="w-full">
@@ -489,13 +489,13 @@ export default function DesignSystemPage() {
                 <p id="ds-input-error-msg" className="text-caption text-gfx-red mt-1.5" role="alert">Please enter a valid amount.</p>
               </div>
               <div className="w-full">
-                <label htmlFor="ds-input-disabled" className="text-label text-gfx-neutral-300 mb-1.5 block">Disabled</label>
+                <label htmlFor="ds-input-disabled" className="text-label text-gfx-neutral-500 mb-1.5 block">Disabled</label>
                 <input
                   id="ds-input-disabled"
                   type="text"
                   placeholder="Not editable"
                   disabled
-                  className="w-full h-12 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-gfx-neutral-300 text-sm cursor-not-allowed"
+                  className="w-full h-12 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-gfx-neutral-500 text-sm cursor-not-allowed"
                 />
               </div>
             </div>
@@ -565,15 +565,15 @@ export default function DesignSystemPage() {
           <Subsection title="Area Chart Variants">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <GlassCard divider="none" className="p-4 h-[120px]">
-                <p className="text-caption text-gfx-neutral-300 mb-2">Green (default)</p>
+                <p className="text-caption text-gfx-neutral-500 mb-2">Green (default)</p>
                 <AreaChart />
               </GlassCard>
               <GlassCard divider="none" className="p-4 h-[120px]">
-                <p className="text-caption text-gfx-neutral-300 mb-2">Red</p>
+                <p className="text-caption text-gfx-neutral-500 mb-2">Red</p>
                 <AreaChart color="#ff717e" />
               </GlassCard>
               <GlassCard divider="none" className="p-4 h-[120px]">
-                <p className="text-caption text-gfx-neutral-300 mb-2">Blue</p>
+                <p className="text-caption text-gfx-neutral-500 mb-2">Blue</p>
                 <AreaChart color="#5b9cf5" />
               </GlassCard>
             </div>
@@ -598,7 +598,7 @@ export default function DesignSystemPage() {
               initialYear={2026}
               initialMonth={6}
             />
-            <p className="text-caption text-gfx-neutral-300 mt-3">
+            <p className="text-caption text-gfx-neutral-500 mt-3">
               Monthly calendar with daily P&amp;L indicators. Accepts trade data via props. Navigate months with arrows.
             </p>
           </Subsection>
@@ -629,17 +629,17 @@ export default function DesignSystemPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="size-1.5 rounded-full bg-gfx-neutral-300 inline-block" />
-                <span className="text-sm text-gfx-neutral-300">Offline</span>
+                <span className="text-sm text-gfx-neutral-500">Offline</span>
               </div>
             </div>
           </Subsection>
 
           <Subsection title="Green Dot Sizes">
             <div className="flex items-center gap-6">
-              <div className="flex flex-col items-center gap-2"><GreenDot size={4} /><span className="text-caption text-gfx-neutral-300">4px</span></div>
-              <div className="flex flex-col items-center gap-2"><GreenDot size={6} /><span className="text-caption text-gfx-neutral-300">6px</span></div>
-              <div className="flex flex-col items-center gap-2"><GreenDot /><span className="text-caption text-gfx-neutral-300">8px</span></div>
-              <div className="flex flex-col items-center gap-2"><GreenDot size={12} /><span className="text-caption text-gfx-neutral-300">12px</span></div>
+              <div className="flex flex-col items-center gap-2"><GreenDot size={4} /><span className="text-caption text-gfx-neutral-500">4px</span></div>
+              <div className="flex flex-col items-center gap-2"><GreenDot size={6} /><span className="text-caption text-gfx-neutral-500">6px</span></div>
+              <div className="flex flex-col items-center gap-2"><GreenDot /><span className="text-caption text-gfx-neutral-500">8px</span></div>
+              <div className="flex flex-col items-center gap-2"><GreenDot size={12} /><span className="text-caption text-gfx-neutral-500">12px</span></div>
             </div>
           </Subsection>
         </Section>
@@ -760,7 +760,7 @@ export default function DesignSystemPage() {
         </Section>
 
         <footer className="mt-16 pt-6 border-t border-white/5">
-          <p className="text-caption text-gfx-neutral-300">Genesis FX Design System &middot; Built with React, TypeScript, and Tailwind CSS v4</p>
+          <p className="text-caption text-gfx-neutral-500">Genesis FX Design System &middot; Built with React, TypeScript, and Tailwind CSS v4</p>
         </footer>
         </div>
       </div>

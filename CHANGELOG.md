@@ -2,6 +2,7 @@
 
 ## 2026-08-04
 
+- Promoted all base `text-gfx-neutral-300` source classes to `text-gfx-neutral-500` for clearer secondary text across the dashboard.
 - Refined Journal Statistics with elevated Session & Time summary cards, adjacent metric info icons, and the supplied XAAUSD Most Profitable Asset pill.
 - Reused the `/home` Portfolio Equity chart for Journal Net P&L, centered all `SparkleButton` content, and rebuilt the Statistics Genesis Score visual as the supplied empty five-ring radar reference at full available card height.
 - Rebuilt the Total Balance mini chart with Chart.js to match the supplied six-month equalizer reference, including bar geometry, rounded tops, emerald-to-dark gradients, and compact month labels.

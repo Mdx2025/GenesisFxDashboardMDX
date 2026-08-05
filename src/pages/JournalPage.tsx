@@ -164,10 +164,10 @@ function RecentTradesCard({ trades }: { trades: RecentTrade[] }) {
         <div className="mt-5">
           <div className="overflow-x-auto">
           <div className="grid grid-cols-4 px-4 mb-3 min-w-[31.25rem]">
-            <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Date / Time</span>
-            <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Instrument</span>
-            <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Side</span>
-            <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider text-right">P&L</span>
+            <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Date / Time</span>
+            <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Instrument</span>
+            <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Side</span>
+            <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider text-right">P&L</span>
           </div>
           <div className="flex flex-col min-w-[31.25rem]">
             {trades.map((trade, i) => (

@@ -122,7 +122,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="relative z-10 mb-1.5 2xl:mb-2">
-          <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">User Account</h2>
+          <h2 className="text-sidebar-label text-gfx-neutral-500 mb-2 2xl:mb-3 font-normal sidebar-hide">User Account</h2>
           <button
             type="button"
             onClick={() => navigate('/settings')}
@@ -136,7 +136,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             </div>
             <div className="relative z-10 sidebar-hide">
               <p className="text-white text-sidebar-label leading-5">Marcelo Cedeno</p>
-              <time className="text-gfx-neutral-300 text-sidebar-label leading-5 block" dateTime="2025-09-27">Sep 27th, 2025</time>
+              <time className="text-gfx-neutral-500 text-sidebar-label leading-5 block" dateTime="2025-09-27">Sep 27th, 2025</time>
             </div>
           </button>
         </div>
@@ -146,7 +146,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="relative z-10 flex-1 overflow-y-auto">
-          <h2 className="text-sidebar-label text-gfx-neutral-300 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
+          <h2 className="text-sidebar-label text-gfx-neutral-500 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
           <nav aria-label="Main menu">
             <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
               {(isPartner ? partnerNavItems : navItems).map((item) => {

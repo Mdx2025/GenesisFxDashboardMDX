@@ -41,7 +41,7 @@ export default function KycPage() {
           <h1 className="text-white font-normal leading-none text-hero-lg">
             Withdraw Funds
           </h1>
-          <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-6 3xl:leading-8 4xl:leading-10">
+          <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[522px] 3xl:max-w-[700px] 4xl:max-w-[900px] leading-6 3xl:leading-8 4xl:leading-10">
             Choose your preferred withdrawal method to get started.
           </p>
         </div>
@@ -92,19 +92,19 @@ export default function KycPage() {
                   className="w-auto h-[120px] 3xl:h-[160px] 4xl:h-[220px] object-contain mb-10 3xl:mb-14 4xl:mb-16"
                 />
 
-                <h3 className="text-gfx-neutral-300 text-3xl xl:text-3xl 3xl:text-title-4xl 4xl:text-[3.5rem] font-normal text-center">
+                <h3 className="text-gfx-neutral-500 text-3xl xl:text-3xl 3xl:text-title-4xl 4xl:text-[3.5rem] font-normal text-center">
                   Choose Withdrawal Method
                 </h3>
 
-                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Select your preferred withdrawal method to get started
                 </p>
 
-                <h4 className="text-gfx-neutral-300 text-2xl 3xl:text-3xl 4xl:text-subtitle-4xl font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
+                <h4 className="text-gfx-neutral-500 text-2xl 3xl:text-3xl 4xl:text-subtitle-4xl font-normal text-center mt-8 3xl:mt-10 4xl:mt-14">
                   Cryptocurrency
                 </h4>
 
-                <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center mt-2 3xl:mt-4 4xl:mt-6">
+                <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium leading-6 3xl:leading-8 4xl:leading-10 text-center mt-2 3xl:mt-4 4xl:mt-6">
                   Bitcoin, Ethereum, USDT, USDC, and more
                 </p>
 
@@ -113,7 +113,7 @@ export default function KycPage() {
                     <circle cx="9" cy="9" r="8" stroke="#606060" strokeWidth="1.5"/>
                     <path d="M9 5v4l2.5 2.5" stroke="#606060" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-gfx-neutral-300 text-sm 3xl:text-lg 4xl:text-2xl font-medium">Avrg 4 hours</span>
+                  <span className="text-gfx-neutral-500 text-sm 3xl:text-lg 4xl:text-2xl font-medium">Avrg 4 hours</span>
                 </div>
               </div>
             </div>

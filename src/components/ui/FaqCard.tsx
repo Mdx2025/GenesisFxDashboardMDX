@@ -31,7 +31,7 @@ export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCar
         className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
-          <p className="pt-4 text-gfx-neutral-300 text-base leading-relaxed">{answer}</p>
+          <p className="pt-4 text-gfx-neutral-500 text-base leading-relaxed">{answer}</p>
         </div>
       </div>
     </div>

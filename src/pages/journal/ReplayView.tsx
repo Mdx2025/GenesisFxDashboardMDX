@@ -54,7 +54,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
             />
           ) : (
             <div className="w-full max-w-[24.1875rem] h-11 rounded-full border border-gfx-neutral-250 flex items-center justify-center">
-              <span className="text-gfx-neutral-300 text-sm font-acid">Coming soon</span>
+              <span className="text-gfx-neutral-500 text-sm font-acid">Coming soon</span>
             </div>
           )}
         </div>

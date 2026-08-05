@@ -48,7 +48,7 @@ export function LiveAccountsCard({
                 />
               </div>
               <span
-                className={`whitespace-nowrap ${align} text-xs ${i < 2 ? 'text-gfx-neutral-300' : 'text-white'}`}
+                className={`whitespace-nowrap ${align} text-xs ${i < 2 ? 'text-gfx-neutral-500' : 'text-white'}`}
               >{acc.label}</span>
             </div>
           )

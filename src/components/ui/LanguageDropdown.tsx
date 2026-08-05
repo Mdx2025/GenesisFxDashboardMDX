@@ -119,7 +119,7 @@ export function LanguageDropdown() {
               >
                 {lang.flag}
                 <span className="text-sm">{lang.label}</span>
-                <span className="text-xs text-gfx-neutral-300 ml-auto">{lang.code}</span>
+                <span className="text-xs text-gfx-neutral-500 ml-auto">{lang.code}</span>
               </button>
             </li>
           ))}

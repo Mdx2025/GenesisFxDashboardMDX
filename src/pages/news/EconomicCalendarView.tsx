@@ -68,13 +68,13 @@ function CalendarRow({ event, onFolderClick }: { event: EconomicEvent; onFolderC
 
       <div className="flex items-center">
         {event.forecast ? (
-          <span className="text-gfx-neutral-300 text-sm lg:text-xl font-acid">{event.forecast}</span>
+          <span className="text-gfx-neutral-500 text-sm lg:text-xl font-acid">{event.forecast}</span>
         ) : (
           <DashLine />
         )}
       </div>
 
-      <span className="text-gfx-neutral-300 text-sm lg:text-xl font-acid">
+      <span className="text-gfx-neutral-500 text-sm lg:text-xl font-acid">
         {event.prior ?? ''}
       </span>
     </div>
@@ -98,7 +98,7 @@ function ColumnHeaders() {
   return (
     <div className={`grid ${GRID_COLS} items-center px-4 sm:px-6 lg:px-15 h-[48px] lg:h-[56px] border-b border-white/[0.04]`}>
       {['Time', 'Country', 'Impact', 'Event', 'Actual', 'Forecast', 'Prior'].map(col => (
-        <span key={col} className="text-gfx-neutral-300 text-xs lg:text-xl font-acid">{col}</span>
+        <span key={col} className="text-gfx-neutral-500 text-xs lg:text-xl font-acid">{col}</span>
       ))}
     </div>
   )

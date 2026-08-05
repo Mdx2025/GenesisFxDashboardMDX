@@ -211,9 +211,9 @@ function SessionAnalysis() {
         <p className="text-gfx-neutral-500 text-base font-acid font-medium mb-3">Session Performance</p>
         <div className="overflow-x-auto">
         <div className="grid grid-cols-3 px-4 mb-3 min-w-[21.8750rem]">
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Date / Time</span>
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Win Rate</span>
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider text-right">Net P&L</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Date / Time</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Win Rate</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider text-right">Net P&L</span>
         </div>
         {sessionPerformance.map((row, i) => (
           <div key={i} className="grid grid-cols-3 items-center px-4 h-[4.25rem] border-t border-gfx-green-900 min-w-[21.8750rem]">
@@ -246,10 +246,10 @@ function SymbolExposure() {
 
         <div className="overflow-x-auto">
         <div className="grid grid-cols-4 px-4 mb-3 min-w-[28.1250rem]">
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Symbol</span>
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Trades</span>
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider">Volume</span>
-          <span className="text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-wider text-right">P&L</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Symbol</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Trades</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider">Volume</span>
+          <span className="text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-wider text-right">P&L</span>
         </div>
         {symbolExposure.map((row, i) => (
           <div key={i} className="grid grid-cols-4 items-center px-4 h-[4.25rem] border-t border-gfx-green-900 min-w-[28.1250rem]">
@@ -312,7 +312,7 @@ function AvgPnlByDayChart() {
         </div>
 
         <div className="flex">
-          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-300 text-xs font-acid font-bold uppercase tracking-tab h-[16.1250rem]">
+          <div className="flex flex-col justify-between pr-3 text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-tab h-[16.1250rem]">
             {Y_LABELS.map(l => <span key={l}>{l}</span>)}
           </div>
 

@@ -132,7 +132,7 @@ function ModalOverlay({ open, onClose, ariaLabel, children }: { open: boolean; o
           <button
             ref={closeButtonRef}
             onClick={(e) => { e.stopPropagation(); onClose() }}
-            className="absolute top-6 right-6 text-white hover:text-gfx-neutral-300 transition-colors cursor-pointer z-20"
+            className="absolute top-6 right-6 text-white hover:text-gfx-neutral-500 transition-colors cursor-pointer z-20"
             aria-label="Close"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -224,7 +224,7 @@ export default function AccountDetailsPage() {
         <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden p-5 xl:p-8">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
           <div className="relative z-10">
-            <p className="text-gfx-neutral-300 text-body2">Portfolio Equity</p>
+            <p className="text-gfx-neutral-500 text-body2">Portfolio Equity</p>
             <div className="flex items-center gap-3 mt-1">
               <p className="text-white text-h2 font-normal">$17,897.30</p>
               <div className="flex items-center gap-1.5">
@@ -277,7 +277,7 @@ export default function AccountDetailsPage() {
                 <div key={field.key}>
                   {i > 0 && <div className="h-px bg-gfx-green-900" />}
                   <div className="flex items-center justify-between py-3.5">
-                    <span className="text-gfx-neutral-300 text-sm">{field.label}</span>
+                    <span className="text-gfx-neutral-500 text-sm">{field.label}</span>
                     {field.key === 'status' ? (
                       <Badge variant="active">Active</Badge>
                     ) : (
@@ -327,14 +327,14 @@ export default function AccountDetailsPage() {
             </svg>
           </div>
           <h2 className="text-white text-h2 font-normal mb-2">Change Password</h2>
-          <p className="text-gfx-neutral-300 text-body2 mb-8 text-center">Create a secure new password for your Tradelocker account.</p>
+          <p className="text-gfx-neutral-500 text-body2 mb-8 text-center">Create a secure new password for your Tradelocker account.</p>
           <div className="w-full max-w-[34rem] flex flex-col gap-4">
             <GlassInput label="New password" placeholder="Enter new password" type="password" />
             <GlassInput label="Confirm Password" placeholder="Confirm new password" type="password" />
           </div>
           <div className="w-full max-w-[34rem] mt-6">
             <p className="text-white text-sm font-medium mb-2">Password requirements:</p>
-            <ul className="text-gfx-neutral-300 text-label space-y-1 list-disc pl-5">
+            <ul className="text-gfx-neutral-500 text-label space-y-1 list-disc pl-5">
               <li>At least 8 characters</li>
               <li>At least 1 number</li>
               <li>At least 1 special character</li>

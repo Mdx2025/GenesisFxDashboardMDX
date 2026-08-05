@@ -122,7 +122,7 @@ function EpisodeCard({ episode, onClick }: { episode: typeof episodes[0]; onClic
         <h4 className="text-white text-2xl font-acid font-normal leading-none">{episode.title}</h4>
         <div className="flex items-center gap-1.5 mt-2">
           <CalendarIcon />
-          <span className="text-gfx-neutral-300 text-base font-acid font-medium">{episode.date}</span>
+          <span className="text-gfx-neutral-500 text-base font-acid font-medium">{episode.date}</span>
         </div>
       </div>
     </div>

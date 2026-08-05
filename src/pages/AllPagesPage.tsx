@@ -32,7 +32,7 @@ export default function AllPagesPage() {
                       </div>
                       <h2 className="text-white text-lg font-normal">{page.label}</h2>
                     </div>
-                    <p className="text-gfx-neutral-300 text-sm leading-relaxed">{page.description}</p>
+                    <p className="text-gfx-neutral-500 text-sm leading-relaxed">{page.description}</p>
                     <div className="mt-4 flex items-center gap-2 text-gfx-green-500 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       <span>{page.path}</span>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">

@@ -146,15 +146,15 @@ export function AccountProcessingModal({ open, onClose, onComplete }: AccountPro
 
         <div ref={glow1Ref} className="absolute pointer-events-none w-[14%] sm:w-[10%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-500 rounded-full [filter:url(#account-circle-glow)] opacity-0" aria-hidden="true" />
         <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[50%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-100 rounded-full flex items-center justify-center" aria-hidden="true">
-          <div ref={icon1Ref} className="w-1/2 h-1/2 text-gfx-neutral-300"><LinkCircleIcon /></div>
+          <div ref={icon1Ref} className="w-1/2 h-1/2 text-gfx-neutral-500"><LinkCircleIcon /></div>
         </div>
 
         <div ref={glow2Ref} className="absolute pointer-events-none w-[14%] sm:w-[10%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-500 rounded-full [filter:url(#account-circle-glow)] opacity-0" aria-hidden="true" />
         <div className="absolute w-[12%] sm:w-[8%] aspect-square left-[92%] top-[57%] -translate-x-1/2 -translate-y-1/2 bg-gfx-green-100 rounded-full flex items-center justify-center" aria-hidden="true">
-          <div ref={icon2Ref} className="w-1/2 h-1/2 text-gfx-neutral-300"><CheckCircleIcon /></div>
+          <div ref={icon2Ref} className="w-1/2 h-1/2 text-gfx-neutral-500"><CheckCircleIcon /></div>
         </div>
 
-        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[74%] text-stat text-gfx-neutral-300 leading-normal">
+        <div className="absolute font-acid font-normal text-center left-0 right-0 top-[74%] text-stat text-gfx-neutral-500 leading-normal">
           Your transfer is being processed. Please do<br/>not close this window or navigate away.
         </div>
       </div>

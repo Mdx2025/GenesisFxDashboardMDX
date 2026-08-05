@@ -86,7 +86,7 @@ export function GlassSelect({ options, defaultValue, value, placeholder = 'Selec
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className={selected ? 'text-white' : 'text-gfx-neutral-300'}>
+        <span className={selected ? 'text-white' : 'text-gfx-neutral-500'}>
           {selected ? (
             <span className="flex items-center gap-2.5">
               {selected.icon}

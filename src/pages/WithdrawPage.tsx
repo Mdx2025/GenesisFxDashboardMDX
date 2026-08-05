@@ -104,7 +104,7 @@ export default function WithdrawPage() {
             <h1 className="text-white font-normal leading-none text-hero-lg">
               Withdraw Funds
             </h1>
-            <p className="text-gfx-neutral-300 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
+            <p className="text-gfx-neutral-500 text-base 3xl:text-xl 4xl:text-3xl font-medium mt-1 max-w-[32.625rem] 3xl:max-w-[43.75rem] 4xl:max-w-[56.25rem] leading-6 3xl:leading-8 4xl:leading-10">
               Choose your preferred withdrawal method to get started.
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function WithdrawPage() {
                   )}
                 </div>
                 <div className="pb-6 flex-1 min-w-0">
-                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                  <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(1) === 'inactive' ? 'text-gfx-neutral-500' : 'text-white'}`}>
                     Select Coin
                   </h3>
 
@@ -163,7 +163,7 @@ export default function WithdrawPage() {
                     )}
                   </div>
                   <div className="pb-10 flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(2) === 'inactive' ? 'text-gfx-neutral-500' : 'text-white'}`}>
                       Withdraw to
                     </h3>
 
@@ -191,7 +191,7 @@ export default function WithdrawPage() {
                     <StepCircle stepNumber={3} status={getStepStatus(3)} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-300' : 'text-white'}`}>
+                    <h3 className={`text-2xl 3xl:text-3xl 4xl:text-title-4xl font-normal leading-8 3xl:leading-10 4xl:leading-13 ${getStepStatus(3) === 'inactive' ? 'text-gfx-neutral-500' : 'text-white'}`}>
                       Withdraw Amount
                     </h3>
 
@@ -212,11 +212,11 @@ export default function WithdrawPage() {
                         <div className="flex flex-col gap-6">
                           <div className="flex flex-col gap-3">
                             <div className="flex items-center justify-between">
-                              <span className="text-gfx-neutral-300 text-base">Available Withdraw</span>
+                              <span className="text-gfx-neutral-500 text-base">Available Withdraw</span>
                               <span className="text-white text-base">$60.00</span>
                             </div>
                             <div className="flex items-center justify-between">
-                              <span className="text-gfx-neutral-300 text-base">24h remaining limit</span>
+                              <span className="text-gfx-neutral-500 text-base">24h remaining limit</span>
                               <span className="text-white text-base">7,996,320 {coinLabel}</span>
                             </div>
                           </div>
@@ -225,7 +225,7 @@ export default function WithdrawPage() {
 
                           <div className="flex items-center justify-between">
                             <div className="flex flex-col gap-3">
-                              <p className="text-gfx-neutral-300 text-base leading-none">Total Amount</p>
+                              <p className="text-gfx-neutral-500 text-base leading-none">Total Amount</p>
                               <p className="text-white text-4xl font-normal leading-none">
                                 {withdrawAmount || '0.00'} {coinLabel}
                               </p>

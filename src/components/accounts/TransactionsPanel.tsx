@@ -76,11 +76,11 @@ export function TransactionsPanel() {
             <table className="w-full min-w-[900px]">
               <thead>
                 <tr className="border-b border-gfx-green-900">
-                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase pl-6 py-4 w-[15%]">Type</th>
-                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[20%]">Date</th>
-                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[20%]">Direction</th>
-                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[20%]">Amount</th>
-                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-300 uppercase py-4 w-[15%]">Status</th>
+                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase pl-6 py-4 w-[15%]">Type</th>
+                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[20%]">Date</th>
+                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[20%]">Direction</th>
+                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[20%]">Amount</th>
+                  <th className="text-left text-xs font-bold tracking-label text-gfx-neutral-500 uppercase py-4 w-[15%]">Status</th>
                   <th className="w-[10%]" />
                 </tr>
               </thead>

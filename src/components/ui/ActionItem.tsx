@@ -18,7 +18,7 @@ export function ActionItem({ title, subtitle, icon, href }: ActionItemProps) {
       </div>
       <div className="flex flex-col gap-1">
         <span className="text-base xl:text-btn text-white block leading-tight truncate">{title}</span>
-        <span className="text-gfx-neutral-300 text-sm xl:text-body2 block leading-tight truncate">{subtitle}</span>
+        <span className="text-gfx-neutral-500 text-sm xl:text-body2 block leading-tight truncate">{subtitle}</span>
       </div>
     </>
   )
