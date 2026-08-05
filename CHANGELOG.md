@@ -2,7 +2,7 @@
 
 ## 2026-08-05
 
-- Replaced the 10X Challenges empty state with a responsive four-card account grid matching Figma Frame 2085662554 and the project design system.
+- Replaced the 10X Challenges empty state with a responsive four-card account grid matching Figma Frame 2085662554 and using the reusable light `GlassCard` surface.
 - Matched the Journal Trades table container border to the reusable light glass card and enabled Notebook folder filtering for All notes, Trade, Day, Account, and Text1.
 
 ## 2026-08-04

@@ -262,8 +262,12 @@ const challengeAccounts: ChallengeAccount[] = Array.from({ length: 4 }, (_, inde
 
 function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
   return (
-    <article
-      className="h-[25.75rem] w-full max-w-[23.375rem] rounded-[1.1875rem] border border-gfx-green-200 bg-gfx-green-800 px-[1.5625rem] pt-[1.9375rem] pb-[2.1875rem] shadow-subtle"
+    <GlassCard
+      variant="light"
+      divider="none"
+      rounded="19px"
+      role="article"
+      className="h-[25.75rem] w-full max-w-[23.375rem] overflow-hidden px-[1.5625rem] pt-[1.9375rem] pb-[2.1875rem]"
       data-challenge-card
     >
       <div className="flex h-[3.9375rem] items-start">
@@ -323,7 +327,7 @@ function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
         </SecondaryButton>
         <GlowButton label="Cash out" width="100%" height={44} fontSize={16} />
       </div>
-    </article>
+    </GlassCard>
   )
 }
 
