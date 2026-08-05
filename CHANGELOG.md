@@ -8,6 +8,10 @@
 - Lowered the August Total Balance bar and raised September to become the chart peak.
 - Rebuilt the Total Equity candlestick chart in Chart.js from the supplied eight-candle reference while preserving the KPI copy.
 - Restored the Period Selector selected-state border to the previous subtle top-edge fade.
+- Reworked the Portfolio Equity curve with sharp linear peaks and drawdowns to better match a professional trading platform.
+- Corrected the Quick Actions links for New Account and Journal to use their registered TradeLocker routes.
+- Changed the Quick Actions heading color to the existing neutral-500 token (`#A0A0A0`).
+- Removed the nested glass treatment from `EmptyState` and replaced the Assets Management table control with the supplied rounded archive-download button.
 
 ## 2026-07-31
 

@@ -3,9 +3,10 @@ import { useEffect, useRef } from 'react'
 const DEFAULT_HIGHLIGHT_INDEX = 15
 
 const defaultWaveData = [
-  120, 125, 135, 160, 210, 280, 310, 295, 240, 200,
-  185, 190, 205, 195, 180, 175, 185, 220, 250, 235,
-  215, 200, 195, 210, 240, 260, 245, 220, 200, 195,
+  120, 126, 138, 154, 182, 224, 276, 312, 286, 244,
+  218, 198, 184, 188, 201, 208, 196, 181, 172, 184,
+  216, 248, 255, 238, 220, 207, 198, 192, 204, 226,
+  251, 264, 252, 232, 211, 198, 194,
 ]
 
 export interface ChartConfig {
@@ -24,7 +25,7 @@ export const defaultChartConfig: ChartConfig = {
   data: defaultWaveData,
   lineColor: '#00f0a0',
   fillOpacity: 0.35,
-  tension: 0.45,
+  tension: 0,
   lineWidth: 2,
   glowIntensity: 6,
   highlightIndex: DEFAULT_HIGHLIGHT_INDEX,
@@ -182,6 +183,9 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
             borderColor: config.lineColor,
             borderWidth: config.lineWidth,
             tension: config.tension,
+            cubicInterpolationMode: 'default',
+            borderJoinStyle: 'miter',
+            borderCapStyle: 'butt',
             pointRadius: 0,
             pointHoverRadius: 0,
           }],
@@ -189,6 +193,9 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          animation: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? false
+            : { duration: 450 },
           interaction: { mode: 'nearest', intersect: false },
           plugins: {
             legend: { display: false },
@@ -216,8 +223,8 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
               grid: { color: `rgba(255,255,255,${config.gridOpacity})` },
               ticks: {
                 display: config.gridOpacity > 0,
-                color: 'rgba(255,255,255,0.25)',
-                font: { size: 10 },
+                color: 'rgba(236,236,236,0.55)',
+                font: { size: 12 },
                 padding: 8,
                 callback: (v: any) => `$${v}`,
               },
@@ -234,7 +241,12 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
 
   return (
     <div className="relative w-full h-full">
-      <canvas ref={canvasRef} className="!absolute inset-0 w-full h-full" />
+      <canvas
+        ref={canvasRef}
+        className="!absolute inset-0 w-full h-full"
+        aria-label="Portfolio equity curve showing angular gains, drawdowns, and recoveries over the selected period"
+        role="img"
+      />
     </div>
   )
 }
