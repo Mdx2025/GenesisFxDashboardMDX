@@ -1,4 +1,5 @@
 import { GlassCard } from './GlassCard'
+import { GlowEllipse } from './GlowEllipse'
 
 interface CourseCardProps {
   image: string
@@ -65,6 +66,8 @@ export function CourseCard({ image, title, description, lessons, duration, level
       tabIndex={onClick ? 0 : undefined}
       data-course-card
     >
+      <GlowEllipse className="course-card-glow left-1/2 -translate-x-1/2 -bottom-[8rem] scale-90 opacity-0 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-100 group-hover:opacity-30 group-focus-visible:scale-100 group-focus-visible:opacity-30 group-focus-within:scale-100 group-focus-within:opacity-30 motion-reduce:transition-none" />
+
       <div className="relative aspect-[501/334] overflow-hidden rounded-2xl">
         <img
           src={image}

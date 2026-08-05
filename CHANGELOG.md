@@ -2,6 +2,7 @@
 
 ## 2026-08-05
 
+- Added a subtle bottom-centered `GlowEllipse` reveal to Academy course cards on hover and keyboard focus, with a reduced-motion-safe transition.
 - Migrated Academy course cards to the reusable light `GlassCard` surface while preserving their existing content and layout.
 - Replaced the 10X Challenges empty state with a responsive four-card account grid matching Figma Frame 2085662554 and using the reusable light `GlassCard` surface.
 - Matched the Journal Trades table container border to the reusable light glass card and enabled Notebook folder filtering for All notes, Trade, Day, Account, and Text1.
