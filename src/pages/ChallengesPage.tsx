@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse, BannerStatBox } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse, BannerStatBox, SecondaryButton } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -10,15 +10,6 @@ function TrophyIcon() {
       <path d="M28.5 10.5V10.6c0 1.1 0 1.65-.27 2.1-.27.3-.73.57-1.7 1.1l-1-.01c.7-2.37.93-4.91 1.01-7.1l.01-.28c.83.29 1.3.5 1.6.9.35.5.35 1.17.35 2.5z" fill="white"/>
       <path d="M3.5 10.5V10.6c0 1.1 0 1.65.27 2.1.27.3.73.57 1.7 1.1l1-.01c-.7-2.37-.93-4.91-1.01-7.1l-.01-.28c-.83.29-1.3.5-1.6.9-.35.5-.35 1.17-.35 2.5z" fill="white"/>
       <path fillRule="evenodd" clipRule="evenodd" d="M21.5 3.2c-1.44-.24-3.32-.44-5.6-.44-2.28 0-4.17.2-5.6.44-1.46.25-2.19.37-2.8 1.12-.6.75-.57 1.56-.51 3.18.22 5.56 1.42 12.5 7.95 13.11v4.52h-1.83c-.6 0-1.13.43-1.25 1.02l-.24 1.21h-3.39c-.53 0-.96.43-.96.96s.43.96.96.96h15.36c.53 0 .96-.43.96-.96s-.43-.96-.96-.96h-3.39l-.24-1.21c-.12-.6-.65-1.02-1.25-1.02h-1.83v-4.52c6.53-.61 7.73-7.55 7.95-13.11.06-1.62.1-2.43-.51-3.18-.61-.75-1.34-.87-2.8-1.12z" fill="white"/>
-    </svg>
-  )
-}
-
-function UserRoundedIcon() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <ellipse cx="16" cy="10" rx="5.5" ry="5.5" fill="#00B38C"/>
-      <ellipse cx="16" cy="25" rx="9.5" ry="5.5" fill="#00B38C"/>
     </svg>
   )
 }
@@ -235,7 +226,108 @@ function DownloadIcon() {
   )
 }
 
-function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void }) {
+function ChevronDownSmallIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+interface ChallengeAccount {
+  id: string
+  initials: string
+  name: string
+  currentPower: string
+  targetPower: string
+  status: string
+  returnValue: string
+  netPnl: string
+  floor: string
+  days: string
+}
+
+const challengeAccounts: ChallengeAccount[] = Array.from({ length: 4 }, (_, index) => ({
+  id: `challenge-account-${index + 1}`,
+  initials: 'JD',
+  name: 'JOE DOE',
+  currentPower: '$1,250 power',
+  targetPower: '$125.000 power',
+  status: 'Funded',
+  returnValue: '+0.00%',
+  netPnl: '$0.00',
+  floor: '$125.00',
+  days: '0/5',
+}))
+
+function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
+  return (
+    <article
+      className="h-[25.75rem] w-full max-w-[23.375rem] rounded-[1.1875rem] border border-gfx-green-200 bg-gfx-green-800 px-[1.5625rem] pt-[1.9375rem] pb-[2.1875rem] shadow-subtle"
+      data-challenge-card
+    >
+      <div className="flex h-[3.9375rem] items-start">
+        <div className="flex size-[3.9375rem] shrink-0 items-center justify-center rounded-full bg-gfx-green-200 text-white font-acid text-base font-medium leading-6">
+          {account.initials}
+        </div>
+
+        <div className="ml-[1.1875rem] min-w-0 flex-1 pt-[0.3125rem]">
+          <div className="flex items-center gap-3">
+            <h3 className="truncate text-white font-acid text-base font-medium leading-6">{account.name}</h3>
+            <span className="inline-flex h-7 shrink-0 items-center rounded-full bg-gfx-green-900 px-[0.9375rem] text-xs font-acid font-normal leading-[1.175rem] text-gfx-green-300">
+              {account.status}
+            </span>
+          </div>
+          <div className="mt-[0.1875rem] flex items-center gap-[0.875rem] whitespace-nowrap text-gfx-neutral-500 font-acid text-base font-medium leading-6">
+            <span>{account.currentPower}</span>
+            <span className="h-[1.25rem] w-px shrink-0 bg-gfx-green-900" aria-hidden="true" />
+            <span>{account.targetPower}</span>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="ml-2 mt-[0.1875rem] flex size-6 shrink-0 items-center justify-center text-gfx-neutral-250 transition-colors hover:text-gfx-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 rounded-md"
+          aria-label={`Expand ${account.name} challenge details`}
+        >
+          <ChevronDownSmallIcon />
+        </button>
+      </div>
+
+      <div className="mt-[1.6875rem] h-px w-full bg-gfx-bullish" aria-hidden="true" />
+
+      <dl className="mt-[2.875rem] grid grid-cols-2 gap-x-[3.875rem] gap-y-[0.6875rem] font-acid text-base font-medium leading-6">
+        <div>
+          <dt className="text-gfx-neutral-400">RETURN</dt>
+          <dd className="text-gfx-neutral-400">{account.returnValue}</dd>
+        </div>
+        <div>
+          <dt className="text-gfx-neutral-400">NET P&amp;L</dt>
+          <dd className="text-gfx-neutral-400">{account.netPnl}</dd>
+        </div>
+        <div>
+          <dt className="text-gfx-neutral-400">TOO FLOOR</dt>
+          <dd className="text-gfx-green-300">{account.floor}</dd>
+        </div>
+        <div>
+          <dt className="text-gfx-neutral-400">DAYS</dt>
+          <dd className="text-white">{account.days}</dd>
+        </div>
+      </dl>
+
+      <div className="mt-[1.125rem] h-px w-full bg-gfx-neutral-250" aria-hidden="true" />
+
+      <div className="mt-[2.0625rem] grid grid-cols-[minmax(0,1fr)_minmax(0,0.96875fr)] gap-2">
+        <SecondaryButton className="w-full">
+          <span>View</span>
+        </SecondaryButton>
+        <GlowButton label="Cash out" width="100%" height={44} fontSize={16} />
+      </div>
+    </article>
+  )
+}
+
+function MyChallengesContent() {
   return (
     <div className="flex flex-col gap-6">
       {/* Hero Banner — Active Strategies style */}
@@ -259,21 +351,11 @@ function MyChallengesContent({ onCreateAccount }: { onCreateAccount?: () => void
         </div>
       </GlassBannerCard>
 
-      {/* Empty State */}
-      <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden">
-        <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4 gap-6">
-          <div className="w-[4.375rem] h-[4.375rem] rounded-full bg-gfx-green-900 flex items-center justify-center">
-            <UserRoundedIcon />
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <h3 className="text-white text-2xl font-normal">No 10x Accounts Yet</h3>
-            <p className="text-gfx-neutral-400 text-body2 text-center max-w-lg">
-              Create your first 10X account to start trading with enhanced leverage
-            </p>
-          </div>
-          <GlowButton label="Create account" width={210} height={44} fontSize={16} onClick={onCreateAccount} />
-        </div>
-      </GlassCard>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,23.375rem),23.375rem))] gap-3" aria-label="10X challenge accounts">
+        {challengeAccounts.map(account => (
+          <ChallengeAccountCard key={account.id} account={account} />
+        ))}
+      </div>
     </div>
   )
 }
@@ -720,7 +802,7 @@ export default function ChallengesPage() {
         </div>
 
         {/* Tab Content */}
-        {activeTab === 0 && <MyChallengesContent onCreateAccount={() => setStartChallengeOpen(true)} />}
+        {activeTab === 0 && <MyChallengesContent />}
         {activeTab === 1 && <LeaderboardContent />}
         {activeTab === 2 && <TiersContent onPurchase={() => setStartChallengeOpen(true)} />}
       </div>
