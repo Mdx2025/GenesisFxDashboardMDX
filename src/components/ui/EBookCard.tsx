@@ -11,14 +11,17 @@ const CATEGORY_STYLES = {
   Crypto: {
     surface: 'bg-gfx-green-900',
     mediaShade: 'to-black/75',
+    mediaBlend: 'from-gfx-green-900 via-gfx-green-900/80 to-transparent',
   },
   Forex: {
     surface: 'bg-gfx-green-150',
     mediaShade: 'to-black/50',
+    mediaBlend: 'from-gfx-green-150 via-gfx-green-150/80 to-transparent',
   },
   Stocks: {
     surface: 'bg-gfx-green-150',
     mediaShade: 'to-black/50',
+    mediaBlend: 'from-gfx-green-150 via-gfx-green-150/80 to-transparent',
   },
 } as const
 
@@ -49,6 +52,11 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
           loading="lazy"
         />
         <div className={`absolute inset-0 bg-gradient-to-b from-transparent ${categoryStyle.mediaShade}`} aria-hidden="true" />
+        <div
+          className={`pointer-events-none absolute inset-x-0 top-0 h-[32%] bg-gradient-to-b ${categoryStyle.mediaBlend}`}
+          aria-hidden="true"
+          data-ebook-media-blend
+        />
       </div>
 
       <div className="absolute inset-0 bg-gfx-green-500 mix-blend-color pointer-events-none" aria-hidden="true" />
