@@ -14,6 +14,7 @@ const CATEGORY_STYLES = {
     mediaOpacity: '',
     image: 'inset-0 h-full w-full',
     shade: 'bg-[linear-gradient(179.9058deg,rgba(0,0,0,0)_0.11285%,#000_81.43%)]',
+    seamBlend: 'from-[#000720]',
   },
   Forex: {
     surface: 'bg-[linear-gradient(179.8885deg,#001c13_0%,#001f14_42.492%)]',
@@ -21,6 +22,7 @@ const CATEGORY_STYLES = {
     mediaOpacity: '',
     image: '-top-[3.82%] left-0 h-[103.82%] w-full',
     shade: 'bg-gradient-to-b from-transparent from-[19.482%] to-black',
+    seamBlend: 'from-[#001f14]',
   },
   Stocks: {
     surface: 'bg-[#001810]',
@@ -28,6 +30,7 @@ const CATEGORY_STYLES = {
     mediaOpacity: 'opacity-50',
     image: 'inset-0 h-full w-full',
     shade: 'bg-[linear-gradient(179.9255deg,rgba(0,0,0,0)_0%,#000_90.407%)]',
+    seamBlend: 'from-[#001810]',
   },
 } as const
 
@@ -61,6 +64,12 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
           loading="lazy"
         />
         <div className={`pointer-events-none absolute inset-0 ${categoryStyle.shade}`} aria-hidden="true" data-ebook-media-shade />
+        {/* Browser color blending needs a short crossfade to reproduce Figma's seamless surface-to-media transition. */}
+        <div
+          className={`pointer-events-none absolute inset-x-0 top-0 h-[14%] bg-gradient-to-b to-transparent ${categoryStyle.seamBlend}`}
+          aria-hidden="true"
+          data-ebook-seam-blend
+        />
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-[#10bc83] mix-blend-color" aria-hidden="true" />
