@@ -446,7 +446,7 @@ export default function NewsPage() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
+    <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 pt-4 4xl:pt-6">
       <TopBar
         onMenuClick={() => setSidebarOpen(prev => !prev)}
         menuOpen={sidebarOpen}
@@ -456,7 +456,7 @@ export default function NewsPage() {
         ]}
       />
 
-      <div className="flex flex-col gap-6 pb-12 mt-6 3xl:mt-8 4xl:mt-10">
+      <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
         {/* Title */}
         <div className="flex items-center gap-4">
           <h1 className="text-white text-h1 font-normal">{activeTab === 1 || activeTab === 3 ? 'Market News' : 'Daily analysis'}</h1>
