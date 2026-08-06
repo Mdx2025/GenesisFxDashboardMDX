@@ -87,7 +87,7 @@ export default function DailySinglePage() {
         </div>
 
         {/* Video Container */}
-        <div className="relative rounded-2xl 2xl:rounded-full overflow-hidden bg-gfx-green-800">
+        <div className="relative rounded-2xl overflow-hidden bg-gfx-green-800">
           <div className="relative aspect-[16/9] w-full">
             <img
               src="/images/news/daily-hero-thumbnail.png"
