@@ -2,6 +2,7 @@
 
 ## 2026-08-05
 
+- Rebuilt the Academy E Book card media compositions from Figma Frame 1000002408, including the exact MCP-exported artwork, category surfaces, crop geometry, opacity, and lower fades.
 - Blended each Academy E Book image into its category surface with a Tailwind gradient, removing the hard horizontal seam between the cover artwork and card background.
 - Replaced the Academy E Book artwork with the supplied Crypto, Forex, and Stocks assets and introduced category-specific green surfaces so Crypto is lighter than the page while Forex and Stocks are lighter still.
 - Refactored the Academy E Books card reference into reusable Tailwind CSS, including its two-stage media composition, green color blend, exact radius, CTA geometry, timing metadata, focus state, and mobile-safe grid.

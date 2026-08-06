@@ -9,19 +9,25 @@ interface EBookCardProps {
 
 const CATEGORY_STYLES = {
   Crypto: {
-    surface: 'bg-gfx-green-900',
-    mediaShade: 'to-black/75',
-    mediaBlend: 'from-gfx-green-900 via-gfx-green-900/80 to-transparent',
+    surface: 'bg-[#000720]',
+    media: 'h-[61.653%]',
+    mediaOpacity: '',
+    image: 'inset-0 h-full w-full',
+    shade: 'bg-[linear-gradient(179.9058deg,rgba(0,0,0,0)_0.11285%,#000_81.43%)]',
   },
   Forex: {
-    surface: 'bg-gfx-green-150',
-    mediaShade: 'to-black/50',
-    mediaBlend: 'from-gfx-green-150 via-gfx-green-150/80 to-transparent',
+    surface: 'bg-[linear-gradient(179.8885deg,#001c13_0%,#001f14_42.492%)]',
+    media: 'h-[60.661%]',
+    mediaOpacity: '',
+    image: '-top-[3.82%] left-0 h-[103.82%] w-full',
+    shade: 'bg-gradient-to-b from-transparent from-[19.482%] to-black',
   },
   Stocks: {
-    surface: 'bg-gfx-green-150',
-    mediaShade: 'to-black/50',
-    mediaBlend: 'from-gfx-green-150 via-gfx-green-150/80 to-transparent',
+    surface: 'bg-[#001810]',
+    media: 'h-[70.248%]',
+    mediaOpacity: 'opacity-50',
+    image: 'inset-0 h-full w-full',
+    shade: 'bg-[linear-gradient(179.9255deg,rgba(0,0,0,0)_0%,#000_90.407%)]',
   },
 } as const
 
@@ -44,22 +50,20 @@ export function EBookCard({ category, image, readTime, onClick }: EBookCardProps
       data-ebook-card
       data-ebook-category={category}
     >
-      <div className="absolute inset-x-0 bottom-0 h-[61.65%] overflow-hidden rounded-b-[21.99px]">
+      <div
+        className={`absolute inset-x-0 bottom-0 overflow-hidden rounded-b-[21.99px] ${categoryStyle.media} ${categoryStyle.mediaOpacity}`}
+        data-ebook-media
+      >
         <img
           src={image}
           alt={`${category} ebook cover`}
-          className="h-full w-full object-cover"
+          className={`absolute max-w-none ${categoryStyle.image}`}
           loading="lazy"
         />
-        <div className={`absolute inset-0 bg-gradient-to-b from-transparent ${categoryStyle.mediaShade}`} aria-hidden="true" />
-        <div
-          className={`pointer-events-none absolute inset-x-0 top-0 h-[32%] bg-gradient-to-b ${categoryStyle.mediaBlend}`}
-          aria-hidden="true"
-          data-ebook-media-blend
-        />
+        <div className={`pointer-events-none absolute inset-0 ${categoryStyle.shade}`} aria-hidden="true" data-ebook-media-shade />
       </div>
 
-      <div className="absolute inset-0 bg-gfx-green-500 mix-blend-color pointer-events-none" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-[#10bc83] mix-blend-color" aria-hidden="true" />
 
       <h3 className="absolute inset-x-5 top-[16.36%] text-center font-acid text-[2.749rem] font-normal leading-none text-white">
         {category}
