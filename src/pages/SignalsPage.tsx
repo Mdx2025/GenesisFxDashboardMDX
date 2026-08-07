@@ -396,6 +396,7 @@ export default function SignalsPage() {
           <div className="flex flex-col gap-5">
             {/* Live Signal Feed Banner */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+              <GlowEllipse className="left-0 -top-[6.25rem]" />
               <div className="relative p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
@@ -409,8 +410,8 @@ export default function SignalsPage() {
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <SparkleButton className="px-5">Become Provider</SparkleButton>
-                  <SparkleButton className="px-5">Marketplace</SparkleButton>
+                  <SparkleButton className="px-5" onClick={() => setActiveTab(3)}>Become Provider</SparkleButton>
+                  <SparkleButton className="px-5" onClick={() => setActiveTab(0)}>Marketplace</SparkleButton>
                 </div>
               </div>
             </GlassCard>
