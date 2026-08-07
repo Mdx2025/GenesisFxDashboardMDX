@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to Genesis Fx</title>
     <script>
+      // Apply the saved theme before React paints to avoid a flash of the wrong palette.
+      (function () {
+        var savedTheme = localStorage.getItem('genesis-fx-theme')
+        var theme = savedTheme === 'light' ? 'light' : 'dark'
+        document.documentElement.dataset.theme = theme
+        document.documentElement.style.colorScheme = theme
+      })()
+    </script>
+    <script>
       // SPA redirect handler for GitHub Pages 404.html
       (function(l) {
         if (l.search[1] === '/') {
@@ -17,8 +26,8 @@
         }
       }(window.location))
     </script>
-    <script type="module" crossorigin src="/assets/index-CSeT93Gk.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Crt1GiCg.css">
+    <script type="module" crossorigin src="/assets/index-CCVb6GyO.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Z7E3rVAX.css">
   </head>
   <body>
     <div id="root"></div>

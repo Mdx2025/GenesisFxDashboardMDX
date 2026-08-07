@@ -4,7 +4,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
 import { ManageSubscriptionModal } from '@/components/dashboard/ManageSubscriptionModal'
-import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard, EmptyState } from '@/components/ui'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
 
@@ -352,10 +352,18 @@ export default function SignalsPage() {
     setFollowTarget(null)
   }
 
-  const filteredProviders = providers.filter(p =>
-    p.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredProviders = providers.filter(p => {
+    const query = searchQuery.trim().toLowerCase()
+    const matchesQuery = !query ||
+      p.username.toLowerCase().includes(query) ||
+      p.tag.toLowerCase().includes(query) ||
+      p.pair.toLowerCase().includes(query)
+    const matchesTab =
+      filterTab === 1 ? p.recommended :
+      filterTab === 2 ? p.following :
+      true
+    return matchesQuery && matchesTab
+  })
 
   return (
     <div className="signals-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -658,6 +666,16 @@ export default function SignalsPage() {
         </div>
 
         {/* Signal Cards Grid */}
+        {filteredProviders.length === 0 ? (
+          <EmptyState
+            title="No strategies found"
+            description={
+              filterTab === 2
+                ? "You are not following any strategy yet. Follow a provider to see it here."
+                : "Try a different filter or search term to find a signal provider."
+            }
+          />
+        ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProviders.map(provider => (
             <SignalStrategyCard
@@ -672,12 +690,14 @@ export default function SignalsPage() {
               pricePerMonth={provider.pricePerMonth}
               profitShare={provider.profitShare}
               followers={provider.followers}
+              chartData={provider.chartData}
               following={provider.following}
               onFollow={() => provider.following ? handleToggleFollow(provider.id) : handleFollowClick(provider)}
               onViewStrategy={() => navigate('/gensocial/signals/details-single-page')}
             />
           ))}
         </div>
+        )}
         </>)}
 
       </div>

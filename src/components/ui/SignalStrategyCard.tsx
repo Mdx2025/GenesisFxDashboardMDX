@@ -14,6 +14,7 @@ interface SignalStrategyCardProps {
   pricePerMonth: string
   profitShare: string
   followers: number
+  chartData?: number[]
   following?: boolean
   onFollow?: () => void
   onViewStrategy?: () => void
@@ -93,12 +94,13 @@ export function SignalStrategyCard({
   pricePerMonth,
   profitShare,
   followers,
+  chartData,
   following = false,
   onFollow,
   onViewStrategy,
 }: SignalStrategyCardProps) {
   const isNegative = pnl < 0
-  const chartData = Array.from({ length: 12 }, (_, i) => 80 - i * 4 + Math.random() * 4)
+  const series = chartData ?? Array.from({ length: 12 }, (_, i) => 80 - i * 4 + Math.random() * 4)
 
   return (
     <div
@@ -152,7 +154,7 @@ export function SignalStrategyCard({
             </span>
           </div>
           <div className="mt-1">
-            <PnlMiniChart data={chartData} negative={isNegative} />
+            <PnlMiniChart data={series} negative={isNegative} />
           </div>
         </div>
 
