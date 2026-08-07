@@ -1,47 +1,103 @@
-import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
+import { useEffect, useRef, useState, useLayoutEffect, useCallback, type ComponentType } from 'react'
 import gsap from 'gsap'
-import { GlowButton } from '@/components/ui'
+import { GlowButton, SecondaryButton } from '@/components/ui'
+import {
+  GlobeIcon,
+  BitcoinIcon,
+  BarChartIcon,
+  RecordCircleIcon,
+  DiagramUpIcon,
+  CourseUpIcon,
+  BoltIcon,
+  ClockCircleIcon,
+  CalendarSolidIcon,
+  TargetIcon,
+} from './becomeProviderIcons'
 
-interface StepField {
-  label: string
-  hint?: string
-  placeholder: string
-  maxLength?: number
+interface IconProps {
+  size?: number
+  className?: string
 }
 
-interface WizardStep {
-  name: string
-  fields: StepField[]
-}
+const STEP_NAMES = ['Profile', 'Markets', 'Style'] as const
 
-const STEPS: WizardStep[] = [
-  {
-    name: 'Profile',
-    fields: [
-      { label: 'Username', placeholder: '@ you_username' },
-      { label: 'BIO', hint: '(Optional)', placeholder: 'Tell followers about your trading style...', maxLength: 500 },
-    ],
-  },
-  {
-    name: 'Markets',
-    fields: [
-      { label: 'Primary market', placeholder: 'XAUUSD, EURUSD, BTCUSD...' },
-      { label: 'Signals per week', hint: '(Estimate)', placeholder: 'e.g. 12' },
-    ],
-  },
-  {
-    name: 'Style',
-    fields: [
-      { label: 'Trading style', placeholder: 'Scalping, intraday, swing...' },
-      { label: 'Risk per trade', hint: '(Optional)', placeholder: 'e.g. 1.5%' },
-    ],
-  },
+const PROFILE_FIELDS = [
+  { label: 'Username', placeholder: '@ you_username' },
+  { label: 'BIO', hint: '(Optional)', placeholder: 'Tell followers about your trading style...', maxLength: 500 },
 ]
+
+const MARKETS: { name: string; Icon: ComponentType<IconProps>; size: number }[] = [
+  { name: 'Forex', Icon: GlobeIcon, size: 21 },
+  { name: 'Crypto', Icon: BitcoinIcon, size: 20 },
+  { name: 'Commodities', Icon: BarChartIcon, size: 20 },
+  { name: 'Metals', Icon: RecordCircleIcon, size: 20 },
+  { name: 'Indices', Icon: DiagramUpIcon, size: 19 },
+  { name: 'Stocks', Icon: CourseUpIcon, size: 20 },
+]
+
+const TIMEFRAMES: { name: string; hint: string; Icon: ComponentType<IconProps>; size: number }[] = [
+  { name: 'Scalping', hint: 'Seconds to minutes', Icon: BoltIcon, size: 22 },
+  { name: 'Day Trading', hint: 'Intraday positions', Icon: ClockCircleIcon, size: 24 },
+  { name: 'Swing Trading', hint: 'Days to weeks', Icon: CalendarSolidIcon, size: 24 },
+  { name: 'Position Trading', hint: 'Weeks to months', Icon: TargetIcon, size: 24 },
+]
+
+const RISK_LEVELS = ['Conservative', 'Moderate', 'Aggresive']
+const EXPERIENCE_LEVELS = ['1 year', '1-3 years', '3-5 years', '5+ years']
+
+// Per-step bottom padding: the Figma frames are 765px tall for steps 1-2 and 974px for step 3.
+const STEP_PADDING_BOTTOM = ['pb-[7.1875rem]', 'pb-[7.125rem]', 'pb-[3.5rem]']
+
+const SELECTABLE_BASE =
+  'cursor-pointer rounded-[0.9375rem] border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-300'
+
+export interface ProviderApplication {
+  profile: Record<string, string>
+  markets: string[]
+  timeframe: string | null
+  risk: string | null
+  experience: string | null
+}
 
 interface BecomeProviderModalProps {
   open: boolean
   onClose: () => void
-  onSubmit?: (values: Record<string, string>) => void
+  onSubmit?: (values: ProviderApplication) => void
+}
+
+function CheckIcon({ size = 19, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 19 19" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4.35 9.9L7.72 13.27L14.65 6.34"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function SectionLabel({ children, className }: { children: string; className?: string }) {
+  return (
+    <p className={`font-acid text-base leading-none text-gfx-neutral-400 ${className ?? ''}`}>{children}</p>
+  )
+}
+
+function Chip({ label, selected, onClick }: { label: string; selected: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={`${SELECTABLE_BASE} h-[2.625rem] flex items-center justify-center font-acid text-base text-white ${
+        selected ? 'bg-gfx-green-900 border-gfx-green-300' : 'border-gfx-neutral-250 hover:border-gfx-neutral-500'
+      }`}
+    >
+      {label}
+    </button>
+  )
 }
 
 export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderModalProps) {
@@ -50,10 +106,12 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
   const stepRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
   const [step, setStep] = useState(0)
-  const [values, setValues] = useState<Record<string, string>>({})
+  const [profile, setProfile] = useState<Record<string, string>>({})
+  const [markets, setMarkets] = useState<string[]>([])
+  const [timeframe, setTimeframe] = useState<string | null>(null)
+  const [risk, setRisk] = useState<string | null>(null)
+  const [experience, setExperience] = useState<string | null>(null)
   const [focused, setFocused] = useState<string | null>(null)
-
-  const currentStep = STEPS[step]
 
   const handleClose = useCallback(() => {
     const overlay = overlayRef.current
@@ -68,19 +126,27 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
   }, [onClose])
 
   function handleContinue() {
-    if (step < STEPS.length - 1) {
+    if (step < STEP_NAMES.length - 1) {
       setStep(step + 1)
       return
     }
-    onSubmit?.(values)
+    onSubmit?.({ profile, markets, timeframe, risk, experience })
     handleClose()
+  }
+
+  function toggleMarket(name: string) {
+    setMarkets(prev => (prev.includes(name) ? prev.filter(m => m !== name) : [...prev, name]))
   }
 
   useEffect(() => {
     if (open) {
       setMounted(true)
       setStep(0)
-      setValues({})
+      setProfile({})
+      setMarkets([])
+      setTimeframe(null)
+      setRisk(null)
+      setExperience(null)
     }
   }, [open])
 
@@ -147,7 +213,7 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
           </svg>
         </button>
 
-        <div className="relative z-10 px-6 sm:px-[7.75rem] pt-[6.0625rem] pb-[7.1875rem]">
+        <div className={`relative z-10 px-6 sm:px-[7.75rem] pt-[6.0625rem] ${STEP_PADDING_BOTTOM[step]}`}>
           {/* Title */}
           <h2 className="text-white font-acid font-normal text-center text-[2.25rem] leading-none">
             Become a Signal Provider
@@ -155,8 +221,8 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
 
           {/* Stepper */}
           <div className="mt-[4.8125rem] flex items-start justify-center">
-            {STEPS.map((s, i) => (
-              <div key={s.name} className="flex items-start">
+            {STEP_NAMES.map((name, i) => (
+              <div key={name} className="flex items-start">
                 {i > 0 && <span className={`mt-5 w-[4.125rem] h-px rounded-full ${step >= i ? 'bg-gfx-green-300' : 'bg-gfx-green-200'}`} />}
                 <div className="relative flex flex-col items-center">
                   {step === i && (
@@ -164,59 +230,165 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
                   )}
                   <span
                     className={`relative w-10 h-10 rounded-full flex items-center justify-center font-acid text-base text-white ${
-                      step === i ? 'bg-gfx-green-350' : 'bg-gfx-green-900'
+                      step >= i ? 'bg-gfx-green-350' : 'bg-gfx-green-900'
                     }`}
                   >
-                    {i + 1}
+                    {step > i ? <CheckIcon size={20} /> : i + 1}
                   </span>
-                  <span className="mt-[0.9375rem] font-acid text-base text-white leading-none whitespace-nowrap">{s.name}</span>
+                  <span className="mt-[0.9375rem] font-acid text-base text-white leading-none whitespace-nowrap">{name}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Step fields */}
-          <div ref={stepRef} className="mt-[1.5625rem]">
-            {currentStep.fields.map((field, i) => {
-              const key = field.label
-              const value = values[key] ?? ''
-              const isFocused = focused === key
-              return (
-                <div key={key} className={i > 0 ? 'mt-[2.375rem]' : ''}>
-                  <label
-                    htmlFor={`provider-field-${step}-${i}`}
-                    className="block font-acid font-medium text-base leading-[1.5275rem] text-gfx-neutral-600 mb-[0.5625rem]"
-                  >
-                    {field.label}
-                    {field.hint && <span className="ml-1.5">{field.hint}</span>}
-                  </label>
-                  <input
-                    id={`provider-field-${step}-${i}`}
-                    type="text"
-                    value={value}
-                    maxLength={field.maxLength}
-                    placeholder={field.placeholder}
-                    onChange={(e) => setValues(v => ({ ...v, [key]: e.target.value }))}
-                    onFocus={() => setFocused(key)}
-                    onBlur={() => setFocused(null)}
-                    className={`w-full h-[3.125rem] rounded-[1.875rem] px-[1.625rem] bg-gfx-green-800 font-acid text-base text-white placeholder:text-gfx-neutral-400 outline-none transition-[border-color] duration-200 border ${
-                      isFocused ? 'border-gfx-green-300' : 'border-gfx-green-200'
-                    }`}
-                  />
-                  {field.maxLength && (
-                    <p className="mt-[0.3125rem] text-right font-acid font-medium text-base leading-[1.5275rem] text-gfx-neutral-400">
-                      {value.length}/{field.maxLength}
-                    </p>
-                  )}
+          {/* Step body */}
+          <div ref={stepRef}>
+            {step === 0 && (
+              <div className="mt-[1.5625rem]">
+                {PROFILE_FIELDS.map((field, i) => {
+                  const key = field.label
+                  const value = profile[key] ?? ''
+                  const isFocused = focused === key
+                  return (
+                    <div key={key} className={i > 0 ? 'mt-[2.375rem]' : ''}>
+                      <label
+                        htmlFor={`provider-field-${i}`}
+                        className="block font-acid font-medium text-base leading-[1.5275rem] text-gfx-neutral-600 mb-[0.5625rem]"
+                      >
+                        {field.label}
+                        {field.hint && <span className="ml-1.5">{field.hint}</span>}
+                      </label>
+                      <input
+                        id={`provider-field-${i}`}
+                        type="text"
+                        value={value}
+                        maxLength={field.maxLength}
+                        placeholder={field.placeholder}
+                        onChange={(e) => setProfile(v => ({ ...v, [key]: e.target.value }))}
+                        onFocus={() => setFocused(key)}
+                        onBlur={() => setFocused(null)}
+                        className={`w-full h-[3.125rem] rounded-[1.875rem] px-[1.625rem] bg-gfx-green-800 font-acid text-base text-white placeholder:text-gfx-neutral-400 outline-none transition-[border-color] duration-200 border ${
+                          isFocused ? 'border-gfx-green-300' : 'border-gfx-green-200'
+                        }`}
+                      />
+                      {field.maxLength && (
+                        <p className="mt-[0.3125rem] text-right font-acid font-medium text-base leading-[1.5275rem] text-gfx-neutral-400">
+                          {value.length}/{field.maxLength}
+                        </p>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {step === 1 && (
+              <>
+                <p className="mt-[2.625rem] text-center font-acid text-base leading-none text-gfx-neutral-400">
+                  Select the markets you provide signals for
+                </p>
+                <div className="mt-[1.5625rem] mx-auto w-full max-w-[31.625rem] grid grid-cols-2 gap-x-[0.5rem] gap-y-[0.625rem]">
+                  {MARKETS.map(({ name, Icon, size }) => {
+                    const selected = markets.includes(name)
+                    return (
+                      <button
+                        key={name}
+                        type="button"
+                        onClick={() => toggleMarket(name)}
+                        aria-pressed={selected}
+                        className={`${SELECTABLE_BASE} h-[3.375rem] flex items-center pl-[1.3125rem] pr-[0.875rem] gap-[0.6875rem] ${
+                          selected
+                            ? 'bg-gfx-green-900 border-gfx-green-300 text-white'
+                            : 'border-gfx-neutral-250 text-gfx-neutral-400 hover:border-gfx-neutral-500'
+                        }`}
+                      >
+                        <span className={`w-6 flex justify-center shrink-0 ${selected ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
+                          <Icon size={size} />
+                        </span>
+                        <span className="font-acid text-base leading-none">{name}</span>
+                        {selected && <CheckIcon className="ml-auto text-gfx-green-300" />}
+                      </button>
+                    )
+                  })}
                 </div>
-              )
-            })}
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <p className="mt-[2.625rem] text-center font-acid text-base leading-none text-gfx-neutral-400">
+                  Tell followers about how you trade
+                </p>
+
+                <div className="mx-auto w-full max-w-[33.1875rem]">
+                  <SectionLabel className="mt-[2.375rem]">Trading Timeframe</SectionLabel>
+                </div>
+                <div className="mt-[0.625rem] mx-auto w-full max-w-[31.875rem] grid grid-cols-2 gap-[0.75rem]">
+                  {TIMEFRAMES.map(({ name, hint, Icon, size }) => {
+                    const selected = timeframe === name
+                    return (
+                      <button
+                        key={name}
+                        type="button"
+                        onClick={() => setTimeframe(selected ? null : name)}
+                        aria-pressed={selected}
+                        className={`${SELECTABLE_BASE} h-[4.8125rem] flex items-center text-left pl-[1.25rem] pr-[0.875rem] gap-[0.75rem] ${
+                          selected
+                            ? 'bg-gfx-green-900 border-gfx-green-300 text-white'
+                            : 'border-gfx-neutral-250 text-gfx-neutral-400 hover:border-gfx-neutral-500'
+                        }`}
+                      >
+                        <span className={`w-6 flex justify-center shrink-0 ${selected ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>
+                          <Icon size={size} />
+                        </span>
+                        <span className="font-acid text-base leading-[1.3125rem]">
+                          <span className="block">{name}</span>
+                          <span className="block">{hint}</span>
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+
+                <div className="mx-auto w-full max-w-[33.1875rem]">
+                  <SectionLabel className="mt-[1.8125rem]">Risk Appetite</SectionLabel>
+                  <div className="mt-[0.5625rem] grid grid-cols-3 gap-[0.75rem]">
+                    {RISK_LEVELS.map(level => (
+                      <Chip key={level} label={level} selected={risk === level} onClick={() => setRisk(risk === level ? null : level)} />
+                    ))}
+                  </div>
+
+                  <SectionLabel className="mt-[1.875rem]">Experience</SectionLabel>
+                  <div className="mt-[0.5rem] grid grid-cols-2 gap-x-[0.75rem] gap-y-[0.6875rem]">
+                    {EXPERIENCE_LEVELS.map(level => (
+                      <Chip
+                        key={level}
+                        label={level}
+                        selected={experience === level}
+                        onClick={() => setExperience(experience === level ? null : level)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
-          {/* Continue */}
-          <div className="mt-[4.125rem] -mx-1">
-            <GlowButton label="Continue" width="100%" height={44} onClick={handleContinue} />
-          </div>
+          {/* Actions */}
+          {step === 0 ? (
+            <div className="mt-[4.125rem] -mx-1">
+              <GlowButton label="Continue" width="100%" height={44} onClick={handleContinue} />
+            </div>
+          ) : (
+            <div className={`${step === 1 ? 'mt-[3.6875rem]' : 'mt-[3.625rem]'} flex gap-2 -mr-[0.3125rem]`}>
+              <SecondaryButton className="w-[16.8125rem] min-w-0" onClick={() => setStep(step - 1)}>
+                Back
+              </SecondaryButton>
+              <div className="w-[17.0625rem] min-w-0">
+                <GlowButton label="Continue" width="100%" height={44} onClick={handleContinue} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
