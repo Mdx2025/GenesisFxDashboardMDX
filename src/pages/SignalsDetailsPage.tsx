@@ -290,7 +290,7 @@ export default function SignalsDetailsPage() {
           </GlassCard>
 
           {/* Follow this Strategy Card */}
-          <div className="bg-gfx-green-900 rounded-lg overflow-hidden px-8 py-25 h-fit">
+          <div className="bg-gfx-green-900 rounded-lg overflow-hidden px-8 py-25 flex flex-col justify-center">
             <h3 className="text-white text-base font-acid-medium mb-2">Follow this Strategy</h3>
             <p className="text-gfx-neutral-500 text-sm font-acid mb-6">Remote trade signals — not copy trading.</p>
             <GlowButton
