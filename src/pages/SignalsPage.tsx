@@ -4,6 +4,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
 import { ManageSubscriptionModal } from '@/components/dashboard/ManageSubscriptionModal'
+import { BecomeProviderModal } from '@/components/modals/BecomeProviderModal'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard, EmptyState } from '@/components/ui'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
@@ -334,6 +335,7 @@ export default function SignalsPage() {
   const [followModalOpen, setFollowModalOpen] = useState(false)
   const [followTarget, setFollowTarget] = useState<SignalProvider | null>(null)
   const [manageModalOpen, setManageModalOpen] = useState(false)
+  const [becomeProviderOpen, setBecomeProviderOpen] = useState(false)
 
   const handleToggleFollow = (id: string) => {
     setProviders(prev => prev.map(p => p.id === id ? { ...p, following: !p.following } : p))
@@ -548,7 +550,7 @@ export default function SignalsPage() {
 
                 {/* CTA Button */}
                 <div className="mt-7">
-                  <GlowButton label="Become a provider" width={220} />
+                  <GlowButton label="Become a provider" width={220} onClick={() => setBecomeProviderOpen(true)} />
                 </div>
 
                 {/* Caption */}
@@ -721,6 +723,11 @@ export default function SignalsPage() {
         onClose={() => setManageModalOpen(false)}
         providerName={providers[0]?.tag ?? 'Genesis Assets'}
         providerInitials={providers[0]?.initials ?? 'GA'}
+      />
+
+      <BecomeProviderModal
+        open={becomeProviderOpen}
+        onClose={() => setBecomeProviderOpen(false)}
       />
     </div>
   )
