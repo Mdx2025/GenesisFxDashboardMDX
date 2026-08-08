@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback, type ComponentType, type CSSProperties } from 'react'
 import gsap from 'gsap'
-import { GlowButton, SecondaryButton } from '@/components/ui'
+import { GlowButton, SparkleButton } from '@/components/ui'
 import {
   GlobeIcon,
   BitcoinIcon,
@@ -394,9 +394,9 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
             </div>
           ) : (
             <div className={`${step === 1 ? 'mt-[calc(var(--u)*59)]' : 'mt-[calc(var(--u)*58)]'} flex gap-2 -mr-[0.3125rem]`}>
-              <SecondaryButton className="w-[16.8125rem] min-w-0" onClick={() => setStep(step - 1)}>
+              <SparkleButton className="!w-[16.8125rem] !min-w-0 !h-[2.875rem] !rounded-3xl !px-5.5" onClick={() => setStep(step - 1)}>
                 Back
-              </SecondaryButton>
+              </SparkleButton>
               <div className="w-[17.0625rem] min-w-0">
                 <GlowButton label="Continue" width="100%" height={44} onClick={handleContinue} />
               </div>
