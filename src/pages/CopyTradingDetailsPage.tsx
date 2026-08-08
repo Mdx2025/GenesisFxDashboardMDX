@@ -274,7 +274,7 @@ const closedTrades = [
 /* ─── Header Pills ─── */
 
 const headerPillBase =
-  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-base font-acid font-medium whitespace-nowrap'
+  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-xs font-acid font-medium whitespace-nowrap'
 
 function PeopleIcon() {
   return (
