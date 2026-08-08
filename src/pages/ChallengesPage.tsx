@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react
 import gsap from 'gsap'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse, BannerStatBox, SecondaryButton } from '@/components/ui'
+import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse, BannerStatBox } from '@/components/ui'
 
 function TrophyIcon() {
   return (
@@ -322,9 +322,9 @@ function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
       <div className="mt-[1.125rem] h-px w-full bg-gfx-neutral-250" aria-hidden="true" />
 
       <div className="mt-[2.0625rem] grid grid-cols-[minmax(0,1fr)_minmax(0,0.96875fr)] gap-2">
-        <SecondaryButton className="w-full">
+        <SparkleButton fullWidth className="!h-[2.875rem] !rounded-3xl !px-5.5">
           <span>View</span>
-        </SecondaryButton>
+        </SparkleButton>
         <GlowButton label="Cash out" width="100%" height={44} fontSize={16} />
       </div>
     </GlassCard>
