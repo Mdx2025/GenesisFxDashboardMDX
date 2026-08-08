@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill } from '@/components/ui'
 import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
 
 /* ─── Inline SVG Icons ─── */
@@ -280,6 +280,32 @@ const closedTrades = [
   { openDate: 'Apr 01,2026', openTime: '4:54 PM', closeDate: 'Apr 01,2026', closeTime: '5:26 PM', symbol: 'XAUUSD', side: 'Buy', volume: '0.10', openPrice: 'N/A', closePrice: '4764.550', pnl: '-$15.30' },
 ]
 
+/* ─── Header Pills ─── */
+
+const headerPillBase =
+  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-base font-acid font-medium whitespace-nowrap'
+
+function PeopleIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+      <circle cx="5.9" cy="3.7" r="3.6" fill="#A0A0A0" />
+      <ellipse cx="5.9" cy="12.8" rx="5.9" ry="2.9" fill="#A0A0A0" />
+      <path d="M11.6 1.5a2.7 2.7 0 0 1 0 5.4c-.35 0-.68-.06-.99-.18a5.2 5.2 0 0 0 0-5.04c.31-.12.64-.18.99-.18Z" fill="#A0A0A0" />
+      <path d="M12.6 10.2c1.9.28 3.4 1.12 3.4 2.12s-1.5 1.84-3.4 2.12c.32-.62.5-1.34.5-2.12s-.18-1.5-.5-2.12Z" fill="#A0A0A0" />
+    </svg>
+  )
+}
+
+function BriefcaseDollarIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="flex-shrink-0">
+      <path d="M5.6 4.4V2.9a1.5 1.5 0 0 1 1.5-1.5h3.8a1.5 1.5 0 0 1 1.5 1.5v1.5" stroke="#A0A0A0" strokeWidth="1.6" strokeLinecap="round" />
+      <rect x="0.5" y="4.4" width="17" height="13.1" rx="1.7" fill="#A0A0A0" />
+      <path d="M9.3 6.9v1.2M9.3 13.6v1.2M11 9.1H8.5a1.2 1.2 0 0 0 0 2.4h1.6a1.2 1.2 0 0 1 0 2.4H7.6" stroke="#0C1311" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 /* ─── Main Page ─── */
 
 export default function CopyTradingDetailsPage() {
@@ -318,9 +344,16 @@ export default function CopyTradingDetailsPage() {
           </div>
           <h1 className="text-white text-h1 font-normal">KingEasy</h1>
           <VerifiedIcon />
-          <div className="flex items-center gap-2 ml-2">
-            <Badge variant="active">GenFX</Badge>
-            <Badge variant="active">Rank 2</Badge>
+          <div className="flex items-center gap-[1.125rem] ml-2">
+            <span className={`${headerPillBase} border-gfx-gold text-gfx-gold`}>Medium Risk</span>
+            <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
+              <PeopleIcon />
+              5 Followers
+            </span>
+            <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
+              <BriefcaseDollarIcon />
+              $13,884.16 AUM
+            </span>
           </div>
           <div className="ml-auto flex items-center gap-3">
             <button className="relative w-12 h-11 flex items-center justify-center cursor-pointer">
