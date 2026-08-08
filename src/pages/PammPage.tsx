@@ -215,7 +215,7 @@ export default function PammPage() {
         {/* Page Title */}
         <h1 className="text-white text-h1 font-normal">PAMM Strategies</h1>
 
-        {/* Top Tabs: Browse | Investments | Manager + Tutorial (Investments only) */}
+        {/* Top Tabs: Browse | Investments | Manager */}
         <div className="flex items-center justify-between">
           <div className="w-full overflow-x-auto max-w-lg">
             <ModeToggle
@@ -225,16 +225,6 @@ export default function PammPage() {
               onChange={setActiveTab}
             />
           </div>
-          {activeTab === 1 && (
-            <SparkleButton className="px-5 shrink-0">
-              <span className="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM8 4.6C7.50294 4.6 7.1 5.00294 7.1 5.5C7.1 5.83137 6.83137 6.1 6.5 6.1C6.16863 6.1 5.9 5.83137 5.9 5.5C5.9 4.3402 6.8402 3.4 8 3.4C9.1598 3.4 10.1 4.3402 10.1 5.5C10.1 6.06867 9.87317 6.58558 9.50637 6.96317C9.43255 7.03915 9.36215 7.1095 9.29498 7.17661C9.12231 7.34913 8.97104 7.50027 8.83832 7.6708C8.6631 7.89594 8.6 8.06141 8.6 8.2V8.8C8.6 9.13137 8.33137 9.4 8 9.4C7.66863 9.4 7.4 9.13137 7.4 8.8V8.2C7.4 7.67585 7.64401 7.25155 7.89133 6.93377C8.07434 6.69863 8.30435 6.46907 8.49102 6.28277C8.54733 6.22657 8.5997 6.17431 8.64564 6.12702C8.80367 5.96435 8.9 5.74404 8.9 5.5C8.9 5.00294 8.49706 4.6 8 4.6ZM8 12C8.44183 12 8.8 11.6418 8.8 11.2C8.8 10.7582 8.44183 10.4 8 10.4C7.55817 10.4 7.2 10.7582 7.2 11.2C7.2 11.6418 7.55817 12 8 12Z" fill="#A0A0A0"/>
-                </svg>
-                <span>Tutorial</span>
-              </span>
-            </SparkleButton>
-          )}
         </div>
 
         {activeTab === 0 && (
