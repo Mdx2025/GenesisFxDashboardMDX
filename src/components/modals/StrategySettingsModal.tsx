@@ -4,10 +4,14 @@ import { GlowButton, SparkleButton, ModeToggle, GlassCard } from '@/components/u
 
 // Same fluid-gap trick as BecomeProviderModal: every vertical gap is `calc(var(--u) * <figma px>)`.
 // `--u` is 1px while the viewport can host the untouched 973px Figma frame and shrinks below that,
-// so the modal stays inside 100dvh instead of spilling out. FIXED is the sum of the
-// non-collapsible heights, GAPS the sum of the Figma gaps.
-const FIXED = 523
-const GAPS = 452
+// so the modal stays inside 100dvh instead of spilling out. `fixed` is the sum of the
+// non-collapsible heights, `gaps` the sum of the Figma gaps — both per tab, since the three
+// frames reach the same 975px with a different mix of content and empty space.
+const TAB_METRICS = [
+  { fixed: 523, gaps: 452, actionsGap: 66 },
+  { fixed: 442, gaps: 541, actionsGap: 250.5 },
+  { fixed: 332, gaps: 651, actionsGap: 418.5 },
+]
 const MIN_GAP_SCALE = 0.2
 
 const FIELD =
@@ -54,11 +58,68 @@ function ChevronDownIcon() {
   )
 }
 
+function InfoIcon() {
+  return (
+    <svg className="shrink-0" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M8.99988 16.5C13.142 16.5 16.4999 13.1421 16.4999 9C16.4999 4.85786 13.142 1.5 8.99988 1.5C4.85774 1.5 1.49988 4.85786 1.49988 9C1.49988 13.1421 4.85774 16.5 8.99988 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 6H9.00875" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function EyeIcon() {
+  return (
+    <span className="relative block shrink-0 w-6 h-6" aria-hidden="true">
+      <svg className="absolute left-0.5 top-1" width="20" height="16" viewBox="0 0 20 16" fill="none">
+        <path d="M7.75 8C7.75 6.75736 8.75736 5.75 10 5.75C11.2426 5.75 12.25 6.75736 12.25 8C12.25 9.24264 11.2426 10.25 10 10.25C8.75736 10.25 7.75 9.24264 7.75 8Z" fill="#ECECEC" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M0 8C0 9.63938 0.424964 10.1915 1.27489 11.2957C2.97196 13.5004 5.81811 16 10 16C14.1819 16 17.028 13.5004 18.7251 11.2957C19.575 10.1915 20 9.63938 20 8C20 6.36062 19.575 5.80853 18.7251 4.70433C17.028 2.49956 14.1819 0 10 0C5.81811 0 2.97196 2.49956 1.27489 4.70433C0.424964 5.80853 0 6.36062 0 8ZM10 4.25C7.92893 4.25 6.25 5.92893 6.25 8C6.25 10.0711 7.92893 11.75 10 11.75C12.0711 11.75 13.75 10.0711 13.75 8C13.75 5.92893 12.0711 4.25 10 4.25Z" fill="#ECECEC" />
+      </svg>
+    </span>
+  )
+}
+
+function ToggleSwitch({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
+      onClick={() => onChange(!checked)}
+      className={`relative mt-px shrink-0 w-11 h-[23px] rounded-[60px] cursor-pointer transition-colors ${checked ? 'bg-gfx-green-350' : 'bg-gfx-green-900'}`}
+    >
+      <span
+        className={`absolute top-0.5 w-[19px] h-[19px] rounded-[60px] transition-all ${checked ? 'left-[22px] bg-white' : 'left-[3px] bg-gfx-neutral-250'}`}
+      />
+    </button>
+  )
+}
+
+function SettingRow({
+  title, description, checked, onChange, height, narrow = false,
+}: { title: string; description: string; checked: boolean; onChange: (v: boolean) => void; height: string; narrow?: boolean }) {
+  return (
+    <div className={`flex items-start justify-between rounded-[30px] border border-gfx-neutral-250 pl-[2.375rem] pr-[2.3125rem] pt-[1.875rem] ${height}`}>
+      <div>
+        <p className="font-acid text-base leading-[1.2] text-gfx-neutral-600">{title}</p>
+        <p className={`mt-[4.8px] font-acid text-base leading-[1.2] text-gfx-neutral-400 ${narrow ? 'max-w-[14.8125rem]' : ''}`}>{description}</p>
+      </div>
+      <ToggleSwitch checked={checked} onChange={onChange} label={title} />
+    </div>
+  )
+}
+
 export function StrategySettingsModal({ open, onClose }: StrategySettingsModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
+  const [tab, setTab] = useState(0)
+  const [hideOpen, setHideOpen] = useState(true)
+  const [hideClosed, setHideClosed] = useState(false)
+  const [privateStrategy, setPrivateStrategy] = useState(false)
+  const [hideLeaderboard, setHideLeaderboard] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [risk, setRisk] = useState('')
@@ -89,6 +150,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
   useEffect(() => {
     if (open) {
       setMounted(true)
+      setTab(0)
       setName('')
       setDescription('')
       setRisk('')
@@ -114,7 +176,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
     syncThumb()
     window.addEventListener('resize', syncThumb)
     return () => window.removeEventListener('resize', syncThumb)
-  }, [mounted, syncThumb])
+  }, [mounted, tab, syncThumb])
 
   useEffect(() => {
     if (!mounted) return
@@ -126,6 +188,8 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
   }, [mounted, handleClose])
 
   if (!mounted) return null
+
+  const metrics = TAB_METRICS[tab]
 
   return (
     <div
@@ -143,7 +207,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
         rounded="1.75rem"
         className="w-[47.625rem] max-w-[95vw] my-auto max-h-[calc(100dvh-2rem)] flex flex-col bg-gfx-green-800"
         style={{
-          '--u': `clamp(${MIN_GAP_SCALE}px, (100dvh - ${FIXED + 32}px) / ${GAPS}, 1px)`,
+          '--u': `clamp(${MIN_GAP_SCALE}px, (100dvh - ${metrics.fixed + 32}px) / ${metrics.gaps}, 1px)`,
         } as CSSProperties}
       >
         {/* Close button */}
@@ -180,9 +244,11 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
 
           {/* Tabs */}
           <div className="mt-[calc(var(--u)*41.5)] w-[27.6875rem] max-w-full">
-            <ModeToggle options={['General', 'Visibility', 'Access']} activeIndex={0} />
+            <ModeToggle options={['General', 'Visibility', 'Access']} activeIndex={tab} onChange={setTab} />
           </div>
 
+          {tab === 0 && (
+            <>
           {/* Strategy name */}
           <label className={`${LABEL} mt-[calc(var(--u)*46)]`} htmlFor="strategy-name">Strategy Name*</label>
           <input
@@ -244,9 +310,73 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
               className={`${FIELD} mt-[calc(var(--u)*11)] h-[3.125rem] rounded-[30px] px-4`}
             />
           </div>
+            </>
+          )}
+
+          {tab === 1 && (
+            <>
+              <div className="mt-[calc(var(--u)*50)] flex items-start gap-3">
+                <span className="mt-[0.375rem]"><InfoIcon /></span>
+                <p className="w-[21.75rem] font-acid text-base leading-[1.2] text-gfx-neutral-400">
+                  Control what trading information is visible to investors and the public
+                </p>
+              </div>
+
+              <div className="mt-[calc(var(--u)*40)] flex items-center gap-[7px]">
+                <EyeIcon />
+                <p className="font-acid text-base leading-[1.2] text-gfx-neutral-600">Visibility</p>
+              </div>
+
+              <div className="mt-[calc(var(--u)*22)]">
+                <SettingRow
+                  title="Hide Open Positions"
+                  description="Hide current open positions from public view"
+                  narrow
+                  height="h-[7.4375rem]"
+                  checked={hideOpen}
+                  onChange={setHideOpen}
+                />
+              </div>
+              <div className="mt-4">
+                <SettingRow
+                  title="Hide Closed Trades"
+                  description="Hide trade history from public view"
+                  height="h-[7.4375rem]"
+                  checked={hideClosed}
+                  onChange={setHideClosed}
+                />
+              </div>
+            </>
+          )}
+
+          {tab === 2 && (
+            <>
+              <div className="mt-[calc(var(--u)*51)]">
+                <SettingRow
+                  title="Private Strategy"
+                  description="Require approval for new investors"
+                  height="h-[6.125rem]"
+                  checked={privateStrategy}
+                  onChange={setPrivateStrategy}
+                />
+              </div>
+              <div className="mt-[13px]">
+                <SettingRow
+                  title="Hide from Leaderboard"
+                  description="Remove this strategy from public  leaderboards"
+                  height="h-[6.125rem]"
+                  checked={hideLeaderboard}
+                  onChange={setHideLeaderboard}
+                />
+              </div>
+            </>
+          )}
 
           {/* Actions */}
-          <div className="mt-[calc(var(--u)*66)] -mr-0.5 flex items-center justify-end gap-3">
+          <div
+            className="-mr-0.5 flex items-center justify-end gap-3"
+            style={{ marginTop: `calc(var(--u) * ${metrics.actionsGap})` }}
+          >
             <SparkleButton className="!w-[12.375rem] !h-[2.875rem] !rounded-[1.875rem]" onClick={handleClose}>Cancel</SparkleButton>
             <GlowButton label="Save changes" width={200} height={44} radius={300} onClick={handleClose} />
           </div>
