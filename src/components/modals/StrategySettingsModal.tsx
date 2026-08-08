@@ -374,7 +374,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
 
           {/* Actions */}
           <div
-            className="-mr-0.5 flex items-center justify-end gap-3"
+            className="flex items-center justify-center gap-3"
             style={{ marginTop: `calc(var(--u) * ${metrics.actionsGap})` }}
           >
             <SparkleButton className="!w-[12.375rem] !h-[2.875rem] !rounded-[1.875rem]" onClick={handleClose}>Cancel</SparkleButton>

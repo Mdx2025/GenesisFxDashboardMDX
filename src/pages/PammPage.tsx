@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
@@ -189,9 +189,15 @@ export default function PammPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
 
-  const filteredStrategies = pammStrategies.filter(s =>
-    s.name.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredStrategies = useMemo(() => {
+    const matches = pammStrategies.filter(s =>
+      s.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    // Tab 0 (Recommended) keeps the curated order the data ships in.
+    if (filterTab === 1) return [...matches].sort((a, b) => b.roi - a.roi)
+    if (filterTab === 2) return [...matches].sort((a, b) => b.investors - a.investors)
+    return matches
+  }, [searchQuery, filterTab])
 
   return (
     <div className="pamm-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
