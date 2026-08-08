@@ -5,6 +5,7 @@ import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, StatCard, BannerStatBox } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
 import { StrategySettingsModal } from '@/components/modals/StrategySettingsModal'
+import { TransferToMainWalletModal } from '@/components/modals/TransferToMainWalletModal'
 import { pammStrategies, pammTabs, pammFilterTabs } from '@/data/pamm'
 import type { PammStrategy } from '@/data/pamm'
 
@@ -188,6 +189,7 @@ export default function PammPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [searchQuery, setSearchQuery] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [transferOpen, setTransferOpen] = useState(false)
 
   const filteredStrategies = useMemo(() => {
     const matches = pammStrategies.filter(s =>
@@ -384,13 +386,18 @@ export default function PammPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 px-5 h-[2.25rem]">
+                  <button
+                    type="button"
+                    onClick={() => setTransferOpen(true)}
+                    aria-label="Transfer social wallet balance to main wallet"
+                    className="flex items-center gap-2 px-5 h-[2.25rem] rounded-full cursor-pointer transition-colors hover:bg-gfx-green-800"
+                  >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path fillRule="evenodd" clipRule="evenodd" d="M10.0427 1.04297H9.95602C9.2073 1.04295 8.58293 1.04293 8.08728 1.10956C7.56412 1.1799 7.09179 1.33463 6.71223 1.71419C6.33267 2.09374 6.17795 2.56608 6.10761 3.08924C6.05984 3.44454 6.04633 4.2942 6.04251 5.02269C4.3573 5.07773 3.34548 5.27446 2.64233 5.97761C1.66602 6.95392 1.66602 8.52527 1.66602 11.668C1.66602 14.8107 1.66602 16.382 2.64233 17.3583C3.61864 18.3346 5.18998 18.3346 8.33267 18.3346H11.666C14.8087 18.3346 16.3801 18.3346 17.3564 17.3583C18.3327 16.382 18.3327 14.8107 18.3327 11.668C18.3327 8.52527 18.3327 6.95392 17.3564 5.97761C16.6532 5.27446 15.6414 5.07773 13.9562 5.02269C13.9524 4.2942 13.9389 3.44454 13.8911 3.08924C13.8208 2.56608 13.666 2.09374 13.2865 1.71419C12.9069 1.33463 12.4346 1.1799 11.9114 1.10956C11.4158 1.04293 10.7914 1.04295 10.0427 1.04297ZM12.706 5.00287C12.7022 4.29733 12.6902 3.53803 12.6522 3.2558C12.6005 2.87125 12.5112 2.70667 12.4026 2.59807C12.294 2.48947 12.1294 2.40012 11.7449 2.34842C11.3423 2.2943 10.8027 2.29297 9.99935 2.29297C9.19601 2.29297 8.65637 2.2943 8.25384 2.34842C7.86929 2.40012 7.70471 2.48947 7.59611 2.59807C7.48752 2.70667 7.39817 2.87125 7.34646 3.2558C7.30852 3.53803 7.29653 4.29733 7.29275 5.00287C7.61893 5.0013 7.96506 5.0013 8.33268 5.0013H11.666C12.0336 5.0013 12.3798 5.0013 12.706 5.00287ZM9.99935 7.70964C10.3445 7.70964 10.6243 7.98946 10.6243 8.33464V8.34316C11.5317 8.57175 12.291 9.28714 12.291 10.2791C12.291 10.6243 12.0112 10.9041 11.666 10.9041C11.3208 10.9041 11.041 10.6243 11.041 10.2791C11.041 9.95905 10.6862 9.51519 9.99935 9.51519C9.31251 9.51519 8.95768 9.95905 8.95768 10.2791C8.95768 10.5991 9.31251 11.043 9.99935 11.043C11.1535 11.043 12.291 11.8428 12.291 13.0569C12.291 14.0488 11.5317 14.7642 10.6243 14.9928V15.0013C10.6243 15.3465 10.3445 15.6263 9.99935 15.6263C9.65417 15.6263 9.37435 15.3465 9.37435 15.0013V14.9928C8.46703 14.7642 7.70768 14.0488 7.70768 13.0569C7.70768 12.7117 7.9875 12.4319 8.33268 12.4319C8.67786 12.4319 8.95768 12.7117 8.95768 13.0569C8.95768 13.3769 9.31251 13.8207 9.99935 13.8207C10.6862 13.8207 11.041 13.3769 11.041 13.0569C11.041 12.7368 10.6862 12.293 9.99935 12.293C8.84523 12.293 7.70768 11.4932 7.70768 10.2791C7.70768 9.28714 8.46703 8.57175 9.37435 8.34316V8.33464C9.37435 7.98946 9.65417 7.70964 9.99935 7.70964Z" fill="white"/>
                     </svg>
                     <span className="text-gfx-neutral-400 text-sm font-acid">Social Wallet</span>
                     <span className="text-white text-sm font-acid">$100.00</span>
-                  </div>
+                  </button>
                   <GlowButton
                     label="Create Strategy"
                     width={200}
@@ -488,6 +495,7 @@ export default function PammPage() {
       </div>
 
       <StrategySettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <TransferToMainWalletModal open={transferOpen} onClose={() => setTransferOpen(false)} />
     </div>
   )
 }
