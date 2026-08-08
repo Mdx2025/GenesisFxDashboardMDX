@@ -4,6 +4,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, StatCard, BannerStatBox } from '@/components/ui'
 import { ChevronRightIcon } from '@/components/icons'
+import { StrategySettingsModal } from '@/components/modals/StrategySettingsModal'
 import { pammStrategies, pammTabs, pammFilterTabs } from '@/data/pamm'
 import type { PammStrategy } from '@/data/pamm'
 
@@ -186,6 +187,7 @@ export default function PammPage() {
   const [filterTab, setFilterTab] = useState(0)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [searchQuery, setSearchQuery] = useState('')
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   const filteredStrategies = pammStrategies.filter(s =>
     s.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -430,10 +432,10 @@ export default function PammPage() {
 
             {/* Strategies Table */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <GlowEllipse className="left-1/2 -translate-x-1/4 -top-[15.6250rem]" />
+              <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[15.6250rem]" />
               <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px] bg-gradient-to-r from-transparent via-[rgba(0,240,160,0.3)] to-transparent" />
               <div className="relative overflow-x-auto">
-                <table className="w-full min-w-[60rem]">
+                <table className="w-full min-w-[60rem] pt-10">
                   <thead>
                     <tr className="border-b border-[rgba(255,255,255,0.04)]">
                       {['Strategy name', 'aum', 'Investors', 'P&L', 'Min Investment', 'managment fee', 'perfomance fee', 'status', 'actions'].map(h => (
@@ -470,7 +472,7 @@ export default function PammPage() {
                         </td>
                         <td className="px-7 py-5">
                           <div className="flex items-center gap-2">
-                            <SparkleButton className="!px-10 !h-[2.8750rem]">
+                            <SparkleButton className="!px-10 !h-[2.8750rem]" onClick={() => setSettingsOpen(true)}>
                               <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-6">View</span>
                             </SparkleButton>
                             <SparkleButton className="!px-10 !h-[2.8750rem]">
@@ -488,6 +490,8 @@ export default function PammPage() {
         )}
 
       </div>
+
+      <StrategySettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
     </div>
   )
 }
