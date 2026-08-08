@@ -80,7 +80,7 @@ export function TransferToMainWalletModal({
           </svg>
         </button>
 
-        <div className="relative px-[3.1875rem] pt-[4.6875rem] pb-[5.5625rem]">
+        <div className="relative px-[3.1875rem] pt-[4.6875rem] pb-[5.4375rem]">
           <h2 className="px-1.5 font-acid text-[2.25rem] font-normal leading-none text-white">
             Transfer to Main Wallet
           </h2>
