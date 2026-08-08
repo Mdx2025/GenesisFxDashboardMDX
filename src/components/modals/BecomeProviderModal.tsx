@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useLayoutEffect, useCallback, type ComponentType } from 'react'
+import { useEffect, useRef, useState, useLayoutEffect, useCallback, type ComponentType, type CSSProperties } from 'react'
 import gsap from 'gsap'
 import { GlowButton, SecondaryButton } from '@/components/ui'
 import {
@@ -45,8 +45,18 @@ const TIMEFRAMES: { name: string; hint: string; Icon: ComponentType<IconProps>; 
 const RISK_LEVELS = ['Conservative', 'Moderate', 'Aggresive']
 const EXPERIENCE_LEVELS = ['1 year', '1-3 years', '3-5 years', '5+ years']
 
-// Per-step bottom padding: the Figma frames are 765px tall for steps 1-2 and 974px for step 3.
-const STEP_PADDING_BOTTOM = ['pb-[7.1875rem]', 'pb-[7.125rem]', 'pb-[3.5rem]']
+// Every vertical gap is expressed as `calc(var(--u) * <figma px>)`. `--u` is 1px while the
+// viewport is tall enough for the untouched Figma frame (765px for steps 1-2, 974px for step 3)
+// and shrinks below that so the modal always stays inside 100dvh instead of spilling out.
+// `fixed` is the sum of the step's non-collapsible heights, `gaps` the sum of its Figma gaps.
+const STEP_METRICS = [
+  { fixed: 347, gaps: 418 },
+  { fixed: 351, gaps: 414 },
+  { fixed: 520, gaps: 454 },
+]
+const MIN_GAP_SCALE = 0.2
+
+const STEP_PADDING_BOTTOM = ['pb-[calc(var(--u)*115)]', 'pb-[calc(var(--u)*114)]', 'pb-[calc(var(--u)*56)]']
 
 const SELECTABLE_BASE =
   'cursor-pointer rounded-[0.9375rem] border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-300'
@@ -189,7 +199,10 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
     >
       <div
         ref={modalRef}
-        className="relative w-[49.5625rem] max-w-[95vw] my-auto bg-gfx-green-800 rounded-[1.875rem] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]"
+        className="relative w-[49.5625rem] max-w-[95vw] my-auto max-h-[calc(100dvh-2rem)] flex flex-col bg-gfx-green-800 rounded-[1.875rem] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)]"
+        style={{
+          '--u': `clamp(${MIN_GAP_SCALE}px, (100dvh - ${STEP_METRICS[step].fixed + 32}px) / ${STEP_METRICS[step].gaps}, 1px)`,
+        } as CSSProperties}
       >
         {/* Modal background (clipped to contain glows) */}
         <div
@@ -213,14 +226,14 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
           </svg>
         </button>
 
-        <div className={`relative z-10 px-6 sm:px-[7.75rem] pt-[6.0625rem] ${STEP_PADDING_BOTTOM[step]}`}>
+        <div className={`relative z-10 overflow-y-auto px-6 sm:px-[7.75rem] pt-[calc(var(--u)*97)] ${STEP_PADDING_BOTTOM[step]}`}>
           {/* Title */}
           <h2 className="text-white font-acid font-normal text-center text-[2.25rem] leading-none">
             Become a Signal Provider
           </h2>
 
           {/* Stepper */}
-          <div className="mt-[4.8125rem] flex items-start justify-center">
+          <div className="mt-[calc(var(--u)*77)] flex items-start justify-center">
             {STEP_NAMES.map((name, i) => (
               <div key={name} className="flex items-start">
                 {i > 0 && <span className={`mt-5 w-[4.125rem] h-px rounded-full ${step >= i ? 'bg-gfx-green-300' : 'bg-gfx-green-200'}`} />}
@@ -244,13 +257,13 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
           {/* Step body */}
           <div ref={stepRef}>
             {step === 0 && (
-              <div className="mt-[1.5625rem]">
+              <div className="mt-[calc(var(--u)*25)]">
                 {PROFILE_FIELDS.map((field, i) => {
                   const key = field.label
                   const value = profile[key] ?? ''
                   const isFocused = focused === key
                   return (
-                    <div key={key} className={i > 0 ? 'mt-[2.375rem]' : ''}>
+                    <div key={key} className={i > 0 ? 'mt-[calc(var(--u)*38)]' : ''}>
                       <label
                         htmlFor={`provider-field-${i}`}
                         className="block font-acid font-medium text-base leading-[1.5275rem] text-gfx-neutral-600 mb-[0.5625rem]"
@@ -284,10 +297,10 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
 
             {step === 1 && (
               <>
-                <p className="mt-[2.625rem] text-center font-acid text-base leading-none text-gfx-neutral-400">
+                <p className="mt-[calc(var(--u)*42)] text-center font-acid text-base leading-none text-gfx-neutral-400">
                   Select the markets you provide signals for
                 </p>
-                <div className="mt-[1.5625rem] mx-auto w-full max-w-[31.625rem] grid grid-cols-2 gap-x-[0.5rem] gap-y-[0.625rem]">
+                <div className="mt-[calc(var(--u)*25)] mx-auto w-full max-w-[31.625rem] grid grid-cols-2 gap-x-[0.5rem] gap-y-[0.625rem]">
                   {MARKETS.map(({ name, Icon, size }) => {
                     const selected = markets.includes(name)
                     return (
@@ -316,14 +329,14 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
 
             {step === 2 && (
               <>
-                <p className="mt-[2.625rem] text-center font-acid text-base leading-none text-gfx-neutral-400">
+                <p className="mt-[calc(var(--u)*42)] text-center font-acid text-base leading-none text-gfx-neutral-400">
                   Tell followers about how you trade
                 </p>
 
                 <div className="mx-auto w-full max-w-[33.1875rem]">
-                  <SectionLabel className="mt-[2.375rem]">Trading Timeframe</SectionLabel>
+                  <SectionLabel className="mt-[calc(var(--u)*38)]">Trading Timeframe</SectionLabel>
                 </div>
-                <div className="mt-[0.625rem] mx-auto w-full max-w-[31.875rem] grid grid-cols-2 gap-[0.75rem]">
+                <div className="mt-[calc(var(--u)*10)] mx-auto w-full max-w-[31.875rem] grid grid-cols-2 gap-[0.75rem]">
                   {TIMEFRAMES.map(({ name, hint, Icon, size }) => {
                     const selected = timeframe === name
                     return (
@@ -351,15 +364,15 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
                 </div>
 
                 <div className="mx-auto w-full max-w-[33.1875rem]">
-                  <SectionLabel className="mt-[1.8125rem]">Risk Appetite</SectionLabel>
-                  <div className="mt-[0.5625rem] grid grid-cols-3 gap-[0.75rem]">
+                  <SectionLabel className="mt-[calc(var(--u)*29)]">Risk Appetite</SectionLabel>
+                  <div className="mt-[calc(var(--u)*9)] grid grid-cols-3 gap-[0.75rem]">
                     {RISK_LEVELS.map(level => (
                       <Chip key={level} label={level} selected={risk === level} onClick={() => setRisk(risk === level ? null : level)} />
                     ))}
                   </div>
 
-                  <SectionLabel className="mt-[1.875rem]">Experience</SectionLabel>
-                  <div className="mt-[0.5rem] grid grid-cols-2 gap-x-[0.75rem] gap-y-[0.6875rem]">
+                  <SectionLabel className="mt-[calc(var(--u)*30)]">Experience</SectionLabel>
+                  <div className="mt-[calc(var(--u)*8)] grid grid-cols-2 gap-x-[0.75rem] gap-y-[0.6875rem]">
                     {EXPERIENCE_LEVELS.map(level => (
                       <Chip
                         key={level}
@@ -376,11 +389,11 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
 
           {/* Actions */}
           {step === 0 ? (
-            <div className="mt-[4.125rem] -mx-1">
+            <div className="mt-[calc(var(--u)*66)] -mx-1">
               <GlowButton label="Continue" width="100%" height={44} onClick={handleContinue} />
             </div>
           ) : (
-            <div className={`${step === 1 ? 'mt-[3.6875rem]' : 'mt-[3.625rem]'} flex gap-2 -mr-[0.3125rem]`}>
+            <div className={`${step === 1 ? 'mt-[calc(var(--u)*59)]' : 'mt-[calc(var(--u)*58)]'} flex gap-2 -mr-[0.3125rem]`}>
               <SecondaryButton className="w-[16.8125rem] min-w-0" onClick={() => setStep(step - 1)}>
                 Back
               </SecondaryButton>
