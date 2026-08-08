@@ -61,15 +61,6 @@ function ChartUpIcon() {
   )
 }
 
-function VerifiedIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M7 0L8.5 1.5L10.5 1L11 3L13 3.5L12.5 5.5L14 7L12.5 8.5L13 10.5L11 11L10.5 13L8.5 12.5L7 14L5.5 12.5L3.5 13L3 11L1 10.5L1.5 8.5L0 7L1.5 5.5L1 3.5L3 3L3.5 1L5.5 1.5L7 0Z" fill="#10BC83" />
-      <path d="M5 7L6.5 8.5L9 5.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 function StatInfoIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -343,7 +334,6 @@ export default function CopyTradingDetailsPage() {
             <span className="text-white text-base font-acid font-medium">EA</span>
           </div>
           <h1 className="text-white text-h1 font-normal">KingEasy</h1>
-          <VerifiedIcon />
           <div className="flex items-center gap-[1.125rem] ml-2">
             <span className={`${headerPillBase} border-gfx-gold text-gfx-gold`}>Medium Risk</span>
             <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
