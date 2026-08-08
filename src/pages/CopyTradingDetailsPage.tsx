@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge } from '@/components/ui'
+import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -286,6 +287,7 @@ export default function CopyTradingDetailsPage() {
   const navigate = useNavigate()
   const [perfTab, setPerfTab] = useState(0)
   const [tradeTab, setTradeTab] = useState(1)
+  const [copyModalOpen, setCopyModalOpen] = useState(false)
   const perfTabs = ['Performance Statement', 'Trading Statistics', 'Trade Calendar'] as const
   const tradeTabs = ['Open Positions', 'Closed Trades'] as const
 
@@ -329,7 +331,7 @@ export default function CopyTradingDetailsPage() {
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <GlowButton label="Copy Trader" width={180} height={44} />
+            <GlowButton label="Connect now" width={180} height={44} onClick={() => setCopyModalOpen(true)} />
           </div>
         </div>
 
@@ -503,6 +505,16 @@ export default function CopyTradingDetailsPage() {
         </div>
 
       </div>
+
+      <CopySubscriptionModal
+        open={copyModalOpen}
+        onClose={() => setCopyModalOpen(false)}
+        traderName="KingEasy"
+        traderUsername="@KingEasy"
+        traderInitials="EA"
+        aum="$3,000.00"
+        roi="+194.12%"
+      />
     </div>
   )
 }
