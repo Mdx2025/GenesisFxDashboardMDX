@@ -435,9 +435,9 @@ export default function PammPage() {
               <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[15.6250rem]" />
               <div className="absolute top-0 left-[10%] right-[10%] h-[1.16px] bg-gradient-to-r from-transparent via-[rgba(0,240,160,0.3)] to-transparent" />
               <div className="relative overflow-x-auto">
-                <table className="w-full min-w-[60rem] pt-10">
+                <table className="w-full min-w-[60rem] border-separate border-spacing-0 pt-10">
                   <thead>
-                    <tr className="border-b border-[rgba(255,255,255,0.04)]">
+                    <tr className="[&>th]:border-b [&>th]:border-[rgba(255,255,255,0.04)]">
                       {['Strategy name', 'aum', 'Investors', 'P&L', 'Min Investment', 'managment fee', 'perfomance fee', 'status', 'actions'].map(h => (
                         <th key={h} className="text-left text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-7 py-4 first:pl-7">{h}</th>
                       ))}
@@ -445,7 +445,7 @@ export default function PammPage() {
                   </thead>
                   <tbody>
                     {[0, 1, 2].map(i => (
-                      <tr key={i} className="border-b border-gfx-green-900 last:border-0">
+                      <tr key={i} className="[&>td]:border-b [&>td]:border-gfx-green-900 last:[&>td]:border-0">
                         <td className="px-7 py-5">
                           <span className="text-white text-sm font-acid font-normal leading-5">Testing PAMM</span>
                         </td>
