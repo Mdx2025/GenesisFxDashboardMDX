@@ -32,7 +32,7 @@ export function GlassTextarea({ label, placeholder = '', value: controlledValue,
         onChange={(e) => handleChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={`w-full bg-gfx-green-800 font-acid text-white placeholder:text-gfx-neutral-400 rounded-full px-4 py-4 text-base outline-none resize-none transition-[border-color] duration-200 ${
+        className={`w-full bg-gfx-green-800 font-acid text-white placeholder:text-gfx-neutral-400 rounded-lg px-4 py-4 text-base outline-none resize-none transition-[border-color] duration-200 ${
           focused ? 'border border-gfx-focus-ring' : 'border border-gfx-green-200'
         }`}
       />
