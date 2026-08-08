@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { GlowButton, SparkleButton } from '@/components/ui'
+import { GlassCard, GlowButton, SparkleButton } from '@/components/ui'
 
 interface TransferToMainWalletModalProps {
   open: boolean
@@ -58,8 +58,11 @@ export function TransferToMainWalletModal({
     >
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} role="presentation" />
 
-      <div
-        className="relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] overflow-hidden rounded-[1.16rem] border border-gfx-green-800 bg-gfx-green-800 shadow-[0_4.64px_23.2px_rgba(0,0,0,0.03)]"
+      <GlassCard
+        variant="light"
+        divider="none"
+        rounded="1.16rem"
+        className="w-[49.5625rem] max-w-[95vw] max-h-[90vh] overflow-hidden bg-gfx-green-800"
         style={{
           animation: visible ? 'modalFadeIn 0.3s ease-out forwards' : 'modalFadeOut 0.25s ease-in forwards',
         }}
@@ -135,7 +138,7 @@ export function TransferToMainWalletModal({
             <GlowButton label="Transfer" width={339} height={44} onClick={onClose} />
           </div>
         </div>
-      </div>
+      </GlassCard>
     </div>
   )
 }
