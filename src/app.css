@@ -2,6 +2,14 @@
 
 @font-face {
   font-family: 'Acid Grotesk';
+  src: url('/fonts/AcidGrotesk-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Acid Grotesk';
   src: url('/fonts/AcidGrotesk-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -160,17 +168,21 @@
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
-  --font-size-h1: clamp(1.75rem, 1.25rem + 1.5vw, 4rem);
+  /* Figma "Typography / Mode 1" scale. Each token reaches its exact Figma value
+     at 1440px and scales down to a mobile floor; the Figma value is the ceiling. */
+  --font-size-h1: clamp(2rem, 1.582rem + 1.714vw, 3.125rem);
   --font-size-h1--line-height: 100%;
-  --font-size-h2: clamp(1.25rem, 0.85rem + 1.2vw, 3rem);
+  --font-size-h2: clamp(1.5rem, 1.221rem + 1.143vw, 2.25rem);
   --font-size-h2--line-height: 100%;
-  --font-size-h3: clamp(1rem, 0.75rem + 0.65vw, 2rem);
+  --font-size-h3: clamp(1.125rem, 0.986rem + 0.571vw, 1.5rem);
   --font-size-h3--line-height: 100%;
-  --font-size-body1: clamp(0.75rem, 0.65rem + 0.26vw, 1.5rem);
+  --font-size-title: clamp(0.875rem, 0.829rem + 0.19vw, 1rem);
+  --font-size-title--line-height: 1.5;
+  --font-size-body1: clamp(0.8125rem, 0.789rem + 0.095vw, 0.875rem);
   --font-size-body1--line-height: 1.5;
-  --font-size-body2: clamp(0.625rem, 0.525rem + 0.26vw, 1.25rem);
+  --font-size-body2: clamp(0.6875rem, 0.664rem + 0.095vw, 0.75rem);
   --font-size-body2--line-height: 1.5;
-  --font-size-btn: clamp(0.875rem, 0.75rem + 0.26vw, 1.625rem);
+  --font-size-btn: clamp(0.875rem, 0.829rem + 0.19vw, 1rem);
   --font-size-btn--line-height: 1.5;
   --font-size-micro: clamp(0.875rem, 0.75rem + 0.26vw, 1.625rem);
   --font-size-micro--line-height: 1.5;
@@ -202,7 +214,7 @@
   --font-size-body-lg--line-height: 150%;
   --font-size-caption: clamp(0.5625rem, 0.4rem + 0.26vw, 1rem);
   --font-size-caption--line-height: 140%;
-  --font-size-label: clamp(0.625rem, 0.5rem + 0.26vw, 1.125rem);
+  --font-size-label: clamp(0.6875rem, 0.664rem + 0.095vw, 0.75rem);
   --font-size-label--line-height: 130%;
   --font-size-eyebrow: clamp(0.5625rem, 0.4rem + 0.26vw, 1rem);
   --font-size-eyebrow--line-height: 120%;
@@ -461,6 +473,7 @@ html[data-theme='light'] .theme-root header .theme-switch svg [stroke='white'] {
   .text-h1 { font-size: var(--font-size-h1); line-height: var(--font-size-h1--line-height); }
   .text-h2 { font-size: var(--font-size-h2); line-height: var(--font-size-h2--line-height); }
   .text-h3 { font-size: var(--font-size-h3); line-height: var(--font-size-h3--line-height); }
+  .text-title { font-size: var(--font-size-title); line-height: var(--font-size-title--line-height); }
   .text-body1 { font-size: var(--font-size-body1); line-height: var(--font-size-body1--line-height); }
   .text-body2 { font-size: var(--font-size-body2); line-height: var(--font-size-body2--line-height); }
   .text-btn { font-size: var(--font-size-btn); line-height: var(--font-size-btn--line-height); }
