@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-10
+
+- Added a bottom-left `GlowEllipse` to the five PAMM Manager summary cards (Total AUM, Total Strategies, Total Followers, Total P&L Generated, Fee Earnings) via a new `bottom-left` `StatCard` glow position.
+- Added side `GlowEllipse` accents to the PAMM performance stat cards: ROI, Win Rate, Profit Factor and Days Active glow from the right, the rest from the left.
+
 ## 2026-08-05
 
 - Rebuilt the Academy E Book card media compositions from Figma Frame 1000002408, including the exact MCP-exported artwork, category surfaces, crop geometry, opacity, and lower fades.

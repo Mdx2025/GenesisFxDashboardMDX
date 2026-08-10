@@ -415,11 +415,11 @@ export default function PammPage() {
 
             {/* Manager Stat Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-              <StatCard label="Total AUM" value="$0.00" />
-              <StatCard label="Total Strategies" value="0" />
-              <StatCard label="Total Followers" value="0" />
-              <StatCard label="Total P&L Generated" value="$0.00" valueColor="text-gfx-bullish-light" />
-              <StatCard label="Fee Earnings" value="$0.00" />
+              <StatCard label="Total AUM" value="$0.00" glow="bottom-left" />
+              <StatCard label="Total Strategies" value="0" glow="bottom-left" />
+              <StatCard label="Total Followers" value="0" glow="bottom-left" />
+              <StatCard label="Total P&L Generated" value="$0.00" valueColor="text-gfx-bullish-light" glow="bottom-left" />
+              <StatCard label="Fee Earnings" value="$0.00" glow="bottom-left" />
             </div>
 
             {/* Manager Dashboard Header */}

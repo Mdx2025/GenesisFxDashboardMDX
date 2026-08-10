@@ -12,8 +12,8 @@ interface StatCardProps {
   /** Muted trailing unit rendered next to the value, e.g. "lots". */
   unit?: string
   action?: string
-  /** Side the ambient glow bleeds in from. */
-  glow?: 'left' | 'right'
+  /** Corner or side the ambient glow bleeds in from. */
+  glow?: 'left' | 'right' | 'bottom-left'
   children?: ReactNode
   className?: string
 }
@@ -21,6 +21,7 @@ interface StatCardProps {
 const GLOW_POSITION = {
   left: '-left-[8rem] -top-[4rem]',
   right: '-right-[8rem] -top-[4rem]',
+  'bottom-left': '-left-[8rem] -bottom-[4rem]',
 } as const
 
 export function StatCard({ label, value, valueColor = 'text-white', icon, inlineIcon, unit, action, glow, children, className = '' }: StatCardProps) {
