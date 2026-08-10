@@ -506,7 +506,14 @@ html[data-theme='light'] .theme-root header .theme-switch svg [stroke='white'] {
   .text-tiny { font-size: var(--font-size-tiny); line-height: var(--font-size-tiny--line-height); }
   .text-title-4xl { font-size: var(--font-size-title-4xl); line-height: var(--font-size-title-4xl--line-height); }
   .text-subtitle-4xl { font-size: var(--font-size-subtitle-4xl); line-height: var(--font-size-subtitle-4xl--line-height); }
-  .text-section-title { font-size: var(--font-size-section-title); line-height: var(--font-size-section-title--line-height); }
+}
+
+/* Declared via @utility (not @layer utilities) so responsive variants like
+   xl:text-5xl can override it — plain @layer rules are emitted after Tailwind's
+   utilities and win at equal specificity regardless of media query. */
+@utility text-section-title {
+  font-size: var(--font-size-section-title);
+  line-height: var(--font-size-section-title--line-height);
 }
 
 ::-webkit-scrollbar { width: 4px; }
