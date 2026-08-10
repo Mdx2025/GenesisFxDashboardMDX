@@ -172,7 +172,7 @@ function TraderPassportCard() {
             boxShadow: '0 0 0 6px rgba(168,85,247,0.12), 0 0 40px rgba(168,85,247,0.35)',
           }}
         >
-          <span className="text-white text-subtitle-4xl font-bold leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <span className="text-white text-subtitle-4xl font-acid font-bold leading-none">
             T
           </span>
         </div>
@@ -477,8 +477,8 @@ function AiStrategySummaryCard() {
 
         {/* Body */}
         <p
-          className="text-gfx-neutral-400 leading-6"
-          style={{ fontSize: '14.5px', fontFamily: 'Inter, sans-serif' }}
+          className="text-gfx-neutral-400 font-acid leading-6"
+          style={{ fontSize: '14.5px' }}
         >
           {aiStrategySummary}
         </p>

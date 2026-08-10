@@ -2,8 +2,25 @@
 
 @font-face {
   font-family: 'Acid Grotesk';
-  src: url('/fonts/AcidGrotesk-Regular.otf') format('opentype');
+  src: url('/fonts/AcidGrotesk-Regular.woff2') format('woff2');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Acid Grotesk';
+  src: url('/fonts/AcidGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* No 600 face exists; CSS weight matching resolves font-semibold (600) up to 700. */
+@font-face {
+  font-family: 'Acid Grotesk';
+  src: url('/fonts/AcidGrotesk-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -16,6 +33,9 @@
   --width-sidebar-4xl: 34rem;
 
   --font-acid: "Acid Grotesk", sans-serif;
+  --font-sans: "Acid Grotesk", sans-serif;
+  --font-serif: "Acid Grotesk", sans-serif;
+  --font-mono: "Acid Grotesk", sans-serif;
 
   /* Palette — raw color scale */
   --color-gfx-green-50: #01130d;

@@ -263,7 +263,7 @@ export default function SignalsDetailsPage() {
                 <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6 mb-2">Most Traded</p>
                 <div className="flex items-center gap-2 bg-gfx-green-800 rounded-sm border-[1.32px] border-gfx-green-900 px-3 py-2">
                   <XauusdSmallIcon />
-                  <span className="text-white text-base font-bold tracking-wide" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '25.81px' }}>XAUUSD</span>
+                  <span className="text-white text-base font-acid font-bold tracking-wide" style={{ lineHeight: '25.81px' }}>XAUUSD</span>
                   <span className="text-gfx-neutral-400 text-sm font-acid leading-5">2</span>
                 </div>
               </div>

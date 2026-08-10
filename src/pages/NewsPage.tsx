@@ -100,7 +100,7 @@ function LiveNewsCard() {
           <svg width="72" height="16" viewBox="0 0 72 16" fill="none" aria-hidden="true">
             <rect width="72" height="16" rx="2" fill="#282828"/>
             <path d="M18.5 4l4.5 4-4.5 4V4z" fill="#FF0000"/>
-            <text x="28" y="11.5" fill="white" fontSize="8" fontFamily="sans-serif">YouTube</text>
+            <text x="28" y="11.5" fill="white" fontSize="8" fontFamily="Acid Grotesk, sans-serif">YouTube</text>
           </svg>
         </div>
         <div className="absolute bottom-0 left-0 right-0 z-10 px-4 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent">

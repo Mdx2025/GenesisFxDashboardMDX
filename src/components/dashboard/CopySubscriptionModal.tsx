@@ -127,7 +127,7 @@ export function CopySubscriptionModal({
           {/* Step indicator + title */}
           <div className="flex items-center gap-4 mb-[39px]">
             <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-gfx-green-300 flex items-center justify-center flex-shrink-0">
-              <span className="text-gfx-green-300 text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '20px' }}>1</span>
+              <span className="text-gfx-green-300 text-sm font-acid font-semibold" style={{ lineHeight: '20px' }}>1</span>
             </div>
             <h2 className="text-white text-2xl font-acid font-normal">Configure Subscription</h2>
           </div>
@@ -175,7 +175,7 @@ export function CopySubscriptionModal({
           {/* Subscription Amount */}
           <div className="mb-10">
             <div className="flex items-center gap-1.5 mb-[12.5px]">
-              <label className="text-white text-base font-semibold leading-6" style={{ fontFamily: 'Inter, sans-serif' }}>Subscription Amount</label>
+              <label className="text-white text-base font-acid font-semibold leading-6">Subscription Amount</label>
               <InfoIcon color="#808080" />
             </div>
             <div className="h-[62px] rounded-sm bg-gfx-green-900 flex items-center justify-between px-4">
