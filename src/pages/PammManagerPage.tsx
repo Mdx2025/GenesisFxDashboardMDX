@@ -187,12 +187,12 @@ export default function PammManagerPage() {
         {activeTab === 5 && (
           <div className="flex flex-col gap-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-              <StatCard label="ROI" value="+0.00%" valueColor="text-gfx-green-300" />
-              <StatCard label="Total P&L" value="+0.00" />
-              <StatCard label="Win Rate" value="0.0%" valueColor="text-gfx-amber" />
-              <StatCard label="Total Trades" value="0" />
-              <StatCard label="Profit Factor" value="0.00" valueColor="text-gfx-amber" />
-              <StatCard label="Avg Win/Loss">
+              <StatCard label="ROI" value="+0.00%" valueColor="text-gfx-green-300" glow="right" />
+              <StatCard label="Total P&L" value="+0.00" glow="left" />
+              <StatCard label="Win Rate" value="0.0%" valueColor="text-gfx-amber" glow="right" />
+              <StatCard label="Total Trades" value="0" glow="left" />
+              <StatCard label="Profit Factor" value="0.00" valueColor="text-gfx-amber" glow="right" />
+              <StatCard label="Avg Win/Loss" glow="left">
                 <div className="relative z-10 p-6 min-h-[148px] flex flex-col justify-center">
                   <p className="text-gfx-neutral-500 text-sm font-acid leading-tight">Avg Win/Loss</p>
                   <p className="text-4xl font-acid leading-normal mt-2">
@@ -202,8 +202,8 @@ export default function PammManagerPage() {
                   </p>
                 </div>
               </StatCard>
-              <StatCard label="Days Active" value="0" />
-              <StatCard label="Total Volume" value="0.00" unit="lots" />
+              <StatCard label="Days Active" value="0" glow="right" />
+              <StatCard label="Total Volume" value="0.00" unit="lots" glow="left" />
             </div>
 
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
