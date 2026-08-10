@@ -33,6 +33,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Acid Grotesk';
+  src: url('/fonts/AcidGrotesk-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --breakpoint-3xl: 2200px;
   --breakpoint-4xl: 3200px;
