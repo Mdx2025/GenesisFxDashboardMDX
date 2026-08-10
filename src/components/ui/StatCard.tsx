@@ -6,12 +6,16 @@ interface StatCardProps {
   value?: string
   valueColor?: string
   icon?: ReactNode
+  /** Small glyph sitting inline to the left of the label, instead of the 42px badge on the right. */
+  inlineIcon?: ReactNode
+  /** Muted trailing unit rendered next to the value, e.g. "lots". */
+  unit?: string
   action?: string
   children?: ReactNode
   className?: string
 }
 
-export function StatCard({ label, value, valueColor = 'text-white', icon, action, children, className = '' }: StatCardProps) {
+export function StatCard({ label, value, valueColor = 'text-white', icon, inlineIcon, unit, action, children, className = '' }: StatCardProps) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className={`relative overflow-hidden ${className}`}>
       {children ? (
@@ -31,8 +35,14 @@ export function StatCard({ label, value, valueColor = 'text-white', icon, action
             </div>
           ) : (
             <>
-              <p className="text-gfx-neutral-500 text-sm font-acid leading-tight">{label}</p>
-              <p className={`${valueColor} text-4xl font-acid leading-normal mt-2`}>{value}</p>
+              <div className="flex items-center gap-[0.3125rem]">
+                {inlineIcon}
+                <p className="text-gfx-neutral-500 text-sm font-acid leading-tight">{label}</p>
+              </div>
+              <p className={`${valueColor} text-4xl font-acid leading-normal mt-2`}>
+                {value}
+                {unit && <span className="text-gfx-neutral-400 text-base font-acid ml-2">{unit}</span>}
+              </p>
               {action && <p className="text-gfx-green-300 text-base font-acid mt-1">{action}</p>}
             </>
           )}

@@ -478,7 +478,7 @@ export default function PammPage() {
                             <SparkleButton className="!px-10 !h-[2.8750rem]" onClick={() => setSettingsOpen(true)}>
                               <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-6">View</span>
                             </SparkleButton>
-                            <SparkleButton className="!px-10 !h-[2.8750rem]">
+                            <SparkleButton className="!px-10 !h-[2.8750rem]" onClick={() => navigate('/gensocial/pamm/manager/single-page')}>
                               <span className="text-gfx-neutral-550 text-base font-acid font-medium leading-6">Edit</span>
                             </SparkleButton>
                           </div>

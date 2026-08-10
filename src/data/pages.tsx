@@ -15,6 +15,7 @@ import ChallengesPage from '@/pages/ChallengesPage'
 import JournalPage from '@/pages/JournalPage'
 import PammPage from '@/pages/PammPage'
 import PammDetailsPage from '@/pages/PammDetailsPage'
+import PammManagerPage from '@/pages/PammManagerPage'
 import CopyTradingPage from '@/pages/CopyTradingPage'
 import CopyTradingDetailsPage from '@/pages/CopyTradingDetailsPage'
 import CreateStrategyPage from '@/pages/CreateStrategyPage'
@@ -64,6 +65,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/academy/ebook-single-page', label: 'E-Book', description: 'Single e-book chapter view', icon: AcademyIcon, component: EbookSinglePage, showInDirectory: false },
   { path: '/gensocial/pamm', label: 'PAMM Strategies', description: 'Browse and invest in PAMM strategies', icon: GenSocialIcon, component: PammPage },
   { path: '/gensocial/pamm/details-single-page', label: 'PAMM Details', description: 'PAMM strategy single page details', icon: GenSocialIcon, component: PammDetailsPage, showInDirectory: false },
+  { path: '/gensocial/pamm/manager/single-page', label: 'PAMM Manager', description: 'Manage your PAMM strategy dashboard', icon: GenSocialIcon, component: PammManagerPage, showInDirectory: false },
   { path: '/gensocial/pamm/create-strategy', label: 'Create Strategy', description: 'Create a new PAMM trading strategy', icon: GenSocialIcon, component: CreateStrategyPage, showInDirectory: false },
   { path: '/gensocial/copy-trading', label: 'Copy Trading', description: 'Copy top-performing traders automatically', icon: GenSocialIcon, component: CopyTradingPage },
   { path: '/gensocial/copy-trading/details-single-page', label: 'Copy Trading Details', description: 'Copy trading strategy single page details', icon: GenSocialIcon, component: CopyTradingDetailsPage, showInDirectory: false },
