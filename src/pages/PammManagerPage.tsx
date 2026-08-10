@@ -107,10 +107,10 @@ export default function PammManagerPage() {
 
         {/* ─── Summary stats ─── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard label="Investors" value="0" />
-          <StatCard label="Total AUM" value="$0.00" />
-          <StatCard label="Total Profit" value="$0.00" valueColor="text-gfx-green-300" />
-          <StatCard label="ROI" value="+0.00%" valueColor="text-gfx-green-300" />
+          <StatCard label="Investors" value="0" glow="right" />
+          <StatCard label="Total AUM" value="$0.00" glow="left" />
+          <StatCard label="Total Profit" value="$0.00" valueColor="text-gfx-green-300" glow="right" />
+          <StatCard label="ROI" value="+0.00%" valueColor="text-gfx-green-300" glow="left" />
         </div>
 
         {/* ─── Tabs + search ─── */}
