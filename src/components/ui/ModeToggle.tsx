@@ -130,7 +130,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
             onClick={() => { setInternalActive(i); onChange?.(i) }}
             aria-pressed={isActive}
           >
-            {iconFn && <span className="btn-icon">{iconFn(isActive ? '#fff' : '#808080')}</span>}
+            {iconFn && <span className="btn-icon">{iconFn(isActive ? '#fff' : '#A3A3A3')}</span>}
             <span className="btn-label">{option}</span>
           </button>
         )
