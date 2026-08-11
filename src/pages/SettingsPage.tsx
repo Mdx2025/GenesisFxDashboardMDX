@@ -819,7 +819,7 @@ export default function SettingsPage() {
         <div
           className="relative h-[8rem] lg:h-[11.875rem] border-b border-white/5"
           style={{
-            backgroundImage: 'url(/images/settings-hero-bg.png)',
+            backgroundImage: 'url(/images/settings-hero-bg.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

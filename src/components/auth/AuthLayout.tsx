@@ -34,7 +34,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
         {/* Left: Hero Image — hidden on mobile */}
         <div className="relative hidden lg:block lg:w-[38%] xl:w-[42%] 2xl:w-[50%] h-full shrink-0 rounded-2xl overflow-hidden">
           <img
-            src="/images/login-hero.png"
+            src="/images/login-hero.webp"
             alt="Genesis FX trading platform"
             className="absolute inset-0 w-full h-full object-cover"
           />

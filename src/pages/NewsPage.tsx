@@ -141,7 +141,7 @@ function WebcamCard() {
       <div className="grid grid-cols-2 gap-3 px-5 pb-5">
         {webcams.map(cam => (
           <div key={cam.id} className="relative rounded-xl overflow-hidden border border-[rgba(94,255,169,0.10)]">
-            <img src="/images/news/nyc-webcam.png" alt={cam.label} className="w-full h-auto block" />
+            <img src="/images/news/nyc-webcam.webp" alt={cam.label} className="w-full h-auto block" loading="lazy" />
             <div className="absolute top-3 left-3 z-10 flex flex-row items-center gap-2">
               {/* Fox5 logo */}
               <div className="relative shrink-0">

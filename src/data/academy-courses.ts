@@ -16,7 +16,7 @@ export const COURSES: Course[] = [
     lessons: 22,
     duration: '00:19:09',
     level: 'Beginner',
-    image: '/images/course-crypto.png',
+    image: '/images/course-crypto.webp',
   },
   {
     id: 'forex-trading',
@@ -25,7 +25,7 @@ export const COURSES: Course[] = [
     lessons: 22,
     duration: '00:19:09',
     level: 'Beginner',
-    image: '/images/course-forex.png',
+    image: '/images/course-forex.webp',
   },
   {
     id: 'stocks',
@@ -34,7 +34,7 @@ export const COURSES: Course[] = [
     lessons: 12,
     duration: '00:15:29',
     level: 'Beginner',
-    image: '/images/course-stocks.png',
+    image: '/images/course-stocks.webp',
   },
   {
     id: 'technical-analysis',
@@ -43,7 +43,7 @@ export const COURSES: Course[] = [
     lessons: 18,
     duration: '00:22:45',
     level: 'Intermediate',
-    image: '/images/course-crypto.png',
+    image: '/images/course-crypto.webp',
   },
   {
     id: 'risk-management',
@@ -52,7 +52,7 @@ export const COURSES: Course[] = [
     lessons: 15,
     duration: '00:16:30',
     level: 'Beginner',
-    image: '/images/course-forex.png',
+    image: '/images/course-forex.webp',
   },
   {
     id: 'commodities',
@@ -61,7 +61,7 @@ export const COURSES: Course[] = [
     lessons: 14,
     duration: '00:18:12',
     level: 'Intermediate',
-    image: '/images/course-stocks.png',
+    image: '/images/course-stocks.webp',
   },
   {
     id: 'trading-psychology',
@@ -70,7 +70,7 @@ export const COURSES: Course[] = [
     lessons: 10,
     duration: '00:12:50',
     level: 'Beginner',
-    image: '/images/course-crypto.png',
+    image: '/images/course-crypto.webp',
   },
   {
     id: 'fundamental-analysis',
@@ -79,7 +79,7 @@ export const COURSES: Course[] = [
     lessons: 16,
     duration: '00:20:15',
     level: 'Intermediate',
-    image: '/images/course-forex.png',
+    image: '/images/course-forex.webp',
   },
   {
     id: 'indices',
@@ -88,7 +88,7 @@ export const COURSES: Course[] = [
     lessons: 11,
     duration: '00:14:20',
     level: 'Beginner',
-    image: '/images/course-stocks.png',
+    image: '/images/course-stocks.webp',
   },
   {
     id: 'algo-trading',
@@ -97,7 +97,7 @@ export const COURSES: Course[] = [
     lessons: 20,
     duration: '00:25:00',
     level: 'Advanced',
-    image: '/images/course-crypto.png',
+    image: '/images/course-crypto.webp',
   },
   {
     id: 'options-trading',
@@ -106,7 +106,7 @@ export const COURSES: Course[] = [
     lessons: 19,
     duration: '00:23:40',
     level: 'Advanced',
-    image: '/images/course-forex.png',
+    image: '/images/course-forex.webp',
   },
   {
     id: 'portfolio-management',
@@ -115,7 +115,7 @@ export const COURSES: Course[] = [
     lessons: 13,
     duration: '00:17:55',
     level: 'Intermediate',
-    image: '/images/course-stocks.png',
+    image: '/images/course-stocks.webp',
   },
 ]
 

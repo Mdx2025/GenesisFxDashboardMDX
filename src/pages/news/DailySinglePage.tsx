@@ -90,7 +90,7 @@ export default function DailySinglePage() {
         <div className="relative rounded-2xl overflow-hidden bg-gfx-green-800">
           <div className="relative aspect-[16/9] w-full">
             <img
-              src="/images/news/daily-hero-thumbnail.png"
+              src="/images/news/daily-hero-thumbnail.webp"
               alt="Daily Market Analysis"
               className="w-full h-full object-cover"
             />

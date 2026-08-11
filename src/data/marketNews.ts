@@ -17,7 +17,7 @@ export const heroArticle: NewsArticle = {
   title: 'European Stocks Hold Near Records',
   description: 'European stock indices closed mixed on Tuesday following the record highs touched in the previous session amid contrasting earnings results from the Eurozone\'s largest companies.',
   date: 'Feb 10, 5:06 PM·EU',
-  imageUrl: '/images/news/hero-stock-market.png',
+  imageUrl: '/images/news/hero-stock-market.webp',
 }
 
 export const secondaryArticles: NewsArticle[] = [

@@ -32,6 +32,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
             src={illustration}
             alt={title}
             className="relative w-full h-full object-contain"
+            loading="lazy"
           />
         </div>
 
@@ -103,7 +104,7 @@ export default function ReplayView() {
         <ReplayCard
           title="Account Replay"
           description="Replay your complete account history from the beginning"
-          illustration="/images/replay/account-replay.png"
+          illustration="/images/replay/account-replay.webp"
         />
       </div>
     </div>

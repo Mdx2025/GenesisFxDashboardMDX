@@ -63,16 +63,16 @@ const GENERIC_SECTIONS = [
 ]
 
 export const EBOOK_DETAILS: Record<string, EbookDetail> = {
-  'crypto-1': { id: 'crypto-1', title: 'Introduction to Crypto', category: 'Crypto', readTime: '5 min read', image: '/images/course-crypto.png', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
-  'crypto-2': { id: 'crypto-2', title: 'Advanced Crypto Trading', category: 'Crypto', readTime: '8 min read', image: '/images/course-crypto.png', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
-  'crypto-3': { id: 'crypto-3', title: 'DeFi Fundamentals', category: 'Crypto', readTime: '6 min read', image: '/images/course-crypto.png', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
-  'crypto-4': { id: 'crypto-4', title: 'Blockchain Technology', category: 'Crypto', readTime: '7 min read', image: '/images/course-crypto.png', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
-  'forex-1': { id: 'forex-1', title: 'Introduction to Forex', category: 'Forex', readTime: '5 min read', image: '/images/course-forex.png', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
-  'forex-2': { id: 'forex-2', title: 'Forex Strategies', category: 'Forex', readTime: '7 min read', image: '/images/course-forex.png', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
-  'forex-3': { id: 'forex-3', title: 'Currency Pairs Deep Dive', category: 'Forex', readTime: '6 min read', image: '/images/course-forex.png', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
-  'forex-4': { id: 'forex-4', title: 'Forex Risk Management', category: 'Forex', readTime: '5 min read', image: '/images/course-forex.png', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
-  'stocks-1': { id: 'stocks-1', title: 'Introduction to Stocks', category: 'Stocks', readTime: '5 min read', image: '/images/course-stocks.png', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
-  'stocks-2': { id: 'stocks-2', title: 'Stock Market Basics', category: 'Stocks', readTime: '6 min read', image: '/images/course-stocks.png', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
-  'stocks-3': { id: 'stocks-3', title: 'Value Investing', category: 'Stocks', readTime: '8 min read', image: '/images/course-stocks.png', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
-  'stocks-4': { id: 'stocks-4', title: 'Growth Investing', category: 'Stocks', readTime: '7 min read', image: '/images/course-stocks.png', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
+  'crypto-1': { id: 'crypto-1', title: 'Introduction to Crypto', category: 'Crypto', readTime: '5 min read', image: '/images/course-crypto.webp', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
+  'crypto-2': { id: 'crypto-2', title: 'Advanced Crypto Trading', category: 'Crypto', readTime: '8 min read', image: '/images/course-crypto.webp', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
+  'crypto-3': { id: 'crypto-3', title: 'DeFi Fundamentals', category: 'Crypto', readTime: '6 min read', image: '/images/course-crypto.webp', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
+  'crypto-4': { id: 'crypto-4', title: 'Blockchain Technology', category: 'Crypto', readTime: '7 min read', image: '/images/course-crypto.webp', chapters: CRYPTO_CHAPTERS, sections: CRYPTO_SECTIONS },
+  'forex-1': { id: 'forex-1', title: 'Introduction to Forex', category: 'Forex', readTime: '5 min read', image: '/images/course-forex.webp', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
+  'forex-2': { id: 'forex-2', title: 'Forex Strategies', category: 'Forex', readTime: '7 min read', image: '/images/course-forex.webp', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
+  'forex-3': { id: 'forex-3', title: 'Currency Pairs Deep Dive', category: 'Forex', readTime: '6 min read', image: '/images/course-forex.webp', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
+  'forex-4': { id: 'forex-4', title: 'Forex Risk Management', category: 'Forex', readTime: '5 min read', image: '/images/course-forex.webp', chapters: FOREX_CHAPTERS, sections: GENERIC_SECTIONS },
+  'stocks-1': { id: 'stocks-1', title: 'Introduction to Stocks', category: 'Stocks', readTime: '5 min read', image: '/images/course-stocks.webp', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
+  'stocks-2': { id: 'stocks-2', title: 'Stock Market Basics', category: 'Stocks', readTime: '6 min read', image: '/images/course-stocks.webp', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
+  'stocks-3': { id: 'stocks-3', title: 'Value Investing', category: 'Stocks', readTime: '8 min read', image: '/images/course-stocks.webp', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
+  'stocks-4': { id: 'stocks-4', title: 'Growth Investing', category: 'Stocks', readTime: '7 min read', image: '/images/course-stocks.webp', chapters: STOCKS_CHAPTERS, sections: GENERIC_SECTIONS },
 }

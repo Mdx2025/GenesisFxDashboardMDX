@@ -41,7 +41,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
         {/* Left image */}
         <div className="relative w-full lg:w-[50%] h-[200px] lg:h-auto shrink-0">
           <img
-            src="/images/news/trading-globe.png"
+            src="/images/news/trading-globe.webp"
             alt={article.title}
             className="w-full h-full object-cover"
           />
@@ -50,7 +50,7 @@ function HeroCard({ article }: { article: NewsArticle }) {
 
         {/* Glow background */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <img src="/images/news/hero-glow-bg.png" alt="" className="w-full h-full object-cover" />
+          <img src="/images/news/hero-glow-bg.webp" alt="" className="w-full h-full object-cover" />
         </div>
 
         {/* Content */}
@@ -102,7 +102,7 @@ function SecondaryCard({ article, index }: { article: NewsArticle; index: number
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden flex-1 min-w-0">
       <div className="relative h-fit flex flex-col justify-center px-7 py-10">
         <GlowEllipse className={index === 0 ? '-top-[6rem] -right-[4rem]' : '-top-[6rem] -left-[4rem]'} />
-        <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 right-0 pointer-events-none" aria-hidden="true" />
+        <img src="/images/news/card-glow-corner.png" alt="" className="absolute bottom-0 right-0 pointer-events-none" aria-hidden="true" loading="lazy" />
 
         <div className="relative z-10">
           {/* Category + Commodity icon */}

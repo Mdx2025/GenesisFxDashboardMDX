@@ -376,7 +376,7 @@ export default function DesignSystemPage() {
           <Subsection title="Course Card — CourseCard">
             <div className="max-w-[501px]">
               <CourseCard
-                image="/images/course-crypto.png"
+                image="/images/course-crypto.webp"
                 title="Crypto Trading"
                 description="In this course, you will learn all the basics to start trading in the world of cryptocurrencies"
                 lessons={22}

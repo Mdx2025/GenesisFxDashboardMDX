@@ -119,7 +119,7 @@ export function SignalStrategyCard({
           <div className="flex items-center gap-5.5">
             <div className="w-[63px] h-[63px] rounded-full bg-[var(--signal-avatar-bg,#064b34)] flex items-center justify-center flex-shrink-0 overflow-hidden">
               {avatarUrl ? (
-                <img src={avatarUrl} alt={username} className="w-full h-full object-cover" />
+                <img src={avatarUrl} alt={username} className="w-full h-full object-cover" loading="lazy" />
               ) : (
                 <span className="text-white text-base font-acid font-medium">{initials}</span>
               )}
