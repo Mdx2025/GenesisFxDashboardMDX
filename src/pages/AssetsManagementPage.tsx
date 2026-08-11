@@ -174,7 +174,7 @@ export default function AssetsManagementPage() {
                     <span className="text-gfx-neutral-500 text-2xl font-normal">{balanceVisible ? 'USD' : ''}</span>
                   </div>
 
-                  <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 bg-gfx-green-800 border border-gfx-green-200">
+                  <div className="flex items-center gap-3 rounded-md px-4 py-3 bg-gfx-green-800 border border-gfx-green-200">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
                       <rect x="1" y="5" width="18" height="13" rx="2" stroke="#00B38C" strokeWidth="1.4" fill="none"/>
                       <path d="M5 5V4a3 3 0 013-3h4a3 3 0 013 3v1" stroke="#00B38C" strokeWidth="1.4" strokeLinecap="round"/>

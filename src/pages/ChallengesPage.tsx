@@ -216,16 +216,6 @@ function TiersContent({ onPurchase }: { onPurchase?: () => void }) {
   )
 }
 
-function DownloadIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M7 10L12 15L17 10" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 15V3" stroke="#C6C6C6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 function ChevronDownSmallIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -342,14 +332,6 @@ function MyChallengesContent() {
             <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
               Turn $125 into $1,000,000 — prove your skill, level up your capital
             </p>
-            <div className="mt-6">
-              <SparkleButton className="px-6">
-                <span className="flex items-center gap-2">
-                  <DownloadIcon />
-                  <span>Download App</span>
-                </span>
-              </SparkleButton>
-            </div>
           </div>
           <BannerStatBox value={0} label="My challenges" />
         </div>

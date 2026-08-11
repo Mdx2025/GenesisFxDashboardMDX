@@ -29,15 +29,6 @@ function NetworkIcon() {
   )
 }
 
-function SessionStatusIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2L12 22" stroke="#064b34" strokeWidth="2" strokeLinecap="round" />
-      <path d="M5 9L12 2L19 9" stroke="#064b34" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 /* ─── Session Card ─── */
 
 function SessionCard({ session, isActive, onClick }: { session: TradeSession; isActive?: boolean; onClick?: () => void }) {
@@ -91,9 +82,6 @@ function SessionCard({ session, isActive, onClick }: { session: TradeSession; is
         </span>
       </div>
 
-      <div className="absolute right-5 top-1/2 -translate-y-1/2 opacity-30">
-        <SessionStatusIcon />
-      </div>
     </GlassCard>
     </div>
   )

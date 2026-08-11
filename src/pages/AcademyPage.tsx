@@ -41,8 +41,8 @@ function LearningJourneyCard() {
     <GlassBannerCard className="w-full" contentClassName="py-12 px-5 xl:py-27 xl:px-13 3xl:py-34 3xl:px-10 4xl:py-42 4xl:px-14">
       <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
         <div className="flex items-start gap-6 shrink-0">
-          <div className="w-[3.3750rem] h-[3.3750rem] rounded-lg bg-gfx-green-100 flex items-center justify-center shrink-0">
-            <AcademyCapIcon size={26} />
+          <div className="w-[4.5rem] h-[4.5rem] rounded-lg bg-gfx-green-100 flex items-center justify-center shrink-0">
+            <AcademyCapIcon size={30} />
           </div>
           <div className="flex flex-col gap-1">
             <h2 className="text-white text-section-title xl:text-5xl 3xl:text-6xl font-normal leading-none">
