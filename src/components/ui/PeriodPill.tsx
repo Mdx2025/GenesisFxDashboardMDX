@@ -10,14 +10,14 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
   const [selected, setSelected] = useState(defaultActive)
 
   return (
-    <div className="relative inline-flex items-center gap-1 overflow-hidden rounded-full bg-white/[0.04] px-2 py-1">
+    <div className="period-pill relative inline-flex items-center gap-1 overflow-hidden rounded-full bg-white/[0.04] px-2 py-1">
       {periods.map((p) => (
         <button
           key={p}
           type="button"
           onClick={() => setSelected(p)}
           aria-pressed={selected === p}
-          className={`relative h-[32.35px] cursor-pointer rounded-full px-3 text-center font-acid text-xs font-normal leading-[18.8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500 ${
+          className={`relative inline-flex h-[32.35px] cursor-pointer items-center justify-center rounded-full px-3 text-center font-acid text-xs font-normal leading-[18.8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500 ${
             selected === p ? 'theme-preserve-light z-10 text-white' : 'z-base text-gfx-neutral-500 hover:text-white'
           }`}
         >
@@ -34,7 +34,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
               />
             </span>
           )}
-          <span className="relative z-base">{p}</span>
+          <span className="relative z-base translate-y-px">{p}</span>
         </button>
       ))}
       <button type="button" className="z-base cursor-pointer rounded-full p-1.5 text-gfx-neutral-500 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500" aria-label="Calendar">

@@ -376,6 +376,10 @@ html[data-theme='light'] .mode-toggle {
   background: #ECECEC;
 }
 
+html[data-theme='light'] .period-pill {
+  background: var(--color-gfx-surface-select);
+}
+
 html[data-theme='light'] .period-pill__active-surface {
   background: #00B38C;
   outline-color: #00B38C;
