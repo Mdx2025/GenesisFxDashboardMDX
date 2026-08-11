@@ -360,7 +360,8 @@ html[data-theme='light'] .glass-card-heavy {
     inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
-html[data-theme='light'] .glow-ellipse {
+html[data-theme='light'] .glow-ellipse,
+html[data-theme='light'] .bg-gfx-glow-green {
   display: none;
 }
 
