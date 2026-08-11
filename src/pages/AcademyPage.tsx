@@ -45,7 +45,7 @@ function LearningJourneyCard() {
             <AcademyCapIcon size={26} />
           </div>
           <div className="flex flex-col gap-1">
-            <h2 className="text-white text-h2 font-normal leading-none">
+            <h2 className="text-white text-section-title xl:text-5xl font-normal leading-none">
               Your Learning Journey
             </h2>
             <p className="text-gfx-neutral-500 text-label font-normal">
@@ -165,7 +165,7 @@ export default function AcademyPage() {
 
         {activeTab === 0 && (
           <>
-            <div className="py-7 xl:py-15">
+            <div className="pt-7 xl:pt-15 pb-7">
               <LearningJourneyCard />
             </div>
 
