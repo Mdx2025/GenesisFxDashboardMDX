@@ -461,9 +461,12 @@ html[data-theme='light'] .theme-root .bg-gfx-green-250 .text-white,
 html[data-theme='light'] .theme-root [style*='background: #064B34'] .text-white,
 html[data-theme='light'] .theme-root [style*='background:#064B34'] .text-white,
 html[data-theme='light'] .theme-root .bg-gfx-green-300.text-white,
-html[data-theme='light'] .mode-toggle button.active,
 html[data-theme='light'] .pill-tabs button.active {
   color: var(--color-gfx-on-accent);
+}
+
+html[data-theme='light'] .mode-toggle button.active {
+  color: #fff;
 }
 
 .theme-preserve-light {

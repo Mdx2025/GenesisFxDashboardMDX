@@ -328,7 +328,12 @@ export function TopBar({ onMenuClick, menuOpen = false, breadcrumbItems }: TopBa
                     )}
                   </div>
 
-                  <div className="max-h-80 overflow-y-auto notif-scrollbar">
+                  <div
+                    className="max-h-80 overflow-y-auto overscroll-y-contain touch-pan-y notif-scrollbar"
+                    data-lenis-prevent
+                    tabIndex={0}
+                    aria-label="Notifications list"
+                  >
                     {MOCK_NOTIFICATIONS.map(n => (
                       <div key={n.id} className={`notif-item flex gap-3 px-4 py-3 cursor-pointer ${n.unread ? 'notif-unread' : ''}`}>
                         <div className="flex items-center justify-center w-8 h-8 rounded-md shrink-0" style={{ background: 'rgba(6, 75, 52, 0.3)' }}>
