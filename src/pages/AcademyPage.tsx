@@ -106,7 +106,7 @@ function GlossarySection() {
           onClick={() => setActiveLetter('All')}
           className={`${LETTER_PILL} px-3 ${
             activeLetter === 'All'
-              ? 'bg-gfx-green-300 text-gfx-green-100'
+              ? 'bg-gfx-green-300 text-gfx-on-accent'
               : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
           }`}
         >
@@ -118,7 +118,7 @@ function GlossarySection() {
             onClick={() => setActiveLetter(letter)}
             className={`${LETTER_PILL} w-[2.0625rem] ${
               activeLetter === letter
-                ? 'bg-gfx-green-300 text-gfx-green-100'
+                ? 'bg-gfx-green-300 text-gfx-on-accent'
                 : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
             }`}
           >

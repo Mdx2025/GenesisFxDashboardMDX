@@ -104,6 +104,7 @@
   --color-gfx-card-bg: oklch(100% 0 0 / 0.03);
   --color-gfx-surface-hover: oklch(100% 0 0 / 0.06);
   --color-gfx-overlay: oklch(0% 0 0 / 0.6);
+  --color-gfx-on-accent: #021B13;
 
   /* Semantic status */
   --color-gfx-bullish: #0c9104;
@@ -277,13 +278,13 @@
 :root[data-theme='light'] {
   color-scheme: light;
   --color-gfx-main: #f2f8f6;
-  --color-gfx-sidebar: #e8f2ee;
+  --color-gfx-sidebar: #fff;
   --color-gfx-card-border: rgba(6, 75, 52, 0.12);
   --color-gfx-card-bg: rgba(255, 255, 255, 0.72);
   --color-gfx-surface-hover: rgba(6, 75, 52, 0.08);
   --color-gfx-overlay: rgba(5, 19, 15, 0.34);
   --color-gfx-green-50: #eaf5f1;
-  --color-gfx-green-100: #e2f1eb;
+  --color-gfx-green-100: #fff;
   --color-gfx-green-800: #e7f2ee;
   --color-gfx-green-900: #dcece6;
   --color-gfx-neutral-300: #52635c;
