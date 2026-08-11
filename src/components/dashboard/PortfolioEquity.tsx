@@ -10,7 +10,7 @@ export function PortfolioEquity() {
       <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
         <div className="flex items-start justify-between mb-4 flex-wrap gap-3">
           <div>
-            <h2 className="text-tab uppercase tracking-tab text-gfx-neutral-500 mb-2">PORTFOLIO EQUITY</h2>
+            <h2 className="text-tab tracking-tab text-gfx-neutral-500 mb-2">Portfolio Equity</h2>
             <div className="flex flex-row items-center gap-3">
               <p className="text-white text-card-value">$17,897.30</p>
               <p className="text-sm 3xl:text-base 4xl:text-lg text-gfx-green-500">+$6,437.21 (56.1%)</p>
