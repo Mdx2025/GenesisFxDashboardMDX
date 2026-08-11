@@ -38,7 +38,7 @@ function LearningJourneyCard() {
   const pct = Math.round((completed / total) * 100)
 
   return (
-    <GlassBannerCard className="w-full" contentClassName="py-12 px-5 xl:py-27 xl:px-13 3xl:py-34 3xl:px-10 4xl:py-42 4xl:px-14">
+    <GlassBannerCard className="w-full" contentClassName="py-12 px-5 xl:py-27 xl:px-13 3xl:py-34 3xl:px-16 4xl:py-42 4xl:px-20">
       <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
         <div className="flex items-start gap-6 shrink-0">
           <div className="w-[4.5rem] h-[4.5rem] rounded-lg bg-gfx-green-100 flex items-center justify-center shrink-0">

@@ -148,7 +148,7 @@ export default function AssetsManagementPage() {
           <h1 className="text-white font-normal leading-none text-hero-lg mt-6 3xl:mt-8 4xl:mt-10">Funding</h1>
 
           <section aria-label="Fiat Wallet" className="py-7 md:py-15">
-            <GlassBannerCard contentClassName="py-8 px-5 xl:py-17 xl:px-13 3xl:py-21 3xl:px-10 4xl:py-26 4xl:px-14">
+            <GlassBannerCard contentClassName="py-8 px-5 xl:py-17 xl:px-13 3xl:py-21 3xl:px-16 4xl:py-26 4xl:px-20">
               <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8">
                 <div className="flex flex-col gap-4 shrink-0">
                   <div className="flex items-center gap-2">
