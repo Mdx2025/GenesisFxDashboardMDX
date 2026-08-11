@@ -361,7 +361,8 @@ html[data-theme='light'] .glass-card-heavy {
 }
 
 html[data-theme='light'] .glow-ellipse,
-html[data-theme='light'] .bg-gfx-glow-green {
+html[data-theme='light'] .bg-gfx-glow-green,
+html[data-theme='light'] .summary-card__glow {
   display: none;
 }
 
@@ -375,6 +376,45 @@ html[data-theme='light'] .sparkle-button__content svg [fill]:not([fill='none']) 
 
 html[data-theme='light'] .sparkle-button__content svg [stroke]:not([stroke='none']) {
   stroke: #00B38C;
+}
+
+html[data-theme='light'] .server-time {
+  background: #F1FFFA;
+  border-color: transparent;
+  outline: 1.25px solid #ECECEC;
+  outline-offset: -1.25px;
+}
+
+html[data-theme='light'] .server-time__label,
+html[data-theme='light'] .server-time__zone {
+  color: #808080;
+}
+
+html[data-theme='light'] .server-time__status,
+html[data-theme='light'] .server-time__status-dot {
+  color: #00B38C;
+}
+
+html[data-theme='light'] .server-time__status-dot {
+  filter: drop-shadow(0 0 6.27px rgba(0, 240, 160, 0.8));
+}
+
+html[data-theme='light'] .theme-root .server-time__time {
+  color: #000;
+}
+
+html[data-theme='light'] .action-item {
+  outline-color: #ECECEC;
+}
+
+html[data-theme='light'] .action-item:hover {
+  background: rgba(0, 179, 140, 0.04);
+}
+
+html[data-theme='light'] .theme-root .action-item__icon {
+  color: #00B38C;
+  background: #F1FFFA;
+  outline-color: #ECECEC;
 }
 
 html[data-theme='light'] .glass-card::after {
