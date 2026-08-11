@@ -483,7 +483,7 @@ export default function CopyTradingDetailsPage() {
         </div>
 
         {/* Trades Table */}
-        <div className="rounded-lg overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: 'var(--shadow-subtle)', outline: '1.16px solid var(--color-gfx-green-800)' }}>
+        <div className="trades-table-card trades-table-card--plain rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>

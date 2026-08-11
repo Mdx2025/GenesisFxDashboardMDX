@@ -449,7 +449,7 @@ export default function PammDetailsPage() {
         </div>
 
         {/* Trades Table */}
-        <GlassCard variant="light" divider="none" rounded="18.56px" className="overflow-hidden">
+        <GlassCard variant="light" divider="none" rounded="18.56px" className="trades-table-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[60rem]">
               <thead>

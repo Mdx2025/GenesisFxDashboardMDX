@@ -2,6 +2,7 @@
 
 ## 2026-08-11
 
+- Standardized the details-page trades tables on a white light-theme card surface with the shared card shadow while preserving dark-theme styling.
 - Changed GenSocial signal strategy cards to a white surface in light theme while preserving their dark-theme background.
 
 ## 2026-08-10
