@@ -45,7 +45,7 @@ function LearningJourneyCard() {
             <AcademyCapIcon size={26} />
           </div>
           <div className="flex flex-col gap-1">
-            <h2 className="text-white text-section-title xl:text-5xl font-normal leading-none">
+            <h2 className="text-white text-section-title xl:text-5xl 3xl:text-6xl font-normal leading-none">
               Your Learning Journey
             </h2>
             <p className="text-gfx-neutral-500 text-label font-normal">

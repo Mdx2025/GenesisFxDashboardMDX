@@ -335,7 +335,7 @@ export default function PartnerPage() {
 
         <GlassBannerCard contentClassName="flex flex-col lg:flex-row items-start lg:items-center justify-between p-6 xl:p-8 gap-6 lg:min-h-[17.4375rem]">
           <div className="flex-1 flex flex-col justify-center">
-            <h2 className="text-4xl lg:text-5xl font-acid text-white leading-tight mb-4">Partner Program</h2>
+            <h2 className="text-4xl lg:text-5xl 3xl:text-6xl font-acid text-white leading-tight mb-4">Partner Program</h2>
             <p className="text-base text-gfx-neutral-500 leading-relaxed max-w-[572px] mb-8">
               Grow your network and earn industry-leading commissions. Track referrals, monitor performance, and unlock new revenue streams.
             </p>

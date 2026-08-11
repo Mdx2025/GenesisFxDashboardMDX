@@ -338,7 +338,7 @@ function MyChallengesContent() {
       <GlassBannerCard>
         <div className="flex items-center justify-between gap-8">
           <div>
-            <h2 className="text-white text-section-title xl:text-5xl font-acid leading-none">10x Challenge</h2>
+            <h2 className="text-white text-section-title xl:text-5xl 3xl:text-6xl font-acid leading-none">10x Challenge</h2>
             <p className="text-gfx-neutral-500 text-sm xl:text-base font-acid font-medium mt-4 max-w-[37rem] leading-relaxed">
               Turn $125 into $1,000,000 — prove your skill, level up your capital
             </p>

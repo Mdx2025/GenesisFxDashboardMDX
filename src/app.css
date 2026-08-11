@@ -42,8 +42,12 @@
 }
 
 @theme {
-  --breakpoint-3xl: 2200px;
-  --breakpoint-4xl: 3200px;
+  /* In rem, not px: Tailwind sorts breakpoints by value and cannot compare px
+     against its rem-based defaults, so px breakpoints are emitted before xl/2xl
+     and every 3xl:/4xl: utility loses to its xl: counterpart. Media-query rem is
+     always 16px, so these stay exactly 2200px and 3200px. */
+  --breakpoint-3xl: 137.5rem;
+  --breakpoint-4xl: 200rem;
 
   --width-sidebar-3xl: 26rem;
   --width-sidebar-4xl: 34rem;
