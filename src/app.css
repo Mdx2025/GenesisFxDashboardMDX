@@ -357,6 +357,22 @@ html[data-theme='light'] .glass-card-heavy {
     inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
+html[data-theme='light'] .glow-ellipse {
+  display: none;
+}
+
+html[data-theme='light'] .sparkle-button__content svg {
+  color: #00B38C;
+}
+
+html[data-theme='light'] .sparkle-button__content svg [fill]:not([fill='none']) {
+  fill: #00B38C;
+}
+
+html[data-theme='light'] .sparkle-button__content svg [stroke]:not([stroke='none']) {
+  stroke: #00B38C;
+}
+
 html[data-theme='light'] .glass-card::after {
   background: linear-gradient(180deg, rgba(16, 188, 131, 0.26), rgba(6, 75, 52, 0.05));
 }
