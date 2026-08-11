@@ -285,7 +285,9 @@
   --color-gfx-overlay: rgba(5, 19, 15, 0.34);
   --color-gfx-green-50: #eaf5f1;
   --color-gfx-green-100: #fff;
-  --color-gfx-green-800: #e7f2ee;
+  --color-gfx-green-200: #00B38C;
+  --color-gfx-green-250: #00B38C;
+  --color-gfx-green-800: #ECECEC;
   --color-gfx-green-900: #dcece6;
   --color-gfx-neutral-300: #52635c;
   --color-gfx-neutral-350: #53655e;
@@ -388,11 +390,16 @@ html[data-theme='light'] .user-menu-link-active {
   background-image: linear-gradient(90deg, rgba(16, 188, 131, 0.13), rgba(16, 188, 131, 0.035));
 }
 
+html[data-theme='light'] .theme-root .bg-gfx-green-200.text-white,
 html[data-theme='light'] .theme-root .bg-gfx-green-200 .text-white,
+html[data-theme='light'] .theme-root .bg-gfx-green-250.text-white,
+html[data-theme='light'] .theme-root .bg-gfx-green-250 .text-white,
 html[data-theme='light'] .theme-root [style*='background: #064B34'] .text-white,
 html[data-theme='light'] .theme-root [style*='background:#064B34'] .text-white,
-html[data-theme='light'] .theme-root .bg-gfx-green-300.text-white {
-  color: #fff;
+html[data-theme='light'] .theme-root .bg-gfx-green-300.text-white,
+html[data-theme='light'] .mode-toggle button.active,
+html[data-theme='light'] .pill-tabs button.active {
+  color: var(--color-gfx-on-accent);
 }
 
 .theme-preserve-light {
