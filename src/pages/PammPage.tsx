@@ -270,6 +270,8 @@ export default function PammPage() {
                   className="w-full sm:w-[17.9375rem]"
                 />
                 <button
+                  type="button"
+                  aria-label="Show favorites"
                   onClick={() => {}}
                   className="relative w-12 h-11 flex items-center justify-center cursor-pointer hidden sm:flex"
                 >
@@ -281,6 +283,9 @@ export default function PammPage() {
                   </svg>
                 </button>
                 <button
+                  type="button"
+                  aria-label="List view"
+                  aria-pressed={viewMode === 'list'}
                   onClick={() => setViewMode('list')}
                   className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
@@ -303,6 +308,9 @@ export default function PammPage() {
                   </svg>
                 </button>
                 <button
+                  type="button"
+                  aria-label="Grid view"
+                  aria-pressed={viewMode === 'grid'}
                   onClick={() => setViewMode('grid')}
                   className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
