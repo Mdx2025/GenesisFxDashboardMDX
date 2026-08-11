@@ -33,7 +33,7 @@ function ChevronRightIcon() {
 function MiniStat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[#606060] text-xs font-acid leading-[15.68px] uppercase tracking-[1px]">{label}</p>
+      <p className="text-gfx-neutral-400 text-xs font-acid leading-[15.68px] uppercase tracking-[1px]">{label}</p>
       <p className="text-white text-lg font-acid leading-[24.44px] mt-1">{value}</p>
     </div>
   )
@@ -158,7 +158,7 @@ function MonthlyTrendCard() {
         <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-white text-[1.5rem] font-acid font-medium leading-[2rem]">Monthly Trend</h2>
-          <span className="text-[#606060] text-sm font-acid">Last 12 months</span>
+          <span className="text-gfx-neutral-400 text-sm font-acid">Last 12 months</span>
         </div>
 
         <div className="w-full overflow-hidden h-[160px]">
@@ -176,7 +176,7 @@ function MonthlyTrendCard() {
 
         <div className="flex justify-between mt-3">
           {['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map(m => (
-            <span key={m} className="text-[#606060] text-xs font-acid">{m}</span>
+            <span key={m} className="text-gfx-neutral-400 text-xs font-acid">{m}</span>
           ))}
         </div>
       </div>
@@ -188,7 +188,7 @@ function StatBannerCard({ label, value }: { label: string; value: string; color:
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6 min-h-[7rem] flex flex-col justify-center">
-        <p className="relative z-10 text-[#606060] text-sm font-acid">{label}</p>
+        <p className="relative z-10 text-gfx-neutral-400 text-sm font-acid">{label}</p>
         <p className="relative z-10 text-white text-3xl font-acid mt-1">{value}</p>
         <GlowEllipse className="left-0 -bottom-[6.25rem]" />
       </div>
@@ -246,7 +246,7 @@ function CommissionCalendarSection() {
 
         <div className="relative z-10 flex flex-col items-center justify-center py-8 mb-6">
           <p className="text-white text-lg font-acid mb-2">No data yet</p>
-          <p className="text-[#606060] text-sm font-acid">You have not earned any commissions yet.</p>
+          <p className="text-gfx-neutral-400 text-sm font-acid">You have not earned any commissions yet.</p>
         </div>
 
         <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
@@ -271,9 +271,9 @@ function CommissionCalendarSection() {
             <thead>
               <tr>
                 {DAYS.map(day => (
-                  <th key={day} className="text-[#606060] text-sm font-acid font-medium pb-3 text-center w-[12.5%]">{day}</th>
+                  <th key={day} className="text-gfx-neutral-400 text-sm font-acid font-medium pb-3 text-center w-[12.5%]">{day}</th>
                 ))}
-                <th className="text-[#606060] text-sm font-acid font-medium pb-3 text-center w-[12.5%]">Week Total</th>
+                <th className="text-gfx-neutral-400 text-sm font-acid font-medium pb-3 text-center w-[12.5%]">Week Total</th>
               </tr>
             </thead>
             <tbody>
@@ -285,14 +285,14 @@ function CommissionCalendarSection() {
                     return (
                       <td key={di} className="p-1">
                         <div className={`rounded-lg h-[90px] px-3 py-3 relative border ${isOverflow ? 'bg-gfx-green-900 border-gfx-green-200' : 'bg-transparent border-gfx-green-200'}`}>
-                          <span className={`absolute top-2 right-3 text-sm font-acid ${isOverflow ? 'text-[#404040]' : 'text-[#606060]'}`}>{dayNum}</span>
+                          <span className={`absolute top-2 right-3 text-sm font-acid ${isOverflow ? 'text-[#404040]' : 'text-gfx-neutral-400'}`}>{dayNum}</span>
                         </div>
                       </td>
                     )
                   })}
                   <td className="p-1">
                     <div className="bg-gfx-green-800 rounded-lg h-[90px] px-3 py-3 flex flex-col items-center justify-center border border-gfx-neutral-200">
-                      <span className="text-[#606060] text-sm font-acid">Week {wi + 1}</span>
+                      <span className="text-gfx-neutral-400 text-sm font-acid">Week {wi + 1}</span>
                     </div>
                   </td>
                 </tr>
@@ -371,7 +371,7 @@ function ReferralGrowthCard() {
 
         <div className="flex justify-between mt-2">
           {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map(m => (
-            <span key={m} className="text-[#606060] text-xs font-acid">{m}</span>
+            <span key={m} className="text-gfx-neutral-400 text-xs font-acid">{m}</span>
           ))}
         </div>
       </div>

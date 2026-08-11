@@ -86,15 +86,15 @@ export default function CommissionsPage() {
             <div className="overflow-x-auto">
               <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6 min-w-[56rem]">
                 <div className={`grid ${GRID_COLS} w-full items-center`}>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Client</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Account</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Instrument</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Date & Time</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Lots</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Rate</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Comission</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Open Time</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Status</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Client</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Account</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Instrument</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Date & Time</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Lots</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Rate</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Comission</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Open Time</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Status</span>
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ export default function CommissionsPage() {
                       <AvatarCircle initials={item.initials} />
                       <div>
                         <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{item.name}</p>
-                        <p className="text-sm font-acid text-[#606060] leading-[18.8px]">{item.email}</p>
+                        <p className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{item.email}</p>
                       </div>
                     </div>
 

@@ -88,15 +88,15 @@ export default function TradesPage() {
             <div className="overflow-x-auto">
               <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6 min-w-[56rem]">
                 <div className={`grid ${GRID_COLS} w-full items-center`}>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Referred Client</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Account</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Instrument</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Side</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Size</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Open Price</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Current Price</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">Open Time</span>
-                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">P&L</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Referred Client</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Account</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Instrument</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Side</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Size</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Open Price</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Current Price</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">Open Time</span>
+                  <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">P&L</span>
                 </div>
               </div>
 
@@ -107,7 +107,7 @@ export default function TradesPage() {
                       <AvatarCircle initials={trade.initials} />
                       <div>
                         <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{trade.name}</p>
-                        <p className="text-sm font-acid text-[#606060] leading-[18.8px]">{trade.email}</p>
+                        <p className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{trade.email}</p>
                       </div>
                     </div>
 

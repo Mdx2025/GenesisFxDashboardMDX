@@ -29,7 +29,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
           <li key={i} className="flex items-center gap-4">
             {i > 0 && <span>/</span>}
             {item.current ? (
-              <span className="text-[#606060]" aria-current="page">{item.label}</span>
+              <span className="text-gfx-neutral-400" aria-current="page">{item.label}</span>
             ) : item.onClick ? (
               <button type="button" onClick={item.onClick} className="hover:text-white transition-colors cursor-pointer">{item.label}</button>
             ) : (

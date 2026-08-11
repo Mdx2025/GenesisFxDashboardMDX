@@ -249,12 +249,12 @@ export default function ReferralsPage() {
             {/* Table header row */}
             <div className="border-b border-gfx-green-800 h-[40px] flex items-center px-6 min-w-[52rem]">
               <div className="grid grid-cols-[minmax(15rem,2fr)_minmax(6rem,0.8fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(8rem,1fr)_minmax(7rem,0.8fr)] w-full items-center">
-                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">User</span>
-                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">LEvel</span>
-                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">country</span>
-                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">total balance</span>
-                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">date joined</span>
-                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-[#606060] leading-[15.68px]">actions</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">User</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">LEvel</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">country</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">total balance</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">date joined</span>
+                <span className="text-xs font-acid font-bold uppercase tracking-[2.32px] text-gfx-neutral-400 leading-[15.68px]">actions</span>
               </div>
             </div>
 
@@ -267,7 +267,7 @@ export default function ReferralsPage() {
                     <AvatarCircle initials={referral.initials} />
                     <div>
                       <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{referral.name}</p>
-                      <p className="text-sm font-acid text-[#606060] leading-[18.8px]">{referral.email}</p>
+                      <p className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{referral.email}</p>
                     </div>
                   </div>
 
