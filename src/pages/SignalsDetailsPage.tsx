@@ -182,10 +182,12 @@ export default function SignalsDetailsPage() {
             <span className="text-white text-base font-acid font-medium">CS</span>
           </div>
           <div>
-            <h1 className="text-white text-h1 font-normal">C$ Signals</h1>
+            <div className="flex items-center gap-6">
+              <h1 className="text-white text-h1 font-normal">C$ Signals</h1>
+              <Badge variant="active">Active</Badge>
+            </div>
             <p className="text-gfx-neutral-500 text-sm font-acid">@csescoe — Signals Provider — 11 followers</p>
           </div>
-          <div className="ml-2"><Badge variant="active">Active</Badge></div>
           <div className="ml-auto">
             <GlowButton
               label="Connect now"
