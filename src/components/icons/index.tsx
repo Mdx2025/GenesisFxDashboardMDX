@@ -26,9 +26,12 @@ export function AssetsIcon({ size = 21, color = 'currentColor', className }: Ico
   )
 }
 
-export function TradelockerIcon({ size = 21, className }: IconProps) {
+export function TradelockerIcon({ size = 21, color = 'currentColor', className }: IconProps) {
   return (
-    <img src="/tradelocker-icon.png" alt="TradeLocker" width={size} height={size} className={className} />
+    <svg width={size} height={size} viewBox="0 0 21 21" fill="none" className={className} aria-hidden="true">
+      <path d="M5.79136 13.0146H4V15.9038H16.0194V13.0146H14.2858V14.2281H5.79136V13.0146Z" fill={color}/>
+      <path d="M5.79136 6.88928H4V4H16.0194V6.88928H14.2858V5.67578H5.79136V6.88928Z" fill={color}/>
+    </svg>
   )
 }
 

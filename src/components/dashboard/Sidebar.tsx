@@ -118,7 +118,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="w-full py-2.5 2xl:py-4 sidebar-hide" aria-hidden="true">
-          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop stopColor="#0F221C"/><stop offset="0.56" stopColor="#005C3D"/><stop offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
+          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
         </div>
 
         <div className="relative z-10 mb-1.5 2xl:mb-2">
@@ -143,11 +143,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className="w-full py-2.5 2xl:py-4 sidebar-hide" aria-hidden="true">
-          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-2)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-2" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop stopColor="#0F221C"/><stop offset="0.56" stopColor="#005C3D"/><stop offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
+          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-2)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-2" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
         </div>
 
         <div className="relative z-10 flex-1 overflow-y-auto">
-          <h2 className="text-sidebar-label text-gfx-neutral-500 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
+          <h2 className="sidebar-overview-label text-sidebar-label text-gfx-neutral-500 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
           <nav aria-label="Main menu">
             <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
               {(isPartner ? partnerNavItems : navItems).map((item) => {
@@ -169,7 +169,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     <span className="sidebar-hide">{item.label}</span>
                     {item.submenu && (
                       <span
-                        className={`ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${openMenus[item.id] ? 'rotate-180' : ''}`}
+                        className={`nav-btn-chevron ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${openMenus[item.id] ? 'rotate-180' : ''}`}
                         aria-hidden="true"
                       >
                         <ChevronDownIcon />
@@ -189,7 +189,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>
-                              <Link to={sub.href} className="text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-6 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-md border-l-2 border-transparent hover:border-gfx-green-300">
+                              <Link to={sub.href} className="sidebar-submenu-link text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-6 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-md border-l-2 border-transparent hover:border-gfx-green-300">
                                 {sub.label}
                               </Link>
                             </li>

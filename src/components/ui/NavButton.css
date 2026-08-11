@@ -76,3 +76,45 @@
 .star-4 { left: 198px; bottom: 5px; background: #a3a3a3; filter: blur(0.5px); }
 .star-5 { left: 216px; top: 10px; background: #a3a3a3; filter: blur(0.5px); }
 .star-6 { left: 159px; top: 13px; background: #a3a3a3; filter: blur(0.5px); }
+
+html[data-theme='light'] .sidebar .nav-btn {
+  color: #808080;
+}
+
+html[data-theme='light'] .sidebar .nav-btn > svg,
+html[data-theme='light'] .sidebar .nav-btn-chevron {
+  color: #A0A0A0;
+  fill: #A0A0A0;
+}
+
+html[data-theme='light'] .sidebar .nav-btn:hover {
+  background: #F6F6F6;
+  color: #000;
+}
+
+html[data-theme='light'] .sidebar .nav-btn.active {
+  background: #fff;
+  border-color: transparent;
+  outline: 1.02px solid #C6C6C6;
+  outline-offset: -1.02px;
+  color: #000;
+}
+
+html[data-theme='light'] .sidebar .nav-btn.active::before {
+  display: none;
+}
+
+html[data-theme='light'] .sidebar .nav-btn.active > svg {
+  color: #00B38C;
+  fill: #00B38C;
+}
+
+html[data-theme='light'] .sidebar .nav-btn.active .active-indicator {
+  background: #00B38C;
+}
+
+html[data-theme='light'] .sidebar .nav-btn:focus-visible,
+html[data-theme='light'] .sidebar a:focus-visible .nav-btn {
+  outline: 2px solid #064B34;
+  outline-offset: -2px;
+}

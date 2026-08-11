@@ -129,3 +129,30 @@ html[data-theme='light'] .sidebar .user-card-name {
 html[data-theme='light'] .sidebar .user-card-date {
   color: #808080;
 }
+
+html[data-theme='light'] .theme-root .sidebar {
+  border-right-color: #9FE4CD;
+}
+
+html[data-theme='light'] .sidebar .sidebar-overview-label {
+  color: #808080;
+}
+
+html[data-theme='light'] .sidebar .sidebar-divider-edge {
+  stop-color: #ECECEC;
+}
+
+html[data-theme='light'] .sidebar .sidebar-divider-center {
+  stop-color: #C6C6C6;
+}
+
+html[data-theme='light'] .sidebar .sidebar-submenu-link {
+  color: #A0A0A0;
+}
+
+html[data-theme='light'] .sidebar .sidebar-submenu-link:hover,
+html[data-theme='light'] .sidebar .sidebar-submenu-link:focus-visible {
+  color: #000;
+  background: #F6F6F6;
+  border-left-color: #00B38C;
+}
