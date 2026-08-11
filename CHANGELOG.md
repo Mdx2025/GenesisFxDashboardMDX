@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-11
+
+- Changed GenSocial signal strategy cards to a white surface in light theme while preserving their dark-theme background.
+
 ## 2026-08-10
 
 - Added a bottom-left `GlowEllipse` to the five PAMM Manager summary cards (Total AUM, Total Strategies, Total Followers, Total P&L Generated, Fee Earnings) via a new `bottom-left` `StatCard` glow position.
