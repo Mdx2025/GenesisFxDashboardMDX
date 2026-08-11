@@ -19,7 +19,7 @@ export function LiveAccountsCard({
   totalBalance = '$90.254,58',
 }: LiveAccountsCardProps) {
   return (
-    <GlassCard variant="light" divider="white" rounded="16px" className="overflow-hidden h-full isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
+    <GlassCard variant="light" divider="none" rounded="16px" className="overflow-hidden h-full isolate [-webkit-mask-image:-webkit-radial-gradient(white,black)]">
       <div
         className="absolute w-[493px] h-72 -left-[72px] top-[105px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform"
         aria-hidden="true"
