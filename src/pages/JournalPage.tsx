@@ -334,12 +334,16 @@ export default function JournalPage() {
                       <span className="sr-only">Share journal summary</span>
                     </SparkleButton>
                     <button
+                      type="button"
+                      aria-label="Previous slide"
                       onClick={() => swiperRef.current?.slidePrev()}
                       className="w-[3.25rem] h-[3.25rem] rounded-lg bg-gfx-green-900 flex items-center justify-center hover:bg-gfx-green-150 transition-colors cursor-pointer"
                     >
                       <ChevronLeftSmall />
                     </button>
                     <button
+                      type="button"
+                      aria-label="Next slide"
                       onClick={() => swiperRef.current?.slideNext()}
                       className="w-[3.25rem] h-[3.25rem] rounded-lg bg-gfx-green-900 flex items-center justify-center hover:bg-gfx-green-150 transition-colors cursor-pointer"
                     >

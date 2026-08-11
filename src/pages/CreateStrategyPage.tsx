@@ -6,10 +6,13 @@ import { GlassCard, GlassInput, GlassTextarea, GlassSelect, GlowButton, SparkleB
 
 /* ─── Toggle Switch ─── */
 
-function Toggle({ enabled, onChange }: { enabled: boolean; onChange: (v: boolean) => void }) {
+function Toggle({ enabled, label, onChange }: { enabled: boolean; label: string; onChange: (v: boolean) => void }) {
   return (
     <button
       type="button"
+      role="switch"
+      aria-checked={enabled}
+      aria-label={label}
       onClick={() => onChange(!enabled)}
       className={`relative w-[44px] h-[22px] rounded-full transition-colors cursor-pointer flex-shrink-0 ${
         enabled ? 'bg-gfx-green-350' : 'bg-gfx-green-900'
@@ -49,7 +52,7 @@ function SettingRow({ title, subtitle, enabled, onChange }: { title: string; sub
         <p className="text-gfx-neutral-600 text-base font-acid leading-tight">{title}</p>
         <p className="text-gfx-neutral-400 text-base font-acid leading-tight mt-1">{subtitle}</p>
       </div>
-      <Toggle enabled={enabled} onChange={onChange} />
+      <Toggle enabled={enabled} label={title} onChange={onChange} />
     </div>
   )
 }
@@ -165,6 +168,7 @@ export default function CreateStrategyPage() {
             <div className="flex items-start gap-4">
               <button
                 type="button"
+                aria-label="Back to PAMM"
                 onClick={() => navigate('/gensocial/pamm')}
                 className="w-[44px] h-[44px] rounded-full bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0 mt-1"
               >

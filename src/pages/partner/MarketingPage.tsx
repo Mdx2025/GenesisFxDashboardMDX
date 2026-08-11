@@ -145,13 +145,13 @@ export default function MarketingPage() {
                         <span className="text-xs font-acid text-[#00B38C] leading-[18.8px]">GFX605D9D38</span>
                       </div>
                       <div className="flex items-center gap-2 ml-auto">
-                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
+                        <button type="button" aria-label="Show QR code" className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
                           <PartnerQrCodeIcon />
                         </button>
-                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
+                        <button type="button" aria-label="Share link" className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
                           <PartnerShareIcon />
                         </button>
-                        <button className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
+                        <button type="button" aria-label="Copy link" className="flex items-center justify-center w-[2.125rem] h-[2.125rem] rounded-full bg-[#09241C] cursor-pointer hover:opacity-80 transition-opacity">
                           <PartnerCopyIcon />
                         </button>
                       </div>

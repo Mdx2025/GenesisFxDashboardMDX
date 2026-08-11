@@ -11,9 +11,9 @@ interface CourseCardProps {
   onClick?: () => void
 }
 
-function PlayButton() {
+function PlayButton({ title }: { title: string }) {
   return (
-    <button type="button" className="shrink-0 cursor-pointer hover:opacity-90 transition-opacity">
+    <button type="button" aria-label={`Play ${title}`} className="shrink-0 cursor-pointer hover:opacity-90 transition-opacity">
       <svg width="61" height="61" viewBox="0 0 61 61" fill="none" className="3xl:w-[76px] 3xl:h-[76px] 4xl:w-[92px] 4xl:h-[92px]">
         <circle cx="30.1783" cy="30.1783" r="30.1783" fill="url(#coursecard_play_bg)" />
         <circle cx="30.1783" cy="30.1783" r="29.6836" stroke="url(#coursecard_play_border)" strokeOpacity="0.5" strokeWidth="0.989453" />
@@ -88,7 +88,7 @@ export function CourseCard({ image, title, description, lessons, duration, level
               {description}
             </p>
           </div>
-          <PlayButton />
+          <PlayButton title={title} />
         </div>
 
         <div className="flex items-center mt-5 3xl:mt-[25px] 4xl:mt-8">

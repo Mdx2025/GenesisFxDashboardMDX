@@ -23,6 +23,7 @@ export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCar
           onClick={onToggle}
           className={`w-11 h-11 rounded-lg bg-gradient-to-b from-gfx-green-50 to-gfx-green-150 flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-300 ease-in-out ${expanded ? 'rotate-180' : ''}`}
           aria-expanded={expanded}
+          aria-label={expanded ? `Collapse answer: ${question}` : `Expand answer: ${question}`}
         >
           <ChevronDownIcon size={14} color="#00f0a0" />
         </button>

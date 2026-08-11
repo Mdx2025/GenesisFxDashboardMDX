@@ -101,15 +101,15 @@ export default function DailySinglePage() {
               <div className="flex items-center gap-4 flex-1">
                 {/* Left: Skip back, Play, Skip forward */}
                 <div className="flex items-center gap-3">
-                  <button className="cursor-pointer hover:opacity-80 transition-opacity">
+                  <button type="button" aria-label="Skip back" className="cursor-pointer hover:opacity-80 transition-opacity">
                     <SkipBackIcon />
                   </button>
-                  <button className="w-[28px] h-[28px] rounded-full bg-white flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity">
+                  <button type="button" aria-label="Play" className="w-[28px] h-[28px] rounded-full bg-white flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity">
                     <svg width="12" height="13" viewBox="0 0 16 17" fill="black">
                       <path d="M13.7818 6.12715C15.4616 7.08872 15.4616 9.57794 13.7818 10.5395L3.63899 16.3454C2.00636 17.28 0 16.0636 0 14.1393V2.52741C0 0.603069 2.00636 -0.613314 3.63899 0.32123L13.7818 6.12715Z" />
                     </svg>
                   </button>
-                  <button className="cursor-pointer hover:opacity-80 transition-opacity">
+                  <button type="button" aria-label="Skip forward" className="cursor-pointer hover:opacity-80 transition-opacity">
                     <SkipForwardIcon />
                   </button>
                 </div>
@@ -122,16 +122,16 @@ export default function DailySinglePage() {
 
                 {/* Right: Volume, slider, fullscreen, more */}
                 <div className="flex items-center gap-3">
-                  <button className="cursor-pointer hover:opacity-80 transition-opacity shrink-0">
+                  <button type="button" aria-label="Mute" className="cursor-pointer hover:opacity-80 transition-opacity shrink-0">
                     <VolumeIcon />
                   </button>
                   <div className="w-[62px] h-1 bg-gfx-green-900 rounded-full overflow-hidden">
                     <div className="w-[20%] h-full bg-gfx-green-250 rounded-full" />
                   </div>
-                  <button className="cursor-pointer hover:opacity-80 transition-opacity">
+                  <button type="button" aria-label="Fullscreen" className="cursor-pointer hover:opacity-80 transition-opacity">
                     <FullscreenIcon />
                   </button>
-                  <button className="cursor-pointer hover:opacity-80 transition-opacity">
+                  <button type="button" aria-label="More options" className="cursor-pointer hover:opacity-80 transition-opacity">
                     <MoreIcon />
                   </button>
                 </div>

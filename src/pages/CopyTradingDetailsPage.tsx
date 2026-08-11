@@ -325,6 +325,8 @@ export default function CopyTradingDetailsPage() {
         {/* Header Row */}
         <div className="flex items-center gap-4">
           <button
+            type="button"
+            aria-label="Back to copy trading"
             onClick={() => navigate('/gensocial/copy-trading')}
             className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
           >
@@ -346,7 +348,7 @@ export default function CopyTradingDetailsPage() {
             </span>
           </div>
           <div className="ml-auto flex items-center gap-3">
-            <button className="relative w-12 h-11 flex items-center justify-center cursor-pointer">
+            <button type="button" aria-label="Add to favorites" className="relative w-12 h-11 flex items-center justify-center cursor-pointer">
               <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none">
                 <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
               </svg>

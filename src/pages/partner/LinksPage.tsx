@@ -17,10 +17,11 @@ function LinkIcon() {
   )
 }
 
-function ActionCircle({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) {
+function ActionCircle({ children, label, onClick }: { children: React.ReactNode; label: string; onClick?: () => void }) {
   return (
     <button
       type="button"
+      aria-label={label}
       onClick={onClick}
       className="flex items-center justify-center size-[34px] rounded-full bg-gfx-green-800 cursor-pointer hover:bg-gfx-green-200 transition-colors"
     >
@@ -81,9 +82,9 @@ export default function LinksPage() {
                     </span>
 
                     <div className="flex items-center gap-2 ml-auto">
-                      <ActionCircle><PartnerQrCodeIcon /></ActionCircle>
-                      <ActionCircle><PartnerShareIcon /></ActionCircle>
-                      <ActionCircle><PartnerCopyIcon /></ActionCircle>
+                      <ActionCircle label="Show QR code"><PartnerQrCodeIcon /></ActionCircle>
+                      <ActionCircle label="Share link"><PartnerShareIcon /></ActionCircle>
+                      <ActionCircle label="Copy link"><PartnerCopyIcon /></ActionCircle>
                     </div>
                   </div>
 

@@ -14,6 +14,8 @@ function ChatIcon() {
 export function ChatButton({ className = '', onClick }: ChatButtonProps) {
   return (
     <button
+      type="button"
+      aria-label="Open chat"
       onClick={onClick}
       className={`flex items-center justify-center w-[52px] h-[52px] rounded-full bg-[linear-gradient(241deg,#100919_0%,#1D0E2F_100%)] hover:opacity-90 transition-opacity cursor-pointer ${className}`}
     >

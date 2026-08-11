@@ -173,6 +173,8 @@ export default function SignalsDetailsPage() {
         {/* Header Row */}
         <div className="flex items-center gap-4">
           <button
+            type="button"
+            aria-label="Back to signals"
             onClick={() => navigate('/gensocial/signals')}
             className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
           >
