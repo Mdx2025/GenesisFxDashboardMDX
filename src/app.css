@@ -301,7 +301,7 @@
   --color-gfx-surface-divider: #d8e8e2;
   --color-gfx-surface-progress: #d9ece5;
   --color-gfx-surface-video: #e6f1ed;
-  --color-gfx-surface-select: #e2f1eb;
+  --color-gfx-surface-select: #F6F6F6;
   --shadow-md: 0 12px 34px rgba(8, 39, 29, 0.1);
   --shadow-lg: 0 20px 54px rgba(8, 39, 29, 0.13);
   --shadow-xl: 0 24px 72px rgba(8, 39, 29, 0.16);
@@ -370,6 +370,19 @@ html[data-theme='light'] .sidebar-user-glow {
 
 html[data-theme='light'] .dashboard-primary-card {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+html[data-theme='light'] .mode-toggle {
+  background: #ECECEC;
+}
+
+html[data-theme='light'] .period-pill__active-surface {
+  background: #00B38C;
+  outline-color: #00B38C;
+}
+
+html[data-theme='light'] .period-pill__active-border {
+  display: none;
 }
 
 html[data-theme='light'] .sparkle-button__content svg {
