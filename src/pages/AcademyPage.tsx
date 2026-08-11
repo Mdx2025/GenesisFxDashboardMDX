@@ -86,6 +86,11 @@ function LearningJourneyCard() {
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
+// Caps have no descender, but the font still reserves 0.222em of descent below
+// the baseline. Centring the line box therefore floats the glyph ~2px high, so
+// the top padding cancels that reserved space. In em so it tracks font-size.
+const LETTER_PILL = 'h-[2.0625rem] pt-[0.222em] rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors flex items-center justify-center'
+
 function GlossarySection() {
   const [activeLetter, setActiveLetter] = useState<string>('All')
 
@@ -99,7 +104,7 @@ function GlossarySection() {
       <div className="flex items-center justify-center gap-[0.8125rem] flex-wrap mb-[2.5625rem]">
         <button
           onClick={() => setActiveLetter('All')}
-          className={`h-[2.0625rem] px-3 rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors ${
+          className={`${LETTER_PILL} px-3 ${
             activeLetter === 'All'
               ? 'bg-gfx-green-300 text-gfx-green-100'
               : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
@@ -111,7 +116,7 @@ function GlossarySection() {
           <button
             key={letter}
             onClick={() => setActiveLetter(letter)}
-            className={`w-[2.0625rem] h-[2.0625rem] rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors flex items-center justify-center ${
+            className={`${LETTER_PILL} w-[2.0625rem] ${
               activeLetter === letter
                 ? 'bg-gfx-green-300 text-gfx-green-100'
                 : 'bg-gfx-green-100 text-gfx-neutral-400 border border-[rgba(107,107,107,0.5)] hover:text-white'
