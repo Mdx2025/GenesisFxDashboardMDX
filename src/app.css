@@ -441,7 +441,15 @@ html[data-theme='light'] .theme-root .action-item__icon {
 }
 
 html[data-theme='light'] .glass-card::after {
-  background: linear-gradient(180deg, rgba(16, 188, 131, 0.26), rgba(6, 75, 52, 0.05));
+  background: linear-gradient(180deg, #ECECEC, #064B340D);
+}
+
+.period-pill__calendar {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+html[data-theme='light'] .period-pill__calendar {
+  color: #A0A0A0;
 }
 
 html[data-theme='light'] .user-menu-panel {

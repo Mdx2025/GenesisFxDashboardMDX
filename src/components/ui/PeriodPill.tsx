@@ -37,8 +37,8 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           <span className="relative z-base translate-y-px">{p}</span>
         </button>
       ))}
-      <button type="button" className="z-base cursor-pointer rounded-full p-1.5 text-gfx-neutral-500 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500" aria-label="Calendar">
-        <CalendarIcon size={18} />
+      <button type="button" className="period-pill__calendar z-base cursor-pointer rounded-full p-1.5 text-gfx-neutral-500 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-gfx-green-500" aria-label="Calendar">
+        <CalendarIcon size={18} color="currentColor" />
       </button>
     </div>
   )
