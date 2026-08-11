@@ -362,8 +362,14 @@ html[data-theme='light'] .glass-card-heavy {
 
 html[data-theme='light'] .glow-ellipse,
 html[data-theme='light'] .bg-gfx-glow-green,
-html[data-theme='light'] .summary-card__glow {
+html[data-theme='light'] .summary-card__glow,
+html[data-theme='light'] .sidebar-top-glow,
+html[data-theme='light'] .sidebar-user-glow {
   display: none;
+}
+
+html[data-theme='light'] .dashboard-primary-card {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
 html[data-theme='light'] .sparkle-button__content svg {
