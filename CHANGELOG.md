@@ -2,6 +2,10 @@
 
 ## 2026-08-12
 
+- Installed Graphify 0.9.41 as a project-scoped Codex skill and generated a local code-only graph excluded from Git.
+- Changed `SuccessSnackbar` from `rounded-full` to the design-system `rounded-md` radius.
+- Restored the light-theme `PeriodPill` container background to `#F6F6F6` without changing the shared select-surface token or dark theme.
+- Expanded the light-theme `text-white` override beyond `.theme-root` so sibling overlays and global dialogs also render their copy in black, while retaining approved accent-state exceptions.
 - Mapped `text-white` copy to pure black in light theme and enforced hidden `GlowEllipse` decoration inside light-theme dialogs.
 - Made FAQ card surfaces transparent in light theme while preserving their borders, controls, and dark-theme background.
 - Corrected the TopBar wallet, language, and notification-count optical alignment, and kept the notification count white in light theme.

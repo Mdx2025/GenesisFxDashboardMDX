@@ -1,6 +1,36 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Restore light `PeriodPill` surface
+
+- task_id: `genesis-light-period-pill-surface-20260812`
+- owner: `klark`
+- status: `validated; delivery pending`
+- scope_guard: Restore the prior `#F6F6F6` light container background only for `PeriodPill`; preserve the shared white select token, active green pill, calendar control, and dark theme.
+- validation: Build passed (245 modules). Targeted Playwright confirmed light `#F6F6F6`, preserved dark 4% white surface, active geometry intact, zero overflow, and zero runtime errors.
+- delivery: Pending commit, push, Dokploy deployment, and production smoke.
+- next_exact_action: Commit, push, deploy, and repeat the targeted QA against production.
+
+## Active Task — Full light `text-white` cascade audit
+
+- task_id: `genesis-light-text-white-cascade-audit-20260812`
+- owner: `klark`
+- status: `validated; delivery pending`
+- scope_guard: Audit every registered application route for exact `text-white` tokens that remain non-black in light theme; fix cascade gaps outside `.theme-root`; retain only previously approved white-on-accent exceptions and preserve dark theme.
+- validation: Final local crawl covered 38 routes and 1,096 visible `.text-white` instances: 0 offenders, 0 visible light-theme GlowEllipse, 0 overflow routes, and 0 runtime errors. Explicit notification/funding accent exceptions remain white.
+- delivery: Pending commit, push, Dokploy deployment, and production smoke.
+- next_exact_action: Commit, push, deploy, and repeat the route audit against production.
+
+## Active Task — Graphify project integration
+
+- task_id: `genesis-graphify-project-integration-20260812`
+- owner: `klark`
+- status: `validated; delivery pending`
+- scope_guard: Install Graphify project-scoped for Codex, use code-only local extraction, keep generated graph output out of Git, and avoid LLM/global agent configuration.
+- validation: Graphify 0.9.41 installed; code-only/no-cluster extraction produced a 7-file graph artifact; `graphify query` traversed the live `PeriodPill` and theme graph successfully.
+- delivery: Pending commit and push; generated `graphify-out/` remains ignored.
+- next_exact_action: Commit and push the project integration files with the UI delivery.
+
 ## Active Task — Light text and modal glow cleanup
 
 - task_id: `genesis-light-text-modal-glow-20260812`

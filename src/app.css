@@ -341,8 +341,8 @@ html[data-theme='light'] .theme-root {
   color: #10231c;
 }
 
-html[data-theme='light'] .theme-root .text-white {
-  color: #000;
+html[data-theme='light'] .text-white {
+  color: #000 !important;
 }
 
 html[data-theme='light'] .theme-root .bg-black {
@@ -429,7 +429,7 @@ html[data-theme='light'] .faq-toggle__light-icon {
 }
 
 html[data-theme='light'] .period-pill {
-  background: var(--color-gfx-surface-select);
+  background: #F6F6F6;
 }
 
 html[data-theme='light'] .period-pill__active-surface {
@@ -549,7 +549,7 @@ html[data-theme='light'] .mode-toggle button.active {
   color: #fff;
 }
 
-.theme-preserve-light {
+html[data-theme='light'] .theme-preserve-light {
   color: #fff !important;
 }
 
@@ -581,7 +581,7 @@ html[data-theme='light'] .topbar-language-trigger {
 }
 
 html[data-theme='light'] .theme-root .topbar-notification-count.text-white {
-  color: #fff;
+  color: #fff !important;
 }
 
 html[data-theme='light'] .funding-coin-option--active {
@@ -591,7 +591,7 @@ html[data-theme='light'] .funding-coin-option--active {
 
 html[data-theme='light'] .theme-root .funding-coin-option--active .text-white,
 html[data-theme='light'] .theme-root .step-circle:not(.step-circle--inactive) .step-circle__label {
-  color: #fff;
+  color: #fff !important;
 }
 
 html[data-theme='light'] .step-circle:not(.step-circle--inactive) {
