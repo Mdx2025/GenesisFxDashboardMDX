@@ -6,14 +6,16 @@
 - task_id: `genesis-light-green-pill-close-icons-20260811`
 - owner: `klark`
 - target_routes: `/assets-management`, `/design-system`, and modal surfaces using the supplied 24px close icon
-- status: `local-validation-passed`
+- status: `done`
 - outcome: In light theme only, set `--color-gfx-green-200` to `#C6C6C6`, render the supplied close-icon paths in `#00B38C`, and match `GreenPillButton` to the supplied 107x46 tertiary-pill specification while preserving dark theme.
 - visual_thesis: Keep the dark glass control untouched; the light control becomes a quiet mint tertiary action with exact Figma geometry and black medium-weight label.
 - scope_guard: No component API changes, no new dependency, no copy or interaction changes, no broad recoloring of unrelated white SVG paths.
 - quality_contract: WCAG 2.2 AA where not reference-locked; typography floor 16px for the touched button; viewports 390x844, 1280x800, 1920x1080; verify keyboard focus, reduced motion, exact computed dimensions/colors, overflow, and runtime errors in light/dark.
-- current_phase: commit, deploy, and production validation.
+- current_phase: done.
 - validation_evidence: Managed build `bg_mspfwprl_0ce768f8` passed with 245 modules and approved artifact receipt; local Playwright passed light/dark at 390x844, 1280x800, and 1920x1080 with exact token/button/icon styles, keyboard-visible close control, reduced motion, zero overflow, and zero runtime errors. Black on `#9FE4CD` measures 14.45:1.
-- next_exact_action: Commit/push, redeploy Dokploy, repeat the six production checks, and capture final light-theme evidence.
+- production_evidence: Commit `33524ec` pushed to `origin/main`; Dokploy deployment `6smDUYfGlDGFAxektI4dc` finished `done`. Production Playwright repeated all six light/dark viewport checks with HTTP 200, exact styles, keyboard-visible close control, 24x24 layout target, reduced motion, zero overflow, and zero runtime errors. Final capture: `/home/clawd/genesisfx-light-green-pill-final.png`.
+- blockers: none.
+- next_exact_action: none; await user review.
 
 - task_id: `genesis-fx-journal-chart-refinement-20260804`
 - owner: `matrix`
