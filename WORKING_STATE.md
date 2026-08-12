@@ -13,7 +13,8 @@
 - validation: Managed build passed (245 modules). Playwright passed light/dark at 390px and 1280px: exact 44x44 target, light fills `#F1FFFA`/`#00B38C`, dark artwork preserved, keyboard Enter toggles `aria-expanded`, reduced-motion interaction works, no overflow, and zero runtime errors.
 - accessibility_note: Supplied `#00B38C` chevron on `#F1FFFA` is 2.61:1, below the WCAG 3:1 meaningful-icon target; retained for exact reference fidelity.
 - automated_accessibility: Not run; `axe-core` is not installed in this project, and the changed surface was covered by targeted semantic, keyboard, size, contrast, reduced-motion, responsive, and runtime checks.
-- next_exact_action: Commit/push/deploy and verify production assets.
+- delivery: Commit `8048ff1` pushed to `origin/main`; Dokploy deployment `_QnmXvEhjIQZorpoDVMmJ` completed. Production serves `index-bn32ChRc.js` and `index-BRjKlIZB.css`; exact supplied path and theme selectors verified.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Light neutral-250 token
 
