@@ -1,5 +1,7 @@
 # Changelog
 
+- Fixed Trading Accounts platform copy, overflow-menu icons, and action hover colors so light theme never renders white-on-white while preserving the existing dark palette.
+
 ## 2026-08-12
 
 - Synchronized PAMM and Copy Trading detail-page typography with Figma frames `2682:48732` and `2938:70035`, including exact title, metric, detail-row, tab, and table-label sizes and weights.

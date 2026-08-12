@@ -350,6 +350,23 @@ html[data-theme='light'] [data-chart-text] {
   fill: #000 !important;
 }
 
+.trading-account-platform {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.trading-account-more {
+  color: #fff;
+}
+
+html[data-theme='light'] .trading-account-platform,
+html[data-theme='light'] .trading-account-action:hover {
+  color: #000;
+}
+
+html[data-theme='light'] .trading-account-more {
+  color: var(--color-gfx-neutral-500);
+}
+
 html[data-theme='light'] .account-details-profile-icon,
 html[data-theme='light'] .account-details-settings-icon,
 html[data-theme='light'] .news-live-stream-icon {

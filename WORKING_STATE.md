@@ -1,6 +1,17 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Trading Accounts light text audit
+
+- task_id: `genesis-trading-accounts-light-text-audit-20260812`
+- owner: `klark`
+- status: `qa-passed`
+- target_routes: `/home` and `/tradelocker/accounts`.
+- root_cause: The existing light audit covered the exact `.text-white` class, but platform names used Tailwind's separate `text-white/60` utility and overflow-menu SVG paths hardcoded `fill="white"`; both bypassed that cascade and disappeared on the white card. Action hover states also switched back to white.
+- scope_guard: Theme only platform copy, overflow-menu icons, and row-action hover states in both Trading Accounts implementations; preserve data, layout, badges, P&L status colors, controls, and dark theme.
+- validation: Pre-fix production Playwright reproduced two white platform labels and six white overflow-menu paths per container. Managed `tsc -b && vite build` passed (245 modules). Post-fix local Playwright passed `/home` + `/tradelocker/accounts`, light/dark, at 390/1280/1920: 0 light white text offenders, exact black platform copy, theme-aware six-dot icons, safe action hovers, 0 uncontained overflow, 0 runtime errors.
+- next_exact_action: Deploy and repeat the same production QA matrix.
+
 ## Active Task — Figma typography parity for GenSocial detail pages
 
 - task_id: `genesis-gensocial-detail-typography-figma-20260812`

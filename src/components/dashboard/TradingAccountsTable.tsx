@@ -1,6 +1,6 @@
 import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton } from '@/components/ui'
 import { GLOW_GREEN } from '@/constants/colors'
-import { MoreDotsVerticalIcon, UserIcon } from '@/components/icons'
+import { MoreDotsIcon, UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
 
 const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
@@ -55,7 +55,7 @@ export function TradingAccountsTable() {
                 <p className="text-white text-base font-bold leading-tight">{acc.account}</p>
                 <p className="text-gfx-neutral-500 text-sm mt-0.5">{acc.username}</p>
               </div>
-              <p className="text-base text-white/60">{acc.platform}</p>
+              <p className="trading-account-platform text-base" data-trading-account-platform>{acc.platform}</p>
               <div>
                 <Badge variant={acc.type}>{acc.type === 'genfx' ? 'GenFX' : '10X'}</Badge>
               </div>
@@ -68,14 +68,10 @@ export function TradingAccountsTable() {
                 <span className="text-gfx-neutral-500 text-sm">{acc.status}</span>
               </div>
               <div className="flex items-center justify-end gap-6">
-                <button className="text-gfx-neutral-500 text-sm hover:text-white transition-colors cursor-pointer">View</button>
+                <button className="trading-account-action text-gfx-neutral-500 text-sm hover:text-white transition-colors cursor-pointer">View</button>
                 <GlowButton label="Trade" width={100} height={36} fontSize={14} />
-                <button className="text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="More options">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M4.66667 7.99935C4.66667 8.73573 4.06971 9.33268 3.33333 9.33268C2.59695 9.33268 2 8.73573 2 7.99935C2 7.26297 2.59695 6.66602 3.33333 6.66602C4.06971 6.66602 4.66667 7.26297 4.66667 7.99935Z" fill="white"/>
-                    <path d="M9.33333 7.99935C9.33333 8.73573 8.73638 9.33268 8 9.33268C7.26362 9.33268 6.66667 8.73573 6.66667 7.99935C6.66667 7.26297 7.26362 6.66602 8 6.66602C8.73638 6.66602 9.33333 7.26297 9.33333 7.99935Z" fill="white"/>
-                    <path d="M14 7.99935C14 8.73573 13.403 9.33268 12.6667 9.33268C11.9303 9.33268 11.3333 8.73573 11.3333 7.99935C11.3333 7.26297 11.9303 6.66602 12.6667 6.66602C13.403 6.66602 14 7.26297 14 7.99935Z" fill="white"/>
-                  </svg>
+                <button className="trading-account-action trading-account-more text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="More options" data-trading-account-more>
+                  <MoreDotsIcon />
                 </button>
               </div>
             </div>
