@@ -2,6 +2,7 @@
 
 ## 2026-08-12
 
+- Mapped `text-white` copy to pure black in light theme and enforced hidden `GlowEllipse` decoration inside light-theme dialogs.
 - Made FAQ card surfaces transparent in light theme while preserving their borders, controls, and dark-theme background.
 - Corrected the TopBar wallet, language, and notification-count optical alignment, and kept the notification count white in light theme.
 - Updated light-theme active funding coin options and active/completed funding steps to use `#00B38C` with white labels and check icons while preserving dark theme.

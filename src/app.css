@@ -342,7 +342,7 @@ html[data-theme='light'] .theme-root {
 }
 
 html[data-theme='light'] .theme-root .text-white {
-  color: #10231c;
+  color: #000;
 }
 
 html[data-theme='light'] .theme-root .bg-black {
@@ -389,6 +389,10 @@ html[data-theme='light'] .summary-card__glow,
 html[data-theme='light'] .sidebar-top-glow,
 html[data-theme='light'] .sidebar-user-glow {
   display: none;
+}
+
+html[data-theme='light'] [role='dialog'] .glow-ellipse {
+  display: none !important;
 }
 
 html[data-theme='light'] .dashboard-primary-card {
