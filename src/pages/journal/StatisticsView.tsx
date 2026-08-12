@@ -389,7 +389,7 @@ export default function StatisticsView() {
       </GlassCard>
 
       {/* Genesis Score + Stats Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-[1fr_1fr] gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-[0.5fr_1fr] gap-6">
         {/* Genesis Score */}
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
           <div className="absolute w-[493px] h-[278px] -right-[60px] top-[182px] rounded-full pointer-events-none bg-[#064B34] blur-[157px]" aria-hidden="true" />
