@@ -12,9 +12,9 @@
 - scope_guard: No global token changes, no typography/copy/icon/button/layout changes, and no new dependency.
 - quality_contract: `WCAG 2.2 AA`; zero visible text below 12px; verify computed `rgb(255,255,255)` on all five cards, contrast, keyboard/focus, reduced motion, 200% zoom, 390x844/1280x800/1920x1080 layout, dark-theme preservation, build, and runtime errors.
 - highest_risk_selector: `.platform-card` under `html[data-theme='light']`; shared `bg-gfx-green-800` must remain unchanged elsewhere and in dark theme.
-- current_phase: delivery.
-- validation_evidence: Managed production build `bg_mspgsio8_d1fb0d01` passed and its artifact was approved. Local Playwright passed light/dark at 390x844, 1280x800, and 1920x1080: five exact white light cards, unchanged `#0C1311` dark cards, zero runtime errors, zero horizontal overflow, zero visible text below 12px, keyboard focus visible, WCAG AA text contrast, and no clipping at 200% text size.
-- next_exact_action: Commit, push, deploy, and repeat the browser checks in production.
+- current_phase: done.
+- validation_evidence: Managed production build `bg_mspgsio8_d1fb0d01` passed and its artifact was approved. Local and production Playwright passed light/dark at 390x844, 1280x800, and 1920x1080: five exact white light cards, unchanged `#0C1311` dark cards, HTTP 200, zero runtime errors, zero horizontal overflow, zero visible text below 12px, keyboard focus visible, WCAG AA text contrast, and no clipping at 200% text size. Commit `875a1b7` is pushed; Dokploy deployment `aG7Qi1HuavVihosvl8tO5` finished `done`.
+- next_exact_action: none; await user review.
 
 ## Active Task — Light close icons and GreenPillButton
 
