@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Light neutral-250 token
+
+- task_id: `genesis-light-neutral-250-20260811`
+- owner: `klark`
+- status: `done`
+- design_route: Existing GenesisFX dashboard token system and explicit operator color specification.
+- scope_guard: Override only `--color-gfx-neutral-250` in light theme to `#9FE4CD`; preserve dark `#303030` and all callsites.
+- quality_contract: WCAG 2.2 AA; token-only regression check across light/dark, mobile/desktop, exact computed token value, overflow/runtime errors, and build integration.
+- risk_surface: 61 existing consumers spanning borders, dividers, controls, and decorative fills; no geometry or interaction changes.
+- validation: Managed build passed (245 modules). Playwright passed exact computed token and representative border colors in light (`#9FE4CD`) and dark (`#303030`) at 390px and 1280px, with no overflow or runtime errors. Existing Journal text below the internal 12px floor remains 18/2 nodes in light and 20/2 in dark at mobile/desktop; unchanged and outside this token-only scope.
+- accessibility_note: As a meaningful boundary, `#9FE4CD` has only 1.45:1 on white, 1.35:1 on `#F2F8F6`, and 1.23:1 on `#ECECEC`, below the WCAG 3:1 component-boundary target; retained because this is the explicit supplied design token.
+- next_exact_action: Commit/push/deploy and verify production CSS.
+
 ## Active Task — ModeToggle active background isolation
 
 - task_id: `genesis-mode-toggle-active-bg-isolation-20260811`
