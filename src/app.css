@@ -399,6 +399,7 @@ html[data-theme='light'] .platform-card {
 }
 
 html[data-theme='light'] .mode-toggle {
+  --mode-indicator-bg: #00B38C;
   background: #ECECEC;
 }
 

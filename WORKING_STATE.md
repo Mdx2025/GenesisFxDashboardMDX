@@ -1,6 +1,18 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — ModeToggle active background isolation
+
+- task_id: `genesis-mode-toggle-active-bg-isolation-20260811`
+- owner: `klark`
+- target_routes: all `ModeToggle` consumers, including `/tradelocker/journal`
+- status: `done`
+- scope_guard: Restore only the light active indicator to `#00B38C`; preserve the global `green-200` token and every unrelated component.
+- root_cause: `.mode-indicator` consumed global `--color-gfx-green-200`, so the intentional global light-token change to `#C6C6C6` leaked into ModeToggle.
+- implementation: Introduce component-local `--mode-indicator-bg`, default it to the existing global token, and override it only on light `.mode-toggle`.
+- validation: Managed build passed (245 modules). Playwright passed light/dark at 390px and 1280px with exact indicator colors (`#00B38C` light, `#064B34` dark), no horizontal overflow, and zero runtime errors.
+- next_exact_action: Commit/push/deploy and verify production assets.
+
 ## Active Task — Journal mobile AI control gradient
 
 - task_id: `genesis-journal-mobile-ai-gradient-20260811`

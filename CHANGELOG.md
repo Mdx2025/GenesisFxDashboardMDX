@@ -2,6 +2,7 @@
 
 ## 2026-08-11
 
+- Restored the light ModeToggle active indicator to green with a component-local background token.
 - Updated the Journal AI Coach and chat controls to use the supplied lavender gradient on mobile while preserving the existing desktop gradient.
 - Set TradeLocker Platforms cards to a pure white surface in light theme.
 - Updated light-theme close icons, `green-200`, and GreenPillButton styling from the supplied specification.
