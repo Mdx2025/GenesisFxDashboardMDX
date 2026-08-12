@@ -5,12 +5,13 @@
 
 - task_id: `genesis-light-functional-header-icons-20260812`
 - owner: `klark`
-- status: `implementation`
+- status: `done`
 - target_routes: `/tradelocker/accounts/demo` and `/news`.
 - root_cause: The Account Details profile/settings SVGs and the Daily Analysis live-stream SVG used hardcoded white fills, so they disappeared against their light surfaces.
 - scope_guard: Use `#00B38C` only for these three functional icons in light theme; preserve white in dark theme, button geometry, behavior, and surrounding layout.
-- validation: Managed build passed (`tsc -b`, Vite 6.4.3, 245 modules). Focused local Playwright confirmed all three icons compute to `#00B38C` in light and white in dark, preserves 36x36 settings-button and 40x40 live-stream geometry, with zero overflow and runtime errors.
-- next_exact_action: Commit, push, deploy, and repeat focused QA in production.
+- validation: Managed build passed (`tsc -b`, Vite 6.4.3, 245 modules). Focused local and production Playwright confirmed all three icons compute to `#00B38C` in light and white in dark, preserves 36x36 settings-button and 40x40 live-stream geometry, with zero overflow and runtime errors.
+- delivery: Commit `ea8d3d6` pushed to `origin/main`; Dokploy deployment `AfSFWX82BPjKjji-I2SQ6` completed `done`. Production serves `index-k5uiDOyS.js` and `index-CO4Yg_0W.css`.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Exhaustive chart-text theme audit
 
