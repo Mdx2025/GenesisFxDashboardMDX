@@ -1,6 +1,20 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Journal mobile AI control gradient
+
+- task_id: `genesis-journal-mobile-ai-gradient-20260811`
+- owner: `klark`
+- target_route: `/tradelocker/journal`
+- status: `validated locally`
+- design_route: `dashboard / analytics / pattern-analytics-dashboard / supplied gradient + existing codebase / existing GenesisFX direction`
+- visual_thesis: Keep the paired AI controls visually consistent; mobile uses the supplied lavender surface and tablet/desktop retain the established dark-purple gradient.
+- scope_guard: Only the responsive backgrounds of `AiCoachButton` and `ChatButton`; no icon, label, geometry, interaction, theme-token, or desktop changes.
+- quality_contract: `WCAG 2.2 AA`; preserve 16px text and existing focus/target behavior; validate exact computed gradients at 390px and 768px+, no overflow, build integration, and runtime errors.
+- current_phase: local validation complete; delivery in progress.
+- validation_evidence: Managed build `bg_msph9gf0_70f2ab0c` passed (`tsc -b`, Vite 6.4.3, 245 modules) and its artifact was approved. Generated CSS contains the exact mobile `linear-gradient(266deg,#f4ebff .95%,#f2e8ff 79.28%)` plus the `@media(min-width:48rem)` restoration to `linear-gradient(241deg,#100919,#1d0e2f)`.
+- next_exact_action: Commit/push, deploy through Dokploy, and verify the production bundle serves the new responsive CSS.
+
 ## Active Task — Platforms light card surfaces
 
 - task_id: `genesis-platforms-light-card-surfaces-20260811`
