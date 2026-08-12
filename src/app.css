@@ -412,6 +412,10 @@ html[data-theme='light'] .faq-toggle {
   background: transparent;
 }
 
+html[data-theme='light'] .faq-card {
+  background: transparent;
+}
+
 html[data-theme='light'] .faq-toggle__dark-icon {
   display: none;
 }

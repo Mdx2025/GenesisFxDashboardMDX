@@ -1,6 +1,17 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Light FAQ transparent surface
+
+- task_id: `genesis-light-faq-transparent-surface-20260812`
+- owner: `klark`
+- status: `validated; delivery pending`
+- target_routes: `/deposit`, `/withdraw`, `/gensocial/signals`, and `/design-system`.
+- scope_guard: Make only the FAQ card background transparent in light theme; preserve borders, spacing, accordion behavior, supplied toggle artwork, and dark-theme background.
+- validation: Production build passed (245 modules). Local Playwright at 1280x800 confirmed all four `/deposit` FAQ cards are transparent in light, retain the mint border, preserve the dark `rgb(0,7,5)` surface, and produce no horizontal overflow or runtime errors.
+- delivery: Pending commit, push, Dokploy deployment, and production smoke.
+- next_exact_action: Commit and deploy, then repeat the targeted browser QA against production.
+
 ## Active Task — TopBar alignment and light funding states
 
 - task_id: `genesis-topbar-funding-state-polish-20260812`
