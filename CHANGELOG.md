@@ -2,6 +2,7 @@
 
 ## 2026-08-11
 
+- Hid the Genesis Score, Trading Calendar, and GlassBannerCard decorative glows in light theme while preserving them in dark theme.
 - Changed the Journal statistics layout to a 1:2 Genesis Score/metrics column ratio on desktop while preserving the single-column mobile layout.
 - Standardized the details-page trades tables on a white light-theme card surface with the shared card shadow while preserving dark-theme styling.
 - Changed GenSocial signal strategy cards to a white surface in light theme while preserving their dark-theme background.

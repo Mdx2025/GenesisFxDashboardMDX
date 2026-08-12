@@ -392,7 +392,7 @@ export default function StatisticsView() {
       <div className="grid grid-cols-1 xl:grid-cols-[0.5fr_1fr] gap-6">
         {/* Genesis Score */}
         <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
-          <div className="absolute w-[493px] h-[278px] -right-[60px] top-[182px] rounded-full pointer-events-none bg-[#064B34] blur-[157px]" aria-hidden="true" />
+          <div className="glow-ellipse absolute w-[493px] h-[278px] -right-[60px] top-[182px] rounded-full pointer-events-none bg-[#064B34] blur-[157px]" aria-hidden="true" />
           <div className="p-6 flex flex-col h-full relative z-10">
             <div className="flex flex-row items-center gap-3 mb-2">
               <h3 className="text-white text-2xl font-acid">Genesis Score</h3>

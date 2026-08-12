@@ -159,7 +159,7 @@ export function TradingCalendar({ trades, initialYear, initialMonth, onMonthChan
   return (
     <GlassCard variant="light" divider="white" rounded="19px" className={`overflow-hidden ${className ?? ''}`}>
       <GlowEllipse className="left-1/2 -translate-x-1/2 top-[-30px]" />
-      <div className="absolute -left-[72px] top-[60%] w-[493px] h-[278px] rounded-full pointer-events-none bg-gfx-green-200 [filter:url(#blur-157)] will-change-transform opacity-40" aria-hidden="true" />
+      <div className="glow-ellipse absolute -left-[72px] top-[60%] w-[493px] h-[278px] rounded-full pointer-events-none bg-gfx-green-200 [filter:url(#blur-157)] will-change-transform opacity-40" aria-hidden="true" />
 
       <div className="relative z-10 p-5 xl:p-8">
         <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
