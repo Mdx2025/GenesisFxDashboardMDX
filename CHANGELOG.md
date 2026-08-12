@@ -2,6 +2,7 @@
 
 ## 2026-08-11
 
+- Set TradeLocker Platforms cards to a pure white surface in light theme.
 - Updated light-theme close icons, `green-200`, and GreenPillButton styling from the supplied specification.
 - Removed the clipped rectangular shadows from Journal Overview weekly cards in light theme.
 - Aligned Copy Trading profile-detail font sizes and weights with Figma Frame 518.
