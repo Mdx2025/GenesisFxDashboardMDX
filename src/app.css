@@ -285,7 +285,7 @@
   --color-gfx-overlay: rgba(5, 19, 15, 0.34);
   --color-gfx-green-50: #eaf5f1;
   --color-gfx-green-100: #fff;
-  --color-gfx-green-200: #00B38C;
+  --color-gfx-green-200: #C6C6C6;
   --color-gfx-green-250: #00B38C;
   --color-gfx-green-800: #ECECEC;
   --color-gfx-green-900: #dcece6;
@@ -423,6 +423,26 @@ html[data-theme='light'] .sparkle-button__content svg [stroke]:not([stroke='none
   stroke: #00B38C;
 }
 
+html[data-theme='light'] .green-pill-button {
+  min-width: 107px;
+  height: 46px;
+  padding: 10px 31px;
+  border-radius: 300px;
+  background: #9FE4CD;
+}
+
+html[data-theme='light'] .green-pill-button__edge,
+html[data-theme='light'] .green-pill-button__decoration {
+  display: none;
+}
+
+html[data-theme='light'] .theme-root .green-pill-button__label {
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24.44px;
+}
+
 html[data-theme='light'] .server-time {
   background: #F1FFFA;
   border-color: transparent;
@@ -515,6 +535,11 @@ html[data-theme='light'] .theme-root header .theme-switch svg [fill='white'],
 html[data-theme='light'] .theme-root header .theme-switch svg [stroke='white'] {
   fill: currentColor;
   stroke: currentColor;
+}
+
+html[data-theme='light'] svg path[d='M18 6L6 18'][stroke='white'],
+html[data-theme='light'] svg path[d='M6 6L18 18'][stroke='white'] {
+  stroke: #00B38C;
 }
 
 @layer components {
