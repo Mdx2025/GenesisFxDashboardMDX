@@ -2,6 +2,7 @@
 
 ## 2026-08-11
 
+- Removed the clipped rectangular shadows from Journal Overview weekly cards in light theme.
 - Aligned Copy Trading profile-detail font sizes and weights with Figma Frame 518.
 - Connected the Copy Trading strategy filters, search, and favorite controls to the strategy cards.
 - Hid the Genesis Score, Trading Calendar, and GlassBannerCard decorative glows in light theme while preserving them in dark theme.
