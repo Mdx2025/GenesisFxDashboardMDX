@@ -16,6 +16,7 @@ interface StatCardProps {
   glow?: 'left' | 'right' | 'bottom-left'
   children?: ReactNode
   className?: string
+  labelClassName?: string
 }
 
 const GLOW_POSITION = {
@@ -24,7 +25,7 @@ const GLOW_POSITION = {
   'bottom-left': '-left-[8rem] -bottom-[4rem]',
 } as const
 
-export function StatCard({ label, value, valueColor = 'text-white', icon, inlineIcon, unit, action, glow, children, className = '' }: StatCardProps) {
+export function StatCard({ label, value, valueColor = 'text-white', icon, inlineIcon, unit, action, glow, children, className = '', labelClassName = '' }: StatCardProps) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className={`relative overflow-hidden ${className}`}>
       {glow && <GlowEllipse className={GLOW_POSITION[glow]} />}
@@ -35,7 +36,7 @@ export function StatCard({ label, value, valueColor = 'text-white', icon, inline
           {icon ? (
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-gfx-neutral-500 text-sm font-acid leading-tight">{label}</p>
+                <p className={`text-gfx-neutral-500 text-sm font-acid leading-tight ${labelClassName}`}>{label}</p>
                 <p className={`${valueColor} text-4xl font-acid leading-normal mt-2`}>{value}</p>
                 {action && <p className="text-gfx-green-300 text-base font-acid mt-1">{action}</p>}
               </div>
@@ -47,7 +48,7 @@ export function StatCard({ label, value, valueColor = 'text-white', icon, inline
             <>
               <div className="flex items-center gap-[0.3125rem]">
                 {inlineIcon}
-                <p className="text-gfx-neutral-500 text-sm font-acid leading-tight">{label}</p>
+                <p className={`text-gfx-neutral-500 text-sm font-acid leading-tight ${labelClassName}`}>{label}</p>
               </div>
               <p className={`${valueColor} text-4xl font-acid leading-normal mt-2`}>
                 {value}

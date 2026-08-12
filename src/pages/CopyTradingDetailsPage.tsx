@@ -91,7 +91,7 @@ function PortfolioChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} data-chart-text className="text-gfx-neutral-400 text-xs font-acid font-bold">{label}</span>
+            <span key={label} data-chart-text className="text-gfx-neutral-400 text-xs font-acid font-bold tracking-[2.323px] leading-[15.6826px]">{label}</span>
           ))}
         </div>
         <div className="flex-1">
@@ -274,7 +274,7 @@ const closedTrades = [
 /* ─── Header Pills ─── */
 
 const headerPillBase =
-  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-xs font-acid font-normal whitespace-nowrap'
+  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-xs font-acid font-normal leading-[18.8px] whitespace-nowrap'
 
 function PeopleIcon() {
   return (
@@ -373,7 +373,7 @@ export default function CopyTradingDetailsPage() {
               <div className="relative p-6 flex justify-between items-start">
                 <div>
                   <div className="flex items-center gap-2">
-                    <p className="text-gfx-neutral-400 text-sm font-acid font-normal uppercase tracking-wider">{stat.label}</p>
+                    <p className="text-gfx-neutral-400 text-sm font-acid font-normal leading-[18.8px] uppercase tracking-wider">{stat.label}</p>
                     <InfoIcon />
                   </div>
                   <p className={`${stat.valueColor || 'text-white'} text-[2.25rem] font-acid font-normal leading-none mt-3`}>{stat.value}</p>
@@ -393,10 +393,10 @@ export default function CopyTradingDetailsPage() {
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-gfx-neutral-400 text-sm font-acid font-normal">Portfolio Equity</p>
+                  <p className="text-gfx-neutral-400 text-sm font-acid font-normal leading-[18.8px]">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
                     <span className="text-white text-[2.25rem] font-acid font-normal">$3,000.30</span>
-                    <span className="text-gfx-green-500 text-sm font-acid font-normal">+$400.53 (194.12%)</span>
+                    <span className="text-gfx-green-500 text-sm font-acid font-normal leading-[18.8px]">+$400.53 (194.12%)</span>
                   </div>
                 </div>
                 <PeriodPill />
@@ -424,8 +424,8 @@ export default function CopyTradingDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-gfx-neutral-400 text-sm font-acid font-normal">{item.label}</span>
-                      <span className="text-white text-sm font-acid font-normal">{item.value}</span>
+                      <span className="text-gfx-neutral-400 text-sm font-acid font-normal leading-[18.8px]">{item.label}</span>
+                      <span className="text-white text-sm font-acid font-normal leading-[18.8px]">{item.value}</span>
                     </div>
                   </div>
                 ))}
@@ -436,7 +436,7 @@ export default function CopyTradingDetailsPage() {
 
         {/* Performance Tabs */}
         <div className="w-full overflow-x-auto max-w-[40.5rem]">
-          <ModeToggle options={[...perfTabs]} defaultIndex={0} activeIndex={perfTab} onChange={setPerfTab} />
+          <ModeToggle options={[...perfTabs]} defaultIndex={0} activeIndex={perfTab} onChange={setPerfTab} buttonClassName="!font-medium !leading-[24.44px]" />
         </div>
 
         {perfTab === 0 && (
@@ -489,7 +489,7 @@ export default function CopyTradingDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-[2.323px] leading-[15.6826px] px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>

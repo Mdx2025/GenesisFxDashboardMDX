@@ -329,10 +329,10 @@ export default function PammDetailsPage() {
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard label="AUM" value="$3.50" icon={<ChartUpIcon />} />
-          <StatCard label="ROI" value="+194.12%" valueColor="text-gfx-green-500" icon={<GraphUpIcon />} />
-          <StatCard label="Closed P&L" value="$2.31" icon={<PieChartIcon />} />
-          <StatCard label="AUM" value="16.18%" icon={<CalendarIcon />} />
+          <StatCard label="AUM" value="$3.50" icon={<ChartUpIcon />} labelClassName="!leading-[18.8px]" />
+          <StatCard label="ROI" value="+194.12%" valueColor="text-gfx-green-500" icon={<GraphUpIcon />} labelClassName="!leading-[18.8px]" />
+          <StatCard label="Closed P&L" value="$2.31" icon={<PieChartIcon />} labelClassName="!leading-[18.8px]" />
+          <StatCard label="AUM" value="16.18%" icon={<CalendarIcon />} labelClassName="!leading-[18.8px]" />
         </div>
 
         {/* Main Content: Chart (left) + Strategy Details (right) */}
@@ -343,10 +343,10 @@ export default function PammDetailsPage() {
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-gfx-neutral-400 text-tiny font-acid">Portfolio Equity</p>
+                  <p className="text-gfx-neutral-400 text-sm font-acid font-normal leading-[18.8px]">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
-                    <span className="text-white text-2xl font-acid">$17,897.30</span>
-                    <span className="text-gfx-green-500 text-tiny font-acid">+$6,437.21 (56.1%)</span>
+                    <span className="text-white text-[2.25rem] font-acid font-normal">$17,897.30</span>
+                    <span className="text-gfx-green-500 text-sm font-acid font-normal leading-[18.8px]">+$6,437.21 (56.1%)</span>
                   </div>
                 </div>
                 <PeriodPill />
@@ -360,7 +360,7 @@ export default function PammDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-white text-base font-acid">Strategy Details</h3>
+                <h3 className="text-white text-2xl font-acid font-normal">Strategy Details</h3>
               </div>
               <div className="flex flex-col">
                 {[
@@ -375,8 +375,8 @@ export default function PammDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-gfx-neutral-400 text-tiny font-acid">{item.label}</span>
-                      <span className="text-white text-tiny font-acid">{item.value}</span>
+                      <span className="text-gfx-neutral-400 text-sm font-acid font-normal leading-[18.8px]">{item.label}</span>
+                      <span className="text-white text-sm font-acid font-normal leading-[18.8px]">{item.value}</span>
                     </div>
                   </div>
                 ))}
@@ -392,6 +392,7 @@ export default function PammDetailsPage() {
             defaultIndex={0}
             activeIndex={perfTab}
             onChange={setPerfTab}
+            buttonClassName="!font-medium !leading-[24.44px]"
           />
         </div>
 
@@ -455,7 +456,7 @@ export default function PammDetailsPage() {
               <thead>
                 <tr style={{ borderBottom: '0.77px solid rgba(255,255,255,0.04)' }}>
                   {['Open Time', 'Close Time', 'Symbol', 'Side', 'Volume', 'Open Price', 'Close Price', 'Closed P&L'].map(h => (
-                    <th key={h} className="text-left text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-tab leading-4 px-12 py-4">{h}</th>
+                    <th key={h} className="text-left text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-[2.323px] leading-[15.6826px] px-12 py-4">{h}</th>
                   ))}
                 </tr>
               </thead>

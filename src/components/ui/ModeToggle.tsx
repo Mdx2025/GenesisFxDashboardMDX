@@ -53,9 +53,10 @@ interface ModeToggleProps {
   activeIndex?: number
   onChange?: (index: number) => void
   size?: 'default' | 'sm'
+  buttonClassName?: string
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default' }: ModeToggleProps) {
+export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '' }: ModeToggleProps) {
   const [internalActive, setInternalActive] = useState(defaultIndex)
   const active = activeIndex ?? internalActive
   const indicatorRef = useRef<HTMLDivElement>(null)
@@ -126,7 +127,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
         return (
           <button
             key={option}
-            className={isActive ? 'active' : ''}
+            className={`${isActive ? 'active' : ''} ${buttonClassName}`}
             onClick={() => { setInternalActive(i); onChange?.(i) }}
             aria-pressed={isActive}
           >
