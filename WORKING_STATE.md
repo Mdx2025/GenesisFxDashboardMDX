@@ -12,7 +12,8 @@
 - risk_surface: 61 existing consumers spanning borders, dividers, controls, and decorative fills; no geometry or interaction changes.
 - validation: Managed build passed (245 modules). Playwright passed exact computed token and representative border colors in light (`#9FE4CD`) and dark (`#303030`) at 390px and 1280px, with no overflow or runtime errors. Existing Journal text below the internal 12px floor remains 18/2 nodes in light and 20/2 in dark at mobile/desktop; unchanged and outside this token-only scope.
 - accessibility_note: As a meaningful boundary, `#9FE4CD` has only 1.45:1 on white, 1.35:1 on `#F2F8F6`, and 1.23:1 on `#ECECEC`, below the WCAG 3:1 component-boundary target; retained because this is the explicit supplied design token.
-- next_exact_action: Commit/push/deploy and verify production CSS.
+- delivery: Commit `1cef6e7` pushed to `origin/main`; Dokploy deployment `n8fs22cxRtnAfv8jDJOD0` completed. Production serves `index-CLYHkGZO.css` with dark `#303030` and light `#9FE4CD` token values.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — ModeToggle active background isolation
 
