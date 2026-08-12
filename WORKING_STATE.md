@@ -11,7 +11,8 @@
 - root_cause: `.mode-indicator` consumed global `--color-gfx-green-200`, so the intentional global light-token change to `#C6C6C6` leaked into ModeToggle.
 - implementation: Introduce component-local `--mode-indicator-bg`, default it to the existing global token, and override it only on light `.mode-toggle`.
 - validation: Managed build passed (245 modules). Playwright passed light/dark at 390px and 1280px with exact indicator colors (`#00B38C` light, `#064B34` dark), no horizontal overflow, and zero runtime errors.
-- next_exact_action: Commit/push/deploy and verify production assets.
+- delivery: Commit `651ce5b` pushed to `origin/main`; Dokploy deployment `zTZh69eeZSOifpl9MJRxH` completed. Production serves `index-Dp0pBUNB.css` with the isolated light and dark indicator values.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Journal mobile AI control gradient
 
