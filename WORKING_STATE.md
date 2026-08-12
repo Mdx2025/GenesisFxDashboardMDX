@@ -1,6 +1,42 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Assets Reset label alignment
+
+- task_id: `genesis-assets-reset-alignment-20260812`
+- owner: `klark`
+- status: `done`
+- design_route: Dashboard filter action; supplied screenshot evidence; existing GenesisFX pill-button direction.
+- visual_thesis: The Reset label sits geometrically centered inside the existing 107x46 mint pill without changing its surface, typography, or behavior.
+- scope_guard: GreenPillButton internal alignment only; preserve dimensions, padding, colors, decoration, focus, click behavior, and light/dark styling.
+- quality_contract: WCAG 2.2 AA; exact button and label center deltas, 44px target, keyboard/focus, reduced motion, 390/1280/1920 layouts, no overflow/runtime errors, build integration.
+- validation: Managed build passed (245 modules). Playwright at 390/1280/1920 in light and dark measured exact horizontal and vertical center deltas of `0px`, preserved 107x46 light geometry, keyboard focus, no overflow, and zero runtime errors.
+- next_exact_action: Commit, push, deploy, and verify the production bundle.
+
+## Active Task — Light select surface token
+
+- task_id: `genesis-light-surface-select-20260812`
+- owner: `klark`
+- status: `done`
+- design_route: Dashboard control token; explicit operator color specification; existing GenesisFX light/dark direction.
+- scope_guard: Override only `--color-gfx-surface-select` in light theme to `#fff`; preserve dark `#09241C`, GlassSelect behavior, PeriodPill geometry, and all callsites.
+- quality_contract: WCAG 2.2 AA; exact computed token and representative surfaces in light/dark, keyboard/focus and dropdown behavior, reduced motion, 390/1280/1920 layouts, no overflow/runtime errors, build integration.
+- validation: Managed build passed (245 modules). Playwright at 390/1280/1920 confirmed `#fff` in light and the preserved `#09241c` dark token, keyboard focus, no overflow, and zero runtime errors.
+- next_exact_action: Commit, push, deploy, and verify the production bundle.
+
+## Active Task — Light TopBar icon color
+
+- task_id: `genesis-light-topbar-icons-20260811`
+- owner: `klark`
+- status: `done`
+- design_route: Dashboard utility header; supplied screenshot evidence; existing GenesisFX light/dark direction.
+- visual_thesis: Functional header glyphs use the requested Genesis green in light while flags, badges, status graphics, avatar decoration, and all dark-theme rendering remain intact.
+- scope_guard: Wallet, notification, language chevron, help, and mobile navigation glyphs only; no global SVG selector or shared token mutation.
+- quality_contract: WCAG 2.2 AA; exact computed `#00B38C` in light and white in dark, keyboard/focus and dropdown behavior, reduced motion, 390/1280/1920 layouts, no overflow/runtime errors, build integration.
+- accessibility_note: `#00B38C` is 2.68:1 on white and below the 3:1 meaningful-icon target; retained as the explicit supplied design color.
+- validation: Managed build passed (245 modules). Playwright at 390/1280/1920 confirmed scoped glyphs `#00B38C` in light and white in dark, preserved flag artwork, notification/language keyboard interactions, no overflow, and zero runtime errors.
+- next_exact_action: Commit, push, deploy, and verify the production bundle.
+
 ## Active Task — Light FAQ toggle SVG
 
 - task_id: `genesis-light-faq-toggle-svg-20260811`

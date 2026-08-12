@@ -302,7 +302,7 @@
   --color-gfx-surface-divider: #d8e8e2;
   --color-gfx-surface-progress: #d9ece5;
   --color-gfx-surface-video: #e6f1ed;
-  --color-gfx-surface-select: #F6F6F6;
+  --color-gfx-surface-select: #fff;
   --signal-card-bg: #fff;
   --shadow-md: 0 12px 34px rgba(8, 39, 29, 0.1);
   --shadow-lg: 0 20px 54px rgba(8, 39, 29, 0.13);
@@ -543,6 +543,16 @@ html[data-theme='light'] .mode-toggle button.active {
 
 .theme-preserve-light {
   color: #fff !important;
+}
+
+.topbar-accent-icon,
+.topbar-language-trigger {
+  color: #fff;
+}
+
+html[data-theme='light'] .topbar-accent-icon,
+html[data-theme='light'] .topbar-language-trigger {
+  color: #00B38C;
 }
 
 html[data-theme='light'] .theme-root header svg [fill='white'] {

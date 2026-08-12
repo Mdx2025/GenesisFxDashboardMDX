@@ -2,6 +2,9 @@
 
 ## 2026-08-11
 
+- Centered GreenPillButton labels with explicit flex alignment, including the Assets Management Reset action.
+- Updated the light-theme select surface token to pure white while preserving its dark value.
+- Isolated the TopBar functional SVG colors so wallet, notification, language, help, and mobile-menu glyphs use `#00B38C` only in light theme.
 - Replaced the light-theme FAQ toggle artwork with the supplied 44px mint-and-green SVG while preserving the dark icon.
 - Updated the light-theme `neutral-250` token to `#9FE4CD` while preserving its dark value.
 - Restored the light ModeToggle active indicator to green with a component-local background token.

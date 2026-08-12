@@ -84,7 +84,7 @@ export function LanguageDropdown() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 h-9 px-3 rounded-lg hover:opacity-90 transition-opacity cursor-pointer bg-gfx-green-800"
+        className="topbar-language-trigger flex items-center gap-1.5 h-9 px-3 rounded-lg hover:opacity-90 transition-opacity cursor-pointer bg-gfx-green-800"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={`Language: ${selected.label}`}
@@ -99,7 +99,7 @@ export function LanguageDropdown() {
           className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           aria-hidden="true"
         >
-          <path d="M3.617 5.425L7.234 9.041l3.617-3.616" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M3.617 5.425L7.234 9.041l3.617-3.616" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 

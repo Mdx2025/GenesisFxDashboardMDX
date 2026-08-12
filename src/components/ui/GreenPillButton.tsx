@@ -8,7 +8,7 @@ interface GreenPillButtonProps {
 export function GreenPillButton({ children, onClick }: GreenPillButtonProps) {
   return (
     <button
-      className="green-pill-button h-12 px-12 relative cursor-pointer group rounded-full overflow-hidden focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none bg-gfx-green-100 border-none"
+      className="green-pill-button h-12 px-12 relative inline-flex items-center justify-center cursor-pointer group rounded-full overflow-hidden focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none bg-gfx-green-100 border-none"
       type="button"
       onClick={onClick}
     >
@@ -40,7 +40,7 @@ export function GreenPillButton({ children, onClick }: GreenPillButtonProps) {
       <svg className="green-pill-button__decoration absolute left-[12%] top-[72%] opacity-40" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="white" filter="url(#gpb_blur)" />
       </svg>
-      <span className="green-pill-button__label relative flex items-center justify-center text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
+      <span className="green-pill-button__label relative inline-flex items-center justify-center text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
         {children}
       </span>
       <svg className="absolute w-0 h-0" aria-hidden="true">
