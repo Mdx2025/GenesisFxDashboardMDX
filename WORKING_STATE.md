@@ -5,12 +5,14 @@
 
 - task_id: `genesis-gensocial-detail-typography-figma-20260812`
 - owner: `klark`
-- status: `implementation`
+- status: `done`
 - target_routes: `/gensocial/pamm/details-single-page` and `/gensocial/copy-trading/details-single-page`.
 - figma_nodes: `Q5LFMKpcKD2ChXj9pyiHwk:2682:48732` and `Q5LFMKpcKD2ChXj9pyiHwk:2938:70035`.
 - root_cause: PAMM reused 10px/16px/24px utilities where the Figma typography specifies 14px/24px/36px, while both detail pages rendered the 16px performance tabs at weight 400 instead of the Figma weight 500.
 - scope_guard: Typography only—font size, weight, line height, and letter spacing; preserve copy, color, layout, data, and interaction.
-- next_exact_action: Build and run exact computed-style Playwright QA against both routes.
+- validation: Figma MCP supplied the exact Acid Grotesk typography from both nodes. Build passed (`tsc -b`, Vite 6.4.3, 245 modules). Focused Playwright checked 19 representative text roles across both routes for exact font family, size, weight, line height, and table-label tracking; local and production both passed with zero failures, overflow, or runtime errors. Full-page visual review at 1920px also passed.
+- delivery: Commit `0893d94` pushed to `origin/main`; Dokploy deployment `hKBWRaWyCeHsMBgxsW77S` completed `done`. Production serves `index-BPy_bAXw.js` and `index-BojexXRz.css`.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Light functional header icons
 
