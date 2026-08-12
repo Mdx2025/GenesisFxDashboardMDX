@@ -5,13 +5,13 @@
 
 - task_id: `genesis-light-decorative-glow-audit-20260812`
 - owner: `klark`
-- status: `validated; delivery pending`
+- status: `done`
 - scope_guard: Hide decorative GlowEllipse-equivalent effects in light theme across dialogs and page containers while preserving dark theme and functional GlowButton, focus, backdrop, status, and progress effects.
 - root_cause: Existing light CSS recognized only named helpers such as `.glow-ellipse` and `.bg-gfx-glow-green`; many equivalent decorations were authored as anonymous blurred or radial-gradient elements and therefore escaped the theme rule.
 - implementation: Added the semantic `.theme-decorative-glow` hook to reusable GlowEllipse and audited modal/container decorations, plus a light-only neutral surface for the integrated Change Picture hero artwork.
-- validation: Build passed (245 modules). Local Playwright opened 15/15 modal flows and crawled 38 routes in light and dark. It inspected 133 semantic decorative-glow instances: light rendered 0 visible; dark preserved 114 visible. All 47 functional GlowButton cores remained visible in both themes, with 0 overflow routes and 0 runtime errors.
-- delivery: Pending commit, push, Dokploy deployment, and production QA.
-- next_exact_action: Commit, push, deploy, and repeat the audit against production.
+- validation: Build passed (245 modules). Local and production Playwright each opened 15/15 modal flows and crawled 38 routes in light and dark. Production inspected 133 semantic decorative-glow instances: light rendered 0 visible; dark preserved 114 visible. Functional GlowButton cores remained visible (47 light, 48 dark), with 0 overflow routes and 0 runtime errors. Journal note/folder dialogs also gained proper dialog semantics during the audit.
+- delivery: Commit `bc56a8a` pushed to `origin/main`; Dokploy deployment `PSjMsNnjKVG4G3tH_AoL7` completed `done`. Production serves `index-TTFDd7Q3.js` and `index-jTIqcd5d.css`.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Restore light `PeriodPill` surface
 
