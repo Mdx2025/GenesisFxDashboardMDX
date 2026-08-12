@@ -2,6 +2,7 @@
 
 ## 2026-08-12
 
+- Updated the Account Details profile/settings icons and the Daily Analysis live-stream icon to `#00B38C` in light theme while preserving white icons in dark theme.
 - Added semantic chart-text hooks and live theme synchronization so Chart.js canvas labels, SVG radar labels, and DOM chart axes/legends render black in light theme while preserving dark-theme colors.
 - Added a semantic `theme-decorative-glow` hook across modal, snackbar, authentication, settings, KYC, academy, journal, and challenge decorations so light theme hides visual glows without suppressing functional button, focus, or progress effects; also completed dialog semantics for the journal note/folder modals found during the audit.
 - Installed Graphify 0.9.41 as a project-scoped Codex skill and generated a local code-only graph excluded from Git.

@@ -350,6 +350,12 @@ html[data-theme='light'] [data-chart-text] {
   fill: #000 !important;
 }
 
+html[data-theme='light'] .account-details-profile-icon,
+html[data-theme='light'] .account-details-settings-icon,
+html[data-theme='light'] .news-live-stream-icon {
+  color: #00B38C !important;
+}
+
 html[data-theme='light'] .theme-root .bg-black {
   background-color: #e8f2ee;
 }

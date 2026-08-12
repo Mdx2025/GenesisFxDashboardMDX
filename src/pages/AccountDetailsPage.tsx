@@ -245,17 +245,17 @@ export default function AccountDetailsPage() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-white text-2xl font-normal">Account Details</h2>
               <div className="flex items-center gap-3 relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none" className="opacity-60">
-                  <circle cx="8.19061" cy="4.09344" r="2.73016" fill="white"/>
-                  <ellipse cx="8.19038" cy="11.6013" rx="4.77778" ry="2.73016" fill="white"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none" className="account-details-profile-icon text-white opacity-60">
+                  <circle cx="8.19061" cy="4.09344" r="2.73016" fill="currentColor"/>
+                  <ellipse cx="8.19038" cy="11.6013" rx="4.77778" ry="2.73016" fill="currentColor"/>
                 </svg>
                 <button
                   onClick={() => setSettingsOpen(!settingsOpen)}
                   className="w-9 h-9 rounded-sm border border-gfx-green-200 flex items-center justify-center hover:bg-white/5 transition-colors cursor-pointer"
                   aria-label="Settings"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M8.48661 1.36719C7.72636 1.36719 7.03402 1.77719 5.64934 2.5972L5.18101 2.87455C3.79633 3.69456 3.10399 4.10456 2.72387 4.77989C2.34375 5.45521 2.34375 6.27522 2.34375 7.91524V8.46993C2.34375 10.1099 2.34375 10.93 2.72387 11.6053C3.10399 12.2806 3.79633 12.6906 5.18101 13.5106L5.64934 13.788C7.03402 14.608 7.72636 15.018 8.48661 15.018C9.24685 15.018 9.93919 14.608 11.3239 13.788L11.7922 13.5106C13.1769 12.6906 13.8692 12.2806 14.2493 11.6053C14.6295 10.93 14.6295 10.1099 14.6295 8.46993V7.91524C14.6295 6.27522 14.6295 5.45521 14.2493 4.77989C13.8692 4.10456 13.1769 3.69456 11.7922 2.87455L11.3239 2.5972C9.93919 1.77719 9.24685 1.36719 8.48661 1.36719ZM5.92708 8.19258C5.92708 6.779 7.07302 5.63306 8.48661 5.63306C9.90019 5.63306 11.0461 6.779 11.0461 8.19258C11.0461 9.60617 9.90019 10.7521 8.48661 10.7521C7.07302 10.7521 5.92708 9.60617 5.92708 8.19258Z" fill="white"/>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none" className="account-details-settings-icon text-white">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M8.48661 1.36719C7.72636 1.36719 7.03402 1.77719 5.64934 2.5972L5.18101 2.87455C3.79633 3.69456 3.10399 4.10456 2.72387 4.77989C2.34375 5.45521 2.34375 6.27522 2.34375 7.91524V8.46993C2.34375 10.1099 2.34375 10.93 2.72387 11.6053C3.10399 12.2806 3.79633 12.6906 5.18101 13.5106L5.64934 13.788C7.03402 14.608 7.72636 15.018 8.48661 15.018C9.24685 15.018 9.93919 14.608 11.3239 13.788L11.7922 13.5106C13.1769 12.6906 13.8692 12.2806 14.2493 11.6053C14.6295 10.93 14.6295 10.1099 14.6295 8.46993V7.91524C14.6295 6.27522 14.6295 5.45521 14.2493 4.77989C13.8692 4.10456 13.1769 3.69456 11.7922 2.87455L11.3239 2.5972C9.93919 1.77719 9.24685 1.36719 8.48661 1.36719ZM5.92708 8.19258C5.92708 6.779 7.07302 5.63306 8.48661 5.63306C9.90019 5.63306 11.0461 6.779 11.0461 8.19258C11.0461 9.60617 9.90019 10.7521 8.48661 10.7521C7.07302 10.7521 5.92708 9.60617 5.92708 8.19258Z" fill="currentColor"/>
                   </svg>
                 </button>
                 {settingsOpen && (
