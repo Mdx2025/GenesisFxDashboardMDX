@@ -11,7 +11,8 @@
 - scope_guard: GreenPillButton internal alignment only; preserve dimensions, padding, colors, decoration, focus, click behavior, and light/dark styling.
 - quality_contract: WCAG 2.2 AA; exact button and label center deltas, 44px target, keyboard/focus, reduced motion, 390/1280/1920 layouts, no overflow/runtime errors, build integration.
 - validation: Managed build passed (245 modules). Playwright at 390/1280/1920 in light and dark measured exact horizontal and vertical center deltas of `0px`, preserved 107x46 light geometry, keyboard focus, no overflow, and zero runtime errors.
-- next_exact_action: Commit, push, deploy, and verify the production bundle.
+- delivery: Commit `1191d80` pushed to `origin/main`; Dokploy deployment `J5V-rncxiV-orIpddv2JH` completed. Production Playwright repeated the 0px center deltas, focus, responsive, overflow, and runtime checks.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Light select surface token
 
@@ -22,7 +23,8 @@
 - scope_guard: Override only `--color-gfx-surface-select` in light theme to `#fff`; preserve dark `#09241C`, GlassSelect behavior, PeriodPill geometry, and all callsites.
 - quality_contract: WCAG 2.2 AA; exact computed token and representative surfaces in light/dark, keyboard/focus and dropdown behavior, reduced motion, 390/1280/1920 layouts, no overflow/runtime errors, build integration.
 - validation: Managed build passed (245 modules). Playwright at 390/1280/1920 confirmed `#fff` in light and the preserved `#09241c` dark token, keyboard focus, no overflow, and zero runtime errors.
-- next_exact_action: Commit, push, deploy, and verify the production bundle.
+- delivery: Commit `1191d80` pushed to `origin/main`; Dokploy deployment `J5V-rncxiV-orIpddv2JH` completed. Production Playwright confirmed light `#fff`, preserved dark `#09241c`, focus, responsive, overflow, and runtime checks.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Light TopBar icon color
 
@@ -35,7 +37,8 @@
 - quality_contract: WCAG 2.2 AA; exact computed `#00B38C` in light and white in dark, keyboard/focus and dropdown behavior, reduced motion, 390/1280/1920 layouts, no overflow/runtime errors, build integration.
 - accessibility_note: `#00B38C` is 2.68:1 on white and below the 3:1 meaningful-icon target; retained as the explicit supplied design color.
 - validation: Managed build passed (245 modules). Playwright at 390/1280/1920 confirmed scoped glyphs `#00B38C` in light and white in dark, preserved flag artwork, notification/language keyboard interactions, no overflow, and zero runtime errors.
-- next_exact_action: Commit, push, deploy, and verify the production bundle.
+- delivery: Commit `1191d80` pushed to `origin/main`; Dokploy deployment `J5V-rncxiV-orIpddv2JH` completed. Production Playwright repeated exact scoped glyph colors, preserved flag artwork, keyboard interactions, responsive, overflow, and runtime checks.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Light FAQ toggle SVG
 
