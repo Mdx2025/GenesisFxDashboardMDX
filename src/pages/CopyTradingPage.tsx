@@ -102,18 +102,18 @@ function MiniAreaChart({ data }: { data: number[] }) {
 
 /* ─── Leaderboard Trader Card ─── */
 
-function FavoriteStarIcon() {
+function FavoriteStarIcon({ active = false }: { active?: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M7.91243 0.550781L10.1869 5.15856L15.2731 5.90199L11.5928 9.48664L12.4613 14.5508L7.91243 12.1586L3.36354 14.5508L4.23209 9.48664L0.551758 5.90199L5.63798 5.15856L7.91243 0.550781Z" stroke="#808080" strokeWidth="1.1041" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M7.91243 0.550781L10.1869 5.15856L15.2731 5.90199L11.5928 9.48664L12.4613 14.5508L7.91243 12.1586L3.36354 14.5508L4.23209 9.48664L0.551758 5.90199L5.63798 5.15856L7.91243 0.550781Z" fill={active ? '#00B38C' : 'none'} stroke={active ? '#00B38C' : '#808080'} strokeWidth="1.1041" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
 
-function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: CopyTrader) => void }) {
+function TraderCard({ trader, favorite, onFavoriteChange, onCopy }: { trader: CopyTrader; favorite: boolean; onFavoriteChange: (id: string) => void; onCopy?: (trader: CopyTrader) => void }) {
   const navigate = useNavigate()
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
+    <GlassCard variant="light" divider="none" rounded="19px" className="copy-trader-card relative overflow-hidden flex flex-col" data-strategy-id={trader.id} data-recommended={trader.recommended}>
       <div className="relative p-6 pb-0 flex flex-col flex-1">
         {/* Header: Avatar + Name + Username + Star */}
         <div className="flex items-start justify-between">
@@ -128,8 +128,8 @@ function TraderCard({ trader, onCopy }: { trader: CopyTrader; onCopy?: (trader: 
               <p className="text-gfx-neutral-500 text-base font-acid font-medium mt-0.5">{trader.username}</p>
             </div>
           </div>
-          <button className="p-2 cursor-pointer" aria-label="Favorite">
-            <FavoriteStarIcon />
+          <button type="button" className="p-2 cursor-pointer" aria-label={`${favorite ? 'Remove' : 'Add'} ${trader.name} ${trader.id} ${favorite ? 'from' : 'to'} favorites`} aria-pressed={favorite} onClick={() => onFavoriteChange(trader.id)}>
+            <FavoriteStarIcon active={favorite} />
           </button>
         </div>
 
@@ -198,6 +198,7 @@ export default function CopyTradingPage() {
   const [filterTab, setFilterTab] = useState(0)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [searchQuery, setSearchQuery] = useState('')
+  const [favoriteIds, setFavoriteIds] = useState(() => new Set(copyTraders.filter(trader => trader.favorite).map(trader => trader.id)))
   const [copyModalOpen, setCopyModalOpen] = useState(false)
   const [copyTarget, setCopyTarget] = useState<CopyTrader | null>(null)
   const [createStrategyOpen, setCreateStrategyOpen] = useState(false)
@@ -207,10 +208,25 @@ export default function CopyTradingPage() {
     setCopyModalOpen(true)
   }
 
-  const filteredTraders = copyTraders.filter(t =>
-    t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    t.username.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const handleFavoriteChange = (id: string) => {
+    setFavoriteIds(current => {
+      const next = new Set(current)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  const normalizedSearch = searchQuery.trim().toLowerCase()
+  const filteredTraders = copyTraders.filter(trader => {
+    const matchesFilter = filterTab === 1
+      ? trader.recommended
+      : filterTab === 2
+        ? favoriteIds.has(trader.id)
+        : true
+    const matchesSearch = !normalizedSearch || trader.name.toLowerCase().includes(normalizedSearch) || trader.username.toLowerCase().includes(normalizedSearch)
+    return matchesFilter && matchesSearch
+  })
 
   return (
     <div className="copy-trading-page relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -282,14 +298,15 @@ export default function CopyTradingPage() {
                 <button
                   type="button"
                   aria-label="Show favorites"
-                  onClick={() => {}}
+                  aria-pressed={filterTab === 2}
+                  onClick={() => setFilterTab(filterTab === 2 ? 0 : 2)}
                   className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
+                    <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={filterTab === 2 ? '#064b34' : '#303030'} strokeWidth="1.2"/>
                   </svg>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={filterTab === 2 ? '#00B38C' : 'none'} stroke={filterTab === 2 ? '#00B38C' : '#808080'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
                 <button
@@ -339,9 +356,18 @@ export default function CopyTradingPage() {
             {/* Trader Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {filteredTraders.map(trader => (
-                <TraderCard key={trader.id} trader={trader} onCopy={handleCopyClick} />
+                <TraderCard key={trader.id} trader={trader} favorite={favoriteIds.has(trader.id)} onFavoriteChange={handleFavoriteChange} onCopy={handleCopyClick} />
               ))}
             </div>
+            {filteredTraders.length === 0 && (
+              <GlassCard variant="light" divider="none" rounded="19px">
+                <div className="flex min-h-[14rem] flex-col items-center justify-center px-6 py-10 text-center">
+                  <FavoriteStarIcon active={filterTab === 2} />
+                  <h3 className="mt-4 text-xl font-acid text-white">No strategies found</h3>
+                  <p className="mt-2 text-sm font-acid text-gfx-neutral-500">Try another filter or search term.</p>
+                </div>
+              </GlassCard>
+            )}
           </>
         )}
 
