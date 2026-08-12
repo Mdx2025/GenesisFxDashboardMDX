@@ -555,6 +555,50 @@ html[data-theme='light'] .topbar-language-trigger {
   color: #00B38C;
 }
 
+.topbar-control-copy,
+.topbar-notification-count {
+  line-height: 1;
+}
+
+.topbar-control-copy {
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.topbar-language-flag,
+.topbar-language-flag svg {
+  width: 18px;
+  height: 18px;
+}
+
+html[data-theme='light'] .theme-root .topbar-notification-count.text-white {
+  color: #fff;
+}
+
+html[data-theme='light'] .funding-coin-option--active {
+  background: #00B38C;
+  border-color: #00B38C;
+}
+
+html[data-theme='light'] .theme-root .funding-coin-option--active .text-white,
+html[data-theme='light'] .theme-root .step-circle:not(.step-circle--inactive) .step-circle__label {
+  color: #fff;
+}
+
+html[data-theme='light'] .step-circle:not(.step-circle--inactive) {
+  background: #00B38C;
+  box-shadow: 0 4px 15.7px 5px rgba(0, 179, 140, 0.2);
+}
+
+html[data-theme='light'] .step-circle__icon path {
+  stroke: #fff;
+}
+
+html[data-theme='light'] .step-connector--completed {
+  background: #00B38C;
+}
+
 html[data-theme='light'] .theme-root header svg [fill='white'] {
   fill: #10231c;
 }

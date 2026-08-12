@@ -89,14 +89,16 @@ export function LanguageDropdown() {
         aria-expanded={open}
         aria-label={`Language: ${selected.label}`}
       >
-        {selected.flag}
-        <span className="text-white text-base font-medium">{selected.code}</span>
+        <span className="topbar-language-flag flex shrink-0 items-center justify-center" aria-hidden="true">
+          {selected.flag}
+        </span>
+        <span className="topbar-control-copy text-white text-base font-medium">{selected.code}</span>
         <svg
           width="15"
           height="15"
           viewBox="0 0 15 15"
           fill="none"
-          className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           aria-hidden="true"
         >
           <path d="M3.617 5.425L7.234 9.041l3.617-3.616" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />

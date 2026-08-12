@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-08-12
+
+- Corrected the TopBar wallet, language, and notification-count optical alignment, and kept the notification count white in light theme.
+- Updated light-theme active funding coin options and active/completed funding steps to use `#00B38C` with white labels and check icons while preserving dark theme.
+
 ## 2026-08-11
 
 - Centered GreenPillButton labels with explicit flex alignment, including the Assets Management Reset action.

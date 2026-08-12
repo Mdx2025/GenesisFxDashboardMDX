@@ -139,7 +139,8 @@ export default function WithdrawPage() {
                         key={coin.id}
                         type="button"
                         onClick={() => handleCoinSelect(coin.id)}
-                        className={`h-12 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
+                        aria-pressed={selectedCoin === coin.id}
+                        className={`funding-coin-option ${selectedCoin === coin.id ? 'funding-coin-option--active' : ''} h-12 3xl:h-[4rem] 4xl:h-[5rem] px-4 3xl:px-6 4xl:px-8 rounded-3xl flex items-center gap-2.5 3xl:gap-4 cursor-pointer transition-colors ${
                           selectedCoin === coin.id
                             ? 'bg-gfx-green-200 border border-gfx-green-250'
                             : 'bg-gfx-green-800 border border-transparent hover:bg-gfx-surface-hover'
