@@ -2,6 +2,7 @@
 
 ## 2026-08-11
 
+- Aligned Copy Trading profile-detail font sizes and weights with Figma Frame 518.
 - Connected the Copy Trading strategy filters, search, and favorite controls to the strategy cards.
 - Hid the Genesis Score, Trading Calendar, and GlassBannerCard decorative glows in light theme while preserving them in dark theme.
 - Changed the Journal statistics layout to a 1:2 Genesis Score/metrics column ratio on desktop while preserving the single-column mobile layout.

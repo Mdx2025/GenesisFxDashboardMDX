@@ -91,7 +91,7 @@ function PortfolioChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} className="text-gfx-neutral-400 text-xs font-acid">{label}</span>
+            <span key={label} className="text-gfx-neutral-400 text-xs font-acid font-bold">{label}</span>
           ))}
         </div>
         <div className="flex-1">
@@ -274,7 +274,7 @@ const closedTrades = [
 /* ─── Header Pills ─── */
 
 const headerPillBase =
-  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-xs font-acid font-medium whitespace-nowrap'
+  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-xs font-acid font-normal whitespace-nowrap'
 
 function PeopleIcon() {
   return (
@@ -373,10 +373,10 @@ export default function CopyTradingDetailsPage() {
               <div className="relative p-6 flex justify-between items-start">
                 <div>
                   <div className="flex items-center gap-2">
-                    <p className="text-gfx-neutral-400 text-tiny font-acid uppercase tracking-wider">{stat.label}</p>
+                    <p className="text-gfx-neutral-400 text-sm font-acid font-normal uppercase tracking-wider">{stat.label}</p>
                     <InfoIcon />
                   </div>
-                  <p className={`${stat.valueColor || 'text-white'} text-2xl font-acid leading-none mt-3`}>{stat.value}</p>
+                  <p className={`${stat.valueColor || 'text-white'} text-[2.25rem] font-acid font-normal leading-none mt-3`}>{stat.value}</p>
                 </div>
                 <div className="w-[2.625rem] h-[2.625rem] rounded-md bg-gfx-green-900 flex items-center justify-center">
                   {stat.icon}
@@ -393,10 +393,10 @@ export default function CopyTradingDetailsPage() {
             <div className="relative p-6 lg:p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-gfx-neutral-400 text-tiny font-acid">Portfolio Equity</p>
+                  <p className="text-gfx-neutral-400 text-sm font-acid font-normal">Portfolio Equity</p>
                   <div className="flex items-baseline gap-3 mt-2">
-                    <span className="text-white text-2xl font-acid">$3,000.30</span>
-                    <span className="text-gfx-green-500 text-tiny font-acid">+$400.53 (194.12%)</span>
+                    <span className="text-white text-[2.25rem] font-acid font-normal">$3,000.30</span>
+                    <span className="text-gfx-green-500 text-sm font-acid font-normal">+$400.53 (194.12%)</span>
                   </div>
                 </div>
                 <PeriodPill />
@@ -409,7 +409,7 @@ export default function CopyTradingDetailsPage() {
             <GlowEllipse className="right-0 -top-[6.25rem]" />
             <div className="relative p-6 lg:p-8">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-white text-base font-acid">Trader Details</h3>
+                <h3 className="text-white text-2xl font-acid font-normal">Trader Details</h3>
               </div>
               <div className="flex flex-col">
                 {[
@@ -424,8 +424,8 @@ export default function CopyTradingDetailsPage() {
                   <div key={i}>
                     {i > 0 && <div className="w-full h-px bg-gfx-green-150 my-4" />}
                     <div className="flex justify-between items-center">
-                      <span className="text-gfx-neutral-400 text-tiny font-acid">{item.label}</span>
-                      <span className="text-white text-tiny font-acid">{item.value}</span>
+                      <span className="text-gfx-neutral-400 text-sm font-acid font-normal">{item.label}</span>
+                      <span className="text-white text-sm font-acid font-normal">{item.value}</span>
                     </div>
                   </div>
                 ))}
