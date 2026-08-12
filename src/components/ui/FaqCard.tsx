@@ -21,11 +21,17 @@ export function FaqCard({ question, answer, expanded = false, onToggle }: FaqCar
         <button
           type="button"
           onClick={onToggle}
-          className={`w-11 h-11 rounded-lg bg-gradient-to-b from-gfx-green-50 to-gfx-green-150 flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-300 ease-in-out ${expanded ? 'rotate-180' : ''}`}
+          className={`faq-toggle w-11 h-11 rounded-lg bg-gradient-to-b from-gfx-green-50 to-gfx-green-150 flex items-center justify-center shrink-0 cursor-pointer transition-transform duration-300 ease-in-out ${expanded ? 'rotate-180' : ''}`}
           aria-expanded={expanded}
           aria-label={expanded ? `Collapse answer: ${question}` : `Expand answer: ${question}`}
         >
-          <ChevronDownIcon size={14} color="#00f0a0" />
+          <span className="faq-toggle__dark-icon" aria-hidden="true">
+            <ChevronDownIcon size={14} color="#00f0a0" />
+          </span>
+          <svg className="faq-toggle__light-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0 14.6667C0 6.56649 6.56649 0 14.6667 0H29.3333C37.4335 0 44 6.56649 44 14.6667V29.3333C44 37.4335 37.4335 44 29.3333 44H14.6667C6.56649 44 0 37.4335 0 29.3333V14.6667Z" fill="var(--color-container-background-container-box-alternative, #F1FFFA)" />
+            <path d="M23.0387 20.1041L26.8312 23.8966C27.7552 24.8206 27.1008 26.4004 25.7941 26.4004L18.2091 26.4004C16.9025 26.4004 16.2481 24.8206 17.172 23.8966L20.9645 20.1041C21.5373 19.5314 22.4659 19.5314 23.0387 20.1041Z" fill="var(--color-surface-icon-surface-icon-alternative, #00B38C)" />
+          </svg>
         </button>
       </div>
       <div

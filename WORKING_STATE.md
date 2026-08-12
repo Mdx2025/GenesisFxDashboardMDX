@@ -1,6 +1,20 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Light FAQ toggle SVG
+
+- task_id: `genesis-light-faq-toggle-svg-20260811`
+- owner: `klark`
+- status: `done`
+- design_route: Dashboard utility component; exact supplied SVG evidence; existing GenesisFX light/dark direction; no pattern pack because this is an isolated icon-state replacement with no structural or flow changes.
+- visual_thesis: Light FAQs use the supplied 44px `#F1FFFA` container and `#00B38C` filled chevron; dark retains the existing gradient and icon.
+- scope_guard: FAQ toggle artwork only; preserve button semantics, 44px target, label, expansion state, rotation, card geometry, copy, and dark rendering.
+- quality_contract: WCAG 2.2 AA; exact SVG geometry/fills, 44px target, keyboard activation/focus, reduced motion, mobile/desktop, no overflow/runtime errors, and build integration.
+- validation: Managed build passed (245 modules). Playwright passed light/dark at 390px and 1280px: exact 44x44 target, light fills `#F1FFFA`/`#00B38C`, dark artwork preserved, keyboard Enter toggles `aria-expanded`, reduced-motion interaction works, no overflow, and zero runtime errors.
+- accessibility_note: Supplied `#00B38C` chevron on `#F1FFFA` is 2.61:1, below the WCAG 3:1 meaningful-icon target; retained for exact reference fidelity.
+- automated_accessibility: Not run; `axe-core` is not installed in this project, and the changed surface was covered by targeted semantic, keyboard, size, contrast, reduced-motion, responsive, and runtime checks.
+- next_exact_action: Commit/push/deploy and verify production assets.
+
 ## Active Task — Light neutral-250 token
 
 - task_id: `genesis-light-neutral-250-20260811`

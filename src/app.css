@@ -404,6 +404,22 @@ html[data-theme='light'] .mode-toggle {
   background: #ECECEC;
 }
 
+.faq-toggle__light-icon {
+  display: none;
+}
+
+html[data-theme='light'] .faq-toggle {
+  background: transparent;
+}
+
+html[data-theme='light'] .faq-toggle__dark-icon {
+  display: none;
+}
+
+html[data-theme='light'] .faq-toggle__light-icon {
+  display: block;
+}
+
 html[data-theme='light'] .period-pill {
   background: var(--color-gfx-surface-select);
 }
