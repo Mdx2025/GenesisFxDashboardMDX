@@ -5,31 +5,31 @@
 
 - task_id: `genesis-light-period-pill-surface-20260812`
 - owner: `klark`
-- status: `validated; delivery pending`
+- status: `done`
 - scope_guard: Restore the prior `#F6F6F6` light container background only for `PeriodPill`; preserve the shared white select token, active green pill, calendar control, and dark theme.
-- validation: Build passed (245 modules). Targeted Playwright confirmed light `#F6F6F6`, preserved dark 4% white surface, active geometry intact, zero overflow, and zero runtime errors.
-- delivery: Pending commit, push, Dokploy deployment, and production smoke.
-- next_exact_action: Commit, push, deploy, and repeat the targeted QA against production.
+- validation: Build passed (245 modules). Local and production Playwright confirmed light `#F6F6F6`, preserved dark 4% white surface, active geometry intact, zero overflow, and zero runtime errors.
+- delivery: Commit `461173a` pushed to `origin/main`; Dokploy deployment `isyM1Wy3m6adk0xmZ9TvS` completed `done`. Production serves `index-Czp67ZJk.js` and `index-B1mBJaOL.css`.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Full light `text-white` cascade audit
 
 - task_id: `genesis-light-text-white-cascade-audit-20260812`
 - owner: `klark`
-- status: `validated; delivery pending`
+- status: `done`
 - scope_guard: Audit every registered application route for exact `text-white` tokens that remain non-black in light theme; fix cascade gaps outside `.theme-root`; retain only previously approved white-on-accent exceptions and preserve dark theme.
-- validation: Final local crawl covered 38 routes and 1,096 visible `.text-white` instances: 0 offenders, 0 visible light-theme GlowEllipse, 0 overflow routes, and 0 runtime errors. Explicit notification/funding accent exceptions remain white.
-- delivery: Pending commit, push, Dokploy deployment, and production smoke.
-- next_exact_action: Commit, push, deploy, and repeat the route audit against production.
+- validation: Final local crawl covered 38 routes and 1,096 visible `.text-white` instances with 0 offenders. Production repeated 38 routes and 1,098 visible instances with 0 offenders, 0 visible light-theme GlowEllipse, 0 overflow routes, and 0 runtime errors. Explicit notification/funding accent exceptions remain white.
+- delivery: Commit `461173a` pushed to `origin/main`; Dokploy deployment `isyM1Wy3m6adk0xmZ9TvS` completed `done`.
+- next_exact_action: None; production route audit passed.
 
 ## Active Task — Graphify project integration
 
 - task_id: `genesis-graphify-project-integration-20260812`
 - owner: `klark`
-- status: `validated; delivery pending`
+- status: `done`
 - scope_guard: Install Graphify project-scoped for Codex, use code-only local extraction, keep generated graph output out of Git, and avoid LLM/global agent configuration.
 - validation: Graphify 0.9.41 installed; code-only/no-cluster extraction produced a 7-file graph artifact; `graphify query` traversed the live `PeriodPill` and theme graph successfully.
-- delivery: Pending commit and push; generated `graphify-out/` remains ignored.
-- next_exact_action: Commit and push the project integration files with the UI delivery.
+- delivery: Project integration committed in `461173a` and pushed to `origin/main`; generated `graphify-out/` remains ignored.
+- next_exact_action: Run `graphify update .` after future code changes.
 
 ## Active Task — Light text and modal glow cleanup
 
