@@ -5,11 +5,11 @@
 
 - task_id: `genesis-light-text-modal-glow-20260812`
 - owner: `klark`
-- status: `validated; delivery pending`
+- status: `done`
 - scope_guard: Render `.text-white` copy as pure black in light theme while preserving explicit light-theme accent exceptions; ensure `GlowEllipse` decorations cannot display inside dialogs in light theme; preserve dark theme.
 - validation: Production build passed (245 modules). Local Playwright at 1280x800 confirmed `.text-white` computes to pure black and the `Connect to PAMM` dialog glow is hidden in light; dark preserves white text and the visible glow; no horizontal overflow or runtime errors.
-- delivery: Pending commit, push, Dokploy deployment, and production smoke.
-- next_exact_action: Build and verify representative page text plus modal glow behavior in both themes.
+- delivery: Commit `7dd274f` pushed to `origin/main`; Dokploy deployment `dfNvpF1rfddr_A-Ww_Q32` finished `done`.
+- next_exact_action: None; production Playwright and public bundle hash checks passed.
 
 ## Active Task — Light FAQ transparent surface
 
