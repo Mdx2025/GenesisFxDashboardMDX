@@ -193,8 +193,8 @@ export function CreateStrategyModal({ open, onClose, onConfirm }: CreateStrategy
         className="glass-card relative w-3xl max-w-[95vw] max-h-[90vh] rounded-2xl bg-gfx-green-800 flex flex-col overflow-hidden"
       >
         {/* Background glow effects */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-gfx-green-200 blur-[120px] opacity-20 pointer-events-none" />
-        <div className="absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-gfx-green-200 blur-[100px] opacity-15 pointer-events-none" />
+        <div className="theme-decorative-glow absolute top-[-100px] left-1/2 -translate-x-1/2 w-[587px] h-[435px] rotate-[48deg] rounded-full bg-gfx-green-200 blur-[120px] opacity-20 pointer-events-none" />
+        <div className="theme-decorative-glow absolute bottom-[200px] left-1/2 -translate-x-1/2 w-[493px] h-[278px] rounded-full bg-gfx-green-200 blur-[100px] opacity-15 pointer-events-none" />
 
         {/* Close button */}
         <button

@@ -68,7 +68,7 @@ export function TransferToMainWalletModal({
         }}
       >
         <div
-          className="pointer-events-none absolute left-[9.375rem] top-[32.25rem] h-[17.375rem] w-[30.8125rem] rounded-full bg-gfx-green-200 [filter:blur(157.15px)]"
+          className="theme-decorative-glow pointer-events-none absolute left-[9.375rem] top-[32.25rem] h-[17.375rem] w-[30.8125rem] rounded-full bg-gfx-green-200 [filter:blur(157.15px)]"
           aria-hidden="true"
         />
 

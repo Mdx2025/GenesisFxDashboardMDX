@@ -51,8 +51,8 @@ function AccountTypeCard({ icon, title, description, onClick }: {
       className="glass-card group relative flex-1 min-w-[8rem] max-w-[10.8125rem] aspect-[173/222] flex flex-col items-center rounded-2xl bg-gfx-green-800 cursor-pointer transition-all overflow-hidden shadow-subtle"
       aria-label={`Select ${title} account`}
     >
-      <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-36 h-[8.4rem] rounded-full bg-gfx-green-350 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[68px]" aria-hidden="true" />
-      <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-36 h-[8.4rem] rounded-full bg-gfx-green-350 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[74px]" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute -bottom-12 left-1/2 -translate-x-1/2 w-36 h-[8.4rem] rounded-full bg-gfx-green-350 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[68px]" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute -bottom-12 left-1/2 -translate-x-1/2 w-36 h-[8.4rem] rounded-full bg-gfx-green-350 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-[74px]" aria-hidden="true" />
       <div className="w-[4.125rem] h-[4.125rem] rounded-full bg-gfx-green-900 flex items-center justify-center relative z-10 mt-10">
         {icon}
       </div>

@@ -428,9 +428,9 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
-          <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
-          <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-gfx-green-200 rounded-full blur-[157px]" />
-          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-gfx-green-200 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
         </div>
 
         <button
@@ -625,7 +625,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
           className="absolute inset-0 pointer-events-none bg-gfx-sidebar shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
-          <div className="absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-gfx-green-200 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[493px] h-[278px] left-[10%] bottom-0 bg-gfx-green-200 rounded-full blur-[157px]" />
         </div>
 
         <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:pt-8 lg:pb-10 overflow-y-auto">
@@ -665,7 +665,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Left — Challenge Details */}
             <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800">
               <GlowEllipse className="left-[36px] -top-[220px]" />
-              <div className="absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
+              <div className="theme-decorative-glow absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 
               <div className="relative z-10 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
                 <h3 className="text-white font-acid font-normal text-2xl mb-6">Challenge Details</h3>

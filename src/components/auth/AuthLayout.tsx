@@ -26,7 +26,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <div className="min-h-screen lg:h-screen bg-gfx-sidebar font-acid relative overflow-hidden">
       <div
-        className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 blur-[406px] pointer-events-none"
+        className="theme-decorative-glow absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 blur-[406px] pointer-events-none"
         aria-hidden="true"
       />
 
@@ -38,10 +38,10 @@ export function AuthLayout({ children }: AuthLayoutProps) {
             alt="Genesis FX trading platform"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute w-[36.6875rem] h-[20.75rem] -top-[13.4375rem] -right-[16.875rem] rounded-full bg-gfx-green-300 blur-[10rem] opacity-20 pointer-events-none" aria-hidden="true" />
-          <div className="absolute w-[30.8125rem] h-[17.375rem] -bottom-[9.375rem] -left-[9.375rem] rounded-full bg-gfx-green-300 blur-[10rem] opacity-20 pointer-events-none" aria-hidden="true" />
-          <div className="absolute w-[18.4375rem] h-[17.125rem] -bottom-[6.25rem] -left-[3.125rem] rounded-full bg-gfx-green-350 blur-[8.75rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
-          <div className="absolute w-[18.4375rem] h-[17.125rem] -bottom-[5rem] left-0 rounded-full bg-gfx-green-350 blur-[9.375rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
+          <div className="theme-decorative-glow absolute w-[36.6875rem] h-[20.75rem] -top-[13.4375rem] -right-[16.875rem] rounded-full bg-gfx-green-300 blur-[10rem] opacity-20 pointer-events-none" aria-hidden="true" />
+          <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] -bottom-[9.375rem] -left-[9.375rem] rounded-full bg-gfx-green-300 blur-[10rem] opacity-20 pointer-events-none" aria-hidden="true" />
+          <div className="theme-decorative-glow absolute w-[18.4375rem] h-[17.125rem] -bottom-[6.25rem] -left-[3.125rem] rounded-full bg-gfx-green-350 blur-[8.75rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
+          <div className="theme-decorative-glow absolute w-[18.4375rem] h-[17.125rem] -bottom-[5rem] left-0 rounded-full bg-gfx-green-350 blur-[9.375rem] opacity-15 mix-blend-plus-lighter pointer-events-none" aria-hidden="true" />
           <img
             src="/images/genesis-logo.png"
             alt="Genesis FX"

@@ -11,7 +11,7 @@ const VARIANT_STYLES = {
 export function GlowEllipse({ className = '', variant = 'green' }: GlowEllipseProps) {
   return (
     <div
-      className={`glow-ellipse absolute rounded-full pointer-events-none ${VARIANT_STYLES[variant]} ${className}`}
+      className={`glow-ellipse theme-decorative-glow absolute rounded-full pointer-events-none ${VARIANT_STYLES[variant]} ${className}`}
       aria-hidden="true"
     />
   )

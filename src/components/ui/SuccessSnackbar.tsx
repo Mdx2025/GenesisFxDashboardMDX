@@ -61,8 +61,8 @@ export function SuccessSnackbar({ open, message = 'Successful Transfer', duratio
       aria-live="polite"
     >
       {/* Decorative glows */}
-      <div className="absolute pointer-events-none w-[587px] h-[384px] left-[251px] top-[-333px] rotate-[48deg] origin-top-left bg-gfx-surface-dark rounded-full blur-[157px]" aria-hidden="true" />
-      <div className="absolute pointer-events-none w-[493px] h-[288px] left-[-17px] top-[-28px] bg-gfx-green-dark rounded-full blur-[157px]" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute pointer-events-none w-[587px] h-[384px] left-[251px] top-[-333px] rotate-[48deg] origin-top-left bg-gfx-surface-dark rounded-full blur-[157px]" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute pointer-events-none w-[493px] h-[288px] left-[-17px] top-[-28px] bg-gfx-green-dark rounded-full blur-[157px]" aria-hidden="true" />
 
       {/* Content */}
       <div className="relative z-10 flex items-center gap-3 pl-[1.8125rem] pt-[1.5625rem]">

@@ -104,7 +104,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
           className="absolute inset-0 overflow-hidden pointer-events-none bg-gfx-main rounded-2xl backdrop-blur-[23.23px] border border-gfx-green-200"
           aria-hidden="true"
         >
-          <div className="absolute w-[493px] h-[278px] left-[190px] top-[682px] bg-gfx-green-175 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[493px] h-[278px] left-[190px] top-[682px] bg-gfx-green-175 rounded-full blur-[157px]" />
         </div>
 
         {/* Close button */}
@@ -137,9 +137,9 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
             className="absolute inset-0 overflow-hidden pointer-events-none rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-1 outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
             aria-hidden="true"
           >
-            <div className="absolute w-[587px] h-[435px] left-[304px] top-[-333px] rotate-[48deg] origin-top-left bg-gfx-green-50 rounded-full blur-[157px]" />
-            <div className="absolute w-[493px] h-[278px] left-[36px] top-[-28px] bg-gfx-green-175 rounded-full blur-[157px]" />
-            <div className="absolute w-[237px] h-[237px] left-[555px] top-[-75px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px]" />
+            <div className="theme-decorative-glow absolute w-[587px] h-[435px] left-[304px] top-[-333px] rotate-[48deg] origin-top-left bg-gfx-green-50 rounded-full blur-[157px]" />
+            <div className="theme-decorative-glow absolute w-[493px] h-[278px] left-[36px] top-[-28px] bg-gfx-green-175 rounded-full blur-[157px]" />
+            <div className="theme-decorative-glow absolute w-[237px] h-[237px] left-[555px] top-[-75px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px]" />
           </div>
 
           {/* Card content (not clipped, dropdowns can overflow) */}

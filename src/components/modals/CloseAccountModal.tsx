@@ -70,8 +70,8 @@ export function CloseAccountModal({ open, onClose }: CloseAccountModalProps) {
         <GlassCard variant="light" rounded="1.875rem" className="overflow-hidden" style={{ backgroundColor: '#0C1311' }}>
           {/* Green glow blurs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.875rem]" aria-hidden="true">
-            <div className="absolute w-[30.8125rem] h-[17.375rem] -left-[11.6875rem] bottom-0 translate-y-[20%] bg-[#064B34] rounded-full" style={{ filter: 'url(#blur-157)' }} />
-            <div className="absolute w-[30.8125rem] h-[17.375rem] right-0 translate-x-1/2 -top-[9.4375rem] bg-[#064B34] rounded-full" style={{ filter: 'url(#blur-157)' }} />
+            <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] -left-[11.6875rem] bottom-0 translate-y-[20%] bg-[#064B34] rounded-full" style={{ filter: 'url(#blur-157)' }} />
+            <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] right-0 translate-x-1/2 -top-[9.4375rem] bg-[#064B34] rounded-full" style={{ filter: 'url(#blur-157)' }} />
           </div>
 
           {/* Close button */}

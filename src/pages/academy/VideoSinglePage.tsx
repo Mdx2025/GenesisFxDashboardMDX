@@ -83,7 +83,7 @@ function ChapterItem({ lesson, isActive, onClick }: { lesson: Lesson; isActive: 
     >
       {isActive && (
         <>
-          <div className="absolute -left-[5rem] bottom-[-20px] w-[10.6250rem] h-[7.5rem] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
+          <div className="theme-decorative-glow absolute -left-[5rem] bottom-[-20px] w-[10.6250rem] h-[7.5rem] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
           <div className="absolute right-[0.625rem] top-[0.625rem]">
             <PlayIcon />
           </div>

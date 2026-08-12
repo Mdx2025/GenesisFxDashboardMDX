@@ -201,7 +201,7 @@ export function WithdrawCodeModal({ open, onClose, onSuccess }: WithdrawCodeModa
         </div>
 
         <div
-          className="absolute left-1/2 -translate-x-1/2 bottom-[-30%] w-[30.8125rem] h-72 bg-green-900 rounded-full pointer-events-none [filter:url(#blur-157)]"
+          className="theme-decorative-glow absolute left-1/2 -translate-x-1/2 bottom-[-30%] w-[30.8125rem] h-72 bg-green-900 rounded-full pointer-events-none [filter:url(#blur-157)]"
           aria-hidden="true"
         />
       </div>

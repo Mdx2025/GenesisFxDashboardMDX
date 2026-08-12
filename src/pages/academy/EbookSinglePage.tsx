@@ -43,7 +43,7 @@ function ChapterItem({ chapter, isActive, onClick }: { chapter: EbookChapter; is
       }`}
     >
       {isActive && (
-        <div className="absolute -left-[5rem] bottom-[-20px] w-[10.6250rem] h-[7.5rem] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
+        <div className="theme-decorative-glow absolute -left-[5rem] bottom-[-20px] w-[10.6250rem] h-[7.5rem] rounded-full bg-gfx-green-200 [filter:url(#blur-40)] opacity-40 pointer-events-none" />
       )}
       <div className="w-[1.5rem] h-6 rounded-sm bg-gfx-green-800 flex items-center justify-center shrink-0">
         <span className={`text-xs font-acid leading-none ${isActive ? 'text-gfx-green-300' : 'text-gfx-neutral-400'}`}>

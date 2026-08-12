@@ -1,6 +1,18 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Exhaustive light decorative-glow audit
+
+- task_id: `genesis-light-decorative-glow-audit-20260812`
+- owner: `klark`
+- status: `validated; delivery pending`
+- scope_guard: Hide decorative GlowEllipse-equivalent effects in light theme across dialogs and page containers while preserving dark theme and functional GlowButton, focus, backdrop, status, and progress effects.
+- root_cause: Existing light CSS recognized only named helpers such as `.glow-ellipse` and `.bg-gfx-glow-green`; many equivalent decorations were authored as anonymous blurred or radial-gradient elements and therefore escaped the theme rule.
+- implementation: Added the semantic `.theme-decorative-glow` hook to reusable GlowEllipse and audited modal/container decorations, plus a light-only neutral surface for the integrated Change Picture hero artwork.
+- validation: Build passed (245 modules). Local Playwright opened 15/15 modal flows and crawled 38 routes in light and dark. It inspected 133 semantic decorative-glow instances: light rendered 0 visible; dark preserved 114 visible. All 47 functional GlowButton cores remained visible in both themes, with 0 overflow routes and 0 runtime errors.
+- delivery: Pending commit, push, Dokploy deployment, and production QA.
+- next_exact_action: Commit, push, deploy, and repeat the audit against production.
+
 ## Active Task — Restore light `PeriodPill` surface
 
 - task_id: `genesis-light-period-pill-surface-20260812`

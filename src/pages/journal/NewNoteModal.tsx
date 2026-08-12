@@ -94,10 +94,13 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
       <div
         ref={modalRef}
         className="glass-card relative w-[49.5625rem] max-w-[95vw] max-h-[90vh] rounded-3xl bg-gfx-green-800 flex flex-col overflow-hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="new-note-modal-title"
       >
         {/* Background glow effects */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[36.6875rem] h-[27.1875rem] rotate-[48deg] rounded-full bg-gfx-green-200 [filter:url(#blur-120)] opacity-20 pointer-events-none" />
-        <div className="absolute bottom-[12.5rem] left-1/2 -translate-x-1/2 w-[30.8125rem] h-[17.3750rem] rounded-full bg-gfx-green-200 [filter:url(#blur-100)] opacity-15 pointer-events-none" />
+        <div className="theme-decorative-glow absolute top-[-100px] left-1/2 -translate-x-1/2 w-[36.6875rem] h-[27.1875rem] rotate-[48deg] rounded-full bg-gfx-green-200 [filter:url(#blur-120)] opacity-20 pointer-events-none" />
+        <div className="theme-decorative-glow absolute bottom-[12.5rem] left-1/2 -translate-x-1/2 w-[30.8125rem] h-[17.3750rem] rounded-full bg-gfx-green-200 [filter:url(#blur-100)] opacity-15 pointer-events-none" />
 
         {/* Close button */}
         <button
@@ -112,7 +115,7 @@ export default function NewNoteModal({ open, onClose }: NewNoteModalProps) {
           style={{ scrollbarWidth: 'thin', scrollbarColor: '#00b38c #09241c' }}
         >
           {/* Title */}
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-acid font-normal text-center leading-none">
+          <h2 id="new-note-modal-title" className="text-white text-3xl sm:text-4xl lg:text-5xl font-acid font-normal text-center leading-none">
             New Note
           </h2>
 

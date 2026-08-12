@@ -383,6 +383,7 @@ html[data-theme='light'] .trades-table-card {
   outline-color: rgba(6, 75, 52, 0.1);
 }
 
+html[data-theme='light'] .theme-decorative-glow,
 html[data-theme='light'] .glow-ellipse,
 html[data-theme='light'] .bg-gfx-glow-green,
 html[data-theme='light'] .summary-card__glow,
@@ -391,8 +392,13 @@ html[data-theme='light'] .sidebar-user-glow {
   display: none;
 }
 
+html[data-theme='light'] [role='dialog'] .theme-decorative-glow,
 html[data-theme='light'] [role='dialog'] .glow-ellipse {
   display: none !important;
+}
+
+html[data-theme='light'] .change-picture-hero {
+  background: #fff !important;
 }
 
 html[data-theme='light'] .dashboard-primary-card {

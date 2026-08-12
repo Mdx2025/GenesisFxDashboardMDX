@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
   return (
     <div className="min-h-screen bg-gfx-sidebar font-acid relative overflow-hidden flex items-center justify-center">
       {/* Page glow — top right */}
-      <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'url(#blur-406)' }} aria-hidden="true" />
+      <div className="theme-decorative-glow absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'url(#blur-406)' }} aria-hidden="true" />
 
       {/* Card — Frame 2085662595 */}
       <div className="relative w-full max-w-3xl h-[90vh] rounded-2xl overflow-hidden flex flex-col">

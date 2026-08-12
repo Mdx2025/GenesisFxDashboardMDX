@@ -127,7 +127,7 @@ export function TransferProcessingModal({ open, onClose, onComplete }: TransferP
         </svg>
 
         {/* Bottom glow */}
-        <div className="absolute pointer-events-none w-[493px] h-[288px] left-[190px] top-[540px] bg-gfx-green-dark rounded-full blur-[157px]" aria-hidden="true" />
+        <div className="theme-decorative-glow absolute pointer-events-none w-[493px] h-[288px] left-[190px] top-[540px] bg-gfx-green-dark rounded-full blur-[157px]" aria-hidden="true" />
 
         {/* Title */}
         <div className="absolute text-white font-acid font-normal text-center left-0 right-0 top-[23%] text-card-value">

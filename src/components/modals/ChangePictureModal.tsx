@@ -91,11 +91,11 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
         <GlassCard variant="light" rounded="1.16rem" className="overflow-hidden" style={{ backgroundColor: '#0C1311' }}>
           {/* Hero banner */}
           <div
-            className="relative h-[18rem] border-b border-white/5"
+            className="change-picture-hero relative h-[18rem] border-b border-white/5"
             style={{ background: 'radial-gradient(ellipse 109.82% 733.29% at -11.35% 41.20%, rgba(16, 185, 129, 0.35) 0%, rgba(16, 185, 129, 0) 41%), linear-gradient(168deg, #0A1F18 0%, #071410 70%)' }}
           >
             {/* Texture overlay */}
-            <div className="absolute w-[41.5rem] h-[25.0625rem] -left-[0.625rem] -top-[8.0625rem] pointer-events-none" aria-hidden="true" style={{ background: 'radial-gradient(57.5% 33.85% at 51.43% 51.34%, black 0%, rgba(102, 102, 102, 0) 100%)', borderRadius: '44.8rem' }} />
+            <div className="theme-decorative-glow absolute w-[41.5rem] h-[25.0625rem] -left-[0.625rem] -top-[8.0625rem] pointer-events-none" aria-hidden="true" style={{ background: 'radial-gradient(57.5% 33.85% at 51.43% 51.34%, black 0%, rgba(102, 102, 102, 0) 100%)', borderRadius: '44.8rem' }} />
 
             {/* Avatar */}
             <div className="absolute left-1/2 -translate-x-1/2 top-[3.75rem] w-[7.25rem] h-[7.25rem] rounded-full bg-[#0C1311] border-4 border-[#0C1311] overflow-hidden">
@@ -103,8 +103,8 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
                 <span className="text-white text-[1.975rem] font-bold font-['Segoe_UI']">JD</span>
               </div>
               {/* Green glow beneath avatar */}
-              <div className="absolute w-[17.1875rem] h-[7.27rem] left-1/2 -translate-x-1/2 bottom-[-7rem] rounded-full pointer-events-none bg-[#00B38C]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
-              <div className="absolute w-[8.6375rem] h-[6rem] left-1/2 -translate-x-1/2 bottom-[-6.38rem] rounded-full pointer-events-none mix-blend-plus-lighter bg-[#40C99C]" style={{ filter: 'url(#blur-139)' }} aria-hidden="true" />
+              <div className="theme-decorative-glow absolute w-[17.1875rem] h-[7.27rem] left-1/2 -translate-x-1/2 bottom-[-7rem] rounded-full pointer-events-none bg-[#00B38C]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
+              <div className="theme-decorative-glow absolute w-[8.6375rem] h-[6rem] left-1/2 -translate-x-1/2 bottom-[-6.38rem] rounded-full pointer-events-none mix-blend-plus-lighter bg-[#40C99C]" style={{ filter: 'url(#blur-139)' }} aria-hidden="true" />
             </div>
 
             {/* Camera button */}

@@ -209,10 +209,10 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.875rem] border border-gfx-green-800"
           aria-hidden="true"
         >
-          <div className="absolute w-[30.8125rem] h-[17.375rem] left-[-12.375rem] top-[35.0625rem] bg-gfx-green-200 rounded-full blur-[9.8225rem]" />
-          <div className="absolute w-[30.8125rem] h-[17.375rem] left-[39.25rem] top-[-1.125rem] bg-gfx-green-200 rounded-full blur-[9.8225rem]" />
-          <div className="absolute w-[36.6875rem] h-[27.175rem] left-[21.9044rem] top-[-8.3125rem] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[9.8225rem]" />
-          <div className="absolute w-[30.8125rem] h-[17.375rem] left-[50.375rem] top-[-22.75rem] bg-gfx-green-175 rounded-full blur-[9.8225rem]" />
+          <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] left-[-12.375rem] top-[35.0625rem] bg-gfx-green-200 rounded-full blur-[9.8225rem]" />
+          <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] left-[39.25rem] top-[-1.125rem] bg-gfx-green-200 rounded-full blur-[9.8225rem]" />
+          <div className="theme-decorative-glow absolute w-[36.6875rem] h-[27.175rem] left-[21.9044rem] top-[-8.3125rem] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[9.8225rem]" />
+          <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] left-[50.375rem] top-[-22.75rem] bg-gfx-green-175 rounded-full blur-[9.8225rem]" />
         </div>
 
         {/* Close button */}

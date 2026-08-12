@@ -45,7 +45,7 @@ function SessionCard({ session, isActive, onClick }: { session: TradeSession; is
       {(isOpen || isActive) && (
         <>
           <div className="absolute inset-0 bg-gradient-to-br from-gfx-green-200/40 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-gfx-green-glow/8 blur-[40px] mix-blend-screen pointer-events-none" />
+          <div className="theme-decorative-glow absolute -right-16 -bottom-8 w-[234px] h-[217px] rounded-full bg-gfx-green-glow/8 blur-[40px] mix-blend-screen pointer-events-none" />
         </>
       )}
 

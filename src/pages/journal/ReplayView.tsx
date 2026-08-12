@@ -27,7 +27,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
       <div className="flex flex-col items-center pt-0 pb-8 px-9 h-[26.1875rem]">
         {/* Illustration */}
         <div className="relative w-[15rem] h-[15rem] flex items-center justify-center shrink-0">
-          <div className="absolute w-[23.7500rem] h-[13.3750rem] rounded-full bg-gfx-green-200 [filter:url(#blur-80)] opacity-30 top-[1.25rem]" aria-hidden="true" />
+          <div className="theme-decorative-glow absolute w-[23.7500rem] h-[13.3750rem] rounded-full bg-gfx-green-200 [filter:url(#blur-80)] opacity-30 top-[1.25rem]" aria-hidden="true" />
           <img
             src={illustration}
             alt={title}

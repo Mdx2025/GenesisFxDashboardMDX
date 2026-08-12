@@ -2,6 +2,7 @@
 
 ## 2026-08-12
 
+- Added a semantic `theme-decorative-glow` hook across modal, snackbar, authentication, settings, KYC, academy, journal, and challenge decorations so light theme hides visual glows without suppressing functional button, focus, or progress effects; also completed dialog semantics for the journal note/folder modals found during the audit.
 - Installed Graphify 0.9.41 as a project-scoped Codex skill and generated a local code-only graph excluded from Git.
 - Changed `SuccessSnackbar` from `rounded-full` to the design-system `rounded-md` radius.
 - Restored the light-theme `PeriodPill` container background to `#F6F6F6` without changing the shared select-surface token or dark theme.

@@ -112,9 +112,9 @@ export function CreateAccountModal({ open, onClose, onCreateAccount }: CreateAcc
           className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
-          <div className="absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
-          <div className="absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-gfx-green-200 rounded-full blur-[157px]" />
-          <div className="absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[493px] h-[278px] right-[-335px] -top-[18px] bg-gfx-green-200 rounded-full blur-[157px]" />
+          <div className="theme-decorative-glow absolute w-[587px] h-[435px] left-[350px] -top-[133px] rotate-[48deg] origin-top-left bg-gfx-green-800 rounded-full blur-[157px]" />
         </div>
 
         {/* Close button */}

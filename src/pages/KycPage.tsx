@@ -7,7 +7,7 @@ function KycIllustration() {
     <div className="relative w-auto h-fit">
       {/* Gradient ellipse behind the image */}
       <div
-        className="absolute inset-0 rounded-full pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(16,188,131,0.15)_0%,rgba(16,188,131,0)_70%)]"
+        className="theme-decorative-glow absolute inset-0 rounded-full pointer-events-none bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(16,188,131,0.15)_0%,rgba(16,188,131,0)_70%)]"
         aria-hidden="true"
       />
       <img
@@ -56,9 +56,9 @@ export default function KycPage() {
             />
 
             {/* Internal glow ellipses */}
-            <div className="absolute w-[36.6875rem] h-[27.1875rem] left-[25%] -top-[14.6875rem] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left bg-gfx-green-50" aria-hidden="true" />
-            <div className="absolute w-[30.8125rem] h-[17.375rem] left-[8%] top-[4.375rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-gfx-green-175" aria-hidden="true" />
-            <div className="absolute w-[30.8125rem] h-[17.375rem] right-0 -top-[29.125rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-gfx-green-175" aria-hidden="true" />
+            <div className="theme-decorative-glow absolute w-[36.6875rem] h-[27.1875rem] left-[25%] -top-[14.6875rem] rounded-full [filter:url(#blur-157)] pointer-events-none rotate-[48deg] origin-top-left bg-gfx-green-50" aria-hidden="true" />
+            <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] left-[8%] top-[4.375rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-gfx-green-175" aria-hidden="true" />
+            <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] right-0 -top-[29.125rem] rounded-full [filter:url(#blur-157)] pointer-events-none bg-gfx-green-175" aria-hidden="true" />
 
             {/* Two-panel layout */}
             <div className="relative z-10 flex flex-col xl:flex-row min-h-[730px] 3xl:min-h-[900px] 4xl:min-h-[1200px]">

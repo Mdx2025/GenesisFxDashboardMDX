@@ -474,7 +474,7 @@ function SecurityTab() {
     <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto">
       <div className="relative overflow-hidden px-4 lg:px-10 pt-6 lg:pt-10 pb-6 lg:pb-10">
         <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
+          className="theme-decorative-glow absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[60%] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none opacity-60"
           style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)' }}
           aria-hidden="true"
         />
@@ -778,8 +778,8 @@ function VerificationTab() {
       <GlassCard className="mt-10 !rounded-[1.16rem]">
         <div className="relative overflow-hidden">
           {/* Bottom highlight glows */}
-          <div className="absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
-          <div className="absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
+          <div className="theme-decorative-glow absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
+          <div className="theme-decorative-glow absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
 
           <div className="px-6 lg:px-30 pt-6 lg:pt-12 pb-0">
             <h3 className="text-white text-2xl font-acid leading-normal mb-6 lg:mb-10">KYC Verification Status</h3>
@@ -831,9 +831,9 @@ export default function SettingsPage() {
           <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10 top-[7rem]">
             <div className="relative w-[5.5rem] h-[5.5rem] lg:w-[7.25rem] lg:h-[7.25rem] rounded-full bg-gfx-green-800 border-4 border-gfx-sidebar flex items-center justify-center overflow-hidden">
               <span className="text-white text-[1.5rem] lg:text-[1.975rem] font-acid font-bold relative z-10">JD</span>
-              <div className="absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none bg-[#00B38C]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
-              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none bg-[#40C99C]" style={{ filter: 'url(#blur-139)' }} aria-hidden="true" />
-              <div className="absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none bg-[#40C99C]" style={{ filter: 'url(#blur-151)' }} aria-hidden="true" />
+              <div className="theme-decorative-glow absolute w-[17.1875rem] h-[7.27rem] -bottom-[7rem] left-1/2 -translate-x-1/2 rounded-full pointer-events-none bg-[#00B38C]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
+              <div className="theme-decorative-glow absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none bg-[#40C99C]" style={{ filter: 'url(#blur-139)' }} aria-hidden="true" />
+              <div className="theme-decorative-glow absolute w-[8.6375rem] h-[6rem] -bottom-[7.64rem] left-1/2 -translate-x-[55%] rounded-full pointer-events-none bg-[#40C99C]" style={{ filter: 'url(#blur-151)' }} aria-hidden="true" />
             </div>
             {/* Camera button */}
             <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gfx-green-300 border-[3px] border-gfx-green-800 flex items-center justify-center">
