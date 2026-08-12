@@ -5,13 +5,13 @@
 
 - task_id: `genesis-topbar-funding-state-polish-20260812`
 - owner: `klark`
-- status: `validated; delivery pending`
+- status: `done`
 - target_routes: `/home`, `/deposit`, and `/withdraw`.
 - root_cause: The controls already used flex centering, but normal text line boxes did not optically match the adjacent SVG boxes; a broad light-theme accent selector also overrode the notification count's white text. Funding selections inherited light surface tokens instead of the supplied active green state.
 - scope_guard: Align only wallet/language control copy and the notification count; update only light-theme active coin and active/completed step states; preserve layout, interactions, responsive visibility, and all dark-theme rendering.
 - validation: Managed build passed (`tsc -b`, Vite 6.4.3, 245 modules). Local Playwright passed at 390/1280/1920 in light and dark: wallet icon `0px`, amount `-0.5px`, language flag/EN/chevron `0px`, notification count `-0.5px`, count color `#fff`, no overflow or runtime errors. Light active coin and funding steps computed to `#00B38C` with white text/check; dark values remained unchanged.
-- delivery: Pending commit, push, Dokploy deployment, and production smoke.
-- next_exact_action: Commit and deploy, then repeat the targeted Playwright checks against production.
+- delivery: Commit `b05c6bb` pushed to `origin/main`; Dokploy deployment `7RSpkrpCBDSjJdAAZ_0Jf` completed. Production serves `index-Ds4hr4zc.js` and `index-DHUa0gbY.css`. Playwright repeated the targeted checks on `/home`, `/deposit`, and `/withdraw` at 390/1280/1920 in light and dark with zero failures, overflow, or runtime errors.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Assets Reset label alignment
 
