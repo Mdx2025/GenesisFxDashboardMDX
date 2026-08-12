@@ -148,10 +148,8 @@ export default function TradeSessionsView() {
 
       {/* Bottom gradient fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none z-base"
-        style={{
-          background: 'linear-gradient(to top, #000705 20%, transparent 100%)',
-        }}
+        className="trade-sessions-bottom-fade absolute bottom-0 left-0 right-0 h-[500px] pointer-events-none z-base"
+        data-trade-sessions-bottom-fade
       />
 
       {/* Content */}

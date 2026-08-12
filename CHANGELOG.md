@@ -1,5 +1,7 @@
 # Changelog
 
+- Updated the Trade Sessions bottom fade to use white only in light theme while preserving the existing dark gradient.
+
 - Fixed Trading Accounts platform copy, overflow-menu icons, and action hover colors so light theme never renders white-on-white while preserving the existing dark palette.
 
 ## 2026-08-12

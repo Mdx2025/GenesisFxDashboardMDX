@@ -350,6 +350,14 @@ html[data-theme='light'] [data-chart-text] {
   fill: #000 !important;
 }
 
+.trade-sessions-bottom-fade {
+  background: linear-gradient(to top, rgb(0 7 5) 20%, transparent 100%);
+}
+
+html[data-theme='light'] .trade-sessions-bottom-fade {
+  background: linear-gradient(to top, rgb(255 255 255) 20%, transparent 100%);
+}
+
 .trading-account-platform {
   color: rgb(255 255 255 / 0.6);
 }

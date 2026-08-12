@@ -1,6 +1,17 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Trade Sessions light bottom fade
+
+- task_id: `genesis-trade-sessions-light-bottom-fade-20260812`
+- owner: `klark`
+- status: `qa-passed`
+- target_route: `/news`, tab `Trade Sessions`.
+- root_cause: The 500px bottom fade used an inline `linear-gradient` with `#000705`, so it could not react to `html[data-theme]` and remained dark in light theme.
+- scope_guard: Theme only the bottom fade; preserve its size, stacking, transparency, dark color, globe, cards, and interactions.
+- validation: Managed `tsc -b && vite build` passed (245 modules). Local Playwright passed light/dark at 390/1280/1920: exact `rgb(255,255,255)` light and preserved `rgb(0,7,5)` dark, 500px height, 0 overflow, 0 runtime errors.
+- next_exact_action: Deploy and repeat the same production QA matrix.
+
 ## Active Task — Trading Accounts light text audit
 
 - task_id: `genesis-trading-accounts-light-text-audit-20260812`
