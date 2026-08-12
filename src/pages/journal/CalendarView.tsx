@@ -46,7 +46,7 @@ function DonutChart({ value, label, color = '#10BC83' }: { value: number; label:
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-white text-sm font-acid">{label}</span>
+        <span data-chart-text className="text-white text-sm font-acid">{label}</span>
       </div>
     </div>
   )

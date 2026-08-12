@@ -91,7 +91,7 @@ function PortfolioChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} className="text-gfx-neutral-400 text-xs font-acid font-bold">{label}</span>
+            <span key={label} data-chart-text className="text-gfx-neutral-400 text-xs font-acid font-bold">{label}</span>
           ))}
         </div>
         <div className="flex-1">

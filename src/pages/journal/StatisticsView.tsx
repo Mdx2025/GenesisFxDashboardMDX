@@ -117,7 +117,7 @@ function RadarChart() {
   return (
     <div className="relative flex h-full min-h-[18rem] w-full items-center justify-center">
       <svg
-        className="h-full w-full"
+        className="h-full w-full text-gfx-neutral-400"
         viewBox="0 0 454 357"
         preserveAspectRatio="xMidYMid meet"
         role="img"
@@ -135,12 +135,13 @@ function RadarChart() {
         ))}
         {labels.map(({ label, x, y, anchor }) => (
           <text
+            data-chart-text
             key={label}
             x={x}
             y={y}
             textAnchor={anchor}
             dominantBaseline="middle"
-            fill="#808080"
+            fill="currentColor"
             fontSize="16"
             fontWeight="600"
             fontFamily="Acid Grotesk, Arial, sans-serif"
@@ -313,7 +314,7 @@ function AvgPnlByDayChart() {
 
         <div className="flex">
           <div className="flex flex-col justify-between pr-3 text-gfx-neutral-500 text-xs font-acid font-bold uppercase tracking-tab h-[16.1250rem]">
-            {Y_LABELS.map(l => <span key={l}>{l}</span>)}
+            {Y_LABELS.map(l => <span key={l} data-chart-text>{l}</span>)}
           </div>
 
           <div className="flex-1 relative h-[19.3750rem]">
@@ -346,7 +347,7 @@ function AvgPnlByDayChart() {
 
             <div className="absolute bottom-0 left-0 right-0 flex justify-between pt-3 top-[16.7500rem]">
               {DAYS.map(d => (
-                <span key={d} className="text-gfx-neutral-500 text-base font-acid font-medium">{d}</span>
+                <span key={d} data-chart-text className="text-gfx-neutral-500 text-base font-acid font-medium">{d}</span>
               ))}
             </div>
           </div>
@@ -357,13 +358,13 @@ function AvgPnlByDayChart() {
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <rect x="0.48" y="0.48" width="19.04" height="19.04" rx="8" fill="#0C1311" stroke="#00B38C" strokeWidth="0.96" />
             </svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium">Profitable</span>
+            <span data-chart-text className="text-gfx-neutral-500 text-base font-acid font-medium">Profitable</span>
           </div>
           <div className="flex items-center gap-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <rect x="0.48" y="0.48" width="19.04" height="19.04" rx="8" fill="#2A1411" stroke="#D46356" strokeWidth="0.96" />
             </svg>
-            <span className="text-gfx-neutral-500 text-base font-acid font-medium">Loss</span>
+            <span data-chart-text className="text-gfx-neutral-500 text-base font-acid font-medium">Loss</span>
           </div>
         </div>
       </div>

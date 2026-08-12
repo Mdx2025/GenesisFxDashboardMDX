@@ -43,6 +43,7 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
 
   useEffect(() => {
     let mounted = true
+    let themeObserver: MutationObserver | undefined
 
     async function init() {
       const { Chart, registerables } = await import('chart.js')
@@ -57,6 +58,15 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
       const yMax = dataMax + padding
 
       const ctx = canvasRef.current.getContext('2d')!
+      const getThemeColors = () => {
+        const isLight = document.documentElement.dataset.theme === 'light'
+        return {
+          text: isLight ? '#000000' : 'rgba(236,236,236,0.55)',
+          grid: isLight ? `rgba(0,0,0,${config.gridOpacity})` : `rgba(255,255,255,${config.gridOpacity})`,
+          tooltipBackground: isLight ? 'rgba(255,255,255,0.96)' : 'rgba(10,15,13,0.9)',
+          tooltipTitle: isLight ? '#000000' : '#A0A0A0',
+        }
+      }
 
       const canvasH = canvasRef.current.height
       const greenGradient = ctx.createLinearGradient(0, 0, 0, canvasH)
@@ -200,8 +210,8 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
           plugins: {
             legend: { display: false },
             tooltip: {
-              backgroundColor: 'rgba(10, 15, 13, 0.9)',
-              titleColor: '#A0A0A0',
+              backgroundColor: () => getThemeColors().tooltipBackground,
+              titleColor: () => getThemeColors().tooltipTitle,
               bodyColor: config.lineColor,
               borderColor: config.lineColor + '33',
               borderWidth: 1,
@@ -220,10 +230,10 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
               suggestedMin: yMin,
               suggestedMax: yMax,
               border: { display: false },
-              grid: { color: `rgba(255,255,255,${config.gridOpacity})` },
+              grid: { color: () => getThemeColors().grid },
               ticks: {
                 display: config.gridOpacity > 0,
-                color: 'rgba(236,236,236,0.55)',
+                color: () => getThemeColors().text,
                 font: { size: 12 },
                 padding: 8,
                 callback: (v: any) => `$${v}`,
@@ -233,10 +243,17 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
         },
         plugins: [areaGlowPlugin, neonGlowPlugin, highlightPlugin],
       })
+
+      themeObserver = new MutationObserver(() => chartRef.current?.update('none'))
+      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
     }
 
     init()
-    return () => { mounted = false; chartRef.current?.destroy() }
+    return () => {
+      mounted = false
+      themeObserver?.disconnect()
+      chartRef.current?.destroy()
+    }
   }, [config])
 
   return (
@@ -244,6 +261,7 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
       <canvas
         ref={canvasRef}
         className="!absolute inset-0 w-full h-full"
+        data-chart-text
         aria-label="Portfolio equity curve showing angular gains, drawdowns, and recoveries over the selected period"
         role="img"
       />

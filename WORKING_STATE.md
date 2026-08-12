@@ -1,6 +1,17 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Exhaustive chart-text theme audit
+
+- task_id: `genesis-light-chart-text-audit-20260812`
+- owner: `klark`
+- status: `validated locally; delivery pending`
+- scope_guard: Audit all registered routes for chart text rendered by Chart.js canvas, SVG text, and DOM axis/legend labels; make those labels pure black in light theme while preserving dark-theme colors, chart geometry, data, tooltips, and interaction.
+- root_cause: The global light-theme `.text-white` rule cannot style canvas drawing state or hardcoded SVG `fill`; `PortfolioChart` also instantiated Chart.js once without reacting to later `data-theme` mutations, and `MiniBarChart` inherited a hardcoded white canvas color.
+- implementation: Added a semantic `data-chart-text` hook, light-only color/fill mapping, theme-aware Chart.js scriptable colors, and a theme mutation refresh; applied the hook to audited canvas, SVG, axis, legend, and donut-center labels.
+- validation: Build passed (`tsc -b`, Vite 6.4.3, 245 modules). Local Playwright changed themes live across 38 routes and inspected 44 visible chart-text hooks plus 72 light/117 dark canvas text draws: 0 light offenders, 0 dark regressions, 0 overflow routes, and 0 runtime errors.
+- next_exact_action: Commit, deploy, and repeat the same live-theme audit against production.
+
 ## Active Task — Exhaustive light decorative-glow audit
 
 - task_id: `genesis-light-decorative-glow-audit-20260812`

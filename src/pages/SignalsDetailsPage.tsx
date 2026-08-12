@@ -107,7 +107,7 @@ function PnlPerformanceChart() {
       <div className="flex">
         <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
           {yLabels.map(label => (
-            <span key={label} className="text-gfx-neutral-400 text-xs font-acid">{label}</span>
+            <span key={label} data-chart-text className="text-gfx-neutral-400 text-xs font-acid">{label}</span>
           ))}
         </div>
         <div className="flex-1">
@@ -132,9 +132,9 @@ function PnlPerformanceChart() {
         </div>
       </div>
       <div className="flex justify-between mt-2 pl-[2.7500rem]">
-        <span className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
-        <span className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
-        <span className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
+        <span data-chart-text className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
+        <span data-chart-text className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
+        <span data-chart-text className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
       </div>
     </div>
   )
