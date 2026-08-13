@@ -5,12 +5,13 @@
 
 - task_id: `genesis-partner-marketing-card-light-theme-20260813`
 - owner: `klark`
-- status: `implementation`
+- status: `done`
 - target_route: `/partner`.
 - source_of_truth: Operator-provided 359x242 HTML reference and screenshot.
 - scope_guard: Change only the marketing feature card palette in light theme; preserve geometry, typography, copy, carousel indicators, interactions, and the complete dark-theme palette.
-- validation: Build plus focused local and production Playwright at 390/1280/1920 in light/dark.
-- next_exact_action: Build and run the focused theme QA matrix.
+- validation: Managed `tsc -b && vite build` passed (245 modules). Local and production Playwright passed light/dark at 390/1280/1920: exact mint-to-white light gradient, #ECECEC border, mint badge, black title, preserved dark palette, 242px height, 0 overflow, and 0 runtime errors.
+- delivery: Implementation `4aecadb` pushed to `origin/main`; Dokploy `s0sfSCqwh4MOmW2Rjb-qK` finished `done` at `2026-08-13T17:18:45.397Z`.
+- next_exact_action: User visual confirmation.
 
 ## Active Task — Trade Sessions light bottom fade
 
