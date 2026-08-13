@@ -17,7 +17,7 @@ export default function ResetPasswordPage() {
   const isValid = newPassword.trim() !== '' && confirmPassword.trim() !== ''
 
   return (
-    <div className="min-h-screen bg-gfx-sidebar font-acid relative overflow-hidden flex items-center justify-center">
+    <div className="auth-theme-root min-h-screen bg-gfx-sidebar font-acid relative overflow-hidden flex items-center justify-center">
       {/* Page glow — top right */}
       <div className="absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 pointer-events-none" style={{ filter: 'url(#blur-406)' }} aria-hidden="true" />
 

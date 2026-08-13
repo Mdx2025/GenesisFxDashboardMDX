@@ -43,26 +43,26 @@ function VideoPlayerControls() {
   return (
     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
       <div className="flex items-center gap-3">
-        <button type="button" aria-label="Previous lesson" className="text-white/70 hover:text-white transition-colors cursor-pointer">
+        <button type="button" aria-label="Previous lesson" className="theme-preserve-light-hover text-white/70 hover:text-white transition-colors cursor-pointer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" /></svg>
         </button>
         <button type="button" aria-label="Play" className="text-white hover:text-gfx-green-500 transition-colors cursor-pointer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
         </button>
-        <button type="button" aria-label="Next lesson" className="text-white/70 hover:text-white transition-colors cursor-pointer">
+        <button type="button" aria-label="Next lesson" className="theme-preserve-light-hover text-white/70 hover:text-white transition-colors cursor-pointer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" /></svg>
         </button>
         <span className="text-white text-sm font-acid ml-1">0:19 / 0:50</span>
         <div className="flex-1 mx-4 h-[0.1875rem] bg-gfx-neutral-250 rounded-full overflow-hidden">
           <div className="h-full bg-gfx-green-500 rounded-full" style={{ width: '38%' }} />
         </div>
-        <button type="button" aria-label="Mute" className="text-white/70 hover:text-white transition-colors cursor-pointer">
+        <button type="button" aria-label="Mute" className="theme-preserve-light-hover text-white/70 hover:text-white transition-colors cursor-pointer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.3v7.4a4.5 4.5 0 0 0 2.5-3.7z" /></svg>
         </button>
-        <button type="button" aria-label="Fullscreen" className="text-white/70 hover:text-white transition-colors cursor-pointer">
+        <button type="button" aria-label="Fullscreen" className="theme-preserve-light-hover text-white/70 hover:text-white transition-colors cursor-pointer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" /></svg>
         </button>
-        <button type="button" aria-label="More options" className="text-white/70 hover:text-white transition-colors cursor-pointer">
+        <button type="button" aria-label="More options" className="theme-preserve-light-hover text-white/70 hover:text-white transition-colors cursor-pointer">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" /></svg>
         </button>
       </div>

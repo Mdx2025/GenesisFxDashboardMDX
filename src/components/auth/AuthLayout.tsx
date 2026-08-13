@@ -24,7 +24,7 @@ function AuthFooter() {
 
 export function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen lg:h-screen bg-gfx-sidebar font-acid relative overflow-hidden">
+    <div className="auth-theme-root min-h-screen lg:h-screen bg-gfx-sidebar font-acid relative overflow-hidden">
       <div
         className="theme-decorative-glow absolute w-[43.6875rem] h-[43.6875rem] -top-[19.4375rem] -right-[41.75rem] rounded-full bg-gfx-green-200 blur-[406px] pointer-events-none"
         aria-hidden="true"

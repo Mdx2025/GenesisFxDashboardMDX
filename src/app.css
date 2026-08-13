@@ -345,6 +345,14 @@ html[data-theme='light'] .text-white {
   color: #000 !important;
 }
 
+/* Tailwind's hover variant is a separate selector from `.text-white`, so the
+   light text contract above cannot intercept it. Keep hover copy dark on
+   light application surfaces; intentionally dark media controls opt out
+   with `.theme-preserve-light-hover`. */
+html[data-theme='light'] :is(.theme-root, .auth-theme-root) .hover\:text-white:hover:not(.theme-preserve-light-hover) {
+  color: #000 !important;
+}
+
 html[data-theme='light'] [data-chart-text] {
   color: #000 !important;
   fill: #000 !important;

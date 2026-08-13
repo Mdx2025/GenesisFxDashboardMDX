@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Exhaustive light hover-text audit
+
+- task_id: `genesis-light-hover-text-audit-20260813`
+- owner: `klark`
+- status: `local_verified`
+- target_routes: All 38 public/registered routes at 390/1280/1920, including authentication pages, light-theme modals, and intentional dark video controls.
+- root_cause: Tailwind's `.hover\\:text-white:hover` variant is a separate selector from `.text-white`, so the existing light-theme black-text contract could not intercept it.
+- scope_guard: Keep hover text black only on semantic light application/auth surfaces; preserve dark theme and explicitly marked controls over dark video.
+- validation: Static census plus local/production Playwright comparing every visible `hover:text-white` candidate before/after hover, with runtime-error and multi-viewport gates.
+- validation_result: Pre-fix production crawl found 23 real transitions to white. Managed build `bg_msrvolqa_cdc4fd6c` passed; the final local crawl inspected 674 visible candidates across 114 route/viewport combinations with 0 transitions to white and 0 runtime errors. Conditional auth/PAMM/modal/video/dark-theme flow checks also passed.
+- delivery: Pending commit, Dokploy deployment, and the same production crawl.
+- next_exact_action: Commit/push, deploy, rerun the exhaustive audit and conditional flows against production, then record the deployment evidence.
+
 ## Active Task — Partner decorative glow light-theme audit
 
 - task_id: `genesis-partner-light-glow-audit-20260813`
