@@ -1,5 +1,7 @@
 # Changelog
 
+- Migrated hardcoded pale and inline-white copy to the semantic theme text contract so Partner tables, modal details, form values, statistics, journal metrics, and strategy stats render black on light surfaces while remaining white in dark theme.
+
 - Added a light-theme hover text contract so interactive labels stay black instead of switching to white on pale surfaces, with explicit preservation for controls over dark video.
 
 - Extended the semantic decorative-glow contract across all Partner cards, empty states, and the Referral Details modal so decorative blur blobs are suppressed in light theme while remaining intact in dark theme.

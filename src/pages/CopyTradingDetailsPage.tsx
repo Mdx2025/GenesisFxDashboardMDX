@@ -242,7 +242,7 @@ function StatColumn({ rows }: { rows: StatRow[] }) {
                 </div>
               )}
               {!row.progressBar && (
-                <span className="text-base font-acid font-medium leading-6" style={{ color: row.valueColor || 'white' }}>{row.value}</span>
+                <span className={`text-base font-acid font-medium leading-6 ${row.valueColor ? '' : 'text-white'}`} style={{ color: row.valueColor }}>{row.value}</span>
               )}
             </div>
           </div>

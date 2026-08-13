@@ -355,7 +355,7 @@ export default function PartnerPage() {
                 <MagicStickIcon size={18} color="#00b38c" />
                 <span className="text-gfx-green-300 text-sm font-acid">Marketing</span>
               </div>
-              <p className="partner-marketing-title absolute left-[22px] top-[114px] text-center text-[#ECECEC] text-base font-acid font-medium leading-[24.44px]">Real Time Statistics</p>
+              <p className="partner-marketing-title absolute left-[22px] top-[114px] text-center text-white text-base font-acid font-medium leading-[24.44px]">Real Time Statistics</p>
               <p className="absolute left-[22px] top-[139px] w-[228px] text-[#808080] text-sm font-acid font-normal leading-[18.8px]">Track signups, FTDs, lots, and revenue by referral link or sub-</p>
               <div className="absolute left-[25px] top-[195px] flex items-center gap-2">
                 <span className="text-gfx-green-300 text-sm font-acid leading-[18.8px] cursor-pointer hover:underline">Open library</span>

@@ -104,7 +104,7 @@ export default function CommissionsPage() {
                     <div className="flex items-center gap-4">
                       <AvatarCircle initials={item.initials} />
                       <div>
-                        <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{item.name}</p>
+                        <p className="text-base font-acid font-medium text-white leading-[24.44px]">{item.name}</p>
                         <p className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{item.email}</p>
                       </div>
                     </div>

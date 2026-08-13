@@ -58,7 +58,7 @@ function InfoRow({ label, value }: { label: string; value: string }) {
 
 function InfoBadge({ text }: { text: string }) {
   return (
-    <span className="inline-flex items-center px-5 py-3 rounded-[2.554rem] border border-[#303030] text-[#ECECEC] text-base font-acid leading-[1.2rem]">
+    <span className="inline-flex items-center px-5 py-3 rounded-[2.554rem] border border-[#303030] text-white text-base font-acid leading-[1.2rem]">
       {text}
     </span>
   )
@@ -117,7 +117,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
             <span className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem]">Joined</span>
           </div>
           <div className="absolute right-4 sm:right-[2.394rem] top-[7rem] sm:top-[10.278rem]">
-            <span className="text-[#ECECEC] text-base font-acid font-medium leading-[1.527rem]">June 5, 2026</span>
+            <span className="text-white text-base font-acid font-medium leading-[1.527rem]">June 5, 2026</span>
           </div>
         </div>
 
@@ -127,7 +127,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
             <span className="text-gfx-green-300 text-2xl font-acid">{referral.initials}</span>
           </div>
           <div className="sm:-ml-[2.5rem]">
-            <p className="text-[#ECECEC] text-base font-acid font-medium leading-[1.527rem]">{referral.name}</p>
+            <p className="text-white text-base font-acid font-medium leading-[1.527rem]">{referral.name}</p>
             <p className="text-[#A0A0A0] text-sm sm:text-base font-acid font-medium leading-[1.527rem] break-all sm:break-normal">{referral.email}</p>
           </div>
         </div>
@@ -187,7 +187,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
 
 function DetailsButton({ onClick }: { onClick?: () => void }) {
   return (
-    <button type="button" onClick={onClick} className="inline-flex items-center gap-3.5 h-[46px] px-[18px] rounded-[32px] border border-[#303030] text-[#ececec] text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-200 transition-colors">
+    <button type="button" onClick={onClick} className="inline-flex items-center gap-3.5 h-[46px] px-[18px] rounded-[32px] border border-[#303030] text-white text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-200 transition-colors">
       <EyeIcon />
       Details
     </button>
@@ -266,7 +266,7 @@ export default function ReferralsPage() {
                   <div className="flex items-center gap-4">
                     <AvatarCircle initials={referral.initials} />
                     <div>
-                      <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{referral.name}</p>
+                      <p className="text-base font-acid font-medium text-white leading-[24.44px]">{referral.name}</p>
                       <p className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{referral.email}</p>
                     </div>
                   </div>

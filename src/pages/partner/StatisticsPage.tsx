@@ -46,7 +46,7 @@ function RevenueCard() {
         {/* Container 1: Revenue summary */}
         <div className="relative p-6 overflow-hidden">
           <div className="flex flex-row justify-between items-center">
-            <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-sm font-acid">GenFX</span>
+            <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-white text-sm font-acid">GenFX</span>
             <div className="w-[59px] h-[59px] rounded-[20px] bg-[#09241C] border border-[#064B34] flex items-center justify-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M11.25 7.847C10.314 8.103 9.75 8.822 9.75 9.5c0 .679.564 1.397 1.5 1.653V7.847Z" fill="#00B38C" />
@@ -253,7 +253,7 @@ function CommissionCalendarSection() {
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-white text-lg sm:text-[1.5rem] font-acid">{MONTHS[month]} {year}</span>
             <span className="text-white text-[0.875rem] font-acid">0 commissions this month</span>
-            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-[#ECECEC] text-[0.875rem] font-acid">Total:$0.00</span>
+            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-white text-[0.875rem] font-acid">Total:$0.00</span>
           </div>
           <div className="flex items-center gap-10">
             <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">

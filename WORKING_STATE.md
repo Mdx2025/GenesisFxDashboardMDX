@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Project-wide light surface text contrast audit
+
+- task_id: `genesis-light-surface-text-contrast-audit-20260813`
+- owner: `klark`
+- status: `implementation`
+- target_routes: All 38 registered routes at 390/1280/1920, including Partner tables, details modal, payout input, statistics badges, journal metrics, and PAMM/copy-trading stat values.
+- root_cause: Hardcoded `#ECECEC` and inline white fallbacks bypassed the established light-theme `.text-white` contract, leaving pale copy on pale surfaces.
+- scope_guard: Migrate light-surface copy to semantic `text-white` so it resolves black only in light theme; retain explicitly colored status values, active green controls, and dark-theme white text.
+- validation: Static hardcoded-color census, production pre-fix computed-color crawl, build, local/production Playwright across 114 route/viewport combinations, conditional-state checks, overflow, and runtime-error gates.
+- validation_result: Pre-fix production crawl inspected 10,727 visible text nodes and isolated the true pale-on-pale defects after excluding approved active-control overlays. Managed build `bg_mss50o5t_2cf8ad0e` passed. Local QA inspected 10,737 visible text nodes across 114 route/viewport combinations with 0 pale-on-pale offenders, 0 overflow, and 0 runtime errors; 16 focused light/dark conditional checks also passed.
+- delivery: Pending commit, Dokploy deployment, and production regression crawl.
+- next_exact_action: Commit/push, deploy, and repeat both audits against production.
+
 ## Completed Task — Exhaustive light hover-text audit
 
 - task_id: `genesis-light-hover-text-audit-20260813`

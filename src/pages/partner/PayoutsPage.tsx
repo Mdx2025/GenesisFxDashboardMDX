@@ -79,7 +79,7 @@ export default function PayoutsPage() {
                     const v = e.target.value.replace(/[^0-9.]/g, '')
                     setAmount(v)
                   }}
-                  className="w-full h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-300 px-6 text-base font-acid font-medium text-[#ececec] focus:outline-none leading-[24.44px]"
+                  className="w-full h-[50px] rounded-[30px] bg-gfx-green-800 border border-gfx-green-300 px-6 text-base font-acid font-medium text-white focus:outline-none leading-[24.44px]"
                 />
                 <span className="absolute right-6 top-1/2 -translate-y-1/2 text-base font-acid text-white">Max</span>
               </div>

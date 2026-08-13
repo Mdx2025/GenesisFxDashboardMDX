@@ -49,8 +49,9 @@ const COLOR_MAP = {
   green: '#37c92e',
   red: '#d46356',
   teal: '#10bc83',
-  white: '#ffffff',
 } as const
+
+type MetricColor = keyof typeof COLOR_MAP | 'white'
 
 const GLOW_POSITIONS = [
   '-left-[2.5rem] -top-[3.125rem]',
@@ -67,7 +68,7 @@ const GLOW_POSITIONS = [
   '-right-[2.5rem] -top-[3.125rem]',
 ] as const
 
-function MetricCard({ label, value, color, index }: { label: string; value: string; color: keyof typeof COLOR_MAP; index: number }) {
+function MetricCard({ label, value, color, index }: { label: string; value: string; color: MetricColor; index: number }) {
   const isPill = label === 'Most Profitable Asset'
 
   return (
@@ -85,7 +86,7 @@ function MetricCard({ label, value, color, index }: { label: string; value: stri
               <span className="text-white text-xl sm:text-2xl font-acid">{value}</span>
             </div>
           ) : (
-            <span className="text-4xl font-acid" style={{ color: COLOR_MAP[color] }}>
+            <span className={`text-4xl font-acid ${color === 'white' ? 'text-white' : ''}`} style={{ color: color === 'white' ? undefined : COLOR_MAP[color] }}>
               {value}
             </span>
           )}

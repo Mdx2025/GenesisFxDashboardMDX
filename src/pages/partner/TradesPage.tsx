@@ -106,7 +106,7 @@ export default function TradesPage() {
                     <div className="flex items-center gap-4">
                       <AvatarCircle initials={trade.initials} />
                       <div>
-                        <p className="text-base font-acid font-medium text-[#ececec] leading-[24.44px]">{trade.name}</p>
+                        <p className="text-base font-acid font-medium text-white leading-[24.44px]">{trade.name}</p>
                         <p className="text-sm font-acid text-gfx-neutral-400 leading-[18.8px]">{trade.email}</p>
                       </div>
                     </div>
