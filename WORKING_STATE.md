@@ -5,12 +5,14 @@
 
 - task_id: `genesis-light-svg-white-audit-20260813`
 - owner: `klark`
-- status: `implementation`
+- status: `done`
 - target_routes: All 38 registered/public application routes plus conditionally rendered modal SVGs.
 - root_cause: Literal SVG `fill`/`stroke` values (`white`, `#fff`, `#ffffff`) bypass the text-color light cascade and remain white on pale surfaces.
 - scope_guard: Recolor white icon paint to `#00B38C` only in light theme; preserve dark, structural masks/clip paths, decorative sparkle highlights, and white glyphs on green active states.
 - validation: Static source census, managed build, and full local/production Playwright crawl across 38 routes with exact computed SVG paint checks, overflow, and runtime-error gates.
-- next_exact_action: Run the full pre/post SVG paint audit and managed production build.
+- validation_result: Build `bg_msrsvgi8_37e09e4b` passed and was approved; local and production crawls passed across 38/38 routes with 0 actionable white SVG paints and 0 runtime errors. Dark retained 836 white paints across 111 signatures.
+- delivery: Commit `1de8402`; Dokploy deployment `GlmvxCevxshj0tyPAJiL6` finished `done` at `2026-08-13T17:43:36.870Z`.
+- next_exact_action: None — production delivery and regression audit complete.
 
 ## Active Task — Partner marketing card light palette
 
