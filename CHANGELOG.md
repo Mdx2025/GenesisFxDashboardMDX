@@ -1,5 +1,7 @@
 # Changelog
 
+- Extended the semantic decorative-glow contract across all Partner cards, empty states, and the Referral Details modal so decorative blur blobs are suppressed in light theme while remaining intact in dark theme.
+
 - Added a project-wide light-theme SVG paint contract so literal white icon fills and strokes render `#00B38C`, while structural masks, sparkle highlights, and white glyphs on green active states retain their required contrast.
 
 - Matched the Partner Program marketing card to its light-theme design: mint-to-white surface, subtle gray border, mint badge, and black title while preserving the dark palette.

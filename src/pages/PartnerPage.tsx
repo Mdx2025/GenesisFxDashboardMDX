@@ -116,8 +116,8 @@ function EmptyIcon() {
 function HeroBanner() {
   return (
     <GlassCard variant="heavy" divider="none" rounded="19px" className="partner-hero shrink-0">
-      <div className="absolute w-[500px] h-[400px] -left-[200px] -top-[100px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
-      <div className="absolute w-[400px] h-[200px] left-1/3 -bottom-[120px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-100)] will-change-transform opacity-40" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute w-[500px] h-[400px] -left-[200px] -top-[100px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute w-[400px] h-[200px] left-1/3 -bottom-[120px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-100)] will-change-transform opacity-40" aria-hidden="true" />
       <div className="partner-hero-texture" aria-hidden="true" />
 
       <div className="relative z-10 p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row gap-8 min-h-[320px]">
@@ -222,8 +222,8 @@ function ReferralLinkCard() {
 function PortfolioEquitySection() {
   return (
     <GlassCard variant="heavy" divider="none" rounded="18px" className="h-full min-h-[400px] overflow-hidden">
-      <div className="absolute w-[400px] h-[200px] -left-[120px] -top-[80px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
-      <div className="absolute w-[300px] h-[150px] left-1/2 -translate-x-1/2 -bottom-[80px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-100)] will-change-transform" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute w-[400px] h-[200px] -left-[120px] -top-[80px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute w-[300px] h-[150px] left-1/2 -translate-x-1/2 -bottom-[80px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-100)] will-change-transform" aria-hidden="true" />
       <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
         <div className="flex items-start justify-between mb-4 flex-wrap gap-3">
           <div>
@@ -259,9 +259,9 @@ function RecentActivity() {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden bg-[#0C1311]">
       <div className="relative overflow-hidden">
-        <div className="absolute w-[493px] h-[278px] right-0 -top-[252px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
-        <div className="absolute w-[493px] h-[278px] -left-[415px] -top-[213px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
-        <div className="absolute w-[639px] h-[361px] left-1/4 bottom-0 translate-y-full rounded-full pointer-events-none bg-[#0C1311] [filter:url(#blur-151)]" aria-hidden="true" />
+        <div className="theme-decorative-glow absolute w-[493px] h-[278px] right-0 -top-[252px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
+        <div className="theme-decorative-glow absolute w-[493px] h-[278px] -left-[415px] -top-[213px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
+        <div className="theme-decorative-glow absolute w-[639px] h-[361px] left-1/4 bottom-0 translate-y-full rounded-full pointer-events-none bg-[#0C1311] [filter:url(#blur-151)]" aria-hidden="true" />
 
         <div className="p-7 flex flex-col gap-6">
           <div className="flex items-center justify-between">
@@ -300,7 +300,7 @@ export default function PartnerPage() {
 
   return (
     <>
-      <div className="absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
+      <div className="theme-decorative-glow absolute left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full pointer-events-none -top-[30%] bg-gfx-glow-green [filter:url(#blur-157)] will-change-transform" aria-hidden="true" />
 
       <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6 flex flex-col gap-4 3xl:gap-6 4xl:gap-8">
         <TopBar
