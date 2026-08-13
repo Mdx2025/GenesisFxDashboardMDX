@@ -1,18 +1,18 @@
 # Website Working State
 <!-- website-delivery-state -->
 
-## Active Task — Exhaustive light hover-text audit
+## Completed Task — Exhaustive light hover-text audit
 
 - task_id: `genesis-light-hover-text-audit-20260813`
 - owner: `klark`
-- status: `local_verified`
+- status: `done`
 - target_routes: All 38 public/registered routes at 390/1280/1920, including authentication pages, light-theme modals, and intentional dark video controls.
 - root_cause: Tailwind's `.hover\\:text-white:hover` variant is a separate selector from `.text-white`, so the existing light-theme black-text contract could not intercept it.
 - scope_guard: Keep hover text black only on semantic light application/auth surfaces; preserve dark theme and explicitly marked controls over dark video.
 - validation: Static census plus local/production Playwright comparing every visible `hover:text-white` candidate before/after hover, with runtime-error and multi-viewport gates.
-- validation_result: Pre-fix production crawl found 23 real transitions to white. Managed build `bg_msrvolqa_cdc4fd6c` passed; the final local crawl inspected 674 visible candidates across 114 route/viewport combinations with 0 transitions to white and 0 runtime errors. Conditional auth/PAMM/modal/video/dark-theme flow checks also passed.
-- delivery: Pending commit, Dokploy deployment, and the same production crawl.
-- next_exact_action: Commit/push, deploy, rerun the exhaustive audit and conditional flows against production, then record the deployment evidence.
+- validation_result: Pre-fix production crawl found 23 real transitions to white. Managed build `bg_msrvolqa_cdc4fd6c` passed. Final production crawl inspected 675 visible candidates across 114 route/viewport combinations with 0 transitions to white and 0 runtime errors. Conditional auth/PAMM/modal/video/dark-theme flow checks also passed in local and production.
+- delivery: Commit `4596206` pushed to `origin/main`; Dokploy deployment `nl4wCUO1-ACF_miQKhxwo` finished `done` at `2026-08-13T19:12:22.587Z`.
+- next_exact_action: None.
 
 ## Active Task — Partner decorative glow light-theme audit
 
