@@ -350,6 +350,46 @@ html[data-theme='light'] [data-chart-text] {
   fill: #000 !important;
 }
 
+/* White SVG paint disappears on light surfaces. Keep this attribute-based so
+   icons rendered by dormant modals and conditional routes inherit the same
+   contract without component-specific hooks. */
+html[data-theme='light'] :is(svg, svg *)[fill='white' i],
+html[data-theme='light'] :is(svg, svg *)[fill='#fff' i],
+html[data-theme='light'] :is(svg, svg *)[fill='#ffffff' i],
+html[data-theme='light'] :is(svg, svg *)[style*='fill: white' i],
+html[data-theme='light'] :is(svg, svg *)[style*='fill: #fff' i] {
+  fill: #00B38C !important;
+}
+
+html[data-theme='light'] :is(svg, svg *)[stroke='white' i],
+html[data-theme='light'] :is(svg, svg *)[stroke='#fff' i],
+html[data-theme='light'] :is(svg, svg *)[stroke='#ffffff' i],
+html[data-theme='light'] :is(svg, svg *)[style*='stroke: white' i],
+html[data-theme='light'] :is(svg, svg *)[style*='stroke: #fff' i] {
+  stroke: #00B38C !important;
+}
+
+/* White is structural inside masks and intentional for sparkle highlights or
+   glyphs sitting on the green active surface. */
+html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[fill='white' i],
+html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[fill='#fff' i],
+html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[fill='#ffffff' i],
+html[data-theme='light'] [filter][fill='white' i],
+html[data-theme='light'] [filter][fill='#fff' i],
+html[data-theme='light'] [filter][fill='#ffffff' i],
+html[data-theme='light'] .funding-coin-option--active :is(svg, svg *)[fill='white' i],
+html[data-theme='light'] .step-circle:not(.step-circle--inactive) :is(svg, svg *)[fill='white' i] {
+  fill: #fff !important;
+}
+
+html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[stroke='white' i],
+html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[stroke='#fff' i],
+html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[stroke='#ffffff' i],
+html[data-theme='light'] .funding-coin-option--active :is(svg, svg *)[stroke='white' i],
+html[data-theme='light'] .step-circle:not(.step-circle--inactive) :is(svg, svg *)[stroke='white' i] {
+  stroke: #fff !important;
+}
+
 .trade-sessions-bottom-fade {
   background: linear-gradient(to top, rgb(0 7 5) 20%, transparent 100%);
 }
