@@ -5,12 +5,14 @@
 
 - task_id: `genesis-partner-light-glow-audit-20260813`
 - owner: `klark`
-- status: `implementation`
+- status: `done`
 - target_routes: `/partner`, `/partner/referrals`, `/partner/links`, `/partner/trades`, `/partner/comissions`, `/partner/payouts`, `/partner/marketing`, and `/partner/statistics`, including Referral Details modal.
 - root_cause: Anonymous filtered blur blobs did not carry the semantic `.theme-decorative-glow` hook, so the established light-theme hide contract could not match them.
 - scope_guard: Tag and hide only decorative Partner glows in light theme; preserve all dark-theme decoration plus GlowButton, active-tab, sidebar, focus, and interaction effects.
 - validation: Static semantic-hook census, managed build, and local/production Playwright across all 8 Partner routes at 390/1440/1920 in light/dark, including the Referral Details modal.
-- next_exact_action: Build and run the focused local regression audit.
+- validation_result: Managed build `bg_msru0004_0e2e3b75` passed and was approved. Local and production Playwright passed 54 combinations: 0 visible or unmarked decorative glows in light, 117 preserved dark-theme hooks, 0 overflow, and 0 runtime errors. Production screenshot confirms the Recent Activity card is clean.
+- delivery: Commit `5e530fb`; Dokploy deployment `d5GpcfnyWduP8_ApK4Bro` finished `done` at `2026-08-13T18:18:54.865Z`.
+- next_exact_action: None — production delivery and regression audit complete.
 
 ## Active Task — Project-wide light SVG color audit
 
