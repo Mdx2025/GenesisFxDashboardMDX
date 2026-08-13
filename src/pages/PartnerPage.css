@@ -21,6 +21,19 @@
   overflow: hidden;
 }
 
+html[data-theme='light'] .partner-marketing-card {
+  background: linear-gradient(180deg, #F1FFFA 0%, #FFF 100%);
+  border-color: #ECECEC;
+}
+
+html[data-theme='light'] .partner-marketing-badge {
+  background: #F1FFFA;
+}
+
+html[data-theme='light'] .partner-marketing-title {
+  color: #000;
+}
+
 .partner-referral-input {
   background: var(--color-gfx-main, #0c1311);
   border: 1px solid #064b34;

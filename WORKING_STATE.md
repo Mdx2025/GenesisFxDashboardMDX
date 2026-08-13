@@ -1,6 +1,17 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Partner marketing card light palette
+
+- task_id: `genesis-partner-marketing-card-light-theme-20260813`
+- owner: `klark`
+- status: `implementation`
+- target_route: `/partner`.
+- source_of_truth: Operator-provided 359x242 HTML reference and screenshot.
+- scope_guard: Change only the marketing feature card palette in light theme; preserve geometry, typography, copy, carousel indicators, interactions, and the complete dark-theme palette.
+- validation: Build plus focused local and production Playwright at 390/1280/1920 in light/dark.
+- next_exact_action: Build and run the focused theme QA matrix.
+
 ## Active Task — Trade Sessions light bottom fade
 
 - task_id: `genesis-trade-sessions-light-bottom-fade-20260812`
