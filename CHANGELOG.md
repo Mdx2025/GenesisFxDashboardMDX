@@ -1,5 +1,7 @@
 # Changelog
 
+- Corrected optical centering across the audited control system: active ModeToggle icons now remain white in light theme, and Academy chapter rows vertically center their number, title, and duration without asymmetric padding.
+
 - Completed a cross-route dark-surface audit: Partner, Settings, Signals, and account modals now use the semantic raised-surface and border tokens instead of hardcoded `#0C1311` UI backgrounds.
 
 - Moved the Partner Links referral-code card from an inline dark background to the semantic raised-surface token, which resolves to white in light theme.

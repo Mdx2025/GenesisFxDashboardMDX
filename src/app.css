@@ -391,7 +391,8 @@ html[data-theme='light'] [filter][fill='white' i],
 html[data-theme='light'] [filter][fill='#fff' i],
 html[data-theme='light'] [filter][fill='#ffffff' i],
 html[data-theme='light'] .funding-coin-option--active :is(svg, svg *)[fill='white' i],
-html[data-theme='light'] .step-circle:not(.step-circle--inactive) :is(svg, svg *)[fill='white' i] {
+html[data-theme='light'] .step-circle:not(.step-circle--inactive) :is(svg, svg *)[fill='white' i],
+html[data-theme='light'] .mode-toggle button.active :is(svg, svg *)[fill]:not([fill='none']) {
   fill: #fff !important;
 }
 
@@ -399,7 +400,8 @@ html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[s
 html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[stroke='#fff' i],
 html[data-theme='light'] :is(defs, defs *, clipPath, clipPath *, mask, mask *)[stroke='#ffffff' i],
 html[data-theme='light'] .funding-coin-option--active :is(svg, svg *)[stroke='white' i],
-html[data-theme='light'] .step-circle:not(.step-circle--inactive) :is(svg, svg *)[stroke='white' i] {
+html[data-theme='light'] .step-circle:not(.step-circle--inactive) :is(svg, svg *)[stroke='white' i],
+html[data-theme='light'] .mode-toggle button.active :is(svg, svg *)[stroke]:not([stroke='none']) {
   stroke: #fff !important;
 }
 

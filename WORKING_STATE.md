@@ -1,6 +1,24 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Control optical-centering audit
+
+- task_id: `genesis-control-optical-centering-audit-20260814`
+- owner: `klark`
+- status: `implementation-complete`
+- target_routes: All registered application routes plus `/login` and `/register`, in light/dark at mobile and desktop widths; conditional controls and dialogs are included where reachable.
+- design_route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=live codebase + production UI`, `style=existing GenesisFX glass-dashboard thesis`.
+- visual_thesis: Preserve the established dark glass / light semantic theme and fix only control anatomy: text, icons, and badges must share an optical center and a compact, repeatable vertical rhythm without decorative offsets.
+- dials: `design_variance=2`, `motion_intensity=2`, `visual_density=7`, `art_direction=4`, `implementation_clarity=10`, `image_usage_priority=1`, `spacing_generosity=4`.
+- observed_evidence: The full production baseline inspected 3,027 text-bearing controls across 160 route/theme/viewport scenarios. It found 24 offenders from one repeated Academy chapter-row component and 70 active ModeToggle SVG paint failures; overflow and runtime errors were both zero.
+- derived_decisions: Fix shared primitives before page-specific outliers; use semantic state selectors and a single optical-alignment hook/token where the Acid Grotesk font needs correction; do not alter card/page spacing that is not part of control anatomy.
+- quality_contract: Measure content-union center versus control center; active ModeToggle text and SVG must compute to `#fff`; repeated controls must share height/padding/line-height; test responsive layout, 200% zoom, keyboard/focus, reduced motion, contrast, runtime errors, and production build integration.
+- highest_risk: ModeToggle active SVG paint; pill/tab/button line boxes; icon+label controls; badges with tight heights; buttons containing absolutely positioned sparkle layers; conditional dialogs.
+- media: `not_applicable` — this task changes component geometry and paint, not load-bearing media.
+- definition_of_done: Full route/state census has no unexplained optical-center delta above 2px, no asymmetric vertical padding above 2px, no active ModeToggle icon other than `#fff`, no overflow/runtime regressions, and production serves the verified build.
+- validation: Managed `pnpm build` passed (245 modules). The local 160-scenario Playwright matrix inspected 3,027 controls and passed with 0 center offenders, 0 ModeToggle paint failures, 0 overflow, and 0 runtime errors. Focused accessibility QA passed keyboard activation/focus, 24px target minimums, reduced motion, and 200%-equivalent reflow; ModeToggle active text/SVG computed to exact white and Academy rows computed to `align-items: center` with symmetric 0px vertical padding.
+- next_exact_action: Review the final diff, commit, push, deploy, and repeat the same production gates.
+
 ## Completed Task — Semantic dark-surface audit
 
 - task_id: `genesis-semantic-dark-surface-audit-20260814`
