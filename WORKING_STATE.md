@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Completed Task — Partner Links semantic surface
+
+- task_id: `genesis-partner-links-semantic-surface-20260814`
+- owner: `klark`
+- status: `done`
+- target_route: `/partner/links`
+- root_cause: The referral-code GlassCard used an inline `background: #0C1311`, overriding the light-theme surface contract.
+- scope_guard: Move only the hardcoded surface/background behavior into the design system; preserve layout, copy, and interactions.
+- expected: Dark `#0C1311`; light `#FFF`; no inline background.
+- validation: Production pre-fix Playwright reproduced the dark inline background in light mode at 390/1280/1920. `pnpm build` passed. Local post-fix Playwright passed 6/6 light/dark viewport combinations with the exact expected colors, no inline background, no overflow, and no runtime errors.
+- delivery: Source is locally validated; not pushed or deployed.
+- next_exact_action: Commit, push, and deploy after owner approval.
+
 ## Completed Task — Project-wide light surface text contrast audit
 
 - task_id: `genesis-light-surface-text-contrast-audit-20260813`

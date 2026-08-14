@@ -122,6 +122,11 @@ export default function DesignSystemPage() {
               <TokenSwatch name="Sidebar" value="#000705" />
               <TokenSwatch name="Card BG" value="rgba(255,255,255,0.03)" className="bg-gfx-card-bg" />
               <TokenSwatch name="Card Border" value="rgba(255,255,255,0.06)" className="bg-gfx-card-border" />
+              <TokenSwatch
+                name="Raised Surface"
+                value="Dark #0C1311 / Light #FFF"
+                className="surface-raised"
+              />
               <TokenSwatch name="Glow Green" value="#104030" />
               <TokenSwatch name="Glow Red" value="#241B1C" />
               <TokenSwatch name="Glow Purple" value="#D760FF" />

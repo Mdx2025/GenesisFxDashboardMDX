@@ -140,6 +140,7 @@
   --color-gfx-surface-progress: #0f1e19;
   --color-gfx-surface-video: #0a0f0d;
   --color-gfx-surface-select: #09241C;
+  --color-gfx-surface-raised: #0C1311;
   --color-gfx-green-lightest: #f1fffa;
   --color-gfx-green-lightest-hover: #e0f5ec;
   --color-gfx-green-glow-em: #55FFC7;
@@ -303,6 +304,7 @@
   --color-gfx-surface-progress: #d9ece5;
   --color-gfx-surface-video: #e6f1ed;
   --color-gfx-surface-select: #fff;
+  --color-gfx-surface-raised: #fff;
   --signal-card-bg: #fff;
   --shadow-md: 0 12px 34px rgba(8, 39, 29, 0.1);
   --shadow-lg: 0 20px 54px rgba(8, 39, 29, 0.13);
@@ -444,6 +446,12 @@ html[data-theme='light'] .glass-card-heavy {
   box-shadow:
     0 14px 40px rgba(8, 39, 29, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+/* Opaque elevated content surface: dark in the base theme, white in light mode. */
+html[data-theme] .surface-raised {
+  background: var(--color-gfx-surface-raised);
+  box-shadow: none;
 }
 
 html[data-theme='light'] .weekly-stat-active.glass-card,

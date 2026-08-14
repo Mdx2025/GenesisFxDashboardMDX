@@ -1,5 +1,7 @@
 # Changelog
 
+- Moved the Partner Links referral-code card from an inline dark background to the semantic raised-surface token, which resolves to white in light theme.
+
 - Migrated hardcoded pale and inline-white copy to the semantic theme text contract so Partner tables, modal details, form values, statistics, journal metrics, and strategy stats render black on light surfaces while remaining white in dark theme.
 
 - Added a light-theme hover text contract so interactive labels stay black instead of switching to white on pale surfaces, with explicit preservation for controls over dark video.
