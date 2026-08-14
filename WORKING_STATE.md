@@ -11,8 +11,8 @@
 - scope_guard: Move only the hardcoded surface/background behavior into the design system; preserve layout, copy, and interactions.
 - expected: Dark `#0C1311`; light `#FFF`; no inline background.
 - validation: Production pre-fix Playwright reproduced the dark inline background in light mode at 390/1280/1920. `pnpm build` passed. Local post-fix Playwright passed 6/6 light/dark viewport combinations with the exact expected colors, no inline background, no overflow, and no runtime errors.
-- delivery: Source is locally validated; not pushed or deployed.
-- next_exact_action: Commit, push, and deploy after owner approval.
+- delivery: Commit `54c4713` pushed to `origin/main`; Dokploy deployment `xBlcYkoHQ5RtzmCGCridF` finished `done`. Production serves `index-CYp9Qv6W.js` and `index-BVlj7DrK.css`.
+- next_exact_action: None.
 
 ## Completed Task — Project-wide light surface text contrast audit
 
