@@ -10,9 +10,9 @@
 - root_cause: Repeated `#0C1311` class and inline backgrounds bypassed theme tokens; some stayed visibly dark in light theme while others appeared correct only because a later global GlassCard rule won the cascade.
 - scope_guard: Migrate UI surfaces and borders only. Preserve token definitions, ThemeSwitch artwork, SVG/QR/icon paint, chart gradients, and explicitly theme-overridden Partner decoration.
 - pre_fix_evidence: Production Playwright found 18 visible dark surfaces in light theme across the affected routes and states.
-- validation: `pnpm build` passed (245 modules). The final Playwright matrix passed 72/72 light/dark states at 390×844 and 1440×1000, including Partner views, Settings tabs, language dropdown, referral details, 2FA, and four account modals; 0 light-theme dark offenders, 0 semantic mismatches, 0 overflow, and 0 runtime errors. Static exception census and graph refresh also passed.
-- delivery: Source validated locally; commit, push, and Dokploy deployment pending.
-- next_exact_action: Commit, push, deploy, and repeat the same matrix against production.
+- validation: `pnpm build` passed (245 modules). Local and production Playwright each passed 72/72 light/dark states at 390×844 and 1440×1000, including Partner views, Settings tabs, language dropdown, referral details, 2FA, and four account modals; 0 light-theme dark offenders, 0 semantic mismatches, 0 overflow, and 0 runtime errors. Eight production route smokes returned 200. The local/public entry-bundle SHA-256 matched (`a049f84d0edde932616f0a7c96f856e2b0159bf19e8c85372d0a08e3ac75e805`). Static exception census and graph refresh also passed.
+- delivery: Commit `1a0fc7f` pushed to `origin/main`; Dokploy deployment `2j6TGfq3mEsOxPcLnIwz4` finished `done` at `2026-08-14T19:06:00.433Z`.
+- next_exact_action: None.
 
 ## Completed Task — Partner Links semantic surface
 
