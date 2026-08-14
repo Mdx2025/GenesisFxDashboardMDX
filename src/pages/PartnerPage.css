@@ -35,7 +35,7 @@ html[data-theme='light'] .partner-marketing-title {
 }
 
 .partner-referral-input {
-  background: var(--color-gfx-main, #0c1311);
+  background: var(--color-gfx-surface-raised);
   border: 1px solid #064b34;
   border-radius: 40px;
   height: 46px;
@@ -56,7 +56,7 @@ html[data-theme='light'] .partner-marketing-title {
   padding: 4px 18px;
   border-radius: 30px;
   border: 1.162px solid #064b34;
-  background: #0c1311;
+  background: var(--color-gfx-surface-raised);
   color: #00b38c;
   font-size: 12px;
   line-height: 18.8px;

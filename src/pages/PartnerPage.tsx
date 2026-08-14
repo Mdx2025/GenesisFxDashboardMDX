@@ -257,7 +257,7 @@ function RecentActivity() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden bg-[#0C1311]">
+    <GlassCard variant="light" divider="none" rounded="19px" className="surface-raised overflow-hidden">
       <div className="relative overflow-hidden">
         <div className="theme-decorative-glow absolute w-[493px] h-[278px] right-0 -top-[252px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
         <div className="theme-decorative-glow absolute w-[493px] h-[278px] -left-[415px] -top-[213px] rounded-full pointer-events-none bg-[#064B34] [filter:url(#blur-157)]" aria-hidden="true" />
@@ -266,7 +266,7 @@ function RecentActivity() {
         <div className="p-7 flex flex-col gap-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-acid text-white">Recent Activity</h2>
-            <button type="button" className="flex items-center gap-2.5 px-6 h-[2.875rem] rounded-[36px] bg-[#0C1311] cursor-pointer hover:opacity-80 transition-opacity">
+            <button type="button" className="surface-raised flex items-center gap-2.5 px-6 h-[2.875rem] rounded-[36px] cursor-pointer hover:opacity-80 transition-opacity">
               <span className="text-base font-acid font-medium text-[#00B38C] leading-[24.44px]">View all</span>
               <ViewAllArrow />
             </button>

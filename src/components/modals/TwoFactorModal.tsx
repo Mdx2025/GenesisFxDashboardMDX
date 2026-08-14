@@ -85,7 +85,7 @@ export function TwoFactorModal({ open, onClose }: TwoFactorModalProps) {
         ref={modalRef}
         className="relative w-[793px] max-w-[95vw]"
       >
-        <GlassCard variant="light" rounded="1.875rem" className="overflow-hidden" style={{ backgroundColor: '#0C1311' }}>
+        <GlassCard variant="light" rounded="1.875rem" className="surface-raised overflow-hidden">
           <div
             className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.875rem]"
             aria-hidden="true"

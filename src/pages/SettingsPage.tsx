@@ -136,7 +136,7 @@ interface KycStatusItemProps {
 
 function KycStatusItem({ title, subtitle }: KycStatusItemProps) {
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.125rem] !p-0 h-[4.6875rem] !shadow-none bg-[#0C1311]">
+    <GlassCard variant="light" divider="none" className="surface-raised !rounded-[1.125rem] !p-0 h-[4.6875rem] !shadow-none">
       <div className="flex items-center gap-2.5 px-6 h-full">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
           <path fillRule="evenodd" clipRule="evenodd" d="M3.76181 7.62273C5.82898 3.95758 6.86257 2.125 8.49935 2.125C10.1361 2.125 11.1697 3.95757 13.2369 7.62272L13.4945 8.07944C15.2123 11.1252 16.0712 12.648 15.2949 13.7615C14.5186 14.875 12.5981 14.875 8.75694 14.875H8.24175C4.40062 14.875 2.48005 14.875 1.70378 13.7615C0.927508 12.648 1.78641 11.1252 3.50422 8.07944L3.76181 7.62273ZM8.49935 5.13542C8.79275 5.13542 9.0306 5.37327 9.0306 5.66667V9.20833C9.0306 9.50173 8.79275 9.73958 8.49935 9.73958C8.20595 9.73958 7.9681 9.50173 7.9681 9.20833V5.66667C7.9681 5.37327 8.20595 5.13542 8.49935 5.13542ZM8.49935 12.0417C8.89055 12.0417 9.20768 11.7245 9.20768 11.3333C9.20768 10.9421 8.89055 10.625 8.49935 10.625C8.10815 10.625 7.79102 10.9421 7.79102 11.3333C7.79102 11.7245 8.10815 12.0417 8.49935 12.0417Z" fill="#808080" />
@@ -245,7 +245,7 @@ function IdentityDetailCard() {
   const [dragOver, setDragOver] = useState(false)
 
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.16rem] !bg-[#0C1311] pb-8 overflow-hidden">
+    <GlassCard variant="light" divider="none" className="surface-raised !rounded-[1.16rem] pb-8 overflow-hidden">
       <div className="flex flex-col lg:flex-row relative">
         {/* Left side — Identity info + Requirements */}
         <div className="flex-1 p-5 lg:p-10">
@@ -277,8 +277,8 @@ function IdentityDetailCard() {
         </div>
 
         {/* Gradient divider — vertical on desktop, horizontal on mobile */}
-        <div className="hidden lg:block w-px self-stretch my-20 shrink-0" style={{ background: 'linear-gradient(to bottom, #064B34 0%, #0C1311 100%)' }} />
-        <div className="lg:hidden h-px mx-5 shrink-0" style={{ background: 'linear-gradient(to right, #064B34 0%, #0C1311 100%)' }} />
+        <div className="hidden lg:block w-px self-stretch my-20 shrink-0" style={{ background: 'linear-gradient(to bottom, #064B34 0%, var(--color-gfx-surface-raised) 100%)' }} />
+        <div className="lg:hidden h-px mx-5 shrink-0" style={{ background: 'linear-gradient(to right, #064B34 0%, var(--color-gfx-surface-raised) 100%)' }} />
 
         {/* Right side — Upload area */}
         <div className="flex-1 p-5 lg:p-10 flex flex-col items-center justify-center gap-6 lg:gap-10">
@@ -409,7 +409,7 @@ function HelpCenterIcon() {
 
 function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode; title: string; subtitle: string; action?: string }) {
   return (
-    <GlassCard variant="light" divider="none" className="!rounded-[1.875rem] !p-0 bg-[#0C1311]">
+    <GlassCard variant="light" divider="none" className="surface-raised !rounded-[1.875rem] !p-0">
       <div className="flex items-center gap-5 px-5 py-6">
         <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
           {icon}
@@ -426,7 +426,7 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
 
 function SupportTab() {
   return (
-    <GlassCard className="mt-10 !rounded-[1.16rem] mx-auto bg-[#0C1311]">
+    <GlassCard className="surface-raised mt-10 !rounded-[1.16rem] mx-auto">
       <div className="relative overflow-hidden px-6 lg:px-30 pt-6 lg:pt-12 pb-8 lg:pb-15">
         <h3 className="text-white text-2xl font-acid leading-normal mb-8">Contact support</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 relative z-10">
@@ -533,7 +533,7 @@ const LANGUAGES = [
 function LanguageDropdown({ selected, onSelect }: { selected: string; onSelect: (lang: string) => void }) {
   return (
     <div
-      className="absolute right-0 top-full mt-2 z-50 w-[11rem] bg-[#0C1311] rounded-[1.16rem] overflow-hidden shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-[#0C1311]"
+      className="surface-raised absolute right-0 top-full mt-2 z-50 w-[11rem] rounded-[1.16rem] overflow-hidden shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] outline outline-[1.16px] outline-[var(--color-gfx-surface-raised-border)]"
     >
       {LANGUAGES.map((lang, i) => (
         <button
@@ -546,9 +546,9 @@ function LanguageDropdown({ selected, onSelect }: { selected: string; onSelect: 
             : 'hover:bg-white/5 mx-[0.875rem] w-[calc(100%-1.75rem)] rounded-[0.5rem]'
           } ${i === LANGUAGES.length - 1 ? 'mb-[0.875rem]' : ''}`}
           style={selected === lang.name ? {
-            background: 'linear-gradient(173deg, #064B34 0%, #0C1311 100%)',
+            background: 'linear-gradient(173deg, #064B34 0%, var(--color-gfx-surface-raised) 100%)',
             boxShadow: '0px 4.64px 23.2px rgba(0,0,0,0.03)',
-            border: '1.16px solid #0C1311',
+            border: '1.16px solid var(--color-gfx-surface-raised-border)',
           } : undefined}
         >
           <span className="w-[1.4375rem] h-[1.4375rem] flex items-center justify-center shrink-0">{lang.flag}</span>
@@ -629,14 +629,14 @@ function SettingsTab() {
     <>
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
-      <GlassCard variant="light" divider="none" className="mt-10 !rounded-[2rem] relative overflow-hidden bg-[#0C1311]">
+      <GlassCard variant="light" divider="none" className="surface-raised mt-10 !rounded-[2rem] relative overflow-hidden">
         <div className="px-4 lg:px-15 2xl:px-30 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
           <StatCard className="!bg-transparent !border-[#09241C] !shadow-none [&::after]:hidden">
             <div className="px-6 py-6 flex flex-col gap-6">
               <p className="text-white text-base font-acid font-medium">Username</p>
               <div className="relative w-full">
                 <input
-                  className="w-full bg-[#0C1311] border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
+                  className="surface-raised w-full border border-[#064b34] rounded-[1.875rem] px-6 py-3 text-base font-acid text-[#808080] outline-none focus:border-gfx-green-300 transition-colors"
                   placeholder="@ Not set"
                 />
                 <button className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-transparent flex items-center justify-center hover:opacity-90 transition-opacity">

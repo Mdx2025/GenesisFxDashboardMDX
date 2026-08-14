@@ -106,7 +106,7 @@ export default function MarketingPage() {
           </div>
 
         {activeTabIndex === 1 ? (
-          <GlassCard variant="light" divider="none" rounded="19px" className="w-full overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+          <GlassCard variant="light" divider="none" rounded="19px" className="surface-raised w-full overflow-hidden" style={{ boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
             <div className="flex flex-col items-center justify-center h-[23.75rem]">
               <div className="flex items-center justify-center w-[3.375rem] h-[3.375rem] rounded-full bg-gfx-green-900 text-gfx-green-300">
                 <BentoIcon />
@@ -118,7 +118,7 @@ export default function MarketingPage() {
             </div>
           </GlassCard>
         ) : activeTabIndex === 2 ? (
-          <GlassCard variant="light" divider="none" rounded="19px" className="w-full overflow-hidden" style={{ background: 'var(--color-gfx-green-800)', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+          <GlassCard variant="light" divider="none" rounded="19px" className="surface-raised w-full overflow-hidden" style={{ boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
             <div className="relative">
               <div className="absolute top-0 left-[14%] right-0 h-[1.16px]" style={{ background: 'linear-gradient(90deg, rgba(0,240,160,0) 0%, rgba(0,240,160,0.3) 50%, rgba(0,240,160,0) 100%)' }} />
               <div className="theme-decorative-glow absolute w-[493px] h-[278px] left-1/2 -translate-x-1/2 -top-[207px] rounded-full pointer-events-none bg-gfx-green-200 [filter:url(#blur-157)]" aria-hidden="true" />
@@ -138,10 +138,10 @@ export default function MarketingPage() {
                   </p>
                 </div>
 
-                <GlassCard variant="light" divider="none" rounded="1.16rem" className="w-full lg:w-[31.8rem] shrink-0 overflow-hidden" style={{ background: '#0C1311', boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
+                <GlassCard variant="light" divider="none" rounded="1.16rem" className="surface-raised w-full lg:w-[31.8rem] shrink-0 overflow-hidden" style={{ boxShadow: '0px 4.641px 23.204px rgba(0,0,0,0.03)' }}>
                   <div className="p-[2.5rem_2.6rem] flex flex-col gap-5">
                     <div className="flex items-center gap-3">
-                      <div className="inline-flex items-center h-7 px-[1.125rem] rounded-[30px] bg-[#0C1311] border-[1.16px] border-[#064B34]">
+                      <div className="surface-raised inline-flex items-center h-7 px-[1.125rem] rounded-[30px] border-[1.16px] border-[#064B34]">
                         <span className="text-xs font-acid text-[#00B38C] leading-[18.8px]">GFX605D9D38</span>
                       </div>
                       <div className="flex items-center gap-2 ml-auto">
@@ -157,7 +157,7 @@ export default function MarketingPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center h-[2.875rem] px-4 rounded-[2.5rem] border border-[#064B34] bg-[#0C1311]">
+                    <div className="surface-raised flex items-center h-[2.875rem] px-4 rounded-[2.5rem] border border-[#064B34]">
                       <span className="text-xs font-acid text-[#808080] leading-[18.8px] truncate">https://dashboard.genesisfxmarkets.com/a</span>
                     </div>
 

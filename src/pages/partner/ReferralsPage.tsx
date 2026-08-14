@@ -108,9 +108,9 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
       aria-modal="true"
       aria-label="Referral Details"
     >
-      <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="w-[51.636rem] max-w-[95vw] overflow-hidden bg-[#0C1311]">
+      <GlassCard ref={modalRef} variant="light" divider="none" rounded="1.481rem" className="surface-raised w-[51.636rem] max-w-[95vw] overflow-hidden">
         {/* Hero banner */}
-        <div className="relative h-[10rem] sm:h-[14.924rem] overflow-hidden bg-[#0C1311]">
+        <div className="surface-raised relative h-[10rem] sm:h-[14.924rem] overflow-hidden">
           <div className="theme-decorative-glow absolute w-[39.345rem] h-[22.186rem] left-[3.751rem] top-[0.958rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-201)' }} aria-hidden="true" />
           <h2 className="absolute left-4 sm:left-[2.394rem] top-4 sm:top-[3.411rem] text-white text-2xl font-acid">Referral Details</h2>
           <div className="absolute right-4 sm:right-[2.394rem] top-[5.5rem] sm:top-[8.522rem]">
@@ -123,7 +123,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
 
         {/* Avatar + user info */}
         <div className="relative sm:absolute px-4 py-3 sm:px-0 sm:py-0 sm:left-[1.996rem] sm:top-[7.502rem] flex items-center gap-3 sm:gap-[4.625rem]">
-          <div className="w-[3.75rem] h-[3.75rem] rounded-full bg-[#0C1311] flex items-center justify-center shrink-0">
+          <div className="surface-raised w-[3.75rem] h-[3.75rem] rounded-full flex items-center justify-center shrink-0">
             <span className="text-gfx-green-300 text-2xl font-acid">{referral.initials}</span>
           </div>
           <div className="sm:-ml-[2.5rem]">
@@ -135,7 +135,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-[2.234rem] py-10 relative z-10">
           {/* Personal Info */}
-          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col bg-[#0C1311]">
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="surface-raised p-6 flex flex-col">
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">PERSONAL INFO</h3>
             <div className="flex flex-col justify-between flex-1">
               <InfoRow label="NAME" value={referral.name} />
@@ -146,7 +146,7 @@ function ReferralDetailsModal({ open, onClose, referral }: { open: boolean; onCl
           </GlassCard>
 
           {/* Referral Info */}
-          <GlassCard variant="light" divider="none" rounded="1.481rem" className="p-6 flex flex-col bg-[#0C1311]">
+          <GlassCard variant="light" divider="none" rounded="1.481rem" className="surface-raised p-6 flex flex-col">
             <h3 className="text-[#A0A0A0] text-base font-acid font-medium leading-[1.527rem] mb-3">REFERRAL INFO</h3>
             <div className="flex flex-col justify-between flex-1">
               <div className="flex items-center justify-between">

@@ -1,5 +1,7 @@
 # Changelog
 
+- Completed a cross-route dark-surface audit: Partner, Settings, Signals, and account modals now use the semantic raised-surface and border tokens instead of hardcoded `#0C1311` UI backgrounds.
+
 - Moved the Partner Links referral-code card from an inline dark background to the semantic raised-surface token, which resolves to white in light theme.
 
 - Migrated hardcoded pale and inline-white copy to the semantic theme text contract so Partner tables, modal details, form values, statistics, journal metrics, and strategy stats render black on light surfaces while remaining white in dark theme.

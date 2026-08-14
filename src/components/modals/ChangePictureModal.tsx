@@ -88,7 +88,7 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
       aria-label="Change Profile Picture"
     >
       <div ref={modalRef} className="relative w-[36.6875rem] max-w-[95vw]">
-        <GlassCard variant="light" rounded="1.16rem" className="overflow-hidden" style={{ backgroundColor: '#0C1311' }}>
+        <GlassCard variant="light" rounded="1.16rem" className="surface-raised overflow-hidden">
           {/* Hero banner */}
           <div
             className="change-picture-hero relative h-[18rem] border-b border-white/5"
@@ -98,7 +98,7 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
             <div className="theme-decorative-glow absolute w-[41.5rem] h-[25.0625rem] -left-[0.625rem] -top-[8.0625rem] pointer-events-none" aria-hidden="true" style={{ background: 'radial-gradient(57.5% 33.85% at 51.43% 51.34%, black 0%, rgba(102, 102, 102, 0) 100%)', borderRadius: '44.8rem' }} />
 
             {/* Avatar */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[3.75rem] w-[7.25rem] h-[7.25rem] rounded-full bg-[#0C1311] border-4 border-[#0C1311] overflow-hidden">
+            <div className="surface-raised absolute left-1/2 -translate-x-1/2 top-[3.75rem] w-[7.25rem] h-[7.25rem] rounded-full border-4 border-[var(--color-gfx-surface-raised)] overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-white text-[1.975rem] font-bold font-['Segoe_UI']">JD</span>
               </div>
@@ -108,7 +108,7 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
             </div>
 
             {/* Camera button */}
-            <div className="absolute left-1/2 translate-x-[1.625rem] top-[8.5625rem] w-8 h-8 rounded-full bg-[#40C99C] border-[3px] border-[#0C1311] flex items-center justify-center">
+            <div className="absolute left-1/2 translate-x-[1.625rem] top-[8.5625rem] w-8 h-8 rounded-full bg-[#40C99C] border-[3px] border-[var(--color-gfx-surface-raised)] flex items-center justify-center">
               <CameraAddIcon />
             </div>
 

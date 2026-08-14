@@ -141,6 +141,9 @@
   --color-gfx-surface-video: #0a0f0d;
   --color-gfx-surface-select: #09241C;
   --color-gfx-surface-raised: #0C1311;
+  --color-gfx-surface-raised-border: #162D25;
+  --signal-card-bg: var(--color-gfx-surface-raised);
+  --signal-card-border: var(--color-gfx-surface-raised-border);
   --color-gfx-green-lightest: #f1fffa;
   --color-gfx-green-lightest-hover: #e0f5ec;
   --color-gfx-green-glow-em: #55FFC7;
@@ -305,7 +308,7 @@
   --color-gfx-surface-video: #e6f1ed;
   --color-gfx-surface-select: #fff;
   --color-gfx-surface-raised: #fff;
-  --signal-card-bg: #fff;
+  --color-gfx-surface-raised-border: #ECECEC;
   --shadow-md: 0 12px 34px rgba(8, 39, 29, 0.1);
   --shadow-lg: 0 20px 54px rgba(8, 39, 29, 0.13);
   --shadow-xl: 0 24px 72px rgba(8, 39, 29, 0.16);
@@ -328,7 +331,7 @@ html[data-theme='light'] body {
 }
 
 .user-menu-panel {
-  background: #0c1311;
+  background: var(--color-gfx-surface-raised);
   border: 1px solid rgba(255, 255, 255, 0.035);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
 }
@@ -451,7 +454,10 @@ html[data-theme='light'] .glass-card-heavy {
 /* Opaque elevated content surface: dark in the base theme, white in light mode. */
 html[data-theme] .surface-raised {
   background: var(--color-gfx-surface-raised);
-  box-shadow: none;
+}
+
+html[data-theme] .surface-raised-border {
+  border-color: var(--color-gfx-surface-raised-border);
 }
 
 html[data-theme='light'] .weekly-stat-active.glass-card,

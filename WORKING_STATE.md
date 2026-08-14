@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Completed Task — Semantic dark-surface audit
+
+- task_id: `genesis-semantic-dark-surface-audit-20260814`
+- owner: `klark`
+- status: `done`
+- target_routes: `/partner`, `/partner/referrals`, `/partner/statistics`, `/partner/marketing`, `/settings`, `/signals`, plus Settings account/security modals.
+- root_cause: Repeated `#0C1311` class and inline backgrounds bypassed theme tokens; some stayed visibly dark in light theme while others appeared correct only because a later global GlassCard rule won the cascade.
+- scope_guard: Migrate UI surfaces and borders only. Preserve token definitions, ThemeSwitch artwork, SVG/QR/icon paint, chart gradients, and explicitly theme-overridden Partner decoration.
+- pre_fix_evidence: Production Playwright found 18 visible dark surfaces in light theme across the affected routes and states.
+- validation: `pnpm build` passed (245 modules). The final Playwright matrix passed 72/72 light/dark states at 390×844 and 1440×1000, including Partner views, Settings tabs, language dropdown, referral details, 2FA, and four account modals; 0 light-theme dark offenders, 0 semantic mismatches, 0 overflow, and 0 runtime errors. Static exception census and graph refresh also passed.
+- delivery: Source validated locally; commit, push, and Dokploy deployment pending.
+- next_exact_action: Commit, push, deploy, and repeat the same matrix against production.
+
 ## Completed Task — Partner Links semantic surface
 
 - task_id: `genesis-partner-links-semantic-surface-20260814`

@@ -127,6 +127,11 @@ export default function DesignSystemPage() {
                 value="Dark #0C1311 / Light #FFF"
                 className="surface-raised"
               />
+              <TokenSwatch
+                name="Raised Surface Border"
+                value="Dark #162D25 / Light #ECECEC"
+                className="surface-raised-border"
+              />
               <TokenSwatch name="Glow Green" value="#104030" />
               <TokenSwatch name="Glow Red" value="#241B1C" />
               <TokenSwatch name="Glow Purple" value="#D760FF" />

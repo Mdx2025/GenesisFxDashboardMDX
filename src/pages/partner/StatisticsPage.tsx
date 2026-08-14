@@ -75,7 +75,7 @@ function RevenueCard() {
             ].map(s => (
               <div
                 key={s.label}
-                className="flex flex-col justify-center px-[1.5625rem] py-[1.75rem] bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] min-h-[6.75rem]"
+                className="surface-raised surface-raised-border flex flex-col justify-center px-[1.5625rem] py-[1.75rem] rounded-[18.56px] border-1 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] min-h-[6.75rem]"
               >
                 <p className="text-[#A0A0A0] text-sm font-acid leading-[1.175rem]">{s.label}</p>
                 <p className="text-white text-2xl font-acid mt-1">{s.value}</p>
@@ -324,7 +324,7 @@ function SymbolExposureCard() {
             { symbol: 'EURUSD', lots: '12.8 Lots', fill: '18%', color: '#2563EB' },
             { symbol: 'GBPUSD', lots: '8.5 Lots', fill: '12%', color: '#7C3AED' },
           ].map(s => (
-            <div key={s.symbol} className="bg-[#0C1311] rounded-[18.56px] border-1 border-[#162D25] shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden p-6">
+            <div key={s.symbol} className="surface-raised surface-raised-border rounded-[18.56px] border-1 shadow-[0px_4.64px_23.2px_rgba(0,0,0,0.03)] overflow-hidden p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-[38px] h-[38px] rounded-full shrink-0 flex items-center justify-center" style={{ background: s.color }}>
                   <span className="text-white text-xs font-bold">{s.symbol.slice(0, 2)}</span>

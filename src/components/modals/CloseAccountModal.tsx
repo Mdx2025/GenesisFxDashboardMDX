@@ -67,7 +67,7 @@ export function CloseAccountModal({ open, onClose }: CloseAccountModalProps) {
       aria-label="Close Account"
     >
       <div ref={modalRef} className="relative w-[49.5625rem] max-w-[95vw]">
-        <GlassCard variant="light" rounded="1.875rem" className="overflow-hidden" style={{ backgroundColor: '#0C1311' }}>
+        <GlassCard variant="light" rounded="1.875rem" className="surface-raised overflow-hidden">
           {/* Green glow blurs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.875rem]" aria-hidden="true">
             <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] -left-[11.6875rem] bottom-0 translate-y-[20%] bg-[#064B34] rounded-full" style={{ filter: 'url(#blur-157)' }} />
@@ -114,7 +114,7 @@ export function CloseAccountModal({ open, onClose }: CloseAccountModalProps) {
                 value={confirmText}
                 onChange={(e) => setConfirmText(e.target.value)}
                 placeholder="Type CLOSE"
-                className="w-full h-[3.125rem] bg-[#0C1311] border border-[#064B34] rounded-[1.875rem] px-[1.625rem] text-white text-base font-acid placeholder:text-[#808080] outline-none focus:border-[#D46356] transition-colors"
+                className="surface-raised w-full h-[3.125rem] border border-[#064B34] rounded-[1.875rem] px-[1.625rem] text-white text-base font-acid placeholder:text-[#808080] outline-none focus:border-[#D46356] transition-colors"
               />
             </div>
 

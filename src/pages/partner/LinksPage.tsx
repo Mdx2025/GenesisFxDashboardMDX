@@ -79,7 +79,7 @@ export default function LinksPage() {
                   variant="light"
                   divider="none"
                   rounded="18.56px"
-                  className="surface-raised h-full flex flex-col justify-center px-6 py-8 xl:px-[76px] xl:py-[50px] gap-6"
+                  className="surface-raised shadow-none h-full flex flex-col justify-center px-6 py-8 xl:px-[76px] xl:py-[50px] gap-6"
                   data-partner-referral-code-card
                 >
                   <div className="flex items-center gap-3">

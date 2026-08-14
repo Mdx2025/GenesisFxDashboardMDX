@@ -106,9 +106,9 @@ export function SignalStrategyCard({
     <div
       className="signal-strategy-card flex flex-col"
       style={{
-        background: 'var(--signal-card-bg, #0C1311)',
+        background: 'var(--signal-card-bg)',
         borderRadius: 'var(--signal-card-radius, 18.56px)',
-        outline: '1.16px solid var(--signal-card-border, #0C1311)',
+        outline: '1.16px solid var(--signal-card-border)',
         outlineOffset: '-1.16px',
         boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
       }}
