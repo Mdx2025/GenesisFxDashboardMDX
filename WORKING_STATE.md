@@ -1,11 +1,11 @@
 # Website Working State
 <!-- website-delivery-state -->
 
-## Active Task — Control optical-centering audit
+## Completed Task — Control optical-centering audit
 
 - task_id: `genesis-control-optical-centering-audit-20260814`
 - owner: `klark`
-- status: `implementation-complete`
+- status: `done`
 - target_routes: All registered application routes plus `/login` and `/register`, in light/dark at mobile and desktop widths; conditional controls and dialogs are included where reachable.
 - design_route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=live codebase + production UI`, `style=existing GenesisFX glass-dashboard thesis`.
 - visual_thesis: Preserve the established dark glass / light semantic theme and fix only control anatomy: text, icons, and badges must share an optical center and a compact, repeatable vertical rhythm without decorative offsets.
@@ -16,8 +16,9 @@
 - highest_risk: ModeToggle active SVG paint; pill/tab/button line boxes; icon+label controls; badges with tight heights; buttons containing absolutely positioned sparkle layers; conditional dialogs.
 - media: `not_applicable` — this task changes component geometry and paint, not load-bearing media.
 - definition_of_done: Full route/state census has no unexplained optical-center delta above 2px, no asymmetric vertical padding above 2px, no active ModeToggle icon other than `#fff`, no overflow/runtime regressions, and production serves the verified build.
-- validation: Managed `pnpm build` passed (245 modules). The local 160-scenario Playwright matrix inspected 3,027 controls and passed with 0 center offenders, 0 ModeToggle paint failures, 0 overflow, and 0 runtime errors. Focused accessibility QA passed keyboard activation/focus, 24px target minimums, reduced motion, and 200%-equivalent reflow; ModeToggle active text/SVG computed to exact white and Academy rows computed to `align-items: center` with symmetric 0px vertical padding.
-- next_exact_action: Review the final diff, commit, push, deploy, and repeat the same production gates.
+- validation: Managed `pnpm build` passed (245 modules). Local and production 160-scenario Playwright matrices each inspected 3,027 controls and passed with 0 center offenders, 0 ModeToggle paint failures, 0 overflow, and 0 runtime errors. Focused accessibility QA passed keyboard activation/focus, 24px target minimums, reduced motion, and 200%-equivalent reflow; ModeToggle active text/SVG computed to exact white and Academy rows computed to `align-items: center` with symmetric 0px vertical padding. Four production route smokes returned 200, and the local/public entry bundle SHA-256 matched (`2076dafece49f6bae5da4e14472c12f3c22ce4c7d20a6b3461b2a5d4c7056519`).
+- delivery: Commit `360dd71` pushed to `origin/main`; Dokploy deployment `yJK5DRLaOGMs99DwkFJee` finished `done` at `2026-08-14T19:38:40.206Z`.
+- next_exact_action: None.
 
 ## Completed Task — Semantic dark-surface audit
 

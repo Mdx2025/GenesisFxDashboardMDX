@@ -54,3 +54,13 @@ The final gate requires zero controls outside the 2px tolerance, exact white act
 - Reduced motion: passed.
 - 200%-equivalent reflow at 720 CSS pixels: passed without horizontal overflow.
 - Mobile and desktop overflow/runtime errors: 0.
+
+## Production result
+
+- Dokploy deployment: `yJK5DRLaOGMs99DwkFJee` (`done`).
+- Geometry matrix: 3,027/3,027 controls within tolerance.
+- Active ModeToggle SVG failures: 0; active text and painted SVG resolve to exact `rgb(255, 255, 255)`.
+- Keyboard, focus, target size, reduced motion, and 200%-equivalent reflow: passed.
+- Overflow/runtime errors: 0.
+- `/design-system`, `/academy/video-single-page`, `/home`, and `/settings`: HTTP 200.
+- Local/public entry bundle SHA-256: `2076dafece49f6bae5da4e14472c12f3c22ce4c7d20a6b3461b2a5d4c7056519`.
