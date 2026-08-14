@@ -52,3 +52,14 @@ The correction is applied to the glyph layer rather than the border or hit targe
 ## Scope guard
 
 Page and card spacing, control dimensions, borders, icon geometry, theme colors, and hit targets remain unchanged except where the supplied balance wrapper incorrectly used `items-start`; it now uses `items-center`.
+
+## Operator follow-up: SparkleButton icon/label pairs
+
+The first glyph-aware matrix still allowed one blind spot: it judged the union of icon paint and label ink. The operator's Deposit / Withdraw / Transfer crop showed that the union could pass while its two layers disagreed visibly.
+
+- Production reproduction on `/home`: Deposit label and icon were both `+1px`; Withdraw and Transfer labels were `-1.5px` while their icons were `+1px`.
+- Root cause: the union center hid a `2.5px` disagreement between each no-descender label and its icon.
+- Correction: the existing semantic `.optical-text` label layer is now applied to Withdraw and Transfer in the repeated Home, Partner, Assets Management, and design-system patterns. Deposit remains unchanged because its descender already aligned at `+1px`.
+- QA contract: label ink, icon paint, and their union must now each be within `1px` of the button center.
+- Local result: Home passed in dark and light; Partner and Assets Management passed in dark. Deposit finished at `+1px`; Withdraw and Transfer at `-0.5px`; icon paint and content union at `+1px`; zero runtime errors.
+- Build passed with 245 transformed modules.

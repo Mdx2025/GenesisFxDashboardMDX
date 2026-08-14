@@ -1,5 +1,7 @@
 # Changelog
 
+- Tightened SparkleButton optical QA to validate icon paint and label ink independently, then corrected the repeated Withdraw and Transfer labels across Home, Assets Management, Partner, and the design-system reference.
+
 - Recalibrated compact controls against visible glyph ink rather than CSS line boxes, correcting the balance, wallet, status, filter, mode, navigation, and shared action-button families across the platform.
 
 - Corrected optical centering across the audited control system: active ModeToggle icons now remain white in light theme, and Academy chapter rows vertically center their number, title, and duration without asymmetric padding.

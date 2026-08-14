@@ -249,10 +249,10 @@ export default function DesignSystemPage() {
                 <span className="flex items-center gap-2"><DepositIcon /><span>Deposit</span></span>
               </SparkleButton>
               <SparkleButton>
-                <span className="flex items-center gap-2"><WithdrawIcon /><span>Withdraw</span></span>
+                <span className="flex items-center gap-2"><WithdrawIcon /><span className="optical-text">Withdraw</span></span>
               </SparkleButton>
               <SparkleButton>
-                <span className="flex items-center gap-2"><TransferIcon /><span>Transfer</span></span>
+                <span className="flex items-center gap-2"><TransferIcon /><span className="optical-text">Transfer</span></span>
               </SparkleButton>
             </div>
           </Subsection>

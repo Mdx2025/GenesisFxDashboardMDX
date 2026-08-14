@@ -5,7 +5,7 @@
 
 - task_id: `genesis-glyph-optical-centering-audit-20260814`
 - owner: `klark`
-- status: `done`
+- status: `follow-up-local-pass`
 - target_routes: All registered and authentication routes, light/dark, mobile and desktop, with the supplied `$90.254,58` balance badge as the reference failure.
 - design_route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + live codebase + production UI`, `style=existing GenesisFX glass-dashboard thesis`.
 - visual_thesis: Preserve the established GenesisFX visual language while aligning the visible glyph ink—not merely the CSS line box—inside compact controls, pills, badges, tabs, and buttons.
@@ -21,7 +21,10 @@
 - local_validation: `pnpm build` passed (245 modules). The final local 160-scenario crawl inspected 3,198 visual controls with 0 offenders above the strict 1px tolerance, 0 overflow, and 0 runtime errors. The supplied balance pill now measures `+0.13px` to `+0.20px`, with 8px top and 7.59–7.73px bottom visible-ink gaps. Focused accessibility QA passed symmetric padding, centered flex anatomy, keyboard/focus, 24px targets, reduced motion, and 200%-equivalent reflow.
 - production_validation: The public 160-scenario crawl inspected 3,199 visual controls across all 40 routes, light/dark, and mobile/desktop with 0 offenders, 0 overflow, and 0 runtime errors. Focused production accessibility QA passed, `/home` returned 200, and local/public `index-B-SCmWOW.js` SHA-256 matched (`71b29e2d40187f51feabaaacfe22d23242fcd59a139d1f266360313120616e02`).
 - delivery: Commit `87db1a5` pushed to `origin/main`; Dokploy deployment `Wy7qWIau0q4g1rZDprkcv` finished `done` at `2026-08-14T20:32:31.110Z`.
-- next_exact_action: None.
+- operator_follow_up: The Deposit / Withdraw / Transfer SparkleButton crop exposed a layer-level miss: Withdraw and Transfer label ink measured `-1.5px` while icon paint measured `+1px`, although the combined union stayed inside the previous tolerance.
+- follow_up_fix: Applied the existing `.optical-text` layer to Withdraw and Transfer across Home, Partner, Assets Management, and the design-system reference; Deposit remains unchanged because its visible descender already aligns with its icon.
+- follow_up_validation: Tightened `e2e/sparkle-button-optical-qa.mjs` to gate label ink, icon paint, and the union independently. Build passed (245 modules). Local Home dark/light plus Partner and Assets Management dark all passed: Deposit `+1px`, Withdraw/Transfer `-0.5px`, icon paint/union `+1px`, zero runtime errors.
+- next_exact_action: Commit, push, deploy through Dokploy, and repeat the focused QA against production.
 
 ## Completed Task — Control optical-centering audit
 

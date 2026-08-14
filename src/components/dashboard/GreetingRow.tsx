@@ -28,13 +28,13 @@ export function GreetingRow({ userName = 'Marcelo', date = 'Friday, Apr 3', tagl
         <SparkleButton onClick={() => navigate('/withdraw')}>
           <span className="flex items-center gap-2">
             <WithdrawIcon />
-            <span className="hidden sm:inline">Withdraw</span>
+            <span className="optical-text hidden sm:inline">Withdraw</span>
           </span>
         </SparkleButton>
         <SparkleButton onClick={onTransferClick}>
           <span className="flex items-center gap-2">
             <TransferIcon />
-            <span className="hidden sm:inline">Transfer</span>
+            <span className="optical-text hidden sm:inline">Transfer</span>
           </span>
         </SparkleButton>
       </div>

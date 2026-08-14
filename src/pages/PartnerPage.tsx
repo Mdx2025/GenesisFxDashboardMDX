@@ -321,13 +321,13 @@ export default function PartnerPage() {
             <SparkleButton onClick={() => navigate('/withdraw')}>
               <span className="flex items-center gap-2">
                 <WithdrawIcon />
-                <span className="hidden sm:inline">Withdraw</span>
+                <span className="optical-text hidden sm:inline">Withdraw</span>
               </span>
             </SparkleButton>
             <SparkleButton onClick={openTransfer}>
               <span className="flex items-center gap-2">
                 <TransferIcon />
-                <span className="hidden sm:inline">Transfer</span>
+                <span className="optical-text hidden sm:inline">Transfer</span>
               </span>
             </SparkleButton>
           </div>
