@@ -12,6 +12,12 @@ export function SparkleButton({ children, fullWidth, className, type = 'button',
       type={type}
       {...props}
     >
+      <span className="sparkle-button__hover-surface absolute inset-0 rounded-[inherit] pointer-events-none" aria-hidden="true" />
+      <span className="sparkle-button__hover-sparkles absolute inset-0 pointer-events-none" aria-hidden="true">
+        {Array.from({ length: 8 }, (_, index) => (
+          <span className="sparkle-button__hover-sparkle" key={index} />
+        ))}
+      </span>
       <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-t from-[#1040308f] to-black/0 [[data-theme=light]_&]:hidden" aria-hidden="true" />
       <div
         className="absolute inset-0 rounded-[inherit] border border-zinc-300/60 pointer-events-none [mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,white_0%,transparent_80%)] [[data-theme=light]_&]:hidden"

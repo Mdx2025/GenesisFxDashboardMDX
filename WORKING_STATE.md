@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — SparkleButton Sign Up hover parity
+
+- task_id: `genesis-sparkle-button-signup-hover-20260814`
+- owner: `klark`
+- status: `local-pass`
+- target_routes: `/design-system` plus representative shared-component consumers on `/home`, `/partner`, and `/assets-management`, in light and dark.
+- reference: GenesisFX Markets desktop header `Sign Up` button at `https://genesisfxmarkets.mdxpreview.xyz`.
+- measured_reference: No scale or layout movement; hover adds a white 5% wash over 350ms and runs eight staggered sparkle animations with 2.4s cycles, opacity `0 → 0.35 → 0`.
+- implementation: Added a dedicated hover surface and eight decorative twinkle nodes to the shared `SparkleButton`; preserved all existing rest-state decoration, content, geometry, and focus treatment; light theme uses semantic green paint and reduced motion uses a static fallback.
+- quality_contract: Shared component only; zero geometry shift; exact reference timing and stagger; no animation while idle/disabled; no overflow/runtime errors; reduced-motion safe; existing optical-centering gate remains passing.
+- local_validation: Build passed with 245 transformed modules. Playwright passed dark/light rest, hover, disabled, geometry, timing, stagger, and reduced-motion checks on `/design-system`, with zero runtime errors. The existing `/home` optical gate also remained passing: Deposit `+1px`, Withdraw/Transfer `-0.5px`, icon paint/union within `+1px`.
+- next_exact_action: Commit, push, deploy through Dokploy, and repeat the hover and optical gates against production.
+
 ## Active Task — Glyph optical-centering audit
 
 - task_id: `genesis-glyph-optical-centering-audit-20260814`
