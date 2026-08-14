@@ -31,6 +31,15 @@ Local post-fix:
 - Build passed with 245 transformed modules.
 - Accessibility/reflow QA passed.
 
+Production post-fix:
+
+- 3,199 visual controls inspected across 160 scenarios.
+- 0 offenders above 1px, 0 overflow, and 0 runtime errors.
+- Focused accessibility/reflow QA passed on the public deployment.
+- `/home` returned HTTP 200.
+- Public and local `index-B-SCmWOW.js` SHA-256 matched: `71b29e2d40187f51feabaaacfe22d23242fcd59a139d1f266360313120616e02`.
+- Commit `87db1a5`; Dokploy deployment `Wy7qWIau0q4g1rZDprkcv` completed successfully.
+
 ## Implementation
 
 `src/app.css` defines semantic glyph layers:
