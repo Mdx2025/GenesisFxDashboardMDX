@@ -1,5 +1,7 @@
 # Changelog
 
+- Replaced the Settings profile header's hardcoded `#0D1512` shell with the semantic raised-surface contract so it renders white in light theme and retains the canonical dark surface in dark theme; added a source/runtime regression gate.
+
 - Ported the GenesisFX Markets Sign Up hover interaction to the shared SparkleButton: a 350ms surface wash and eight staggered 2.4s twinkles, with theme-aware paint and a reduced-motion fallback.
 
 - Tightened SparkleButton optical QA to validate icon paint and label ink independently, then corrected the repeated Withdraw and Transfer labels across Home, Assets Management, Partner, and the design-system reference.

@@ -814,7 +814,7 @@ export default function SettingsPage() {
 
       <div className="w-full max-w-6xl mx-auto font-acid mt-[5%] px-4 sm:px-6">
       {/* Profile Header Card */}
-      <div className="relative bg-[#0D1512] border border-gfx-green-300/12 rounded-[1.125rem] overflow-hidden">
+      <div className="surface-raised relative border border-gfx-green-300/12 rounded-[1.125rem] overflow-hidden" data-settings-profile-card>
         {/* Banner area */}
         <div
           className="relative h-[8rem] lg:h-[11.875rem] border-b border-white/5"

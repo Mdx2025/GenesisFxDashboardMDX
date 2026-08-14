@@ -1,6 +1,18 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Hardcoded dark surface regression
+
+- task_id: `genesis-hardcoded-dark-light-regression-20260814`
+- owner: `klark`
+- status: `local-pass`
+- target_route: `/settings`, with a project-wide source census for `bg-[#0D1512]` and equivalent CSS declarations.
+- operator_evidence: The light-theme profile banner retained a dark `#0D1512` lower shell behind the email and badges.
+- root_cause: `SettingsPage.tsx` introduced `bg-[#0D1512]`, a near-match that bypassed the prior `#0C1311` semantic-surface audit and the light-theme token override.
+- implementation: Replaced the literal class with `surface-raised` and added `data-settings-profile-card` for deterministic runtime validation. Added `e2e/hardcoded-dark-light-audit.mjs`, which scans all source files for the literal and gates computed light/dark surface color, overflow, HTTP status, and runtime errors.
+- local_validation: `pnpm build` passed (245 modules). Project-wide source scan found 0 remaining `#0D1512` background literals. Focused Playwright passed `/settings` at 390×844 and 1440×1000 in light and dark: 4/4 scenarios, exact white light surface, canonical `#0C1311` dark surface, zero overflow, and zero runtime errors. Final light-theme card screenshot: `/home/clawd/genesis-settings-light-surface-fixed.png`.
+- next_exact_action: Commit, push, deploy through Dokploy, then repeat the focused gate against production.
+
 ## Active Task — SparkleButton Sign Up hover parity
 
 - task_id: `genesis-sparkle-button-signup-hover-20260814`
