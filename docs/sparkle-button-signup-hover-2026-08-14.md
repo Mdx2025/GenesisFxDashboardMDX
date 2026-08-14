@@ -28,3 +28,11 @@ The public `Sign Up` control at `https://genesisfxmarkets.mdxpreview.xyz` was me
 - `pnpm build`: passed, 245 transformed modules.
 - `e2e/sparkle-button-hover-qa.mjs`: passed in dark and light for rest, hover, disabled, geometry, exact timing/stagger, and reduced motion; zero runtime errors.
 - `e2e/sparkle-button-optical-qa.mjs`: passed on `/home`; Deposit `+1px`, Withdraw/Transfer `-0.5px`, icon paint and content union within `+1px`; zero runtime errors.
+
+## Production validation and delivery
+
+- `e2e/sparkle-button-hover-qa.mjs`: passed against production in dark and light for rest, hover, disabled, geometry, exact timing/stagger, and reduced motion; zero runtime errors.
+- `e2e/sparkle-button-optical-qa.mjs`: passed against production on `/home`; Deposit `+1px`, Withdraw/Transfer `-0.5px`, icon paint and content union within `+1px`; zero runtime errors.
+- `/`, `/design-system`, `/home`, `/partner`, `/assets-management`, and the SPA fallback returned HTTP 200.
+- Implementation commit: `a3ce925`.
+- Dokploy deployment: `v21wiarnmF9p17SrlDF7l` (`done`, finished `2026-08-14T22:55:27.848Z`).
