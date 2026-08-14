@@ -5,7 +5,7 @@
 
 - task_id: `genesis-glyph-optical-centering-audit-20260814`
 - owner: `klark`
-- status: `follow-up-local-pass`
+- status: `done`
 - target_routes: All registered and authentication routes, light/dark, mobile and desktop, with the supplied `$90.254,58` balance badge as the reference failure.
 - design_route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + live codebase + production UI`, `style=existing GenesisFX glass-dashboard thesis`.
 - visual_thesis: Preserve the established GenesisFX visual language while aligning the visible glyph ink—not merely the CSS line box—inside compact controls, pills, badges, tabs, and buttons.
@@ -24,7 +24,9 @@
 - operator_follow_up: The Deposit / Withdraw / Transfer SparkleButton crop exposed a layer-level miss: Withdraw and Transfer label ink measured `-1.5px` while icon paint measured `+1px`, although the combined union stayed inside the previous tolerance.
 - follow_up_fix: Applied the existing `.optical-text` layer to Withdraw and Transfer across Home, Partner, Assets Management, and the design-system reference; Deposit remains unchanged because its visible descender already aligns with its icon.
 - follow_up_validation: Tightened `e2e/sparkle-button-optical-qa.mjs` to gate label ink, icon paint, and the union independently. Build passed (245 modules). Local Home dark/light plus Partner and Assets Management dark all passed: Deposit `+1px`, Withdraw/Transfer `-0.5px`, icon paint/union `+1px`, zero runtime errors.
-- next_exact_action: Commit, push, deploy through Dokploy, and repeat the focused QA against production.
+- follow_up_delivery: Commit `45d0f20` pushed to `origin/main`; Dokploy deployment `WpJh14hvUkXeh1QIVfCNU` finished `done` at `2026-08-14T22:33:16.104Z`. Production serves `index-NyeTXoSg.js`.
+- follow_up_production_validation: `/home` passed in dark and light; `/partner` and `/assets-management` passed in dark. Deposit remained `+1px`; Withdraw and Transfer measured `-0.5px`; icon paint and content union remained within `+1px`; zero runtime errors. `/`, `/home`, `/partner`, `/assets-management`, and the SPA fallback route returned HTTP 200.
+- next_exact_action: None.
 
 ## Completed Task — Control optical-centering audit
 

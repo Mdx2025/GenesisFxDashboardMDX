@@ -63,3 +63,5 @@ The first glyph-aware matrix still allowed one blind spot: it judged the union o
 - QA contract: label ink, icon paint, and their union must now each be within `1px` of the button center.
 - Local result: Home passed in dark and light; Partner and Assets Management passed in dark. Deposit finished at `+1px`; Withdraw and Transfer at `-0.5px`; icon paint and content union at `+1px`; zero runtime errors.
 - Build passed with 245 transformed modules.
+- Production result: Home passed in dark and light; Partner and Assets Management passed in dark with the same measured deltas and zero runtime errors. `/`, `/home`, `/partner`, `/assets-management`, and the SPA fallback route all returned HTTP 200.
+- Delivery: commit `45d0f20`; Dokploy deployment `WpJh14hvUkXeh1QIVfCNU` completed successfully; the public HTML references `index-NyeTXoSg.js`.
