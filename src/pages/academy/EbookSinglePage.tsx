@@ -50,7 +50,7 @@ function ChapterItem({ chapter, isActive, onClick }: { chapter: EbookChapter; is
           {chapter.id}
         </span>
       </div>
-      <span className={`text-sm font-acid leading-5 ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
+      <span className={`optical-text text-sm font-acid leading-5 ${isActive ? 'text-white' : 'text-gfx-neutral-400'}`}>
         {chapter.title}
       </span>
     </button>

@@ -253,7 +253,7 @@ function CommissionCalendarSection() {
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-white text-lg sm:text-[1.5rem] font-acid">{MONTHS[month]} {year}</span>
             <span className="text-white text-[0.875rem] font-acid">0 commissions this month</span>
-            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-white text-[0.875rem] font-acid">Total:$0.00</span>
+            <span className="inline-flex items-center px-5 py-2.5 rounded-[2rem] border border-[#303030] text-white text-[0.875rem] font-acid"><span className="optical-text optical-text--numeric">Total:$0.00</span></span>
           </div>
           <div className="flex items-center gap-10">
             <button onClick={prevMonth} className="text-gfx-neutral-400 hover:text-white transition-colors cursor-pointer p-1" aria-label="Previous month">

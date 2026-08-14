@@ -267,7 +267,7 @@ function RecentActivity() {
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-acid text-white">Recent Activity</h2>
             <button type="button" className="surface-raised flex items-center gap-2.5 px-6 h-[2.875rem] rounded-[36px] cursor-pointer hover:opacity-80 transition-opacity">
-              <span className="text-base font-acid font-medium text-[#00B38C] leading-[24.44px]">View all</span>
+              <span className="optical-text text-base font-acid font-medium text-[#00B38C] leading-[24.44px]">View all</span>
               <ViewAllArrow />
             </button>
           </div>

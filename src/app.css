@@ -680,6 +680,19 @@ html[data-theme='light'] .topbar-language-trigger {
   align-self: stretch;
 }
 
+/* Acid Grotesk reserves more descent than many short labels visibly use.
+   Shift only the glyph layer; control geometry and hit targets stay unchanged. */
+.optical-text {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  top: 1px;
+}
+
+.optical-text--numeric {
+  top: 2px;
+}
+
 .topbar-language-flag,
 .topbar-language-flag svg {
   width: 18px;

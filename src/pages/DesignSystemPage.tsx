@@ -259,7 +259,7 @@ export default function DesignSystemPage() {
 
           <Subsection title="States">
             <div className="flex flex-wrap items-center gap-4">
-              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium cursor-pointer">Default</button>
+              <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium cursor-pointer"><span className="optical-text">Default</span></button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500/80 text-black text-sm font-medium cursor-pointer">Hover</button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500/60 text-black text-sm font-medium cursor-pointer">Active</button>
               <button className="h-10 px-5 rounded-full bg-gfx-green-500 text-black text-sm font-medium ring-2 ring-gfx-green-500 ring-offset-2 ring-offset-gfx-main cursor-pointer">Focus</button>

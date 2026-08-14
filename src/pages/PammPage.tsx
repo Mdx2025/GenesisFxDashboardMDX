@@ -479,7 +479,7 @@ export default function PammPage() {
                           <span className="text-white text-sm font-acid font-normal leading-5">20%</span>
                         </td>
                         <td className="px-7 py-5">
-                          <span className="inline-flex items-center justify-center px-4 py-[0.4375rem] rounded-3xl border-[1.16px] border-gfx-bullish text-gfx-bullish-light text-xs font-acid leading-5">Active</span>
+                          <span className="inline-flex items-center justify-center px-4 py-[0.4375rem] rounded-3xl border-[1.16px] border-gfx-bullish text-gfx-bullish-light text-xs font-acid leading-5"><span className="optical-text">Active</span></span>
                         </td>
                         <td className="px-7 py-5">
                           <div className="flex items-center gap-2">

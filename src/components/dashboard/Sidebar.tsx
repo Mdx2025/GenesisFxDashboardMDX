@@ -135,7 +135,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               </svg>
               <span className="relative z-10">M</span>
             </div>
-            <div className="user-card-copy relative z-10 sidebar-hide">
+            <div className="user-card-copy optical-text relative z-10 sidebar-hide">
               <p className="user-card-name text-white text-sidebar-label leading-5">Marcelo Cedeno</p>
               <time className="user-card-date text-gfx-neutral-500 text-sidebar-label leading-5 block" dateTime="2025-09-27">Sep 27th, 2025</time>
             </div>
@@ -166,7 +166,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                     as={item.submenu ? 'button' : 'div'}
                   >
                     {Icon && <Icon />}
-                    <span className="sidebar-hide">{item.label}</span>
+                    <span className="optical-text sidebar-hide">{item.label}</span>
                     {item.submenu && (
                       <span
                         className={`nav-btn-chevron ml-auto text-gfx-neutral-500 transition-transform duration-200 sidebar-hide ${openMenus[item.id] ? 'rotate-180' : ''}`}
@@ -214,7 +214,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </div>
           <NavButton>
             <LogoutIcon />
-            <span className="text-base text-gfx-neutral-500 sidebar-hide">Logout</span>
+            <span className="optical-text text-base text-gfx-neutral-500 sidebar-hide">Logout</span>
           </NavButton>
         </div>
       </aside>

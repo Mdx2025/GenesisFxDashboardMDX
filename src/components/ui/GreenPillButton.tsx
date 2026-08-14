@@ -40,7 +40,7 @@ export function GreenPillButton({ children, onClick }: GreenPillButtonProps) {
       <svg className="green-pill-button__decoration absolute left-[12%] top-[72%] opacity-40" width="3" height="3" viewBox="0 0 3 3" fill="none" aria-hidden="true">
         <circle cx="1.5" cy="1.5" r="0.5" fill="white" filter="url(#gpb_blur)" />
       </svg>
-      <span className="green-pill-button__label relative inline-flex items-center justify-center text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
+      <span className="green-pill-button__label relative inline-flex items-center justify-center pt-0.5 text-gfx-neutral-500 text-base font-normal font-acid leading-6 z-10">
         {children}
       </span>
       <svg className="absolute w-0 h-0" aria-hidden="true">

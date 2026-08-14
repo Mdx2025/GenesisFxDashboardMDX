@@ -86,13 +86,13 @@ export function GlassSelect({ options, defaultValue, value, placeholder = 'Selec
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className={selected ? 'text-white' : 'text-gfx-neutral-500'}>
+        <span className={`min-w-0 whitespace-nowrap ${selected ? 'text-white' : 'text-gfx-neutral-500'}`}>
           {selected ? (
             <span className="flex items-center gap-2.5">
               {selected.icon}
-              {selected.label}
+              <span className="optical-text">{selected.label}</span>
             </span>
-          ) : placeholder}
+          ) : <span className="optical-text">{placeholder}</span>}
         </span>
         <ChevronDownIcon
           size={14}

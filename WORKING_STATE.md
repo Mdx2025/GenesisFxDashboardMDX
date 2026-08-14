@@ -1,6 +1,26 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — Glyph optical-centering audit
+
+- task_id: `genesis-glyph-optical-centering-audit-20260814`
+- owner: `klark`
+- status: `implementation-complete`
+- target_routes: All registered and authentication routes, light/dark, mobile and desktop, with the supplied `$90.254,58` balance badge as the reference failure.
+- design_route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + live codebase + production UI`, `style=existing GenesisFX glass-dashboard thesis`.
+- visual_thesis: Preserve the established GenesisFX visual language while aligning the visible glyph ink—not merely the CSS line box—inside compact controls, pills, badges, tabs, and buttons.
+- dials: `design_variance=1`, `motion_intensity=1`, `visual_density=8`, `art_direction=4`, `implementation_clarity=10`, `image_usage_priority=1`, `spacing_generosity=3`.
+- observed_evidence: The supplied 143×48 screenshot isolates `LiveAccountsCard`'s `$90.254,58` badge. Its wrapper uses symmetric vertical padding but `items-start`; the previous audit measured the text range/line box, so Acid Grotesk's reserved descender space was incorrectly treated as visible content.
+- derived_decisions: Use canvas `actualBoundingBoxAscent/Descent` plus computed font metrics to estimate the visible glyph ink box. Correct repeatable component primitives only; preserve page/card spacing and avoid scattered magic offsets.
+- quality_contract: WCAG 2.2 AA; zero visible text below the existing 12px floor; glyph-ink center within 1px of the control center unless an explicit optical exception is documented; no overflow/runtime errors; keyboard/focus, 24px targets, reduced motion, 200% reflow, contrast, build, and production asset parity verified.
+- highest_risk: Compact amount/status badges; all-uppercase labels and numeric-only strings without descenders; icon+label controls; existing one-pixel optical corrections; line-height changes affecting target height or responsive wrapping.
+- media: `not_applicable` — the supplied screenshot is diagnostic evidence, not a runtime asset.
+- definition_of_done: Full production baseline and local post-fix matrix use glyph metrics, every repeated offender is fixed or documented, the supplied badge is visually centered, and all delivery-quality gates pass in production.
+- baseline: The glyph-aware production crawl inspected 3,331 controls across 160 route/theme/viewport scenarios and found 500 repeated offender instances grouped into 23 component signatures. The supplied `$90.254,58` pill measured `-1.87px` high with 6px top versus 9.73px bottom visible-ink gaps.
+- implementation: Added semantic `optical-text` and `optical-text--numeric` glyph layers, aligned the Live Accounts wrapper itself with `items-center`, and migrated the repeated Sidebar, TopBar, ModeToggle, SparkleButton, GreenPillButton, GlassSelect, status-pill, filter, action, and compact numeric patterns discovered by the census.
+- local_validation: `pnpm build` passed (245 modules). The final local 160-scenario crawl inspected 3,198 visual controls with 0 offenders above the strict 1px tolerance, 0 overflow, and 0 runtime errors. The supplied balance pill now measures `+0.13px` to `+0.20px`, with 8px top and 7.59–7.73px bottom visible-ink gaps. Focused accessibility QA passed symmetric padding, centered flex anatomy, keyboard/focus, 24px targets, reduced motion, and 200%-equivalent reflow.
+- next_exact_action: Commit, deploy through Dokploy, then repeat the full production matrix and verify public asset parity.
+
 ## Completed Task — Control optical-centering audit
 
 - task_id: `genesis-control-optical-centering-audit-20260814`

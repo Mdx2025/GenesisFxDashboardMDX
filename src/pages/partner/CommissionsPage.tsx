@@ -32,7 +32,7 @@ function StatusBadge({ status }: { status: 'Paid' | 'Pending' }) {
         ? 'border-[#0C9104] text-[#37C92E]'
         : 'border-[#303030] text-gfx-neutral-400'
     }`}>
-      {status}
+      <span className="optical-text">{status}</span>
     </span>
   )
 }

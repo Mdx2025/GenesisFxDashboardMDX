@@ -269,7 +269,7 @@ function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
           <div className="flex items-center gap-3">
             <h3 className="truncate text-white font-acid text-base font-medium leading-6">{account.name}</h3>
             <span className="inline-flex h-7 shrink-0 items-center rounded-full bg-gfx-green-900 px-[0.9375rem] text-xs font-acid font-normal leading-[1.175rem] text-gfx-green-300">
-              {account.status}
+              <span className="optical-text">{account.status}</span>
             </span>
           </div>
           <div className="mt-[0.1875rem] flex items-center gap-[0.875rem] whitespace-nowrap text-gfx-neutral-500 font-acid text-base font-medium leading-6">

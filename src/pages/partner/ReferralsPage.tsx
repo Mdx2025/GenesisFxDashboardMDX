@@ -33,7 +33,7 @@ const REFERRAL_FILTER_OPTIONS = [
 function LevelBadge({ level }: { level: string }) {
   return (
     <span className="inline-flex items-center justify-center px-[26px] py-2.5 rounded-[32px] border border-[#303030] text-white text-sm font-acid leading-[18.8px]">
-      {level}
+      <span className="optical-text">{level}</span>
     </span>
   )
 }
@@ -189,7 +189,7 @@ function DetailsButton({ onClick }: { onClick?: () => void }) {
   return (
     <button type="button" onClick={onClick} className="inline-flex items-center gap-3.5 h-[46px] px-[18px] rounded-[32px] border border-[#303030] text-white text-base font-acid font-medium leading-[24.44px] cursor-pointer hover:border-gfx-green-200 transition-colors">
       <EyeIcon />
-      Details
+      <span className="optical-text">Details</span>
     </button>
   )
 }

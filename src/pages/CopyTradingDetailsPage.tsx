@@ -337,14 +337,14 @@ export default function CopyTradingDetailsPage() {
           </div>
           <h1 className="text-white text-h1 font-normal">KingEasy</h1>
           <div className="flex items-center gap-[1.125rem] ml-2">
-            <span className={`${headerPillBase} border-gfx-gold text-gfx-gold`}>Medium Risk</span>
+            <span className={`${headerPillBase} border-gfx-gold text-gfx-gold`}><span className="optical-text">Medium Risk</span></span>
             <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
               <PeopleIcon />
-              5 Followers
+              <span className="optical-text">5 Followers</span>
             </span>
             <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
               <BriefcaseDollarIcon />
-              $13,884.16 AUM
+              <span className="optical-text optical-text--numeric">$13,884.16 AUM</span>
             </span>
           </div>
           <div className="ml-auto flex items-center gap-3">

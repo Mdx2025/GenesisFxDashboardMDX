@@ -86,7 +86,7 @@ export default function PammManagerPage() {
             <div className="flex items-center gap-4">
               <h1 className="text-white text-[3.125rem] font-acid font-normal leading-none">PAMM strategy</h1>
               <span className="inline-flex items-center h-[1.75rem] px-[1.125rem] rounded-[1.875rem] border-[1.162px] border-gfx-green-200 bg-gfx-green-800 text-gfx-green-300 text-xs font-acid font-normal leading-[1.175rem]">
-                Active
+                <span className="optical-text">Active</span>
               </span>
             </div>
             <p className="mt-[1.0625rem] text-sm font-acid font-normal text-gfx-neutral-400 leading-[1.34]">

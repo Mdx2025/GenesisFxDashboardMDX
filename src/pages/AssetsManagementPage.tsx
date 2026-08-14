@@ -320,7 +320,7 @@ export default function AssetsManagementPage() {
                               onClick={() => { navigator.clipboard.writeText(tx.address); setCopied(true) }}
                               className="inline-flex items-center gap-3 rounded-full px-4 py-2 cursor-pointer hover:opacity-80 transition-opacity bg-gfx-green-100"
                             >
-                              <span className="text-sm 3xl:text-lg 4xl:text-2xl text-white truncate">{tx.address}</span>
+                              <span className="optical-text text-sm 3xl:text-lg 4xl:text-2xl text-white truncate">{tx.address}</span>
                               <CopyIcon />
                             </button>
                           </td>

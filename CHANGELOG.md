@@ -1,5 +1,7 @@
 # Changelog
 
+- Recalibrated compact controls against visible glyph ink rather than CSS line boxes, correcting the balance, wallet, status, filter, mode, navigation, and shared action-button families across the platform.
+
 - Corrected optical centering across the audited control system: active ModeToggle icons now remain white in light theme, and Academy chapter rows vertically center their number, title, and duration without asymmetric padding.
 
 - Completed a cross-route dark-surface audit: Partner, Settings, Signals, and account modals now use the semantic raised-surface and border tokens instead of hardcoded `#0C1311` UI backgrounds.

@@ -124,7 +124,7 @@ function ProfileBadge({ icon, label, variant = 'default' }: ProfileBadgeProps) {
   return (
     <div className={`inline-flex items-center gap-2 h-8 px-3.5 rounded-full border ${styles[variant]}`}>
       {icon}
-      <span className="text-sm font-acid leading-tight whitespace-nowrap">{label}</span>
+      <span className="optical-text text-sm font-acid leading-tight whitespace-nowrap">{label}</span>
     </div>
   )
 }
