@@ -14,6 +14,10 @@ const expectedDeep = {
   light: new Set(['rgb(255, 255, 255)', 'rgba(255, 255, 255, 1)']),
   dark: new Set(['rgb(9, 36, 28)', 'rgba(9, 36, 28, 1)']),
 }
+const expectedIconWell = {
+  light: new Set(['rgb(255, 255, 255)', 'rgba(255, 255, 255, 1)']),
+  dark: new Set(['rgb(2, 27, 19)', 'rgba(2, 27, 19, 1)']),
+}
 const expectedBorder = {
   light: new Set(['rgb(236, 236, 236)', 'rgba(236, 236, 236, 1)']),
   dark: new Set(['rgb(22, 45, 37)', 'rgba(22, 45, 37, 1)']),
@@ -31,7 +35,7 @@ function sourceFiles(directory) {
   })
 }
 
-const literalPattern = /bg-\[\s*#09241c\s*\]/ig
+const literalPattern = /bg-\[\s*#(?:09241c|021b13)\s*\]/ig
 const staticOffenders = sourceFiles(path.join(projectRoot, 'src')).flatMap(file => {
   const source = fs.readFileSync(file, 'utf8')
   return [...source.matchAll(literalPattern)].map(match => ({
@@ -56,6 +60,11 @@ const scenarios = [
   {
     id: 'settings-security', route: '/settings', minDeep: 1,
     open: page => page.getByRole('button', { name: 'Security', exact: true }).click(),
+    minIconWell: 2,
+  },
+  {
+    id: 'settings-support', route: '/settings', minDeep: 0, minIconWell: 4,
+    open: page => page.getByRole('button', { name: 'Support', exact: true }).click(),
   },
   {
     id: 'settings-two-factor', route: '/settings', minDeep: 3,
@@ -121,16 +130,21 @@ async function inspect(page, scenario, theme, viewport, runtimeErrors) {
     })
     const elements = [...body.querySelectorAll('*')].filter(visible)
     const deep = elements.filter(element => element.classList.contains('bg-gfx-surface-deep')).map(describe)
+    const iconWells = elements.filter(element => element.classList.contains('bg-gfx-surface-icon-well')).map(describe)
     const borders = elements
       .filter(element => element.classList.contains('border-gfx-surface-raised-border'))
       .map(element => ({ ...describe(element), computed: getComputedStyle(element).borderTopColor }))
     return {
       deep,
+      iconWells,
       borders,
       rawDarkBackgrounds: currentTheme === 'light'
         ? elements
           .filter(element => !element.closest('svg, defs, clipPath, mask, filter'))
-          .filter(element => ['rgb(9, 36, 28)', 'rgba(9, 36, 28, 1)'].includes(getComputedStyle(element).backgroundColor))
+          .filter(element => [
+            'rgb(9, 36, 28)', 'rgba(9, 36, 28, 1)',
+            'rgb(2, 27, 19)', 'rgba(2, 27, 19, 1)',
+          ].includes(getComputedStyle(element).backgroundColor))
           .map(describe)
         : [],
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
@@ -141,6 +155,8 @@ async function inspect(page, scenario, theme, viewport, runtimeErrors) {
   const checks = {
     deepCoverage: observation.deep.length >= scenario.minDeep,
     deepSurface: observation.deep.every(item => expectedDeep[theme].has(item.computed)),
+    iconWellCoverage: observation.iconWells.length >= (scenario.minIconWell || 0),
+    iconWellSurface: observation.iconWells.every(item => expectedIconWell[theme].has(item.computed)),
     borders: observation.borders.every(item => expectedBorder[theme].has(item.computed)),
     rawDarkBackgrounds: observation.rawDarkBackgrounds.length === 0,
     overflow: !observation.overflow,
@@ -169,8 +185,10 @@ try {
         await page.evaluate(() => document.fonts.ready)
         if (scenario.open) await scenario.open(page)
         await inspect(page, scenario, theme, viewport, runtimeErrors)
-        if (screenshotPath && scenario.id === 'settings-two-factor' && theme === 'light' && viewport.name === 'desktop') {
-          await page.getByRole('dialog', { name: 'Two-Factor Authentication Setup' }).screenshot({ path: screenshotPath })
+        if (screenshotPath && scenario.id === 'settings-security' && theme === 'light' && viewport.name === 'desktop') {
+          await page.getByText('Security Settings', { exact: true })
+            .locator('xpath=ancestor::div[contains(@class,"overflow-hidden")][1]')
+            .screenshot({ path: screenshotPath })
         }
       }
       await context.close()

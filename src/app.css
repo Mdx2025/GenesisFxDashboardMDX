@@ -141,6 +141,7 @@
   --color-gfx-surface-video: #0a0f0d;
   --color-gfx-surface-select: #09241C;
   --color-gfx-surface-deep: #09241C;
+  --color-gfx-surface-icon-well: #021B13;
   --color-gfx-surface-raised: #0C1311;
   --color-gfx-surface-raised-border: #162D25;
   --signal-card-bg: var(--color-gfx-surface-raised);
@@ -309,6 +310,7 @@
   --color-gfx-surface-video: #e6f1ed;
   --color-gfx-surface-select: #fff;
   --color-gfx-surface-deep: #fff;
+  --color-gfx-surface-icon-well: #fff;
   --color-gfx-surface-raised: #fff;
   --color-gfx-surface-raised-border: #ECECEC;
   --shadow-md: 0 12px 34px rgba(8, 39, 29, 0.1);

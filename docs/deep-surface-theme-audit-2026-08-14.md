@@ -1,11 +1,12 @@
-# Design System Audit — `#09241C` deep surfaces
+# Design System Audit — deep surfaces and icon wells
 
 Date: 2026-08-14  
-Scope: GenesisFxDashboardMDX hardcoded `bg-[#09241C]` UI backgrounds
+Scope: GenesisFxDashboardMDX hardcoded `bg-[#09241C]` and `bg-[#021B13]` UI backgrounds
 
 ## Outcome
 
 - Added `--color-gfx-surface-deep`: `#09241C` in dark theme and `#FFF` in light theme.
+- Added `--color-gfx-surface-icon-well`: `#021B13` in dark theme and `#FFF` in light theme.
 - Migrated visible content surfaces, badges, icon wells, and modal controls from the raw background literal.
 - Routed dividers, inactive toggle tracks, progress tracks, and borders through their existing semantic tokens.
 - Preserved `#09241C` used as SVG/chart paint, scrollbar paint, gradients, and borders outside the reported background scope.
@@ -19,6 +20,7 @@ Scope: GenesisFxDashboardMDX hardcoded `bg-[#09241C]` UI backgrounds
 - Change Picture, Change Password, and Change Email modal icon wells.
 - Journal Statistics dividers.
 - `/design-system` semantic-surface catalogue.
+- Settings Support and Security icon wells.
 
 ## Reproducible checks
 
@@ -28,7 +30,7 @@ OUTPUT_PATH=/tmp/genesis-deep-surface-theme-audit.json \
   node e2e/deep-surface-theme-audit.mjs
 ```
 
-The browser audit covers light and dark themes at 390×844 and 1440×1000. It verifies exact semantic colors, source-literal absence, horizontal overflow, and runtime errors across the affected routes, tabs, and modals.
+The browser audit covers light and dark themes at 390×844 and 1440×1000. It verifies both semantic surface contracts, source-literal absence, horizontal overflow, and runtime errors across the affected routes, tabs, and modals.
 
 ## Local validation
 
@@ -41,9 +43,20 @@ The browser audit covers light and dark themes at 390×844 and 1440×1000. It ve
 - Runtime errors: 0.
 - Final visual evidence: `/home/clawd/genesis-deep-surface-light-2fa.png`.
 
+## Icon-well follow-up
+
+- Production build: passed, 245 transformed modules.
+- Static `bg-[#021B13]` census: 0 offenders.
+- Expanded focused Playwright matrix: 48/48 scenarios passed locally.
+- Light icon wells: exact `rgb(255, 255, 255)`.
+- Dark icon wells: exact `rgb(2, 27, 19)`.
+- Horizontal overflow: 0 failures.
+- Runtime errors: 0.
+- Final local visual evidence: `/home/clawd/genesis-icon-well-light-settings-local.png`.
+
 ## Remaining intentional literals
 
-`#09241C` remains where it is not a CSS background surface: token definitions, SVG/chart strokes and fills, scrollbar paint, gradients, and explicit borders. These require role-specific treatment and are not interchangeable with a white surface.
+`#09241C` and `#021B13` remain where they are not CSS background surfaces: token definitions, SVG/chart strokes and fills, scrollbar paint, gradients, and explicit borders. These require role-specific treatment and are not interchangeable with a white surface.
 
 ## Public validation and delivery
 

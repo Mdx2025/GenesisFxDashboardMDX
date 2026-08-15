@@ -411,7 +411,7 @@ function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode
   return (
     <GlassCard variant="light" divider="none" className="surface-raised !rounded-[1.875rem] !p-0">
       <div className="flex items-center gap-5 px-5 py-6">
-        <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021B13] flex items-center justify-center shrink-0">
+        <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-gfx-surface-icon-well flex items-center justify-center shrink-0">
           {icon}
         </div>
         <div className="flex flex-col">
@@ -486,7 +486,7 @@ function SecurityTab() {
         <div className="border border-[#09241c] rounded-[2rem] overflow-hidden px-4 lg:px-8 py-4 lg:py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-5">
-              <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0">
+              <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-gfx-surface-icon-well flex items-center justify-center shrink-0">
                 <ShieldIcon />
               </div>
               <div>
@@ -502,7 +502,7 @@ function SecurityTab() {
 
         <div className="bg-gfx-surface-deep border border-gfx-surface-raised-border rounded-[2rem] overflow-hidden px-4 lg:px-8 py-4 lg:py-8 mt-5">
           <div className="flex items-start gap-5">
-            <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0 mt-1">
+            <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-gfx-surface-icon-well flex items-center justify-center shrink-0 mt-1">
               <SmartphoneIcon />
             </div>
             <div>

@@ -133,6 +133,11 @@ export default function DesignSystemPage() {
                 className="bg-gfx-surface-deep"
               />
               <TokenSwatch
+                name="Icon Well Surface"
+                value="Dark #021B13 / Light #FFF"
+                className="bg-gfx-surface-icon-well"
+              />
+              <TokenSwatch
                 name="Raised Surface Border"
                 value="Dark #162D25 / Light #ECECEC"
                 className="surface-raised-border"
