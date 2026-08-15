@@ -104,7 +104,7 @@ export function TwoFactorModal({ open, onClose }: TwoFactorModalProps) {
           </button>
 
           <div className="relative flex flex-col items-center px-5 sm:px-8 lg:px-12 pt-10 lg:pt-16 pb-8 lg:pb-12">
-            <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-[#09241C] flex items-center justify-center mb-6">
+            <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-gfx-surface-deep flex items-center justify-center mb-6">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M3 10.4167C3 7.21907 3 5.62028 3.37752 5.08241C3.75503 4.54454 5.25832 4.02996 8.26491 3.00079L8.83772 2.80472C10.405 2.26824 11.1886 2 12 2C12.8114 2 13.595 2.26824 15.1623 2.80472L15.7351 3.00079C18.7417 4.02996 20.245 4.54454 20.6225 5.08241C21 5.62028 21 7.21907 21 10.4167C21 10.8996 21 11.4234 21 11.9914C21 17.6294 16.761 20.3655 14.1014 21.5273C13.38 21.8424 13.0193 22 12 22C10.9807 22 10.62 21.8424 9.89856 21.5273C7.23896 20.3655 3 17.6294 3 11.9914C3 11.4234 3 10.8996 3 10.4167Z" fill="#00B38C"/>
               </svg>
@@ -120,10 +120,10 @@ export function TwoFactorModal({ open, onClose }: TwoFactorModalProps) {
             <p className="text-[#A0A0A0] text-base font-acid mb-4">Can't scan? enter this code manually:</p>
 
             <div className="flex items-center gap-3 mb-8 w-full max-w-md">
-              <div className="h-9 bg-[#09241C] border border-[#064B34] rounded-[0.625rem] flex items-center px-4 min-w-0 overflow-hidden">
+              <div className="h-9 bg-gfx-surface-deep border border-gfx-green-200 rounded-[0.625rem] flex items-center px-4 min-w-0 overflow-hidden">
                 <span className="text-white text-xs sm:text-sm font-acid tracking-wide truncate">EIBIJPZZSOR4JCPXKH4LHEZ5LD476ZZN</span>
               </div>
-              <button className="w-12 h-9 bg-[#09241C] border border-[#064B34] rounded-[0.625rem] flex items-center justify-center hover:border-gfx-green-300 transition-colors shrink-0">
+              <button className="w-12 h-9 bg-gfx-surface-deep border border-gfx-green-200 rounded-[0.625rem] flex items-center justify-center hover:border-gfx-green-300 transition-colors shrink-0">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                   <path d="M11.43 1.5H8.509C7.186 1.5 6.138 1.5 5.318 1.611C4.474 1.725 3.791 1.965 3.252 2.506C2.713 3.047 2.474 3.733 2.36 4.58C2.25 5.404 2.25 6.456 2.25 7.785V12.163C2.25 13.294 2.94 14.263 3.92 14.669C3.87 13.987 3.87 13.03 3.87 12.234V8.548C3.87 7.516 3.87 6.687 3.959 6.024C4.054 5.313 4.269 4.632 4.819 4.079C5.369 3.527 6.048 3.311 6.756 3.216C7.417 3.126 8.242 3.126 9.199 3.127H11.43C12.459 3.126 13.282 3.126 13.942 3.216C13.547 2.211 12.571 1.5 11.43 1.5Z" fill="#00B38C"/>
                   <path d="M4.95 8.548C4.95 6.504 4.95 5.481 5.583 4.846C6.215 4.211 7.234 4.211 9.27 4.211H11.43C13.467 4.211 14.485 4.211 15.118 4.846C15.75 5.481 15.75 6.504 15.75 8.548V12.163C15.75 14.207 15.75 15.23 15.118 15.865C14.485 16.5 13.467 16.5 11.43 16.5H9.27C7.234 16.5 6.215 16.5 5.583 15.865C4.95 15.23 4.95 14.207 4.95 12.163V8.548Z" fill="#00B38C"/>

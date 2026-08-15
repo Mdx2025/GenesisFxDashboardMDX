@@ -250,7 +250,7 @@ function IdentityDetailCard() {
         {/* Left side — Identity info + Requirements */}
         <div className="flex-1 p-5 lg:p-10">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-[3.875rem] h-[3.875rem] rounded-full bg-[#09241C] flex items-center justify-center">
+            <div className="w-[3.875rem] h-[3.875rem] rounded-full bg-gfx-surface-deep flex items-center justify-center">
               <FileTextIcon />
             </div>
             <div>
@@ -269,7 +269,7 @@ function IdentityDetailCard() {
             ))}
           </div>
 
-          <div className="mt-8 bg-[#09241C] rounded-[1.25rem] px-5 lg:px-8 py-5 lg:py-7">
+          <div className="mt-8 bg-gfx-surface-deep rounded-[1.25rem] px-5 lg:px-8 py-5 lg:py-7">
             <p className="text-gfx-green-300 text-base font-acid leading-relaxed">
               Tip: Take the photo in a well-lit area without glare or shadows
             </p>
@@ -306,7 +306,7 @@ function IdentityDetailCard() {
             <p className="text-gfx-neutral-400 text-base font-acid">JPG, PNG or PDF • Max 10MB</p>
           </div>
 
-          <div className="flex items-center justify-center gap-3 bg-[#09241C] rounded-[1.375rem] px-3 py-2.5 w-fit mx-auto">
+          <div className="flex items-center justify-center gap-3 bg-gfx-surface-deep rounded-[1.375rem] px-3 py-2.5 w-fit mx-auto">
             <ClockIcon />
             <p className="text-gfx-neutral-400 text-sm font-acid">Verification typically takes within 24 hours</p>
           </div>
@@ -327,7 +327,7 @@ function TradingFeaturesTable() {
         <span className="text-[#00B38C] text-base font-acid font-medium">Features</span>
         <span className="text-[#00B38C] text-base font-acid font-medium">Allowed</span>
       </div>
-      <div className="w-full h-px bg-[#09241C]" />
+      <div className="w-full h-px bg-gfx-surface-raised-border" />
 
       {TRADING_FEATURES.map((feature, i) => (
         <div key={feature}>
@@ -335,7 +335,7 @@ function TradingFeaturesTable() {
             <span className="text-[#808080] text-base font-acid font-medium">{feature}</span>
             <CloseSquareIcon />
           </div>
-          {i < TRADING_FEATURES.length - 1 && <div className="w-full h-px bg-[#09241C]" />}
+          {i < TRADING_FEATURES.length - 1 && <div className="w-full h-px bg-gfx-surface-raised-border" />}
         </div>
       ))}
     </div>
@@ -458,7 +458,7 @@ function SmartphoneIcon() {
 
 function ToggleSwitch({ enabled = false, onClick }: { enabled?: boolean; onClick?: () => void }) {
   return (
-    <div onClick={onClick} className={`w-11 h-[1.375rem] rounded-full relative cursor-pointer transition-colors ${enabled ? 'bg-gfx-green-300' : 'bg-[#09241c]'}`}>
+    <div onClick={onClick} className={`w-11 h-[1.375rem] rounded-full relative cursor-pointer transition-colors ${enabled ? 'bg-gfx-green-300' : 'bg-gfx-surface-raised-border'}`}>
       <div className={`w-[1.125rem] h-[1.125rem] rounded-full absolute top-px transition-all ${
         enabled ? 'right-px bg-white' : 'left-px bg-gfx-neutral-250'
       }`} />
@@ -500,7 +500,7 @@ function SecurityTab() {
 
         <TwoFactorModal open={show2fa} onClose={() => setShow2fa(false)} />
 
-        <div className="bg-[#09241c] border border-[#09241c] rounded-[2rem] overflow-hidden px-4 lg:px-8 py-4 lg:py-8 mt-5">
+        <div className="bg-gfx-surface-deep border border-gfx-surface-raised-border rounded-[2rem] overflow-hidden px-4 lg:px-8 py-4 lg:py-8 mt-5">
           <div className="flex items-start gap-5">
             <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-[#021b13] flex items-center justify-center shrink-0 mt-1">
               <SmartphoneIcon />

@@ -47,7 +47,7 @@ function RevenueCard() {
         <div className="relative p-6 overflow-hidden">
           <div className="flex flex-row justify-between items-center">
             <span className="inline-flex items-center px-3.5 py-1.5 rounded-[2rem] border border-[#303030] text-white text-sm font-acid">GenFX</span>
-            <div className="w-[59px] h-[59px] rounded-[20px] bg-[#09241C] border border-[#064B34] flex items-center justify-center">
+            <div className="w-[59px] h-[59px] rounded-[20px] bg-gfx-surface-deep border border-gfx-green-200 flex items-center justify-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M11.25 7.847C10.314 8.103 9.75 8.822 9.75 9.5c0 .679.564 1.397 1.5 1.653V7.847Z" fill="#00B38C" />
                 <path d="M12.75 12.847v3.306c.936-.256 1.5-.974 1.5-1.653 0-.678-.564-1.397-1.5-1.652Z" fill="#00B38C" />
@@ -332,7 +332,7 @@ function SymbolExposureCard() {
                 <span className="text-white text-base font-acid font-medium leading-[24.44px]">{s.symbol}</span>
               </div>
               <p className="text-white text-xs font-acid leading-[1.175rem] mb-3">{s.lots}</p>
-              <div className="relative w-full h-1 bg-[#09241C] rounded-full">
+              <div className="relative w-full h-1 bg-gfx-surface-progress rounded-full">
                 <div className="absolute left-0 top-0 h-1 bg-[#0A714F] rounded-full" style={{ width: s.fill }} />
               </div>
             </div>

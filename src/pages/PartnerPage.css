@@ -27,7 +27,7 @@ html[data-theme='light'] .partner-marketing-card {
 }
 
 html[data-theme='light'] .partner-marketing-badge {
-  background: #F1FFFA;
+  background: var(--color-gfx-surface-deep);
 }
 
 html[data-theme='light'] .partner-marketing-title {

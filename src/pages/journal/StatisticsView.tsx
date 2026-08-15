@@ -162,13 +162,13 @@ function ScoreSection({ score }: { score: number }) {
 
   return (
     <div className="mt-auto">
-      <div className="w-full h-px bg-[#09241C]" />
+      <div className="w-full h-px bg-gfx-surface-raised-border" />
       <div className="flex gap-0 pt-4">
         <div className="flex flex-col justify-center pr-4 shrink-0">
           <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-snug">Your Genesis Score</span>
           <span className="text-white text-2xl font-acid mt-1">15.00</span>
         </div>
-        <div className="w-px bg-[#09241C] self-stretch shrink-0" />
+        <div className="w-px bg-gfx-surface-raised-border self-stretch shrink-0" />
         <div className="flex-1 flex flex-col justify-center pl-4">
           <div className="relative h-2.5 rounded-full overflow-hidden">
             <div className="absolute inset-0 rounded-full" style={{

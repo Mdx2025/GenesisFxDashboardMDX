@@ -1,5 +1,7 @@
 # Changelog
 
+- Replaced hardcoded `#09241C` UI backgrounds with a semantic deep-surface contract so cards, badges, icon wells, modal controls, and auxiliary panels render white in light theme while preserving the original dark palette.
+
 - Replaced the Settings profile header's hardcoded `#0D1512` shell with the semantic raised-surface contract so it renders white in light theme and retains the canonical dark surface in dark theme; added a source/runtime regression gate.
 
 - Ported the GenesisFX Markets Sign Up hover interaction to the shared SparkleButton: a 350ms surface wash and eight staggered 2.4s twinkles, with theme-aware paint and a reduced-motion fallback.

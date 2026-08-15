@@ -125,7 +125,7 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
             <div className="grid grid-cols-2 gap-[0.3125rem] mt-[3.4375rem]">
               {/* Upload */}
               <div className="h-[6.625rem] rounded-[1.25rem] border border-[#303030] flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-gfx-green-300 transition-colors">
-                <div className="w-[2.625rem] h-[2.625rem] rounded-full bg-[#09241C] flex items-center justify-center">
+                <div className="w-[2.625rem] h-[2.625rem] rounded-full bg-gfx-surface-deep flex items-center justify-center">
                   <UploadIcon />
                 </div>
                 <p className="text-white text-base font-acid leading-[1.2]">Upload</p>
@@ -133,7 +133,7 @@ export function ChangePictureModal({ open, onClose }: ChangePictureModalProps) {
 
               {/* Pick avatar */}
               <div className="h-[6.625rem] rounded-[1.25rem] border border-[#303030] flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-gfx-green-300 transition-colors">
-                <div className="w-[2.625rem] h-[2.625rem] rounded-full bg-[#09241C] flex items-center justify-center">
+                <div className="w-[2.625rem] h-[2.625rem] rounded-full bg-gfx-surface-deep flex items-center justify-center">
                   <AvatarIcon />
                 </div>
                 <p className="text-white text-base font-acid leading-[1.2]">Pick avatar</p>

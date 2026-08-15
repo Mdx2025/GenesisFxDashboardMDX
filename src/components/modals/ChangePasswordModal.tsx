@@ -115,7 +115,7 @@ export function ChangePasswordModal({ open, onClose }: ChangePasswordModalProps)
 
           <div className="relative flex flex-col items-center px-5 sm:px-10 lg:px-[7.75rem] pt-8 lg:pt-[4.1875rem] pb-8 lg:pb-[4.6875rem]">
             {/* Lock icon circle */}
-            <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-[#09241C] flex items-center justify-center mb-[1.3125rem]">
+            <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-gfx-surface-deep flex items-center justify-center mb-[1.3125rem]">
               <LockIcon />
             </div>
 

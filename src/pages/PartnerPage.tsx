@@ -351,7 +351,7 @@ export default function PartnerPage() {
           </div>
           <div className="w-full lg:w-[359px] shrink-0">
             <div className="partner-marketing-card relative w-full h-[242px] bg-gradient-to-b from-[#09241C] to-[#0C1311] rounded-[30px] border border-[#09241C]" data-partner-marketing-card>
-              <div className="partner-marketing-badge absolute left-[22px] top-[38px] bg-[#09241C] rounded-[20px] border border-gfx-green-300 px-3.5 py-2 inline-flex items-center gap-3">
+              <div className="partner-marketing-badge absolute left-[22px] top-[38px] bg-gfx-surface-deep rounded-[20px] border border-gfx-green-300 px-3.5 py-2 inline-flex items-center gap-3">
                 <MagicStickIcon size={18} color="#00b38c" />
                 <span className="text-gfx-green-300 text-sm font-acid">Marketing</span>
               </div>

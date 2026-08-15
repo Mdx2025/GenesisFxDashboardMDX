@@ -19,7 +19,7 @@ export function ServerTime() {
   }, [])
 
   return (
-    <div className="server-time flex h-[5.3125rem] flex-col gap-2 relative bg-[#09241C] rounded-[0.783rem] border-[1.25px] border-[#064B34] p-[1.125rem]">
+    <div className="server-time flex h-[5.3125rem] flex-col gap-2 relative bg-gfx-surface-deep rounded-[0.783rem] border-[1.25px] border-gfx-green-200 p-[1.125rem]">
       <div className="flex items-center justify-between gap-2">
         <span className="server-time__label text-[#A0A0A0] text-sm leading-tight">Server Time</span>
         <div className="flex items-center gap-1 shrink-0">

@@ -128,6 +128,11 @@ export default function DesignSystemPage() {
                 className="surface-raised"
               />
               <TokenSwatch
+                name="Deep Surface"
+                value="Dark #09241C / Light #FFF"
+                className="bg-gfx-surface-deep"
+              />
+              <TokenSwatch
                 name="Raised Surface Border"
                 value="Dark #162D25 / Light #ECECEC"
                 className="surface-raised-border"

@@ -94,7 +94,7 @@ export function ChangeEmailModal({ open, onClose }: ChangeEmailModalProps) {
 
           <div className="relative flex flex-col items-center px-5 sm:px-10 lg:px-[7.75rem] pt-10 lg:pt-[9.6875rem] pb-10 lg:pb-[13.75rem]">
             {/* Letter icon circle */}
-            <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-[#09241C] flex items-center justify-center mb-[1.625rem]">
+            <div className="w-[3.6875rem] h-[3.6875rem] rounded-full bg-gfx-surface-deep flex items-center justify-center mb-[1.625rem]">
               <LetterIcon />
             </div>
 
