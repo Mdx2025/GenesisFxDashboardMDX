@@ -5,14 +5,15 @@
 
 - task_id: `genesis-deep-surface-light-theme-20260814`
 - owner: `klark`
-- status: `in_progress`
+- status: `done`
 - target_routes: `/home`, `/partner`, `/partner/marketing`, `/partner/statistics`, `/settings`, and `/tradelocker/journal`, including Verification, Security, 2FA, Change Picture, Change Password, and Change Email states.
 - operator_evidence: Hardcoded `bg-[#09241C]` UI surfaces remained dark or depended on one-off light-theme overrides after the earlier `#0D1512` / `#0C1311` audits.
 - root_cause: `#09241C` was used as a raw Tailwind background across multiple semantic roles, bypassing the light-theme token contract.
 - implementation: Added `--color-gfx-surface-deep` (`#09241C` dark / `#FFF` light), migrated content surfaces and icon wells to `bg-gfx-surface-deep`, and routed dividers, inactive tracks, progress tracks, and borders through their existing semantic tokens. Preserved SVG/chart paint and non-background literals.
 - local_validation: Build passed with 245 transformed modules. `e2e/deep-surface-theme-audit.mjs` passed 44/44 light/dark × mobile/desktop route/state scenarios with 0 static offenders, exact surface colors, 0 overflow, and 0 runtime errors. Visual inspection of the final light-theme 2FA modal passed.
-- production_validation: pending deployment.
-- next_exact_action: Commit, push, deploy through Dokploy, then repeat the focused 44-scenario production matrix.
+- production_validation: Public Playwright passed the same 44/44 light/dark × mobile/desktop route/state scenarios with 0 static offenders, exact `#FFF` light and `#09241C` dark deep surfaces, 0 overflow, and 0 runtime errors. Public smokes for `/`, `/home`, `/settings`, `/partner/marketing`, and `/tradelocker/journal` returned HTTP 200.
+- delivery: Implementation commit `c6fb9e3` pushed to `origin/main`; Dokploy deployment `cVqeoK3kkkM_zhn7_D446` finished `done` at `2026-08-15T01:19:44.420Z`.
+- next_exact_action: None.
 
 ## Active Task — Hardcoded dark surface regression
 

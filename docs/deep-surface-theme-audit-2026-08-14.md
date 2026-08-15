@@ -44,3 +44,15 @@ The browser audit covers light and dark themes at 390×844 and 1440×1000. It ve
 ## Remaining intentional literals
 
 `#09241C` remains where it is not a CSS background surface: token definitions, SVG/chart strokes and fills, scrollbar paint, gradients, and explicit borders. These require role-specific treatment and are not interchangeable with a white surface.
+
+## Public validation and delivery
+
+- Focused public Playwright matrix: 44/44 scenarios passed.
+- Static `bg-[#09241C]` offenders: 0.
+- Exact colors: `rgb(255, 255, 255)` in light and `rgb(9, 36, 28)` in dark.
+- Horizontal overflow: 0 failures.
+- Runtime errors: 0.
+- HTTP smokes for `/`, `/home`, `/settings`, `/partner/marketing`, and `/tradelocker/journal`: 200.
+- Implementation commit: `c6fb9e3`.
+- Dokploy deployment: `cVqeoK3kkkM_zhn7_D446`, completed `2026-08-15T01:19:44.420Z`.
+- Public visual evidence: `/home/clawd/genesis-deep-surface-light-2fa-production.png`.
