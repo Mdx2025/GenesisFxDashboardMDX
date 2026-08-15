@@ -53,6 +53,11 @@ The browser audit covers light and dark themes at 390×844 and 1440×1000. It ve
 - Horizontal overflow: 0 failures.
 - Runtime errors: 0.
 - Final local visual evidence: `/home/clawd/genesis-icon-well-light-settings-local.png`.
+- Public focused Playwright matrix: 48/48 scenarios passed.
+- Public HTTP smokes for `/`, `/home`, `/settings`, `/design-system`, and the SPA fallback: 200.
+- Implementation commit: `ab10c95`.
+- Dokploy deployment: `vsojtcPNvR1E4ghLmOTld`, completed `2026-08-15T01:41:48.088Z`.
+- Final public visual evidence: `/home/clawd/.openclaw/media/outbound/genesis-icon-well-light-settings-production.png`.
 
 ## Remaining intentional literals
 

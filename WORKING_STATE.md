@@ -5,14 +5,15 @@
 
 - task_id: `genesis-icon-well-light-theme-20260814`
 - owner: `klark`
-- status: `in_progress`
+- status: `done`
 - target_route: `/settings`, Support and Security states, in light and dark at mobile and desktop widths.
 - operator_evidence: Settings icon wells using hardcoded `bg-[#021B13]` remained dark in light theme.
 - root_cause: Three JSX callsites used the raw dark palette literal instead of a theme-aware semantic surface token.
 - implementation: Added `--color-gfx-surface-icon-well` (`#021B13` dark / `#FFF` light), migrated the shared Support contact-card well and both Security wells, documented the token, and extended the existing deep-surface source/runtime gate to cover both the literal and computed color contract.
 - local_validation: Build passed with 245 transformed modules. The expanded `e2e/deep-surface-theme-audit.mjs` passed 48/48 light/dark × mobile/desktop route/state scenarios with 0 static offenders, exact `#FFF` light and `#021B13` dark icon-well surfaces, 0 overflow, and 0 runtime errors. Final light-theme Security screenshot: `/home/clawd/genesis-icon-well-light-settings-local.png`.
-- production_validation: pending deployment.
-- next_exact_action: Commit, push, deploy through Dokploy, then repeat the focused 48-scenario production matrix.
+- production_validation: Public Playwright passed the same 48/48 light/dark × mobile/desktop route/state scenarios with 0 static offenders, exact `#FFF` light and `#021B13` dark icon-well surfaces, 0 overflow, and 0 runtime errors. Public smokes for `/`, `/home`, `/settings`, `/design-system`, and the SPA fallback returned HTTP 200. Final public screenshot: `/home/clawd/.openclaw/media/outbound/genesis-icon-well-light-settings-production.png`.
+- delivery: Implementation commit `ab10c95` pushed to `origin/main`; Dokploy deployment `vsojtcPNvR1E4ghLmOTld` finished `done` at `2026-08-15T01:41:48.088Z`.
+- next_exact_action: None.
 
 ## Active Task — `#09241C` semantic deep surfaces
 
