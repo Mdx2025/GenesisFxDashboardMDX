@@ -40,3 +40,13 @@ ROUTES=/settings OUTPUT_PATH=/tmp/genesis-settings-dark-light.json \
 ```
 
 When `ROUTES` is omitted, the script derives every route from `src/data/pages.tsx` and includes `/login` and `/register`.
+
+## Production validation and delivery
+
+- Focused Playwright matrix: 4/4 scenarios passed (`/settings`, light/dark, 390×844 and 1440×1000).
+- Static source census: 0 offenders; overflow and runtime errors: 0.
+- Computed profile surface: light `rgb(255, 255, 255)`; dark `rgb(12, 19, 17)`.
+- `/`, `/settings`, `/home`, and the SPA fallback returned HTTP 200.
+- Production asset: `index-uBW985MA.js`; local/public SHA-256 `63358cdd6f844e6eee96d4670a6067ea7e88dfa9a70989782e11c18d21616dea`.
+- Implementation commit: `362621e`.
+- Dokploy deployment: `QBbKO1M2n5dz3zkSk3O9P` (`done`, finished `2026-08-14T23:59:54.061Z`).
