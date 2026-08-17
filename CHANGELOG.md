@@ -1,5 +1,7 @@
 # Changelog
 
+- Centered Support contact card content vertically so shorter cards no longer anchor their icon and copy to the top of a row-stretched card.
+
 - Replaced hardcoded `#021B13` Settings icon-well backgrounds with a semantic contract that renders white in light theme while preserving the original dark-theme surface.
 
 - Replaced hardcoded `#09241C` UI backgrounds with a semantic deep-surface contract so cards, badges, icon wells, modal controls, and auxiliary panels render white in light theme while preserving the original dark palette.

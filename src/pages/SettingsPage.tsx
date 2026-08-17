@@ -410,7 +410,7 @@ function HelpCenterIcon() {
 function SupportContactCard({ icon, title, subtitle, action }: { icon: ReactNode; title: string; subtitle: string; action?: string }) {
   return (
     <GlassCard variant="light" divider="none" className="surface-raised !rounded-[1.875rem] !p-0">
-      <div className="flex items-center gap-5 px-5 py-6">
+      <div className="flex h-full items-center gap-5 px-5 py-6">
         <div className="w-[3.375rem] h-[3.375rem] rounded-[0.625rem] bg-gfx-surface-icon-well flex items-center justify-center shrink-0">
           {icon}
         </div>
