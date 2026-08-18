@@ -41,6 +41,14 @@
   cursor: not-allowed;
 }
 
+html[data-theme='light'] .glow-btn {
+  color: #fff;
+}
+
+html[data-theme='light'] .glow-btn__fill {
+  background: #00B38C;
+}
+
 /* Opaque pill fill */
 .glow-btn__fill {
   position: absolute;

@@ -1,5 +1,7 @@
 # Changelog
 
+- Gave GlowButton a solid `#00B38C` surface with white content in light theme, and extended the icon carve-out so its glyphs stay white on that green instead of being recolored green-on-green by the light-theme SVG contract.
+
 - Keyed the Journal AI Coach and chat button gradients to the theme instead of the viewport, so the lavender surface now appears in light theme at every width while dark theme keeps its deep purple gradient.
 
 - Centered the AI Coach icon against its label by widening the glyph's box to account for the sparkle that overhangs the face, which had been pulling the icon's box center above its visual mass.
