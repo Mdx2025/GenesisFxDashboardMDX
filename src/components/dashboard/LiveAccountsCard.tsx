@@ -28,7 +28,7 @@ export function LiveAccountsCard({
         <div className="flex justify-between items-center">
           <h3 className="text-card-label text-gfx-neutral-500 mb-2 font-normal">Live Accounts</h3>
           <div className="px-2.5 py-1.5 bg-teal-700/25 rounded-xl outline outline-1 outline-offset-[-1px] outline-neutral-700 backdrop-blur-xs inline-flex items-center gap-1.5">
-            <span className="optical-text optical-text--numeric text-white text-card-change font-normal leading-5">{totalBalance}</span>
+            <span className="optical-text text-white text-card-change font-normal leading-5">{totalBalance}</span>
           </div>
         </div>
         <div className="flex flex-row items-center gap-2 mb-2">

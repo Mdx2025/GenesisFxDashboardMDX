@@ -47,7 +47,7 @@ export function SparkleButton({ children, fullWidth, className, type = 'button',
       <svg className="absolute left-[85%] top-[62%] [[data-theme=light]_&]:left-[23.1%] [[data-theme=light]_&]:top-[64.9%]" width="4" height="3" viewBox="0 0 4 3" fill="none" aria-hidden="true">
         <ellipse cx="2" cy="1.5" rx="1" ry="0.5" fill="#8C8C8C" filter="url(#sparkle_blur)" />
       </svg>
-      <span className="sparkle-button__content relative z-10 flex h-full w-full items-center justify-center gap-2 pt-0.5 text-gfx-neutral-500 text-base font-normal font-acid leading-6 [[data-theme=light]_&]:gap-[0.5625rem] [[data-theme=light]_&]:text-[#111312] [[data-theme=light]_&]:font-medium [[data-theme=light]_&]:leading-[1.5275rem]">
+      <span className="sparkle-button__content relative z-10 flex h-full w-full items-center justify-center gap-2 text-gfx-neutral-500 text-base font-normal font-acid leading-6 [[data-theme=light]_&]:gap-[0.5625rem] [[data-theme=light]_&]:text-[#111312] [[data-theme=light]_&]:font-medium [[data-theme=light]_&]:leading-[1.5275rem]">
         {children}
       </span>
       <svg className="absolute w-0 h-0" aria-hidden="true">

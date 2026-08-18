@@ -344,7 +344,7 @@ export default function CopyTradingDetailsPage() {
             </span>
             <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
               <BriefcaseDollarIcon />
-              <span className="optical-text optical-text--numeric">$13,884.16 AUM</span>
+              <span className="optical-text">$13,884.16 AUM</span>
             </span>
           </div>
           <div className="ml-auto flex items-center gap-3">

@@ -1,11 +1,23 @@
 @import "tailwindcss";
 
+/* Acid Grotesk ships USE_TYPO_METRICS with typoAscender 700 / typoDescender -200,
+   so the browser's line box places the baseline 0.25em below its center while the
+   cap-height band (baseline..700) centers at 0.35em. Every vertically centered
+   label therefore renders 0.1em too high, growing with font-size.
+
+   Overriding to 80/10 keeps the content box at the original 0.9em and the normal
+   line height at 1.1em, and only moves the baseline down 0.1em, which lands the
+   cap band on the box center. This replaces the per-element pixel nudges that
+   could not scale and drifted apart between siblings. */
 @font-face {
   font-family: 'Acid Grotesk';
   src: url('/fonts/AcidGrotesk-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
+  ascent-override: 80%;
+  descent-override: 10%;
+  line-gap-override: 20%;
 }
 
 @font-face {
@@ -14,6 +26,9 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  ascent-override: 80%;
+  descent-override: 10%;
+  line-gap-override: 20%;
 }
 
 @font-face {
@@ -22,6 +37,9 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+  ascent-override: 80%;
+  descent-override: 10%;
+  line-gap-override: 20%;
 }
 
 /* No 600 face exists; CSS weight matching resolves font-semibold (600) up to 700. */
@@ -31,6 +49,9 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  ascent-override: 80%;
+  descent-override: 10%;
+  line-gap-override: 20%;
 }
 
 @font-face {
@@ -39,6 +60,9 @@
   font-weight: 400;
   font-style: italic;
   font-display: swap;
+  ascent-override: 80%;
+  descent-override: 10%;
+  line-gap-override: 20%;
 }
 
 @theme {
@@ -752,17 +776,12 @@ html[data-theme='light'] .topbar-language-trigger {
   align-self: stretch;
 }
 
-/* Acid Grotesk reserves more descent than many short labels visibly use.
-   Shift only the glyph layer; control geometry and hit targets stay unchanged. */
+/* Vertical correction now lives in the @font-face metric overrides at the top of
+   this file, so this only keeps the glyph run on its own centered flex line. */
 .optical-text {
   display: inline-flex;
   align-items: center;
   position: relative;
-  top: 1px;
-}
-
-.optical-text--numeric {
-  top: 2px;
 }
 
 .topbar-language-flag,

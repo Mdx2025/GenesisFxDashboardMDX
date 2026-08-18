@@ -1,5 +1,7 @@
 # Changelog
 
+- Corrected vertical centering platform-wide at its source: Acid Grotesk declares asymmetric typo metrics, so every centered label rendered 0.1em above the optical center and drifted further apart as font sizes grew. Overriding the face metrics fixes all pages, modals, badges, and pills at once, and replaces the per-element pixel nudges that could not scale and had split sibling labels apart.
+
 - Kept the Settings profile banner name white in light theme, since it sits over the dark hero artwork where the global light text contract would otherwise render it black.
 
 - Centered Support contact card content vertically so shorter cards no longer anchor their icon and copy to the top of a row-stretched card.
