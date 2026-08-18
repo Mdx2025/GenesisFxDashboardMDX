@@ -99,7 +99,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 sidebar-logo">
               <img src="/genfx-logo.png" alt="GenesisFX" className="h-10 3xl:h-14 4xl:h-18 w-auto [[data-theme=light]_&]:hidden" />
-              <img src="/genfx-logo-light.png" alt="GenesisFX" className="hidden h-10 3xl:h-14 4xl:h-18 w-auto [[data-theme=light]_&]:block" />
+              {/* 1.3x the dark heights: this export's artwork occupies 33 of its 55px
+                  canvas, against 70 of 90px in the dark one, so equal CSS heights
+                  would render the light wordmark visibly smaller. */}
+              <img src="/genfx-logo-light.png" alt="GenesisFX" className="hidden h-[52px] 3xl:h-[73px] 4xl:h-[94px] w-auto [[data-theme=light]_&]:block" />
             </div>
             <button
               className="shrink-0 hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded-xl cursor-pointer"
