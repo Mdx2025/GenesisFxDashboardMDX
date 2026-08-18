@@ -82,16 +82,21 @@ html[data-theme='light'] .sidebar-collapse-icon__chevron {
 }
 
 html[data-theme='light'] .sidebar .user-card {
+  background: #F1FFFA;
+  border-radius: 12.53px;
+  outline: 1.25px solid #ECECEC;
+  outline-offset: -1.25px;
+}
+
+/* Geometry only applies expanded: these selectors outrank the collapsed-state
+   rules, so leaving them unscoped kept the expanded box inside the 72px rail. */
+html[data-theme='light'] .sidebar:not(.sidebar-collapsed) .user-card {
   width: 100%;
   max-width: 273.07px;
   height: 63.41px;
   min-height: 63.41px;
   padding: 0 11.54px;
   gap: 13px;
-  background: #F1FFFA;
-  border-radius: 12.53px;
-  outline: 1.25px solid #ECECEC;
-  outline-offset: -1.25px;
 }
 
 html[data-theme='light'] .sidebar .user-card-gradient-border::before {
@@ -125,7 +130,7 @@ html[data-theme='light'] .theme-root .sidebar .user-card-avatar .sidebar-user-gl
   display: block;
 }
 
-html[data-theme='light'] .sidebar .user-card-copy {
+html[data-theme='light'] .sidebar:not(.sidebar-collapsed) .user-card-copy {
   display: flex;
   min-width: 0;
   flex-direction: column;

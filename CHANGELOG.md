@@ -1,5 +1,7 @@
 # Changelog
 
+- Fixed the light-theme User Account card collapsing incorrectly: its geometry and copy block are now scoped to the expanded sidebar, so the collapsed rail centers the avatar and hides the name and date exactly like dark theme. The light rules outranked the collapsed-state rules on specificity, which kept the expanded 273px box and its text inside the 72px rail.
+
 - Switched the sidebar header to its light-theme artwork: the collapse arrow becomes a white well with a `#C6C6C6` border and an `#A0A0A0` chevron, and the GenesisFX wordmark swaps to the light-background lockup. The arrow is painted from CSS instead of `fill`/`stroke` attributes so the global light-theme SVG contract does not repaint its white well green.
 
 - Gave GlowButton a solid `#00B38C` surface with white content in light theme, and extended the icon carve-out so its glyphs stay white on that green instead of being recolored green-on-green by the light-theme SVG contract.
