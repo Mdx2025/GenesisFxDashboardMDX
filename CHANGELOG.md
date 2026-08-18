@@ -1,5 +1,7 @@
 # Changelog
 
+- Kept the Settings profile banner name white in light theme, since it sits over the dark hero artwork where the global light text contract would otherwise render it black.
+
 - Centered Support contact card content vertically so shorter cards no longer anchor their icon and copy to the top of a row-stretched card.
 
 - Replaced hardcoded `#021B13` Settings icon-well backgrounds with a semantic contract that renders white in light theme while preserving the original dark-theme surface.

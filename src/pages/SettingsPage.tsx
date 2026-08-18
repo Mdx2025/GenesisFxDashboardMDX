@@ -825,7 +825,7 @@ export default function SettingsPage() {
           }}
         >
           {/* Name on banner - desktop only */}
-          <h2 className="absolute left-45 bottom-1 text-white text-2xl font-acid leading-normal hidden lg:flex">Joe Doe</h2>
+          <h2 className="theme-preserve-light absolute left-45 bottom-1 text-white text-2xl font-acid leading-normal hidden lg:flex">Joe Doe</h2>
 
           {/* Avatar */}
           <div className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-10 top-[7rem]">
