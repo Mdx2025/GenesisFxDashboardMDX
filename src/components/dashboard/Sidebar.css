@@ -26,6 +26,24 @@
 .sidebar .sidebar-logo {
   transition: opacity 0.25s ease, width 0.25s ease;
 }
+
+/* Painted from CSS rather than fill/stroke attributes so the global light-theme
+   SVG contract does not repaint the white well green. */
+.sidebar-collapse-icon__box {
+  fill: #04281C;
+  stroke: transparent;
+}
+.sidebar-collapse-icon__chevron {
+  stroke: #808080;
+  stroke-width: 1.023;
+}
+html[data-theme='light'] .sidebar-collapse-icon__box {
+  fill: #fff;
+  stroke: #C6C6C6;
+}
+html[data-theme='light'] .sidebar-collapse-icon__chevron {
+  stroke: #A0A0A0;
+}
 .sidebar.sidebar-collapsed .sidebar-logo {
   opacity: 0;
   width: 0;

@@ -98,7 +98,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 sidebar-logo">
-              <img src="/genfx-logo.png" alt="GenesisFX" className="h-10 3xl:h-14 4xl:h-18 w-auto" />
+              <img src="/genfx-logo.png" alt="GenesisFX" className="h-10 3xl:h-14 4xl:h-18 w-auto [[data-theme=light]_&]:hidden" />
+              <img src="/genfx-logo-light.png" alt="GenesisFX" className="hidden h-10 3xl:h-14 4xl:h-18 w-auto [[data-theme=light]_&]:block" />
             </div>
             <button
               className="shrink-0 hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded-xl cursor-pointer"
@@ -107,10 +108,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             >
               <svg
                 width="33" height="33" viewBox="0 0 33 33" fill="none"
-                className={`transition-transform duration-300 ease-in-out ${collapsed ? 'rotate-180' : 'rotate-0'}`}
+                className={`sidebar-collapse-icon transition-transform duration-300 ease-in-out ${collapsed ? 'rotate-180' : 'rotate-0'}`}
               >
-                <path d="M0 10.227C0 4.579 4.579 0 10.227 0H22.5c5.648 0 10.227 4.579 10.227 10.227V22.5c0 5.648-4.579 10.227-10.227 10.227H10.227C4.579 32.727 0 28.148 0 22.5V10.227z" fill="#04281C"/>
-                <path d="M19.431 22.5L13.295 16.364 19.431 10.227" stroke="#808080" strokeWidth="1.023" strokeLinecap="round" strokeLinejoin="round"/>
+                <path className="sidebar-collapse-icon__box" d="M10.2275 0.5H22.5C27.8722 0.5 32.2275 4.85531 32.2275 10.2275V22.5C32.2275 27.8722 27.8722 32.2275 22.5 32.2275H10.2275C4.85532 32.2275 0.500001 27.8722 0.5 22.5V10.2275C0.5 4.85532 4.85531 0.5 10.2275 0.5Z"/>
+                <path className="sidebar-collapse-icon__chevron" d="M19.4313 22.4993L13.2949 16.3629L19.4313 10.2266" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
           </div>
