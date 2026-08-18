@@ -1,5 +1,7 @@
 # Changelog
 
+- Centered the sidebar collapse toggle in the collapsed rail, since the zero-width logo left `justify-between` pinning it to the right edge instead of aligning it with the User Account avatar below.
+
 - Fixed the light-theme User Account card collapsing incorrectly: its geometry and copy block are now scoped to the expanded sidebar, so the collapsed rail centers the avatar and hides the name and date exactly like dark theme. The light rules outranked the collapsed-state rules on specificity, which kept the expanded 273px box and its text inside the 72px rail.
 
 - Switched the sidebar header to its light-theme artwork: the collapse arrow becomes a white well with a `#C6C6C6` border and an `#A0A0A0` chevron, and the GenesisFX wordmark swaps to the light-background lockup. The arrow is painted from CSS instead of `fill`/`stroke` attributes so the global light-theme SVG contract does not repaint its white well green.

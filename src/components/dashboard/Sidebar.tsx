@@ -96,7 +96,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="sidebar-top-glow" aria-hidden="true" />
 
         <div className="relative z-10">
-          <div className="flex items-center justify-between">
+          <div className="sidebar-header-row flex items-center justify-between">
             <div className="flex items-center gap-3 sidebar-logo">
               <img src="/genfx-logo.png" alt="GenesisFX" className="h-10 3xl:h-14 4xl:h-18 w-auto [[data-theme=light]_&]:hidden" />
               {/* 1.3x the dark heights: this export's artwork occupies 33 of its 55px

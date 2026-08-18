@@ -52,6 +52,11 @@ html[data-theme='light'] .sidebar-collapse-icon__chevron {
 .sidebar.sidebar-collapsed .sidebar-hide {
   display: none;
 }
+/* The logo collapses to zero width, so justify-between would pin the toggle
+   to the right edge instead of the center of the rail. */
+.sidebar.sidebar-collapsed .sidebar-header-row {
+  justify-content: center;
+}
 .sidebar.sidebar-collapsed .nav-btn {
   justify-content: center;
 }
