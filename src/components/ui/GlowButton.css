@@ -49,6 +49,30 @@ html[data-theme='light'] .glow-btn__fill {
   background: #00B38C;
 }
 
+/* The cursor-follow highlight is white because it used to sit behind black copy.
+   Against white copy it erases the label, so light theme tints it green and keeps
+   it faint enough to read as a sheen. */
+html[data-theme='light'] .glow-btn__light {
+  opacity: 0.35;
+}
+
+html[data-theme='light'] .glow-btn__core {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #7cffd4 3.5%,
+    #4dffc4 37.5%,
+    rgba(77, 255, 196, 0) 92.5%
+  );
+}
+
+html[data-theme='light'] .glow-btn__spread {
+  background: radial-gradient(
+    43.3% 44.23% at 50% 49.51%,
+    #a6ffe0 29%,
+    rgba(166, 255, 224, 0) 100%
+  );
+}
+
 /* Opaque pill fill */
 .glow-btn__fill {
   position: absolute;
