@@ -1,5 +1,9 @@
 # Changelog
 
+- Keyed the Journal AI Coach and chat button gradients to the theme instead of the viewport, so the lavender surface now appears in light theme at every width while dark theme keeps its deep purple gradient.
+
+- Centered the AI Coach icon against its label by widening the glyph's box to account for the sparkle that overhangs the face, which had been pulling the icon's box center above its visual mass.
+
 - Corrected vertical centering platform-wide at its source: Acid Grotesk declares asymmetric typo metrics, so every centered label rendered 0.1em above the optical center and drifted further apart as font sizes grew. Overriding the face metrics fixes all pages, modals, badges, and pills at once, and replaces the per-element pixel nudges that could not scale and had split sibling labels apart.
 
 - Kept the Settings profile banner name white in light theme, since it sits over the dark hero artwork where the global light text contract would otherwise render it black.
