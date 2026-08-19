@@ -1,6 +1,9 @@
 .sidebar {
   overflow-y: auto;
   overflow-x: hidden;
+  background: #000705;
+  scrollbar-width: thin;
+  scrollbar-color: #064b34 transparent;
 }
 .sidebar-top-glow {
   position: absolute;
@@ -25,6 +28,141 @@
 }
 .sidebar .sidebar-logo {
   transition: opacity 0.25s ease, width 0.25s ease;
+}
+.sidebar-tagline {
+  display: block;
+  margin: 3px 0 0 15px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+.sidebar-divider {
+  padding-top: 40px;
+  padding-bottom: 27px;
+}
+.sidebar-overview-label {
+  margin: 0 0 14px 3px;
+  color: #606060;
+  font-size: 14px;
+  line-height: 17px;
+}
+.sidebar-nav-list {
+  gap: 10px;
+}
+.sidebar-submenu-link {
+  display: block;
+  height: 36px;
+  padding: 8px 7px;
+  margin-left: 0;
+  border-radius: 8px;
+  color: #a0a0a0;
+  font-size: 14px;
+  line-height: 20px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.sidebar-submenu-link:hover,
+.sidebar-submenu-link:focus-visible {
+  color: #fff;
+  background: rgba(255,255,255,0.03);
+}
+.sidebar-submenu-link--disabled {
+  cursor: default;
+}
+.sidebar-tutorial-card {
+  width: 277px;
+  min-height: 71px;
+  margin-top: 27px;
+  padding: 11px 13px;
+  border: 1px solid #a0a0a0;
+  border-radius: 16px;
+  background: linear-gradient(104deg, #09241c 0%, #0c1311 100%);
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  overflow: hidden;
+}
+.sidebar-tutorial-card::after {
+  content: '';
+  position: absolute;
+  width: 110px;
+  height: 70px;
+  right: -44px;
+  top: -28px;
+  border-radius: 50%;
+  background: rgba(0, 179, 140, 0.16);
+  filter: blur(18px);
+  pointer-events: none;
+}
+.sidebar-tutorial-play {
+  width: 47px;
+  height: 47px;
+  flex: 0 0 47px;
+  border-radius: 50%;
+  border: 1px solid #064b34;
+  background: #082a1f;
+  display: grid;
+  place-items: center;
+}
+.sidebar-tutorial-play svg { margin-left: 3px; }
+.sidebar-tutorial-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.sidebar-tutorial-copy strong {
+  color: #ececec;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.sidebar-tutorial-copy small {
+  color: #a0a0a0;
+  font-size: 14px;
+  line-height: 19px;
+  white-space: nowrap;
+}
+.sidebar-tutorial-arrow {
+  margin-left: auto;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sidebar-footer {
+  gap: 41px;
+  margin-top: 31px;
+}
+.sidebar-footer > .flex {
+  gap: 18px;
+}
+.sidebar-switch-label {
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+}
+.sidebar .mode-toggle {
+  height: 46px;
+  border: 1px solid #064b34;
+  border-radius: 10px;
+  background: #111312;
+}
+.sidebar .mode-toggle button,
+.sidebar .mode-indicator,
+.sidebar .fading-border {
+  border-radius: 9px;
+}
+.sidebar-logout .nav-btn {
+  width: auto;
+  height: 30px;
+  padding: 4px 11px;
+  border-color: transparent;
+  color: #606060;
+  gap: 14px;
+}
+.sidebar-logout .nav-btn:hover {
+  background: transparent;
+  color: #a0a0a0;
 }
 
 /* Painted from CSS rather than fill/stroke attributes so the global light-theme
@@ -63,6 +201,7 @@ html[data-theme='light'] .sidebar-collapse-icon__chevron {
 
 html[data-theme='light'] .theme-root .sidebar {
   border-right-color: #9FE4CD;
+  background: #fff;
 }
 
 html[data-theme='light'] .sidebar .sidebar-overview-label {

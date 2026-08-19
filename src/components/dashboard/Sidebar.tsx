@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { NavButton, ModeToggle } from '@/components/ui'
 import {
   DashboardIcon, AssetsIcon, TradelockerIcon, ChallengesIcon,
-  GenSocialIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
+  GenSocialIcon, LeaderboardsIcon, StreamingIcon, MarketNewsIcon, AcademyIcon, LogoutIcon,
   ChevronDownIcon,
   IBDashboardIcon, ReferralsIcon, LinksIcon, TradesIcon,
   ComissionsIcon, PayoutsIcon, MarketingIcon, StatisticsIcon,
@@ -19,6 +19,8 @@ const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> 
   tradelocker: TradelockerIcon,
   challenges: ChallengesIcon,
   gensocial: GenSocialIcon,
+  leaderboards: LeaderboardsIcon,
+  streaming: StreamingIcon,
   news: MarketNewsIcon,
   academy: AcademyIcon,
   'ib-dashboard': IBDashboardIcon,
@@ -40,16 +42,17 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const isPartner = location.pathname.startsWith('/partner')
-  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
+  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>(
+    () => (isPartner ? {} : { gensocial: true }) as Record<string, boolean>,
+  )
   const [collapsed, setCollapsed] = useState(false)
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
-  const submenuInitialized = useRef<Set<string>>(new Set())
   const navListRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     onClose()
-    setOpenMenus({})
-  }, [location.pathname])
+    setOpenMenus(isPartner ? {} : { gensocial: true })
+  }, [location.pathname, isPartner])
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 1024px)')
@@ -89,7 +92,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         role="presentation"
       />
       <aside
-        className={`sidebar w-[260px] 2xl:w-xs 3xl:w-[var(--width-sidebar-3xl)] 4xl:w-[var(--width-sidebar-4xl)] h-dvh bg-gfx-sidebar border-r border-zinc-900 flex flex-col shrink-0 overflow-hidden p-3.5 lg:p-4 2xl:p-6 3xl:p-8 4xl:p-10 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
+        className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-x-hidden overflow-y-auto p-5 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
         aria-label="Main navigation"
       >
         <div className="sidebar-top-glow" aria-hidden="true" />
@@ -97,11 +100,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="relative z-10">
           <div className="sidebar-header-row flex items-center justify-between">
             <div className="flex items-center gap-3 sidebar-logo">
-              <img src="/genfx-logo.png" alt="GenesisFX" className="h-10 3xl:h-14 4xl:h-18 w-auto [[data-theme=light]_&]:hidden" />
+              <img src="/genfx-logo.png" alt="GenesisFX" className="sidebar-logo-dark w-40 h-auto [[data-theme=light]_&]:hidden" />
               {/* 1.3x the dark heights: this export's artwork occupies 33 of its 55px
                   canvas, against 70 of 90px in the dark one, so equal CSS heights
                   would render the light wordmark visibly smaller. */}
-              <img src="/genfx-logo-light.png" alt="GenesisFX" className="hidden h-[52px] 3xl:h-[73px] 4xl:h-[94px] w-auto [[data-theme=light]_&]:block" />
+              <img src="/genfx-logo-light.png" alt="GenesisFX" className="hidden h-[52px] w-auto [[data-theme=light]_&]:block" />
             </div>
             <button
               className="shrink-0 hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-500 rounded-xl cursor-pointer"
@@ -117,20 +120,21 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               </svg>
             </button>
           </div>
-          <span className="px-4 text-sidebar-label text-white sidebar-hide">AI-Powered Trading</span>
+          <span className="sidebar-tagline optical-text sidebar-hide">AI-Powered Trading</span>
         </div>
 
-        <div className="w-full py-2.5 2xl:py-4 sidebar-hide" aria-hidden="true">
+        <div className="sidebar-divider w-full sidebar-hide" aria-hidden="true">
           <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
         </div>
 
-        <div className="relative z-10 flex-1 overflow-y-auto">
-          <h2 className="sidebar-overview-label text-sidebar-label text-gfx-neutral-500 mb-2 2xl:mb-3 font-normal sidebar-hide">Overview</h2>
+        <div className="relative z-10">
+          <h2 className="sidebar-overview-label text-gfx-neutral-500 font-normal sidebar-hide">Overview</h2>
           <nav aria-label="Main menu">
-            <ul ref={navListRef} className="flex flex-col gap-1 relative" role="list">
+            <ul ref={navListRef} className="sidebar-nav-list flex flex-col relative" role="list">
               {(isPartner ? partnerNavItems : navItems).map((item) => {
                 const Icon = iconMap[item.icon]
-                const isActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname) || !!item.submenu?.some(sub => location.pathname === sub.href || location.pathname.startsWith(sub.href + '/'))
+                const isRouteActive = location.pathname === item.href || !!item.activeOn?.includes(location.pathname) || !!item.submenu?.some(sub => !sub.disabled && (location.pathname === sub.href || location.pathname.startsWith(sub.href + '/')))
+                const isActive = isRouteActive || !!(item.submenu && openMenus[item.id])
                 const navContent = (
                   <NavButton
                     active={isActive}
@@ -157,7 +161,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                 )
                 return (
                   <li key={item.id}>
-                    {item.submenu ? navContent : (
+                    {item.submenu ? navContent : item.disabled ? (
+                      <div aria-disabled="true">{navContent}</div>
+                    ) : (
                       <Link to={item.href} aria-current={isActive ? 'page' : undefined}>
                         {navContent}
                       </Link>
@@ -167,9 +173,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                         <ul className="flex flex-col gap-0" role="list">
                           {item.submenu.map((sub) => (
                             <li key={sub.href}>
-                              <Link to={sub.href} className="sidebar-submenu-link text-gfx-neutral-500 hover:text-white text-sidebar-label py-2 px-6 hover:bg-[rgba(255,255,255,0.03)] transition-colors block rounded-md border-l-2 border-transparent hover:border-gfx-green-300">
-                                {sub.label}
-                              </Link>
+                              {sub.disabled ? (
+                                <span className="sidebar-submenu-link sidebar-submenu-link--disabled optical-text" aria-disabled="true">{sub.label}</span>
+                              ) : (
+                                <Link to={sub.href} className="sidebar-submenu-link optical-text">{sub.label}</Link>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -182,18 +190,33 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </nav>
         </div>
 
-        <div className="relative z-10 flex flex-col gap-3 2xl:gap-6">
-          <div className="flex flex-col gap-2 sidebar-hide">
-            <h3 className="text-sidebar-label text-gfx-neutral-500 font-normal">Switch Modes</h3>
+        {!isPartner && (
+          <Link to="/academy/video-single-page" className="sidebar-tutorial-card sidebar-hide relative z-10" aria-label="Open Genesis Tutorials">
+            <span className="sidebar-tutorial-play" aria-hidden="true">
+              <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M14 7.268C15.333 8.038 15.333 9.962 14 10.732L3.5 16.794C2.167 17.564.5 16.602.5 15.062V2.938C.5 1.398 2.167.436 3.5 1.206L14 7.268Z" fill="white"/></svg>
+            </span>
+            <span className="sidebar-tutorial-copy">
+              <strong className="optical-text">Genesis Tutorials</strong>
+              <small className="optical-text">Step-by-step video guides</small>
+            </span>
+            <svg className="sidebar-tutorial-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1L7 7L1 13" stroke="#A0A0A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </Link>
+        )}
+
+        <div className="sidebar-footer relative z-10 flex flex-col">
+          <div className="flex flex-col gap-3 sidebar-hide">
+            <h3 className="sidebar-switch-label optical-text font-medium">Switch Modes</h3>
             <ModeToggle
               activeIndex={location.pathname.startsWith('/partner') ? 1 : 0}
               onChange={(index) => navigate(index === 1 ? '/partner' : '/home')}
             />
           </div>
+          <div className="sidebar-logout">
           <NavButton>
             <LogoutIcon />
-            <span className="optical-text text-base text-gfx-neutral-500 sidebar-hide">Logout</span>
+            <span className="optical-text sidebar-hide">Logout</span>
           </NavButton>
+          </div>
         </div>
       </aside>
     </>

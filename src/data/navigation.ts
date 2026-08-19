@@ -5,7 +5,8 @@ export interface NavItem {
   href: string
   active?: boolean
   activeOn?: string[]
-  submenu?: { label: string; href: string }[]
+  disabled?: boolean
+  submenu?: { label: string; href: string; disabled?: boolean }[]
 }
 
 export const navItems: NavItem[] = [
@@ -21,9 +22,12 @@ export const navItems: NavItem[] = [
     { label: 'PAMM', href: '/gensocial/pamm' },
     { label: 'Copy Trading', href: '/gensocial/copy-trading' },
     { label: 'Signals', href: '/gensocial/signals' },
+    { label: 'Download App', href: '#', disabled: true },
   ]},
-  { id: 'news', label: 'Market News', icon: 'news', href: '/news' },
-  { id: 'academy', label: 'Genesis Academy', icon: 'academy', href: '/academy' },
+  { id: 'leaderboards', label: 'Leaderboards', icon: 'leaderboards', href: '#', disabled: true },
+  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', disabled: true },
+  { id: 'news', label: 'Market Watch', icon: 'news', href: '/news' },
+  { id: 'academy', label: 'Academy', icon: 'academy', href: '/academy' },
 ]
 
 export const partnerNavItems: NavItem[] = [

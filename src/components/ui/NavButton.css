@@ -1,21 +1,25 @@
 .nav-btn {
   width: 100%;
-  border: none;
+  height: 46px;
+  padding: 10px 8px;
+  border: 1px solid #0d1e18;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: clamp(12px, 0.5rem + 0.3vw, 24px);
+  gap: 15px;
   cursor: pointer;
   transition: background 0.35s ease, color 0.35s ease, outline-color 0.35s ease;
   color: var(--color-gfx-neutral-500);
-  font-size: clamp(0.7rem, 0.4rem + 0.45vw, 1.5rem);
+  font-size: 16px;
   background: transparent;
   position: relative;
   overflow: hidden;
   z-index: var(--z-base);
 }
 .nav-btn > svg {
-  width: clamp(21px, 1rem + 0.4vw, 36px);
-  height: clamp(21px, 1rem + 0.4vw, 36px);
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
 }
 .nav-btn:hover {
   background: var(--color-gfx-card-bg);
@@ -26,22 +30,12 @@
 }
 .nav-btn.active {
   background: var(--color-gfx-sidebar);
-  border: 1px solid transparent;
+  border-color: #064b34;
   outline: none;
   color: #fff;
 }
 .nav-btn.active::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(180deg, var(--color-gfx-green-200) -66.81%, var(--color-gfx-green-800) 127.96%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  display: none;
 }
 .nav-btn.active > svg {
   color: var(--color-gfx-green-300);
@@ -60,7 +54,7 @@
   transition: opacity 0.35s ease;
 }
 .nav-btn.active .active-indicator { opacity: 1; }
-.nav-btn.active .star { opacity: 1; }
+.nav-btn.active .star { opacity: 0; }
 .star {
   position: absolute;
   width: 1px;
@@ -79,6 +73,7 @@
 
 html[data-theme='light'] .sidebar .nav-btn {
   color: #808080;
+  border-color: #ECECEC;
 }
 
 html[data-theme='light'] .sidebar .nav-btn > svg,
