@@ -17,7 +17,7 @@ import {
   UsersIcon,
   WithdrawIcon,
 } from '@/components/icons'
-import { Badge, GreenDot, SecondaryButton } from '@/components/ui'
+import { Badge, GlassBannerCard, GreenDot, SecondaryButton, SparkleButton } from '@/components/ui'
 import { tradingAccounts } from '@/data/trading-accounts'
 
 type AccountFilter = 'all' | 'live' | 'demo'
@@ -65,43 +65,41 @@ function BalanceHero({ onTransferClick }: Frame518DashboardProps) {
   const [balanceVisible, setBalanceVisible] = useState(true)
 
   return (
-    <section className="relative flex h-58.75 items-center overflow-hidden rounded-[1.1602rem] border border-gfx-green-200 bg-gfx-green-800 px-10 shadow-[0_0.29rem_1.45rem_rgba(0,0,0,0.03)]">
-      <div className="pointer-events-none absolute -left-44 -top-24 h-[27rem] w-[52rem] rounded-full bg-gfx-green-200/65 [filter:url(#blur-157)]" aria-hidden="true" />
-      <img className="pointer-events-none absolute -top-24 left-80 h-[25.2rem] w-[39.4rem] object-cover opacity-14" src="/images/pixels.png" alt="" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-x-[10%] top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" aria-hidden="true" />
-
-      <div className="relative z-10 min-w-0">
-        <div className="flex items-center gap-1.5">
-          <p className="font-acid text-base font-medium leading-[1.5275rem] text-gfx-neutral-400">Good afternoon, Marcelo</p>
-          <button type="button" className="text-gfx-neutral-400 transition-colors hover:text-white" onClick={() => setBalanceVisible(value => !value)} aria-label={balanceVisible ? 'Hide balance' : 'Show balance'}>
-            <EyeIcon open={balanceVisible} size={18} />
-          </button>
+    <section className="frame-518-balance-banner h-58.75">
+      <GlassBannerCard className="h-full" contentClassName="flex h-full items-center px-10">
+        <div className="min-w-0">
+          <div className="flex items-center gap-1.5">
+            <p className="font-acid text-base font-medium leading-[1.5275rem] text-gfx-neutral-400">Good afternoon, Marcelo</p>
+            <button type="button" className="text-gfx-neutral-400 transition-colors hover:text-white" onClick={() => setBalanceVisible(value => !value)} aria-label={balanceVisible ? 'Hide balance' : 'Show balance'}>
+              <EyeIcon open={balanceVisible} size={18} />
+            </button>
+          </div>
+          <div className="mt-1 flex items-end gap-2">
+            <p className="font-acid text-[3.125rem] font-normal leading-none text-white">{balanceVisible ? '$100.00' : '••••••'}</p>
+            <span className="mb-1 font-acid text-2xl font-normal leading-none text-gfx-neutral-400">USD</span>
+          </div>
+          <p className="mt-2 font-acid text-base font-medium leading-[1.5275rem] text-gfx-green-300">+$0.00(+0.00%)</p>
         </div>
-        <div className="mt-1 flex items-end gap-2">
-          <p className="font-acid text-[3.125rem] font-normal leading-none text-white">{balanceVisible ? '$100.00' : '••••••'}</p>
-          <span className="mb-1 font-acid text-2xl font-normal leading-none text-gfx-neutral-400">USD</span>
-        </div>
-        <p className="mt-2 font-acid text-base font-medium leading-[1.5275rem] text-gfx-green-300">+$0.00(+0.00%)</p>
-      </div>
 
-      <div className="relative z-10 ml-auto mr-1 hidden -translate-y-5.5 items-center gap-3.75 xl:flex">
-        <SecondaryButton className="w-32.75" onClick={() => navigate('/deposit')}>
-          <DepositIcon size={18} color="currentColor" />
-          <span>Deposit</span>
-        </SecondaryButton>
-        <SecondaryButton className="w-35.75" onClick={() => navigate('/withdraw')}>
-          <WithdrawIcon size={18} color="currentColor" />
-          <span>Withdraw</span>
-        </SecondaryButton>
-        <SecondaryButton className="w-33.25" onClick={onTransferClick}>
-          <TransferIcon size={18} color="currentColor" />
-          <span>Transfer</span>
-        </SecondaryButton>
-        <SecondaryButton className="w-43.25 whitespace-nowrap" onClick={() => navigate('/tradelocker/accounts')}>
-          <UserIcon size={18} color="currentColor" />
-          <span>New Account</span>
-        </SecondaryButton>
-      </div>
+        <div className="ml-auto mr-1 hidden items-center gap-3.75 xl:flex" data-balance-actions>
+          <SparkleButton className="w-32.75" onClick={() => navigate('/deposit')}>
+            <DepositIcon size={18} color="currentColor" />
+            <span>Deposit</span>
+          </SparkleButton>
+          <SparkleButton className="w-35.75" onClick={() => navigate('/withdraw')}>
+            <WithdrawIcon size={18} color="currentColor" />
+            <span>Withdraw</span>
+          </SparkleButton>
+          <SparkleButton className="w-33.25" onClick={onTransferClick}>
+            <TransferIcon size={18} color="currentColor" />
+            <span>Transfer</span>
+          </SparkleButton>
+          <SparkleButton className="w-43.25 whitespace-nowrap" onClick={() => navigate('/tradelocker/accounts')}>
+            <UserIcon size={18} color="currentColor" />
+            <span>New Account</span>
+          </SparkleButton>
+        </div>
+      </GlassBannerCard>
     </section>
   )
 }
