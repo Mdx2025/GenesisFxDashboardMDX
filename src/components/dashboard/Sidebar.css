@@ -128,17 +128,6 @@
   font-size: 16px;
   line-height: 20px;
 }
-.sidebar .mode-toggle {
-  height: 46px;
-  border: 1px solid #064b34;
-  border-radius: 10px;
-  background: #111312;
-}
-.sidebar .mode-toggle button,
-.sidebar .mode-indicator,
-.sidebar .fading-border {
-  border-radius: 9px;
-}
 .sidebar-logout .nav-btn {
   width: auto;
   height: 30px;
