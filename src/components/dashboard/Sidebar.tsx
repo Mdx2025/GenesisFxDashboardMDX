@@ -11,7 +11,6 @@ import {
   ComissionsIcon, PayoutsIcon, MarketingIcon, StatisticsIcon,
 } from '@/components/icons'
 import { navItems, partnerNavItems } from '@/data/navigation'
-import { GLOW_GREEN } from '@/constants/colors'
 import type { ComponentType } from 'react'
 
 const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> = {
@@ -123,31 +122,6 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
         <div className="w-full py-2.5 2xl:py-4 sidebar-hide" aria-hidden="true">
           <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
-        </div>
-
-        <div className="relative z-10 mb-1.5 2xl:mb-2">
-          <h2 className="text-sidebar-label text-gfx-neutral-500 mb-2 2xl:mb-3 font-normal sidebar-hide">User Account</h2>
-          <button
-            type="button"
-            onClick={() => navigate('/settings')}
-            className="user-card user-card-gradient-border flex items-center gap-3 p-3 rounded-md bg-gfx-green-800 relative overflow-hidden cursor-pointer w-full text-left"
-          >
-            <div className="user-card-surface-glow" aria-hidden="true" />
-            <div className="user-card-avatar relative z-10 w-9 h-9 3xl:w-12 3xl:h-12 4xl:w-16 4xl:h-16 rounded-2xl bg-gfx-green-200 flex items-center justify-center text-white text-sidebar-btn overflow-hidden shrink-0">
-              <svg className="absolute top-[-4px] left-[9px]" width="37" height="37" viewBox="0 0 37 37" fill="none" aria-hidden="true">
-                <ellipse className="sidebar-user-glow" cx="18.5" cy="1.5" rx="9.5" ry="5.5" fill="#4CFFC4" filter="url(#blur-30)" />
-              </svg>
-              <span className="relative z-10">M</span>
-            </div>
-            <div className="user-card-copy optical-text relative z-10 sidebar-hide">
-              <p className="user-card-name text-white text-sidebar-label leading-5">Marcelo Cedeno</p>
-              <time className="user-card-date text-gfx-neutral-500 text-sidebar-label leading-5 block" dateTime="2025-09-27">Sep 27th, 2025</time>
-            </div>
-          </button>
-        </div>
-
-        <div className="w-full py-2.5 2xl:py-4 sidebar-hide" aria-hidden="true">
-          <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-2)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-2" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
         </div>
 
         <div className="relative z-10 flex-1 overflow-y-auto">

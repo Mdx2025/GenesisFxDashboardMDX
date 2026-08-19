@@ -517,8 +517,7 @@ html[data-theme='light'] .theme-decorative-glow,
 html[data-theme='light'] .glow-ellipse,
 html[data-theme='light'] .bg-gfx-glow-green,
 html[data-theme='light'] .summary-card__glow,
-html[data-theme='light'] .sidebar-top-glow,
-html[data-theme='light'] .sidebar-user-glow {
+html[data-theme='light'] .sidebar-top-glow {
   display: none;
 }
 

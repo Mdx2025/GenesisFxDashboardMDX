@@ -186,7 +186,7 @@ function TraderPassportCard() {
         </span>
 
         {/* Archetype box */}
-        <div className="w-full rounded-full bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
+        <div className="w-full rounded-md bg-gfx-purple-bg border border-gfx-purple-border p-5 flex flex-col gap-1">
           <span className="text-xs text-gfx-purple-accent uppercase tracking-tab font-acid font-bold">
             &#10022; ARCHETYPE
           </span>

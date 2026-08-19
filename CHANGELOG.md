@@ -1,5 +1,9 @@
 # Changelog
 
+- Removed the User Account card from the left sidebar, including its dedicated divider, glow, and theme-specific styles.
+
+- Changed the Journal Strategy DNA archetype card from pill-shaped `rounded-full` corners to the standard `rounded-md` card radius.
+
 - Centered the sidebar collapse toggle in the collapsed rail, since the zero-width logo left `justify-between` pinning it to the right edge instead of aligning it with the User Account avatar below.
 
 - Fixed the light-theme User Account card collapsing incorrectly: its geometry and copy block are now scoped to the expanded sidebar, so the collapsed rail centers the avatar and hides the name and date exactly like dark theme. The light rules outranked the collapsed-state rules on specificity, which kept the expanded 273px box and its text inside the 72px rail.
