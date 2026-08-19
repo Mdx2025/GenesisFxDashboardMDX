@@ -1,5 +1,7 @@
 # Changelog
 
+- Removed the sidebar's decorative glow component and changed GenSocial to start collapsed instead of reopening automatically on mount or route changes.
+
 - Rebuilt the left sidebar from Figma frame `4037:118295`: exact 315px shell, navigation rhythm and states, expanded GenSocial menu, Leaderboards/Streaming/Market Watch/Academy entries, Genesis Tutorials card, mode switch, and footer alignment.
 
 - Clipped the sidebar's decorative glow inside a rail-sized wrapper so it cannot create a hidden horizontal scroll area.

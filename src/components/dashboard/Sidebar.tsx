@@ -42,16 +42,14 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const isPartner = location.pathname.startsWith('/partner')
-  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>(
-    () => (isPartner ? {} : { gensocial: true }) as Record<string, boolean>,
-  )
+  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
   const [collapsed, setCollapsed] = useState(false)
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
   const navListRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     onClose()
-    setOpenMenus(isPartner ? {} : { gensocial: true })
+    setOpenMenus({})
   }, [location.pathname, isPartner])
 
   useEffect(() => {
@@ -95,10 +93,6 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-x-hidden overflow-y-auto p-5 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
         aria-label="Main navigation"
       >
-        <div className="sidebar-glow-clip" aria-hidden="true">
-          <div className="sidebar-top-glow" />
-        </div>
-
         <div className="relative z-10">
           <div className="sidebar-header-row flex items-center justify-between">
             <div className="flex items-center gap-3 sidebar-logo">

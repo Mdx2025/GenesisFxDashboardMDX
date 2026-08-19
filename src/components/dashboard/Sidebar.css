@@ -6,27 +6,6 @@
   scrollbar-width: thin;
   scrollbar-color: #064b34 transparent;
 }
-.sidebar-glow-clip {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 176px;
-  overflow: hidden;
-  pointer-events: none;
-}
-.sidebar-top-glow {
-  position: absolute;
-  width: 600px;
-  height: 176px;
-  left: 53px;
-  top: -58px;
-  transform: rotate(47.67deg);
-  transform-origin: top left;
-  background: var(--color-gfx-green-175);
-  border-radius: 50%;
-  filter: url(#blur-161);
-  pointer-events: none;
-}
-
 /* Collapsed sidebar */
 .sidebar.sidebar-collapsed {
   width: 72px;
