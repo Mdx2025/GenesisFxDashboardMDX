@@ -1,10 +1,16 @@
 .sidebar {
   overflow-y: auto;
-  overflow-x: clip;
-  contain: paint;
+  overflow-x: hidden;
   background: #000705;
   scrollbar-width: thin;
   scrollbar-color: #064b34 transparent;
+}
+.sidebar-glow-clip {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 176px;
+  overflow: hidden;
+  pointer-events: none;
 }
 .sidebar-top-glow {
   position: absolute;

@@ -95,7 +95,9 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-x-hidden overflow-y-auto p-5 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
         aria-label="Main navigation"
       >
-        <div className="sidebar-top-glow" aria-hidden="true" />
+        <div className="sidebar-glow-clip" aria-hidden="true">
+          <div className="sidebar-top-glow" />
+        </div>
 
         <div className="relative z-10">
           <div className="sidebar-header-row flex items-center justify-between">
