@@ -2,6 +2,8 @@
 
 - Rebuilt the left sidebar from Figma frame `4037:118295`: exact 315px shell, navigation rhythm and states, expanded GenSocial menu, Leaderboards/Streaming/Market Watch/Academy entries, Genesis Tutorials card, mode switch, and footer alignment.
 
+- Clipped the sidebar's decorative glow at the rail boundary so it cannot create a hidden horizontal scroll area.
+
 - Removed the User Account card from the left sidebar, including its dedicated divider, glow, and theme-specific styles.
 
 - Changed the Journal Strategy DNA archetype card from pill-shaped `rounded-full` corners to the standard `rounded-md` card radius.

@@ -1,6 +1,7 @@
 .sidebar {
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: clip;
+  contain: paint;
   background: #000705;
   scrollbar-width: thin;
   scrollbar-color: #064b34 transparent;
