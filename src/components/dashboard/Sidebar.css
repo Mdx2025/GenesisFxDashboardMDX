@@ -71,13 +71,6 @@
 .sidebar-submenu-link--disabled {
   cursor: default;
 }
-.sidebar-footer {
-  gap: 12px;
-  margin-top: 8px;
-}
-.sidebar-footer > .flex {
-  gap: 8px;
-}
 .sidebar-switch-label {
   color: #fff;
   font-size: 16px;

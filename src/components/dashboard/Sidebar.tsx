@@ -220,8 +220,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </Link>
         )}
 
-        <div className="sidebar-footer relative z-10 flex flex-col">
-          <div className="flex flex-col gap-3 sidebar-hide">
+        <div className="sidebar-footer relative z-10 mt-[35px] flex flex-col gap-[44px] [@media(max-height:900px)]:mt-2 [@media(max-height:900px)]:gap-3">
+          <div className="sidebar-hide flex flex-col gap-4 [@media(max-height:900px)]:gap-2">
             <h3 className="sidebar-switch-label optical-text font-medium">Switch Modes</h3>
             <ModeToggle
               activeIndex={location.pathname.startsWith('/partner') ? 1 : 0}
@@ -229,10 +229,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             />
           </div>
           <div className="sidebar-logout">
-          <NavButton>
-            <LogoutIcon />
-            <span className="optical-text sidebar-hide">Logout</span>
-          </NavButton>
+            <NavButton>
+              <LogoutIcon />
+              <span className="optical-text sidebar-hide">Logout</span>
+            </NavButton>
           </div>
         </div>
       </aside>
