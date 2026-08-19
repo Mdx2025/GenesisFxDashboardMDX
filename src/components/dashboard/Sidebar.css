@@ -1,6 +1,7 @@
 .sidebar {
   overflow-y: auto;
   overflow-x: hidden;
+  padding-right: 17px;
   background: #000705;
   scrollbar-width: thin;
   scrollbar-color: #064b34 transparent;
