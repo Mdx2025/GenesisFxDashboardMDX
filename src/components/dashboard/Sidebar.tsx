@@ -90,7 +90,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         role="presentation"
       />
       <aside
-        className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-hidden p-5 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
+        className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-hidden px-5 py-3 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
         aria-label="Main navigation"
       >
         <div className="sidebar-header relative z-10">
@@ -192,15 +192,31 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         {!isPartner && (
-          <Link to="/academy/video-single-page" className="sidebar-tutorial-card sidebar-hide relative z-10" aria-label="Open Genesis Tutorials">
-            <span className="sidebar-tutorial-play" aria-hidden="true">
-              <svg width="15" height="18" viewBox="0 0 15 18" fill="none"><path d="M14 7.268C15.333 8.038 15.333 9.962 14 10.732L3.5 16.794C2.167 17.564.5 16.602.5 15.062V2.938C.5 1.398 2.167.436 3.5 1.206L14 7.268Z" fill="white"/></svg>
+          <Link
+            to="/academy/video-single-page"
+            className="sidebar-tutorial-card sidebar-hide relative z-10 mt-2 flex h-[71px] w-full shrink-0 items-center overflow-hidden rounded-[16px] border border-[#A0A0A0] bg-[linear-gradient(0deg,#09241C_29%,#0C1311_88%)] px-3"
+            aria-label="Open Genesis Tutorials"
+          >
+            <span className="relative grid size-[47px] shrink-0 place-items-center rounded-full border border-[#064B34] bg-[linear-gradient(218deg,#064B34_0%,#0C1311_95%)]" aria-hidden="true">
+              <svg className="theme-preserve-light ml-0.5 h-[13px] w-3 text-white drop-shadow-[8px_8px_4px_rgba(128,128,128,0.65)]" viewBox="0 0 12 13" fill="none">
+                <path d="M11.25 5.201a1.5 1.5 0 0 1 0 2.598l-8.5 4.907A1.5 1.5 0 0 1 .5 11.407V1.593A1.5 1.5 0 0 1 2.75.294l8.5 4.907Z" fill="currentColor" />
+              </svg>
             </span>
-            <span className="sidebar-tutorial-copy">
-              <strong className="optical-text">Genesis Tutorials</strong>
-              <small className="optical-text">Step-by-step video guides</small>
+            <span className="ml-[9px] flex min-w-0 flex-col">
+              <strong className="optical-text whitespace-nowrap font-acid text-[16px] font-normal leading-[19.2px] text-[#ECECEC]">Genesis Tutorials</strong>
+              <small className="optical-text whitespace-nowrap font-acid text-[14px] font-normal leading-[18.8px] text-[#A0A0A0]">Step-by-step video guides</small>
             </span>
-            <svg className="sidebar-tutorial-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1L7 7L1 13" stroke="#A0A0A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg className="relative z-10 ml-auto mr-1 h-[11px] w-[6px] shrink-0" viewBox="0 0 6 11" fill="none" aria-hidden="true">
+              <path d="M.75.75 5.5 5.5.75 10.25" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="absolute bottom-[14px] right-[36px] size-[1.6px] rounded-full bg-white blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute bottom-[6px] right-[54px] size-[1.6px] rounded-full bg-white/50 blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute right-[98px] top-[20px] size-[1.6px] rounded-full bg-[#ACACAC] blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute bottom-0 right-[74px] size-[1.6px] rounded-full bg-[#ACACAC] blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute right-[51px] top-[26px] size-[1.6px] rounded-full bg-[#ACACAC] blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute bottom-[5px] right-[99px] size-[1.6px] rounded-full bg-[#ACACAC] blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute right-[120px] top-[31px] size-[1.6px] rounded-full bg-[#8C8C8C] blur-[0.8px]" aria-hidden="true" />
+            <span className="absolute bottom-[11px] left-[85px] h-[1.6px] w-[2.4px] rounded-full bg-[#8C8C8C] blur-[0.8px]" aria-hidden="true" />
           </Link>
         )}
 

@@ -34,14 +34,14 @@
 }
 .sidebar-tagline {
   display: block;
-  margin: 3px 0 0 15px;
+  margin: 0 0 0 12px;
   color: #fff;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 17px;
 }
 .sidebar-divider {
-  padding-top: 40px;
-  padding-bottom: 27px;
+  padding-top: 12px;
+  padding-bottom: 8px;
 }
 .sidebar-overview-label {
   margin: 0 0 14px 3px;
@@ -71,73 +71,12 @@
 .sidebar-submenu-link--disabled {
   cursor: default;
 }
-.sidebar-tutorial-card {
-  width: 277px;
-  min-height: 71px;
-  margin-top: 27px;
-  padding: 11px 13px;
-  border: 1px solid #a0a0a0;
-  border-radius: 16px;
-  background: linear-gradient(104deg, #09241c 0%, #0c1311 100%);
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  overflow: hidden;
-}
-.sidebar-tutorial-card::after {
-  content: '';
-  position: absolute;
-  width: 110px;
-  height: 70px;
-  right: -44px;
-  top: -28px;
-  border-radius: 50%;
-  background: rgba(0, 179, 140, 0.16);
-  filter: blur(18px);
-  pointer-events: none;
-}
-.sidebar-tutorial-play {
-  width: 47px;
-  height: 47px;
-  flex: 0 0 47px;
-  border-radius: 50%;
-  border: 1px solid #064b34;
-  background: #082a1f;
-  display: grid;
-  place-items: center;
-}
-.sidebar-tutorial-play svg { margin-left: 3px; }
-.sidebar-tutorial-copy {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-.sidebar-tutorial-copy strong {
-  color: #ececec;
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.sidebar-tutorial-copy small {
-  color: #a0a0a0;
-  font-size: 14px;
-  line-height: 19px;
-  white-space: nowrap;
-}
-.sidebar-tutorial-arrow {
-  margin-left: auto;
-  flex: 0 0 auto;
-  position: relative;
-  z-index: 1;
-}
 .sidebar-footer {
-  gap: 41px;
-  margin-top: 31px;
+  gap: 12px;
+  margin-top: 8px;
 }
 .sidebar-footer > .flex {
-  gap: 18px;
+  gap: 8px;
 }
 .sidebar-switch-label {
   color: #fff;
