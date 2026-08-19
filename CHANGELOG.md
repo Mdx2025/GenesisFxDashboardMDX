@@ -1,5 +1,7 @@
 # Changelog
 
+- Tightened the Switch Modes label-to-toggle spacing to Tailwind `gap-5`.
+
 - Moved the sidebar divider's vertical spacing from legacy CSS to the Tailwind `py-5` utility.
 
 - Standardized the fixed sidebar footer regions on Tailwind's `gap-7.5` spacing utility (1.875rem / 30px), removed arbitrary pixel gap classes, and corrected the Switch Modes label contrast in light theme with the semantic neutral token.

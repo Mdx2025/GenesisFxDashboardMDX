@@ -221,7 +221,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         )}
 
         <div className="sidebar-footer relative z-10 mt-7.5 flex flex-col gap-7.5 [@media(max-height:900px)]:mt-2 [@media(max-height:900px)]:gap-3">
-          <div className="sidebar-hide flex flex-col gap-7.5 [@media(max-height:900px)]:gap-2">
+          <div className="sidebar-hide flex flex-col gap-5 [@media(max-height:900px)]:gap-2">
             <h3 className="sidebar-switch-label optical-text font-medium">Switch Modes</h3>
             <ModeToggle
               activeIndex={location.pathname.startsWith('/partner') ? 1 : 0}
