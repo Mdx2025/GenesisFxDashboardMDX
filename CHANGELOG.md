@@ -1,5 +1,7 @@
 # Changelog
 
+- Moved the sidebar divider's vertical spacing from legacy CSS to the Tailwind `py-10` utility.
+
 - Standardized the fixed sidebar footer regions on Tailwind's `gap-7.5` spacing utility (1.875rem / 30px), removed arbitrary pixel gap classes, and corrected the Switch Modes label contrast in light theme with the semantic neutral token.
 
 - Restored the Figma spacing rhythm between the fixed sidebar blocks with Tailwind utilities: 35px from Genesis Tutorials to Switch Modes, 16px from the label to the mode toggle, and 44px from the toggle to Logout, with a compact fallback for short viewports.

@@ -119,7 +119,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <span className="sidebar-tagline optical-text sidebar-hide">AI-Powered Trading</span>
         </div>
 
-        <div className="sidebar-divider w-full sidebar-hide" aria-hidden="true">
+        <div className="sidebar-divider w-full py-10 sidebar-hide" aria-hidden="true">
           <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
         </div>
 
