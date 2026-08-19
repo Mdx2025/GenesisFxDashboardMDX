@@ -1,5 +1,7 @@
 # Changelog
 
+- Replaced the `/home` dashboard body with the Figma Frame 518 composition (`4037:117903`): balance hero, eight product cards, account filters/search, and the two-row trading accounts table, reusing the existing GenesisFX design-system controls and route behavior.
+
 - Tightened the Switch Modes label-to-toggle spacing to Tailwind `gap-5`.
 
 - Moved the sidebar divider's vertical spacing from legacy CSS to the Tailwind `py-5` utility.
