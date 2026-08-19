@@ -1,5 +1,7 @@
 # Changelog
 
+- Standardized the fixed sidebar footer regions on Tailwind's `gap-7.5` spacing utility (1.875rem / 30px), removed arbitrary pixel gap classes, and corrected the Switch Modes label contrast in light theme with the semantic neutral token.
+
 - Restored the Figma spacing rhythm between the fixed sidebar blocks with Tailwind utilities: 35px from Genesis Tutorials to Switch Modes, 16px from the label to the mode toggle, and 44px from the toggle to Logout, with a compact fallback for short viewports.
 
 - Compacted the sidebar's fixed header and footer spacing so the closed Overview menu fits without scrolling at 1920×1080, while expanded submenus still scroll inside Overview; rebuilt Genesis Tutorials from the supplied design as Tailwind-only markup.
