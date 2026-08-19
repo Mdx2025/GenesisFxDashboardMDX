@@ -1,5 +1,7 @@
 # Changelog
 
+- Restricted sidebar scrolling to the Overview navigation region so the logo/tagline header and the Genesis Tutorials/mode/logout footer remain visible within `100dvh`.
+
 - Restored the sidebar mode selector to the shared `ModeToggle` component appearance by removing its Figma-specific rectangular height, border, background, and radius overrides.
 
 - Removed the sidebar's decorative glow component and changed GenSocial to start collapsed instead of reopening automatically on mount or route changes.

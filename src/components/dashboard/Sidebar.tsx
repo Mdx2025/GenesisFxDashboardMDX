@@ -90,10 +90,10 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         role="presentation"
       />
       <aside
-        className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-x-hidden overflow-y-auto p-5 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
+        className={`sidebar w-[315px] h-dvh bg-gfx-sidebar border-r border-[#064b34] flex flex-col shrink-0 overflow-hidden p-5 fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:translate-x-0 lg:relative lg:z-auto transition-transform duration-300 ease-in-out lg:transition-[width,padding] lg:duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${collapsed ? 'sidebar-collapsed' : ''}`}
         aria-label="Main navigation"
       >
-        <div className="relative z-10">
+        <div className="sidebar-header relative z-10">
           <div className="sidebar-header-row flex items-center justify-between">
             <div className="flex items-center gap-3 sidebar-logo">
               <img src="/genfx-logo.png" alt="GenesisFX" className="sidebar-logo-dark w-40 h-auto [[data-theme=light]_&]:hidden" />
@@ -123,7 +123,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           <svg viewBox="0 0 269 2" fill="none"><path d="M0.511368 0.51136H268.466" stroke="url(#sidebar-grad-1)" strokeWidth="1.02273" strokeLinecap="round"/><defs><linearGradient id="sidebar-grad-1" x1="7.67" y1="1.01" x2="268.47" y2="1.01" gradientUnits="userSpaceOnUse"><stop className="sidebar-divider-edge" stopColor="#0F221C"/><stop className="sidebar-divider-center" offset="0.56" stopColor="#005C3D"/><stop className="sidebar-divider-edge" offset="1" stopColor="#0F221C"/></linearGradient></defs></svg>
         </div>
 
-        <div className="relative z-10">
+        <div
+          className="sidebar-overview-scroll relative z-10"
+          data-lenis-prevent
+          tabIndex={0}
+          aria-label="Overview navigation"
+        >
           <h2 className="sidebar-overview-label text-gfx-neutral-500 font-normal sidebar-hide">Overview</h2>
           <nav aria-label="Main menu">
             <ul ref={navListRef} className="sidebar-nav-list flex flex-col relative" role="list">

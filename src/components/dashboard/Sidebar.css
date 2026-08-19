@@ -1,17 +1,33 @@
 .sidebar {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-right: 17px;
   background: #000705;
+}
+.sidebar-header,
+.sidebar-divider,
+.sidebar-tutorial-card,
+.sidebar-footer {
+  flex-shrink: 0;
+}
+.sidebar-overview-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
   scrollbar-width: thin;
   scrollbar-color: #064b34 transparent;
+}
+.sidebar-overview-scroll:focus-visible {
+  outline: 2px solid #064b34;
+  outline-offset: 2px;
 }
 /* Collapsed sidebar */
 .sidebar.sidebar-collapsed {
   width: 72px;
   padding-left: 10px;
   padding-right: 10px;
-  overflow-y: hidden;
 }
 .sidebar .sidebar-logo {
   transition: opacity 0.25s ease, width 0.25s ease;
