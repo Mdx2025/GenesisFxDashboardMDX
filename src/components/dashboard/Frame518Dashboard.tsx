@@ -10,14 +10,22 @@ import {
   MoreDotsIcon,
   PieChartIcon,
   ReferralsIcon,
-  SearchIcon,
   StreamingIcon,
   TransferIcon,
   UserIcon,
   UsersIcon,
   WithdrawIcon,
 } from '@/components/icons'
-import { Badge, GlassBannerCard, GreenDot, SecondaryButton, SparkleButton } from '@/components/ui'
+import {
+  Badge,
+  GlassBannerCard,
+  GlassCard,
+  GlowButton,
+  GreenDot,
+  ModeToggle,
+  SearchInput,
+  SparkleButton,
+} from '@/components/ui'
 import { tradingAccounts } from '@/data/trading-accounts'
 
 type AccountFilter = 'all' | 'live' | 'demo'
@@ -43,7 +51,8 @@ const FEATURE_CARDS: FeatureCardProps[] = [
   { label: 'Leaderboards', icon: <ReferralsIcon size={24} color="currentColor" />, glowSide: 'left' },
 ]
 
-const TABLE_GRID = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
+const ACCOUNT_FILTER_OPTIONS = ['All Accounts', 'Live', 'Demo'] as const
+const ACCOUNT_FILTER_VALUES: AccountFilter[] = ['all', 'live', 'demo']
 
 function FeatureCard({ icon, label, glowSide }: FeatureCardProps) {
   return (
@@ -104,31 +113,6 @@ function BalanceHero({ onTransferClick }: Frame518DashboardProps) {
   )
 }
 
-function AccountTabs({ active, onChange }: { active: AccountFilter; onChange: (filter: AccountFilter) => void }) {
-  const tabs: Array<{ value: AccountFilter; label: string }> = [
-    { value: 'all', label: 'All Accounts' },
-    { value: 'live', label: 'Live' },
-    { value: 'demo', label: 'Demo' },
-  ]
-
-  return (
-    <div className="grid h-11.5 w-[27.8125rem] max-w-full grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)] rounded-full bg-white/4 xl:grid-cols-[10.5625rem_6.6875rem_6.6875rem]" role="tablist" aria-label="Account type">
-      {tabs.map(tab => (
-        <button
-          key={tab.value}
-          type="button"
-          role="tab"
-          aria-selected={active === tab.value}
-          className={`relative rounded-full font-acid text-base font-medium leading-[1.5275rem] transition-colors ${active === tab.value ? 'border border-gfx-green-300 bg-gfx-green-200 text-white' : 'text-gfx-neutral-300 hover:text-white'}`}
-          onClick={() => onChange(tab.value)}
-        >
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  )
-}
-
 function Frame518AccountsTable({ filter, query }: { filter: AccountFilter; query: string }) {
   const navigate = useNavigate()
   const rows = useMemo(() => tradingAccounts.filter(account => {
@@ -139,47 +123,63 @@ function Frame518AccountsTable({ filter, query }: { filter: AccountFilter; query
   }), [filter, query])
 
   return (
-    <section className="relative min-h-64 overflow-hidden rounded-[1.1602rem] border border-gfx-green-200 bg-gfx-green-800 shadow-[0_0.29rem_1.45rem_rgba(0,0,0,0.03)]">
-      <div className="pointer-events-none absolute -top-64 left-1/2 h-72 w-[31rem] -translate-x-1/2 rounded-full bg-gfx-green-200/40 [filter:url(#blur-157)]" aria-hidden="true" />
-      <div className="h-9.5 border-b border-gfx-green-900" aria-hidden="true" />
-      <div className="overflow-x-auto" data-lenis-prevent>
-        <div className="min-w-[75rem]">
-          <div className="grid h-10 items-center px-5.75" style={{ gridTemplateColumns: TABLE_GRID }}>
-            {['Account', 'Platform', 'Type', 'Balance', 'Equity', 'Closed P&L', 'Open P&L', 'Status'].map(label => (
-              <span key={label} className="font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-300">{label}</span>
-            ))}
-            <span />
-          </div>
+    <GlassCard variant="light" divider="white" rounded="1.1602rem" className="min-h-64 overflow-hidden" data-frame518-accounts-table>
+      <div className="theme-decorative-glow pointer-events-none absolute -top-64 left-1/2 h-72 w-[31rem] -translate-x-1/2 rounded-full bg-gfx-glow-green [filter:url(#blur-157)]" aria-hidden="true" />
+      <div className="h-9.5 border-b border-white/5" aria-hidden="true" />
+      <div className="overflow-x-auto" role="region" aria-label="Trading accounts table, scrollable" data-lenis-prevent>
+        <table className="w-full min-w-[75rem]">
+          <thead>
+            <tr className="h-10 border-b border-white/5">
+              <th className="w-[15%] px-5.75 text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Account</th>
+              <th className="w-[11%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Platform</th>
+              <th className="w-[7.5%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Type</th>
+              <th className="w-[10.8%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Balance</th>
+              <th className="w-[10.8%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Equity</th>
+              <th className="w-[10.8%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Closed P&amp;L</th>
+              <th className="w-[9.5%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Open P&amp;L</th>
+              <th className="w-[6%] text-left font-acid text-xs font-bold uppercase leading-[0.9802rem] tracking-[0.1452rem] text-gfx-neutral-500">Status</th>
+              <th className="px-5.75 text-right"><span className="sr-only">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(account => {
+              const accountPath = `/tradelocker/accounts/${encodeURIComponent(account.account)}`
+              return (
+                <tr key={account.account} className="h-19 border-b border-white/5 last:border-b-0">
+                  <td className="px-5.75 py-4">
+                    <p className="font-acid text-base font-medium leading-[1.5275rem] text-gfx-neutral-600">{account.account}</p>
+                    <p className="font-acid text-sm font-normal leading-[1.175rem] text-gfx-neutral-300">{account.username}</p>
+                  </td>
+                  <td className="py-4 font-acid text-sm font-normal leading-[1.175rem] text-gfx-neutral-300">{account.platform}</td>
+                  <td className="py-4"><Badge variant={account.type}>{account.type === 'genfx' ? 'GenFX' : '10X'}</Badge></td>
+                  <td className="py-4 font-acid text-sm font-normal leading-[1.175rem] text-white">{account.balance}</td>
+                  <td className="py-4 font-acid text-sm font-normal leading-[1.175rem] text-white">{account.equity}</td>
+                  <td className={`py-4 font-acid text-sm font-normal leading-[1.175rem] ${account.closedPLColor === 'green' ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>{account.closedPL}</td>
+                  <td className={`py-4 font-acid text-sm font-normal leading-[1.175rem] ${account.openPLColor === 'green' ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>{account.openPL}</td>
+                  <td className="py-4">
+                    <div className="flex items-center gap-2"><GreenDot size={7} /><span className="font-acid text-sm text-white">{account.status}</span></div>
+                  </td>
+                  <td className="py-4 pl-4 pr-5.75">
+                    <div className="flex items-center justify-end gap-6">
+                      <button type="button" className="font-acid text-sm text-gfx-neutral-400 transition-colors hover:text-white" onClick={() => navigate(accountPath)}>View</button>
+                      <GlowButton label="Trade" width={106} height={44} fontSize={16} onClick={() => navigate(accountPath)} />
+                      <button type="button" className="text-gfx-neutral-400 transition-colors hover:text-white" aria-label={`More options for ${account.account}`}><MoreDotsIcon /></button>
+                    </div>
+                  </td>
+                </tr>
+              )
+            })}
 
-          {rows.map((account, index) => {
-            const accountPath = `/tradelocker/accounts/${encodeURIComponent(account.account)}`
-            return (
-              <div key={account.account} className={`grid h-19 items-center px-5.75 ${index > 0 ? 'border-t border-gfx-green-900' : ''}`} style={{ gridTemplateColumns: TABLE_GRID }}>
-                <div>
-                  <p className="font-acid text-base font-medium leading-[1.5275rem] text-gfx-neutral-600">{account.account}</p>
-                  <p className="font-acid text-sm font-normal leading-[1.175rem] text-gfx-neutral-300">{account.username}</p>
-                </div>
-                <p className="font-acid text-sm font-normal leading-[1.175rem] text-gfx-neutral-300">{account.platform}</p>
-                <div><Badge variant={account.type}>{account.type === 'genfx' ? 'GenFX' : '10X'}</Badge></div>
-                <p className="font-acid text-sm font-normal leading-[1.175rem] text-white">{account.balance}</p>
-                <p className="font-acid text-sm font-normal leading-[1.175rem] text-white">{account.equity}</p>
-                <p className={`font-acid text-sm font-normal leading-[1.175rem] ${account.closedPLColor === 'green' ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>{account.closedPL}</p>
-                <p className={`font-acid text-sm font-normal leading-[1.175rem] ${account.openPLColor === 'green' ? 'text-gfx-bullish-light' : 'text-gfx-red-muted'}`}>{account.openPL}</p>
-                <div className="flex items-center gap-2"><GreenDot size={7} /><span className="font-acid text-sm text-white">{account.status}</span></div>
-                <div className="flex items-center justify-end gap-6 pr-1.5">
-                  <button type="button" className="font-acid text-sm text-gfx-neutral-400 transition-colors hover:text-white" onClick={() => navigate(accountPath)}>View</button>
-                  <button type="button" className="h-11 w-26.5 rounded-full bg-[#F1FFFA] font-acid text-base font-medium text-black transition-colors hover:bg-[#D5FFF1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gfx-green-300" onClick={() => navigate(accountPath)}>Trade</button>
-                  <button type="button" className="text-gfx-neutral-400 transition-colors hover:text-white" aria-label={`More options for ${account.account}`}><MoreDotsIcon /></button>
-                </div>
-              </div>
-            )
-          })}
-
-          {rows.length === 0 && <div className="flex h-38 items-center justify-center border-t border-gfx-green-900 font-acid text-sm text-gfx-neutral-400">No accounts found</div>}
-        </div>
+            {rows.length === 0 && (
+              <tr>
+                <td colSpan={9} className="h-38 text-center font-acid text-sm text-gfx-neutral-400">No accounts found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
       <div className="h-6.5" aria-hidden="true" />
-    </section>
+    </GlassCard>
   )
 }
 
@@ -197,23 +197,24 @@ export function Frame518Dashboard({ onTransferClick }: Frame518DashboardProps) {
       </section>
 
       <div className="-ml-px mr-0.5 mt-[3.4375rem] flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <AccountTabs active={filter} onChange={setFilter} />
+        <div className="w-[27.8125rem] max-w-full [&_.mode-toggle]:h-11.5" data-account-filter>
+          <ModeToggle
+            options={[...ACCOUNT_FILTER_OPTIONS]}
+            activeIndex={ACCOUNT_FILTER_VALUES.indexOf(filter)}
+            onChange={index => setFilter(ACCOUNT_FILTER_VALUES[index] ?? 'all')}
+            buttonClassName="font-medium"
+          />
+        </div>
         <div className="flex w-full items-center gap-2 lg:w-auto">
-          <label className="relative block h-11 w-full lg:w-[17.9375rem]">
-            <SearchIcon size={14} color="currentColor" className="pointer-events-none absolute left-5 top-1/2 z-10 -translate-y-1/2 text-gfx-neutral-400" />
-            <input
-              type="search"
-              value={query}
-              onChange={event => setQuery(event.target.value)}
-              placeholder="Search for"
-              aria-label="Search accounts"
-              className="h-full w-full rounded-full border border-gfx-green-200 bg-gfx-green-800 pl-11 pr-4 font-acid text-base text-white outline-none placeholder:text-gfx-neutral-400 focus:border-gfx-green-300"
-            />
-          </label>
-          <SecondaryButton className="w-36.5 shrink-0" onClick={() => navigate('/tradelocker/accounts')}>
+          <SearchInput
+            value={query}
+            onChange={setQuery}
+            className="w-full lg:w-[17.9375rem] [&_input]:h-11 [&_input]:bg-gfx-green-800 [&_input]:pl-11 [&_input]:text-base"
+          />
+          <SparkleButton className="w-36.5 shrink-0 px-4" onClick={() => navigate('/tradelocker/accounts')} data-add-account>
             <span className="text-xl leading-none">+</span>
             <span>Add New</span>
-          </SecondaryButton>
+          </SparkleButton>
         </div>
       </div>
 

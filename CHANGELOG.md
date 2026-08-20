@@ -1,5 +1,7 @@
 # Changelog
 
+- Replaced the Frame 518 accounts area's bespoke tabs, action button, and grid-based table shell with the canonical `ModeToggle`, `SparkleButton`, `SearchInput`, `GlassCard`, `GlowButton`, and semantic table pattern from the GenesisFX design system while preserving filtering, search, and account navigation.
+
 - Replaced the Frame 518 balance hero's bespoke card and secondary actions with the canonical `GlassBannerCard` and four `SparkleButton` controls from the GenesisFX design system.
 
 - Replaced the `/home` dashboard body with the Figma Frame 518 composition (`4037:117903`): balance hero, eight product cards, account filters/search, and the two-row trading accounts table, reusing the existing GenesisFX design-system controls and route behavior.
