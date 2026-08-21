@@ -45,21 +45,24 @@ function SectionHeading({ children, count }: { children: string; count?: string 
 
 function FeaturedStream() {
   return (
-    <article className="relative h-[561px] overflow-hidden rounded-[18.563px] border border-gfx-green-200 bg-[#07100d]" data-featured-stream>
+    <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-[561px] overflow-hidden" data-featured-stream>
       <img src="/images/streaming-chart.png" alt="EURUSD trading chart" className="absolute inset-0 size-full object-cover" />
-      <div className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-[18px] border border-white/10 bg-[#07100d]/95 px-6 backdrop-blur-sm">
-        <span className="grid size-[70px] shrink-0 place-items-center rounded-full border border-gfx-green-200 bg-gfx-green-800 text-2xl text-white">S</span>
+      <div
+        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-full border-0 bg-[rgba(12,19,17,0.68)] px-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur-[24px]"
+        data-featured-stream-overlay
+      >
+        <span className="theme-preserve-light grid size-[70px] shrink-0 place-items-center rounded-full border border-[#064B34] bg-[#021B13] text-2xl text-white">S</span>
         <div className="ml-5">
-          <h2 className="text-xl text-white">Stream Test</h2>
-          <p className="mt-2 text-sm text-gfx-neutral-400">EURUSD</p>
+          <h2 className="theme-preserve-light text-xl text-white">Stream Test</h2>
+          <p className="mt-2 text-sm text-[#A0A0A0]">EURUSD</p>
         </div>
         <div className="ml-3 mt-8 flex gap-2">
-          <span className="rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">Forex</span>
-          <span className="rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">English</span>
+          <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">Forex</span>
+          <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">English</span>
         </div>
         <PrimaryPillButton className="ml-auto min-w-[206px]">Watch now</PrimaryPillButton>
       </div>
-    </article>
+    </GlassCard>
   )
 }
 

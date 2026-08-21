@@ -114,3 +114,11 @@ STATUS: VERIFIED by independent verifier
 - Quality contract: preserve stable dimensions, black icon paint on the light GlowButton fill, native button semantics, visible focus treatment, `44px` minimum primary target height, no mobile overflow, and semantic light-theme parity.
 - Highest risk: SparkleButton's default/light-theme geometry overriding the locked `171×46px` dimensions, or the icon inheriting GlowButton's light-theme label color instead of remaining black.
 - Local validation: `pnpm build` passed (`282` modules). Browser QA passed dark/light at `1920×1027`, intermediate `960×900`, and mobile `390×844`; the measured actions are exactly `171×46px` and `197×44px`, the supplied icon is exactly `18×18px` and precedes the label, both component identities are verified, and there are zero runtime errors, failed responses, or horizontal overflow. Automated axe/Lighthouse remains not tested because neither package is installed; the existing native-button semantics, global focus-visible treatment, reduced-motion, typography-floor, and responsive checks passed.
+
+## 13. Operator refinement — featured stream glass surfaces
+
+- Source: operator screenshot received 2026-08-21 showing the EURUSD featured chart and its `Stream Test` overlay.
+- Component contract: the `992×561px` featured stream container uses `GlassCard` with the `light` variant; the chart remains the load-bearing media layer.
+- Overlay contract: the internal `Stream Test` surface is a full pill (`rounded-full`), has no border, uses a translucent dark glass fill, and applies `24px` backdrop blur so the chart remains visible without compromising copy contrast.
+- Geometry lock: preserve the existing `19px` horizontal inset, `26px` bottom inset, and `111px` minimum overlay height; do not move the avatar, metadata, tags, or `Watch now` action.
+- Quality contract: semantic light/dark outer surface, overlay text readable over representative chart states, no text below `12px`, no document overflow at mobile/intermediate/desktop, and reduced-motion content parity.
