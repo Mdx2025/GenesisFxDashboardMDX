@@ -11,6 +11,7 @@ import {
   ComissionsIcon, PayoutsIcon, MarketingIcon, StatisticsIcon,
 } from '@/components/icons'
 import { navItems, partnerNavItems } from '@/data/navigation'
+import { ClaimUsernameModal } from '@/components/modals/ClaimUsernameModal'
 import type { ComponentType } from 'react'
 
 const iconMap: Record<string, ComponentType<{ size?: number; color?: string }>> = {
@@ -44,6 +45,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   const isPartner = location.pathname.startsWith('/partner')
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({})
   const [collapsed, setCollapsed] = useState(false)
+  const [activeModal, setActiveModal] = useState<string | null>(null)
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({})
   const navListRef = useRef<HTMLUListElement>(null)
 
@@ -145,8 +147,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                       const next: Record<string, boolean> = {}
                       if (!wasOpen) next[item.id] = true
                       return next
-                    }) : undefined}
-                    as={item.submenu ? 'button' : 'div'}
+                    }) : item.opensModal ? () => setActiveModal(item.opensModal!) : undefined}
+                    as={item.submenu || item.opensModal ? 'button' : 'div'}
                   >
                     {Icon && <Icon />}
                     <span className="optical-text sidebar-hide">{item.label}</span>
@@ -162,7 +164,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
                 )
                 return (
                   <li key={item.id}>
-                    {item.submenu ? navContent : item.disabled ? (
+                    {item.submenu || item.opensModal ? navContent : item.disabled ? (
                       <div aria-disabled="true">{navContent}</div>
                     ) : (
                       <Link to={item.href} aria-current={isActive ? 'page' : undefined}>
@@ -236,6 +238,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </div>
         </div>
       </aside>
+      <ClaimUsernameModal open={activeModal === 'claim-username'} onClose={() => setActiveModal(null)} />
     </>
   )
 }

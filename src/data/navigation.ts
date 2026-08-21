@@ -6,6 +6,7 @@ export interface NavItem {
   active?: boolean
   activeOn?: string[]
   disabled?: boolean
+  opensModal?: string
   submenu?: { label: string; href: string; disabled?: boolean }[]
 }
 
@@ -25,7 +26,7 @@ export const navItems: NavItem[] = [
     { label: 'Download App', href: '/download' },
   ]},
   { id: 'leaderboards', label: 'Leaderboards', icon: 'leaderboards', href: '#', disabled: true },
-  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', disabled: true },
+  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', opensModal: 'claim-username' },
   { id: 'news', label: 'Market Watch', icon: 'news', href: '/news' },
   { id: 'academy', label: 'Academy', icon: 'academy', href: '/academy' },
 ]

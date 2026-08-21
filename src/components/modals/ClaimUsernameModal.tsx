@@ -1,0 +1,205 @@
+import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
+import gsap from 'gsap'
+import { GlassCard, PrimaryPillButton } from '../ui'
+import { AtIcon, AtGlyphIcon, CheckIcon } from '../icons'
+
+interface ClaimUsernameModalProps {
+  open: boolean
+  onClose: () => void
+}
+
+const CARD_W = 755
+const CARD_H = 551
+
+export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+  const [username, setUsername] = useState('')
+  const [scale, setScale] = useState(1)
+
+  const handleClose = useCallback(() => {
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) {
+      onClose()
+      return
+    }
+    gsap.to(modal, { opacity: 0, scale: 0.96, duration: 0.2, ease: 'power2.in' })
+    gsap.to(overlay, {
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power2.in',
+      onComplete: () => {
+        setMounted(false)
+        onClose()
+      },
+    })
+  }, [onClose])
+
+  useEffect(() => {
+    if (open) {
+      setMounted(true)
+      setUsername('')
+    }
+  }, [open])
+
+  useLayoutEffect(() => {
+    if (!mounted) return
+    function measure() {
+      setScale(Math.min(1, (window.innerWidth * 0.95) / CARD_W, (window.innerHeight * 0.95) / CARD_H))
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [mounted])
+
+  useLayoutEffect(() => {
+    if (!mounted) return
+    const overlay = overlayRef.current
+    const modal = modalRef.current
+    if (!overlay || !modal) return
+    gsap.set(overlay, { opacity: 0 })
+    gsap.set(modal, { opacity: 0, scale: 0.96 })
+    gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
+  }, [mounted])
+
+  useEffect(() => {
+    if (!mounted) return
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') handleClose()
+    }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [mounted, handleClose])
+
+  if (!mounted) return null
+
+  const available = username.trim().length > 0
+
+  return (
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-gfx-overlay backdrop-blur-sm"
+      onClick={(e) => {
+        if (e.target === overlayRef.current) handleClose()
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Claim your username"
+    >
+      <div ref={modalRef} style={{ width: CARD_W * scale, height: CARD_H * scale }}>
+        <div style={{ width: CARD_W, height: CARD_H, transform: `scale(${scale})`, transformOrigin: 'top left' }}>
+          <GlassCard
+            variant="light"
+            divider="none"
+            glow={false}
+            rounded="18.563px"
+            className="surface-raised overflow-hidden w-full h-full"
+            style={{ border: '1.16px solid #0C1311', boxShadow: '0 4.641px 23.204px rgba(0,0,0,0.03)' }}
+          >
+            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[18.563px]" aria-hidden="true">
+              <div
+                className="theme-decorative-glow absolute w-[493px] h-[278px] -translate-x-1/2 bg-[#064B34] rounded-full"
+                style={{ left: 'calc(50% + 19px)', bottom: '-197.16px', filter: 'url(#blur-157)' }}
+              />
+            </div>
+
+            <button
+              onClick={handleClose}
+              className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity w-6 h-6"
+              style={{ left: '721.84px', top: '18.84px' }}
+              aria-label="Close modal"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            <div
+              className="absolute w-[73px] h-[73px] rounded-[18px] overflow-hidden"
+              style={{ left: '95.84px', top: '119.84px' }}
+              aria-hidden="true"
+            >
+              <div className="absolute inset-0 rounded-[22px] bg-[#0C1311] overflow-hidden">
+                <div
+                  className="absolute w-[133px] h-[74px] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#064B34] rounded-full theme-decorative-glow"
+                  style={{ top: 'calc(50% - 57.5px)', filter: 'url(#blur-28)' }}
+                />
+                <div
+                  className="absolute w-[133px] h-[74px] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#064B34] rounded-full theme-decorative-glow"
+                  style={{ top: 'calc(50% + 64.5px)', filter: 'url(#blur-28)' }}
+                />
+                <AtGlyphIcon size={27} className="absolute inset-[31.51%]" />
+              </div>
+            </div>
+
+            <h3
+              className="absolute -translate-y-1/2 text-white text-[36px] font-acid font-normal leading-normal whitespace-nowrap"
+              style={{ left: '189.84px', top: '135.34px' }}
+            >
+              Claim your username
+            </h3>
+
+            <p
+              className="absolute text-[#808080] text-base font-acid font-medium leading-[24.44px]"
+              style={{ left: '189.84px', top: '166.84px' }}
+            >
+              Required to unlock PAMM, Copy Trading, Signals &amp; Live.
+              <br />
+              Shown publicly on leaderboards and your profile.
+            </p>
+
+            <label
+              htmlFor="claim-username-input"
+              className="absolute -translate-y-1/2 text-[#ECECEC] text-base font-acid font-medium leading-[24.44px]"
+              style={{ left: '102px', top: '251.5px' }}
+            >
+              User Name
+            </label>
+
+            <div
+              className="absolute -translate-x-1/2 w-[562px] h-[50px] rounded-[30px] bg-[#0C1311] border border-[#00B38C]"
+              style={{ left: 'calc(50% - 0.5px)', top: '272px' }}
+            >
+              <AtIcon
+                size={14}
+                className="absolute left-[25px] top-1/2 -translate-y-1/2 pointer-events-none"
+              />
+              <input
+                id="claim-username-input"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="t.shepang"
+                className="w-full h-full bg-transparent outline-none pl-[48px] pr-[60px] text-base font-acid font-medium leading-[24.44px] text-[#606060] placeholder:text-[#606060]"
+              />
+              {available && (
+                <CheckIcon size={17.039} className="absolute left-[529px] top-[16px] pointer-events-none" />
+              )}
+            </div>
+
+            {available && (
+              <span
+                className="absolute -translate-y-1/2 text-[#00B38C] text-base font-acid font-normal leading-[1.2]"
+                style={{ left: '102px', top: '342.5px' }}
+              >
+                Available
+              </span>
+            )}
+
+            <PrimaryPillButton
+              onClick={handleClose}
+              className="absolute left-1/2 -translate-x-1/2 !w-[561px]"
+              style={{ top: '377.84px' }}
+            >
+              Continue
+            </PrimaryPillButton>
+          </GlassCard>
+        </div>
+      </div>
+    </div>
+  )
+}
