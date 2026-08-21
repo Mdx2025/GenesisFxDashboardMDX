@@ -48,7 +48,7 @@ await page.waitForURL(/\/leaderboards$/)
 await page.getByRole('heading', { name: 'Leaderboard', exact: true }).waitFor({ state: 'visible' })
 
 async function inspectState(index) {
-  const tab = page.getByRole('tab').nth(index)
+  const tab = page.locator('[data-leaderboard-mode-toggle] button').nth(index)
   await tab.click()
   const sectionTitle = await page.locator('#leaderboard-section-title').innerText()
   const standardTable = page.locator('[data-leaderboard-table="standard"]')
@@ -91,6 +91,9 @@ await page.evaluate(() => document.fonts.ready)
 const mobileOverflow = await page.evaluate(() => ({ x: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1 }))
 
 const failures = []
+const leaderboardModeToggle = await page.locator('[data-leaderboard-mode-toggle] .mode-toggle').count()
+const legacyPillTabs = await page.locator('[data-leaderboard-mode-toggle] .pill-tabs').count()
+if (leaderboardModeToggle !== 1 || legacyPillTabs !== 0) failures.push(`leaderboard tabs primitive mismatch: ${JSON.stringify({ leaderboardModeToggle, legacyPillTabs })}`)
 for (const modal of [darkModal, lightModal]) {
   if (!modal.rect || Math.abs(modal.rect.width - 755) > 1 || Math.abs(modal.rect.height - 551) > 1) failures.push(`modal geometry mismatch: ${JSON.stringify(modal.rect)}`)
 }

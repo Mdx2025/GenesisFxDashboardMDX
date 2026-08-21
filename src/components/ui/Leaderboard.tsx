@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { GlassCard } from './GlassCard'
-import { PillTabs } from './PillTabs'
+import { ModeToggle } from './ModeToggle'
 
 export const LEADERBOARD_TABS = ['Top traders', 'Most Profitable', '10X Challenge', 'Demo Accounts'] as const
 export type LeaderboardTab = (typeof LEADERBOARD_TABS)[number]
@@ -13,12 +13,14 @@ interface LeaderboardTabsProps {
 
 export function LeaderboardTabs({ activeIndex, onChange, className = '' }: LeaderboardTabsProps) {
   return (
-    <PillTabs
-      options={[...LEADERBOARD_TABS]}
-      activeIndex={activeIndex}
-      onChange={onChange}
-      className={`leaderboard-tabs [&>button]:!px-8 ${className}`}
-    />
+    <div className={`w-full max-w-[936px] ${className}`} data-leaderboard-mode-toggle>
+      <ModeToggle
+        options={[...LEADERBOARD_TABS]}
+        activeIndex={activeIndex}
+        onChange={onChange}
+        buttonClassName="!px-4 sm:!px-8"
+      />
+    </div>
   )
 }
 
