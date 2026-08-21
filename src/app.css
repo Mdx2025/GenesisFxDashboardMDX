@@ -492,6 +492,15 @@ html[data-theme] .surface-raised-border {
   border-color: var(--color-gfx-surface-raised-border);
 }
 
+html[data-theme='light'] .claim-username-icon-well {
+  background: var(--color-gfx-surface-progress);
+  border: 1px solid color-mix(in srgb, var(--color-gfx-green-300) 35%, transparent);
+}
+
+html[data-theme='light'] .claim-username-icon-well svg g {
+  mix-blend-mode: normal !important;
+}
+
 html[data-theme='light'] .weekly-stat-active.glass-card,
 html[data-theme='light'] .weekly-stat-inactive.glass-card {
   box-shadow: none;

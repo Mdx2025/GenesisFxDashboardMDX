@@ -16,6 +16,7 @@ const REFERENCE_USERNAME = 't.shepang'
 export function ClaimUsernameModal({ open, onClose, onContinue }: ClaimUsernameModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
   const [mounted, setMounted] = useState(false)
   const [username, setUsername] = useState(REFERENCE_USERNAME)
   const [scale, setScale] = useState(1)
@@ -37,6 +38,7 @@ export function ClaimUsernameModal({ open, onClose, onContinue }: ClaimUsernameM
         setMounted(false)
         onClose()
         afterClose?.()
+        requestAnimationFrame(() => triggerRef.current?.focus())
       },
     })
   }, [onClose])
@@ -46,6 +48,7 @@ export function ClaimUsernameModal({ open, onClose, onContinue }: ClaimUsernameM
 
   useEffect(() => {
     if (open) {
+      triggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
       setMounted(true)
       setUsername(REFERENCE_USERNAME)
     }
@@ -76,6 +79,21 @@ export function ClaimUsernameModal({ open, onClose, onContinue }: ClaimUsernameM
     if (!mounted) return
     function handleKey(e: KeyboardEvent) {
       if (e.key === 'Escape') handleClose()
+      if (e.key !== 'Tab' || !modalRef.current) return
+
+      const focusable = Array.from(modalRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
+      ))
+      if (!focusable.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
@@ -131,7 +149,7 @@ export function ClaimUsernameModal({ open, onClose, onContinue }: ClaimUsernameM
               style={{ left: '95.84px', top: '119.84px' }}
               aria-hidden="true"
             >
-              <div className="absolute inset-0 overflow-hidden rounded-[22px] bg-gfx-surface-icon-well">
+              <div className="claim-username-icon-well absolute inset-0 overflow-hidden rounded-[22px] bg-gfx-surface-icon-well">
                 <div
                   className="absolute w-[133px] h-[74px] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#064B34] rounded-full theme-decorative-glow"
                   style={{ top: 'calc(50% - 57.5px)', filter: 'url(#blur-28)' }}
