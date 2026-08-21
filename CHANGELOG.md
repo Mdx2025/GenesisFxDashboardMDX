@@ -1,6 +1,6 @@
 # Changelog
 
-- Wired the sidebar's Streaming item to a new `ClaimUsernameModal` recreated pixel-perfect from Figma Frame 2085662761 (`4037:107838`), reusing the shared GSAP modal shell, `GlassCard`, and blur filter registry; added the `PrimaryPillButton` design-system control plus the `AtIcon`, `AtGlyphIcon`, and `CheckIcon` icons it needs.
+- Wired the sidebar's Leaderboards item to the pixel-perfect `ClaimUsernameModal` from Figma Frame 2085662761 (`4037:116043`), restored the reference username/availability state, documented `PrimaryPillButton` in `/design-system`, and added repeatable desktop/mobile interaction and geometry QA.
 
 - Replaced the Frame 518 accounts area's bespoke tabs, action button, and grid-based table shell with the canonical `ModeToggle`, `SparkleButton`, `SearchInput`, `GlassCard`, `GlowButton`, and semantic table pattern from the GenesisFX design system while preserving filtering, search, and account navigation.
 

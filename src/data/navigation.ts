@@ -25,8 +25,8 @@ export const navItems: NavItem[] = [
     { label: 'Signals', href: '/gensocial/signals' },
     { label: 'Download App', href: '/download' },
   ]},
-  { id: 'leaderboards', label: 'Leaderboards', icon: 'leaderboards', href: '#', disabled: true },
-  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', opensModal: 'claim-username' },
+  { id: 'leaderboards', label: 'Leaderboards', icon: 'leaderboards', href: '#', opensModal: 'claim-username' },
+  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', disabled: true },
   { id: 'news', label: 'Market Watch', icon: 'news', href: '/news' },
   { id: 'academy', label: 'Academy', icon: 'academy', href: '/academy' },
 ]

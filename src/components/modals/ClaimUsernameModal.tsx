@@ -10,12 +10,13 @@ interface ClaimUsernameModalProps {
 
 const CARD_W = 755
 const CARD_H = 551
+const REFERENCE_USERNAME = 't.shepang'
 
 export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState(REFERENCE_USERNAME)
   const [scale, setScale] = useState(1)
 
   const handleClose = useCallback(() => {
@@ -40,7 +41,7 @@ export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
   useEffect(() => {
     if (open) {
       setMounted(true)
-      setUsername('')
+      setUsername(REFERENCE_USERNAME)
     }
   }, [open])
 
@@ -87,7 +88,7 @@ export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
       }}
       role="dialog"
       aria-modal="true"
-      aria-label="Claim your username"
+      aria-labelledby="claim-username-title"
     >
       <div ref={modalRef} style={{ width: CARD_W * scale, height: CARD_H * scale }}>
         <div style={{ width: CARD_W, height: CARD_H, transform: `scale(${scale})`, transformOrigin: 'top left' }}>
@@ -137,6 +138,7 @@ export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
             </div>
 
             <h3
+              id="claim-username-title"
               className="absolute -translate-y-1/2 text-white text-[36px] font-acid font-normal leading-normal whitespace-nowrap"
               style={{ left: '189.84px', top: '135.34px' }}
             >
@@ -174,7 +176,9 @@ export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="t.shepang"
-                className="w-full h-full bg-transparent outline-none pl-[48px] pr-[60px] text-base font-acid font-medium leading-[24.44px] text-[#606060] placeholder:text-[#606060]"
+                autoFocus
+                autoComplete="username"
+                className="w-full h-full bg-transparent outline-none focus-visible:!outline-none pl-[48px] pr-[60px] text-base font-acid font-medium leading-[24.44px] text-[#606060] placeholder:text-[#606060]"
               />
               {available && (
                 <CheckIcon size={17.039} className="absolute left-[529px] top-[16px] pointer-events-none" />
@@ -192,6 +196,7 @@ export function ClaimUsernameModal({ open, onClose }: ClaimUsernameModalProps) {
 
             <PrimaryPillButton
               onClick={handleClose}
+              disabled={!available}
               className="absolute left-1/2 -translate-x-1/2 !w-[561px]"
               style={{ top: '377.84px' }}
             >

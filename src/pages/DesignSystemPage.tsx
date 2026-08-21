@@ -5,6 +5,7 @@ import {
   FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard, FaqCard,
   TradingCalendar, GlowEllipse,
   PlatformTabs, AppFeatureCard, InstallStepCard,
+  PrimaryPillButton,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -324,6 +325,15 @@ export default function DesignSystemPage() {
               </div>
             </div>
             <p className="text-caption text-gfx-neutral-500 mt-2">Dark green pill with subtle sparkle dust — used for filter actions</p>
+          </Subsection>
+
+          <Subsection title="Primary Pill Button — PrimaryPillButton">
+            <div className="max-w-[561px] space-y-3">
+              <PrimaryPillButton className="w-full">Continue</PrimaryPillButton>
+              <p className="text-caption text-gfx-neutral-500">
+                Pale primary action with the Genesis green hover glow — used by onboarding and identity modals.
+              </p>
+            </div>
           </Subsection>
 
         </Section>
