@@ -14,6 +14,7 @@ import NotebookView from '@/pages/journal/NotebookView'
 import ReplayView from '@/pages/journal/ReplayView'
 import NewNoteModal from '@/pages/journal/NewNoteModal'
 import NewFolderModal from '@/pages/journal/NewFolderModal'
+import { AiCoachModal } from '@/components/modals/AiCoachModal'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
@@ -267,6 +268,7 @@ export default function JournalPage() {
   const [activeTab, setActiveTab] = useState(0)
   const [newNoteOpen, setNewNoteOpen] = useState(false)
   const [newFolderOpen, setNewFolderOpen] = useState(false)
+  const [aiCoachOpen, setAiCoachOpen] = useState(false)
   const swiperRef = useRef<SwiperType | null>(null)
 
   return (
@@ -289,7 +291,7 @@ export default function JournalPage() {
             <p className="text-gfx-neutral-400 text-sm font-acid">Track and analyze your trading performance</p>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
-            <AiCoachButton />
+            <AiCoachButton onClick={() => setAiCoachOpen(true)} />
             <ChatButton />
             <button className="w-3xs flex items-center justify-between gap-3 p-3 rounded-lg border border-gfx-neutral-250 hover:border-gfx-neutral-350 transition-colors cursor-pointer">
               <div className="flex flex-row gap-4">
@@ -446,6 +448,7 @@ export default function JournalPage() {
 
       <NewNoteModal open={newNoteOpen} onClose={() => setNewNoteOpen(false)} />
       <NewFolderModal open={newFolderOpen} onClose={() => setNewFolderOpen(false)} />
+      <AiCoachModal open={aiCoachOpen} onClose={() => setAiCoachOpen(false)} />
     </div>
   )
 }

@@ -530,3 +530,5 @@ export function CheckIcon({ size = 17.0391, color = '#00B38C', className }: Icon
     </svg>
   )
 }
+
+export * from './aiCoachIcons'

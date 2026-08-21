@@ -1,0 +1,68 @@
+/* AI Coach modal palette.
+   Every colour inside the modal reads one of these custom properties so the
+   light theme can remap the whole purple surface in one place instead of
+   fighting the global `html[data-theme='light']` contracts element by element. */
+.ai-coach-surface {
+  --ac-bg: var(--color-gfx-purple-bg);
+  --ac-panel: var(--color-gfx-purple-surface);
+  --ac-border: var(--color-gfx-purple-border);
+  --ac-border-hl: var(--color-gfx-purple-border-highlight);
+  --ac-accent: var(--color-gfx-purple-accent);
+  --ac-glow: var(--color-gfx-purple-glow);
+  --ac-well: var(--color-gfx-purple-well);
+  --ac-text: #ffffff;
+  --ac-muted: #808080;
+  --ac-sidebar-bg: #000000;
+  --ac-sidebar-border: var(--color-gfx-purple-border);
+  --ac-promo-label: #c084fc;
+  --ac-promo-body: #a1a1aa;
+  --ac-badge-start: var(--color-gfx-purple-badge-start);
+  --ac-btn-face: var(--color-gfx-green-lightest);
+  --ac-btn-text: #000000;
+  --ac-quiet-text: #ececec;
+  --ac-bubble: var(--color-gfx-purple-surface);
+}
+
+html[data-theme='light'] .ai-coach-surface {
+  --ac-bg: #ffffff;
+  --ac-panel: #f4ebff;
+  --ac-border: #e7dcf7;
+  --ac-border-hl: #c3a8f5;
+  --ac-accent: #6d42b8;
+  --ac-glow: #d760ff;
+  --ac-well: #f7f2ff;
+  --ac-text: #0b0714;
+  --ac-muted: #6b6b76;
+  --ac-sidebar-bg: #faf7ff;
+  --ac-sidebar-border: #ece4f7;
+  --ac-promo-label: #7c3aed;
+  --ac-promo-body: #6b6b76;
+  --ac-badge-start: #9877e2;
+  --ac-btn-face: #9fe4cd;
+  --ac-btn-text: #000000;
+  --ac-quiet-text: #3a3346;
+  --ac-bubble: #efe4ff;
+}
+
+/* The global light contracts recolour any literal white text/icon to black or
+   green. The modal drives its own palette, so opt those rules out here. */
+html[data-theme='light'] .ai-coach-surface .ac-text {
+  color: var(--ac-text) !important;
+}
+
+html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[fill='white' i],
+html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[fill='#fff' i],
+html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[fill='#ffffff' i] {
+  fill: currentColor !important;
+}
+
+html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[stroke='white' i],
+html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[stroke='#fff' i],
+html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[stroke='#ffffff' i] {
+  stroke: currentColor !important;
+}
+
+/* Decorative purple glows read as dirt on a white surface. */
+html[data-theme='light'] .ai-coach-surface .ac-glow {
+  display: none;
+}
