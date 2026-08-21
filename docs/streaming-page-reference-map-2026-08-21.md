@@ -86,3 +86,10 @@ STATUS: VERIFIED by independent verifier
 
 - **Non-visual/inferred:** Figma provides desktop frames only. For mobile/tablet, preserve hierarchy, allow tabs/category pills horizontal scrolling, stack the Home chart/chat columns, and wrap stream cards without document-level horizontal overflow.
 - Light theme is not depicted by these references. **Non-visual/inferred:** use the established semantic light-theme tokens and preserve the same hierarchy, dimensions, borders, and green accents.
+
+## 10. Implementation validation
+
+- Local browser QA at `1920×1027` verified the Home feature surface at `x=343`, `y=306.797`, `992×561px` and the chat surface at `x=1359`, `y=306.797`, `532×561px`.
+- Home exposes six category cards and one live channel; Browse exposes two stream cards; Replays exposes three; Following exposes one and transitions to the reusable empty state.
+- Continue from the Streaming username modal lands on `/streaming`; Browse channels returns the empty Following state to Browse.
+- Dark, semantic light, and `390×844` mobile states passed without runtime errors, failed responses, or document-level horizontal overflow.
