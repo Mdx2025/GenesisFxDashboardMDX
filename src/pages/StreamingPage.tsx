@@ -9,9 +9,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@/components/icons'
 import {
   GlassBannerCard,
   GlassCard,
+  GlowButton,
   PrimaryPillButton,
   SearchInput,
-  SecondaryButton,
+  SparkleButton,
   StreamCard,
   StreamingCategoryCard,
   StreamingEmptyState,
@@ -23,6 +24,20 @@ import {
 const CATEGORIES = [
   ['All', 1, true], ['Forex', 1, true], ['Crypto', 0, false], ['Indices', 0, false], ['Stocks', 0, false], ['News & Analysis', 0, false],
 ] as const
+
+function StartStreamingIcon() {
+  return (
+    <svg viewBox="0 0 18 18" className="size-[18px] text-black" fill="none" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3.48138 3.18179C3.72295 3.42384 3.72256 3.81589 3.48051 4.05745C2.09469 5.44052 1.23837 7.35106 1.23837 9.46278C1.23837 11.5992 2.11484 13.5297 3.52939 14.9165C3.77359 15.1558 3.77748 15.5479 3.53809 15.7921C3.2987 16.0363 2.90667 16.0402 2.66247 15.8008C1.02012 14.1908 0 11.9453 0 9.46278C0 7.00898 0.996647 4.78679 2.60572 3.18092C2.84777 2.93935 3.23982 2.93974 3.48138 3.18179ZM14.3374 3.24155C14.5816 3.00216 14.9736 3.00606 15.213 3.25025C16.7817 4.85045 17.75 7.04415 17.75 9.46278C17.75 11.9102 16.7586 14.1272 15.1569 15.7321C14.9153 15.9741 14.5232 15.9745 14.2812 15.7329C14.0392 15.4914 14.0388 15.0993 14.2803 14.8573C15.6598 13.4751 16.5116 11.569 16.5116 9.46278C16.5116 7.38124 15.6796 5.49526 14.3287 4.11717C14.0893 3.87297 14.0932 3.48094 14.3374 3.24155ZM5.82797 5.73738C6.06163 5.98707 6.04864 6.3789 5.79895 6.61256C5.01555 7.34567 4.5407 8.34841 4.5407 9.44809C4.5407 10.5605 5.02671 11.574 5.82659 12.3093C6.07835 12.5407 6.09484 12.9324 5.86341 13.1841C5.63199 13.4359 5.24029 13.4524 4.98853 13.221C3.95427 12.2703 3.30233 10.9343 3.30233 9.44809C3.30233 7.97918 3.93925 6.65683 4.95279 5.70835C5.20248 5.47469 5.59431 5.48769 5.82797 5.73738ZM11.965 5.76877C12.2014 5.52165 12.5934 5.51293 12.8405 5.7493C13.8289 6.6947 14.4477 8.00031 14.4477 9.44809C14.4477 10.9131 13.8141 12.2324 12.8051 13.1804C12.5559 13.4145 12.1641 13.4023 11.9299 13.1531C11.6957 12.9039 11.708 12.512 11.9572 12.2779C12.7369 11.5453 13.2093 10.5449 13.2093 9.44809C13.2093 8.36405 12.7479 7.37441 11.9845 6.64421C11.7374 6.40784 11.7287 6.01589 11.965 5.76877Z"
+        fill="currentColor"
+      />
+      <path d="M10.2424 8.18406C10.982 8.72701 11.3517 8.99849 11.3517 9.4628C11.3517 9.92712 10.982 10.1986 10.2424 10.7415C10.0383 10.8914 9.83581 11.0325 9.64975 11.1501C9.48651 11.2533 9.30164 11.36 9.11025 11.4648C8.37245 11.8686 8.00355 12.0704 7.67269 11.8469C7.34183 11.6234 7.31176 11.1554 7.25162 10.2195C7.23461 9.95487 7.22384 9.69541 7.22384 9.4628C7.22384 9.2302 7.23461 8.97073 7.25162 8.70606C7.31176 7.77017 7.34183 7.30222 7.67269 7.07869C8.00355 6.85515 8.37245 7.05705 9.11025 7.46084C9.30164 7.56559 9.48651 7.67231 9.64975 7.77547C9.83581 7.89306 10.0383 8.03418 10.2424 8.18406Z" fill="currentColor" />
+    </svg>
+  )
+}
 
 function SectionHeading({ children, count }: { children: string; count?: string }) {
   return <h2 className="text-[30px] font-normal leading-none text-white">{children}{count && <span className="ml-2 text-gfx-neutral-500">({count})</span>}</h2>
@@ -155,7 +170,18 @@ export default function StreamingPage() {
         <header className="flex flex-col gap-8 xl:flex-row xl:items-start xl:justify-between">
           <div><div className="flex items-center gap-5"><h1 className="text-h1 font-normal text-white">Streaming</h1><StreamingLiveBadge /></div><div className="mt-8"><StreamingTabs activeIndex={activeIndex} onChange={setActiveIndex} /></div></div>
           <div className="xl:pt-4">
-            <div className="flex flex-wrap items-center gap-3"><SecondaryButton className="min-w-[171px]">My streams</SecondaryButton><PrimaryPillButton className="min-w-[197px]">Start streaming</PrimaryPillButton></div>
+            <div className="flex flex-wrap items-center gap-3" data-streaming-header-actions>
+              <SparkleButton className="!h-[46px] !min-w-[171px] !rounded-[30px] px-6" data-streaming-my-streams>
+                My streams
+              </SparkleButton>
+              <GlowButton
+                label="Start streaming"
+                icon={<StartStreamingIcon />}
+                width={197}
+                height={44}
+                className="streaming-start-button"
+              />
+            </div>
             {tab === 'Browse' && <SearchInput value={query} onChange={setQuery} placeholder="Search streams, symbols.." ariaLabel="Search streaming content" className="mt-[19px] w-full xl:ml-auto xl:w-[393px]" />}
           </div>
         </header>

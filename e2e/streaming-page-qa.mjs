@@ -55,6 +55,10 @@ const homeRefinement = await page.evaluate(() => {
   const liveChat = document.querySelector('[data-live-chat-panel]')
   const carousel = document.querySelector('[data-category-carousel]')
   const streamCard = document.querySelector('[data-stream-card]')
+  const myStreams = document.querySelector('[data-streaming-my-streams]')
+  const startStreaming = document.querySelector('.streaming-start-button')
+  const startIcon = startStreaming?.querySelector('.glow-btn__icon svg')
+  const startLabel = startStreaming?.querySelector('.glow-btn__label')
   const visibleTextBelowTwelve = [...document.querySelectorAll('[data-streaming-home] *')].filter(element => {
     const style = getComputedStyle(element)
     const box = element.getBoundingClientRect()
@@ -73,6 +77,14 @@ const homeRefinement = await page.evaluate(() => {
     streamMedia: rect('[data-stream-card-media]'),
     visibleTextBelowTwelve,
     liveLabel: streamCard?.querySelector('[data-stream-card-media] span')?.textContent?.trim(),
+    headerActions: {
+      myStreams: rect('[data-streaming-my-streams]'),
+      startStreaming: rect('.streaming-start-button'),
+      startIcon: rect('.streaming-start-button .glow-btn__icon svg'),
+      usesSparkle: Boolean(myStreams?.classList.contains('sparkle-button')),
+      usesGlow: Boolean(startStreaming?.classList.contains('glow-btn')),
+      iconBeforeLabel: Boolean(startIcon && startLabel && startIcon.getBoundingClientRect().x < startLabel.getBoundingClientRect().x),
+    },
   }
 })
 
@@ -145,6 +157,7 @@ if (!states.every(state => state.active === 'true')) failures.push(`tab state mi
 if (home.categories !== 6 || home.cards !== 1) failures.push(`home content mismatch: ${JSON.stringify(home)}`)
 if (!home.featured || Math.abs(home.featured.height - 561) > 1 || !home.chat || Math.abs(home.chat.height - 561) > 1) failures.push(`home geometry mismatch: ${JSON.stringify(home)}`)
 if (homeRefinement.chatGlassCards !== 1 || homeRefinement.prizeGlassBanners !== 1) failures.push(`component primitive mismatch: ${JSON.stringify(homeRefinement)}`)
+if (!homeRefinement.headerActions.usesSparkle || !homeRefinement.headerActions.usesGlow || !homeRefinement.headerActions.iconBeforeLabel || Math.abs(homeRefinement.headerActions.myStreams?.width - 171) > 1 || Math.abs(homeRefinement.headerActions.myStreams?.height - 46) > 1 || Math.abs(homeRefinement.headerActions.startStreaming?.width - 197) > 1 || Math.abs(homeRefinement.headerActions.startStreaming?.height - 44) > 1 || Math.abs(homeRefinement.headerActions.startIcon?.width - 18) > 1 || Math.abs(homeRefinement.headerActions.startIcon?.height - 18) > 1) failures.push(`header action mismatch: ${JSON.stringify(homeRefinement.headerActions)}`)
 if (!homeRefinement.liveChat || Math.abs(homeRefinement.liveChat.width - 493) > 1 || Math.abs(homeRefinement.liveChat.height - 448) > 1 || homeRefinement.liveChatStyle?.radius !== '30px' || homeRefinement.liveChatStyle?.background !== 'rgb(12, 19, 17)') failures.push(`live chat geometry mismatch: ${JSON.stringify(homeRefinement)}`)
 if (!homeRefinement.composer || Math.abs(homeRefinement.composer.height - 70) > 1 || !homeRefinement.sendButton || Math.abs(homeRefinement.sendButton.width - 62) > 1 || Math.abs(homeRefinement.sendButton.height - 44) > 1) failures.push(`chat composer mismatch: ${JSON.stringify(homeRefinement)}`)
 if (homeRefinement.swiperSlides !== 6 || homeRefinement.carousel?.overflowX !== 'hidden' || !homeRefinement.carousel?.allowTouchMove || carouselTransformBefore === carouselTransformAfterDrag || carouselTransformBefore === carouselTransformAfter) failures.push(`category carousel mismatch: ${JSON.stringify({ homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter })}`)
