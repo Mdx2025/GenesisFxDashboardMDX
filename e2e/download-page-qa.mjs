@@ -96,6 +96,11 @@ for (const expected of expectedPlatforms) {
   if (!actual || actual.activeTab !== expected.label || actual.title !== expected.title || actual.stepTitles[0] !== expected.first) failures.push(`platform state mismatch ${expected.label}: ${JSON.stringify(actual)}`)
 }
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, viewport: { width: viewportWidth, height: viewportHeight }, sidebarLink: sidebarLink?.trim(), observation, platformResults, runtimeErrors, consoleErrors, failedResponses, failures }, null, 2))
+await page.locator('[data-download-back-home]').click()
+await page.waitForURL(/\/home$/)
+const backDestination = new URL(page.url()).pathname
+if (backDestination !== '/home') failures.push(`back button destination mismatch: ${backDestination}`)
+
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, viewport: { width: viewportWidth, height: viewportHeight }, sidebarLink: sidebarLink?.trim(), observation, platformResults, backDestination, runtimeErrors, consoleErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

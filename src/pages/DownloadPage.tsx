@@ -42,7 +42,7 @@ export default function DownloadPage() {
     <div className="min-h-dvh overflow-hidden rounded-[1.875rem] bg-gfx-sidebar pb-12" data-download-page>
       <header className="h-[7.625rem] border-b border-[#14231f]">
         <div className="mx-auto flex h-full w-[min(83.6875rem,calc(100%-2rem))] items-center xl:translate-x-[0.28125rem]">
-          <button type="button" onClick={() => navigate(-1)} className="grid size-9.5 cursor-pointer place-items-center rounded-[0.639rem] bg-gfx-green-900 text-gfx-neutral-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-glow" aria-label="Go back">
+          <button type="button" onClick={() => navigate('/home')} className="grid size-9.5 cursor-pointer place-items-center rounded-[0.639rem] bg-gfx-green-900 text-gfx-neutral-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-gfx-green-glow" aria-label="Back to home" data-download-back-home>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11.25 14.25L6 9l5.25-5.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
           <h1 className="ml-3.75 font-acid text-2xl font-normal leading-none text-white">Install GenesisFX</h1>
