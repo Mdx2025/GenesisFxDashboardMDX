@@ -91,19 +91,19 @@ function BalanceHero({ onTransferClick }: Frame518DashboardProps) {
         </div>
 
         <div className="ml-auto mr-1 hidden items-center gap-3.75 xl:flex" data-balance-actions>
-          <SparkleButton className="w-32.75" onClick={() => navigate('/deposit')}>
+          <SparkleButton className="px-6" onClick={() => navigate('/deposit')}>
             <DepositIcon size={18} color="currentColor" />
             <span>Deposit</span>
           </SparkleButton>
-          <SparkleButton className="w-35.75" onClick={() => navigate('/withdraw')}>
+          <SparkleButton className="px-6" onClick={() => navigate('/withdraw')}>
             <WithdrawIcon size={18} color="currentColor" />
             <span>Withdraw</span>
           </SparkleButton>
-          <SparkleButton className="w-33.25" onClick={onTransferClick}>
+          <SparkleButton className="px-6" onClick={onTransferClick}>
             <TransferIcon size={18} color="currentColor" />
             <span>Transfer</span>
           </SparkleButton>
-          <SparkleButton className="w-43.25 whitespace-nowrap" onClick={() => navigate('/tradelocker/accounts')}>
+          <SparkleButton className="px-6 whitespace-nowrap" onClick={() => navigate('/tradelocker/accounts')}>
             <UserIcon size={18} color="currentColor" />
             <span>New Account</span>
           </SparkleButton>

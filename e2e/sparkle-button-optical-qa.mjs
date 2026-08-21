@@ -1,30 +1,28 @@
 import { createRequire } from 'node:module'
 
 const require = createRequire('/home/clawd/.openclaw/skills/playwright-browser-automation/qa_check_layout.js')
-const { chromium } = require('playwright')
+const { connectQaBrowser } = require('/home/clawd/.openclaw/workspace/scripts/qa-remote-browser.js')
 
 const baseUrl = process.env.BASE_URL || process.env.PREVIEW_BASE_URL || 'https://genesis-fx-dashboard.apps.mdxpreview.xyz'
 const theme = process.env.THEME || 'dark'
 const outputPath = process.env.OUTPUT_PATH
 const route = process.env.ROUTE || '/home'
 
-const browser = await chromium.launch({
-  headless: true,
-  args: ['--no-sandbox', '--disable-dev-shm-usage', '--num-raster-threads=1', '--disable-software-rasterizer'],
-})
+const labels = ['Deposit', 'Withdraw', 'Transfer', 'New Account']
 
-const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 })
+const browser = await connectQaBrowser({ url: `${baseUrl}${route}` })
+const context = browser.contexts()[0]
 await context.addInitScript((selectedTheme) => {
   localStorage.setItem('genesis-fx-theme', selectedTheme)
 }, theme)
 
-const page = await context.newPage()
+const page = context.pages()[0] || await context.newPage()
+await page.setViewportSize({ width: 1440, height: 1000 })
 const runtimeErrors = []
 page.on('pageerror', (error) => runtimeErrors.push(error.message))
 await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle' })
 await page.evaluate(() => document.fonts.ready)
 
-const labels = ['Deposit', 'Withdraw', 'Transfer']
 const measurements = []
 
 for (const label of labels) {
@@ -34,7 +32,7 @@ for (const label of labels) {
     const rect = element.getBoundingClientRect()
     const content = element.querySelector('.sparkle-button__content')
     const labelNode = [...element.querySelectorAll('span')].find((node) => node.textContent?.trim() === buttonLabel && node.children.length === 0)
-    const icon = content?.querySelector(':scope > span > svg')
+    const icon = content?.querySelector(':scope > svg, :scope > span > svg')
     if (!(content instanceof HTMLElement) || !(labelNode instanceof HTMLElement) || !(icon instanceof SVGGraphicsElement)) {
       throw new Error(`Missing SparkleButton anatomy for ${buttonLabel}`)
     }
@@ -63,10 +61,14 @@ for (const label of labels) {
     const unionBottom = Math.max(glyphBottom, iconPaintBottom)
     const unionCenter = (unionTop + unionBottom) / 2
     const buttonCenter = rect.top + rect.height / 2
+    const horizontalSpace = {
+      left: Math.min(iconRect.left, labelRect.left) - rect.left,
+      right: rect.right - Math.max(iconRect.right, labelRect.right),
+    }
 
     return {
       label: buttonLabel,
-      button: { top: rect.top, height: rect.height, center: buttonCenter },
+      button: { top: rect.top, width: rect.width, height: rect.height, center: buttonCenter },
       content: { top: contentRect.top, height: contentRect.height, center: contentRect.top + contentRect.height / 2 },
       labelBox: { top: labelRect.top, height: labelRect.height, center: lineCenter },
       glyph: {
@@ -82,6 +84,7 @@ for (const label of labels) {
       },
       iconPaint: { top: iconPaintTop, bottom: iconPaintBottom, center: iconPaintCenter, delta: iconPaintCenter - buttonCenter },
       contentUnion: { top: unionTop, bottom: unionBottom, center: unionCenter, delta: unionCenter - buttonCenter },
+      horizontalSpace,
       computed: {
         paddingTop: getComputedStyle(content).paddingTop,
         lineHeight: style.lineHeight,
@@ -97,7 +100,9 @@ if (outputPath) {
 
 const result = {
   status: measurements.every((item) => (
-    Math.abs(item.glyph.delta) <= 1
+    item.horizontalSpace.left >= 20
+    && item.horizontalSpace.right >= 20
+    && Math.abs(item.glyph.delta) <= 1.5
     && Math.abs(item.iconPaint.delta) <= 1
     && Math.abs(item.contentUnion.delta) <= 1
   )) && runtimeErrors.length === 0 ? 'PASS' : 'FAIL',
