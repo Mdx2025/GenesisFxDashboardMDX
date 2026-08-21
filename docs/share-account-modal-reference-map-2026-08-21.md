@@ -7,6 +7,7 @@ STATUS: VERIFIED by independent verifier
 - Figma file: `Q5LFMKpcKD2ChXj9pyiHwk` (`Genesis-FX-Dashboard`).
 - Source screen: node `4037:112280`, `Genesis FXbook`, 1920×1027.
 - Target modal: node `4037:112759`, `Frame 427321638`, 1318×835.
+- Public-sharing disabled state: node `4037:112865`, `Account Details`, containing `Frame 427321638` at `4037:113344`.
 - Share trigger: node `4037:112667`, `Buttons`, 61×46.
 - Full source-screen screenshot: `/home/clawd/genesis-share-reference/frame_1.png` (1920×1027 source, 1024×548 MCP export).
 - Modal screenshot: `/home/clawd/genesis-share-reference/frame_2.png` (exported 1364×881, displayed by MCP at 1024×662).
@@ -51,6 +52,15 @@ Reference: `4037:112759`, `frame_1.png`, `frame_2.png`.
 - Six privacy rows begin at y=493 and step by 43px: Account Name, Balance, Equity, P&L, Closed Trades, Open Positions.
 - Labels are Acid Grotesk regular 16px white. Every row has a 44×23 active toggle aligned at x=498.
 
+### Public sharing disabled
+
+Reference: `4037:112865`, nested modal `4037:113344`.
+
+- The public-sharing card remains visible with its toggle switched off.
+- The entire lower-left control region is empty: no Share Link heading or field, no Copy/QR/External controls, no Privacy Settings heading or rows.
+- The right-column analytics remains unchanged and visible, including the three zero-stat cards, August chart, and `0 total views`.
+- Re-enabling public sharing restores the lower-left controls; this restoration behavior is inferred from the toggle contract and verified in browser QA.
+
 ### Right column analytics
 
 Reference: `4037:112759`, `frame_1.png`, `frame_2.png`.
@@ -72,4 +82,4 @@ Reference: `4037:112759`, `frame_1.png`, `frame_2.png`.
 
 1. `4037:112667`: compact 61×46 SparkleButton with a centered filled Share SVG; its position beside Deposit is contextual guidance not shown by the isolated trigger reference.
 2. `4037:112759`: large 1318×835 rounded dark glass modal with bottom-left and upper-right green atmospheric glows.
-3. `4037:112759`: asymmetric two-column composition — left privacy/share controls and right three zero-stat cards above an August green area chart.
+3. `4037:112759` / `4037:112865`: asymmetric two-column composition — enabled shows left privacy/share controls, while disabled leaves that lower-left region empty and preserves the right analytics.

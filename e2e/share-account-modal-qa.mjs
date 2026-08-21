@@ -30,6 +30,7 @@ async function observe(viewport, theme) {
   const deposit = headerActions.getByRole('button', { name: 'Deposit', exact: true })
   const trade = headerActions.getByRole('button', { name: 'Trade', exact: true })
   const [depositRect, triggerRect, tradeRect] = await Promise.all([deposit.boundingBox(), trigger.boundingBox(), trade.boundingBox()])
+  const triggerBorderRadius = await trigger.evaluate((element) => getComputedStyle(element).borderRadius)
   const triggerIconFill = await trigger.locator('svg[viewBox="0 0 18 18"] path').evaluate((element) => getComputedStyle(element).fill)
 
   await trigger.click()
@@ -81,6 +82,7 @@ async function observe(viewport, theme) {
     depositRect,
     triggerRect,
     tradeRect,
+    triggerBorderRadius,
     triggerIconFill,
     rect,
     closeRect,
@@ -108,7 +110,16 @@ const dialog = page.getByRole('dialog', { name: 'Share Account' })
 const masterSwitch = dialog.getByRole('switch', { name: 'Enable public sharing' })
 await masterSwitch.click()
 const masterSwitchChanged = await masterSwitch.getAttribute('aria-checked') === 'false'
-const privacyDisabled = await dialog.getByRole('switch', { name: 'Show Account Name' }).isDisabled()
+const publicControlsHidden = await dialog.locator('[data-share-public-controls]').count() === 0
+const offStateSwitchCount = await dialog.getByRole('switch').count()
+const analyticsRemainVisible = await dialog.locator('[data-share-chart-surface]').isVisible()
+  && await dialog.getByText('0 total views', { exact: true }).isVisible()
+const offScreenshotPath = process.env.OFF_OUTPUT_PATH
+if (offScreenshotPath) await page.screenshot({ path: offScreenshotPath })
+await masterSwitch.click()
+await dialog.locator('[data-share-public-controls]').waitFor({ state: 'attached' })
+await page.waitForFunction(() => document.querySelectorAll('[role="switch"]').length >= 7)
+const publicControlsRestored = await dialog.getByRole('switch').count() === 7
 
 await page.keyboard.press('Escape')
 await dialog.waitFor({ state: 'detached' })
@@ -123,9 +134,10 @@ if (lightScreenshotPath) await page.screenshot({ path: lightScreenshotPath })
 const lightMobile = await observe({ width: 390, height: 844 }, 'light')
 
 const failures = []
-if (!desktop.triggerRect || Math.abs(desktop.triggerRect.width - 61) > 1 || Math.abs(desktop.triggerRect.height - 46) > 1) failures.push(`trigger geometry mismatch: ${JSON.stringify(desktop.triggerRect)}`)
-if (!desktop.depositRect || !desktop.triggerRect || Math.abs(desktop.triggerRect.x - desktop.depositRect.x - desktop.depositRect.width - 12) > 1) failures.push('share trigger is not 12px after Deposit')
-if (!desktop.tradeRect || !desktop.triggerRect || Math.abs(desktop.tradeRect.x - desktop.triggerRect.x - desktop.triggerRect.width - 12) > 1) failures.push('Trade is not 12px after share trigger')
+if (!desktop.triggerRect || Math.abs(desktop.triggerRect.width - 46) > 1 || Math.abs(desktop.triggerRect.height - 46) > 1) failures.push(`trigger geometry mismatch: ${JSON.stringify(desktop.triggerRect)}`)
+if (desktop.triggerBorderRadius !== '9999px') failures.push(`share trigger is not fully round: ${desktop.triggerBorderRadius}`)
+if (!desktop.depositRect || !desktop.triggerRect || Math.abs(desktop.depositRect.x - desktop.triggerRect.x - desktop.triggerRect.width - 12) > 1) failures.push('Deposit is not 12px after share trigger')
+if (!desktop.tradeRect || !desktop.depositRect || Math.abs(desktop.tradeRect.x - desktop.depositRect.x - desktop.depositRect.width - 12) > 1) failures.push('Trade is not 12px after Deposit')
 if (desktop.triggerIconFill !== 'rgb(198, 198, 198)') failures.push(`share icon fill mismatch: ${desktop.triggerIconFill}`)
 if (!desktop.rect || Math.abs(desktop.rect.width - 1318) > 1 || Math.abs(desktop.rect.height - 835) > 1) failures.push(`desktop modal geometry mismatch: ${JSON.stringify(desktop.rect)}`)
 if (!desktop.closeRect || !desktop.rect || Math.abs(desktop.closeRect.x - desktop.rect.x - 1262.84) > 1 || Math.abs(desktop.closeRect.y - desktop.rect.y - 25.84) > 1) failures.push(`close geometry mismatch: ${JSON.stringify(desktop.closeRect)}`)
@@ -134,7 +146,7 @@ if (!desktop.centered || !mobile.centered) failures.push('modal is not centered'
 if (desktop.heading.fontSize !== '24px' || desktop.heading.fontWeight !== '400') failures.push(`heading typography mismatch: ${JSON.stringify(desktop.heading)}`)
 if (desktop.switchCount !== 7 || desktop.checkedStates.some((value) => value !== 'true')) failures.push(`switch state mismatch: ${JSON.stringify({ count: desktop.switchCount, states: desktop.checkedStates })}`)
 if (desktop.link !== 'https://dashboard.genesisfxmarkets.cr' || !desktop.viewCountVisible) failures.push('reference content mismatch')
-if (!masterSwitchChanged || !privacyDisabled) failures.push('master privacy interaction mismatch')
+if (!masterSwitchChanged || !publicControlsHidden || offStateSwitchCount !== 1 || !analyticsRemainVisible || !publicControlsRestored) failures.push(`master sharing interaction mismatch: ${JSON.stringify({ masterSwitchChanged, publicControlsHidden, offStateSwitchCount, analyticsRemainVisible, publicControlsRestored })}`)
 if (!focusReturned) failures.push('focus did not return to the share trigger')
 if (desktop.overflow.x || mobile.overflow.x) failures.push('horizontal overflow detected')
 if (lightDesktop.overflow.x || lightMobile.overflow.x) failures.push('light theme horizontal overflow detected')
@@ -179,7 +191,14 @@ const result = {
   mobile,
   lightDesktop,
   lightMobile,
-  interactions: { masterSwitchChanged, privacyDisabled, focusReturned },
+  interactions: {
+    masterSwitchChanged,
+    publicControlsHidden,
+    offStateSwitchCount,
+    analyticsRemainVisible,
+    publicControlsRestored,
+    focusReturned,
+  },
   runtimeErrors,
   failedResponses,
   failures,

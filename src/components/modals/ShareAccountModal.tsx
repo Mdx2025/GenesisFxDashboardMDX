@@ -184,6 +184,14 @@ export function ShareAccountModal({ open, onClose }: ShareAccountModalProps) {
     setCopied(true)
   }
 
+  const handleSharingChange = (checked: boolean) => {
+    setSharingEnabled(checked)
+    if (!checked) {
+      setCopied(false)
+      setQrVisible(false)
+    }
+  }
+
   if (!mounted) return null
 
   return (
@@ -223,38 +231,41 @@ export function ShareAccountModal({ open, onClose }: ShareAccountModalProps) {
             <GlassCard divider="none" glow={false} rounded="14px" position="absolute" className="surface-raised surface-raised-border left-[33.84px] top-[151.84px] h-[120px] w-[525px] overflow-hidden border-[1.16px] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]" data-share-settings-surface>
               <p className="absolute left-9 top-[34px] text-base font-medium leading-[24.44px] text-white">Enable Public Sharing</p>
               <p className="absolute left-9 top-[60px] text-sm leading-[18.8px] text-gfx-neutral-400">Allow anyone with the link to view your account</p>
-              <ToggleSwitch checked={sharingEnabled} onCheckedChange={setSharingEnabled} label="Enable public sharing" className="absolute left-[463px] top-[53px]" />
+              <ToggleSwitch checked={sharingEnabled} onCheckedChange={handleSharingChange} label="Enable public sharing" className="absolute left-[463px] top-[53px]" />
             </GlassCard>
 
-            <h3 className="absolute left-[33.84px] top-[285px] text-2xl font-normal leading-none text-white">Share Link</h3>
-            <div className="absolute left-[33.84px] top-[325.84px] flex h-[50px] w-[329px] items-center overflow-hidden rounded-[30px] border border-gfx-neutral-350 bg-gfx-surface-progress px-[18px] text-sm leading-[18.8px] text-white" data-share-link>
-              <span className="truncate">{PUBLIC_LINK}</span>
-            </div>
+            {sharingEnabled && (
+              <div data-share-public-controls>
+                <h3 className="absolute left-[33.84px] top-[285px] text-2xl font-normal leading-none text-white">Share Link</h3>
+                <div className="absolute left-[33.84px] top-[325.84px] flex h-[50px] w-[329px] items-center overflow-hidden rounded-[30px] border border-gfx-neutral-350 bg-gfx-surface-progress px-[18px] text-sm leading-[18.8px] text-white" data-share-link>
+                  <span className="truncate">{PUBLIC_LINK}</span>
+                </div>
 
-            <IconAction label={copied ? 'Link copied' : 'Copy public link'} onClick={() => void copyLink()} left={404.84}><CopyIcon /></IconAction>
-            <IconAction label={qrVisible ? 'Hide QR code' : 'Show QR code'} onClick={() => setQrVisible((value) => !value)} left={456.84}><QrIcon /></IconAction>
-            <IconAction label="Open public link" onClick={() => window.open(PUBLIC_LINK, '_blank', 'noopener,noreferrer')} left={508.84}><ExternalIcon /></IconAction>
+                <IconAction label={copied ? 'Link copied' : 'Copy public link'} onClick={() => void copyLink()} left={404.84}><CopyIcon /></IconAction>
+                <IconAction label={qrVisible ? 'Hide QR code' : 'Show QR code'} onClick={() => setQrVisible((value) => !value)} left={456.84}><QrIcon /></IconAction>
+                <IconAction label="Open public link" onClick={() => window.open(PUBLIC_LINK, '_blank', 'noopener,noreferrer')} left={508.84}><ExternalIcon /></IconAction>
 
-            {qrVisible && (
-              <div className="absolute left-[456.84px] top-[381px] z-20 grid size-[112px] grid-cols-5 gap-1 rounded-xl border border-gfx-green-200 bg-[#F1FFFA] p-3 shadow-lg" aria-label="Public link QR preview">
-                {Array.from({ length: 25 }, (_, index) => <span key={index} className={`${[0,1,2,5,7,10,11,12,14,16,18,19,20,22,24].includes(index) ? 'bg-[#021B13]' : 'bg-transparent'} rounded-[1px]`} />)}
+                {qrVisible && (
+                  <div className="absolute left-[456.84px] top-[381px] z-20 grid size-[112px] grid-cols-5 gap-1 rounded-xl border border-gfx-green-200 bg-[#F1FFFA] p-3 shadow-lg" aria-label="Public link QR preview">
+                    {Array.from({ length: 25 }, (_, index) => <span key={index} className={`${[0,1,2,5,7,10,11,12,14,16,18,19,20,22,24].includes(index) ? 'bg-[#021B13]' : 'bg-transparent'} rounded-[1px]`} />)}
+                  </div>
+                )}
+
+                <h3 className="absolute left-[33.84px] top-[402px] text-2xl font-normal leading-none text-white">Privacy Settings</h3>
+                <p className="absolute left-[33.84px] top-[439px] text-sm leading-[18.8px] text-gfx-neutral-400">Choose what information is visible on your public page.</p>
+
+                {PRIVACY_OPTIONS.map((label, index) => (
+                  <div key={label} className="absolute left-[33.84px] flex h-[23px] w-[508px] items-center justify-between" style={{ top: 491.84 + index * 43 }}>
+                    <span className="text-base leading-[1.2] text-white">{label}</span>
+                    <ToggleSwitch
+                      checked={privacy[label]}
+                      onCheckedChange={(checked) => setPrivacy((current) => ({ ...current, [label]: checked }))}
+                      label={label}
+                    />
+                  </div>
+                ))}
               </div>
             )}
-
-            <h3 className="absolute left-[33.84px] top-[402px] text-2xl font-normal leading-none text-white">Privacy Settings</h3>
-            <p className="absolute left-[33.84px] top-[439px] text-sm leading-[18.8px] text-gfx-neutral-400">Choose what information is visible on your public page.</p>
-
-            {PRIVACY_OPTIONS.map((label, index) => (
-              <div key={label} className="absolute left-[33.84px] flex h-[23px] w-[508px] items-center justify-between" style={{ top: 491.84 + index * 43 }}>
-                <span className="text-base leading-[1.2] text-white">{label}</span>
-                <ToggleSwitch
-                  checked={privacy[label]}
-                  onCheckedChange={(checked) => setPrivacy((current) => ({ ...current, [label]: checked }))}
-                  label={label}
-                  disabled={!sharingEnabled}
-                />
-              </div>
-            ))}
 
             {['This month', 'Avg/Day', 'Best Day'].map((label, index) => (
               <GlassCard key={label} divider="none" glow={false} rounded="14px" position="absolute" className="surface-raised surface-raised-border top-[162.84px] h-[124px] w-[210px] overflow-hidden border-[1.16px] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]" style={{ left: 629.84 + index * 220 }} data-share-stat-surface>

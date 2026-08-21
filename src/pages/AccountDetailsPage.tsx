@@ -200,19 +200,19 @@ export default function AccountDetailsPage() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <SparkleButton>
-              <span className="flex items-center gap-2">
-                <DepositIcon size={16} color="#A0A0A0" />
-                <span>Deposit</span>
-              </span>
-            </SparkleButton>
             <SparkleButton
-              className="!h-[46px] !w-[61px] !min-w-[61px] !rounded-[30px] !p-0"
+              className="!h-[46px] !w-[46px] !min-w-[46px] !rounded-full !p-0"
               onClick={() => setShareModal(true)}
               aria-label="Share account"
               data-account-share-trigger
             >
               <ShareFilledIcon size={18} />
+            </SparkleButton>
+            <SparkleButton>
+              <span className="flex items-center gap-2">
+                <DepositIcon size={16} color="#A0A0A0" />
+                <span>Deposit</span>
+              </span>
             </SparkleButton>
             <GlowButton label="Trade" width={106} height={44} fontSize={16} />
           </div>
