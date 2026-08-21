@@ -56,16 +56,22 @@ const ACCOUNT_FILTER_VALUES: AccountFilter[] = ['all', 'live', 'demo']
 
 function FeatureCard({ icon, label, glowSide }: FeatureCardProps) {
   return (
-    <article className="group relative h-37 overflow-hidden rounded-[1.1602rem] border border-gfx-green-200 bg-gfx-green-800 shadow-[0_0.29rem_1.45rem_rgba(0,0,0,0.03)]">
+    <GlassCard
+      variant="light"
+      divider="none"
+      rounded="1.1602rem"
+      className="group h-37 overflow-hidden"
+      role="article"
+      data-feature-card
+    >
       <div className={`pointer-events-none absolute -top-14 h-44 w-72 rounded-full bg-gfx-green-200/55 [filter:url(#blur-100)] ${glowSide === 'right' ? '-right-28' : '-left-28'}`} aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-x-[2.5%] top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" aria-hidden="true" />
       <div className="relative z-10 flex h-full flex-col justify-center px-5.5">
         <span className="flex size-10.5 items-center justify-center rounded-[0.729rem] bg-gfx-green-900 text-gfx-green-300">
           {icon}
         </span>
         <h2 className="ml-1 mt-2 font-acid text-base font-medium leading-[1.5275rem] text-white">{label}</h2>
       </div>
-    </article>
+    </GlassCard>
   )
 }
 
