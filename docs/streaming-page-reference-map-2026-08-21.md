@@ -122,3 +122,14 @@ STATUS: VERIFIED by independent verifier
 - Overlay contract: the internal `Stream Test` surface is a full pill (`rounded-full`), has no border, uses `rgba(12,19,17,0.24)`, and applies `32px` backdrop blur plus `135%` saturation so the chart visibly refracts through the glass without compromising copy contrast.
 - Geometry lock: preserve the existing `19px` horizontal inset, `26px` bottom inset, and `111px` minimum overlay height; do not move the avatar, metadata, tags, or `Watch now` action.
 - Quality contract: semantic light/dark outer surface, overlay text readable over representative chart states, no text below `12px`, no document overflow at mobile/intermediate/desktop, and reduced-motion content parity.
+
+## 14. Operator refinement — Browse hero banner primitive
+
+- Source: operator screenshot received 2026-08-21 showing the Browse state hero with `Genesis Live`, `Browse live trading`, the live-status line, and right-side dotted texture.
+- Design route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + live codebase`, `style=existing GenesisFX glass-dashboard thesis`.
+- Visual thesis: preserve the exact Browse hierarchy and geometry while replacing the manually assembled raised surface with the canonical `GlassBannerCard` material.
+- Dials: `design_variance=1`, `motion_intensity=1`, `visual_density=6`, `art_direction=4`, `implementation_clarity=10`, `image_usage_priority=2`, `spacing_generosity=4`.
+- Geometry lock: retain `208px` minimum height, `18.563px` radius, `40px` horizontal padding, `36px` vertical padding, one-line heading, live indicator, and right-aligned dotted texture.
+- Quality contract: WCAG 2.2 AA; zero visible text below `12px`; normal text contrast `>=4.5:1`; light/dark theme parity; mobile, intermediate, and desktop containment; reduced-motion visibility; zero runtime errors or failed responses; build and browser QA required.
+- Highest risk: the banner primitive's default radius and glow shifting the established Browse geometry, or the light-theme selector measuring the semantic wrapper instead of the rendered glass surface.
+- Local validation: visual-map gate and `pnpm build` passed (`282` modules). Browser QA passed all four Streaming states plus dark/light, `1920×1027`, `960×900`, and `390×844`; Browse contains exactly one `GlassBannerCard` at `208px` high with `18.563px` radius, light glass computes to `rgba(255,255,255,0.68)` with `rgba(6,75,52,0.1)` border, and there are zero runtime errors, failed responses, typography-floor violations, or horizontal overflow.

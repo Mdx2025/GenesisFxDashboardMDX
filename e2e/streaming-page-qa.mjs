@@ -140,7 +140,17 @@ const lightFeaturedSurface = await page.locator('[data-featured-stream-overlay]'
 })
 if (process.env.STREAMING_FEATURED_LIGHT_OUTPUT_PATH) await page.screenshot({ path: process.env.STREAMING_FEATURED_LIGHT_OUTPUT_PATH, animations: 'disabled' })
 await page.locator('[data-streaming-tabs] button').nth(1).evaluate(element => element.click())
-const lightSurface = await page.locator('[data-browse-hero]').evaluate(element => {
+const browseHero = await page.locator('[data-browse-hero]').evaluate(element => {
+  const shell = element.querySelector('.glass-banner-card')
+  const box = shell?.getBoundingClientRect()
+  return {
+    usesGlassBannerCard: Boolean(shell),
+    shellCount: element.querySelectorAll('.glass-banner-card').length,
+    height: box?.height ?? null,
+    radius: shell ? getComputedStyle(shell).borderRadius : null,
+  }
+})
+const lightSurface = await page.locator('[data-browse-hero] .glass-banner-card').evaluate(element => {
   const style = getComputedStyle(element)
   const heading = getComputedStyle(document.querySelector('h1'))
   return { background: style.backgroundColor, border: style.borderColor, heading: heading.color }
@@ -182,7 +192,8 @@ if (!homeRefinement.streamCard || Math.abs(homeRefinement.streamCard.width - 381
 if (homeRefinement.visibleTextBelowTwelve) failures.push(`typography floor mismatch: ${homeRefinement.visibleTextBelowTwelve} visible nodes below 12px`)
 if (states[1].cards !== 2 || states[2].cards !== 3 || states[3].cards !== 1) failures.push(`stream card counts mismatch: ${JSON.stringify(states)}`)
 if (!emptyVisible || browseAfterEmpty !== 'browse') failures.push('following empty-state flow mismatch')
-if (lightSurface.background !== 'rgb(255, 255, 255)' || lightSurface.heading !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify(lightSurface)}`)
+if (!browseHero.usesGlassBannerCard || browseHero.shellCount !== 1 || Math.abs(browseHero.height - 208) > 1 || browseHero.radius !== '18.563px') failures.push(`browse hero component mismatch: ${JSON.stringify(browseHero)}`)
+if (lightSurface.background !== 'rgba(255, 255, 255, 0.68)' || lightSurface.border !== 'rgba(6, 75, 52, 0.1)' || lightSurface.heading !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify(lightSurface)}`)
 if (lightFeaturedSurface.title !== 'rgb(255, 255, 255)' || lightFeaturedSurface.metadata !== 'rgb(160, 160, 160)') failures.push(`featured light-theme contrast mismatch: ${JSON.stringify(lightFeaturedSurface)}`)
 if (mobileOverflow || !mobileTabsVisible) failures.push(`mobile mismatch: ${JSON.stringify({ mobileOverflow, mobileTabsVisible })}`)
 if (zoomEquivalentOverflow) failures.push('960px intermediate / 200%-zoom-equivalent horizontal overflow')
@@ -190,6 +201,6 @@ if (!reducedMotionContentVisible || !sendButtonFocused) failures.push(`accessibi
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, states, homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter, emptyVisible, browseAfterEmpty, lightFeaturedSurface, lightSurface, zoomEquivalentOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, sendButtonFocused, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, states, homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter, emptyVisible, browseAfterEmpty, browseHero, lightFeaturedSurface, lightSurface, zoomEquivalentOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, sendButtonFocused, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)
