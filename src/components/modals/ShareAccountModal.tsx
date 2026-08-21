@@ -77,7 +77,7 @@ function IconAction({ label, onClick, children, left }: { label: string; onClick
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="absolute top-[329.84px] flex size-10 items-center justify-center rounded-[10px] border-[1.16px] border-[#0C1311] bg-[#0C1311] text-[#808080] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)] transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
+      className="surface-raised surface-raised-border absolute top-[329.84px] flex size-10 items-center justify-center rounded-[10px] border-[1.16px] text-gfx-neutral-400 shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)] transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"
       style={{ left }}
     >
       {children}
@@ -204,7 +204,8 @@ export function ShareAccountModal({ open, onClose }: ShareAccountModalProps) {
             glow={false}
             rounded="30px"
             className="surface-raised size-full overflow-hidden"
-            style={{ border: '1.16px solid #0C1311', boxShadow: '0 4.641px 23.204px rgba(0,0,0,0.03)' }}
+            style={{ border: '1.16px solid var(--color-gfx-surface-raised-border)', boxShadow: '0 4.641px 23.204px rgba(0,0,0,0.03)' }}
+            data-share-modal-surface
           >
             <div className="absolute inset-0 overflow-hidden rounded-[30px] pointer-events-none" aria-hidden="true">
               <div className="theme-decorative-glow absolute h-[278px] w-[493px] rounded-full bg-[#064B34]" style={{ left: '-211px', top: '599px', filter: 'url(#blur-157)' }} />
@@ -219,14 +220,14 @@ export function ShareAccountModal({ open, onClose }: ShareAccountModalProps) {
             <h2 id="share-account-title" className="absolute left-[33.84px] top-[84px] text-2xl font-normal leading-none text-white">Share Account</h2>
             <p className="absolute left-[33.84px] top-[111px] text-sm leading-[18.8px] text-gfx-neutral-400">Create a public link to share your trading account performance with anyone.</p>
 
-            <GlassCard divider="none" glow={false} rounded="14px" position="absolute" className="left-[33.84px] top-[151.84px] h-[120px] w-[525px] overflow-hidden border-[1.16px] border-[#0C1311] bg-[#0C1311] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]">
+            <GlassCard divider="none" glow={false} rounded="14px" position="absolute" className="surface-raised surface-raised-border left-[33.84px] top-[151.84px] h-[120px] w-[525px] overflow-hidden border-[1.16px] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]" data-share-settings-surface>
               <p className="absolute left-9 top-[34px] text-base font-medium leading-[24.44px] text-white">Enable Public Sharing</p>
               <p className="absolute left-9 top-[60px] text-sm leading-[18.8px] text-gfx-neutral-400">Allow anyone with the link to view your account</p>
               <ToggleSwitch checked={sharingEnabled} onCheckedChange={setSharingEnabled} label="Enable public sharing" className="absolute left-[463px] top-[53px]" />
             </GlassCard>
 
             <h3 className="absolute left-[33.84px] top-[285px] text-2xl font-normal leading-none text-white">Share Link</h3>
-            <div className="absolute left-[33.84px] top-[325.84px] flex h-[50px] w-[329px] items-center overflow-hidden rounded-[30px] border border-[#404040] bg-[#101E1A] px-[18px] text-sm leading-[18.8px] text-white" data-share-link>
+            <div className="absolute left-[33.84px] top-[325.84px] flex h-[50px] w-[329px] items-center overflow-hidden rounded-[30px] border border-gfx-neutral-350 bg-gfx-surface-progress px-[18px] text-sm leading-[18.8px] text-white" data-share-link>
               <span className="truncate">{PUBLIC_LINK}</span>
             </div>
 
@@ -256,7 +257,7 @@ export function ShareAccountModal({ open, onClose }: ShareAccountModalProps) {
             ))}
 
             {['This month', 'Avg/Day', 'Best Day'].map((label, index) => (
-              <GlassCard key={label} divider="none" glow={false} rounded="14px" position="absolute" className="top-[162.84px] h-[124px] w-[210px] overflow-hidden border-[1.16px] border-[#0C1311] bg-[#0C1311] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]" style={{ left: 629.84 + index * 220 }}>
+              <GlassCard key={label} divider="none" glow={false} rounded="14px" position="absolute" className="surface-raised surface-raised-border top-[162.84px] h-[124px] w-[210px] overflow-hidden border-[1.16px] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]" style={{ left: 629.84 + index * 220 }} data-share-stat-surface>
                 <span className="absolute left-1/2 top-[34px] -translate-x-1/2 text-[36px] font-normal leading-none text-white">0</span>
                 <span className="absolute left-1/2 top-[75px] -translate-x-1/2 whitespace-nowrap text-base leading-[1.2] text-gfx-neutral-400">{label}</span>
               </GlassCard>
@@ -266,12 +267,12 @@ export function ShareAccountModal({ open, onClose }: ShareAccountModalProps) {
             <p className="absolute left-[calc(50%+298.5px)] top-[329px] -translate-x-1/2 text-xs font-medium leading-[1.6] text-white">AUGUST</p>
             <button type="button" aria-label="Next month" className="absolute left-[1261.84px] top-[327.84px] flex size-[18px] items-center justify-center text-gfx-neutral-400 hover:text-white focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none"><ChevronIcon direction="right" /></button>
 
-            <GlassCard divider="none" glow={false} rounded="24px" position="absolute" className="left-[629.84px] top-[387.84px] h-[294px] w-[661px] overflow-hidden border-[1.16px] border-[#0C1311] bg-[#0C1311] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]">
+            <GlassCard divider="none" glow={false} rounded="24px" position="absolute" className="surface-raised surface-raised-border left-[629.84px] top-[387.84px] h-[294px] w-[661px] overflow-hidden border-[1.16px] shadow-[0_4.641px_23.204px_rgba(0,0,0,0.03)]" data-share-chart-surface>
               <SharePerformanceChart />
               <div className="theme-decorative-glow absolute bottom-[-183px] left-[176px] h-[228px] w-[404px] rounded-full bg-[#064B34] opacity-30 [filter:url(#blur-157)]" aria-hidden="true" />
             </GlassCard>
 
-            <div className="absolute left-[644.84px] top-[703.84px] flex items-center gap-3 text-[#A0A0A0]">
+            <div className="absolute left-[644.84px] top-[703.84px] flex items-center gap-3 text-gfx-neutral-500">
               <EyeIcon />
               <span className="text-base leading-[1.2]">0 total views</span>
             </div>

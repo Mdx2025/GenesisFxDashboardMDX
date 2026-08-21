@@ -17,9 +17,11 @@ page.on('response', (response) => {
   if (response.status() >= 400) failedResponses.push({ status: response.status(), url: response.url() })
 })
 
-async function observe(viewport) {
+async function observe(viewport, theme) {
   await page.setViewportSize(viewport)
   await page.goto(targetUrl, { waitUntil: 'networkidle' })
+  await page.evaluate((nextTheme) => localStorage.setItem('genesis-fx-theme', nextTheme), theme)
+  await page.reload({ waitUntil: 'networkidle' })
   await page.evaluate(() => document.fonts.ready)
 
   const trigger = page.getByRole('button', { name: 'Share account', exact: true })
@@ -33,7 +35,13 @@ async function observe(viewport) {
   await trigger.click()
   const dialog = page.getByRole('dialog', { name: 'Share Account' })
   await dialog.waitFor({ state: 'visible' })
-  await page.waitForTimeout(450)
+  const expectedScale = Math.min(1, (viewport.width * 0.95) / 1318, (viewport.height * 0.95) / 835)
+  await page.waitForFunction(({ width, height }) => {
+    const surface = document.querySelector('[data-share-modal-surface]')
+    if (!surface) return false
+    const rect = surface.getBoundingClientRect()
+    return Math.abs(rect.width - width) <= 1 && Math.abs(rect.height - height) <= 1
+  }, { width: 1318 * expectedScale, height: 835 * expectedScale })
 
   const modal = dialog.locator(':scope > div').first()
   const rect = await modal.boundingBox()
@@ -46,8 +54,29 @@ async function observe(viewport) {
   const switches = dialog.getByRole('switch')
   const switchCount = await switches.count()
   const checkedStates = await switches.evaluateAll((elements) => elements.map((element) => element.getAttribute('aria-checked')))
+  const themeStyles = await dialog.evaluate((element) => {
+    const read = (selector) => {
+      const target = element.querySelector(selector)
+      if (!target) return null
+      const style = getComputedStyle(target)
+      return { backgroundColor: style.backgroundColor, borderColor: style.borderColor, color: style.color }
+    }
+    const chartAxis = element.querySelector('[data-share-performance-chart] text')
+    return {
+      rootTheme: document.documentElement.dataset.theme,
+      modal: read('[data-share-modal-surface]'),
+      settings: read('[data-share-settings-surface]'),
+      stat: read('[data-share-stat-surface]'),
+      chart: read('[data-share-chart-surface]'),
+      link: read('[data-share-link]'),
+      heading: read('#share-account-title'),
+      body: read('#share-account-title + p'),
+      chartAxisFill: chartAxis ? getComputedStyle(chartAxis).fill : null,
+    }
+  })
 
   return {
+    theme,
     viewport,
     depositRect,
     triggerRect,
@@ -59,6 +88,7 @@ async function observe(viewport) {
     heading,
     switchCount,
     checkedStates,
+    themeStyles,
     centered: !!rect
       && Math.abs(rect.x + rect.width / 2 - viewport.width / 2) <= 1
       && Math.abs(rect.y + rect.height / 2 - viewport.height / 2) <= 1,
@@ -71,7 +101,7 @@ async function observe(viewport) {
   }
 }
 
-const desktop = await observe({ width: 1920, height: 1027 })
+const desktop = await observe({ width: 1920, height: 1027 }, 'dark')
 if (outputPath) await page.screenshot({ path: outputPath })
 
 const dialog = page.getByRole('dialog', { name: 'Share Account' })
@@ -84,7 +114,13 @@ await page.keyboard.press('Escape')
 await dialog.waitFor({ state: 'detached' })
 const focusReturned = await page.getByRole('button', { name: 'Share account', exact: true }).evaluate((element) => document.activeElement === element)
 
-const mobile = await observe({ width: 390, height: 844 })
+const mobile = await observe({ width: 390, height: 844 }, 'dark')
+await page.keyboard.press('Escape')
+await page.getByRole('dialog', { name: 'Share Account' }).waitFor({ state: 'detached' })
+const lightDesktop = await observe({ width: 1920, height: 1027 }, 'light')
+const lightScreenshotPath = process.env.LIGHT_OUTPUT_PATH
+if (lightScreenshotPath) await page.screenshot({ path: lightScreenshotPath })
+const lightMobile = await observe({ width: 390, height: 844 }, 'light')
 
 const failures = []
 if (!desktop.triggerRect || Math.abs(desktop.triggerRect.width - 61) > 1 || Math.abs(desktop.triggerRect.height - 46) > 1) failures.push(`trigger geometry mismatch: ${JSON.stringify(desktop.triggerRect)}`)
@@ -101,6 +137,38 @@ if (desktop.link !== 'https://dashboard.genesisfxmarkets.cr' || !desktop.viewCou
 if (!masterSwitchChanged || !privacyDisabled) failures.push('master privacy interaction mismatch')
 if (!focusReturned) failures.push('focus did not return to the share trigger')
 if (desktop.overflow.x || mobile.overflow.x) failures.push('horizontal overflow detected')
+if (lightDesktop.overflow.x || lightMobile.overflow.x) failures.push('light theme horizontal overflow detected')
+const expectedThemeStyles = {
+  dark: {
+    surface: 'rgb(12, 19, 17)',
+    border: 'rgb(22, 45, 37)',
+    link: 'rgb(15, 30, 25)',
+    heading: 'rgb(255, 255, 255)',
+    body: 'rgb(128, 128, 128)',
+    axis: 'rgb(96, 96, 96)',
+  },
+  light: {
+    surface: 'rgb(255, 255, 255)',
+    border: 'rgb(236, 236, 236)',
+    link: 'rgb(217, 236, 229)',
+    heading: 'rgb(0, 0, 0)',
+    body: 'rgb(64, 84, 76)',
+    axis: 'rgb(82, 99, 92)',
+  },
+}
+for (const observation of [desktop, lightDesktop]) {
+  const expected = expectedThemeStyles[observation.theme]
+  const styles = observation.themeStyles
+  if (styles.rootTheme !== observation.theme) failures.push(`${observation.theme} root theme mismatch: ${styles.rootTheme}`)
+  for (const key of ['modal', 'settings', 'stat', 'chart']) {
+    if (styles[key]?.backgroundColor !== expected.surface) failures.push(`${observation.theme} ${key} surface mismatch: ${styles[key]?.backgroundColor}`)
+    if (styles[key]?.borderColor !== expected.border) failures.push(`${observation.theme} ${key} border mismatch: ${styles[key]?.borderColor}`)
+  }
+  if (styles.link?.backgroundColor !== expected.link) failures.push(`${observation.theme} link surface mismatch: ${styles.link?.backgroundColor}`)
+  if (styles.heading?.color !== expected.heading) failures.push(`${observation.theme} heading mismatch: ${styles.heading?.color}`)
+  if (styles.body?.color !== expected.body) failures.push(`${observation.theme} body mismatch: ${styles.body?.color}`)
+  if (styles.chartAxisFill !== expected.axis) failures.push(`${observation.theme} chart axis mismatch: ${styles.chartAxisFill}`)
+}
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
@@ -109,6 +177,8 @@ const result = {
   baseUrl,
   desktop,
   mobile,
+  lightDesktop,
+  lightMobile,
   interactions: { masterSwitchChanged, privacyDisabled, focusReturned },
   runtimeErrors,
   failedResponses,

@@ -26,7 +26,7 @@ export function SharePerformanceChart() {
       <defs>
         <linearGradient id="share-performance-area" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#00B38C" stopOpacity="0.34" />
-          <stop offset="1" stopColor="#0C1311" stopOpacity="0" />
+          <stop offset="1" stopColor="var(--color-gfx-surface-raised)" stopOpacity="0" />
         </linearGradient>
         <filter id="share-performance-glow" x="-30%" y="-30%" width="160%" height="160%">
           <feGaussianBlur stdDeviation="5" />
@@ -42,10 +42,10 @@ export function SharePerformanceChart() {
       <circle cx={marker[0]} cy={marker[1]} r="3" fill="#00B38C" />
 
       {[4, 3, 2, 1, 0].map((label) => (
-        <text key={label} x="22" y={PLOT.bottom - (label / 4) * (PLOT.bottom - PLOT.top) + 4} fill="#606060" fontFamily="Acid Grotesk" fontSize="10">{label}</text>
+        <text key={label} x="22" y={PLOT.bottom - (label / 4) * (PLOT.bottom - PLOT.top) + 4} fill="var(--color-gfx-neutral-300)" fontFamily="Acid Grotesk" fontSize="10">{label}</text>
       ))}
       {Array.from({ length: 31 }, (_, day) => (
-        <text key={day} x={PLOT.left + (day / 30) * (PLOT.right - PLOT.left)} y="261" fill="#606060" fontFamily="Acid Grotesk" fontSize="8" textAnchor="middle">{day}</text>
+        <text key={day} x={PLOT.left + (day / 30) * (PLOT.right - PLOT.left)} y="261" fill="var(--color-gfx-neutral-300)" fontFamily="Acid Grotesk" fontSize="8" textAnchor="middle">{day}</text>
       ))}
     </svg>
   )
