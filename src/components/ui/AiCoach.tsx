@@ -16,19 +16,10 @@ export function AiCoachChip({ children, selected = false, onClick, className = '
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      style={{
-        ...style,
-        ...(selected
-          ? {
-              backgroundImage:
-                'radial-gradient(circle at 50% 50%, rgba(215,96,255,1) 0%, rgba(152,119,226,1) 76.923%)',
-              opacity: 0.8,
-            }
-          : undefined),
-      }}
+      style={style}
       className={`h-[38px] px-[18px] inline-flex items-center justify-center whitespace-nowrap text-sm font-acid font-normal leading-[18.8px] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${
         selected
-          ? 'ac-text rounded-[56px] text-[color:var(--ac-text)]'
+          ? 'rounded-[56px] bg-[image:var(--ac-badge-gradient)] opacity-80 text-[#ffffff]'
           : 'rounded-[36px] bg-[color:var(--ac-well)] border border-[color:var(--ac-border)] text-[color:var(--ac-accent)]'
       } ${className}`}
     >
@@ -54,7 +45,7 @@ export function AiCoachIconChip({ children, label, onClick, width = 40, classNam
       onClick={onClick}
       aria-label={label}
       style={{ width, ...style }}
-      className={`h-[33px] inline-flex items-center justify-center gap-1.5 rounded-[60px] bg-[color:var(--ac-well)] border-[0.876px] border-[color:var(--ac-border)] opacity-50 text-[color:var(--ac-accent)] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${className}`}
+      className={`h-[33px] inline-flex items-center justify-center gap-1.5 rounded-[200px] bg-[color:var(--ac-well)] border-[0.876px] border-[color:var(--ac-border)] opacity-50 text-[color:var(--ac-accent)] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${className}`}
     >
       {children}
     </button>
@@ -86,13 +77,11 @@ export function AiCoachPromptBar({
   return (
     <div className={`absolute h-[64px] ${className}`} style={style}>
       <div className="absolute left-0 top-0 h-[64px] w-[726px]">
-        <div className="absolute inset-0 rounded-[60px] bg-[color:var(--ac-panel)]" aria-hidden="true" />
         <div
-          className="absolute inset-0 rounded-[60px] border border-[color:var(--ac-border-hl)] opacity-50 pointer-events-none"
-          style={{ boxShadow: 'inset 0px -2px 13.9px -5px var(--ac-glow), inset 0px -1px 23.9px -16px var(--ac-accent)' }}
+          className="absolute inset-0 rounded-[60px] border border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 shadow-[inset_0_-2px_13.9px_-5px_var(--ac-glow),inset_0_-1px_23.9px_-16px_var(--ac-accent)] pointer-events-none"
           aria-hidden="true"
         />
-        <AiSparkleIcon size={18} className="absolute left-[24px] top-1/2 -translate-y-1/2 text-[color:var(--ac-accent)]" />
+        <AiSparkleIcon size={16} className="absolute left-[24px] top-1/2 -translate-y-1/2 text-[color:var(--ac-text)]" />
         <input
           id={inputId}
           type="text"
@@ -103,14 +92,14 @@ export function AiCoachPromptBar({
           }}
           placeholder="Type here..."
           aria-label="Ask the AI Coach"
-          className="absolute left-[54px] top-0 h-[64px] w-[570px] bg-transparent outline-none focus-visible:!outline-none text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)] placeholder:text-[color:var(--ac-muted)]"
+          className="absolute left-[56px] top-0 h-[64px] w-[560px] bg-transparent outline-none focus-visible:!outline-none text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)] placeholder:text-[color:var(--ac-muted)]"
         />
         <button
           type="button"
           onClick={onToggleIdeas}
           aria-expanded={ideasOpen}
           aria-haspopup="menu"
-          className="absolute left-[642px] top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 cursor-pointer text-[color:var(--ac-muted)] transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] rounded-full"
+          className="absolute left-[625px] top-1/2 -translate-y-1/2 inline-flex items-center gap-[9px] cursor-pointer text-[color:var(--ac-muted)] transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] rounded-full"
         >
           <AiChatIcon size={18} />
           <span className="text-sm font-acid font-normal leading-[18.8px]">Ideas</span>
@@ -120,46 +109,35 @@ export function AiCoachPromptBar({
 
       <button
         type="button"
-        onClick={onSubmit}
-        aria-label="Send message"
-        className="absolute left-[807px] top-[6px] h-[60px] w-[64px] rounded-[300px] overflow-hidden cursor-pointer transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+        aria-label="Voice input"
+        className="absolute left-[734px] top-0 size-[64px] rounded-[60px] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
       >
         <span
-          className="absolute inset-0 rounded-[300px] opacity-50 -scale-x-100"
-          style={{
-            backgroundImage: 'linear-gradient(-52.118deg, #fff 25.264%, rgb(179,146,251) 78.912%)',
-            filter: 'blur(10.55px)',
-          }}
+          className="absolute inset-0 rounded-[60px] border border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 shadow-[inset_0_-2px_13.9px_-5px_var(--ac-glow),inset_0_-1px_23.9px_-16px_var(--ac-accent)]"
           aria-hidden="true"
         />
-        <span
-          className="absolute inset-0 rounded-[300px] -scale-x-100"
-          style={{ backgroundImage: 'linear-gradient(-52.118deg, #fff 25.264%, rgb(200,175,255) 115.21%)' }}
-          aria-hidden="true"
-        />
-        <span
-          className="absolute inset-0 rounded-[300px] -scale-x-100"
-          style={{
-            backgroundImage: 'linear-gradient(-52.118deg, #fff 25.264%, rgb(200,175,255) 115.21%)',
-            filter: 'blur(4.65px)',
-          }}
-          aria-hidden="true"
-        />
-        <AiSendIcon size={18} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[#3b1d63]" />
+        <AiMicIcon size={24} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[color:var(--ac-muted)]" />
       </button>
 
       <button
         type="button"
-        aria-label="Voice input"
-        className="absolute left-[734px] top-0 size-[64px] rounded-[60px] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+        onClick={onSubmit}
+        aria-label="Send message"
+        className="absolute left-[807px] top-[4px] h-[60px] w-[64px] rounded-[300px] cursor-pointer transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
       >
-        <span className="absolute inset-0 rounded-[60px] bg-[color:var(--ac-panel)]" aria-hidden="true" />
         <span
-          className="absolute inset-0 rounded-[60px] border border-[color:var(--ac-border-hl)] opacity-50"
-          style={{ boxShadow: 'inset 0px -2px 13.9px -5px var(--ac-glow), inset 0px -1px 23.9px -16px var(--ac-accent)' }}
+          className="ac-glow absolute inset-0 rounded-[300px] bg-[linear-gradient(90deg,#fff_0%,#b392fb_100%)] opacity-50 blur-[10.55px]"
           aria-hidden="true"
         />
-        <AiMicIcon size={24} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[color:var(--ac-accent)]" />
+        <span
+          className="absolute inset-0 rounded-[300px] bg-[linear-gradient(90deg,#fff_0%,var(--ac-accent)_100%)] blur-[4.65px]"
+          aria-hidden="true"
+        />
+        <span
+          className="absolute inset-0 rounded-[300px] bg-[linear-gradient(90deg,#fff_0%,var(--ac-accent)_100%)]"
+          aria-hidden="true"
+        />
+        <AiSendIcon size={18} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black" />
       </button>
     </div>
   )

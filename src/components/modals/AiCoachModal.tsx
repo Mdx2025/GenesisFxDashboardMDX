@@ -27,12 +27,17 @@ interface AiCoachModalProps {
 
 const CARD_W = 1270
 const CARD_H = 906
-const SIDEBAR_W = 329
-const CHAT_W = 941
 
 type CoachView = 'default' | 'chat' | 'response' | 'idea'
 
 const SIDEBAR_TABS = ['Chats', 'Trades', 'Strategies'] as const
+
+/** Segmented-control slots, relative to the 276.85px tab track. */
+const TAB_SLOTS = [
+  { left: 5.45, width: 82.4 },
+  { left: 98.8, width: 82.4 },
+  { left: 177, width: 96 },
+]
 
 const DEFAULT_PROMPTS = [
   { label: 'What are my biggest weaknesses?', left: 337, top: 542, width: 266 },
@@ -232,54 +237,48 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
         <div
           data-ai-coach-surface
           data-ai-coach-view={view}
-          className="ai-coach-surface relative overflow-hidden rounded-[24px]"
+          className="ai-coach-surface relative overflow-hidden rounded-[24px] border border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] shadow-[0_24px_72px_rgba(0,0,0,0.45)]"
           style={{
             width: CARD_W,
             height: CARD_H,
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
-            background: 'var(--ac-bg)',
-            border: '1px solid var(--ac-border)',
-            boxShadow: '0 24px 72px rgba(0, 0, 0, 0.45)',
           }}
         >
           <div
-            className="ac-glow absolute -left-[80px] -top-[120px] h-[420px] w-[520px] rounded-full pointer-events-none"
-            style={{ background: 'var(--ac-glow)', opacity: 0.16, filter: 'blur(140px)' }}
-            aria-hidden="true"
-          />
-          <div
-            className="ac-glow absolute right-[60px] bottom-[-160px] h-[380px] w-[560px] rounded-full pointer-events-none"
-            style={{ background: 'var(--ac-badge-start)', opacity: 0.14, filter: 'blur(150px)' }}
+            className="ac-glow pointer-events-none absolute -left-[31.54px] top-[675.65px] h-[197.75px] w-[379.02px] opacity-50 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(168,85,247,0.55)_0%,rgba(168,85,247,0)_100%)]"
             aria-hidden="true"
           />
 
           {/* Sidebar */}
           <aside
-            className="absolute left-0 top-0 h-full overflow-hidden border-r border-[color:var(--ac-sidebar-border)]"
-            style={{ width: SIDEBAR_W, background: 'var(--ac-sidebar-bg)' }}
+            className="absolute left-0 top-0 h-full w-[329px] overflow-hidden border-r border-[color:var(--ac-sidebar-border)] bg-[color:var(--ac-sidebar-bg)]"
           >
-            <div className="absolute left-[24px] top-[22px] flex size-[38px] items-center justify-center rounded-[10.227px] bg-[color:var(--ac-panel)] text-[color:var(--ac-accent)]">
-              <AiCoachFaceIcon size={22} />
-            </div>
             <button
               type="button"
               onClick={animateClose}
               aria-label="Collapse AI Coach"
-              className="absolute left-[288px] top-[30px] cursor-pointer text-[color:var(--ac-muted)] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+              className="absolute left-[24px] top-[22px] flex size-[38px] cursor-pointer items-center justify-center rounded-[10.23px] bg-[color:var(--ac-panel)] text-[color:var(--ac-muted)] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
             >
-              <ChevronLeftIcon size={16} color="currentColor" />
+              <ChevronLeftIcon size={12} color="currentColor" />
             </button>
 
-            <div className="absolute left-[74px] top-[24px] flex items-baseline gap-2">
-              <h2 id="ai-coach-title" className="ac-text text-2xl font-acid font-normal leading-none text-[color:var(--ac-text)]">
-                AI Coach
-              </h2>
-              <span className="text-xs font-acid font-normal text-[color:var(--ac-accent)]">v2.2</span>
+            <div className="absolute left-[56px] top-[15px] flex h-[51px] w-[60px] items-center justify-center text-[color:var(--ac-accent)]">
+              <AiCoachFaceIcon size={40} />
             </div>
 
+            <h2
+              id="ai-coach-title"
+              className="ac-text absolute left-[116.13px] top-[27px] text-2xl font-acid font-normal leading-none text-[color:var(--ac-text)]"
+            >
+              AI Coach
+            </h2>
+            <span className="absolute left-[231.13px] top-[27.19px] inline-flex h-[24.72px] w-[47.79px] items-center justify-center rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] text-xs font-acid font-normal leading-[18.8px] text-[color:var(--ac-accent)]">
+              v2.2
+            </span>
+
             <PrimaryPillButton
-              className="ai-coach-cta !absolute left-[26px] top-[89px] !w-[276px] !pl-[22px] !pr-[31px]"
+              className="ai-coach-cta !absolute left-[21px] top-[89px] !w-[276px] !pl-[22px] !pr-[31px]"
               onClick={() => setView('idea')}
             >
               <span className="flex items-center gap-2.5">
@@ -288,19 +287,31 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               </span>
             </PrimaryPillButton>
 
-            <div className="absolute left-[26px] top-[152px] flex h-11 w-[276px] items-center gap-3 rounded-full border border-[color:var(--ac-sidebar-border)] px-[9px]">
-              <SearchIcon size={18} color="var(--ac-muted)" />
-              <span className="text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">Search trades</span>
+            <div className="absolute left-[21px] top-[152px] h-11 w-[276px] rounded-[60px] border border-[color:var(--ac-border)]">
+              <div className="absolute inset-0 rounded-[60px] bg-[color:var(--ac-panel)] opacity-50" aria-hidden="true" />
+              <SearchIcon size={18} color="var(--ac-muted)" className="absolute left-[14px] top-1/2 -translate-y-1/2" />
+              <span className="absolute left-[42px] top-1/2 -translate-y-1/2 text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
+                Search trades
+              </span>
             </div>
 
-            <div className="absolute left-[26px] top-[214px] flex w-[276px] items-center gap-6">
+            <div
+              className="absolute left-[26px] top-[215px] h-[39.55px] w-[276.85px] rounded-[60px] bg-[color:var(--ac-tab-track)]"
+              role="tablist"
+              aria-label="AI Coach sidebar sections"
+            >
               {SIDEBAR_TABS.map((tab, i) => (
                 <button
                   key={tab}
                   type="button"
+                  role="tab"
+                  aria-selected={activeTab === i}
                   onClick={() => setActiveTab(i)}
-                  className={`text-xs font-acid font-normal cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${
-                    activeTab === i ? 'ac-text text-[color:var(--ac-text)]' : 'text-[color:var(--ac-muted)]'
+                  style={{ left: TAB_SLOTS[i].left, width: TAB_SLOTS[i].width }}
+                  className={`absolute top-[4.95px] h-[29.66px] inline-flex items-center justify-center rounded-[56px] text-xs font-acid font-normal leading-[18.8px] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${
+                    activeTab === i
+                      ? 'bg-[image:var(--ac-badge-gradient)] opacity-80 text-[#ffffff]'
+                      : 'text-[color:var(--ac-muted)]'
                   }`}
                 >
                   {tab}
@@ -308,28 +319,40 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               ))}
             </div>
 
-            <p className="absolute left-[26px] top-[268px] text-xs font-acid font-normal text-[color:var(--ac-muted)]">RECENT CHATS</p>
+            <p className="absolute left-[26px] top-[284px] text-xs font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
+              RECENT CHATS
+            </p>
 
             <button
               type="button"
               onClick={() => setView('chat')}
-              className="absolute left-[26px] top-[306px] flex h-[52.733px] w-[276.85px] items-center rounded-[14px] border border-[color:var(--ac-sidebar-border)] bg-[color:var(--ac-well)] px-4 text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+              className="absolute left-[26px] top-[306.24px] h-[52.73px] w-[276.85px] overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
             >
-              <span className="ac-text text-xs font-acid font-normal text-[color:var(--ac-text)]">Which asset should I focus on?</span>
+              <span
+                className="ac-glow pointer-events-none absolute left-[54px] -top-[98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                aria-hidden="true"
+              />
+              <AiChatIcon size={13} className="absolute left-[22px] top-[20.67px] text-[color:var(--ac-accent)]" />
+              <span className="ac-text absolute left-[47.79px] top-1/2 -translate-y-1/2 text-xs font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
+                Which asset should I focus on?
+              </span>
             </button>
 
-            <div className="absolute left-[20px] top-[693px] h-[139px] w-[289px] overflow-hidden rounded-[18px] border border-[color:var(--ac-sidebar-border)] bg-[color:var(--ac-well)]">
-              <div className="absolute left-[25px] top-[27px] text-[color:var(--ac-accent)]">
-                <AiBulbIcon size={18} />
+            <div className="absolute left-[20px] top-[693px] h-[139px] w-[289px] overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
+              <div
+                className="ac-glow pointer-events-none absolute left-[58.45px] -top-[82.98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                aria-hidden="true"
+              />
+              <div className="absolute left-[17.78px] top-[19.79px] flex size-[32.96px] items-center justify-center rounded-[56px] bg-[image:var(--ac-badge-gradient)] opacity-80">
+                <AiBulbIcon size={18} className="text-[#ffffff]" />
               </div>
-              <p
-                className="absolute left-[53px] top-[27px] text-xs font-acid font-bold uppercase text-[color:var(--ac-promo-label)]"
-                style={{ letterSpacing: '2.3233533px', lineHeight: '15.682634px' }}
-              >
+              <p className="absolute left-[61px] top-[21px] text-xs font-acid font-bold uppercase leading-[15.68px] tracking-[2.32px] text-[color:var(--ac-promo-label)]">
                 AI Coach
               </p>
-              <p className="ac-text absolute left-[25px] top-[57px] text-base font-acid font-medium text-[color:var(--ac-text)]">AI Trade Ideas</p>
-              <p className="absolute left-[25px] top-[85px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-promo-body)]">
+              <p className="ac-text absolute left-[61px] top-[34px] text-base font-acid font-medium leading-[24.44px] text-[color:var(--ac-text)]">
+                AI Trade Ideas
+              </p>
+              <p className="absolute left-[17.78px] top-[67px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-promo-body)]">
                 Uses your trade history, live prices &amp;
                 <br />
                 market watch to generate trade ideas.
@@ -338,7 +361,20 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
           </aside>
 
           {/* Chat panel */}
-          <section className="absolute top-0 h-full" style={{ left: SIDEBAR_W, width: CHAT_W }}>
+          <section className="absolute left-[329px] top-0 h-full w-[941px] overflow-hidden">
+            {/* Spec stacks this blurred wash three times to deepen the falloff. */}
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="ac-glow pointer-events-none absolute -left-[1px] -top-[295px] h-[437.5px] w-[943.33px] bg-[color:var(--ac-blob)] blur-[150px]"
+                aria-hidden="true"
+              />
+            ))}
+            <div
+              className="ac-glow pointer-events-none absolute left-[266.73px] top-[182.03px] size-[341.17px] rounded-full bg-[color:var(--ac-orb)] mix-blend-color blur-[120.48px]"
+              aria-hidden="true"
+            />
+
             <div className="absolute left-[650px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center gap-1.5 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 text-[color:var(--ac-accent)]">
               <AiBoltIcon size={15} />
               <span className="text-xs font-acid font-normal">152</span>
@@ -361,16 +397,10 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
 
             {view === 'default' && (
               <>
-                <h3
-                  className="ac-text absolute top-[447px] whitespace-nowrap text-2xl font-acid font-normal leading-none text-[color:var(--ac-text)]"
-                  style={{ left: 'calc(50% - 199.5px)' }}
-                >
+                <h3 className="ac-text absolute top-[447px] left-[calc(50%-199.5px)] whitespace-nowrap text-2xl font-acid font-normal leading-none text-[color:var(--ac-text)]">
                   Ask me anything about your trades
                 </h3>
-                <p
-                  className="absolute top-[488px] whitespace-nowrap text-base font-acid font-medium text-[color:var(--ac-muted)]"
-                  style={{ left: 'calc(50% - 175.5px)' }}
-                >
+                <p className="absolute top-[488px] left-[calc(50%-175.5px)] whitespace-nowrap text-base font-acid font-medium text-[color:var(--ac-muted)]">
                   I can only see your trading data - nothing else.
                 </p>
                 {DEFAULT_PROMPTS.map((p) => (
@@ -434,8 +464,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             {view === 'response' && (
               <div className="absolute left-[29px] top-[67px] h-[680px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                 <div
-                  className="ac-glow absolute -left-[40px] -top-[110px] h-[220px] w-[320px] rounded-full pointer-events-none"
-                  style={{ background: 'var(--ac-glow)', opacity: 0.2, filter: 'blur(110px)' }}
+                  className="ac-glow pointer-events-none absolute -left-[40px] -top-[110px] h-[220px] w-[320px] rounded-full bg-[color:var(--ac-glow)] opacity-20 blur-[110px]"
                   aria-hidden="true"
                 />
                 <AiSparkleIcon size={16} className="absolute left-[33.18px] top-[33.18px] text-[color:var(--ac-accent)]" />
@@ -463,8 +492,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             {view === 'idea' && (
               <div className="absolute left-[29px] top-[67px] h-[614px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                 <div
-                  className="ac-glow absolute left-[179px] -top-[183px] h-[194px] w-[300px] rounded-full pointer-events-none"
-                  style={{ background: 'var(--ac-glow)', opacity: 0.22, filter: 'blur(120px)' }}
+                  className="ac-glow pointer-events-none absolute left-[179px] -top-[183px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-[0.22] blur-[120px]"
                   aria-hidden="true"
                 />
                 <AiSparkleIcon size={16} className="absolute left-[28px] top-[33px] text-[color:var(--ac-accent)]" />
@@ -507,10 +535,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                 <button
                   type="button"
                   onClick={() => setView('response')}
-                  style={{
-                    backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(215,96,255,1) 0%, rgba(152,119,226,1) 76.923%)',
-                  }}
-                  className="absolute left-[477px] top-[548px] inline-flex h-9 w-[156px] items-center justify-center gap-2 rounded-[56px] text-xs font-acid font-normal text-[color:var(--ac-quiet-text)] opacity-80 cursor-pointer transition-opacity hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                  className="absolute left-[477px] top-[548px] inline-flex h-9 w-[156px] items-center justify-center gap-2 rounded-[56px] bg-[image:var(--ac-badge-gradient)] text-xs font-acid font-normal text-[color:var(--ac-quiet-text)] opacity-80 cursor-pointer transition-opacity hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
                 >
                   <AiSparkleIcon size={16} />
                   Generate idea
@@ -519,7 +544,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             )}
 
             <AiCoachPromptBar
-              className="left-[29px] top-[768px] w-[883px]"
+              className="left-[29px] top-[768px] w-[871px]"
               value={prompt}
               onChange={setPrompt}
               onSubmit={submitPrompt}
@@ -533,8 +558,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                 role="menu"
               >
                 <div
-                  className="ac-glow absolute -left-[20px] -top-[60px] h-[140px] w-[200px] rounded-full pointer-events-none"
-                  style={{ background: 'var(--ac-glow)', opacity: 0.2, filter: 'blur(90px)' }}
+                  className="ac-glow pointer-events-none absolute -left-[20px] -top-[60px] h-[140px] w-[200px] rounded-full bg-[color:var(--ac-glow)] opacity-20 blur-[90px]"
                   aria-hidden="true"
                 />
                 <button
@@ -570,7 +594,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               </div>
             )}
 
-            <p className="absolute bottom-[38px] left-1/2 -translate-x-1/2 whitespace-nowrap text-center text-xs font-acid font-normal text-[color:var(--ac-muted)]">
+            <p className="absolute top-[853px] left-1/2 -translate-x-1/2 whitespace-nowrap text-center text-xs font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
               AI can only discuss your trading data. Not financial advice.
             </p>
           </section>

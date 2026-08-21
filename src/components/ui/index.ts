@@ -62,3 +62,4 @@ export {
   STREAMING_TABS,
 } from './Streaming'
 export type { StreamingTab } from './Streaming'
+export { AiCoachChip, AiCoachIconChip, AiCoachPromptBar, AiCoachTradeChart } from './AiCoach'
