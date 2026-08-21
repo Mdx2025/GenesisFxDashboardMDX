@@ -9,7 +9,6 @@ import {
   AiChatIcon,
   AiCoachFaceIcon,
   AiCopyIcon,
-  AiFullscreenIcon,
   AiHistoryIcon,
   AiNotebookIcon,
   AiPlusIcon,
@@ -283,7 +282,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             >
               <span className="flex items-center gap-2.5">
                 <AiPlusIcon size={18} />
-                Trade
+                New chat
               </span>
             </PrimaryPillButton>
 
@@ -375,15 +374,12 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               aria-hidden="true"
             />
 
-            <div className="absolute left-[650px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center gap-1.5 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 text-[color:var(--ac-accent)]">
+            <div className="absolute left-[700px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center gap-1.5 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 text-[color:var(--ac-accent)]">
               <AiBoltIcon size={15} />
               <span className="text-xs font-acid font-normal">152</span>
             </div>
-            <AiCoachIconChip label="Open notebook" className="!absolute left-[722px] top-[23px]">
+            <AiCoachIconChip label="Open notebook" className="!absolute left-[772px] top-[23px]">
               <AiNotebookIcon size={14} />
-            </AiCoachIconChip>
-            <AiCoachIconChip label="Toggle fullscreen" className="!absolute left-[772px] top-[23px]">
-              <AiFullscreenIcon size={15} />
             </AiCoachIconChip>
             <AiCoachIconChip label="Chat history" className="!absolute left-[822px] top-[23px]" onClick={() => setView('default')}>
               <AiHistoryIcon size={15} />
