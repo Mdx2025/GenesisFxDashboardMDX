@@ -17,8 +17,11 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
+        {PAGE_REGISTRY.filter(({ layout }) => layout === 'standalone').map(({ path, component: Page }) => (
+          <Route key={path} path={path} element={<Page />} />
+        ))}
         <Route element={<RootLayout />}>
-          {PAGE_REGISTRY.map(({ path, component: Page }) => (
+          {PAGE_REGISTRY.filter(({ layout }) => layout !== 'standalone').map(({ path, component: Page }) => (
             <Route key={path} path={path} element={<Page />} />
           ))}
           <Route path="/allpages" element={<AllPagesPage />} />

@@ -4,6 +4,7 @@ import {
   GlassCard, DividerGlow, SearchInput, Breadcrumb, ActionItem, LanguageDropdown,
   FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard, FaqCard,
   TradingCalendar, GlowEllipse,
+  PlatformTabs, AppFeatureCard, InstallStepCard,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -60,6 +61,7 @@ function TokenSwatch({ name, value, className }: { name: string; value: string; 
 
 export default function DesignSystemPage() {
   const [searchValue, setSearchValue] = useState('')
+  const [downloadPlatform, setDownloadPlatform] = useState<'ios' | 'android' | 'desktop'>('ios')
 
   return (
     <div className="min-h-0">
@@ -390,6 +392,28 @@ export default function DesignSystemPage() {
                 <p className="text-gfx-purple-accent text-sm mb-2">Purple variant, 14px radius — compact.</p>
                 <p className="text-caption text-gfx-neutral-500">GlassCard (purple, rounded: 14px)</p>
               </GlassCard>
+            </div>
+          </Subsection>
+
+          <Subsection title="Download installation — PlatformTabs, AppFeatureCard, InstallStepCard">
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+              <GlassCard divider="none" rounded="24px" className="p-6">
+                <PlatformTabs value={downloadPlatform} onChange={setDownloadPlatform} />
+                <p className="mt-4 text-caption text-gfx-neutral-500">PlatformTabs — interactive iOS, Android and Desktop variant selector</p>
+              </GlassCard>
+              <div className="space-y-3">
+                <AppFeatureCard
+                  icon={<span className="text-xl" aria-hidden="true">⌁</span>}
+                  title="Offline Ready"
+                  description="Works without internet"
+                />
+                <InstallStepCard
+                  number={1}
+                  icon={<span className="text-xl" aria-hidden="true">↥</span>}
+                  title="Tap the Share button"
+                  description="Open this page in Safari, then tap the Share icon."
+                />
+              </div>
             </div>
           </Subsection>
 

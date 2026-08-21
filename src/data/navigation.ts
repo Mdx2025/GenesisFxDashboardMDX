@@ -22,7 +22,7 @@ export const navItems: NavItem[] = [
     { label: 'PAMM', href: '/gensocial/pamm' },
     { label: 'Copy Trading', href: '/gensocial/copy-trading' },
     { label: 'Signals', href: '/gensocial/signals' },
-    { label: 'Download App', href: '#', disabled: true },
+    { label: 'Download App', href: '/download' },
   ]},
   { id: 'leaderboards', label: 'Leaderboards', icon: 'leaderboards', href: '#', disabled: true },
   { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', disabled: true },
