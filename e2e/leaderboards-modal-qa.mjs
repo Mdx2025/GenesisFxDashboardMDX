@@ -34,6 +34,10 @@ async function observe(viewport) {
   const input = page.getByLabel('User Name')
   const modal = dialog.locator(':scope > div').first()
   const rect = await modal.boundingBox()
+  const closeRect = await dialog.getByRole('button', { name: 'Close modal' }).boundingBox()
+  const identityGlyph = dialog.locator('svg[viewBox="0 0 27 27"]')
+  const identityGlyphRect = await identityGlyph.boundingBox()
+  const identityGlyphFill = await identityGlyph.locator('path').evaluate(element => getComputedStyle(element).fill)
   const computed = await page.getByRole('heading', { name: 'Claim your username' }).evaluate(element => {
     const style = getComputedStyle(element)
     return { fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: style.fontWeight, lineHeight: style.lineHeight }
@@ -41,6 +45,9 @@ async function observe(viewport) {
   return {
     viewport,
     rect,
+    closeRect,
+    identityGlyphRect,
+    identityGlyphFill,
     centered: !!rect
       && Math.abs(rect.x + rect.width / 2 - viewport.width / 2) <= 1
       && Math.abs(rect.y + rect.height / 2 - viewport.height / 2) <= 1,
@@ -75,6 +82,8 @@ const emptyState = {
 
 const failures = []
 if (!desktop.rect || Math.abs(desktop.rect.width - 755) > 1 || Math.abs(desktop.rect.height - 551) > 1) failures.push(`desktop geometry mismatch: ${JSON.stringify(desktop.rect)}`)
+if (!desktop.closeRect || !desktop.rect || Math.abs(desktop.closeRect.x - desktop.rect.x - 721.84) > 1 || Math.abs(desktop.closeRect.y - desktop.rect.y - 18.84) > 1) failures.push(`close geometry mismatch: ${JSON.stringify(desktop.closeRect)}`)
+if (!desktop.identityGlyphRect || !desktop.rect || Math.abs(desktop.identityGlyphRect.x - desktop.rect.x - 118.84) > 1 || Math.abs(desktop.identityGlyphRect.y - desktop.rect.y - 142.84) > 1 || desktop.identityGlyphFill !== 'rgb(0, 179, 140)') failures.push(`identity glyph mismatch: ${JSON.stringify({ rect: desktop.identityGlyphRect, fill: desktop.identityGlyphFill })}`)
 if (!desktop.centered || !mobile.centered) failures.push('modal is not centered')
 if (desktop.username !== 't.shepang' || !desktop.availableVisible || !desktop.continueEnabled) failures.push('reference username state mismatch')
 if (desktop.heading.fontSize !== '36px' || desktop.heading.fontWeight !== '400') failures.push(`heading typography mismatch: ${JSON.stringify(desktop.heading)}`)
