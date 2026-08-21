@@ -1,7 +1,14 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
+import { A11y, Keyboard } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import type { Swiper as SwiperType } from 'swiper'
+import 'swiper/css'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
+import { ChevronLeftIcon, ChevronRightIcon } from '@/components/icons'
 import {
+  GlassBannerCard,
+  GlassCard,
   PrimaryPillButton,
   SearchInput,
   SecondaryButton,
@@ -43,31 +50,57 @@ function FeaturedStream() {
 
 function ChatPanel() {
   return (
-    <section className="surface-raised surface-raised-border h-[561px] rounded-[18.563px] border-[1.16px] p-[19px]" aria-label="Live chat" data-stream-chat>
-      <header className="flex h-[49px] items-center gap-3 border-b border-gfx-green-200/60 px-1 text-white"><span aria-hidden="true">◯</span><h2 className="text-xl">Chat</h2><span className="ml-auto text-sm text-[#FF697C]">LIVE</span></header>
-      <div className="relative mt-5 h-[448px] overflow-hidden rounded-[18px] border border-gfx-green-200 bg-gfx-green-800/40">
-        <div className="absolute -top-64 left-0 h-[332px] w-[587px] rounded-full bg-[#064B34]/80 blur-[90px]" aria-hidden="true" />
-        <div className="relative flex h-[68px] items-center justify-between border-b border-gfx-green-200/50 px-6 text-sm text-white"><span>Live Chat</span><span className="text-gfx-neutral-400">1 watching</span></div>
-        <p className="relative mt-8 text-center text-sm text-gfx-neutral-400">Tshepang-Genesis joined</p>
-        <div className="absolute inset-x-1 bottom-0 flex h-[70px] items-center rounded-[18px] border border-gfx-green-200 bg-gfx-green-800 px-7">
-          <span className="text-sm text-gfx-neutral-500">Say something</span>
-          <button className="ml-auto grid size-11 place-items-center rounded-full bg-[#F1FFFA] text-black" aria-label="Send message">➤</button>
+    <section className="h-[561px]" aria-label="Live chat" data-stream-chat>
+      <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-full overflow-hidden p-[19px]">
+        <header className="flex h-[49px] items-center gap-3 border-b border-gfx-green-200/60 px-1 text-white">
+          <span className="size-4 rounded-full border border-current" aria-hidden="true" />
+          <h2 className="text-xl">Chat</h2>
+          <span className="ml-auto text-sm text-[#FF697C]">LIVE</span>
+        </header>
+        <div className="relative mt-5 h-[448px] w-[493px] max-w-[calc(100%+1px)] overflow-hidden rounded-[30px] bg-[#0C1311]" data-live-chat-panel>
+          <div className="pointer-events-none absolute -top-[264px] left-0 h-[332px] w-[587px] rounded-full bg-[#00B38C] opacity-45 blur-[158.05px]" aria-hidden="true" />
+          <h3 className="absolute left-[26px] top-[30px] text-base font-medium leading-[24.44px] text-[#FFFFFF]">Live Chat</h3>
+          <span className="absolute right-[26px] top-[30px] text-base font-medium leading-[24.44px] text-[#FFFFFF]">1 watching</span>
+          <p className="absolute left-1/2 top-[96px] -translate-x-1/2 whitespace-nowrap text-base leading-[19.2px] text-[#C6C6C6]">Tshepang-Genesis joined</p>
+          <form className="absolute inset-x-1 bottom-0 flex h-[70px] items-center rounded-[47px] border border-[rgba(0,66,44,0.5)] bg-[#1C1C1C] pl-[29px] pr-[18px]" onSubmit={(event) => event.preventDefault()}>
+            <label htmlFor="stream-chat-message" className="sr-only">Chat message</label>
+            <input id="stream-chat-message" type="text" placeholder="Say something" className="min-w-0 flex-1 bg-transparent text-base leading-[19.2px] text-[#FFFFFF] outline-none placeholder:text-[#FFFFFF] focus-visible:ring-0" />
+            <button type="submit" className="group relative ml-3 grid h-11 w-[62px] shrink-0 place-items-center overflow-visible rounded-[300px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10BC83] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]" aria-label="Send message">
+              <span className="absolute inset-0 rounded-[300px] bg-gradient-to-br from-[#D1D1D1] via-[#D2F5ED] to-[#D5FFF1]" aria-hidden="true" />
+              <span className="absolute inset-0 rounded-[300px] bg-gradient-to-l from-[#F0FEFE] to-transparent opacity-80 blur-[4.65px]" aria-hidden="true" />
+              <svg viewBox="0 0 18 18" className="relative size-[18px] text-black" fill="none" aria-hidden="true"><path d="M15.6 2.7 7.2 11.1M15.6 2.7l-5.3 12.6-3.1-4.2-4.5-2.4 12.9-6Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+          </form>
         </div>
-      </div>
+      </GlassCard>
     </section>
   )
 }
 
 function HomeState() {
+  const categorySwiper = useRef<SwiperType | null>(null)
+
   return (
     <div data-streaming-home>
       <div className="mt-[55px] grid gap-6 xl:grid-cols-[minmax(0,992px)_minmax(360px,532px)]"><FeaturedStream /><ChatPanel /></div>
-      <section className="mt-[74px]"><SectionHeading>Top Live Categories</SectionHeading><div className="mt-8 grid grid-flow-col auto-cols-[255px] gap-[15px] overflow-x-auto pb-2">{CATEGORIES.map(([label, watching, live]) => <StreamingCategoryCard key={label} label={label} watching={watching} live={live} />)}</div></section>
-      <section className="surface-raised surface-raised-border relative mt-5 flex min-h-[217px] max-w-[1529px] items-center overflow-hidden rounded-[18.563px] border-[1.16px] px-10 sm:px-16" data-prize-banner>
-        <div className="absolute left-1/2 top-[-264px] h-[332px] w-[587px] rounded-full bg-[#064B34]/80 blur-[90px]" aria-hidden="true" />
-        <span className="relative grid size-[79px] shrink-0 place-items-center rounded-[18px] border border-gfx-green-200 bg-gfx-green-800 text-4xl text-gfx-green-300">♕</span>
-        <div className="relative ml-9"><h2 className="text-[30px] text-white">Win $10,000 Cash Prize</h2><p className="mt-5 text-xl text-gfx-neutral-400">Stream live • Compete • Get Paid</p></div>
-        <PrimaryPillButton className="relative ml-auto min-w-[180px]">Enter Now</PrimaryPillButton>
+      <section className="mt-[74px]" aria-labelledby="top-live-categories-heading">
+        <div className="flex items-center justify-between gap-4">
+          <h2 id="top-live-categories-heading" className="text-[30px] font-normal leading-none text-white">Top Live Categories</h2>
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={() => categorySwiper.current?.slidePrev()} className="grid size-11 place-items-center rounded-full border border-gfx-green-200 bg-gfx-green-900 text-white transition-colors hover:bg-gfx-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500" aria-label="Previous live categories"><ChevronLeftIcon size={18} /></button>
+            <button type="button" onClick={() => categorySwiper.current?.slideNext()} className="grid size-11 place-items-center rounded-full border border-gfx-green-200 bg-gfx-green-900 text-white transition-colors hover:bg-gfx-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500" aria-label="Next live categories"><ChevronRightIcon size={18} /></button>
+          </div>
+        </div>
+        <Swiper modules={[A11y, Keyboard]} onSwiper={(swiper) => { categorySwiper.current = swiper }} slidesPerView="auto" spaceBetween={15} grabCursor keyboard={{ enabled: true }} a11y={{ enabled: true }} className="mt-8 !overflow-hidden" data-category-carousel>
+          {CATEGORIES.map(([label, watching, live]) => <SwiperSlide key={label} className="!w-[255px]"><StreamingCategoryCard label={label} watching={watching} live={live} /></SwiperSlide>)}
+        </Swiper>
+      </section>
+      <section className="mt-5 max-w-[1529px]" data-prize-banner>
+        <GlassBannerCard className="min-h-[217px]" contentClassName="flex min-h-[217px] flex-col items-start gap-6 px-10 py-8 sm:px-16 lg:flex-row lg:items-center">
+          <span className="relative grid size-[79px] shrink-0 place-items-center rounded-[18px] border border-gfx-green-200 bg-gfx-green-800 text-4xl text-gfx-green-300">♕</span>
+          <div className="relative lg:ml-3"><h2 className="text-[30px] text-white">Win $10,000 Cash Prize</h2><p className="mt-5 text-xl text-gfx-neutral-400">Stream live • Compete • Get Paid</p></div>
+          <PrimaryPillButton className="relative lg:ml-auto min-w-[180px]">Enter Now</PrimaryPillButton>
+        </GlassBannerCard>
       </section>
       <section className="mt-[74px]"><SectionHeading count="1">Live channels</SectionHeading><div className="mt-9"><StreamCard /></div></section>
     </div>

@@ -39,31 +39,28 @@ export function StreamCard({
 }) {
   return (
     <article className={`w-full max-w-[381px] ${className}`} data-stream-card data-followed={followed}>
-      <div className="relative h-[220px] overflow-hidden rounded-[18.563px] border border-gfx-green-200 bg-[#09241C] text-gfx-green-300">
-        <div className="absolute -left-16 -top-24 size-[260px] rounded-full bg-[#064B34]/80 blur-[80px]" aria-hidden="true" />
-        <span className="absolute left-4 top-4 rounded-full bg-[#E8475D] px-3 py-1 text-xs font-medium text-[#F1FFFA]">LIVE</span>
-        <span className="absolute right-4 top-4 rounded-full border border-[#23644F] bg-[#09241C]/90 px-3 py-1 text-xs text-[#CFF2E6]">Feature</span>
-        <span className="absolute inset-0 grid place-items-center text-gfx-green-300/80"><CameraIcon /></span>
-        <div className="absolute inset-x-4 bottom-4 flex gap-2">
-          <span className="rounded-full bg-black/75 px-3 py-1 text-xs text-[#F1FFFA]">1 watching</span>
-          <span className="rounded-full bg-black/75 px-3 py-1 text-xs text-gfx-green-300">EURUSD</span>
-          <span className="rounded-full border border-white/50 bg-black/75 px-3 py-1 text-xs text-[#F1FFFA]">{category}</span>
-          <span className="ml-auto rounded-full bg-black/75 px-3 py-1 text-xs text-[#F1FFFA]">2:15</span>
-        </div>
+      <div className="relative h-[220px] overflow-hidden rounded-[20px] bg-[#09241C] text-[#808080]" data-stream-card-media>
+        <span className="absolute left-[14px] top-[14px] inline-flex h-[35px] items-center gap-1.5 rounded-[15px] bg-[#2A1411] px-[10px] text-sm leading-[18.8px] text-[#D46356]"><i className="size-1 rounded-full bg-[#D46356]" aria-hidden="true" />Live</span>
+        <span className="absolute right-[14px] top-[14px] inline-flex h-[30px] items-center gap-1.5 rounded-[30px] bg-[#0C1311] px-2 text-sm leading-[18.8px] text-[#808080]"><svg viewBox="0 0 14 14" className="size-3.5" fill="none" aria-hidden="true"><path d="m7 1.2 1.7 3.1 3.5.7-2.4 2.6.4 3.6L7 9.7l-3.2 1.5.4-3.6L1.8 5l3.5-.7L7 1.2Z" stroke="currentColor" strokeWidth="1.15" strokeLinejoin="round" /></svg>Feature</span>
+        <span className="absolute left-1/2 top-[63px] grid size-[63px] -translate-x-1/2 place-items-center text-[#808080]"><CameraIcon /></span>
+        <span className="absolute left-[14px] top-[178px] inline-flex h-[34px] items-center rounded-[15px] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#FFFFFF]">1 watching</span>
+        <span className="absolute left-[119px] top-[178px] inline-flex h-[34px] items-center rounded-[15px] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#00B38C]">EURUSD</span>
+        <span className="absolute left-[211px] top-[177px] inline-flex h-[34px] max-w-[89px] items-center truncate rounded-[15px] border border-[#A0A0A0] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#FFFFFF]">{category}</span>
+        <span className="absolute right-[14px] top-[178px] inline-flex h-[34px] items-center rounded-[15px] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#FFFFFF]">2:15</span>
       </div>
-      <div className="flex h-[99px] items-center gap-3 px-2">
-        <img src="/images/streaming-avatar.png" alt="" className="size-[51px] rounded-full border border-gfx-green-200 object-cover" />
-        <div className="min-w-0">
-          <p className="truncate text-base leading-5 text-white">@mr-dev</p>
-          <p className="mt-1 truncate text-sm text-gfx-neutral-500">Stream test</p>
+      <div className="relative h-[99px]" data-stream-card-details>
+        <img src="/images/streaming-avatar.png" alt="" className="absolute left-[14px] top-[22px] size-[51px] rounded-full object-cover" />
+        <div className="absolute left-[81px] top-[31px] min-w-0 max-w-[170px]">
+          <p className="truncate text-base leading-[19.2px] text-white">@mr-dev</p>
+          <p className="mt-[3px] truncate text-sm leading-[18.8px] text-gfx-neutral-500">Stream test</p>
         </div>
         <button
           type="button"
           onClick={onFollow}
-          className={`ml-auto inline-flex h-[34px] min-w-[91px] items-center justify-center gap-2 rounded-full border text-sm transition-colors ${followed ? 'border-gfx-green-300 bg-gfx-green-300 text-black' : 'border-[#F1FFFA] bg-[#F1FFFA] text-black'}`}
+          className={`absolute right-[14px] top-[31px] inline-flex h-[35px] min-w-[95px] items-center justify-center gap-2 rounded-[12px] px-3 text-sm leading-[18.8px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#000705] ${followed ? 'bg-gfx-green-300' : 'bg-[#F1FFFA]'}`}
           aria-pressed={followed}
         >
-          {followed && <span aria-hidden="true">✓</span>}
+          <svg viewBox="0 0 18 18" className="size-[18px]" fill="none" aria-hidden="true"><circle cx="6" cy="5" r="2.25" stroke="currentColor" strokeWidth="1.4" /><path d="M2.5 13.6c.4-2.3 1.7-3.5 3.5-3.5s3.1 1.2 3.5 3.5M13.3 5.2v5M10.8 7.7h5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />{followed && <path d="m11.2 13.1 1.3 1.3 2.8-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />}</svg>
           Follow
         </button>
       </div>

@@ -93,3 +93,15 @@ STATUS: VERIFIED by independent verifier
 - Home exposes six category cards and one live channel; Browse exposes two stream cards; Replays exposes three; Following exposes one and transitions to the reusable empty state.
 - Continue from the Streaming username modal lands on `/streaming`; Browse channels returns the empty Following state to Browse.
 - Dark, semantic light, and `390×844` mobile states passed without runtime errors, failed responses, or document-level horizontal overflow.
+
+## 11. Operator refinement — chat, categories, prize banner, and live channel
+
+- Source: operator screenshot plus the two attached HTML/CSS geometry specifications received 2026-08-21.
+- Design route: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + supplied HTML + live codebase`, `style=existing GenesisFX glass-dashboard thesis`.
+- Visual thesis: preserve the shipped Streaming composition while replacing its four manually approximated surfaces with the project primitives and exact supplied geometry.
+- Locked geometry: outer Chat remains `532×561px`; inner Live Chat is `493×448px` with `30px` radius and a `70px` composer; Live Channel card is `381×319px` with a `381×220px` media well.
+- Interaction: Top Live Categories uses the installed Swiper, pointer drag, keyboard navigation, and visible previous/next single-pointer controls; no native horizontal scrollbar.
+- Quality contract: WCAG 2.2 AA; no visible text below `12px`; normal text contrast `>=4.5:1`, meaningful UI/focus `>=3:1`; mobile, intermediate, and desktop containment; keyboard/focus, reduced-motion, 200% reflow, runtime errors, failed requests, and build integration checked.
+- Highest risk: Swiper keyboard/drag parity, fixed reference geometry at narrow widths, the intentionally dark Live Chat surface under light theme, and icon-only send/carousel controls.
+- Local validation: visual-map gate and `pnpm build` passed (`282` modules). Browser QA passed Home/Browse/Replays/Following, dark/light, `1920×1027`, `960×900`, and `390×844`: Chat uses one light `GlassCard`; Live Chat is exactly `493×448px` with `30px` radius; composer is `70px`; send control is `62×44px`; prize uses one `GlassBannerCard`; Live Channel is exactly `381×319px`; Swiper has six slides, hidden overflow, working pointer drag, keyboard controls, and `allowTouchMove=true`; zero text below `12px`, horizontal overflow, runtime errors, or failed responses.
+- Accessibility evidence: send control exposes a visible focus ring; reduced-motion mode retains all four Home surfaces; measured text contrast ratios are danger `4.74:1`, muted `4.76:1`, joined-state `11.01:1`, white `18.80:1`, and green accent `7.01:1`. No axe/Lighthouse package is installed in the repo, so automated WCAG auditing remains not tested; targeted semantic, keyboard, focus, target-size, contrast, reduced-motion, and reflow checks passed.
