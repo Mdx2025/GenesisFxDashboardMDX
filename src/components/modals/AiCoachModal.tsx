@@ -254,18 +254,6 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             aria-hidden="true"
           />
 
-          <button
-            type="button"
-            onClick={animateClose}
-            aria-label="Close modal"
-            className="absolute right-[18px] top-[18px] z-30 size-6 cursor-pointer text-[color:var(--ac-accent)] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
           {/* Sidebar */}
           <aside
             className="absolute left-0 top-0 h-full overflow-hidden border-r border-[color:var(--ac-sidebar-border)]"
@@ -291,7 +279,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             </div>
 
             <PrimaryPillButton
-              className="!absolute left-[26px] top-[89px] !w-[276px] !pl-[22px] !pr-[31px]"
+              className="ai-coach-cta !absolute left-[26px] top-[89px] !w-[276px] !pl-[22px] !pr-[31px]"
               onClick={() => setView('idea')}
             >
               <span className="flex items-center gap-2.5">
@@ -351,18 +339,24 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
 
           {/* Chat panel */}
           <section className="absolute top-0 h-full" style={{ left: SIDEBAR_W, width: CHAT_W }}>
-            <div className="absolute left-[700px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center gap-1.5 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 text-[color:var(--ac-accent)]">
+            <div className="absolute left-[650px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center gap-1.5 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 text-[color:var(--ac-accent)]">
               <AiBoltIcon size={15} />
               <span className="text-xs font-acid font-normal">152</span>
             </div>
-            <AiCoachIconChip label="Open notebook" className="!absolute left-[772px] top-[23px]">
+            <AiCoachIconChip label="Open notebook" className="!absolute left-[722px] top-[23px]">
               <AiNotebookIcon size={14} />
             </AiCoachIconChip>
-            <AiCoachIconChip label="Toggle fullscreen" className="!absolute left-[822px] top-[23px]">
+            <AiCoachIconChip label="Toggle fullscreen" className="!absolute left-[772px] top-[23px]">
               <AiFullscreenIcon size={15} />
             </AiCoachIconChip>
-            <AiCoachIconChip label="Chat history" className="!absolute left-[872px] top-[23px]" onClick={() => setView('default')}>
+            <AiCoachIconChip label="Chat history" className="!absolute left-[822px] top-[23px]" onClick={() => setView('default')}>
               <AiHistoryIcon size={15} />
+            </AiCoachIconChip>
+            <AiCoachIconChip label="Close modal" className="!absolute left-[872px] top-[23px]" onClick={animateClose}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </AiCoachIconChip>
 
             {view === 'default' && (
@@ -394,14 +388,14 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
 
             {view === 'chat' && (
               <>
-                <div className="absolute left-[671px] top-[92px] flex h-[45px] w-[241px] items-center justify-center rounded-[22px] bg-[color:var(--ac-bubble)] px-5">
-                  <span className="ac-text text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
+                <div className="absolute left-[671px] top-[92px] flex h-[45px] w-[241px] items-center justify-center rounded-[22px] bg-[color:var(--ac-bubble)] px-4">
+                  <span className="ac-text whitespace-nowrap text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
                     Which asset should I focus on?
                   </span>
                 </div>
-                <div className="absolute left-[563px] top-[150px] flex h-[45px] w-[349px] items-center gap-2 rounded-[22px] bg-[color:var(--ac-bubble)] px-5">
+                <div className="absolute left-[563px] top-[150px] flex h-[45px] w-[349px] items-center gap-2 rounded-[22px] bg-[color:var(--ac-bubble)] px-4">
                   <AiSparkleIcon size={16} className="text-[color:var(--ac-accent)] shrink-0" />
-                  <span className="ac-text text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
+                  <span className="ac-text whitespace-nowrap text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
                     Generate a trade idea for me (Asset: forex)
                   </span>
                 </div>
@@ -455,7 +449,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                 </div>
                 <AiCoachTradeChart className="absolute left-[37px] top-[397.18px] h-[192px] w-[589px]" />
                 <PrimaryPillButton
-                  className="!absolute left-[36.5px] top-[607.18px] !w-[590px] !pl-[22px] !pr-[31px]"
+                  className="ai-coach-cta !absolute left-[36.5px] top-[607.18px] !w-[590px] !pl-[22px] !pr-[31px]"
                   onClick={() => setView('idea')}
                 >
                   <span className="flex items-center gap-2.5">

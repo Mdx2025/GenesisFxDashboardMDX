@@ -62,6 +62,12 @@ html[data-theme='light'] .ai-coach-surface :is(svg, svg *)[stroke='#ffffff' i] {
   stroke: currentColor !important;
 }
 
+/* The primary pill's near-white face disappears against the light surface, so it
+   takes the same mint face the light theme already gives the green pill button. */
+html[data-theme='light'] .ai-coach-surface .ai-coach-cta > span[aria-hidden='true']:not([style]) {
+  background-color: var(--ac-btn-face);
+}
+
 /* Decorative purple glows read as dirt on a white surface. */
 html[data-theme='light'] .ai-coach-surface .ac-glow {
   display: none;
