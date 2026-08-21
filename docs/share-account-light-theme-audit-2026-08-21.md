@@ -1,7 +1,7 @@
 # Share Account — Light Theme Design System Audit
 
-Date: 2026-08-21  
-Route: `/tradelocker/accounts/L%23716445`  
+Date: 2026-08-21
+Route: `/tradelocker/accounts/L%23716445`
 Surface: `ShareAccountModal`
 
 ## Outcome
