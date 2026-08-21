@@ -3,9 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, Badge, GreenDot, SparkleButton, GlowButton, GlassSelect, GlassInput, TradingCalendar } from '@/components/ui'
-import { DepositIcon, ChevronDownIcon } from '@/components/icons'
+import { DepositIcon, ChevronDownIcon, ShareFilledIcon } from '@/components/icons'
 import { SummaryCard } from '@/components/dashboard/SummaryCard'
 import { TransactionsPanel } from '@/components/accounts/TransactionsPanel'
+import { ShareAccountModal } from '@/components/modals/ShareAccountModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { tradingAccounts } from '@/data/trading-accounts'
 import { GLOW_GREEN, GLOW_RED } from '@/constants/colors'
@@ -152,6 +153,7 @@ export default function AccountDetailsPage() {
   const [editModal, setEditModal] = useState(false)
   const [passwordModal, setPasswordModal] = useState(false)
   const [leverageModal, setLeverageModal] = useState(false)
+  const [shareModal, setShareModal] = useState(false)
 
   const account = tradingAccounts.find(a => a.account === accountId) ?? tradingAccounts[0]
 
@@ -203,6 +205,14 @@ export default function AccountDetailsPage() {
                 <DepositIcon size={16} color="#A0A0A0" />
                 <span>Deposit</span>
               </span>
+            </SparkleButton>
+            <SparkleButton
+              className="!h-[46px] !w-[61px] !min-w-[61px] !rounded-[30px] !p-0"
+              onClick={() => setShareModal(true)}
+              aria-label="Share account"
+              data-account-share-trigger
+            >
+              <ShareFilledIcon size={18} />
             </SparkleButton>
             <GlowButton label="Trade" width={106} height={44} fontSize={16} />
           </div>
@@ -386,6 +396,8 @@ export default function AccountDetailsPage() {
           </div>
         </div>
       </ModalOverlay>
+
+      <ShareAccountModal open={shareModal} onClose={() => setShareModal(false)} />
     </div>
   )
 }

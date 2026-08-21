@@ -5,9 +5,9 @@ import {
   FloatingNavBar, GlassSelect, GreenPillButton, GlowButton, GlassBannerCard, CourseCard, GlossaryCard, FaqCard,
   TradingCalendar, GlowEllipse,
   PlatformTabs, AppFeatureCard, InstallStepCard,
-  PrimaryPillButton,
+  PrimaryPillButton, ToggleSwitch, SharePerformanceChart,
 } from '@/components/ui'
-import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon } from '@/components/icons'
+import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon, ShareFilledIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
 import { CandlestickChart } from '@/components/charts/CandlestickChart'
 import { MiniBarChart } from '@/components/charts/MiniBarChart'
@@ -63,6 +63,7 @@ function TokenSwatch({ name, value, className }: { name: string; value: string; 
 export default function DesignSystemPage() {
   const [searchValue, setSearchValue] = useState('')
   const [downloadPlatform, setDownloadPlatform] = useState<'ios' | 'android' | 'desktop'>('ios')
+  const [privacyEnabled, setPrivacyEnabled] = useState(true)
 
   return (
     <div className="min-h-0">
@@ -267,6 +268,15 @@ export default function DesignSystemPage() {
               <SparkleButton>
                 <span className="flex items-center gap-2"><TransferIcon /><span className="optical-text">Transfer</span></span>
               </SparkleButton>
+            </div>
+          </Subsection>
+
+          <Subsection title="Share action — SparkleButton + ShareFilledIcon">
+            <div className="flex items-center gap-4">
+              <SparkleButton className="!h-[46px] !w-[61px] !min-w-[61px] !rounded-[30px] !p-0" aria-label="Share account preview">
+                <ShareFilledIcon size={18} />
+              </SparkleButton>
+              <p className="text-caption text-gfx-neutral-500">Compact secondary share trigger used on account detail headers.</p>
             </div>
           </Subsection>
 
@@ -573,6 +583,13 @@ export default function DesignSystemPage() {
           <Subsection title="Toggle / Switch — ModeToggle">
             <ModeToggle />
           </Subsection>
+
+          <Subsection title="Privacy switch — ToggleSwitch">
+            <div className="flex items-center gap-4">
+              <ToggleSwitch checked={privacyEnabled} onCheckedChange={setPrivacyEnabled} label="Show account balance" />
+              <p className="text-caption text-gfx-neutral-500">44×23 accessible binary switch for privacy and preference surfaces.</p>
+            </div>
+          </Subsection>
         </Section>
 
         {/* Charts */}
@@ -630,6 +647,12 @@ export default function DesignSystemPage() {
                 <p className="text-caption text-gfx-neutral-500 mb-2">Blue</p>
                 <AreaChart color="#5b9cf5" />
               </GlassCard>
+            </div>
+          </Subsection>
+
+          <Subsection title="Share performance chart — SharePerformanceChart">
+            <div className="h-[294px] max-w-[661px] overflow-hidden rounded-3xl bg-gfx-green-800">
+              <SharePerformanceChart />
             </div>
           </Subsection>
         </Section>

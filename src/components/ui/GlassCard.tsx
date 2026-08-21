@@ -7,6 +7,7 @@ interface GlassCardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'
   divider?: 'white' | 'green' | 'none'
   glow?: boolean
   rounded?: string
+  position?: 'relative' | 'absolute' | 'static'
   className?: string
   style?: React.CSSProperties
   children: ReactNode
@@ -18,12 +19,12 @@ const VARIANT_CLASS = {
   purple: 'glass-card-purple',
 } as const
 
-export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '1.125rem', className = '', style, children, ...props }, ref) {
+export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(function GlassCard({ variant = 'light', divider = 'white', glow = true, rounded = '1.125rem', position = 'relative', className = '', style, children, ...props }, ref) {
   return (
     <div
       ref={ref}
       {...props}
-      className={`${VARIANT_CLASS[variant]} relative ${className}`}
+      className={`${VARIANT_CLASS[variant]} ${position} ${className}`}
       style={{ borderRadius: rounded, ...style }}
     >
       {divider !== 'none' && <DividerGlow variant={divider} />}
