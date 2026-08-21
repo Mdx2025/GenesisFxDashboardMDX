@@ -30,9 +30,9 @@ function SectionHeading({ children, count }: { children: string; count?: string 
 
 function FeaturedStream() {
   return (
-    <article className="relative h-[561px] overflow-hidden rounded-[18.563px] border border-gfx-green-200 bg-[#07100d]" data-featured-stream>
+    <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-[561px] overflow-hidden" data-featured-stream>
       <img src="/images/streaming-chart.png" alt="EURUSD trading chart" className="absolute inset-0 size-full object-cover" />
-      <div className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-[18px] border border-white/10 bg-[#07100d]/95 px-6 backdrop-blur-sm">
+      <div className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-full border-0 bg-white/[0.06] px-8 backdrop-blur-2xl">
         <span className="grid size-[70px] shrink-0 place-items-center rounded-full border border-gfx-green-200 bg-gfx-green-800 text-2xl text-white">S</span>
         <div className="ml-5">
           <h2 className="text-xl text-white">Stream Test</h2>
@@ -44,7 +44,7 @@ function FeaturedStream() {
         </div>
         <PrimaryPillButton className="ml-auto min-w-[206px]">Watch now</PrimaryPillButton>
       </div>
-    </article>
+    </GlassCard>
   )
 }
 
