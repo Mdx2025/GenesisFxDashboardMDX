@@ -1,6 +1,19 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — AI Coach modal (Journal)
+
+- task_id: `genesis-ai-coach-modal-20260821`
+- owner: `artemis`
+- status: `done`
+- target_route: `/tradelocker/journal`, AI Coach modal in its Default view, AI coach, Response got, and AI Trade Idea states, in light and dark.
+- figma: file `Q5LFMKpcKD2ChXj9pyiHwk`, modal nodes `4037:115702` (Default view), `4037:115094` (AI coach), `4037:113896` (Response got), `4037:114468` (AI Trade Idea); modal canvas 1270×906.
+- scope_lock: `src/components/modals/AiCoachModal*`, `src/components/ui/AiCoach.tsx`, `src/components/icons/aiCoachIcons.tsx`, `src/pages/JournalPage.tsx`, `src/app.css` (one token). No edits outside this set.
+- delivery: commits `25e8852`, `e9fce1a` on `main`; Dokploy `PFJVX3m89vh3YL2nVKU5N` deployment `TaZku3VjaUyyCNxffEUSQ` done.
+- local_validation: `pnpm build` green (tsc -b + vite).
+- production_validation: `node e2e/ai-coach-modal-qa.mjs` against the preview — 4 states × light/dark, surface 1270×906, 0 overflow, 0 runtime errors; screenshots in `/home/clawd/.openclaw/media/genesis-aicoach-qa`.
+- follow_up: the `/design-system` showcase entry for `AiCoachChip` / `AiCoachIconChip` / `AiCoachPromptBar` / `AiCoachTradeChart` and the `src/components/ui/index.ts` barrel export are intentionally NOT committed — both files had star's in-flight Streaming work uncommitted in the shared worktree. Land them once star's Streaming commit is in.
+
 ## Active Task — `#021B13` semantic icon-well surfaces
 
 - task_id: `genesis-icon-well-light-theme-20260814`

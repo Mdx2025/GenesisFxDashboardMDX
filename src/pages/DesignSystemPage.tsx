@@ -7,6 +7,7 @@ import {
   PlatformTabs, AppFeatureCard, InstallStepCard,
   PrimaryPillButton, ToggleSwitch, SharePerformanceChart,
   LeaderboardAvatar, LeaderboardSparkline, LeaderboardTable, LeaderboardTabs,
+  StreamCard, StreamingCategoryCard, StreamingEmptyState, StreamingLiveBadge, StreamingTabs,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon, ShareFilledIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -66,6 +67,7 @@ export default function DesignSystemPage() {
   const [downloadPlatform, setDownloadPlatform] = useState<'ios' | 'android' | 'desktop'>('ios')
   const [privacyEnabled, setPrivacyEnabled] = useState(true)
   const [leaderboardTab, setLeaderboardTab] = useState(0)
+  const [streamingTab, setStreamingTab] = useState(0)
 
   return (
     <div className="min-h-0">
@@ -685,6 +687,20 @@ export default function DesignSystemPage() {
 
         {/* Data Display */}
         <Section id="data-display" title="Data Display">
+          <Subsection title="Streaming surfaces — StreamingTabs / StreamCard / StreamingCategoryCard">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <StreamingTabs activeIndex={streamingTab} onChange={setStreamingTab} />
+                <StreamingLiveBadge />
+              </div>
+              <div className="grid gap-5 xl:grid-cols-2">
+                <StreamCard />
+                <StreamingCategoryCard label="Forex" watching={1} live />
+              </div>
+              <StreamingEmptyState onBrowse={() => setStreamingTab(1)} />
+            </div>
+          </Subsection>
+
           <Subsection title="Leaderboard navigation and data — LeaderboardTabs / LeaderboardTable">
             <div className="space-y-5">
               <div className="max-w-full overflow-x-auto pb-1">

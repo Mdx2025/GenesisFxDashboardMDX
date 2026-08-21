@@ -5,9 +5,10 @@ interface SearchInputProps {
   value?: string
   onChange?: (value: string) => void
   className?: string
+  ariaLabel?: string
 }
 
-export function SearchInput({ placeholder = 'Search for', value, onChange, className }: SearchInputProps) {
+export function SearchInput({ placeholder = 'Search for', value, onChange, className, ariaLabel = 'Search accounts' }: SearchInputProps) {
   const inputProps = value !== undefined
     ? { value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value) }
     : { defaultValue: '', onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value) }
@@ -19,7 +20,7 @@ export function SearchInput({ placeholder = 'Search for', value, onChange, class
         type="search"
         placeholder={placeholder}
         {...inputProps}
-        aria-label="Search accounts"
+        aria-label={ariaLabel}
         className="pl-9 pr-4 py-2.5 border border-gfx-green-200 rounded-full bg-transparent text-white text-body2 w-full focus:border-gfx-green-500/30 focus:outline-none transition-colors placeholder:text-gfx-neutral-500"
       />
     </div>

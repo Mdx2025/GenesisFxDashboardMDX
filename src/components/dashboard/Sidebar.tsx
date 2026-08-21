@@ -241,7 +241,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       <ClaimUsernameModal
         open={activeModal === 'claim-username' || activeModal === 'claim-username-streaming'}
         onClose={() => setActiveModal(null)}
-        onContinue={activeModal === 'claim-username' ? () => navigate('/leaderboards') : undefined}
+        onContinue={activeModal === 'claim-username' ? () => navigate('/leaderboards') : activeModal === 'claim-username-streaming' ? () => navigate('/streaming') : undefined}
       />
     </>
   )

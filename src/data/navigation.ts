@@ -26,7 +26,7 @@ export const navItems: NavItem[] = [
     { label: 'Download App', href: '/download' },
   ]},
   { id: 'leaderboards', label: 'Leaderboards', icon: 'leaderboards', href: '/leaderboards', opensModal: 'claim-username' },
-  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '#', opensModal: 'claim-username-streaming' },
+  { id: 'streaming', label: 'Streaming', icon: 'streaming', href: '/streaming', opensModal: 'claim-username-streaming' },
   { id: 'news', label: 'Market Watch', icon: 'news', href: '/news' },
   { id: 'academy', label: 'Academy', icon: 'academy', href: '/academy' },
 ]
