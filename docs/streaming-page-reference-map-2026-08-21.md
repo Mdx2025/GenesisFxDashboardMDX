@@ -119,6 +119,6 @@ STATUS: VERIFIED by independent verifier
 
 - Source: operator screenshot received 2026-08-21 showing the EURUSD featured chart and its `Stream Test` overlay.
 - Component contract: the `992×561px` featured stream container uses `GlassCard` with the `light` variant; the chart remains the load-bearing media layer.
-- Overlay contract: the internal `Stream Test` surface is a full pill (`rounded-full`), has no border, uses a translucent dark glass fill, and applies `24px` backdrop blur so the chart remains visible without compromising copy contrast.
+- Overlay contract: the internal `Stream Test` surface is a full pill (`rounded-full`), has no border, uses `rgba(12,19,17,0.24)`, and applies `32px` backdrop blur plus `135%` saturation so the chart visibly refracts through the glass without compromising copy contrast.
 - Geometry lock: preserve the existing `19px` horizontal inset, `26px` bottom inset, and `111px` minimum overlay height; do not move the avatar, metadata, tags, or `Watch now` action.
 - Quality contract: semantic light/dark outer surface, overlay text readable over representative chart states, no text below `12px`, no document overflow at mobile/intermediate/desktop, and reduced-motion content parity.

@@ -48,7 +48,7 @@ function FeaturedStream() {
     <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-[561px] overflow-hidden" data-featured-stream>
       <img src="/images/streaming-chart.png" alt="EURUSD trading chart" className="absolute inset-0 size-full object-cover" />
       <div
-        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-full border-0 bg-[rgba(12,19,17,0.68)] px-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur-[24px]"
+        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-full border-0 bg-[rgba(12,19,17,0.24)] px-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.2)] backdrop-blur-[32px] backdrop-saturate-[135%]"
         data-featured-stream-overlay
       >
         <span className="theme-preserve-light grid size-[70px] shrink-0 place-items-center rounded-full border border-[#064B34] bg-[#021B13] text-2xl text-white">S</span>
