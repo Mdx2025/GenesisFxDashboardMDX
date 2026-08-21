@@ -31,12 +31,13 @@ import PayoutsPage from '@/pages/partner/PayoutsPage'
 import MarketingPage from '@/pages/partner/MarketingPage'
 import StatisticsPage from '@/pages/partner/StatisticsPage'
 import DownloadPage from '@/pages/DownloadPage'
+import LeaderboardPage from '@/pages/LeaderboardPage'
 import VideoSinglePage from '@/pages/academy/VideoSinglePage'
 import EbookSinglePage from '@/pages/academy/EbookSinglePage'
 import {
   DashboardIcon, AssetsIcon, DepositIcon, WithdrawIcon,
   UserIcon, AcademyIcon, TradelockerIcon, MarketNewsIcon, ChallengesIcon,
-  GenSocialIcon,
+  GenSocialIcon, LeaderboardsIcon,
 } from '@/components/icons'
 
 export interface PageEntry {
@@ -74,6 +75,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/gensocial/signals', label: 'Signals', description: 'Follow expert signal providers and trade ideas', icon: GenSocialIcon, component: SignalsPage },
   { path: '/gensocial/signals/details-single-page', label: 'Signal Details', description: 'Signal provider single page details', icon: GenSocialIcon, component: SignalsDetailsPage, showInDirectory: false },
   { path: '/download', label: 'Download App', description: 'Install GenesisFX on iOS, Android, or desktop', icon: GenSocialIcon, component: DownloadPage, layout: 'standalone' },
+  { path: '/leaderboards', label: 'Leaderboards', description: 'Monthly trader, profitability, demo, and challenge rankings', icon: LeaderboardsIcon, component: LeaderboardPage, showInDirectory: false },
   { path: '/partner', label: 'Partner Program', description: 'IB partnership, referrals, and commission tracking', icon: GenSocialIcon, component: PartnerPage },
   { path: '/partner/referrals', label: 'Referrals', description: 'All referrals overview and level tracking', icon: GenSocialIcon, component: ReferralsPage, showInDirectory: false },
   { path: '/partner/links', label: 'Links', description: 'Referral link sharing and commission rates', icon: GenSocialIcon, component: LinksPage, showInDirectory: false },

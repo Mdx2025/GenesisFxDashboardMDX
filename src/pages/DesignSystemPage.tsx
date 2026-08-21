@@ -6,6 +6,7 @@ import {
   TradingCalendar, GlowEllipse,
   PlatformTabs, AppFeatureCard, InstallStepCard,
   PrimaryPillButton, ToggleSwitch, SharePerformanceChart,
+  LeaderboardAvatar, LeaderboardSparkline, LeaderboardTable, LeaderboardTabs,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon, ShareFilledIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -64,6 +65,7 @@ export default function DesignSystemPage() {
   const [searchValue, setSearchValue] = useState('')
   const [downloadPlatform, setDownloadPlatform] = useState<'ios' | 'android' | 'desktop'>('ios')
   const [privacyEnabled, setPrivacyEnabled] = useState(true)
+  const [leaderboardTab, setLeaderboardTab] = useState(0)
 
   return (
     <div className="min-h-0">
@@ -683,6 +685,20 @@ export default function DesignSystemPage() {
 
         {/* Data Display */}
         <Section id="data-display" title="Data Display">
+          <Subsection title="Leaderboard navigation and data — LeaderboardTabs / LeaderboardTable">
+            <div className="space-y-5">
+              <div className="max-w-full overflow-x-auto pb-1">
+                <LeaderboardTabs activeIndex={leaderboardTab} onChange={setLeaderboardTab} />
+              </div>
+              <div className="flex items-center gap-5">
+                <LeaderboardAvatar initials="CP" />
+                <LeaderboardSparkline />
+                <p className="text-caption text-gfx-neutral-500">Reusable identity, ranking table, and performance-curve primitives.</p>
+              </div>
+              <LeaderboardTable variant={leaderboardTab === 2 ? 'challenge' : 'standard'} rowCount={3} metricLabel={leaderboardTab === 1 ? 'MONTH P/L' : 'MONTH ROI'} metricValue={leaderboardTab === 1 ? '+$26,327.40' : '+243.20%'} />
+            </div>
+          </Subsection>
+
           <Subsection title="Action Items">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
               <ActionItem title="Deposit Funds" subtitle="Add funds instantly" icon={<DepositIcon size={24} color="white" />} />

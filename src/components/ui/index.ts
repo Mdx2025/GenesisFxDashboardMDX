@@ -44,3 +44,12 @@ export type { DownloadPlatform } from './DownloadInstall'
 export { PrimaryPillButton } from './PrimaryPillButton'
 export { ToggleSwitch } from './ToggleSwitch'
 export { SharePerformanceChart } from './SharePerformanceChart'
+export {
+  LeaderboardAvatar,
+  LeaderboardPodium,
+  LeaderboardSparkline,
+  LeaderboardTable,
+  LeaderboardTabs,
+  LEADERBOARD_TABS,
+} from './Leaderboard'
+export type { LeaderboardTab } from './Leaderboard'

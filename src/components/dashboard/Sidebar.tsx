@@ -238,7 +238,11 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </div>
         </div>
       </aside>
-      <ClaimUsernameModal open={activeModal === 'claim-username'} onClose={() => setActiveModal(null)} />
+      <ClaimUsernameModal
+        open={activeModal === 'claim-username'}
+        onClose={() => setActiveModal(null)}
+        onContinue={() => navigate('/leaderboards')}
+      />
     </>
   )
 }
