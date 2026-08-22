@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlassCard, PrimaryPillButton } from '../ui'
+import { GlassCard, GlowButton } from '../ui'
 import { AtIcon, AtGlyphIcon, CheckIcon } from '../icons'
 
 interface ClaimUsernameModalProps {
@@ -219,14 +219,13 @@ export function ClaimUsernameModal({ open, onClose, onContinue }: ClaimUsernameM
               </span>
             )}
 
-            <PrimaryPillButton
+            <GlowButton
               onClick={handleContinue}
               disabled={!available}
-              className="absolute left-1/2 -translate-x-1/2 !w-[561px]"
-              style={{ top: '377.84px' }}
-            >
-              Continue
-            </PrimaryPillButton>
+              className="!absolute left-1/2 top-[377.84px] -translate-x-1/2"
+              width={561}
+              label="Continue"
+            />
           </GlassCard>
         </div>
       </div>

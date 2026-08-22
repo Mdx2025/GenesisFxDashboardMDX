@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import gsap from 'gsap'
 import './AiCoachModal.css'
 import { AiCoachChip, AiCoachIconChip, AiCoachPromptBar, AiCoachTradeChart } from '../ui/AiCoach'
-import { PrimaryPillButton } from '../ui/PrimaryPillButton'
+import { GlowButton } from '../ui/GlowButton'
 import {
   AiBoltIcon,
   AiBulbIcon,
@@ -374,9 +374,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                       </p>
                     ))}
                     <AiCoachTradeChart className="mt-5 h-[160px] w-full overflow-hidden rounded-[15px]" />
-                    <PrimaryPillButton className="ai-coach-cta mt-5 w-full" onClick={() => setView('idea')}>
-                      <span className="text-base font-medium leading-[24.44px]">Place Sell Trade</span>
-                    </PrimaryPillButton>
+                    <GlowButton className="mt-5" width="100%" label="Place Sell Trade" onClick={() => setView('idea')} />
                   </div>
                 </div>
               )}
@@ -506,18 +504,15 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                     </button>
                   </div>
 
-                  <PrimaryPillButton
-                    className="ai-coach-cta w-full"
+                  <GlowButton
+                    width="100%"
+                    label="New chat"
+                    icon={<AiPlusIcon size={18} />}
                     onClick={() => {
                       setDrawerOpen(false)
                       setView('idea')
                     }}
-                  >
-                    <span className="flex items-center gap-2.5">
-                      <AiPlusIcon size={18} />
-                      New chat
-                    </span>
-                  </PrimaryPillButton>
+                  />
 
                   <div className="relative h-11 w-full rounded-[60px] border border-[color:var(--ac-border)]">
                     <div className="absolute inset-0 rounded-[60px] bg-[color:var(--ac-panel)] opacity-50" aria-hidden="true" />
@@ -659,15 +654,13 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               v2.2
             </span>
 
-            <PrimaryPillButton
-              className="ai-coach-cta !absolute left-[21px] top-[89px] !w-[276px] !pl-[22px] !pr-[31px]"
+            <GlowButton
+              className="!absolute left-[21px] top-[89px]"
+              width={276}
+              label="New chat"
+              icon={<AiPlusIcon size={18} />}
               onClick={() => setView('idea')}
-            >
-              <span className="flex items-center gap-2.5">
-                <AiPlusIcon size={18} />
-                New chat
-              </span>
-            </PrimaryPillButton>
+            />
 
             <div className="absolute left-[21px] top-[152px] h-11 w-[276px] rounded-[60px] border border-[color:var(--ac-border)]">
               <div className="absolute inset-0 rounded-[60px] bg-[color:var(--ac-panel)] opacity-50" aria-hidden="true" />
@@ -878,12 +871,12 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                   ))}
                 </div>
                 <AiCoachTradeChart className="absolute left-[37px] top-[398px] h-[192px] w-[589px] overflow-hidden rounded-[15px]" />
-                <PrimaryPillButton
-                  className="ai-coach-cta !absolute left-[34px] top-[608px] !w-[590px] !pl-[22px] !pr-[31px]"
+                <GlowButton
+                  className="!absolute left-[34px] top-[608px]"
+                  width={590}
+                  label="Place Sell Trade"
                   onClick={() => setView('idea')}
-                >
-                  <span className="text-base font-medium leading-[24.44px]">Place Sell Trade</span>
-                </PrimaryPillButton>
+                />
               </div>
             )}
 
