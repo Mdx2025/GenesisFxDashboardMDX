@@ -1,7 +1,8 @@
 import { useId, useState, type FormEvent } from 'react'
 import { GlassCard } from './GlassCard'
+import { GlowButton } from './GlowButton'
 import { PrimaryPillButton } from './PrimaryPillButton'
-import { SecondaryButton } from './SecondaryButton'
+import { SparkleButton } from './SparkleButton'
 
 export const STREAMING_APPLICATION_TOPICS = [
   'Forex',
@@ -93,8 +94,8 @@ export function StreamingApplicationGate({ onApply, onBack }: { onApply: () => v
         This helps us keep the community safe and high quality
       </p>
       <div className="mt-[33px] flex flex-col items-center gap-[10px] sm:flex-row" data-streaming-application-actions>
-        <PrimaryPillButton onClick={onApply} className="w-[280px] max-w-full">Apply to become a streamer</PrimaryPillButton>
-        <SecondaryButton onClick={onBack} className="w-[248px] max-w-full">Back to Streaming</SecondaryButton>
+        <GlowButton label="Apply to become a streamer" width={280} height={44} onClick={onApply} />
+        <SparkleButton onClick={onBack} className="!h-[46px] !w-[248px] max-w-full px-6">Back to Streaming</SparkleButton>
       </div>
     </GlassCard>
   )

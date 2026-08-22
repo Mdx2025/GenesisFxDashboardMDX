@@ -43,11 +43,25 @@ const breadcrumb = await page.locator('header').getByText(/Streaming|My channel|
 const gate = await box('[data-streaming-application-gate]')
 const gateActions = await page.locator('[data-streaming-application-actions] button').evaluateAll(elements => elements.map(element => {
   const rect = element.getBoundingClientRect()
-  return { label: element.textContent.trim(), width: rect.width, height: rect.height }
+  const style = getComputedStyle(element)
+  return {
+    label: element.textContent.trim(),
+    width: rect.width,
+    height: rect.height,
+    fontSize: style.fontSize,
+    hasGlowButton: element.classList.contains('glow-btn'),
+    hasSparkleButton: element.classList.contains('sparkle-button'),
+  }
+}))
+const applyAction = page.locator('[data-streaming-application-actions] button').first()
+await applyAction.focus()
+const gateKeyboardFocus = await applyAction.evaluate(element => ({
+  focused: document.activeElement === element,
+  outlineWidth: getComputedStyle(element).outlineWidth,
 }))
 if (process.env.NEW_STREAMING_REQUIRED_OUTPUT_PATH) await page.screenshot({ path: process.env.NEW_STREAMING_REQUIRED_OUTPUT_PATH, animations: 'disabled' })
 
-await page.getByRole('button', { name: 'Apply to become a streamer' }).click()
+await page.keyboard.press('Enter')
 await page.locator('[data-streaming-application-form]').waitFor()
 const form = await box('[data-streaming-application-form]')
 const fields = await page.locator('[data-streaming-application-field] input').evaluateAll(elements => elements.map(element => {
@@ -87,7 +101,8 @@ const failures = []
 if (route !== '/streaming/newstreaming') failures.push(`route mismatch: ${route}`)
 if (!breadcrumb.some(item => item.includes('Streaming')) || !breadcrumb.some(item => item.includes('My channel')) || !breadcrumb.some(item => item.includes('Go live'))) failures.push(`breadcrumb mismatch: ${JSON.stringify(breadcrumb)}`)
 if (Math.abs(gate.width - 1133) > 1 || Math.abs(gate.height - 614) > 1 || gate.radius !== '30px' || Math.abs(gate.y - 159) > 2) failures.push(`gate geometry mismatch: ${JSON.stringify(gate)}`)
-if (gateActions.length !== 2 || Math.abs(gateActions[0].width - 280) > 1 || Math.abs(gateActions[0].height - 44) > 1 || Math.abs(gateActions[1].width - 248) > 1 || Math.abs(gateActions[1].height - 46) > 1) failures.push(`gate actions mismatch: ${JSON.stringify(gateActions)}`)
+if (gateActions.length !== 2 || !gateActions[0].hasGlowButton || gateActions[0].hasSparkleButton || !gateActions[1].hasSparkleButton || gateActions[1].hasGlowButton || Math.abs(gateActions[0].width - 280) > 1 || Math.abs(gateActions[0].height - 44) > 1 || Math.abs(gateActions[1].width - 248) > 1 || Math.abs(gateActions[1].height - 46) > 1 || gateActions.some(action => Number.parseFloat(action.fontSize) < 12)) failures.push(`gate actions mismatch: ${JSON.stringify(gateActions)}`)
+if (!gateKeyboardFocus.focused || Number.parseFloat(gateKeyboardFocus.outlineWidth) < 2) failures.push(`gate keyboard focus mismatch: ${JSON.stringify(gateKeyboardFocus)}`)
 if (Math.abs(form.width - 1133) > 1 || Math.abs(form.height - 913) > 1 || form.radius !== '30px' || Math.abs(form.y - 159) > 2) failures.push(`form geometry mismatch: ${JSON.stringify(form)}`)
 if (fields.length !== 2 || fields.some(field => Math.abs(field.width - 699) > 1 || Math.abs(field.height - 50) > 1 || field.radius !== '30px')) failures.push(`field geometry mismatch: ${JSON.stringify(fields)}`)
 if (Math.abs(textarea.width - 699) > 1 || Math.abs(textarea.height - 145) > 1 || textarea.radius !== '30px') failures.push(`textarea mismatch: ${JSON.stringify(textarea)}`)
@@ -97,6 +112,6 @@ if (intermediateOverflow || mobileOverflow || !mobileFormVisible || !reducedMoti
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, route, breadcrumb, gate, gateActions, form, fields, textarea, topicCount, topicHeights, forexSelected, checkboxChecked, lightForm, lightHeadingColor, intermediateOverflow, mobileOverflow, mobileFormVisible, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, route, breadcrumb, gate, gateActions, gateKeyboardFocus, form, fields, textarea, topicCount, topicHeights, forexSelected, checkboxChecked, lightForm, lightHeadingColor, intermediateOverflow, mobileOverflow, mobileFormVisible, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)
