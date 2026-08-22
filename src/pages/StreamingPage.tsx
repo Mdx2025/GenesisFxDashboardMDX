@@ -129,11 +129,11 @@ function BrowseHero() {
   return (
     <section className="mt-9" data-browse-hero>
       <GlassBannerCard
+        glowSrc={null}
         rounded="18.563px"
         className="h-[208px]"
         contentClassName="h-full px-10 py-9"
       >
-        <img src="/images/streaming-browse-texture.png" alt="" aria-hidden="true" className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 object-cover opacity-30 mix-blend-screen" />
         <span className="relative text-sm text-gfx-green-300">Genesis Live</span>
         <h2 className="relative mt-4 text-[40px] leading-none text-white">Browse live trading</h2>
         <span className="relative mt-5 inline-flex items-center gap-2 text-sm text-white"><i className="size-2 rounded-full bg-[#E7485D] shadow-[0_0_8px_#E7485D]" />1 stream live now</span>
@@ -160,7 +160,7 @@ function CardsState({ following, followed, onFollow }: { following?: boolean; fo
   return (
     <section className="mt-[54px]" data-streaming-cards-state>
       <SectionHeading count="1 live">Recent replays</SectionHeading>
-      <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-3">{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={following ? onFollow : undefined} />)}</div>
+      <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-4" data-replay-grid>{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={following ? onFollow : undefined} />)}</div>
     </section>
   )
 }

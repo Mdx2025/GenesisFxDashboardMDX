@@ -48,7 +48,7 @@ STATUS: VERIFIED by independent verifier
 - Search field: content `x≈29`, `y≈287`, `764.5×44.2px`, placeholder `Search replays...`.
 - Right-side segmented filter has `All replays` selected and `My favorites (0)` with heart icon.
 - `Recent replays (1 live)` begins at content `y=389`.
-- Three stream cards are aligned in one row at content `x=29`, `423`, and `817`, `381×319px` each. Their categories are FOREX, NEWS & ANALYSIS, and COMMODITIES.
+- The replay collection reserves a four-column desktop grid while rendering three stream cards, leaving the fourth track intentionally empty. Their categories are FOREX, NEWS & ANALYSIS, and COMMODITIES.
 - Citation: `frame_5.png`.
 
 ## 6. Following states
@@ -134,3 +134,13 @@ STATUS: VERIFIED by independent verifier
 - Highest risk: the banner primitive's default radius and glow shifting the established Browse geometry, or the light-theme selector measuring the semantic wrapper instead of the rendered glass surface.
 - Local validation: visual-map gate and `pnpm build` passed (`282` modules). Browser QA passed all four Streaming states plus dark/light, `1920×1027`, `960×900`, and `390×844`; Browse contains exactly one `GlassBannerCard` at `208px` high with `18.563px` radius, light glass computes to `rgba(255,255,255,0.68)` with `rgba(6,75,52,0.1)` border, and there are zero runtime errors, failed responses, typography-floor violations, or horizontal overflow.
 - Production validation: Dokploy deployment `FvhiltL-UXP3L_9uBA0DJ` completed `done`; `/streaming` returned `200`, the production Browse capture confirmed the canonical glass material and preserved texture/content anchors, and the remote Streaming QA completed without a failing exit.
+
+## 15. Operator refinement — pure Browse glass and Replay grid contract
+
+- Source: operator screenshot received 2026-08-21 at `1920×1080`, showing Replays selected with three cards occupying the first three tracks of a four-column content grid.
+- `design_route`: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + live codebase`, `style=existing GenesisFX glass-dashboard thesis`.
+- Visual thesis: keep Browse hierarchy on a clean canonical glass banner without the decorative right-side bitmap; preserve Replays as a four-track desktop layout even when only three records are available.
+- Dials: `design_variance=1`, `motion_intensity=1`, `visual_density=6`, `art_direction=3`, `implementation_clarity=10`, `image_usage_priority=1`, `spacing_generosity=4`.
+- Locked geometry: Replays renders exactly three `StreamCard` items inside four computed desktop grid columns; tablet collapses to two columns and mobile to one without overflow.
+- Quality contract: WCAG 2.2 AA; typography floor `12px`; contrast `4.5:1` normal text and `3:1` large/UI; keyboard focus and reduced-motion parity; desktop, intermediate, and mobile checks; zero runtime errors or failed responses; build and browser QA required.
+- Regression selectors: `[data-browse-hero]` must contain zero `.glass-banner-card__glow-image` elements and zero `/images/streaming-browse-texture.png` images; `[data-replay-grid]` must compute four columns and contain three cards at the desktop reference viewport.

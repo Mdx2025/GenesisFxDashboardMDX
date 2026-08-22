@@ -124,6 +124,14 @@ if (process.env.STREAMING_REFINEMENT_OUTPUT_PATH) {
 
 states.push(await inspect(1, 'browse'))
 states.push(await inspect(2, 'replays'))
+const replayGrid = await page.locator('[data-replay-grid]').evaluate(element => {
+  const style = getComputedStyle(element)
+  return {
+    columnCount: style.gridTemplateColumns.split(' ').filter(Boolean).length,
+    itemCount: element.querySelectorAll('[data-stream-card]').length,
+    gridTemplateColumns: style.gridTemplateColumns,
+  }
+})
 states.push(await inspect(3, 'following'))
 await page.locator('[data-stream-card] button[aria-pressed="true"]').click()
 const emptyVisible = await page.locator('[data-streaming-empty]').isVisible()
@@ -146,6 +154,8 @@ const browseHero = await page.locator('[data-browse-hero]').evaluate(element => 
   return {
     usesGlassBannerCard: Boolean(shell),
     shellCount: element.querySelectorAll('.glass-banner-card').length,
+    glowImageCount: element.querySelectorAll('.glass-banner-card__glow-image').length,
+    rightTextureCount: element.querySelectorAll('img[src="/images/streaming-browse-texture.png"]').length,
     height: box?.height ?? null,
     radius: shell ? getComputedStyle(shell).borderRadius : null,
   }
@@ -191,8 +201,9 @@ if (homeRefinement.swiperSlides !== 6 || homeRefinement.carousel?.overflowX !== 
 if (!homeRefinement.streamCard || Math.abs(homeRefinement.streamCard.width - 381) > 1 || Math.abs(homeRefinement.streamCard.height - 319) > 1 || !homeRefinement.streamMedia || Math.abs(homeRefinement.streamMedia.height - 220) > 1 || homeRefinement.liveLabel !== 'Live') failures.push(`stream card mismatch: ${JSON.stringify(homeRefinement)}`)
 if (homeRefinement.visibleTextBelowTwelve) failures.push(`typography floor mismatch: ${homeRefinement.visibleTextBelowTwelve} visible nodes below 12px`)
 if (states[1].cards !== 2 || states[2].cards !== 3 || states[3].cards !== 1) failures.push(`stream card counts mismatch: ${JSON.stringify(states)}`)
+if (replayGrid.columnCount !== 4 || replayGrid.itemCount !== 3) failures.push(`replay grid mismatch: ${JSON.stringify(replayGrid)}`)
 if (!emptyVisible || browseAfterEmpty !== 'browse') failures.push('following empty-state flow mismatch')
-if (!browseHero.usesGlassBannerCard || browseHero.shellCount !== 1 || Math.abs(browseHero.height - 208) > 1 || browseHero.radius !== '18.563px') failures.push(`browse hero component mismatch: ${JSON.stringify(browseHero)}`)
+if (!browseHero.usesGlassBannerCard || browseHero.shellCount !== 1 || browseHero.glowImageCount !== 0 || browseHero.rightTextureCount !== 0 || Math.abs(browseHero.height - 208) > 1 || browseHero.radius !== '18.563px') failures.push(`browse hero component mismatch: ${JSON.stringify(browseHero)}`)
 if (lightSurface.background !== 'rgba(255, 255, 255, 0.68)' || lightSurface.border !== 'rgba(6, 75, 52, 0.1)' || lightSurface.heading !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify(lightSurface)}`)
 if (lightFeaturedSurface.title !== 'rgb(255, 255, 255)' || lightFeaturedSurface.metadata !== 'rgb(160, 160, 160)') failures.push(`featured light-theme contrast mismatch: ${JSON.stringify(lightFeaturedSurface)}`)
 if (mobileOverflow || !mobileTabsVisible) failures.push(`mobile mismatch: ${JSON.stringify({ mobileOverflow, mobileTabsVisible })}`)
@@ -201,6 +212,6 @@ if (!reducedMotionContentVisible || !sendButtonFocused) failures.push(`accessibi
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, states, homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter, emptyVisible, browseAfterEmpty, browseHero, lightFeaturedSurface, lightSurface, zoomEquivalentOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, sendButtonFocused, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, states, replayGrid, homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter, emptyVisible, browseAfterEmpty, browseHero, lightFeaturedSurface, lightSurface, zoomEquivalentOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, sendButtonFocused, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)
