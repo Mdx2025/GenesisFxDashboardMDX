@@ -547,6 +547,21 @@ html[data-theme='light'] .platform-card {
   background: #fff;
 }
 
+html[data-theme='light'] .sidebar-tutorial-card {
+  background: #fff !important;
+  border-color: #e5e5e5;
+}
+
+html[data-theme='light'] .sidebar-tutorial-card strong,
+html[data-theme='light'] .sidebar-tutorial-card small {
+  color: #000;
+}
+
+/* star specks only read on the dark gradient */
+html[data-theme='light'] .sidebar-tutorial-card > span.absolute {
+  display: none;
+}
+
 html[data-theme='light'] .mode-toggle {
   --mode-indicator-bg: #00B38C;
   background: #ECECEC;
