@@ -90,7 +90,12 @@ export function DiscoverMoverCard({ mover }: { mover: DiscoverMover }) {
       <img
         src={`${ASSETS}/${mover.positive ? 'sparkline-up' : 'sparkline-down'}.svg`}
         alt=""
-        className="absolute left-1/2 top-[108.11px] block h-[25.838px] w-[83.2%] -translate-x-1/2"
+        className="absolute left-1/2 top-[108.11px] block h-[25.838px] w-[83.2%] -translate-x-1/2 [[data-theme=light]_&]:hidden"
+      />
+      <img
+        src={`${ASSETS}/${mover.positive ? 'sparkline-up-light' : 'sparkline-down'}.svg`}
+        alt=""
+        className="absolute left-1/2 top-[108.11px] hidden h-[25.838px] w-[83.2%] -translate-x-1/2 [[data-theme=light]_&]:block"
       />
     </GlassCard>
   )
@@ -269,7 +274,12 @@ export function DiscoverMarketTable({ rows, onTrade }: { rows: DiscoverMarketRow
               <img
                 src={`${ASSETS}/${row.positive ? 'sparkline-up' : 'sparkline-down'}.svg`}
                 alt=""
-                className="block h-[25.838px] w-[173px] max-w-none"
+                className="block h-[25.838px] w-[173px] max-w-none [[data-theme=light]_&]:hidden"
+              />
+              <img
+                src={`${ASSETS}/${row.positive ? 'sparkline-up-light' : 'sparkline-down'}.svg`}
+                alt=""
+                className="hidden h-[25.838px] w-[173px] max-w-none [[data-theme=light]_&]:block"
               />
               <GlowButton label="Trade" width={108} height={46} fontSize={16} onClick={() => onTrade?.(row)} />
             </div>
