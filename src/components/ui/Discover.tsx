@@ -62,25 +62,26 @@ export function DiscoverMoverCard({ mover }: { mover: DiscoverMover }) {
       rounded="14.198px"
       className="trades-table-card relative h-[149px] w-full min-w-0 overflow-hidden"
     >
-      <div className="flex items-start gap-[7px] px-[9.11px] pt-[16.11px]">
+      <div className="flex items-center gap-[6px] px-[9.11px] pt-[14px]">
         <MoverFlag flag={mover.flag} />
-        <div className="flex min-w-0 flex-col gap-[3px] pt-[1px]">
-          <span className="block truncate text-white text-base font-medium font-acid leading-[24.44px]">{mover.symbol}</span>
-          <span className="block truncate text-gfx-neutral-400 text-xs font-normal font-acid leading-[18.8px]">
-            {mover.description}
-          </span>
-        </div>
-        <span className={`ml-auto flex shrink-0 items-center gap-[3px] pt-[3px] ${tone}`}>
+        <span className="min-w-0 flex-1 truncate text-white text-[14px] font-medium font-acid leading-[24.44px]">
+          {mover.symbol}
+        </span>
+        <span className={`flex shrink-0 items-center gap-[3px] ${tone}`}>
           <img
             src={`${ASSETS}/${mover.positive ? 'arrow-up' : 'arrow-down'}.svg`}
             alt=""
             className="h-[8px] w-[6px] shrink-0"
           />
-          <span className="text-body1 font-normal font-acid leading-[18.8px]">{mover.change}</span>
+          <span className="text-[11px] font-normal font-acid leading-[18.8px]">{mover.change}</span>
         </span>
       </div>
 
-      <p className="px-[15.11px] pt-[19px] text-white text-base font-medium font-acid leading-[24.44px]">{mover.price}</p>
+      <p className="truncate px-[9.11px] pt-[2px] text-gfx-neutral-400 text-[11px] font-normal font-acid leading-[18.8px]">
+        {mover.description}
+      </p>
+
+      <p className="px-[9.11px] pt-[12px] text-white text-base font-medium font-acid leading-[24.44px]">{mover.price}</p>
 
       <img
         src={`${ASSETS}/${mover.positive ? 'sparkline-up' : 'sparkline-down'}.svg`}
