@@ -7,9 +7,9 @@ import {
   QuoteSparkline,
   RangeMeter,
   SearchInput,
-  SecondaryButton,
   SentimentGauge,
   SignalPill,
+  SparkleButton,
   TrendUpIcon,
 } from '@/components/ui'
 import {
@@ -159,10 +159,10 @@ export default function AiAnalysisView() {
         </div>
         <div className="flex items-center gap-1.5">
           <SearchInput placeholder="Search markets" ariaLabel="Search markets" className="w-[287px] max-w-full" />
-          <SecondaryButton className="w-[173px] shrink-0">
+          <SparkleButton className="!h-[2.875rem] !w-[173px] !min-w-0 !rounded-3xl shrink-0">
             <AnalyzeIcon />
             Analyze
-          </SecondaryButton>
+          </SparkleButton>
         </div>
       </div>
 
