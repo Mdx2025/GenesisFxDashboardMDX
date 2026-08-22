@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
-import { GlassSelectIcon, GlassInput, GlowButton } from '@/components/ui'
+import { GlassSelectIcon, GlassInput, GlowButton, InternalTransferModalFrame } from '@/components/ui'
 
 function SearchCoinIcon() {
   return (
@@ -95,56 +95,12 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
       aria-modal="true"
       aria-label="Internal Transfer"
     >
-      <div
+      <InternalTransferModalFrame
         ref={modalRef}
-        className="relative w-[793px] max-w-[95vw] bg-gfx-main rounded-2xl"
+        title="Internal Transfer"
+        description="Transfer funds between your wallets and trading accounts instantly with no fees."
+        onClose={handleClose}
       >
-        {/* Modal background (clipped to contain glows) */}
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none bg-gfx-main rounded-2xl backdrop-blur-[23.23px] border border-gfx-green-200"
-          aria-hidden="true"
-        >
-          <div className="theme-decorative-glow absolute w-[493px] h-[278px] left-[190px] top-[682px] bg-gfx-green-175 rounded-full blur-[157px]" />
-        </div>
-
-        {/* Close button */}
-        <button
-          onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[28px] top-[28px] w-6 h-6"
-          aria-label="Close modal"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-        </button>
-
-        {/* Title */}
-        <div className="relative z-10 text-center pt-[63px]">
-          <h2 className="text-white font-acid font-normal text-h2 leading-none">
-            Internal Transfer
-          </h2>
-          <p className="mx-auto font-acid font-medium text-gfx-neutral-500 text-caption leading-snug max-w-[352px] mt-1">
-            Transfer funds between your wallets and trading accounts instantly with no fees.
-          </p>
-        </div>
-
-        {/* Inner glass card */}
-        <div
-          className="relative mx-auto w-[701px] max-w-[90%] mt-9 mb-[46px]"
-        >
-          {/* Card background with glows (clipped) */}
-          <div
-            className="absolute inset-0 overflow-hidden pointer-events-none rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-1 outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
-            aria-hidden="true"
-          >
-            <div className="theme-decorative-glow absolute w-[587px] h-[435px] left-[304px] top-[-333px] rotate-[48deg] origin-top-left bg-gfx-green-50 rounded-full blur-[157px]" />
-            <div className="theme-decorative-glow absolute w-[493px] h-[278px] left-[36px] top-[-28px] bg-gfx-green-175 rounded-full blur-[157px]" />
-            <div className="theme-decorative-glow absolute w-[237px] h-[237px] left-[555px] top-[-75px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px]" />
-          </div>
-
-          {/* Card content (not clipped, dropdowns can overflow) */}
-          <div className="relative z-10 px-[78px] pt-[32px] pb-[54px]">
-
           {/* Card title */}
           <h3 className="text-white font-acid font-normal text-center text-2xl mb-[42px]">
             Transfer Funds
@@ -186,9 +142,7 @@ export function TransferModal({ open, onClose, onTransfer }: TransferModalProps)
             disabled={!isValid}
             onClick={() => { handleClose(); onTransfer?.() }}
           />
-          </div>
-        </div>
-      </div>
+      </InternalTransferModalFrame>
     </div>
   )
 }

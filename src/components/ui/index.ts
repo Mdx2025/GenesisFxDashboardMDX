@@ -1,4 +1,5 @@
 export { GlassCard } from './GlassCard'
+export { InternalTransferModalFrame } from './InternalTransferModalFrame'
 export { DividerGlow } from './DividerGlow'
 export { GreenDot } from './GreenDot'
 export { NavButton } from './NavButton'
