@@ -50,6 +50,12 @@ const FOLLOW_UPS = [
   { label: 'Am I overtrading?', left: 514, width: 152 },
 ]
 
+const FEEDBACK_ACTIONS = [
+  { label: 'Helpful', left: 72.51, Icon: AiThumbUpIcon },
+  { label: 'Not helpful', left: 112.03, Icon: AiThumbDownIcon },
+  { label: 'Copy answer', left: 151.56, Icon: AiCopyIcon },
+]
+
 const CHAT_ANSWER =
   'I apologize, but I cannot generate a trade idea right now. The "Live prices (right now)" section states "No live prices available right now." Without current price data, I cannot formulate an actionable trade with valid entry, stop loss, and take profit levels. Please provide live prices to proceed.'
 
@@ -443,19 +449,21 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                   </p>
                 </div>
 
-                <p className="absolute left-[29px] top-[427px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
-                  HELPFUL?
-                </p>
-                <div className="absolute left-[101px] top-[412px] flex items-center gap-[21px] text-[color:var(--ac-accent)]">
-                  <button type="button" aria-label="Helpful" className="cursor-pointer transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]">
-                    <AiThumbUpIcon size={18} />
-                  </button>
-                  <button type="button" aria-label="Not helpful" className="cursor-pointer transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]">
-                    <AiThumbDownIcon size={18} />
-                  </button>
-                  <button type="button" aria-label="Copy answer" className="cursor-pointer transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]">
-                    <AiCopyIcon size={18} />
-                  </button>
+                <div className="absolute left-[29px] top-[412.08px] h-[31.52px] w-[183.08px]">
+                  <p className="absolute left-0 top-[14.92px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
+                    HELPFUL?
+                  </p>
+                  {FEEDBACK_ACTIONS.map(({ label, left, Icon }) => (
+                    <button
+                      key={label}
+                      type="button"
+                      aria-label={label}
+                      style={{ left }}
+                      className="absolute top-0 flex h-[31.52px] w-[31.52px] cursor-pointer items-center justify-center bg-[color:var(--ac-well)] text-[color:var(--ac-muted)] [outline:0.88px_solid_var(--ac-border)] [outline-offset:-0.44px] transition-opacity hover:opacity-70"
+                    >
+                      <Icon size={15} />
+                    </button>
+                  ))}
                 </div>
 
                 <p className="absolute left-[29px] top-[477px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
