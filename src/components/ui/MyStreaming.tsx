@@ -39,7 +39,6 @@ export function ChannelHeroCard() {
       contentClassName="relative h-full"
       data-channel-hero
     >
-      <img src="/images/streaming-channel-texture.png" alt="" className="theme-decorative-glow pointer-events-none absolute left-[210px] top-0 h-full w-[720px] object-cover opacity-35 mix-blend-screen" aria-hidden="true" />
       <div className="relative flex h-full flex-col justify-center gap-7 px-6 py-8 sm:px-10 xl:flex-row xl:items-start xl:justify-start xl:gap-9 xl:pb-0 xl:pt-[70px]">
         <span className="grid size-[73px] shrink-0 place-items-center rounded-[18px] border border-gfx-green-200 bg-gfx-surface-icon-well text-2xl text-gfx-green-300 xl:mt-[10px]" aria-hidden="true">J</span>
         <div className="min-w-0 xl:mt-[5px]">

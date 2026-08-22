@@ -37,6 +37,7 @@ const heroPrimitive = await page.locator('[data-channel-hero]').evaluate(element
   usesGlassBannerCard: element.classList.contains('glass-banner-card'),
   shellCount: element.querySelectorAll('.glass-banner-card').length + (element.classList.contains('glass-banner-card') ? 1 : 0),
   nestedGlassCount: element.querySelectorAll('.glass-card, .glass-card-heavy, .glass-card-purple').length,
+  decorativeImageCount: element.querySelectorAll('img').length,
 }))
 const tabs = await rect('[data-my-streaming-tabs]')
 const tabButtons = page.locator('[data-my-streaming-tabs] button')
@@ -98,7 +99,7 @@ const reducedMotionContentVisible = await page.locator('[data-channel-hero]').is
 
 const failures = []
 if (hero.width < 1547 || hero.width > 1551 || Math.abs(hero.height - 279) > 1 || hero.radius !== '18.563px') failures.push(`hero geometry mismatch: ${JSON.stringify(hero)}`)
-if (!heroPrimitive.usesGlassBannerCard || heroPrimitive.shellCount !== 1 || heroPrimitive.nestedGlassCount !== 0) failures.push(`hero primitive mismatch: ${JSON.stringify(heroPrimitive)}`)
+if (!heroPrimitive.usesGlassBannerCard || heroPrimitive.shellCount !== 1 || heroPrimitive.nestedGlassCount !== 0 || heroPrimitive.decorativeImageCount !== 0) failures.push(`hero primitive mismatch: ${JSON.stringify(heroPrimitive)}`)
 if (tabs.width < 738 || tabs.width > 742 || Math.abs(tabs.height - 46) > 1 || Math.abs(tabs.y - 607) > 1 || labels.join('|') !== 'Overview|Streams|Replays|Followers|Earnings') failures.push(`tabs mismatch: ${JSON.stringify({ tabs, labels })}`)
 if (states[0].metrics !== 4 || states[1].ownerCards !== 1 || states[2].ownerCards !== 1 || states[3].followerCards !== 1 || states[4].earningsSummary !== 1 || states[4].earningsTable !== 1 || states.some(state => state.active !== 'true')) failures.push(`state mismatch: ${JSON.stringify(states)}`)
 if (metricRects.length !== 4 || metricRects.some(item => Math.abs(item.height - 148) > 1)) failures.push(`metric geometry mismatch: ${JSON.stringify(metricRects)}`)
