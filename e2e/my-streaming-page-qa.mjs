@@ -79,10 +79,19 @@ const earningsGlow = await page.locator('[data-earnings-activity] .glow-ellipse'
     topOffset: glow.top - table.top,
   }
 })
+const darkEarningsSummary = await page.locator('[data-earnings-summary]').evaluate(element => {
+  const style = getComputedStyle(element)
+  return { background: style.backgroundColor, border: style.borderColor }
+})
 
 await setTheme('light')
 const lightHero = await rect('[data-channel-hero]')
 const lightHeading = await page.getByRole('heading', { name: 'Joe doe' }).evaluate(element => getComputedStyle(element).color)
+await page.locator('[data-my-streaming-tabs] button').nth(4).click()
+const lightEarningsSummary = await page.locator('[data-earnings-summary]').evaluate(element => {
+  const style = getComputedStyle(element)
+  return { background: style.backgroundColor, border: style.borderColor }
+})
 if (process.env.MY_STREAMING_LIGHT_OUTPUT_PATH) await page.screenshot({ path: process.env.MY_STREAMING_LIGHT_OUTPUT_PATH, fullPage: true, animations: 'disabled' })
 
 await page.setViewportSize({ width: 960, height: 900 })
@@ -105,11 +114,12 @@ if (states[0].metrics !== 4 || states[1].ownerCards !== 1 || states[2].ownerCard
 if (metricRects.length !== 4 || metricRects.some(item => Math.abs(item.height - 148) > 1)) failures.push(`metric geometry mismatch: ${JSON.stringify(metricRects)}`)
 if (ownerControls.feature !== 0 || ownerControls.follow !== 0) failures.push(`owner card controls mismatch: ${JSON.stringify(ownerControls)}`)
 if (earningsGlow.count !== 1 || earningsGlow.centerDelta > 1 || earningsGlow.topOffset >= 0) failures.push(`earnings glow mismatch: ${JSON.stringify(earningsGlow)}`)
+if (darkEarningsSummary.background !== 'rgba(0, 0, 0, 0)' || darkEarningsSummary.border !== 'rgb(48, 48, 48)' || lightEarningsSummary.background !== 'rgba(0, 0, 0, 0)' || lightEarningsSummary.border !== 'rgb(48, 48, 48)') failures.push(`earnings summary surface mismatch: ${JSON.stringify({ darkEarningsSummary, lightEarningsSummary })}`)
 if (lightHero.background === 'rgb(12, 19, 17)' || lightHeading !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify({ lightHero, lightHeading })}`)
 if (intermediateOverflow || mobileOverflow || !mobileTabsVisible || !reducedMotionContentVisible) failures.push(`responsive/accessibility mismatch: ${JSON.stringify({ intermediateOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible })}`)
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, hero, heroPrimitive, tabs, labels, states, metricRects, ownerControls, earningsGlow, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, hero, heroPrimitive, tabs, labels, states, metricRects, ownerControls, earningsGlow, darkEarningsSummary, lightHero, lightHeading, lightEarningsSummary, intermediateOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

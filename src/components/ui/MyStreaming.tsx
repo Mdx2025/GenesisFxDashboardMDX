@@ -82,7 +82,7 @@ export function MyStreamFollowerCard() {
 
 export function EarningsSummary() {
   return (
-    <GlassCard variant="light" divider="none" glow={false} rounded="30px" className="min-h-[304px] overflow-hidden" data-earnings-summary>
+    <GlassCard variant="light" divider="none" glow={false} rounded="30px" className="earnings-summary-panel min-h-[304px] overflow-hidden" data-earnings-summary>
       <div className="grid min-h-[304px] gap-8 px-8 py-12 md:grid-cols-2 xl:px-20">
         <div><p className="text-2xl text-gfx-neutral-500">Social Wallet Balance</p><p className="mt-5 text-[50px] leading-none text-white">$0.00</p><p className="mt-8 max-w-[573px] text-2xl leading-8 text-gfx-neutral-500">Earnings from tips, subs, and copy trading follow-through</p></div>
         <div><p className="text-2xl text-gfx-neutral-500">Total Donations Received</p><div className="mt-5 flex flex-wrap items-center gap-6"><p className="text-[50px] leading-none text-white">$0.00</p><GlowButton label="Transfer to main wallet" width="auto" height={44} /></div><p className="mt-8 text-2xl text-gfx-neutral-500">Lifetime tips from your streams</p></div>

@@ -196,7 +196,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         {!isPartner && (
           <Link
             to="/academy/video-single-page"
-            className="sidebar-tutorial-card sidebar-hide relative z-10 mt-2 flex h-[71px] w-full shrink-0 items-center overflow-hidden rounded-[16px] border border-[#A0A0A0] bg-[linear-gradient(0deg,#09241C_29%,#0C1311_88%)] px-3"
+            className="sidebar-tutorial-card sidebar-hide relative z-10 mt-2 flex h-[71px] w-full shrink-0 items-center overflow-hidden rounded-[16px] border border-[#303030] bg-[linear-gradient(0deg,#09241C_29%,#0C1311_88%)] px-3"
             aria-label="Open Genesis Tutorials"
           >
             <span className="relative grid size-[47px] shrink-0 place-items-center rounded-full border border-[#064B34] bg-[linear-gradient(218deg,#064B34_0%,#0C1311_95%)]" aria-hidden="true">

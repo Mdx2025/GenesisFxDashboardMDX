@@ -880,6 +880,15 @@ html[data-theme='light'] svg path[d='M6 6L18 18'][stroke='white'] {
     display: none !important;
   }
 
+  .earnings-summary-panel.glass-card {
+    background: transparent !important;
+    border-color: #303030 !important;
+  }
+
+  .earnings-summary-panel.glass-card::after {
+    display: none !important;
+  }
+
   .weekly-stat-active.glass-card {
     background: var(--color-gfx-green-800);
     box-shadow: none;
