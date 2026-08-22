@@ -132,6 +132,36 @@ const replayGrid = await page.locator('[data-replay-grid]').evaluate(element => 
     gridTemplateColumns: style.gridTemplateColumns,
   }
 })
+const replayFilterInitial = await page.locator('[data-replay-filter]').evaluate(element => {
+  const active = element.querySelector('button[aria-pressed="true"]')
+  const railBox = element.getBoundingClientRect()
+  const activeBox = active?.getBoundingClientRect()
+  const style = getComputedStyle(element)
+  return {
+    padding: style.padding,
+    railHeight: railBox.height,
+    activeLabel: active?.textContent?.trim(),
+    activeHeight: activeBox?.height ?? null,
+    protrudesTop: activeBox ? Math.round((railBox.top - activeBox.top) * 100) / 100 : null,
+    protrudesBottom: activeBox ? Math.round((activeBox.bottom - railBox.bottom) * 100) / 100 : null,
+  }
+})
+const favoriteButton = page.getByRole('button', { name: 'My favorites (0)' })
+await favoriteButton.focus()
+await page.keyboard.press('Enter')
+await page.waitForTimeout(150)
+const replayFavoritesState = {
+  active: await favoriteButton.getAttribute('aria-pressed'),
+  emptyVisible: await page.locator('[data-replay-favorites-empty]').isVisible(),
+  heading: await page.locator('[data-streaming-cards-state] h2').innerText(),
+  cardCount: await page.locator('[data-streaming-cards-state] [data-stream-card]').count(),
+}
+if (process.env.STREAMING_REPLAY_FAVORITES_OUTPUT_PATH) await page.screenshot({ path: process.env.STREAMING_REPLAY_FAVORITES_OUTPUT_PATH, animations: 'disabled' })
+await page.getByRole('button', { name: 'Browse all replays' }).click()
+const replayFilterRestored = {
+  allActive: await page.getByRole('button', { name: 'All replays' }).getAttribute('aria-pressed'),
+  cardCount: await page.locator('[data-replay-grid] [data-stream-card]').count(),
+}
 states.push(await inspect(3, 'following'))
 await page.locator('[data-stream-card] button[aria-pressed="true"]').click()
 const emptyVisible = await page.locator('[data-streaming-empty]').isVisible()
@@ -147,6 +177,22 @@ const lightFeaturedSurface = await page.locator('[data-featured-stream-overlay]'
   return { title: title.color, metadata: metadata.color }
 })
 if (process.env.STREAMING_FEATURED_LIGHT_OUTPUT_PATH) await page.screenshot({ path: process.env.STREAMING_FEATURED_LIGHT_OUTPUT_PATH, animations: 'disabled' })
+await page.locator('[data-streaming-tabs] button').nth(2).evaluate(element => element.click())
+const lightFavoriteButton = page.getByRole('button', { name: 'My favorites (0)' })
+await lightFavoriteButton.focus()
+await page.keyboard.press('Enter')
+await page.waitForTimeout(200)
+const lightReplayFilter = await lightFavoriteButton.evaluate(element => {
+  const style = getComputedStyle(element)
+  return {
+    active: element.getAttribute('aria-pressed'),
+    className: element.className,
+    color: style.color,
+    background: style.backgroundColor,
+    outlineColor: style.outlineColor,
+    emptyVisible: Boolean(document.querySelector('[data-replay-favorites-empty]')),
+  }
+})
 await page.locator('[data-streaming-tabs] button').nth(1).evaluate(element => element.click())
 const browseHero = await page.locator('[data-browse-hero]').evaluate(element => {
   const shell = element.querySelector('.glass-banner-card')
@@ -202,6 +248,10 @@ if (!homeRefinement.streamCard || Math.abs(homeRefinement.streamCard.width - 381
 if (homeRefinement.visibleTextBelowTwelve) failures.push(`typography floor mismatch: ${homeRefinement.visibleTextBelowTwelve} visible nodes below 12px`)
 if (states[1].cards !== 2 || states[2].cards !== 3 || states[3].cards !== 1) failures.push(`stream card counts mismatch: ${JSON.stringify(states)}`)
 if (replayGrid.columnCount !== 4 || replayGrid.itemCount !== 3) failures.push(`replay grid mismatch: ${JSON.stringify(replayGrid)}`)
+if (replayFilterInitial.padding !== '0px' || Math.abs(replayFilterInitial.railHeight - 44) > 1 || Math.abs(replayFilterInitial.activeHeight - 46) > 1 || replayFilterInitial.protrudesTop < 0.5 || replayFilterInitial.protrudesBottom < 0.5) failures.push(`replay filter geometry mismatch: ${JSON.stringify(replayFilterInitial)}`)
+if (replayFavoritesState.active !== 'true' || !replayFavoritesState.emptyVisible || replayFavoritesState.cardCount !== 0 || !replayFavoritesState.heading.includes('My favorite replays')) failures.push(`replay favorites state mismatch: ${JSON.stringify(replayFavoritesState)}`)
+if (replayFilterRestored.allActive !== 'true' || replayFilterRestored.cardCount !== 3) failures.push(`replay filter restoration mismatch: ${JSON.stringify(replayFilterRestored)}`)
+if (lightReplayFilter.active !== 'true' || !lightReplayFilter.emptyVisible || lightReplayFilter.color !== 'rgb(0, 0, 0)' || lightReplayFilter.background !== 'rgb(241, 255, 250)' || lightReplayFilter.outlineColor !== 'rgb(6, 75, 52)') failures.push(`light replay filter mismatch: ${JSON.stringify(lightReplayFilter)}`)
 if (!emptyVisible || browseAfterEmpty !== 'browse') failures.push('following empty-state flow mismatch')
 if (!browseHero.usesGlassBannerCard || browseHero.shellCount !== 1 || browseHero.glowImageCount !== 0 || browseHero.rightTextureCount !== 0 || Math.abs(browseHero.height - 208) > 1 || browseHero.radius !== '18.563px') failures.push(`browse hero component mismatch: ${JSON.stringify(browseHero)}`)
 if (lightSurface.background !== 'rgba(255, 255, 255, 0.68)' || lightSurface.border !== 'rgba(6, 75, 52, 0.1)' || lightSurface.heading !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify(lightSurface)}`)
@@ -212,6 +262,6 @@ if (!reducedMotionContentVisible || !sendButtonFocused) failures.push(`accessibi
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, states, replayGrid, homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter, emptyVisible, browseAfterEmpty, browseHero, lightFeaturedSurface, lightSurface, zoomEquivalentOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, sendButtonFocused, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, states, replayGrid, replayFilterInitial, replayFavoritesState, replayFilterRestored, lightReplayFilter, homeRefinement, carouselTransformBefore, carouselTransformAfterDrag, carouselTransformAfter, emptyVisible, browseAfterEmpty, browseHero, lightFeaturedSurface, lightSurface, zoomEquivalentOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, sendButtonFocused, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

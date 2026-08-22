@@ -25,6 +25,8 @@ const CATEGORIES = [
   ['All', 1, true], ['Forex', 1, true], ['Crypto', 0, false], ['Indices', 0, false], ['Stocks', 0, false], ['News & Analysis', 0, false],
 ] as const
 
+type ReplayFilter = 'all' | 'favorites'
+
 function StartStreamingIcon() {
   return (
     <svg viewBox="0 0 18 18" className="size-[18px] text-black" fill="none" aria-hidden="true">
@@ -41,6 +43,42 @@ function StartStreamingIcon() {
 
 function SectionHeading({ children, count }: { children: string; count?: string }) {
   return <h2 className="text-[30px] font-normal leading-none text-white">{children}{count && <span className="ml-2 text-gfx-neutral-500">({count})</span>}</h2>
+}
+
+function ReplayFilterSwitch({ value, onChange }: { value: ReplayFilter; onChange: (value: ReplayFilter) => void }) {
+  const options: Array<{ value: ReplayFilter; label: string; icon?: boolean }> = [
+    { value: 'all', label: 'All replays' },
+    { value: 'favorites', label: 'My favorites (0)', icon: true },
+  ]
+
+  return (
+    <div
+      className="inline-flex h-11 shrink-0 items-center rounded-full border border-gfx-green-200 p-0 text-sm"
+      role="group"
+      aria-label="Replay filter"
+      data-replay-filter
+    >
+      {options.map((option) => {
+        const active = value === option.value
+        return (
+          <button
+            key={option.value}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onChange(option.value)}
+            className={`relative inline-flex items-center justify-center gap-2 rounded-full px-5 transition-colors focus-visible:z-20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#000705] ${active ? `z-10 -my-px h-[46px] bg-[#F1FFFA] text-black shadow-[0_6px_18px_rgba(0,0,0,0.18)] ${option.value === 'all' ? '-ml-px' : '-mr-px'}` : 'h-11 text-gfx-neutral-400 hover:text-white'}`}
+          >
+            {option.icon && (
+              <svg viewBox="0 0 18 18" className="size-[18px]" fill="none" aria-hidden="true">
+                <path d="M9 14.5 3.8 9.7A3.4 3.4 0 0 1 8.6 4.9L9 5.3l.4-.4a3.4 3.4 0 0 1 4.8 4.8L9 14.5Z" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
+            {option.label}
+          </button>
+        )
+      })}
+    </div>
+  )
 }
 
 function FeaturedStream() {
@@ -155,12 +193,26 @@ function BrowseState() {
   )
 }
 
-function CardsState({ following, followed, onFollow }: { following?: boolean; followed: boolean; onFollow: () => void }) {
-  const cards = useMemo(() => following ? ['FOREX'] : ['FOREX', 'NEWS & ANALYSIS', 'COMMODITIES'], [following])
+function CardsState({ following, followed, onFollow, replayFilter = 'all', onShowAll }: { following?: boolean; followed: boolean; onFollow: () => void; replayFilter?: ReplayFilter; onShowAll?: () => void }) {
+  const cards = useMemo(() => following ? ['FOREX'] : replayFilter === 'favorites' ? [] : ['FOREX', 'NEWS & ANALYSIS', 'COMMODITIES'], [following, replayFilter])
+  const favoritesEmpty = !following && replayFilter === 'favorites'
+
   return (
     <section className="mt-[54px]" data-streaming-cards-state>
-      <SectionHeading count="1 live">Recent replays</SectionHeading>
-      <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-4" data-replay-grid>{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={following ? onFollow : undefined} />)}</div>
+      <span className="sr-only" aria-live="polite">{favoritesEmpty ? 'Showing zero favorite replays.' : `Showing ${cards.length} replays.`}</span>
+      <SectionHeading count={favoritesEmpty ? '0' : '1 live'}>{favoritesEmpty ? 'My favorite replays' : 'Recent replays'}</SectionHeading>
+      {favoritesEmpty ? (
+        <div className="mt-3 flex min-h-[319px] flex-col items-center justify-center rounded-[18.563px] border border-gfx-green-200 bg-white/[0.02] px-6 text-center" data-replay-favorites-empty>
+          <span className="grid size-16 place-items-center rounded-full border border-gfx-green-200 bg-gfx-green-900 text-gfx-green-300" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="size-7" fill="none"><path d="M12 20 4.7 13.3A4.8 4.8 0 0 1 11.5 6.5l.5.5.5-.5a4.8 4.8 0 0 1 6.8 6.8L12 20Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </span>
+          <h3 className="mt-5 text-xl text-white">No favorite replays yet</h3>
+          <p className="mt-2 text-sm text-gfx-neutral-400">Favorite a replay and it will appear here.</p>
+          <PrimaryPillButton className="mt-6 min-w-[168px]" onClick={onShowAll}>Browse all replays</PrimaryPillButton>
+        </div>
+      ) : (
+        <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-4" data-replay-grid>{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={following ? onFollow : undefined} />)}</div>
+      )}
     </section>
   )
 }
@@ -170,6 +222,7 @@ export default function StreamingPage() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [query, setQuery] = useState('')
   const [followed, setFollowed] = useState(true)
+  const [replayFilter, setReplayFilter] = useState<ReplayFilter>('all')
   const tab = STREAMING_TABS[activeIndex]
 
   return (
@@ -195,10 +248,10 @@ export default function StreamingPage() {
           </div>
         </header>
 
-        {tab !== 'Home' && tab !== 'Browse' && <div className="mt-[34px] flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between"><SearchInput value={query} onChange={setQuery} placeholder="Search replays..." ariaLabel="Search streaming content" className="w-full max-w-[765px]" />{tab === 'Replays' && <div className="flex h-11 rounded-full border border-gfx-green-200 p-1 text-sm"><button className="rounded-full bg-[#F1FFFA] px-5 text-black">All replays</button><button className="px-5 text-gfx-neutral-400">♡ My favorites (0)</button></div>}</div>}
+        {tab !== 'Home' && tab !== 'Browse' && <div className="mt-[34px] flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between"><SearchInput value={query} onChange={setQuery} placeholder="Search replays..." ariaLabel="Search streaming content" className="w-full max-w-[765px]" />{tab === 'Replays' && <ReplayFilterSwitch value={replayFilter} onChange={setReplayFilter} />}</div>}
         {tab === 'Home' && <HomeState />}
         {tab === 'Browse' && <BrowseState />}
-        {tab === 'Replays' && <CardsState followed={false} onFollow={() => {}} />}
+        {tab === 'Replays' && <CardsState followed={false} onFollow={() => {}} replayFilter={replayFilter} onShowAll={() => setReplayFilter('all')} />}
         {tab === 'Following' && (followed ? <CardsState following followed={followed} onFollow={() => setFollowed(false)} /> : <div className="mt-[54px]"><StreamingEmptyState onBrowse={() => setActiveIndex(1)} /></div>)}
       </main>
     </div>

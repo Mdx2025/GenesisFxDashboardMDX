@@ -1002,6 +1002,12 @@ html[data-theme='light'] svg path[d='M6 6L18 18'][stroke='white'] {
   outline-offset: 2px;
 }
 
+html[data-theme='light'] [data-replay-filter] button:focus-visible,
+html[data-theme='light'] [data-replay-favorites-empty] button:focus-visible {
+  outline-color: #064B34;
+  --tw-ring-color: #064B34;
+}
+
 @keyframes fadeInStep {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }

@@ -144,3 +144,13 @@ STATUS: VERIFIED by independent verifier
 - Locked geometry: Replays renders exactly three `StreamCard` items inside four computed desktop grid columns; tablet collapses to two columns and mobile to one without overflow.
 - Quality contract: WCAG 2.2 AA; typography floor `12px`; contrast `4.5:1` normal text and `3:1` large/UI; keyboard focus and reduced-motion parity; desktop, intermediate, and mobile checks; zero runtime errors or failed responses; build and browser QA required.
 - Regression selectors: `[data-browse-hero]` must contain zero `.glass-banner-card__glow-image` elements and zero `/images/streaming-browse-texture.png` images; `[data-replay-grid]` must compute four columns and contain three cards at the desktop reference viewport.
+
+## 16. Operator refinement — Replay filter switch
+
+- Source: operator crop received 2026-08-21 showing the `All replays` / `My favorites (0)` control and explicitly requesting the selected pill to protrude beyond the outlined rail.
+- `design_route`: `surface=dashboard`, `archetype=analytics`, `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot + live codebase`, `style=existing GenesisFX glass-dashboard thesis`.
+- Visual thesis: treat the outline as a zero-padding filter rail and the selected `46px` pill as the foreground layer, extending `1px` beyond the `44px` rail instead of sitting inset inside it.
+- Dials: `design_variance=1`, `motion_intensity=1`, `visual_density=7`, `art_direction=3`, `implementation_clarity=10`, `image_usage_priority=1`, `spacing_generosity=3`.
+- State model: `All replays` renders the existing three records in the four-track grid; `My favorites (0)` renders a product-specific empty state; `Browse all replays` restores the all state.
+- Quality contract: WCAG 2.2 AA; typography floor `12px`; contrast `4.5:1` normal text and `3:1` UI; native buttons with `aria-pressed`, keyboard activation, visible focus, `44px` minimum targets, reduced-motion parity, responsive containment, zero runtime errors or failed responses, and build/browser QA required.
+- Highest risk selectors: `[data-replay-filter]`, its active button geometry and focus ring, `[data-replay-favorites-empty]`, and `[data-replay-grid]` state restoration.
