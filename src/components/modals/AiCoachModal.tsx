@@ -50,6 +50,9 @@ const FOLLOW_UPS = [
   { label: 'Am I overtrading?', left: 514, width: 152 },
 ]
 
+const CHAT_ANSWER =
+  'I apologize, but I cannot generate a trade idea right now. The "Live prices (right now)" section states "No live prices available right now." Without current price data, I cannot formulate an actionable trade with valid entry, stop loss, and take profit levels. Please provide live prices to proceed.'
+
 const RESPONSE_BLOCKS: { label?: string; body: string }[] = [
   { body: 'Trade Idea: No Tradeable Instruments (Alternative Idea)' },
   {
@@ -424,6 +427,20 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                   <span className="ac-text whitespace-nowrap text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
                     Generate a trade idea for me (Asset: forex)
                   </span>
+                </div>
+
+                <div className="absolute left-[29px] top-[253px] h-[146px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
+                  <div
+                    className="ac-glow pointer-events-none absolute left-[177px] -top-[178px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="ac-glow pointer-events-none absolute left-[177px] -top-[178px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                    aria-hidden="true"
+                  />
+                  <p className="absolute left-[25px] top-[32px] w-[597px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-body)]">
+                    {CHAT_ANSWER}
+                  </p>
                 </div>
 
                 <p className="absolute left-[29px] top-[427px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">

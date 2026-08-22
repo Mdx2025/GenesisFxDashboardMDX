@@ -20,6 +20,7 @@
   --ac-btn-face: var(--color-gfx-green-lightest);
   --ac-btn-text: #000000;
   --ac-quiet-text: #ececec;
+  --ac-body: #c9c9d1;
   --ac-bubble: var(--color-gfx-purple-surface);
   --ac-tab-track: #111312;
   --ac-blob: #8260cf;
@@ -49,6 +50,7 @@ html[data-theme='light'] .ai-coach-surface {
   --ac-btn-face: #9fe4cd;
   --ac-btn-text: #000000;
   --ac-quiet-text: #3a3346;
+  --ac-body: #4a4553;
   --ac-bubble: #efe4ff;
   --ac-tab-track: #efe9f7;
   --ac-blob: #c9b6f5;
