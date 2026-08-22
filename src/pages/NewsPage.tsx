@@ -1,7 +1,17 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { ModeToggle, GlowEllipse, GlowButton, SearchInput, AiGradientPill, AiCreditBoltIcon } from '@/components/ui'
+import {
+  ModeToggle,
+  GlowEllipse,
+  GlowButton,
+  SearchInput,
+  AiGradientPill,
+  AiCreditBoltIcon,
+  DiscoverPlayStreamButton,
+  PrimaryPillButton,
+} from '@/components/ui'
+import DiscoverView from '@/pages/news/DiscoverView'
 import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
 import TradeSessionsView from '@/pages/news/TradeSessionsView'
@@ -10,8 +20,8 @@ import AiAnalysisView from '@/pages/news/AiAnalysisView'
 
 // Daily News is hidden from the tab bar; DailyNewsView stays in the codebase and
 // its single-episode route (/news/daily-single-page) is still reachable.
-const TABS = ['Terminal', 'Market News', 'AI analysis', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
-const TITLES = ['Daily analysis', 'Market News', 'Market Watch', 'Market News', 'Daily analysis', 'Daily analysis'] as const
+const TABS = ['Discover', 'Terminal', 'Market News', 'AI analysis', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
+const TITLES = ['Market Watch', 'Daily analysis', 'Market News', 'Market Watch', 'Market News', 'Daily analysis', 'Daily analysis'] as const
 const NEWS_CHANNELS =['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
 const WEBCAM_REGIONS = ['All', 'Middle East', 'Europe', 'Americas', 'Asia'] as const
 
@@ -464,10 +474,10 @@ export default function NewsPage() {
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <h1 className="text-white text-h1 font-normal">{TITLES[activeTab]}</h1>
-            {activeTab === 0 && <BullishBadge />}
-            {activeTab === 2 && <AiGradientPill>AI</AiGradientPill>}
+            {activeTab === 1 && <BullishBadge />}
+            {(activeTab === 0 || activeTab === 3) && <AiGradientPill>AI</AiGradientPill>}
           </div>
-          {activeTab === 2 && (
+          {(activeTab === 0 || activeTab === 3) && (
             <AiGradientPill>
               <AiCreditBoltIcon />
               152
@@ -485,7 +495,13 @@ export default function NewsPage() {
               onChange={setActiveTab}
             />
           </div>
-          {(activeTab === 0 || activeTab === 2) && (
+          {activeTab === 0 && (
+            <div className="hidden lg:flex items-center gap-[15px] shrink-0">
+              <DiscoverPlayStreamButton />
+              <PrimaryPillButton className="!w-[158px]">Trade</PrimaryPillButton>
+            </div>
+          )}
+          {(activeTab === 1 || activeTab === 3) && (
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <LiveStreamIcon />
               <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} />
@@ -493,8 +509,11 @@ export default function NewsPage() {
           )}
         </div>
 
-        {/* Terminal Tab (index 0) */}
-        {activeTab === 0 && (
+        {/* Discover Tab (index 0) */}
+        {activeTab === 0 && <DiscoverView />}
+
+        {/* Terminal Tab (index 1) */}
+        {activeTab === 1 && (
           <div className="flex flex-col gap-5">
             {/* Top Row: Live News + Live Webcams + AI Insights */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr_0.74fr] gap-5">
@@ -518,20 +537,20 @@ export default function NewsPage() {
           </div>
         )}
 
-        {/* Market News Tab (index 1) */}
-        {activeTab === 1 && <MarketNewsView />}
+        {/* Market News Tab (index 2) */}
+        {activeTab === 2 && <MarketNewsView />}
 
-        {/* AI Analysis Tab (index 2) */}
-        {activeTab === 2 && <AiAnalysisView />}
+        {/* AI Analysis Tab (index 3) */}
+        {activeTab === 3 && <AiAnalysisView />}
 
-        {/* Economic Calendar Tab (index 3) */}
-        {activeTab === 3 && <EconomicCalendarView />}
+        {/* Economic Calendar Tab (index 4) */}
+        {activeTab === 4 && <EconomicCalendarView />}
 
-        {/* Trade Sessions Tab (index 4) */}
-        {activeTab === 4 && <TradeSessionsView />}
+        {/* Trade Sessions Tab (index 5) */}
+        {activeTab === 5 && <TradeSessionsView />}
 
-        {/* Podcast Tab (index 5) */}
-        {activeTab === 5 && <PodcastView />}
+        {/* Podcast Tab (index 6) */}
+        {activeTab === 6 && <PodcastView />}
       </div>
     </div>
   )

@@ -74,6 +74,15 @@ export {
 export type { MyStreamingTab } from './MyStreaming'
 export { AiCoachChip, AiCoachIconChip, AiCoachPromptBar, AiCoachTradeChart } from './AiCoach'
 export {
+  DiscoverCategoryBar,
+  DiscoverLivePill,
+  DiscoverMarketTable,
+  DiscoverMoverCard,
+  DiscoverPagination,
+  DiscoverPlayStreamButton,
+  DiscoverSearchInput,
+} from './Discover'
+export {
   AiCreditBoltIcon,
   AiGradientPill,
   AnalysisCard,
