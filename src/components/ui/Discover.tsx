@@ -60,7 +60,7 @@ export function DiscoverMoverCard({ mover }: { mover: DiscoverMover }) {
       variant="light"
       divider="none"
       rounded="14.198px"
-      className="trades-table-card relative h-[149px] w-[208px] shrink-0 overflow-hidden"
+      className="trades-table-card relative h-[149px] w-full min-w-0 overflow-hidden"
     >
       <div className="flex items-start gap-[7px] px-[9.11px] pt-[16.11px]">
         <MoverFlag flag={mover.flag} />
@@ -85,7 +85,7 @@ export function DiscoverMoverCard({ mover }: { mover: DiscoverMover }) {
       <img
         src={`${ASSETS}/${mover.positive ? 'sparkline-up' : 'sparkline-down'}.svg`}
         alt=""
-        className="absolute left-1/2 top-[108.11px] block h-[25.838px] w-[173px] -translate-x-1/2 max-w-none"
+        className="absolute left-1/2 top-[108.11px] block h-[25.838px] w-[83.2%] -translate-x-1/2"
       />
     </GlassCard>
   )

@@ -31,7 +31,7 @@ export default function DiscoverView() {
           <h2 className="text-white text-base font-medium font-acid leading-[24.44px] whitespace-nowrap">TOP MOVERS</h2>
           <DiscoverLivePill>Biggest 24H MOVES</DiscoverLivePill>
         </div>
-        <div className="flex gap-[15px] overflow-x-auto pb-1">
+        <div className="grid grid-cols-2 gap-[15px] sm:grid-cols-4 lg:grid-cols-7">
           {discoverMovers.map((mover, index) => (
             <DiscoverMoverCard key={`${mover.symbol}-${index}`} mover={mover} />
           ))}
