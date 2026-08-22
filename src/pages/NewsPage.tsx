@@ -8,8 +8,6 @@ import {
   SearchInput,
   AiGradientPill,
   AiCreditBoltIcon,
-  DiscoverPlayStreamButton,
-  PrimaryPillButton,
 } from '@/components/ui'
 import DiscoverView from '@/pages/news/DiscoverView'
 import MarketNewsView from '@/pages/news/MarketNewsView'
@@ -496,18 +494,10 @@ export default function NewsPage() {
               buttonClassName="text-[14px]! px-0! overflow-visible!"
             />
           </div>
-          {activeTab === 0 && (
-            <div className="hidden lg:flex items-center gap-[15px] shrink-0">
-              <DiscoverPlayStreamButton />
-              <PrimaryPillButton className="!w-[158px]">Trade</PrimaryPillButton>
-            </div>
-          )}
-          {(activeTab === 1 || activeTab === 3) && (
-            <div className="hidden lg:flex items-center gap-3 shrink-0">
-              <LiveStreamIcon />
-              <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} />
-            </div>
-          )}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <LiveStreamIcon />
+            <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} />
+          </div>
         </div>
 
         {/* Discover Tab (index 0) */}
