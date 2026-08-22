@@ -493,6 +493,7 @@ export default function NewsPage() {
               defaultIndex={0}
               activeIndex={activeTab}
               onChange={setActiveTab}
+              buttonClassName="!text-[14px] !px-1"
             />
           </div>
           {activeTab === 0 && (
