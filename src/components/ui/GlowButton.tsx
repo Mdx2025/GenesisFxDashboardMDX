@@ -12,6 +12,7 @@ interface GlowButtonProps {
   onClick?: () => void
   disabled?: boolean
   className?: string
+  type?: 'button' | 'submit' | 'reset'
   // Legacy props accepted for compatibility but ignored by the new visual
   smoothing?: number
   intensity?: number
@@ -32,6 +33,7 @@ export function GlowButton({
   onClick,
   disabled = false,
   className = '',
+  type = 'button',
 }: GlowButtonProps) {
   const lightRef = useRef<HTMLSpanElement>(null)
   const ringRRef = useRef<HTMLSpanElement>(null)
@@ -55,7 +57,7 @@ export function GlowButton({
 
   return (
     <button
-      type="button"
+      type={type}
       className={`glow-btn ${className}`}
       style={{
         width,

@@ -74,6 +74,16 @@ const fields = await page.locator('[data-streaming-application-field] input').ev
   return { width: rect.width, height: rect.height, radius: getComputedStyle(element).borderRadius }
 }))
 const textarea = await box('[data-streaming-application-form] textarea')
+const submitAction = await page.getByRole('button', { name: 'Submit application' }).evaluate(element => {
+  const rect = element.getBoundingClientRect()
+  return {
+    type: element.getAttribute('type'),
+    width: rect.width,
+    height: rect.height,
+    fontSize: getComputedStyle(element).fontSize,
+    hasGlowButton: element.classList.contains('glow-btn'),
+  }
+})
 const topicCount = await page.locator('[data-streaming-topic]').count()
 const topicHeights = await page.locator('[data-streaming-topic]').evaluateAll(elements => elements.map(element => element.getBoundingClientRect().height))
 await page.getByRole('button', { name: 'Forex', exact: true }).click()
@@ -111,12 +121,13 @@ if (!gateKeyboardFocus.focused || !gateKeyboardFocus.focusVisible || Number.pars
 if (Math.abs(form.width - 1133) > 1 || Math.abs(form.height - 913) > 1 || form.radius !== '30px' || Math.abs(form.y - 159) > 2) failures.push(`form geometry mismatch: ${JSON.stringify(form)}`)
 if (fields.length !== 2 || fields.some(field => Math.abs(field.width - 699) > 1 || Math.abs(field.height - 50) > 1 || field.radius !== '30px')) failures.push(`field geometry mismatch: ${JSON.stringify(fields)}`)
 if (Math.abs(textarea.width - 699) > 1 || Math.abs(textarea.height - 145) > 1 || textarea.radius !== '30px') failures.push(`textarea mismatch: ${JSON.stringify(textarea)}`)
+if (submitAction.type !== 'submit' || !submitAction.hasGlowButton || Math.abs(submitAction.width - 208) > 1 || Math.abs(submitAction.height - 44) > 1 || Number.parseFloat(submitAction.fontSize) < 12) failures.push(`submit action mismatch: ${JSON.stringify(submitAction)}`)
 if (topicCount !== 8 || topicHeights.some(height => Math.abs(height - 49) > 1) || forexSelected !== 'true' || !checkboxChecked) failures.push(`topic/form interaction mismatch: ${JSON.stringify({ topicCount, topicHeights, forexSelected, checkboxChecked })}`)
 if (lightForm.background === 'rgb(12, 19, 17)' || lightHeadingColor !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify({ lightForm, lightHeadingColor })}`)
 if (intermediateOverflow || mobileOverflow || !mobileFormVisible || !reducedMotionVisible) failures.push(`responsive/accessibility mismatch: ${JSON.stringify({ intermediateOverflow, mobileOverflow, mobileFormVisible, reducedMotionVisible })}`)
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, route, breadcrumb, gate, gateActions, gateKeyboardFocus, form, fields, textarea, topicCount, topicHeights, forexSelected, checkboxChecked, lightForm, lightHeadingColor, intermediateOverflow, mobileOverflow, mobileFormVisible, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, route, breadcrumb, gate, gateActions, gateKeyboardFocus, form, fields, textarea, submitAction, topicCount, topicHeights, forexSelected, checkboxChecked, lightForm, lightHeadingColor, intermediateOverflow, mobileOverflow, mobileFormVisible, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

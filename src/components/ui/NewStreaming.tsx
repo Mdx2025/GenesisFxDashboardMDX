@@ -1,7 +1,6 @@
 import { useId, useState, type FormEvent } from 'react'
 import { GlassCard } from './GlassCard'
 import { GlowButton } from './GlowButton'
-import { PrimaryPillButton } from './PrimaryPillButton'
 import { SparkleButton } from './SparkleButton'
 
 export const STREAMING_APPLICATION_TOPICS = [
@@ -165,7 +164,7 @@ export function StreamingApplicationForm({ onSubmit }: { onSubmit?: () => void }
         </label>
 
         <div className="mt-[48px] flex justify-end">
-          <PrimaryPillButton type="submit" className="w-[208px] max-w-full">Submit application</PrimaryPillButton>
+          <GlowButton type="submit" label="Submit application" width={208} height={44} />
         </div>
         <span className="sr-only" aria-live="polite">{submitted ? 'Application submission captured locally.' : ''}</span>
       </form>
