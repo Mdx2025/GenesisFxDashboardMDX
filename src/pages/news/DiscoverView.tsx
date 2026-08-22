@@ -4,7 +4,6 @@ import {
   DiscoverLivePill,
   DiscoverMarketTable,
   DiscoverMoverCard,
-  DiscoverPagination,
   DiscoverSearchInput,
 } from '@/components/ui'
 import {
@@ -16,7 +15,6 @@ import {
 
 export default function DiscoverView() {
   const [category, setCategory] = useState('For you')
-  const [page, setPage] = useState(1)
   const [query, setQuery] = useState('')
 
   const rows = query
@@ -55,8 +53,6 @@ export default function DiscoverView() {
         </div>
 
         <DiscoverMarketTable rows={rows} />
-
-        <DiscoverPagination page={page} pages={3} onChange={setPage} />
       </div>
     </div>
   )
