@@ -309,13 +309,15 @@ export default function JournalPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="w-full overflow-x-auto max-w-4xl">
-          <ModeToggle
-            options={[...journalTabs]}
-            defaultIndex={0}
-            activeIndex={activeTab}
-            onChange={setActiveTab}
-          />
+        <div className="w-full max-w-4xl overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="min-w-[680px] lg:min-w-0">
+            <ModeToggle
+              options={[...journalTabs]}
+              defaultIndex={0}
+              activeIndex={activeTab}
+              onChange={setActiveTab}
+            />
+          </div>
         </div>
 
         {/* Tab Content */}

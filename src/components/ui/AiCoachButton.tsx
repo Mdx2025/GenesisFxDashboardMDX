@@ -23,7 +23,7 @@ export function AiCoachButton({ className = '', onClick }: AiCoachButtonProps) {
       className={`flex items-center gap-3.5 px-[19px] h-[52px] rounded-full bg-[linear-gradient(241deg,#100919_0%,#1D0E2F_100%)] max-md:bg-[linear-gradient(266deg,#F4EBFF_0.95%,#F2E8FF_79.28%)] [[data-theme=light]_&]:bg-[linear-gradient(266deg,#F4EBFF_0.95%,#F2E8FF_79.28%)] hover:opacity-90 transition-opacity cursor-pointer ${className}`}
     >
       <AiCoachIcon />
-      <span className="text-white text-base font-acid font-medium leading-6">AI Coach</span>
+      <span className="text-white max-md:text-black text-base font-acid font-medium leading-6">AI Coach</span>
     </button>
   )
 }
