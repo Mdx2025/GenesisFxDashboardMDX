@@ -491,11 +491,11 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             {view === 'response' && (
               <div className="absolute left-[29px] top-[67px] h-[680px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                 <div
-                  className="ac-glow pointer-events-none absolute -left-[40px] -top-[110px] h-[220px] w-[320px] rounded-full bg-[color:var(--ac-glow)] opacity-20 blur-[110px]"
+                  className="ac-glow pointer-events-none absolute left-[252px] -top-[82.98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                   aria-hidden="true"
                 />
-                <AiSparkleIcon size={16} className="absolute left-[33.18px] top-[33.18px] text-[color:var(--ac-accent)]" />
-                <div className="absolute left-[33.18px] top-[33.18px] w-[599px] pl-[26px] text-sm font-acid font-normal leading-[18.8px]">
+                <AiSparkleIcon size={15} className="absolute left-[40px] top-[32px] text-[color:var(--ac-accent)]" />
+                <div className="absolute left-[34px] top-[34px] w-[599px] pl-[26px] text-sm font-acid font-normal leading-[18.8px]">
                   {RESPONSE_BLOCKS.map((block, i) => (
                     <p key={block.label ?? block.body} className={i === 0 ? '' : 'mt-[18.8px] pl-0 -ml-[26px]'}>
                       {block.label && <span className="ac-text text-[color:var(--ac-text)]">{block.label}</span>}
@@ -503,15 +503,12 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                     </p>
                   ))}
                 </div>
-                <AiCoachTradeChart className="absolute left-[37px] top-[397.18px] h-[192px] w-[589px]" />
+                <AiCoachTradeChart className="absolute left-[37px] top-[398px] h-[192px] w-[589px] overflow-hidden rounded-[15px]" />
                 <PrimaryPillButton
-                  className="ai-coach-cta !absolute left-[36.5px] top-[607.18px] !w-[590px] !pl-[22px] !pr-[31px]"
+                  className="ai-coach-cta !absolute left-[34px] top-[608px] !w-[590px] !pl-[22px] !pr-[31px]"
                   onClick={() => setView('idea')}
                 >
-                  <span className="flex items-center gap-2.5">
-                    <AiPlusIcon size={18} />
-                    Trade
-                  </span>
+                  <span className="text-base font-medium leading-[24.44px]">Place Sell Trade</span>
                 </PrimaryPillButton>
               </div>
             )}
