@@ -9,6 +9,7 @@ import {
   LeaderboardAvatar, LeaderboardSparkline, LeaderboardTable, LeaderboardTabs,
   StreamCard, StreamingCategoryCard, StreamingEmptyState, StreamingLiveBadge, StreamingTabs,
   ChannelHeroCard, ChannelMetricCard, MyStreamFollowerCard, MyStreamingTabs,
+  StreamingApplicationForm, StreamingApplicationGate,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon, ShareFilledIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -708,6 +709,13 @@ export default function DesignSystemPage() {
               <ChannelHeroCard />
               <MyStreamingTabs activeIndex={myStreamingTab} onChange={setMyStreamingTab} />
               <div className="grid gap-4 sm:grid-cols-2"><ChannelMetricCard label="Active streams" value="0" icon={<StreamingLiveBadge />} /><MyStreamFollowerCard /></div>
+            </div>
+          </Subsection>
+
+          <Subsection title="New Streaming application — gate and form">
+            <div className="space-y-6">
+              <StreamingApplicationGate onApply={() => {}} onBack={() => {}} />
+              <StreamingApplicationForm />
             </div>
           </Subsection>
 

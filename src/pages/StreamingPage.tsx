@@ -244,6 +244,7 @@ export default function StreamingPage() {
                 width={197}
                 height={44}
                 className="streaming-start-button"
+                onClick={() => navigate('/streaming/newstreaming')}
               />
             </div>
             {tab === 'Browse' && <SearchInput value={query} onChange={setQuery} placeholder="Search streams, symbols.." ariaLabel="Search streaming content" className="mt-[19px] w-full xl:ml-auto xl:w-[393px]" />}
