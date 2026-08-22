@@ -33,6 +33,18 @@ html[data-theme='light'] .ai-signal-pill--danger {
   --ai-signal-fg: #a83c30;
 }
 
+/* The gauge needle is drawn in the surface's foreground colour, so it stays
+   readable when the card repaints white in light mode. */
+.ai-gauge-needle {
+  --ai-gauge-needle: #fff;
+  border-color: var(--ai-gauge-needle);
+  background: var(--ai-gauge-needle);
+}
+
+html[data-theme='light'] .ai-gauge-needle {
+  --ai-gauge-needle: var(--color-gfx-green-800);
+}
+
 /* Purple AI chips keep their dark gradient in both themes: they are the AI
    accent of the product, not a surface that follows the light palette. */
 .ai-gradient-pill {

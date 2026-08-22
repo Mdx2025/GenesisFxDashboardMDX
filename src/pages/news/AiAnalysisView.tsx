@@ -45,7 +45,7 @@ function QuoteCard() {
             </div>
             <div className="flex items-end gap-[13px]">
               <span className="text-white text-h1 font-acid leading-none">{aiAnalysisQuote.price}</span>
-              <span className="ai-signal-pill ai-signal-pill--success inline-flex h-[26px] items-center gap-[7px] rounded-[32px] px-2 text-base font-medium font-acid leading-none">
+              <span className="ai-signal-pill ai-signal-pill--success inline-flex h-[26px] shrink-0 items-center gap-[7px] whitespace-nowrap rounded-[32px] px-2 text-base font-medium font-acid leading-none">
                 <TrendUpIcon size={21.5} />
                 {aiAnalysisQuote.change}
               </span>

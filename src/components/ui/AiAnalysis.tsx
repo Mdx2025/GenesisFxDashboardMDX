@@ -209,11 +209,11 @@ export function SentimentGauge({ value, verdict, verdictClassName = 'text-gfx-re
           </defs>
         </svg>
         <div
-          className="absolute bottom-0 left-1/2 h-[83px] w-0 origin-bottom border-l-[1.9px] border-white"
+          className="ai-gauge-needle absolute bottom-0 left-1/2 h-[83px] w-[1.9px] origin-bottom rounded-full"
           style={{ transform: `translateX(-50%) rotate(${angle}deg)` }}
           aria-hidden="true"
         />
-        <span className="absolute -bottom-[3.8px] left-1/2 size-[7.63px] -translate-x-1/2 rounded-full bg-white" aria-hidden="true" />
+        <span className="ai-gauge-needle absolute -bottom-[3.8px] left-1/2 size-[7.63px] -translate-x-1/2 rounded-full" aria-hidden="true" />
       </div>
       <p className={`mt-2 text-center text-base font-medium font-acid leading-none ${verdictClassName}`} role="status">
         {verdict}
