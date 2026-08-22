@@ -491,14 +491,16 @@ export default function NewsPage() {
 
         {/* Tabs + Trade Now */}
         <div className="flex items-center justify-between gap-4">
-          <div className="min-w-0 flex-1">
-            <ModeToggle
-              options={[...TABS]}
-              defaultIndex={0}
-              activeIndex={activeTab}
-              onChange={setActiveTab}
-              buttonClassName="text-[14px]! px-0! overflow-visible!"
-            />
+          <div className="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="min-w-[680px] lg:min-w-0">
+              <ModeToggle
+                options={[...TABS]}
+                defaultIndex={0}
+                activeIndex={activeTab}
+                onChange={setActiveTab}
+                buttonClassName="text-[14px]! px-0! overflow-visible!"
+              />
+            </div>
           </div>
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <LiveStreamIcon />

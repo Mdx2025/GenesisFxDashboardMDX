@@ -120,8 +120,8 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
 
 function PlayerBar() {
   return (
-    <div className="sticky bottom-0 z-40 bg-gfx-green-800 border-t border-[rgba(16,185,129,0.12)] -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-8 py-5">
-      <div className="mx-auto container flex items-center gap-6">
+    <div className="sticky bottom-0 z-40 bg-gfx-green-800 border-t border-[rgba(16,185,129,0.12)] -mx-4 xl:-mx-5 2xl:-mx-7 3xl:-mx-10 4xl:-mx-14 px-4 md:px-8 py-5">
+      <div className="mx-auto container flex items-center gap-3 md:gap-6">
       <div className="flex items-center gap-3 shrink-0">
         <div className="w-[52px] h-[52px] rounded-md bg-gfx-green-900 flex items-center justify-center">
           <span className="text-white text-base font-acid">1</span>
@@ -147,7 +147,7 @@ function PlayerBar() {
         </button>
       </div>
 
-      <div className="flex items-center gap-3 flex-1 max-w-[400px]">
+      <div className="hidden md:flex items-center gap-3 flex-1 max-w-[400px]">
         <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">2:45</span>
         <div className="flex-1 h-1 bg-gfx-green-900 rounded-full overflow-hidden">
           <div className="w-[46%] h-full bg-gfx-green-300 rounded-full" />
@@ -155,7 +155,7 @@ function PlayerBar() {
         <span className="text-gfx-neutral-400 text-xs font-acid shrink-0">3:33</span>
       </div>
 
-      <div className="flex items-center gap-2 shrink-0">
+      <div className="hidden md:flex items-center gap-2 shrink-0">
         <button className="cursor-pointer hover:opacity-80 transition-opacity">
           <VolumeIcon />
         </button>
