@@ -64,3 +64,9 @@ STATUS: VERIFIED by independent verifier
 
 - The empty activity table uses the canonical `GlowEllipse` component centered on its top edge, behind the table content.
 - Geometry contract: exactly one `.glow-ellipse` inside `[data-earnings-activity]`, horizontal center delta `<=1px`, with its top positioned above the table shell so the green atmosphere falls into the header.
+
+## Operator correction — Channel banner primitive
+
+- The `1549×279` channel hero uses the canonical `GlassBannerCard` shell instead of a manually assembled `GlassCard` surface.
+- Preserve the `18.563px` radius, dotted channel texture, built-in centered green atmosphere, identity/wallet geometry, Share action, Start streaming action, and light/dark semantic themes.
+- Regression contract: exactly one `.glass-banner-card` at `[data-channel-hero]`, no nested glass shell, no geometry drift beyond `2px`, responsive containment, keyboard/focus parity, reduced-motion parity, zero runtime errors, and zero failed responses.

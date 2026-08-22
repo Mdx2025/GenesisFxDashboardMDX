@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { GlassBannerCard } from './GlassBannerCard'
 import { GlassCard } from './GlassCard'
 import { GlowButton } from './GlowButton'
 import { GlowEllipse } from './GlowEllipse'
@@ -31,8 +32,13 @@ function ShareIcon() {
 
 export function ChannelHeroCard() {
   return (
-    <GlassCard variant="light" divider="white" glow={false} rounded="18.563px" className="surface-raised surface-raised-border relative h-[279px] overflow-hidden" data-channel-hero>
-      <div className="theme-decorative-glow pointer-events-none absolute -left-36 -top-32 size-[520px] rounded-full bg-gfx-green-300/20 blur-[120px]" aria-hidden="true" />
+    <GlassBannerCard
+      glowSrc={null}
+      rounded="18.563px"
+      className="h-[279px]"
+      contentClassName="relative h-full"
+      data-channel-hero
+    >
       <img src="/images/streaming-channel-texture.png" alt="" className="theme-decorative-glow pointer-events-none absolute left-[210px] top-0 h-full w-[720px] object-cover opacity-35 mix-blend-screen" aria-hidden="true" />
       <div className="relative flex h-full flex-col justify-center gap-7 px-6 py-8 sm:px-10 xl:flex-row xl:items-start xl:justify-start xl:gap-9 xl:pb-0 xl:pt-[70px]">
         <span className="grid size-[73px] shrink-0 place-items-center rounded-[18px] border border-gfx-green-200 bg-gfx-surface-icon-well text-2xl text-gfx-green-300 xl:mt-[10px]" aria-hidden="true">J</span>
@@ -46,7 +52,7 @@ export function ChannelHeroCard() {
           <GlowButton label="Start streaming" icon={<StartStreamingIcon />} width={197} height={44} />
         </div>
       </div>
-    </GlassCard>
+    </GlassBannerCard>
   )
 }
 
