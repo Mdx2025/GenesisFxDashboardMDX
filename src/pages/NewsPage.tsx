@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import {
@@ -19,6 +20,7 @@ import AiAnalysisView from '@/pages/news/AiAnalysisView'
 // Daily News is hidden from the tab bar; DailyNewsView stays in the codebase and
 // its single-episode route (/news/daily-single-page) is still reachable.
 const TABS = ['Discover', 'Terminal', 'Market News', 'AI analysis', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
+export const NEWS_TAB_SLUGS = ['discover', 'terminal', 'market-news', 'ai-analysis', 'economic-calendar', 'trade-sessions', 'podcast'] as const
 const TITLES = ['Market Watch', 'Daily analysis', 'Market News', 'Market Watch', 'Market News', 'Daily analysis', 'Daily analysis'] as const
 const NEWS_CHANNELS =['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
 const WEBCAM_REGIONS = ['All', 'Middle East', 'Europe', 'Americas', 'Asia'] as const
@@ -454,7 +456,11 @@ function TradeSessionsCard() {
 
 export default function NewsPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeTab, setActiveTab] = useState(0)
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const slugIndex = NEWS_TAB_SLUGS.indexOf(pathname.split('/').pop() as (typeof NEWS_TAB_SLUGS)[number])
+  const activeTab = slugIndex === -1 ? 0 : slugIndex
+  const setActiveTab = (index: number) => navigate(`/news/${NEWS_TAB_SLUGS[index]}`)
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 pt-4 4xl:pt-6">
