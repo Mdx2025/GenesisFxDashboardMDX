@@ -67,6 +67,16 @@ export function DiscoverMoverCard({ mover }: { mover: DiscoverMover }) {
         <span className="min-w-0 flex-1 truncate text-white text-[14px] font-medium font-acid leading-[24.44px]">
           {mover.symbol}
         </span>
+      </div>
+
+      <p className="truncate px-[9.11px] pt-[2px] text-gfx-neutral-400 text-[11px] font-normal font-acid leading-[18.8px]">
+        {mover.description}
+      </p>
+
+      <div className="flex items-center gap-[6px] px-[9.11px] pt-[12px]">
+        <span className="min-w-0 flex-1 truncate text-white text-base font-medium font-acid leading-[24.44px]">
+          {mover.price}
+        </span>
         <span className={`flex shrink-0 items-center gap-[3px] ${tone}`}>
           <img
             src={`${ASSETS}/${mover.positive ? 'arrow-up' : 'arrow-down'}.svg`}
@@ -76,12 +86,6 @@ export function DiscoverMoverCard({ mover }: { mover: DiscoverMover }) {
           <span className="text-[11px] font-normal font-acid leading-[18.8px]">{mover.change}</span>
         </span>
       </div>
-
-      <p className="truncate px-[9.11px] pt-[2px] text-gfx-neutral-400 text-[11px] font-normal font-acid leading-[18.8px]">
-        {mover.description}
-      </p>
-
-      <p className="px-[9.11px] pt-[12px] text-white text-base font-medium font-acid leading-[24.44px]">{mover.price}</p>
 
       <img
         src={`${ASSETS}/${mover.positive ? 'sparkline-up' : 'sparkline-down'}.svg`}
