@@ -8,9 +8,9 @@ const baseUrl = (process.env.START_STREAMING_BASE_URL || process.env.PREVIEW_BAS
 const runtimeErrors = []
 const failedResponses = []
 const browser = await connectQaBrowser({ url: `${baseUrl}/streaming/newstreaming`, local: process.env.QA_BROWSER_LOCAL === '1' })
-const context = browser.contexts()[0] || await browser.newContext({ viewport: { width: 1920, height: 1171 }, reducedMotion: 'no-preference' })
+const context = browser.contexts()[0] || await browser.newContext({ viewport: { width: 1920, height: 1027 }, reducedMotion: 'no-preference' })
 const page = context.pages()[0] || await context.newPage()
-await page.setViewportSize({ width: 1920, height: 1171 })
+await page.setViewportSize({ width: 1920, height: 1027 })
 page.on('pageerror', (error) => runtimeErrors.push(error.message))
 page.on('response', (response) => { if (response.status() >= 400) failedResponses.push({ status: response.status(), url: response.url() }) })
 
@@ -38,6 +38,11 @@ const session = await rect('[data-broadcast-session-details]')
 const channel = await rect('[data-broadcast-channel]')
 const checklist = await rect('[data-broadcast-checklist]')
 const headingStyles = await page.getByRole('heading', { name: 'Ready to go live?' }).evaluate((element) => { const s = getComputedStyle(element); return { fontSize: s.fontSize, color: s.color } })
+const readyViewport = await page.evaluate(() => ({
+  viewportHeight: innerHeight,
+  scrollHeight: document.documentElement.scrollHeight,
+  verticalOverflow: document.documentElement.scrollHeight > innerHeight + 1,
+}))
 if (process.env.START_STREAMING_READY_OUTPUT_PATH) await page.screenshot({ path: process.env.START_STREAMING_READY_OUTPUT_PATH, animations: 'disabled' })
 
 const goLive = page.getByRole('button', { name: 'Go live now' })
@@ -92,6 +97,7 @@ if (Math.abs(hero.width - 1549) > 2 || Math.abs(hero.height - 279) > 1 || hero.r
 if (Math.abs(session.width - 842) > 2 || Math.abs(session.height - 566) > 1 || session.radius !== '30px') failures.push(`session geometry mismatch: ${JSON.stringify(session)}`)
 if (Math.abs(channel.width - 692) > 2 || Math.abs(channel.height - 283) > 1 || Math.abs(checklist.height - 265) > 1) failures.push(`support cards mismatch: ${JSON.stringify({ channel, checklist })}`)
 if (headingStyles.fontSize !== '50px') failures.push(`heading typography mismatch: ${JSON.stringify(headingStyles)}`)
+if (readyViewport.verticalOverflow || readyViewport.scrollHeight > readyViewport.viewportHeight + 1) failures.push(`ready viewport height mismatch: ${JSON.stringify(readyViewport)}`)
 if (Math.abs(terms.width - 677) > 1 || Math.abs(terms.height - 704) > 1 || terms.radius !== '18.563px' || Math.abs(termsScroll.width - 519) > 2 || Math.abs(termsScroll.height - 331) > 1) failures.push(`terms geometry mismatch: ${JSON.stringify({ terms, termsScroll })}`)
 if (!termsConsent || !termsFocusInside || !termsActions.some((action) => action.label === 'Cancel' && Math.abs(action.width - 230) <= 1 && Math.abs(action.height - 46) <= 1) || !termsActions.some((action) => action.label === 'Continue' && Math.abs(action.width - 230) <= 1 && Math.abs(action.height - 44) <= 1)) failures.push(`terms interaction mismatch: ${JSON.stringify({ termsConsent, termsFocusInside, termsActions })}`)
 if (Math.abs(permissions.width - 677) > 1 || Math.abs(permissions.height - 643) > 1 || permissions.radius !== '18.563px') failures.push(`permissions geometry mismatch: ${JSON.stringify(permissions)}`)
@@ -103,6 +109,6 @@ if (intermediateOverflow || mobileOverflow || !mobileReadyVisible || !mobileModa
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, redirectPath, hero, session, channel, checklist, headingStyles, terms, termsScroll, termsConsent, termsActions, termsFocusInside, permissions, permissionRows, startBeforeAccepted, activeCount, startAfterAccepted, started, escapeClosed, focusReturned, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileReadyVisible, mobileModalContained, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, redirectPath, hero, session, channel, checklist, headingStyles, readyViewport, terms, termsScroll, termsConsent, termsActions, termsFocusInside, permissions, permissionRows, startBeforeAccepted, activeCount, startAfterAccepted, started, escapeClosed, focusReturned, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileReadyVisible, mobileModalContained, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

@@ -17,7 +17,7 @@ export default function StartStreamingPage() {
 
   return <div className="relative px-4 py-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 4xl:py-6" data-start-streaming-page data-start-streaming-step={step} data-stream-started={started}>
     <TopBar onMenuClick={() => setSidebarOpen(!sidebarOpen)} menuOpen={sidebarOpen} breadcrumbItems={[{ label: 'Streaming', href: '/streaming' }, { label: 'My channel', href: '/streaming/mystreaming' }, { label: 'Go live', current: true }]}/>
-    <main className="pb-20 pt-[58px]">
+    <main className="pb-20 pt-[58px] 2xl:pb-0">
       <BroadcastReadyHero/>
       <div className="mt-[15px] grid gap-[15px] 2xl:grid-cols-[minmax(0,842px)_minmax(0,691px)]">
         <BroadcastSessionDetails onGoLive={() => setStep('terms')}/>
