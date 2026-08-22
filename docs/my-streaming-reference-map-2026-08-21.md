@@ -52,3 +52,10 @@ STATUS: VERIFIED by independent verifier
 
 - WCAG 2.2 AA; normal text contrast `4.5:1`, large/UI `3:1`; typography floor `12px`; native buttons and keyboard-accessible state switching; visible focus; reduced-motion parity.
 - Validate desktop `1920×1171` and Earnings `1920×1435`, intermediate `960×900`, mobile `390×844`, dark/light, no horizontal overflow, no runtime errors or failed responses.
+
+## Production validation
+
+- Commit `150954d` was pushed to `origin/main`; Dokploy deployment `A8JNp_r4rEYSnzgTVaHJq` completed `done` at `2026-08-22T01:04:53.130Z`.
+- Production returned `200` at `/streaming/mystreaming`. The My streams action navigated from `/streaming` to the new route.
+- Remote browser QA passed all five states, semantic light and dark themes, `1920×1171`, `960×900`, and `390×844`, reduced motion, zero horizontal overflow, runtime errors, or failed responses.
+- Measured production locks: hero `1549×279` at `x=343/y=264.797`; tabs `740×46` at `x=343/y=606.797`; four metrics `375×148`; one owner card in Streams and Replays; one follower card; one earnings summary and one activity table.
