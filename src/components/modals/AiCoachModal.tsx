@@ -389,9 +389,15 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               aria-hidden="true"
             />
 
-            <div className="absolute left-[700px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center gap-1.5 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 text-[color:var(--ac-accent)]">
-              <AiBoltIcon size={15} />
-              <span className="text-xs font-acid font-normal">152</span>
+            <div className="absolute left-[700px] top-[23px] inline-flex h-[33px] w-[62px] items-center justify-center rounded-[60px] text-[color:var(--ac-accent)]">
+              <span
+                className="pointer-events-none absolute inset-0 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50"
+                aria-hidden="true"
+              />
+              <span className="relative inline-flex items-center gap-[4.28px]">
+                <AiBoltIcon size={15} />
+                <span className="text-xs font-acid font-normal leading-[18.8px]">152</span>
+              </span>
             </div>
             <AiCoachIconChip label="Open notebook" className="!absolute left-[772px] top-[23px]">
               <AiNotebookIcon size={14} />

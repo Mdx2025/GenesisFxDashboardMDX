@@ -45,9 +45,13 @@ export function AiCoachIconChip({ children, label, onClick, width = 40, classNam
       onClick={onClick}
       aria-label={label}
       style={{ width, ...style }}
-      className={`h-[33px] inline-flex items-center justify-center gap-1.5 rounded-[200px] bg-[color:var(--ac-well)] border-[0.876px] border-[color:var(--ac-border)] opacity-50 text-[color:var(--ac-accent)] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${className}`}
+      className={`group relative h-[33px] inline-flex items-center justify-center rounded-[200px] text-[color:var(--ac-muted)] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${className}`}
     >
-      {children}
+      <span
+        className="pointer-events-none absolute inset-0 rounded-[200px] bg-[color:var(--ac-well)] border-[0.876px] border-[color:var(--ac-border)] opacity-50 transition-opacity group-hover:opacity-80"
+        aria-hidden="true"
+      />
+      <span className="relative inline-flex items-center justify-center gap-1.5">{children}</span>
     </button>
   )
 }
