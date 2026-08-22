@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { ModeToggle, GlowEllipse, GlowButton, SearchInput } from '@/components/ui'
+import { ModeToggle, GlowEllipse, GlowButton, SearchInput, AiGradientPill, AiCreditBoltIcon } from '@/components/ui'
 import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
 import TradeSessionsView from '@/pages/news/TradeSessionsView'
 import PodcastView from '@/pages/news/PodcastView'
-import DailyNewsView from '@/pages/news/DailyNewsView'
+import AiAnalysisView from '@/pages/news/AiAnalysisView'
 
-const TABS = ['Terminal', 'Market News', 'Daily News', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
-const NEWS_CHANNELS = ['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
+// Daily News is hidden from the tab bar; DailyNewsView stays in the codebase and
+// its single-episode route (/news/daily-single-page) is still reachable.
+const TABS = ['Terminal', 'Market News', 'AI analysis', 'Economic Calendar', 'Trade Sessions', 'Podcast'] as const
+const TITLES = ['Daily analysis', 'Market News', 'Market Watch', 'Market News', 'Daily analysis', 'Daily analysis'] as const
+const NEWS_CHANNELS =['Bloomberg', 'Sky News', 'CNBC', 'France24', 'AL JAZEERA', 'DW News'] as const
 const WEBCAM_REGIONS = ['All', 'Middle East', 'Europe', 'Americas', 'Asia'] as const
 
 function BullishBadge() {
@@ -458,9 +461,18 @@ export default function NewsPage() {
 
       <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
         {/* Title */}
-        <div className="flex items-center gap-4">
-          <h1 className="text-white text-h1 font-normal">{activeTab === 1 || activeTab === 3 ? 'Market News' : 'Daily analysis'}</h1>
-          {activeTab === 0 && <BullishBadge />}
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <h1 className="text-white text-h1 font-normal">{TITLES[activeTab]}</h1>
+            {activeTab === 0 && <BullishBadge />}
+            {activeTab === 2 && <AiGradientPill>AI</AiGradientPill>}
+          </div>
+          {activeTab === 2 && (
+            <AiGradientPill>
+              <AiCreditBoltIcon />
+              152
+            </AiGradientPill>
+          )}
         </div>
 
         {/* Tabs + Trade Now */}
@@ -473,7 +485,7 @@ export default function NewsPage() {
               onChange={setActiveTab}
             />
           </div>
-          {activeTab === 0 && (
+          {(activeTab === 0 || activeTab === 2) && (
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <LiveStreamIcon />
               <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} />
@@ -509,8 +521,8 @@ export default function NewsPage() {
         {/* Market News Tab (index 1) */}
         {activeTab === 1 && <MarketNewsView />}
 
-        {/* Daily News Tab (index 2) */}
-        {activeTab === 2 && <DailyNewsView />}
+        {/* AI Analysis Tab (index 2) */}
+        {activeTab === 2 && <AiAnalysisView />}
 
         {/* Economic Calendar Tab (index 3) */}
         {activeTab === 3 && <EconomicCalendarView />}

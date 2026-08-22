@@ -1,0 +1,41 @@
+/* Figma "AI analysis" adds one surface colour the global @theme does not carry:
+   system-colors/backgrounds/success-label-background. It lives here rather than
+   in app.css so the token ships with the only components that consume it. */
+.ai-signal-pill {
+  --ai-signal-bg: var(--color-gfx-green-900);
+  --ai-signal-fg: var(--color-gfx-neutral-400);
+  background: var(--ai-signal-bg);
+  color: var(--ai-signal-fg);
+}
+
+.ai-signal-pill--success {
+  --ai-signal-bg: #022800;
+  --ai-signal-fg: var(--color-gfx-bullish-light);
+}
+
+.ai-signal-pill--danger {
+  --ai-signal-bg: var(--color-gfx-red-surface);
+  --ai-signal-fg: var(--color-gfx-red-muted);
+}
+
+html[data-theme='light'] .ai-signal-pill {
+  --ai-signal-bg: rgba(6, 75, 52, 0.08);
+  --ai-signal-fg: #4a5754;
+}
+
+html[data-theme='light'] .ai-signal-pill--success {
+  --ai-signal-bg: rgba(55, 201, 46, 0.12);
+  --ai-signal-fg: #1c7a16;
+}
+
+html[data-theme='light'] .ai-signal-pill--danger {
+  --ai-signal-bg: rgba(212, 99, 86, 0.12);
+  --ai-signal-fg: #a83c30;
+}
+
+/* Purple AI chips keep their dark gradient in both themes: they are the AI
+   accent of the product, not a surface that follows the light palette. */
+.ai-gradient-pill {
+  background-image: linear-gradient(264deg, #100919 1%, #1d0e2f 79%);
+  color: #b08dff;
+}
