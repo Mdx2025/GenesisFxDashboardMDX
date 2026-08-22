@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { SearchIcon } from '@/components/icons'
 import { GlassCard } from './GlassCard'
 import { GlowEllipse } from './GlowEllipse'
-import { PrimaryPillButton } from './PrimaryPillButton'
+import { GlowButton } from './GlowButton'
 import type { DiscoverFlag, DiscoverMarketRow, DiscoverMover } from '@/data/discover'
 
 const ASSETS = '/images/news/discover'
@@ -271,9 +271,7 @@ export function DiscoverMarketTable({ rows, onTrade }: { rows: DiscoverMarketRow
                 alt=""
                 className="block h-[25.838px] w-[173px] max-w-none"
               />
-              <PrimaryPillButton className="!h-[46px] !w-[108px] !px-0" onClick={() => onTrade?.(row)}>
-                Trade
-              </PrimaryPillButton>
+              <GlowButton label="Trade" width={108} height={46} fontSize={16} onClick={() => onTrade?.(row)} />
             </div>
           ))}
         </div>

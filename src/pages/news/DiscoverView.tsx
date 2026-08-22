@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import {
-  DiscoverCategoryBar,
   DiscoverLivePill,
   DiscoverMarketTable,
   DiscoverMoverCard,
   DiscoverSearchInput,
+  ModeToggle,
 } from '@/components/ui'
 import {
   DISCOVER_ASSET_CATEGORIES,
@@ -13,8 +13,10 @@ import {
   discoverMovers,
 } from '@/data/discover'
 
+const CATEGORIES = ['For you', ...DISCOVER_PRIMARY_CATEGORIES, ...DISCOVER_ASSET_CATEGORIES]
+
 export default function DiscoverView() {
-  const [category, setCategory] = useState('For you')
+  const [category, setCategory] = useState(0)
   const [query, setQuery] = useState('')
 
   const rows = query
@@ -37,16 +39,16 @@ export default function DiscoverView() {
       </div>
 
       {/* Explore markets */}
-      <div className="flex flex-col gap-5">
+      <div className="mt-6 flex flex-col gap-5">
         <h2 className="text-white text-h2 font-normal font-acid">Explore Markets</h2>
 
         <div className="flex flex-wrap items-center gap-4">
           <div className="min-w-0 flex-1">
-            <DiscoverCategoryBar
-              primary={DISCOVER_PRIMARY_CATEGORIES}
-              assets={DISCOVER_ASSET_CATEGORIES}
-              active={category}
+            <ModeToggle
+              options={CATEGORIES}
+              activeIndex={category}
               onChange={setCategory}
+              buttonClassName="text-[14px]! px-0! overflow-visible!"
             />
           </div>
           <DiscoverSearchInput value={query} onChange={setQuery} />
