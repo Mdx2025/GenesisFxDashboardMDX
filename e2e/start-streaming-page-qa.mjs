@@ -25,6 +25,20 @@ async function rect(selector) {
   })
 }
 
+async function modalScrollState(name) {
+  return page.locator(`[data-broadcast-modal="${name}"]`).evaluate((overlay) => {
+    const panel = overlay.firstElementChild
+    return {
+      pageY: scrollY,
+      documentOverflow: getComputedStyle(document.documentElement).overflowY,
+      bodyOverflow: getComputedStyle(document.body).overflowY,
+      overlayOverflow: getComputedStyle(overlay).overflowY,
+      panelOverflow: getComputedStyle(panel).overflowY,
+      panelScrollTop: panel.scrollTop,
+    }
+  })
+}
+
 await page.goto(`${baseUrl}/streaming/newstreaming`, { waitUntil: 'networkidle' })
 await setTheme('dark')
 await page.getByRole('button', { name: 'Apply to become a streamer' }).click()
@@ -53,12 +67,18 @@ const termsScroll = await rect('[data-broadcast-terms-scroll]')
 const termsConsent = await page.getByRole('checkbox').isChecked()
 const termsActions = await page.locator('[data-broadcast-modal="terms"] button').evaluateAll((nodes) => nodes.map((node) => ({ label: node.textContent.trim(), width: node.getBoundingClientRect().width, height: node.getBoundingClientRect().height })))
 const termsFocusInside = await page.evaluate(() => Boolean(document.activeElement?.closest('[data-broadcast-modal="terms"]')))
+const termsScrollBefore = await modalScrollState('terms')
+await page.mouse.wheel(0, 900)
+const termsScrollAfter = await modalScrollState('terms')
 if (process.env.START_STREAMING_TERMS_OUTPUT_PATH) await page.screenshot({ path: process.env.START_STREAMING_TERMS_OUTPUT_PATH, animations: 'disabled' })
 
 await page.getByRole('button', { name: 'Continue' }).click()
 const permissions = await rect('[data-broadcast-modal="permissions"] > *')
 const permissionRows = await page.locator('[data-broadcast-permission-rows] > div').evaluateAll((nodes) => nodes.map((node) => { const b = node.getBoundingClientRect(); return { width: b.width, height: b.height, radius: getComputedStyle(node).borderRadius } }))
 const startBeforeAccepted = await page.getByRole('button', { name: 'Start streaming' }).isDisabled()
+const permissionsScrollBefore = await modalScrollState('permissions')
+await page.mouse.wheel(0, 900)
+const permissionsScrollAfter = await modalScrollState('permissions')
 if (process.env.START_STREAMING_PERMISSIONS_OUTPUT_PATH) await page.screenshot({ path: process.env.START_STREAMING_PERMISSIONS_OUTPUT_PATH, animations: 'disabled' })
 
 for (let index = 0; index < 3; index += 1) await page.getByRole('button', { name: 'Enable' }).first().click()
@@ -100,8 +120,10 @@ if (headingStyles.fontSize !== '50px') failures.push(`heading typography mismatc
 if (readyViewport.verticalOverflow || readyViewport.scrollHeight > readyViewport.viewportHeight + 1) failures.push(`ready viewport height mismatch: ${JSON.stringify(readyViewport)}`)
 if (Math.abs(terms.width - 677) > 1 || Math.abs(terms.height - 704) > 1 || terms.radius !== '18.563px' || Math.abs(termsScroll.width - 519) > 2 || Math.abs(termsScroll.height - 331) > 1) failures.push(`terms geometry mismatch: ${JSON.stringify({ terms, termsScroll })}`)
 if (!termsConsent || !termsFocusInside || !termsActions.some((action) => action.label === 'Cancel' && Math.abs(action.width - 230) <= 1 && Math.abs(action.height - 46) <= 1) || !termsActions.some((action) => action.label === 'Continue' && Math.abs(action.width - 230) <= 1 && Math.abs(action.height - 44) <= 1)) failures.push(`terms interaction mismatch: ${JSON.stringify({ termsConsent, termsFocusInside, termsActions })}`)
+if (termsScrollBefore.documentOverflow !== 'hidden' || termsScrollBefore.bodyOverflow !== 'hidden' || termsScrollBefore.overlayOverflow !== 'hidden' || termsScrollBefore.panelOverflow !== 'hidden' || termsScrollAfter.pageY !== termsScrollBefore.pageY || termsScrollAfter.panelScrollTop !== 0) failures.push(`terms scroll lock mismatch: ${JSON.stringify({ termsScrollBefore, termsScrollAfter })}`)
 if (Math.abs(permissions.width - 677) > 1 || Math.abs(permissions.height - 643) > 1 || permissions.radius !== '18.563px') failures.push(`permissions geometry mismatch: ${JSON.stringify(permissions)}`)
 if (permissionRows.length !== 3 || permissionRows.some((row) => Math.abs(row.width - 520) > 2 || Math.abs(row.height - 91) > 1 || row.radius !== '18.563px')) failures.push(`permission rows mismatch: ${JSON.stringify(permissionRows)}`)
+if (permissionsScrollBefore.documentOverflow !== 'hidden' || permissionsScrollBefore.bodyOverflow !== 'hidden' || permissionsScrollBefore.overlayOverflow !== 'hidden' || permissionsScrollBefore.panelOverflow !== 'hidden' || permissionsScrollAfter.pageY !== permissionsScrollBefore.pageY || permissionsScrollAfter.panelScrollTop !== 0) failures.push(`permissions scroll lock mismatch: ${JSON.stringify({ permissionsScrollBefore, permissionsScrollAfter })}`)
 if (!startBeforeAccepted || activeCount !== 3 || !startAfterAccepted || started !== 'true') failures.push(`permission state mismatch: ${JSON.stringify({ startBeforeAccepted, activeCount, startAfterAccepted, started })}`)
 if (!escapeClosed || !focusReturned) failures.push(`modal escape/focus mismatch: ${JSON.stringify({ escapeClosed, focusReturned })}`)
 if (lightHeading !== 'rgb(0, 0, 0)' || lightHero.background === 'rgb(12, 19, 17)') failures.push(`light theme mismatch: ${JSON.stringify({ lightHeading, lightHero })}`)
@@ -109,6 +131,6 @@ if (intermediateOverflow || mobileOverflow || !mobileReadyVisible || !mobileModa
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, redirectPath, hero, session, channel, checklist, headingStyles, readyViewport, terms, termsScroll, termsConsent, termsActions, termsFocusInside, permissions, permissionRows, startBeforeAccepted, activeCount, startAfterAccepted, started, escapeClosed, focusReturned, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileReadyVisible, mobileModalContained, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, redirectPath, hero, session, channel, checklist, headingStyles, readyViewport, terms, termsScroll, termsConsent, termsActions, termsFocusInside, termsScrollBefore, termsScrollAfter, permissions, permissionRows, permissionsScrollBefore, permissionsScrollAfter, startBeforeAccepted, activeCount, startAfterAccepted, started, escapeClosed, focusReturned, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileReadyVisible, mobileModalContained, reducedMotionVisible, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

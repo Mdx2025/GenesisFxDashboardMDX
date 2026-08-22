@@ -108,6 +108,10 @@ function BroadcastModalShell({ labelId, height, onClose, children, testId }: { l
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
   useEffect(() => {
+    const htmlOverflow = document.documentElement.style.overflow
+    const bodyOverflow = document.body.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
     triggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
     panelRef.current?.querySelector<HTMLElement>('button, input, [tabindex]:not([tabindex="-1"])')?.focus()
     function onKey(event: KeyboardEvent) {
@@ -126,9 +130,14 @@ function BroadcastModalShell({ labelId, height, onClose, children, testId }: { l
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
     }
     document.addEventListener('keydown', onKey)
-    return () => { document.removeEventListener('keydown', onKey); requestAnimationFrame(() => triggerRef.current?.focus()) }
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.documentElement.style.overflow = htmlOverflow
+      document.body.style.overflow = bodyOverflow
+      requestAnimationFrame(() => triggerRef.current?.focus())
+    }
   }, [])
-  return <div ref={overlayRef} className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-4 py-5 backdrop-blur-[2px]" onMouseDown={(event) => { if (event.target === overlayRef.current) onClose() }} role="dialog" aria-modal="true" aria-labelledby={labelId} data-broadcast-modal={testId}><GlassCard ref={panelRef} variant="light" divider="none" glow={false} rounded="18.563px" className="surface-raised w-[677px] max-w-full overflow-y-auto border border-[#064B34] px-5 after:hidden sm:px-[42px]" style={{ height, maxHeight: 'calc(100vh - 40px)', boxShadow: '0 4.641px 23.204px rgba(0,0,0,.03)' }}><div className="theme-decorative-glow pointer-events-none absolute -bottom-24 -left-24 size-[260px] rounded-full bg-[#064B34]/55 blur-[90px]" aria-hidden="true"/><div className="theme-decorative-glow pointer-events-none absolute -right-24 -top-24 size-[230px] rounded-full bg-[#064B34]/45 blur-[90px]" aria-hidden="true"/><div className="relative z-10 h-full">{children}</div></GlassCard></div>
+  return <div ref={overlayRef} className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-black/70 px-4 py-5 backdrop-blur-[2px]" onMouseDown={(event) => { if (event.target === overlayRef.current) onClose() }} role="dialog" aria-modal="true" aria-labelledby={labelId} data-broadcast-modal={testId}><GlassCard ref={panelRef} variant="light" divider="none" glow={false} rounded="18.563px" className="surface-raised w-[677px] max-w-full overflow-hidden border border-[#064B34] px-5 after:hidden sm:px-[42px]" style={{ height, maxHeight: 'calc(100dvh - 40px)', boxShadow: '0 4.641px 23.204px rgba(0,0,0,.03)' }}><div className="theme-decorative-glow pointer-events-none absolute -bottom-24 -left-24 size-[260px] rounded-full bg-[#064B34]/55 blur-[90px]" aria-hidden="true"/><div className="theme-decorative-glow pointer-events-none absolute -right-24 -top-24 size-[230px] rounded-full bg-[#064B34]/45 blur-[90px]" aria-hidden="true"/><div className="relative z-10 h-full">{children}</div></GlassCard></div>
 }
 
 const TERMS_COPY = `These Live Streaming Terms & Conditions ("Streaming Terms") govern any Client of Genesis FX Markets Ltd ("the Company," "Genesis," "we," "us," or "our") who initiates, hosts, participates in, or otherwise transmits live audio, video, screen, or other media content ("Broadcaster," "you," or "your") through any streaming surface operated by the Company. These Streaming Terms are incorporated into, and form an integral and binding part of, the Genesis FX Markets Terms and Conditions, Privacy Policy, Risk Disclosure, Anti-Money Laundering Policy, and Cookie Policy. In the event of any conflict in respect of broadcasting activity, the Terms and Conditions shall prevail.`
