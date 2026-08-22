@@ -31,17 +31,20 @@ export function StreamCard({
   followed = false,
   onFollow,
   className = '',
+  variant = 'browse',
 }: {
   category?: string
   followed?: boolean
   onFollow?: () => void
   className?: string
+  variant?: 'browse' | 'owner'
 }) {
+  const owner = variant === 'owner'
   return (
-    <article className={`w-full max-w-[381px] ${className}`} data-stream-card data-followed={followed}>
+    <article className={`w-full max-w-[381px] ${className}`} data-stream-card data-stream-card-variant={variant} data-followed={followed}>
       <div className="relative h-[220px] overflow-hidden rounded-[20px] bg-[#09241C] text-[#808080]" data-stream-card-media>
         <span className="absolute left-[14px] top-[14px] inline-flex h-[35px] items-center gap-1.5 rounded-[15px] bg-[#2A1411] px-[10px] text-sm leading-[18.8px] text-[#D46356]"><i className="size-1 rounded-full bg-[#D46356]" aria-hidden="true" />Live</span>
-        <span className="absolute right-[14px] top-[14px] inline-flex h-[30px] items-center gap-1.5 rounded-[30px] bg-[#0C1311] px-2 text-sm leading-[18.8px] text-[#808080]"><svg viewBox="0 0 14 14" className="size-3.5" fill="none" aria-hidden="true"><path d="m7 1.2 1.7 3.1 3.5.7-2.4 2.6.4 3.6L7 9.7l-3.2 1.5.4-3.6L1.8 5l3.5-.7L7 1.2Z" stroke="currentColor" strokeWidth="1.15" strokeLinejoin="round" /></svg>Feature</span>
+        {!owner && <span className="absolute right-[14px] top-[14px] inline-flex h-[30px] items-center gap-1.5 rounded-[30px] bg-[#0C1311] px-2 text-sm leading-[18.8px] text-[#808080]"><svg viewBox="0 0 14 14" className="size-3.5" fill="none" aria-hidden="true"><path d="m7 1.2 1.7 3.1 3.5.7-2.4 2.6.4 3.6L7 9.7l-3.2 1.5.4-3.6L1.8 5l3.5-.7L7 1.2Z" stroke="currentColor" strokeWidth="1.15" strokeLinejoin="round" /></svg>Feature</span>}
         <span className="absolute left-1/2 top-[63px] grid size-[63px] -translate-x-1/2 place-items-center text-[#808080]"><CameraIcon /></span>
         <span className="absolute left-[14px] top-[178px] inline-flex h-[34px] items-center rounded-[15px] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#FFFFFF]">1 watching</span>
         <span className="absolute left-[119px] top-[178px] inline-flex h-[34px] items-center rounded-[15px] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#00B38C]">EURUSD</span>
@@ -49,12 +52,12 @@ export function StreamCard({
         <span className="absolute right-[14px] top-[178px] inline-flex h-[34px] items-center rounded-[15px] bg-[#0C1311] px-4 text-sm leading-[18.8px] text-[#FFFFFF]">2:15</span>
       </div>
       <div className="relative h-[99px]" data-stream-card-details>
-        <img src="/images/streaming-avatar.png" alt="" className="absolute left-[14px] top-[22px] size-[51px] rounded-full object-cover" />
+        {owner ? <span className="absolute left-[14px] top-[22px] grid size-[51px] place-items-center rounded-full bg-gfx-green-800 text-base text-white" aria-hidden="true">J</span> : <img src="/images/streaming-avatar.png" alt="" className="absolute left-[14px] top-[22px] size-[51px] rounded-full object-cover" />}
         <div className="absolute left-[81px] top-[31px] min-w-0 max-w-[170px]">
-          <p className="truncate text-base leading-[19.2px] text-white">@mr-dev</p>
+          <p className="truncate text-base leading-[19.2px] text-white">{owner ? 'Joe Doe' : '@mr-dev'}</p>
           <p className="mt-[3px] truncate text-sm leading-[18.8px] text-gfx-neutral-500">Stream test</p>
         </div>
-        <button
+        {!owner && <button
           type="button"
           onClick={onFollow}
           className={`absolute right-[14px] top-[31px] inline-flex h-[35px] min-w-[95px] items-center justify-center gap-2 rounded-[12px] px-3 text-sm leading-[18.8px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#000705] ${followed ? 'bg-gfx-green-300' : 'bg-[#F1FFFA]'}`}
@@ -62,7 +65,7 @@ export function StreamCard({
         >
           <svg viewBox="0 0 18 18" className="size-[18px]" fill="none" aria-hidden="true"><circle cx="6" cy="5" r="2.25" stroke="currentColor" strokeWidth="1.4" /><path d="M2.5 13.6c.4-2.3 1.7-3.5 3.5-3.5s3.1 1.2 3.5 3.5M13.3 5.2v5M10.8 7.7h5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />{followed && <path d="m11.2 13.1 1.3 1.3 2.8-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />}</svg>
           Follow
-        </button>
+        </button>}
       </div>
     </article>
   )

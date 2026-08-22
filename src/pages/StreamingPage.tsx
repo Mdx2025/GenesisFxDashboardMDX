@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { A11y, Keyboard } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper'
@@ -218,6 +219,7 @@ function CardsState({ following, followed, onFollow, replayFilter = 'all', onSho
 }
 
 export default function StreamingPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeIndex, setActiveIndex] = useState(0)
   const [query, setQuery] = useState('')
@@ -233,7 +235,7 @@ export default function StreamingPage() {
           <div><div className="flex items-center gap-5"><h1 className="text-h1 font-normal text-white">Streaming</h1><StreamingLiveBadge /></div><div className="mt-8"><StreamingTabs activeIndex={activeIndex} onChange={setActiveIndex} /></div></div>
           <div className="xl:pt-4">
             <div className="flex flex-wrap items-center gap-3" data-streaming-header-actions>
-              <SparkleButton className="!h-[46px] !min-w-[171px] !rounded-[30px] px-6" data-streaming-my-streams>
+              <SparkleButton onClick={() => navigate('/streaming/mystreaming')} className="!h-[46px] !min-w-[171px] !rounded-[30px] px-6" data-streaming-my-streams>
                 My streams
               </SparkleButton>
               <GlowButton

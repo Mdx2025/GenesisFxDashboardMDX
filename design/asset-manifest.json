@@ -65,6 +65,35 @@
         "Normalized live SVG versus supplied PNG MAE: 0.0138396",
         "/home/clawd/genesis-score-radar-normalized.png"
       ]
+    },
+    {
+      "id": "my-streaming-channel-texture",
+      "section": "/streaming/mystreaming channel banner",
+      "role": "Decorative pixel texture exported from the verified Figma channel banner",
+      "status": "approved",
+      "source_type": "figma",
+      "provenance": {
+        "url_or_path": "Figma Q5LFMKpcKD2ChXj9pyiHwk node 4037:109477",
+        "reference_or_prompt_receipt": "discord:1540519883521925190",
+        "license_status": "project-owned Figma design"
+      },
+      "output": {
+        "path": "public/images/streaming-channel-texture.png",
+        "format": "PNG",
+        "width": 1200,
+        "height": 1200
+      },
+      "treatment": {
+        "desktop": "Cropped across the 1549x279 channel banner at low opacity",
+        "mobile": "Retained as a decorative crop without affecting layout or copy",
+        "focal_point": "Even atmospheric pixel field",
+        "reduced_data_fallback": "Semantic surface remains complete without the texture",
+        "failure_fallback": "Raised glass banner and all channel content remain visible"
+      },
+      "validation_evidence": [
+        "Figma MCP design context for node 4037:109477",
+        "docs/my-streaming-reference-map-2026-08-21.md"
+      ]
     }
   ]
 }

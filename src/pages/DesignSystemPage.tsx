@@ -8,6 +8,7 @@ import {
   PrimaryPillButton, ToggleSwitch, SharePerformanceChart,
   LeaderboardAvatar, LeaderboardSparkline, LeaderboardTable, LeaderboardTabs,
   StreamCard, StreamingCategoryCard, StreamingEmptyState, StreamingLiveBadge, StreamingTabs,
+  ChannelHeroCard, ChannelMetricCard, MyStreamFollowerCard, MyStreamingTabs,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon, ShareFilledIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -68,6 +69,7 @@ export default function DesignSystemPage() {
   const [privacyEnabled, setPrivacyEnabled] = useState(true)
   const [leaderboardTab, setLeaderboardTab] = useState(0)
   const [streamingTab, setStreamingTab] = useState(0)
+  const [myStreamingTab, setMyStreamingTab] = useState(0)
 
   return (
     <div className="min-h-0">
@@ -698,6 +700,14 @@ export default function DesignSystemPage() {
                 <StreamingCategoryCard label="Forex" watching={1} live />
               </div>
               <StreamingEmptyState onBrowse={() => setStreamingTab(1)} />
+            </div>
+          </Subsection>
+
+          <Subsection title="My Streaming surfaces — channel hero, navigation, metrics, follower">
+            <div className="space-y-6">
+              <ChannelHeroCard />
+              <MyStreamingTabs activeIndex={myStreamingTab} onChange={setMyStreamingTab} />
+              <div className="grid gap-4 sm:grid-cols-2"><ChannelMetricCard label="Active streams" value="0" icon={<StreamingLiveBadge />} /><MyStreamFollowerCard /></div>
             </div>
           </Subsection>
 

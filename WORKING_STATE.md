@@ -1,6 +1,17 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Active Task — My Streaming Figma implementation
+
+- task_id: `genesis-my-streaming-figma-20260821`
+- owner: `star`
+- status: `in_progress`
+- target_route: `/streaming/mystreaming`; My streams action on `/streaming` routes here.
+- figma: file `Q5LFMKpcKD2ChXj9pyiHwk`, section `4037:109406`; Overview `109407`, Streams `109587`, Replays `109892`, Earnings `110196`, Followers `110502`.
+- scope: channel hero, five-state ModeToggle navigation, metric cards, owner StreamCard variant, follower performance card, earnings summary/table, route registration, design-system showcase, visual QA.
+- highest_risk: 1549×279 desktop hero anchoring, 740×46 toggle geometry, five state swaps, light-theme semantic surfaces, mobile containment.
+- next_exact_action: build and run the visual-map and browser QA gates.
+
 ## Active Task — AI Coach modal (Journal)
 
 - task_id: `genesis-ai-coach-modal-20260821`
