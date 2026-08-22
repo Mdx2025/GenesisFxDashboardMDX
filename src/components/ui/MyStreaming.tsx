@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { GlassCard } from './GlassCard'
 import { GlowButton } from './GlowButton'
+import { GlowEllipse } from './GlowEllipse'
 import { ModeToggle } from './ModeToggle'
 import { SparkleButton } from './SparkleButton'
 
@@ -88,7 +89,8 @@ export function EarningsSummary() {
 export function EarningsActivityTable() {
   return (
     <GlassCard variant="light" divider="none" glow={false} rounded="30px" className="overflow-hidden" data-earnings-activity>
-      <div className="overflow-x-auto">
+      <GlowEllipse className="left-1/2 -translate-x-1/2 -top-[6.25rem]" />
+      <div className="relative z-10 overflow-x-auto">
         <table className="w-full min-w-[820px] text-left text-sm"><thead className="h-[66px] border-b border-gfx-green-200 bg-[#002A1E]/80 text-gfx-neutral-500"><tr><th className="px-8 font-normal">Type</th><th className="px-8 font-normal">From</th><th className="px-8 font-normal">Detail</th><th className="px-8 font-normal">Date</th><th className="px-8 font-normal text-right">Amount</th></tr></thead><tbody><tr><td colSpan={5} className="h-[238px] text-center text-base text-gfx-neutral-500">No activity yet</td></tr></tbody></table>
       </div>
     </GlassCard>

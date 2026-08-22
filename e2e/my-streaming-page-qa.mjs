@@ -63,6 +63,17 @@ const ownerControls = await page.locator('[data-my-streaming-tabs] button').nth(
   follow: await page.getByRole('button', { name: 'Follow', exact: true }).count(),
 }))
 
+await page.locator('[data-my-streaming-tabs] button').nth(4).click()
+const earningsGlow = await page.locator('[data-earnings-activity] .glow-ellipse').evaluate(element => {
+  const glow = element.getBoundingClientRect()
+  const table = element.closest('[data-earnings-activity]').getBoundingClientRect()
+  return {
+    count: element.closest('[data-earnings-activity]').querySelectorAll('.glow-ellipse').length,
+    centerDelta: Math.abs((glow.left + glow.width / 2) - (table.left + table.width / 2)),
+    topOffset: glow.top - table.top,
+  }
+})
+
 await setTheme('light')
 const lightHero = await rect('[data-channel-hero]')
 const lightHeading = await page.getByRole('heading', { name: 'Joe doe' }).evaluate(element => getComputedStyle(element).color)
@@ -86,11 +97,12 @@ if (tabs.width < 738 || tabs.width > 742 || Math.abs(tabs.height - 46) > 1 || Ma
 if (states[0].metrics !== 4 || states[1].ownerCards !== 1 || states[2].ownerCards !== 1 || states[3].followerCards !== 1 || states[4].earningsSummary !== 1 || states[4].earningsTable !== 1 || states.some(state => state.active !== 'true')) failures.push(`state mismatch: ${JSON.stringify(states)}`)
 if (metricRects.length !== 4 || metricRects.some(item => Math.abs(item.height - 148) > 1)) failures.push(`metric geometry mismatch: ${JSON.stringify(metricRects)}`)
 if (ownerControls.feature !== 0 || ownerControls.follow !== 0) failures.push(`owner card controls mismatch: ${JSON.stringify(ownerControls)}`)
+if (earningsGlow.count !== 1 || earningsGlow.centerDelta > 1 || earningsGlow.topOffset >= 0) failures.push(`earnings glow mismatch: ${JSON.stringify(earningsGlow)}`)
 if (lightHero.background === 'rgb(12, 19, 17)' || lightHeading !== 'rgb(0, 0, 0)') failures.push(`light theme mismatch: ${JSON.stringify({ lightHero, lightHeading })}`)
 if (intermediateOverflow || mobileOverflow || !mobileTabsVisible || !reducedMotionContentVisible) failures.push(`responsive/accessibility mismatch: ${JSON.stringify({ intermediateOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible })}`)
 if (runtimeErrors.length) failures.push(`runtime errors: ${runtimeErrors.join(' | ')}`)
 if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, hero, tabs, labels, states, metricRects, ownerControls, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, runtimeErrors, failedResponses, failures }, null, 2))
+console.log(JSON.stringify({ status: failures.length ? 'FAIL' : 'PASS', baseUrl, hero, tabs, labels, states, metricRects, ownerControls, earningsGlow, lightHero, lightHeading, intermediateOverflow, mobileOverflow, mobileTabsVisible, reducedMotionContentVisible, runtimeErrors, failedResponses, failures }, null, 2))
 await browser.close()
 if (failures.length) process.exit(1)

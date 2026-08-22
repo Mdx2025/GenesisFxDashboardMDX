@@ -59,3 +59,8 @@ STATUS: VERIFIED by independent verifier
 - Production returned `200` at `/streaming/mystreaming`. The My streams action navigated from `/streaming` to the new route.
 - Remote browser QA passed all five states, semantic light and dark themes, `1920×1171`, `960×900`, and `390×844`, reduced motion, zero horizontal overflow, runtime errors, or failed responses.
 - Measured production locks: hero `1549×279` at `x=343/y=264.797`; tabs `740×46` at `x=343/y=606.797`; four metrics `375×148`; one owner card in Streams and Replays; one follower card; one earnings summary and one activity table.
+
+## Operator correction — Earnings activity glow
+
+- The empty activity table uses the canonical `GlowEllipse` component centered on its top edge, behind the table content.
+- Geometry contract: exactly one `.glow-ellipse` inside `[data-earnings-activity]`, horizontal center delta `<=1px`, with its top positioned above the table shell so the green atmosphere falls into the header.
