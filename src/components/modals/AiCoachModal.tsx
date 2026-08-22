@@ -263,7 +263,9 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                 aria-label="Open chat history"
                 className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-[10px] bg-[color:var(--ac-panel)] text-[color:var(--ac-muted)] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
               >
-                <AiHistoryIcon size={16} />
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M2.25 4.5H15.75M2.25 9H15.75M2.25 13.5H15.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
               </button>
               <span className="flex shrink-0 items-center justify-center text-[color:var(--ac-accent)]">
                 <AiCoachFaceIcon size={26} />
