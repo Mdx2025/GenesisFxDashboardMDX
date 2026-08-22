@@ -135,6 +135,8 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
   const triggerRef = useRef<HTMLElement | null>(null)
   const [mounted, setMounted] = useState(false)
   const [scale, setScale] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const [view, setView] = useState<CoachView>('default')
   const [prompt, setPrompt] = useState('')
   const [ideasOpen, setIdeasOpen] = useState(false)
@@ -168,12 +170,14 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
     setView('default')
     setPrompt('')
     setIdeasOpen(false)
+    setDrawerOpen(false)
   }, [open])
 
   useLayoutEffect(() => {
     if (!mounted) return
     function measure() {
       setScale(Math.min(1, (window.innerWidth * 0.95) / CARD_W, (window.innerHeight * 0.95) / CARD_H))
+      setIsMobile(window.innerWidth < 768)
     }
     measure()
     window.addEventListener('resize', measure)
@@ -189,7 +193,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
     gsap.set(modal, { opacity: 0, scale: 0.96 })
     gsap.to(overlay, { opacity: 1, duration: 0.3, ease: 'power2.out' })
     gsap.to(modal, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
-  }, [mounted])
+  }, [mounted, isMobile])
 
   useEffect(() => {
     if (!mounted) return
@@ -197,6 +201,10 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
       if (e.key === 'Escape') {
         if (ideasOpen) {
           setIdeasOpen(false)
+          return
+        }
+        if (drawerOpen) {
+          setDrawerOpen(false)
           return
         }
         animateClose()
@@ -221,7 +229,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [mounted, ideasOpen, animateClose])
+  }, [mounted, ideasOpen, drawerOpen, animateClose])
 
   if (!mounted) return null
 
@@ -234,6 +242,364 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
     if (!prompt.trim()) return
     setPrompt('')
     setView('response')
+  }
+
+  // Below `md` the fixed 1270x906 canvas would scale to ~29%, so the modal
+  // becomes a native full-screen sheet instead: header / scrolling body /
+  // docked composer, with the sidebar demoted to an off-canvas drawer.
+  if (isMobile) {
+    return (
+      <div ref={overlayRef} className="fixed inset-0 z-[9999] bg-gfx-overlay" role="dialog" aria-modal="true" aria-labelledby="ai-coach-title">
+        <div ref={modalRef} className="h-full w-full">
+          <div
+            data-ai-coach-surface
+            data-ai-coach-view={view}
+            className="ai-coach-surface relative flex h-full w-full flex-col overflow-hidden bg-[color:var(--ac-bg)]"
+          >
+            <header className="relative z-20 flex h-14 shrink-0 items-center gap-2 border-b border-[color:var(--ac-border)] px-3">
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(true)}
+                aria-label="Open chat history"
+                className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-[10px] bg-[color:var(--ac-panel)] text-[color:var(--ac-muted)] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+              >
+                <AiHistoryIcon size={16} />
+              </button>
+              <span className="flex shrink-0 items-center justify-center text-[color:var(--ac-accent)]">
+                <AiCoachFaceIcon size={26} />
+              </span>
+              <h2 id="ai-coach-title" className="ac-text truncate text-lg font-acid font-normal text-[color:var(--ac-text)]">
+                AI Coach
+              </h2>
+              <span className="ml-auto inline-flex h-[30px] shrink-0 items-center gap-1 rounded-[60px] border-[0.824px] border-[color:var(--ac-border-hl)] px-2.5 text-[color:var(--ac-accent)]">
+                <AiBoltIcon size={14} />
+                <span className="text-xs font-acid font-normal">152</span>
+              </span>
+              <AiCoachIconChip label="Close modal" width={36} onClick={animateClose}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </AiCoachIconChip>
+            </header>
+
+            <div className="relative flex-1 overflow-y-auto overflow-x-hidden px-4 py-6">
+              <div
+                className="ac-glow pointer-events-none absolute -left-[80px] -top-[160px] h-[320px] w-[380px] rounded-full bg-[color:var(--ac-blob)] opacity-60 blur-[120px]"
+                aria-hidden="true"
+              />
+
+              {view === 'default' && (
+                <div className="relative flex min-h-full flex-col items-center justify-center gap-3 text-center">
+                  <h3 className="ac-text text-xl font-acid font-normal text-[color:var(--ac-text)]">
+                    Ask me anything about your trades
+                  </h3>
+                  <p className="text-sm font-acid font-medium text-[color:var(--ac-muted)]">
+                    I can only see your trading data - nothing else.
+                  </p>
+                  <div className="mt-3 flex flex-wrap justify-center gap-2">
+                    {DEFAULT_PROMPTS.map((p) => (
+                      <AiCoachChip key={p.label} onClick={() => askPrompt(p.label)}>
+                        {p.label}
+                      </AiCoachChip>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {view === 'chat' && (
+                <div className="relative flex flex-col gap-3">
+                  <div className="max-w-[85%] self-end rounded-[22px] bg-[color:var(--ac-bubble)] px-4 py-2.5">
+                    <span className="ac-text text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
+                      Which asset should I focus on?
+                    </span>
+                  </div>
+                  <div className="flex max-w-[85%] items-start gap-2 self-end rounded-[22px] bg-[color:var(--ac-bubble)] px-4 py-2.5">
+                    <AiSparkleIcon size={16} className="mt-0.5 shrink-0 text-[color:var(--ac-accent)]" />
+                    <span className="ac-text text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
+                      Generate a trade idea for me (Asset: forex)
+                    </span>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
+                    <div
+                      className="ac-glow pointer-events-none absolute left-1/3 -top-[140px] h-[194px] w-[260px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80px]"
+                      aria-hidden="true"
+                    />
+                    <p className="relative text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-body)]">{CHAT_ANSWER}</p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-acid font-normal text-[color:var(--ac-muted)]">HELPFUL?</p>
+                    {FEEDBACK_ACTIONS.map(({ label, Icon }) => (
+                      <button
+                        key={label}
+                        type="button"
+                        aria-label={label}
+                        className="flex size-[31.52px] cursor-pointer items-center justify-center bg-[color:var(--ac-well)] text-[color:var(--ac-muted)] [outline:0.88px_solid_var(--ac-border)] [outline-offset:-0.44px] transition-opacity hover:opacity-70"
+                      >
+                        <Icon size={15} />
+                      </button>
+                    ))}
+                  </div>
+
+                  <p className="mt-1 text-sm font-acid font-normal text-[color:var(--ac-muted)]">Suggested follow ups</p>
+                  <div className="flex flex-wrap gap-2">
+                    {FOLLOW_UPS.map((p) => (
+                      <AiCoachChip key={p.label} onClick={() => askPrompt(p.label)}>
+                        {p.label}
+                      </AiCoachChip>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {view === 'response' && (
+                <div className="relative overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
+                  <div
+                    className="ac-glow pointer-events-none absolute left-1/3 -top-[140px] h-[194px] w-[260px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80px]"
+                    aria-hidden="true"
+                  />
+                  <div className="relative">
+                    <AiSparkleIcon size={15} className="float-left mr-2 mt-1 text-[color:var(--ac-accent)]" />
+                    {RESPONSE_BLOCKS.map((block, i) => (
+                      <p
+                        key={block.label ?? block.body}
+                        className={`text-sm font-acid font-normal leading-[18.8px] ${i === 0 ? '' : 'mt-[18.8px]'}`}
+                      >
+                        {block.label && <span className="ac-text text-[color:var(--ac-text)]">{block.label}</span>}
+                        <span className="text-[color:var(--ac-muted)]">{block.body}</span>
+                      </p>
+                    ))}
+                    <AiCoachTradeChart className="mt-5 h-[160px] w-full overflow-hidden rounded-[15px]" />
+                    <PrimaryPillButton className="ai-coach-cta mt-5 w-full" onClick={() => setView('idea')}>
+                      <span className="text-base font-medium leading-[24.44px]">Place Sell Trade</span>
+                    </PrimaryPillButton>
+                  </div>
+                </div>
+              )}
+
+              {view === 'idea' && (
+                <div className="relative overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
+                  <div
+                    className="ac-glow pointer-events-none absolute left-1/3 -top-[140px] h-[194px] w-[260px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80px]"
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex items-center gap-2">
+                    <AiSparkleIcon size={15} className="shrink-0 text-[color:var(--ac-accent)]" />
+                    <p className="ac-text text-sm font-acid font-normal text-[color:var(--ac-text)]">Let´s plan your trade</p>
+                  </div>
+                  <p className="relative mt-3 text-sm font-acid font-normal text-[color:var(--ac-muted)]">
+                    Pick what you have in mind. Skip any let me decide.
+                  </p>
+
+                  {IDEA_GROUPS.map((group) => (
+                    <div key={group.label} className="relative mt-5">
+                      <p className="text-sm font-acid font-normal text-[color:var(--ac-muted)]">{group.label}</p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {group.options.map((option) => (
+                          <AiCoachChip
+                            key={option.label}
+                            selected={ideaChoice[group.label] === option.label}
+                            onClick={() => setIdeaChoice((prev) => ({ ...prev, [group.label]: option.label }))}
+                          >
+                            {option.label}
+                          </AiCoachChip>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+
+                  <div className="relative mt-6 flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setView('default')}
+                      className="h-9 flex-1 rounded-[56px] border border-[color:var(--ac-border)] text-xs font-acid font-normal text-[color:var(--ac-quiet-text)] opacity-80 cursor-pointer transition-opacity hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setView('response')}
+                      className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-[56px] bg-[image:var(--ac-badge-gradient)] text-xs font-acid font-normal text-[color:var(--ac-quiet-text)] opacity-80 cursor-pointer transition-opacity hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                    >
+                      <AiSparkleIcon size={16} />
+                      Generate idea
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="relative z-20 shrink-0 border-t border-[color:var(--ac-border)] px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]">
+              {ideasOpen && (
+                <div
+                  className="absolute bottom-full left-4 right-4 mb-2 overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] py-2"
+                  role="menu"
+                >
+                  <button
+                    type="button"
+                    role="menuitem"
+                    onClick={() => {
+                      setIdeasOpen(false)
+                      setView('chat')
+                    }}
+                    className="flex w-full items-start gap-3 px-5 py-2.5 text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                  >
+                    <AiChatIcon size={18} className="mt-0.5 shrink-0 -scale-x-100 text-[color:var(--ac-accent)]" />
+                    <span>
+                      <span className="ac-text block text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">Chat Mode</span>
+                      <span className="block text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">Ask about your trades</span>
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    onClick={() => {
+                      setIdeasOpen(false)
+                      setView('idea')
+                    }}
+                    className="flex w-full items-start gap-3 px-5 py-2.5 text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                  >
+                    <AiSparkleIcon size={18} className="mt-0.5 shrink-0 text-[color:var(--ac-accent)]" />
+                    <span>
+                      <span className="ac-text block text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">AI Trade Idea</span>
+                      <span className="block text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">Generate a trade idea</span>
+                    </span>
+                  </button>
+                </div>
+              )}
+
+              <AiCoachPromptBar
+                fluid
+                value={prompt}
+                onChange={setPrompt}
+                onSubmit={submitPrompt}
+                ideasOpen={ideasOpen}
+                onToggleIdeas={() => setIdeasOpen((v) => !v)}
+              />
+              <p className="mt-2 text-center text-[11px] font-acid font-normal text-[color:var(--ac-muted)]">
+                AI can only discuss your trading data. Not financial advice.
+              </p>
+            </div>
+
+            {drawerOpen && (
+              <div className="absolute inset-0 z-30 flex">
+                <aside className="flex h-full w-[86%] max-w-[320px] flex-col gap-4 overflow-y-auto border-r border-[color:var(--ac-sidebar-border)] bg-[color:var(--ac-sidebar-bg)] p-5">
+                  <div className="flex items-center gap-2">
+                    <span className="flex shrink-0 items-center justify-center text-[color:var(--ac-accent)]">
+                      <AiCoachFaceIcon size={30} />
+                    </span>
+                    <span className="ac-text text-lg font-acid font-normal text-[color:var(--ac-text)]">AI Coach</span>
+                    <span className="inline-flex h-[24.72px] items-center justify-center rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] px-2 text-xs font-acid font-normal text-[color:var(--ac-accent)]">
+                      v2.2
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setDrawerOpen(false)}
+                      aria-label="Close chat history"
+                      className="ml-auto flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-[10px] bg-[color:var(--ac-panel)] text-[color:var(--ac-muted)] transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                    >
+                      <ChevronLeftIcon size={12} color="currentColor" />
+                    </button>
+                  </div>
+
+                  <PrimaryPillButton
+                    className="ai-coach-cta w-full"
+                    onClick={() => {
+                      setDrawerOpen(false)
+                      setView('idea')
+                    }}
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <AiPlusIcon size={18} />
+                      New chat
+                    </span>
+                  </PrimaryPillButton>
+
+                  <div className="relative h-11 w-full rounded-[60px] border border-[color:var(--ac-border)]">
+                    <div className="absolute inset-0 rounded-[60px] bg-[color:var(--ac-panel)] opacity-50" aria-hidden="true" />
+                    <SearchIcon size={18} color="var(--ac-muted)" className="absolute left-[14px] top-1/2 -translate-y-1/2" />
+                    <span className="absolute left-[42px] top-1/2 -translate-y-1/2 text-sm font-acid font-normal text-[color:var(--ac-muted)]">
+                      Search trades
+                    </span>
+                  </div>
+
+                  <div
+                    className="flex w-full gap-1 rounded-[60px] bg-[color:var(--ac-tab-track)] p-[5px]"
+                    role="tablist"
+                    aria-label="AI Coach sidebar sections"
+                  >
+                    {SIDEBAR_TABS.map((tab, i) => (
+                      <button
+                        key={tab}
+                        type="button"
+                        role="tab"
+                        aria-selected={activeTab === i}
+                        onClick={() => setActiveTab(i)}
+                        className={`h-[29.66px] flex-1 rounded-[56px] text-xs font-acid font-normal cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)] ${
+                          activeTab === i
+                            ? 'bg-[image:var(--ac-badge-gradient)] opacity-80 text-[#ffffff]'
+                            : 'text-[color:var(--ac-muted)]'
+                        }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </div>
+
+                  <p className="text-xs font-acid font-normal text-[color:var(--ac-muted)]">RECENT CHATS</p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false)
+                      setView('chat')
+                    }}
+                    className="relative flex h-[52.73px] w-full items-center gap-3 overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] px-5 text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                  >
+                    <span
+                      className="ac-glow pointer-events-none absolute left-[54px] -top-[98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                      aria-hidden="true"
+                    />
+                    <AiChatIcon size={13} className="relative shrink-0 text-[color:var(--ac-accent)]" />
+                    <span className="ac-text relative truncate text-xs font-acid font-normal text-[color:var(--ac-text)]">
+                      Which asset should I focus on?
+                    </span>
+                  </button>
+
+                  <div className="relative mt-auto overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-4">
+                    <div
+                      className="ac-glow pointer-events-none absolute left-[58px] -top-[83px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                      aria-hidden="true"
+                    />
+                    <div className="relative flex items-center gap-3">
+                      <div className="flex size-[32.96px] shrink-0 items-center justify-center rounded-[56px] bg-[image:var(--ac-badge-gradient)] opacity-80">
+                        <AiBulbIcon size={18} className="text-[#ffffff]" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-acid font-bold uppercase leading-[15.68px] tracking-[2.32px] text-[color:var(--ac-promo-label)]">
+                          AI Coach
+                        </p>
+                        <p className="ac-text text-base font-acid font-medium text-[color:var(--ac-text)]">AI Trade Ideas</p>
+                      </div>
+                    </div>
+                    <p className="relative mt-3 text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-promo-body)]">
+                      Uses your trade history, live prices &amp; market watch to generate trade ideas.
+                    </p>
+                  </div>
+                </aside>
+                <button
+                  type="button"
+                  aria-label="Close chat history"
+                  onClick={() => setDrawerOpen(false)}
+                  className="h-full flex-1 cursor-pointer bg-black/60"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (

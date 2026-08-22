@@ -63,6 +63,8 @@ interface AiCoachPromptBarProps {
   onToggleIdeas: () => void
   ideasOpen: boolean
   inputId?: string
+  /** Flow layout for narrow viewports; the default is the fixed desktop canvas. */
+  fluid?: boolean
   className?: string
   style?: CSSProperties
 }
@@ -75,9 +77,72 @@ export function AiCoachPromptBar({
   onToggleIdeas,
   ideasOpen,
   inputId = 'ai-coach-prompt',
+  fluid = false,
   className = '',
   style,
 }: AiCoachPromptBarProps) {
+  if (fluid) {
+    return (
+      <div className={`flex items-center gap-2 ${className}`} style={style}>
+        <div className="relative flex h-[52px] min-w-0 flex-1 items-center rounded-[60px] px-4">
+          <span
+            className="absolute inset-0 rounded-[60px] border border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50 shadow-[inset_0_-2px_13.9px_-5px_var(--ac-glow),inset_0_-1px_23.9px_-16px_var(--ac-accent)] pointer-events-none"
+            aria-hidden="true"
+          />
+          <AiSparkleIcon size={16} className="relative shrink-0 text-[color:var(--ac-text)]" />
+          <input
+            id={inputId}
+            type="text"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') onSubmit()
+            }}
+            placeholder="Type here..."
+            aria-label="Ask the AI Coach"
+            className="relative ml-3 h-full min-w-0 flex-1 bg-transparent outline-none focus-visible:!outline-none text-sm font-acid font-normal text-[color:var(--ac-text)] placeholder:text-[color:var(--ac-muted)]"
+          />
+          <button
+            type="button"
+            onClick={onToggleIdeas}
+            aria-expanded={ideasOpen}
+            aria-haspopup="menu"
+            aria-label="Switch mode"
+            className="relative ml-1 inline-flex shrink-0 items-center gap-1 rounded-full text-[color:var(--ac-muted)] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+          >
+            <AiChatIcon size={16} />
+            <ChevronDownIcon size={18} color="currentColor" />
+          </button>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Voice input"
+          className="relative size-[52px] shrink-0 rounded-[60px] cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+        >
+          <span
+            className="absolute inset-0 rounded-[60px] border border-[color:var(--ac-border-hl)] bg-[color:var(--ac-panel)] opacity-50"
+            aria-hidden="true"
+          />
+          <AiMicIcon size={20} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[color:var(--ac-muted)]" />
+        </button>
+
+        <button
+          type="button"
+          onClick={onSubmit}
+          aria-label="Send message"
+          className="relative size-[52px] shrink-0 rounded-[300px] cursor-pointer transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+        >
+          <span
+            className="absolute inset-0 rounded-[300px] bg-[linear-gradient(90deg,#fff_0%,var(--ac-accent)_100%)]"
+            aria-hidden="true"
+          />
+          <AiSendIcon size={18} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black" />
+        </button>
+      </div>
+    )
+  }
+
   return (
     <div className={`absolute h-[64px] ${className}`} style={style}>
       <div className="absolute left-0 top-0 h-[64px] w-[726px]">
