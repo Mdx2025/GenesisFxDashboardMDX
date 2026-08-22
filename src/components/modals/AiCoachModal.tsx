@@ -83,20 +83,26 @@ const RESPONSE_BLOCKS: { label?: string; body: string }[] = [
   },
 ]
 
-const IDEA_GROUPS = [
+const IDEA_GROUPS: {
+  label: string
+  top: number
+  compact?: boolean
+  options: { label: string; left: number; width: number }[]
+}[] = [
   {
     label: 'ASSET CLASS',
     top: 135,
     options: [
       { label: 'Forex', left: 28, width: 68 },
-      { label: 'Metals', left: 106, width: 74 },
-      { label: 'Indices', left: 190, width: 73 },
-      { label: 'Any', left: 273, width: 50 },
+      { label: 'Metals', left: 102, width: 74 },
+      { label: 'Indices', left: 182, width: 73 },
+      { label: 'Any', left: 261, width: 50 },
     ],
   },
   {
     label: 'DIRECTION BIAS',
     top: 223,
+    compact: true,
     options: [
       { label: 'Long', left: 28, width: 63 },
       { label: 'Short', left: 97, width: 63 },
@@ -513,14 +519,18 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             {view === 'idea' && (
               <div className="absolute left-[29px] top-[67px] h-[614px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                 <div
-                  className="ac-glow pointer-events-none absolute left-[179px] -top-[183px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-[0.22] blur-[120px]"
+                  className="ac-glow pointer-events-none absolute left-[180px] -top-[182px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                   aria-hidden="true"
                 />
-                <AiSparkleIcon size={16} className="absolute left-[28px] top-[33px] text-[color:var(--ac-accent)]" />
-                <p className="ac-text absolute left-[49.18px] top-[33.18px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
+                <div
+                  className="ac-glow pointer-events-none absolute left-[180px] -top-[182px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
+                  aria-hidden="true"
+                />
+                <AiSparkleIcon size={15} className="absolute left-[28px] top-[31px] text-[color:var(--ac-accent)]" />
+                <p className="ac-text absolute left-[50px] top-[34px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-text)]">
                   Let´s plan your trade
                 </p>
-                <p className="absolute left-[27.18px] top-[80.18px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
+                <p className="absolute left-[28px] top-[81px] text-sm font-acid font-normal leading-[18.8px] text-[color:var(--ac-muted)]">
                   Pick what you have in mind. Skip any let me decide.
                 </p>
 
@@ -535,7 +545,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                     {group.options.map((option) => (
                       <AiCoachChip
                         key={option.label}
-                        className="!absolute"
+                        className={group.compact ? '!absolute !text-xs' : '!absolute'}
                         style={{ left: option.left, top: group.top + 22, width: option.width }}
                         selected={ideaChoice[group.label] === option.label}
                         onClick={() => setIdeaChoice((prev) => ({ ...prev, [group.label]: option.label }))}
