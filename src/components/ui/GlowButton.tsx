@@ -11,6 +11,7 @@ interface GlowButtonProps {
   fontWeight?: number
   onClick?: () => void
   disabled?: boolean
+  preserveDisabledAppearance?: boolean
   className?: string
   type?: 'button' | 'submit' | 'reset'
   // Legacy props accepted for compatibility but ignored by the new visual
@@ -32,6 +33,7 @@ export function GlowButton({
   icon,
   onClick,
   disabled = false,
+  preserveDisabledAppearance = false,
   className = '',
   type = 'button',
 }: GlowButtonProps) {
@@ -58,7 +60,7 @@ export function GlowButton({
   return (
     <button
       type={type}
-      className={`glow-btn ${className}`}
+      className={`glow-btn ${preserveDisabledAppearance ? 'glow-btn--preserve-disabled-appearance' : ''} ${className}`}
       style={{
         width,
         height,

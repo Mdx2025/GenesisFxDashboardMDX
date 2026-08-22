@@ -26,7 +26,7 @@ export default function NewStreamingPage() {
         {view === 'required' ? (
           <StreamingApplicationGate onApply={() => setView('application')} onBack={() => navigate('/streaming')} />
         ) : (
-          <StreamingApplicationForm />
+          <StreamingApplicationForm onSubmit={() => navigate('/streaming/startstreaming')} />
         )}
       </main>
     </div>

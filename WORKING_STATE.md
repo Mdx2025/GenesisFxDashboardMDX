@@ -686,3 +686,18 @@ Required evidence labels: `build`, `typography`, `contrast`, `responsive`, `keyb
 - high_risk_states: selected item alignment, keyboard activation, focus-visible, 12px floor, narrow-screen overflow, reduced motion.
 - implementation: active visual is rendered inside the selected native button; no GSAP/ref positioning, so semantic and visual selection cannot desynchronize.
 - validation_status: final build `bg_msf9dsbd_5b6a0a42` queued; final responsive and interaction QA pending.
+## Active Task — Start Streaming Figma flow (2026-08-22)
+
+- request: Submit application routes to `/streaming/startstreaming`; reproduce Figma section `4037:110661` across Ready, Terms, Permissions, and Accepted states; extend the design system; commit, push, and redeploy.
+- design_route: dashboard / broadcast workspace / existing GenesisFX streaming workspace / Figma evidence / explicit thesis.
+- visual_thesis: Preserve the compact GenesisFX dark-glass workspace and express broadcast readiness through one wide hero, an asymmetric details grid, and two progressively resolved consent modals.
+- dials: variance 1; motion 1; density 8; art direction 3; implementation clarity 10; image priority 1; spacing 3.
+- reference_map: `docs/start-streaming-reference-map-2026-08-22.md` (DRAFT; independent verification pending).
+- source_nodes: `4037:110662`, `4037:110819`, `4037:110998`, `4037:111184`.
+- assets: no runtime raster assets required; Figma screenshots are fidelity evidence only.
+- quality_contract: WCAG 2.2 AA; 12px typography floor; 4.5:1 normal text; 3:1 large/UI; keyboard/focus trap/return; reduced motion; dark/light; 1920/960/390 containment; zero runtime errors and failed responses.
+- current_phase: validated locally; preparing delivery.
+- completed: verified Figma map; `/streaming/startstreaming`; submit redirect; Ready/Terms/Permissions/Accepted states; reusable design-system exports; dark/light and 1920/960/390 containment; modal focus trap/return; reduced-motion parity; build and browser QA PASS.
+- validation_evidence: Vite build 293 modules; hero 1549×279 at x343/y143.8; cards 842×566, 691×283, 691×265; Terms 677×704 with 519×331 copy panel; Permissions 677×643 with three 520×91 rows; zero runtime errors and failed responses.
+- next_exact_action: refresh Graphify, review final diff, commit, rebase/push origin/main, redeploy Dokploy, and rerun production QA.
+- blockers: none.

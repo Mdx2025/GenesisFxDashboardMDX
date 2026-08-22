@@ -41,6 +41,10 @@
   cursor: not-allowed;
 }
 
+.glow-btn:disabled.glow-btn--preserve-disabled-appearance {
+  opacity: 1;
+}
+
 html[data-theme='light'] .glow-btn {
   color: #fff;
 }

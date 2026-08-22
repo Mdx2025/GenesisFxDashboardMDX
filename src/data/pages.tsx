@@ -35,6 +35,7 @@ import LeaderboardPage from '@/pages/LeaderboardPage'
 import StreamingPage from '@/pages/StreamingPage'
 import MyStreamingPage from '@/pages/MyStreamingPage'
 import NewStreamingPage from '@/pages/NewStreamingPage'
+import StartStreamingPage from '@/pages/StartStreamingPage'
 import VideoSinglePage from '@/pages/academy/VideoSinglePage'
 import EbookSinglePage from '@/pages/academy/EbookSinglePage'
 import {
@@ -89,6 +90,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/streaming', label: 'Streaming', description: 'Live trading streams, channels, and replays', icon: StreamingIcon, component: StreamingPage, showInDirectory: false },
   { path: '/streaming/mystreaming', label: 'My Streaming', description: 'Manage channel overview, streams, replays, followers, and earnings', icon: StreamingIcon, component: MyStreamingPage, showInDirectory: false },
   { path: '/streaming/newstreaming', label: 'New Streaming', description: 'Apply to become a Genesis streamer', icon: StreamingIcon, component: NewStreamingPage, showInDirectory: false },
+  { path: '/streaming/startstreaming', label: 'Start Streaming', description: 'Configure and start a Genesis broadcast session', icon: StreamingIcon, component: StartStreamingPage, showInDirectory: false },
   { path: '/partner', label: 'Partner Program', description: 'IB partnership, referrals, and commission tracking', icon: GenSocialIcon, component: PartnerPage },
   { path: '/partner/referrals', label: 'Referrals', description: 'All referrals overview and level tracking', icon: GenSocialIcon, component: ReferralsPage, showInDirectory: false },
   { path: '/partner/links', label: 'Links', description: 'Referral link sharing and commission rates', icon: GenSocialIcon, component: LinksPage, showInDirectory: false },

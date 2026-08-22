@@ -10,6 +10,7 @@ import {
   StreamCard, StreamingCategoryCard, StreamingEmptyState, StreamingLiveBadge, StreamingTabs,
   ChannelHeroCard, ChannelMetricCard, MyStreamFollowerCard, MyStreamingTabs,
   StreamingApplicationForm, StreamingApplicationGate,
+  BroadcastReadyHero, BroadcastSessionDetails, BroadcastChannelCard, BroadcastChecklist,
 } from '@/components/ui'
 import { DepositIcon, WithdrawIcon, TransferIcon, SearchIcon, HelpIcon, ShareFilledIcon } from '@/components/icons'
 import { PortfolioChart } from '@/components/charts/PortfolioChart'
@@ -716,6 +717,16 @@ export default function DesignSystemPage() {
             <div className="space-y-6">
               <StreamingApplicationGate onApply={() => {}} onBack={() => {}} />
               <StreamingApplicationForm />
+            </div>
+          </Subsection>
+
+          <Subsection title="Start Streaming — ready, session, channel, and checklist">
+            <div className="space-y-4">
+              <BroadcastReadyHero />
+              <div className="grid gap-4 xl:grid-cols-2">
+                <BroadcastSessionDetails onGoLive={() => {}} />
+                <div className="space-y-4"><BroadcastChannelCard /><BroadcastChecklist /></div>
+              </div>
             </div>
           </Subsection>
 
