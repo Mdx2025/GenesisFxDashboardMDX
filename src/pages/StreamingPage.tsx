@@ -11,7 +11,6 @@ import {
   GlassBannerCard,
   GlassCard,
   GlowButton,
-  PrimaryPillButton,
   SearchInput,
   SparkleButton,
   StreamCard,
@@ -99,7 +98,7 @@ function FeaturedStream() {
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">Forex</span>
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">English</span>
         </div>
-        <PrimaryPillButton className="ml-auto min-w-[206px]">Watch now</PrimaryPillButton>
+        <GlowButton className="ml-auto" width={206} label="Watch now" />
       </div>
     </GlassCard>
   )
@@ -156,7 +155,7 @@ function HomeState() {
         <GlassBannerCard className="min-h-[217px]" contentClassName="flex min-h-[217px] flex-col items-start gap-6 px-10 py-8 sm:px-16 lg:flex-row lg:items-center">
           <span className="relative grid size-[79px] shrink-0 place-items-center rounded-[18px] border border-gfx-green-200 bg-gfx-green-800 text-4xl text-gfx-green-300">♕</span>
           <div className="relative lg:ml-3"><h2 className="text-[30px] text-white">Win $10,000 Cash Prize</h2><p className="mt-5 text-xl text-gfx-neutral-400">Stream live • Compete • Get Paid</p></div>
-          <PrimaryPillButton className="relative lg:ml-auto min-w-[180px]">Enter Now</PrimaryPillButton>
+          <GlowButton className="relative lg:ml-auto" width={180} label="Enter Now" />
         </GlassBannerCard>
       </section>
       <section className="mt-[74px]"><SectionHeading count="1">Live channels</SectionHeading><div className="mt-9"><StreamCard /></div></section>
@@ -209,7 +208,7 @@ function CardsState({ following, followed, onFollow, replayFilter = 'all', onSho
           </span>
           <h3 className="mt-5 text-xl text-white">No favorite replays yet</h3>
           <p className="mt-2 text-sm text-gfx-neutral-400">Favorite a replay and it will appear here.</p>
-          <PrimaryPillButton className="mt-6 min-w-[168px]" onClick={onShowAll}>Browse all replays</PrimaryPillButton>
+          <GlowButton className="mt-6" width={190} label="Browse all replays" onClick={onShowAll} />
         </div>
       ) : (
         <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-4" data-replay-grid>{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={following ? onFollow : undefined} />)}</div>

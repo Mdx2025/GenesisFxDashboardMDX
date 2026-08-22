@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { GlowButton } from './GlowButton'
 import { ModeToggle } from './ModeToggle'
 
 export const STREAMING_TABS = ['Home', 'Browse', 'Replays', 'Following'] as const
@@ -99,7 +100,7 @@ export function StreamingEmptyState({ onBrowse }: { onBrowse: () => void }) {
         <span className="mx-auto grid size-[74px] place-items-center rounded-[22px] border border-gfx-green-200 bg-gfx-surface-icon-well text-gfx-green-300"><CameraIcon size={38} /></span>
         <h2 className="mt-7 text-2xl font-normal text-white">You don&apos;t follow anyone yet</h2>
         <p className="mx-auto mt-3 max-w-[510px] text-base leading-6 text-gfx-neutral-500">Open a stream and tap Follow to see their live broadcasts here.</p>
-        <button type="button" onClick={onBrowse} className="mt-7 h-11 rounded-full bg-[#F1FFFA] px-8 text-base font-medium text-black">Browse channels</button>
+        <GlowButton className="mt-7" width={200} label="Browse channels" onClick={onBrowse} />
       </div>
     </div>
   )
