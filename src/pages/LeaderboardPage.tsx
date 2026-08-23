@@ -61,7 +61,7 @@ export default function LeaderboardPage() {
         <header className="text-center">
           <h1 className="text-h1 font-normal text-white">Leaderboard</h1>
           <div className="mt-8 flex justify-center px-1">
-            <LeaderboardTabs activeIndex={activeIndex} onChange={setActiveIndex} className="max-w-full overflow-x-auto" />
+            <LeaderboardTabs activeIndex={activeIndex} onChange={setActiveIndex} className="overflow-x-auto" />
           </div>
         </header>
 
