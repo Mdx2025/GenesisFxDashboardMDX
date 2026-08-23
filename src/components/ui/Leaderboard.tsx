@@ -13,7 +13,7 @@ interface LeaderboardTabsProps {
 
 export function LeaderboardTabs({ activeIndex, onChange, className = '' }: LeaderboardTabsProps) {
   return (
-    <div className={`w-full max-w-[936px] ${className}`} data-leaderboard-mode-toggle>
+    <div className={`w-full max-w-3xl ${className}`} data-leaderboard-mode-toggle>
       <ModeToggle
         options={[...LEADERBOARD_TABS]}
         activeIndex={activeIndex}
