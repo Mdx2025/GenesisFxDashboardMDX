@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { Area, AreaChart, CartesianGrid, ReferenceDot, ReferenceLine, XAxis, YAxis } from 'recharts'
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
+import type { ChartSeriesConfig } from '@/components/ui/chart'
 
 const DEFAULT_HIGHLIGHT_INDEX = 15
 
@@ -37,238 +39,87 @@ interface PortfolioChartProps {
   config?: ChartConfig
 }
 
+/** Portfolio equity curve, built on the shadcn linear area chart. */
 export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const chartRef = useRef<any>(null)
+  const chartConfig = {
+    equity: { label: 'Equity', color: config.lineColor },
+  } satisfies ChartSeriesConfig
 
-  useEffect(() => {
-    let mounted = true
-    let themeObserver: MutationObserver | undefined
+  const chartData = config.data.map((equity, index) => ({ index, equity }))
 
-    async function init() {
-      const { Chart, registerables } = await import('chart.js')
-      Chart.register(...registerables)
-      if (!mounted || !canvasRef.current) return
+  const dataMin = Math.min(...config.data)
+  const dataMax = Math.max(...config.data)
+  const padding = (dataMax - dataMin || 1) * ((1 - config.waveHeight) * 3)
 
-      const dataMin = Math.min(...config.data)
-      const dataMax = Math.max(...config.data)
-      const dataRange = dataMax - dataMin || 1
-      const padding = dataRange * ((1 - config.waveHeight) * 3)
-      const yMin = dataMin - padding
-      const yMax = dataMax + padding
-
-      const ctx = canvasRef.current.getContext('2d')!
-      const getThemeColors = () => {
-        const isLight = document.documentElement.dataset.theme === 'light'
-        return {
-          text: isLight ? '#000000' : 'rgba(236,236,236,0.55)',
-          grid: isLight ? `rgba(0,0,0,${config.gridOpacity})` : `rgba(255,255,255,${config.gridOpacity})`,
-          tooltipBackground: isLight ? 'rgba(255,255,255,0.96)' : 'rgba(10,15,13,0.9)',
-          tooltipTitle: isLight ? '#000000' : '#A0A0A0',
-        }
-      }
-
-      const canvasH = canvasRef.current.height
-      const greenGradient = ctx.createLinearGradient(0, 0, 0, canvasH)
-      const steps = 16
-      for (let i = 0; i <= steps; i++) {
-        const t = i / steps
-        const ease = 1 - t * t
-        greenGradient.addColorStop(t, config.lineColor + hexOpacity(config.fillOpacity * ease))
-      }
-
-      const highlightPlugin = {
-        id: 'highlightPoint',
-        afterDatasetsDraw(chart: any) {
-          const meta = chart.getDatasetMeta(0)
-          if (config.highlightIndex < 0 || !meta.data[config.highlightIndex]) return
-          const point = meta.data[config.highlightIndex]
-          const { ctx: c, chartArea } = chart
-
-          c.save()
-
-          c.setLineDash([4, 4])
-          c.strokeStyle = config.lineColor + '4D'
-          c.lineWidth = 1
-          c.beginPath()
-          c.moveTo(point.x, point.y)
-          c.lineTo(point.x, chartArea.bottom)
-          c.stroke()
-
-          c.setLineDash([])
-
-          c.fillStyle = 'rgba(4, 11, 9, 0.85)'
-          c.beginPath()
-          c.arc(point.x, point.y, 12, 0, Math.PI * 2)
-          c.fill()
-
-          c.strokeStyle = config.lineColor + '59'
-          c.lineWidth = 1.5
-          c.beginPath()
-          c.arc(point.x, point.y, 12, 0, Math.PI * 2)
-          c.stroke()
-
-          c.fillStyle = config.lineColor
-          c.shadowColor = config.lineColor
-          c.shadowBlur = 8
-          c.beginPath()
-          c.arc(point.x, point.y, 4, 0, Math.PI * 2)
-          c.fill()
-          c.shadowBlur = 0
-
-          c.restore()
-        },
-      }
-
-      const neonGlowPlugin = {
-        id: 'neonGlow',
-        afterDatasetsDraw(chart: any) {
-          const meta = chart.getDatasetMeta(0)
-          if (!meta.dataset) return
-          const c = chart.ctx
-          const passes = [
-            { blur: config.glowIntensity * 3, opacity: '15', offsetY: 6 },
-            { blur: config.glowIntensity * 2, opacity: '25', offsetY: 3 },
-            { blur: config.glowIntensity, opacity: '50', offsetY: 1 },
-          ]
-          for (const pass of passes) {
-            c.save()
-            c.shadowColor = config.lineColor + pass.opacity
-            c.shadowBlur = pass.blur
-            c.shadowOffsetX = 0
-            c.shadowOffsetY = pass.offsetY
-            c.strokeStyle = config.lineColor + '40'
-            c.lineWidth = config.lineWidth
-            c.lineJoin = 'round'
-            c.lineCap = 'round'
-            meta.dataset.draw(c)
-            c.restore()
-          }
-        },
-      }
-
-      const areaGlowPlugin = {
-        id: 'areaGlow',
-        beforeDatasetsDraw(chart: any) {
-          const meta = chart.getDatasetMeta(0)
-          if (!meta.data?.length) return
-          const c = chart.ctx
-          const { chartArea } = chart
-          const points = meta.data
-
-          c.save()
-          c.globalCompositeOperation = 'lighter'
-
-          const peakY = Math.min(...points.map((p: any) => p.y))
-          const centerX = chartArea.left + (chartArea.right - chartArea.left) / 2
-          const centerY = peakY + (chartArea.bottom - peakY) * 0.4
-          const radiusX = (chartArea.right - chartArea.left) * 0.55
-          const radiusY = (chartArea.bottom - peakY) * 0.7
-
-          c.save()
-          c.translate(centerX, centerY)
-          c.scale(radiusX / radiusY, 1)
-          const radial = c.createRadialGradient(0, 0, 0, 0, 0, radiusY)
-          radial.addColorStop(0, config.lineColor + '14')
-          radial.addColorStop(0.4, config.lineColor + '0A')
-          radial.addColorStop(1, config.lineColor + '00')
-          c.fillStyle = radial
-          c.beginPath()
-          c.arc(0, 0, radiusY, 0, Math.PI * 2)
-          c.fill()
-          c.restore()
-
-          c.restore()
-        },
-      }
-
-      chartRef.current = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: config.data.map(() => ''),
-          datasets: [{
-            data: config.data,
-            fill: true,
-            backgroundColor: greenGradient,
-            borderColor: config.lineColor,
-            borderWidth: config.lineWidth,
-            tension: config.tension,
-            cubicInterpolationMode: 'default',
-            borderJoinStyle: 'miter',
-            borderCapStyle: 'butt',
-            pointRadius: 0,
-            pointHoverRadius: 0,
-          }],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          animation: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-            ? false
-            : { duration: 450 },
-          interaction: { mode: 'nearest', intersect: false },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: () => getThemeColors().tooltipBackground,
-              titleColor: () => getThemeColors().tooltipTitle,
-              bodyColor: config.lineColor,
-              borderColor: config.lineColor + '33',
-              borderWidth: 1,
-              padding: 10,
-              displayColors: false,
-              callbacks: { label: (c) => `$${((c.parsed.y ?? 0) * 70).toFixed(2)}` },
-            },
-          },
-          scales: {
-            x: {
-              border: { display: false },
-              grid: { display: false },
-              ticks: { display: false },
-            },
-            y: {
-              suggestedMin: yMin,
-              suggestedMax: yMax,
-              border: { display: false },
-              grid: { color: () => getThemeColors().grid },
-              ticks: {
-                display: config.gridOpacity > 0,
-                color: () => getThemeColors().text,
-                font: { size: 12 },
-                padding: 8,
-                callback: (v: any) => `$${v}`,
-              },
-            },
-          },
-        },
-        plugins: [areaGlowPlugin, neonGlowPlugin, highlightPlugin],
-      })
-
-      themeObserver = new MutationObserver(() => chartRef.current?.update('none'))
-      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
-    }
-
-    init()
-    return () => {
-      mounted = false
-      themeObserver?.disconnect()
-      chartRef.current?.destroy()
-    }
-  }, [config])
+  const highlight =
+    config.highlightIndex >= 0 && config.highlightIndex < config.data.length
+      ? { x: config.highlightIndex, y: config.data[config.highlightIndex] }
+      : null
 
   return (
-    <div className="relative w-full h-full">
-      <canvas
-        ref={canvasRef}
-        className="!absolute inset-0 w-full h-full"
-        data-chart-text
-        aria-label="Portfolio equity curve showing angular gains, drawdowns, and recoveries over the selected period"
-        role="img"
-      />
-    </div>
-  )
-}
+    <ChartContainer
+      config={chartConfig}
+      className="aspect-auto size-full"
+      data-chart-text
+      style={{ filter: `drop-shadow(0 0 ${config.glowIntensity}px ${config.lineColor}55)` }}
+      role="img"
+      aria-label="Portfolio equity curve showing gains, drawdowns, and recoveries over the selected period"
+    >
+      <AreaChart accessibilityLayer data={chartData} margin={{ top: 12, left: 6, right: 12, bottom: 4 }}>
+        <CartesianGrid vertical={false} strokeOpacity={config.gridOpacity > 0 ? 1 : 0} />
+        <XAxis dataKey="index" hide />
+        <YAxis
+          dataKey="equity"
+          domain={[dataMin - padding, dataMax + padding]}
+          hide={config.gridOpacity <= 0}
+          tickLine={false}
+          axisLine={false}
+          tickMargin={8}
+          width={52}
+          tickFormatter={(value: number) => `$${Math.round(value)}`}
+        />
+        <ChartTooltip
+          cursor={false}
+          content={
+            <ChartTooltipContent
+              indicator="dot"
+              hideLabel
+              valueFormatter={(value) => `$${(value * 70).toFixed(2)}`}
+            />
+          }
+        />
 
-function hexOpacity(opacity: number): string {
-  return Math.round(Math.min(1, Math.max(0, opacity)) * 255).toString(16).padStart(2, '0')
+        {highlight && (
+          <ReferenceLine
+            x={highlight.x}
+            stroke="var(--color-equity)"
+            strokeOpacity={0.3}
+            strokeDasharray="4 4"
+          />
+        )}
+
+        <Area
+          dataKey="equity"
+          type={config.tension > 0 ? 'monotone' : 'linear'}
+          fill="var(--color-equity)"
+          fillOpacity={config.fillOpacity}
+          stroke="var(--color-equity)"
+          strokeWidth={config.lineWidth}
+          isAnimationActive={false}
+        />
+
+        {highlight && (
+          <ReferenceDot
+            x={highlight.x}
+            y={highlight.y}
+            r={4}
+            fill="var(--color-equity)"
+            stroke="var(--color-equity)"
+            strokeOpacity={0.35}
+            strokeWidth={8}
+          />
+        )}
+      </AreaChart>
+    </ChartContainer>
+  )
 }
