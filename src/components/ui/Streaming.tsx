@@ -30,13 +30,15 @@ function CameraIcon({ size = 63 }: { size?: number }) {
 export function StreamCard({
   category = 'FOREX',
   followed = false,
+  username = '@mr-dev',
   onFollow,
   className = '',
   variant = 'browse',
 }: {
   category?: string
   followed?: boolean
-  onFollow?: () => void
+  username?: string
+  onFollow?: (username: string) => void
   className?: string
   variant?: 'browse' | 'owner'
 }) {
@@ -55,12 +57,12 @@ export function StreamCard({
       <div className="relative h-[99px]" data-stream-card-details>
         {owner ? <span className="absolute left-[14px] top-[22px] grid size-[51px] place-items-center rounded-full bg-gfx-green-800 text-base text-white" aria-hidden="true">J</span> : <img src="/images/streaming-avatar.png" alt="" className="absolute left-[14px] top-[22px] size-[51px] rounded-full object-cover" />}
         <div className="absolute left-[81px] top-[31px] min-w-0 max-w-[170px]">
-          <p className="truncate text-base leading-[19.2px] text-white">{owner ? 'Joe Doe' : '@mr-dev'}</p>
+          <p className="truncate text-base leading-[19.2px] text-white">{owner ? 'Joe Doe' : username}</p>
           <p className="mt-[3px] truncate text-sm leading-[18.8px] text-gfx-neutral-500">Stream test</p>
         </div>
         {!owner && <button
           type="button"
-          onClick={onFollow}
+          onClick={() => onFollow?.(username)}
           className={`absolute right-[14px] top-[31px] inline-flex h-[35px] min-w-[95px] items-center justify-center gap-2 rounded-[12px] px-3 text-sm leading-[18.8px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#000705] ${followed ? 'bg-gfx-green-300' : 'bg-[#F1FFFA]'}`}
           aria-pressed={followed}
         >

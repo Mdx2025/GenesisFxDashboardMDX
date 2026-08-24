@@ -8,9 +8,11 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/icons'
 import {
+  FollowIcon,
   GlassBannerCard,
   GlassCard,
   GlowButton,
+  SuccessSnackbar,
   SearchInput,
   SparkleButton,
   StreamCard,
@@ -133,7 +135,7 @@ function ChatPanel() {
   )
 }
 
-function HomeState() {
+function HomeState({ onFollow }: { onFollow: (username: string) => void }) {
   const categorySwiper = useRef<SwiperType | null>(null)
 
   return (
@@ -158,7 +160,7 @@ function HomeState() {
           <GlowButton className="relative lg:ml-auto" width={180} label="Enter Now" />
         </GlassBannerCard>
       </section>
-      <section className="mt-[74px]"><SectionHeading count="1">Live channels</SectionHeading><div className="mt-9"><StreamCard /></div></section>
+      <section className="mt-[74px]"><SectionHeading count="1">Live channels</SectionHeading><div className="mt-9"><StreamCard onFollow={onFollow} /></div></section>
     </div>
   )
 }
@@ -180,20 +182,20 @@ function BrowseHero() {
   )
 }
 
-function BrowseState() {
+function BrowseState({ onFollow }: { onFollow: (username: string) => void }) {
   const filters = ['Forex 1', 'Crypto 0', 'Indices 0', 'Stocks 1', 'Commodities 1', 'News & Analysis 0', 'Scalping 0', 'Education 0']
   return (
     <div data-streaming-browse>
       <BrowseHero />
       <div className="mt-7 flex gap-3 overflow-x-auto pb-2">{filters.map((item, i) => <button key={item} className={`h-9 shrink-0 rounded-full border px-5 text-sm ${i === 0 ? 'border-gfx-green-300 bg-gfx-green-800 text-white' : 'border-gfx-green-200 text-gfx-neutral-400'}`}>{item}</button>)}</div>
-      <section className="mt-7"><SectionHeading count="1">Live now</SectionHeading><div className="mt-3"><StreamCard /></div></section>
+      <section className="mt-7"><SectionHeading count="1">Live now</SectionHeading><div className="mt-3"><StreamCard onFollow={onFollow} /></div></section>
       <div className="my-10 flex items-center gap-5 text-base text-gfx-neutral-500"><i className="h-px flex-1 bg-gfx-green-200" /><span>Browse by category</span><i className="h-px flex-1 bg-gfx-green-200" /></div>
-      <section><SectionHeading count="1 live">Forex</SectionHeading><div className="mt-3"><StreamCard /></div></section>
+      <section><SectionHeading count="1 live">Forex</SectionHeading><div className="mt-3"><StreamCard onFollow={onFollow} /></div></section>
     </div>
   )
 }
 
-function CardsState({ following, followed, onFollow, replayFilter = 'all', onShowAll }: { following?: boolean; followed: boolean; onFollow: () => void; replayFilter?: ReplayFilter; onShowAll?: () => void }) {
+function CardsState({ following, followed, onFollow, replayFilter = 'all', onShowAll }: { following?: boolean; followed: boolean; onFollow: (username: string) => void; replayFilter?: ReplayFilter; onShowAll?: () => void }) {
   const cards = useMemo(() => following ? ['FOREX'] : replayFilter === 'favorites' ? [] : ['FOREX', 'NEWS & ANALYSIS', 'COMMODITIES'], [following, replayFilter])
   const favoritesEmpty = !following && replayFilter === 'favorites'
 
@@ -211,7 +213,7 @@ function CardsState({ following, followed, onFollow, replayFilter = 'all', onSho
           <GlowButton className="mt-6" width={190} label="Browse all replays" onClick={onShowAll} />
         </div>
       ) : (
-        <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-4" data-replay-grid>{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={following ? onFollow : undefined} />)}</div>
+        <div className="mt-3 grid gap-[13px] md:grid-cols-2 2xl:grid-cols-4" data-replay-grid>{cards.map(category => <StreamCard key={category} category={category} followed={following && followed} onFollow={onFollow} />)}</div>
       )}
     </section>
   )
@@ -224,6 +226,7 @@ export default function StreamingPage() {
   const [query, setQuery] = useState('')
   const [followed, setFollowed] = useState(true)
   const [replayFilter, setReplayFilter] = useState<ReplayFilter>('all')
+  const [followNotice, setFollowNotice] = useState<string | null>(null)
   const tab = STREAMING_TABS[activeIndex]
 
   return (
@@ -251,11 +254,18 @@ export default function StreamingPage() {
         </header>
 
         {tab !== 'Home' && tab !== 'Browse' && <div className="mt-[34px] flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between"><SearchInput value={query} onChange={setQuery} placeholder="Search replays..." ariaLabel="Search streaming content" className="w-full max-w-[765px]" />{tab === 'Replays' && <ReplayFilterSwitch value={replayFilter} onChange={setReplayFilter} />}</div>}
-        {tab === 'Home' && <HomeState />}
-        {tab === 'Browse' && <BrowseState />}
-        {tab === 'Replays' && <CardsState followed={false} onFollow={() => {}} replayFilter={replayFilter} onShowAll={() => setReplayFilter('all')} />}
-        {tab === 'Following' && (followed ? <CardsState following followed={followed} onFollow={() => setFollowed(false)} /> : <div className="mt-[54px]"><StreamingEmptyState onBrowse={() => setActiveIndex(1)} /></div>)}
+        {tab === 'Home' && <HomeState onFollow={setFollowNotice} />}
+        {tab === 'Browse' && <BrowseState onFollow={setFollowNotice} />}
+        {tab === 'Replays' && <CardsState followed={false} onFollow={setFollowNotice} replayFilter={replayFilter} onShowAll={() => setReplayFilter('all')} />}
+        {tab === 'Following' && (followed ? <CardsState following followed={followed} onFollow={username => { setFollowNotice(username); setFollowed(false) }} /> : <div className="mt-[54px]"><StreamingEmptyState onBrowse={() => setActiveIndex(1)} /></div>)}
       </main>
+
+      <SuccessSnackbar
+        open={followNotice !== null}
+        message={`Follow ${followNotice ?? ''}`}
+        icon={<FollowIcon />}
+        onClose={() => setFollowNotice(null)}
+      />
     </div>
   )
 }
