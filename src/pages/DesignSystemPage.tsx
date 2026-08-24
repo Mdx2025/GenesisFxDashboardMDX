@@ -17,6 +17,7 @@ import { PortfolioChart } from '@/components/charts/PortfolioChart'
 import { CandlestickChart } from '@/components/charts/CandlestickChart'
 import { MiniBarChart } from '@/components/charts/MiniBarChart'
 import { AreaChart } from '@/components/charts/AreaChart'
+import { AvgPnlByDayChart } from '@/components/charts/AvgPnlByDayChart'
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -655,6 +656,12 @@ export default function DesignSystemPage() {
                 <p className="text-caption text-gfx-neutral-500 mb-2">Blue</p>
                 <AreaChart color="#5b9cf5" />
               </GlassCard>
+            </div>
+          </Subsection>
+
+          <Subsection title="Avg P&L by day of week — AvgPnlByDayChart">
+            <div className="max-w-[46rem]">
+              <AvgPnlByDayChart />
             </div>
           </Subsection>
 

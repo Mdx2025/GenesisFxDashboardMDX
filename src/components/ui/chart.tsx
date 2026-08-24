@@ -1,6 +1,6 @@
 import { createContext, useContext, useId, useMemo } from 'react'
 import type { ComponentProps, CSSProperties, ReactNode } from 'react'
-import { ResponsiveContainer, Tooltip } from 'recharts'
+import { Legend, ResponsiveContainer, Tooltip } from 'recharts'
 
 export type ChartSeriesConfig = {
   [key: string]: {
@@ -53,6 +53,40 @@ export function ChartContainer({ id, className = '', children, config, style, ..
 }
 
 export const ChartTooltip = Tooltip
+
+export const ChartLegend = Legend
+
+interface ChartLegendContentProps {
+  payload?: any[]
+  className?: string
+}
+
+/** shadcn-style legend body, restyled onto the GenesisFX ring swatches. */
+export function ChartLegendContent({ payload, className = '' }: ChartLegendContentProps) {
+  const { config } = useChart()
+
+  if (!payload?.length) return null
+
+  return (
+    <div className={`flex items-center justify-center gap-10 pt-4 ${className}`}>
+      {payload.map((item) => {
+        const key = String(item.dataKey ?? item.value)
+        const color = item.color || `var(--color-${key})`
+        return (
+          <div key={key} className="flex items-center gap-2">
+            <span
+              className="size-5 shrink-0 rounded-lg border"
+              style={{ borderColor: color, backgroundColor: `color-mix(in srgb, ${color} 12%, transparent)` }}
+            />
+            <span data-chart-text className="text-base font-acid font-medium text-gfx-neutral-500">
+              {config[key]?.label ?? item.value}
+            </span>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 
 interface ChartTooltipContentProps {
   active?: boolean
