@@ -88,19 +88,21 @@ function FeaturedStream() {
     <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-[561px] overflow-hidden" data-featured-stream>
       <img src="/images/streaming-chart.png" alt="EURUSD trading chart" className="absolute inset-0 size-full object-cover" />
       <div
-        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] items-center rounded-full border-0 bg-[rgba(12,19,17,0.24)] px-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.2)] backdrop-blur-[32px] backdrop-saturate-[135%]"
+        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] flex-col items-start gap-4 rounded-[30px] border-0 bg-[rgba(12,19,17,0.24)] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.2)] backdrop-blur-[32px] backdrop-saturate-[135%] lg:flex-row lg:items-center lg:gap-0 lg:rounded-full lg:px-8 lg:py-0"
         data-featured-stream-overlay
       >
-        <span className="theme-preserve-light grid size-[70px] shrink-0 place-items-center rounded-full border border-[#064B34] bg-[#021B13] text-2xl text-white">S</span>
-        <div className="ml-5">
-          <h2 className="theme-preserve-light text-xl text-white">Stream Test</h2>
-          <p className="mt-2 text-sm text-[#A0A0A0]">EURUSD</p>
+        <div className="flex w-full min-w-0 items-center gap-5">
+          <span className="theme-preserve-light grid size-[70px] shrink-0 place-items-center rounded-full border border-[#064B34] bg-[#021B13] text-2xl text-white">S</span>
+          <div className="min-w-0">
+            <h2 className="theme-preserve-light truncate text-xl text-white">Stream Test</h2>
+            <p className="mt-2 truncate text-sm text-[#A0A0A0]">EURUSD</p>
+          </div>
         </div>
-        <div className="ml-3 mt-8 flex gap-2">
+        <div className="flex shrink-0 flex-wrap gap-2 lg:ml-3 lg:mt-8">
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">Forex</span>
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">English</span>
         </div>
-        <GlowButton className="ml-auto" width={206} label="Watch now" />
+        <GlowButton className="lg:ml-auto" width={206} label="Watch now" />
       </div>
     </GlassCard>
   )
@@ -115,7 +117,7 @@ function ChatPanel() {
           <h2 className="text-xl">Chat</h2>
           <span className="ml-auto text-sm text-[#FF697C]">LIVE</span>
         </header>
-        <div className="relative mt-5 h-[448px] w-[493px] max-w-[calc(100%+1px)] overflow-hidden rounded-[30px] bg-[#0C1311]" data-live-chat-panel>
+        <div className="relative mt-5 h-[448px] w-full max-w-[493px] overflow-hidden rounded-[30px] bg-[#0C1311]" data-live-chat-panel>
           <div className="pointer-events-none absolute -top-[264px] left-0 h-[332px] w-[587px] rounded-full bg-[#00B38C] opacity-45 blur-[158.05px]" aria-hidden="true" />
           <h3 className="absolute left-[26px] top-[30px] text-base font-medium leading-[24.44px] text-[#FFFFFF]">Live Chat</h3>
           <span className="absolute right-[26px] top-[30px] text-base font-medium leading-[24.44px] text-[#FFFFFF]">1 watching</span>
