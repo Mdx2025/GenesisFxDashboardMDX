@@ -9,10 +9,9 @@ import { tradingAccounts } from '@/data/trading-accounts'
 import { CreateAccountModal } from '@/components/accounts/CreateAccountModal'
 import { AccountProcessingModal } from '@/components/accounts/AccountProcessingModal'
 import { PlatformsView } from '@/components/accounts/PlatformsView'
+import { openTradeLocker } from '@/constants/links'
 
 const FILTER_TABS = ['All Accounts', 'Live', 'Demo', 'Platforms'] as const
-
-const TRADELOCKER_AUTH_URL = 'https://auth.tradelocker.com/realms/tradelocker/protocol/openid-connect/auth?client_id=frontend-web-live&redirect_uri=https%3A%2F%2Flive.tradelocker.com%2Fes%2Fauth%2Flogin&scope=openid&response_type=code&state=Z7Q47IxNVirBk8Df&nonce=VArphfrP6k4G&code_challenge=wJrcfXsXiHzGARZ7-FnBp29diszBwGEt3StM7rICgnQ&code_challenge_method=S256'
 
 const TYPE_OPTIONS: GlassSelectOption[] = [
   { value: 'all', label: 'All Types' },
@@ -143,7 +142,7 @@ export default function AccountsPage() {
                               width={100}
                               height={36}
                               fontSize={14}
-                              onClick={() => window.location.assign(TRADELOCKER_AUTH_URL)}
+                              onClick={openTradeLocker}
                             />
                             <button className="trading-account-action trading-account-more text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="More options" data-trading-account-more>
                               <MoreDotsIcon />

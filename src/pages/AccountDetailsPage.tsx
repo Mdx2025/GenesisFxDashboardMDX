@@ -10,6 +10,7 @@ import { ShareAccountModal } from '@/components/modals/ShareAccountModal'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { tradingAccounts } from '@/data/trading-accounts'
 import { GLOW_GREEN, GLOW_RED } from '@/constants/colors'
+import { openTradeLocker } from '@/constants/links'
 
 const MOCK_CALENDAR_TRADES: Record<string, { profit: number; trades: number }> = {
   '2026-3-1': { profit: 12.50, trades: 3 },
@@ -214,7 +215,7 @@ export default function AccountDetailsPage() {
                 <span>Deposit</span>
               </span>
             </SparkleButton>
-            <GlowButton label="Trade" width={106} height={44} fontSize={16} />
+            <GlowButton label="Trade" width={106} height={44} fontSize={16} onClick={openTradeLocker} />
           </div>
         </div>
 

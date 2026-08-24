@@ -9,6 +9,7 @@ import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, Sea
 import { AreaChart } from '@/components/charts/AreaChart'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
+import { openTradeLocker } from '@/constants/links'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -482,7 +483,7 @@ export default function SignalsPage() {
                   <p className="text-gfx-neutral-400 text-base font-acid leading-tight max-w-[24.7500rem] text-center mb-6">
                     Signals you execute will appear here
                   </p>
-                  <GlowButton label="Trade" width={160} />
+                  <GlowButton label="Trade" width={160} onClick={openTradeLocker} />
                 </div>
               </div>
             </GlassCard>

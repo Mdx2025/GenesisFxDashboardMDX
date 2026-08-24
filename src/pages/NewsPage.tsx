@@ -10,6 +10,7 @@ import {
   AiGradientPill,
   AiCreditBoltIcon,
 } from '@/components/ui'
+import { openTradeLocker } from '@/constants/links'
 import DiscoverView from '@/pages/news/DiscoverView'
 import MarketNewsView from '@/pages/news/MarketNewsView'
 import EconomicCalendarView from '@/pages/news/EconomicCalendarView'
@@ -504,7 +505,7 @@ export default function NewsPage() {
           </div>
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <LiveStreamIcon />
-            <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} />
+            <GlowButton label="Trade Now" width="auto" height={40} fontSize={14} onClick={openTradeLocker} />
           </div>
         </div>
 

@@ -2,6 +2,7 @@ import { GlassCard, SparkleButton, Badge, GreenDot, SearchInput, GlowButton } fr
 import { GLOW_GREEN } from '@/constants/colors'
 import { MoreDotsIcon, UserIcon } from '@/components/icons'
 import { tradingAccounts } from '@/data/trading-accounts'
+import { openTradeLocker } from '@/constants/links'
 
 const GRID_COLS = '15% 11% 7.5% 10.8% 10.8% 10.8% 9.5% 6% auto'
 
@@ -69,7 +70,7 @@ export function TradingAccountsTable() {
               </div>
               <div className="flex items-center justify-end gap-6">
                 <button className="trading-account-action text-gfx-neutral-500 text-sm hover:text-white transition-colors cursor-pointer">View</button>
-                <GlowButton label="Trade" width={100} height={36} fontSize={14} />
+                <GlowButton label="Trade" width={100} height={36} fontSize={14} onClick={openTradeLocker} />
                 <button className="trading-account-action trading-account-more text-gfx-neutral-500 hover:text-white transition-colors cursor-pointer" aria-label="More options" data-trading-account-more>
                   <MoreDotsIcon />
                 </button>

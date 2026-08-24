@@ -4,6 +4,7 @@ import { GlassCard } from './GlassCard'
 import { GlowEllipse } from './GlowEllipse'
 import { GlowButton } from './GlowButton'
 import type { DiscoverFlag, DiscoverMarketRow, DiscoverMover } from '@/data/discover'
+import { openTradeLocker } from '@/constants/links'
 
 const ASSETS = '/images/news/discover'
 
@@ -221,7 +222,7 @@ function CategoryLabel({ label, active, onChange }: { label: string; active: boo
 
 const TABLE_COLUMNS = ['Asset', 'BID', 'ASK', 'Spread', '24H%'] as const
 
-export function DiscoverMarketTable({ rows, onTrade }: { rows: DiscoverMarketRow[]; onTrade?: (row: DiscoverMarketRow) => void }) {
+export function DiscoverMarketTable({ rows, onTrade = openTradeLocker }: { rows: DiscoverMarketRow[]; onTrade?: (row: DiscoverMarketRow) => void }) {
   return (
     <GlassCard
       variant="light"

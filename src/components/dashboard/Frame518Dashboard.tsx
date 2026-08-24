@@ -27,6 +27,7 @@ import {
   SparkleButton,
 } from '@/components/ui'
 import { tradingAccounts } from '@/data/trading-accounts'
+import { openTradeLocker } from '@/constants/links'
 
 type AccountFilter = 'all' | 'live' | 'demo'
 
@@ -168,7 +169,7 @@ function Frame518AccountsTable({ filter, query }: { filter: AccountFilter; query
                   <td className="py-4 pl-4 pr-5.75">
                     <div className="flex items-center justify-end gap-6">
                       <button type="button" className="font-acid text-sm text-gfx-neutral-400 transition-colors hover:text-white" onClick={() => navigate(accountPath)}>View</button>
-                      <GlowButton label="Trade" width={106} height={44} fontSize={16} onClick={() => navigate(accountPath)} />
+                      <GlowButton label="Trade" width={106} height={44} fontSize={16} onClick={openTradeLocker} />
                       <button type="button" className="text-gfx-neutral-400 transition-colors hover:text-white" aria-label={`More options for ${account.account}`}><MoreDotsIcon /></button>
                     </div>
                   </td>
