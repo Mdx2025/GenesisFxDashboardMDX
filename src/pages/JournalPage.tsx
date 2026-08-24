@@ -381,7 +381,7 @@ export default function JournalPage() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6">
               <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
                 <GlowEllipse className="-right-[6.25rem] -top-[6.25rem]" />
-                <div className="relative p-6 h-full flex flex-col min-h-[21.2500rem]">
+                <div className="relative p-6 h-full flex flex-col">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-gfx-neutral-500 text-base font-acid font-medium">Net P&L</span>
@@ -398,7 +398,7 @@ export default function JournalPage() {
                     +${journalStats.totalPnl.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </p>
                   <p className="text-gfx-neutral-500 text-sm font-acid mt-1">Last 30 days</p>
-                  <div className="flex-1 min-h-0 mt-4">
+                  <div className="flex-1 min-h-0 mt-4 max-h-[12.8125rem]">
                     <PortfolioChart config={defaultChartConfig} />
                   </div>
                 </div>
