@@ -61,7 +61,10 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
       config={chartConfig}
       className="aspect-auto size-full"
       data-chart-text
-      style={{ filter: `drop-shadow(0 0 ${config.glowIntensity}px ${config.lineColor}55)` }}
+      style={{
+        aspectRatio: 'auto',
+        filter: `drop-shadow(0 0 ${config.glowIntensity}px ${config.lineColor}55)`,
+      }}
       role="img"
       aria-label="Portfolio equity curve showing gains, drawdowns, and recoveries over the selected period"
     >
