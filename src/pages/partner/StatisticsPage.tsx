@@ -3,6 +3,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlowEllipse, ModeToggle, PeriodPill, Badge } from '@/components/ui'
 import { TradingCalendar } from '@/components/ui/TradingCalendar'
+import { AreaChart } from '@/components/charts/AreaChart'
 
 
 function InfoIcon() {
@@ -148,8 +149,7 @@ function TopReferralsCard() {
   )
 }
 
-const TREND_PATH = 'M0,120 C40,110 80,100 120,95 C160,90 200,85 240,60 C280,35 320,50 360,55 C400,60 440,45 480,30 C520,15 560,35 600,40 C640,45 680,20 720,25 C760,30 800,10 840,15 C880,20 920,5 960,10'
-const TREND_AREA = TREND_PATH + ' L960,130 L0,130 Z'
+const TREND_SERIES = [10, 35, 70, 75, 100, 90, 105, 115, 120]
 
 function MonthlyTrendCard() {
   return (
@@ -162,16 +162,7 @@ function MonthlyTrendCard() {
         </div>
 
         <div className="w-full overflow-hidden h-[160px]">
-          <svg width="100%" height="100%" viewBox="0 0 960 140" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#00B38C" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#00B38C" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path d={TREND_AREA} fill="url(#trendGrad)" />
-            <path d={TREND_PATH} fill="none" stroke="#00B38C" strokeWidth="2" />
-          </svg>
+          <AreaChart data={TREND_SERIES} color="#00B38C" />
         </div>
 
         <div className="flex justify-between mt-3">
@@ -305,8 +296,7 @@ function CommissionCalendarSection() {
   )
 }
 
-const GROWTH_PATH = 'M0,100 C60,95 120,90 180,80 C240,70 300,75 360,60 C420,45 480,55 540,40 C600,25 660,30 720,20'
-const GROWTH_AREA = GROWTH_PATH + ' L720,110 L0,110 Z'
+const GROWTH_SERIES = [10, 30, 50, 70, 90]
 
 function SymbolExposureCard() {
   return (
@@ -357,16 +347,7 @@ function ReferralGrowthCard() {
         </div>
 
         <div className="w-full overflow-hidden h-[120px]">
-          <svg width="100%" height="100%" viewBox="0 0 720 120" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="growthGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#00B38C" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#00B38C" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path d={GROWTH_AREA} fill="url(#growthGrad)" />
-            <path d={GROWTH_PATH} fill="none" stroke="#00B38C" strokeWidth="2" />
-          </svg>
+          <AreaChart data={GROWTH_SERIES} color="#00B38C" />
         </div>
 
         <div className="flex justify-between mt-2">

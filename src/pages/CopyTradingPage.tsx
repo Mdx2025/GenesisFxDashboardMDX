@@ -3,6 +3,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useNavigate } from 'react-router-dom'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, SearchInput, StatCard, BannerStatBox } from '@/components/ui'
+import { AreaChart } from '@/components/charts/AreaChart'
 import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
 import { CreateStrategyModal } from '@/components/dashboard/CreateStrategyModal'
 import { ChevronRightIcon } from '@/components/icons'
@@ -72,34 +73,6 @@ function WalletIcon() {
 }
 
 
-/* ─── Mini Area Chart ─── */
-
-function MiniAreaChart({ data }: { data: number[] }) {
-  const w = 325
-  const h = 52
-  const max = Math.max(...data)
-  const min = Math.min(...data)
-  const range = max - min || 1
-  const step = w / (data.length - 1)
-
-  const points = data.map((v, i) => [i * step, h - ((v - min) / range) * h * 0.8 - h * 0.1])
-  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')
-  const areaD = `${pathD} L${w},${h} L0,${h} Z`
-
-  return (
-    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="copyChartGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#10BC83" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#10BC83" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d={areaD} fill="url(#copyChartGrad)" />
-      <path d={pathD} stroke="#10BC83" strokeWidth="1.5" fill="none" opacity="0.6" />
-    </svg>
-  )
-}
-
 /* ─── Leaderboard Trader Card ─── */
 
 function FavoriteStarIcon({ active = false }: { active?: boolean }) {
@@ -153,8 +126,8 @@ function TraderCard({ trader, favorite, onFavoriteChange, onCopy }: { trader: Co
         </div>
 
         {/* Chart area */}
-        <div className="mt-4">
-          <MiniAreaChart data={trader.chartData} />
+        <div className="mt-4 h-[3.25rem]">
+          <AreaChart data={trader.chartData} />
         </div>
 
         {/* Stats Box */}

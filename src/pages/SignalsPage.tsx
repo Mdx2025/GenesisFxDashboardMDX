@@ -6,6 +6,7 @@ import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
 import { ManageSubscriptionModal } from '@/components/dashboard/ManageSubscriptionModal'
 import { BecomeProviderModal } from '@/components/modals/BecomeProviderModal'
 import { GlassCard, GlassBannerCard, SparkleButton, ModeToggle, GlowEllipse, SearchInput, GlowButton, FaqCard, BannerStatBox, SignalStrategyCard, EmptyState } from '@/components/ui'
+import { AreaChart } from '@/components/charts/AreaChart'
 import { signalProviders, signalTabs, signalFilterTabs, providerFaqs } from '@/data/signals'
 import type { SignalProvider } from '@/data/signals'
 
@@ -101,35 +102,6 @@ function XauusdIcon() {
   )
 }
 
-/* ─── Mini P&L Chart ─── */
-
-function PnlChart({ data, negative }: { data: number[]; negative: boolean }) {
-  const w = 280
-  const h = 80
-  const max = Math.max(...data)
-  const min = Math.min(...data)
-  const range = max - min || 1
-  const step = w / (data.length - 1)
-  const color = negative ? '#d46356' : '#10BC83'
-
-  const points = data.map((v, i) => [i * step, h - ((v - min) / range) * h * 0.8 - h * 0.1])
-  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')
-  const areaD = `${pathD} L${w},${h} L0,${h} Z`
-
-  return (
-    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none">
-      <defs>
-        <linearGradient id={`sigGrad${negative ? 'R' : 'G'}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={color} stopOpacity="0.2" />
-          <stop offset="100%" stopColor={color} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d={areaD} fill={`url(#sigGrad${negative ? 'R' : 'G'})`} />
-      <path d={pathD} stroke={color} strokeWidth="1.5" fill="none" opacity="0.7" />
-    </svg>
-  )
-}
-
 /* ─── Signal Provider Card ─── */
 
 function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: SignalProvider; onToggleFollow: (id: string) => void; onFollowClick: (provider: SignalProvider) => void }) {
@@ -196,7 +168,7 @@ function SignalCard({ provider, onToggleFollow, onFollowClick }: { provider: Sig
             </span>
           </div>
           <div className="mt-1">
-            <PnlChart data={provider.chartData} negative={isNegative} />
+            <AreaChart data={provider.chartData} color={isNegative ? '#d46356' : '#10BC83'} className="h-[5rem]" />
           </div>
         </div>
 
@@ -292,7 +264,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
             </span>
           </div>
           <div className="mt-1">
-            <PnlChart data={chartData} negative={isNegative} />
+            <AreaChart data={chartData} color={isNegative ? '#d46356' : '#10BC83'} className="h-[5rem]" />
           </div>
         </div>
 

@@ -4,6 +4,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
 import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, PeriodPill, Badge, BannerStatBox, StatCard } from '@/components/ui'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -86,59 +87,6 @@ function FollowPersonIcon() {
   )
 }
 
-/* ─── P&L Chart ─── */
-
-function PnlPerformanceChart() {
-  const data = [20, 25, 22, 30, 35, 28, 40, 45, 38, 50, 48, 42, 38, 35, 30, 28, 25, 22, 20, 18, 15, 12, 10, 8, 5]
-  const w = 1100
-  const h = 290
-  const max = Math.max(...data)
-  const min = Math.min(...data)
-  const range = max - min || 1
-  const step = w / (data.length - 1)
-  const points = data.map((v, i) => [i * step, h - ((v - min) / range) * h * 0.85 - h * 0.05])
-  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')
-  const areaD = `${pathD} L${w},${h} L0,${h} Z`
-
-  const yLabels = ['$60', '$45', '$30', '$15', '$0']
-
-  return (
-    <div className="relative w-full">
-      <div className="flex">
-        <div className="flex flex-col justify-between pr-4 py-1" style={{ height: `${h}px` }}>
-          {yLabels.map(label => (
-            <span key={label} data-chart-text className="text-gfx-neutral-400 text-xs font-acid">{label}</span>
-          ))}
-        </div>
-        <div className="flex-1">
-          <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" style={{ height: `${h}px` }}>
-            <defs>
-              <linearGradient id="signalPnlGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#10BC83" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#10BC83" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient id="signalLineGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#10BC83" stopOpacity="0.3" />
-                <stop offset="50%" stopColor="#10BC83" stopOpacity="1" />
-                <stop offset="100%" stopColor="#10BC83" stopOpacity="0.5" />
-              </linearGradient>
-            </defs>
-            {[0.15, 0.38, 0.6, 0.83].map((y, i) => (
-              <line key={i} x1="0" y1={h * y} x2={w} y2={h * y} stroke="#1a2e26" strokeWidth="0.5" strokeDasharray="4 4" />
-            ))}
-            <path d={areaD} fill="url(#signalPnlGrad)" />
-            <path d={pathD} stroke="url(#signalLineGrad)" strokeWidth="2" fill="none" />
-          </svg>
-        </div>
-      </div>
-      <div className="flex justify-between mt-2 pl-[2.7500rem]">
-        <span data-chart-text className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
-        <span data-chart-text className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
-        <span data-chart-text className="text-gfx-neutral-400 text-tiny font-acid">Jun 22</span>
-      </div>
-    </div>
-  )
-}
 
 /* ─── Trades Table Data ─── */
 
@@ -218,7 +166,9 @@ export default function SignalsDetailsPage() {
                 <h3 className="text-white text-2xl font-acid">P&L Perfomance</h3>
                 <PeriodPill />
               </div>
-              <PnlPerformanceChart />
+              <div className="h-[18.125rem]">
+                <PortfolioChart config={defaultChartConfig} />
+              </div>
             </div>
           </GlassCard>
 

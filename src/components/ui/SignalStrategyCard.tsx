@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { SparkleButton } from './SparkleButton'
+import { AreaChart } from '@/components/charts/AreaChart'
 
 interface SignalStrategyCardProps {
   initials: string
@@ -18,33 +19,6 @@ interface SignalStrategyCardProps {
   following?: boolean
   onFollow?: () => void
   onViewStrategy?: () => void
-}
-
-function PnlMiniChart({ data, negative }: { data: number[]; negative: boolean }) {
-  const w = 280
-  const h = 80
-  const max = Math.max(...data)
-  const min = Math.min(...data)
-  const range = max - min || 1
-  const step = w / (data.length - 1)
-
-  const points = data.map((v, i) => [i * step, h - ((v - min) / range) * h * 0.8 - h * 0.1])
-  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')
-  const areaD = `${pathD} L${w},${h} L0,${h} Z`
-  const gradId = `sigGrad${negative ? 'Neg' : 'Pos'}`
-
-  return (
-    <svg width="100%" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none">
-      <defs>
-        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={negative ? '#d46356' : '#10BC83'} stopOpacity="0.2" />
-          <stop offset="100%" stopColor={negative ? '#d46356' : '#10BC83'} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path d={areaD} fill={`url(#${gradId})`} />
-      <path d={pathD} stroke={negative ? '#d46356' : '#10BC83'} strokeWidth="1.5" fill="none" opacity="0.7" />
-    </svg>
-  )
 }
 
 function FollowButton({ following, onClick }: { following: boolean; onClick?: () => void }) {
@@ -154,7 +128,7 @@ export function SignalStrategyCard({
             </span>
           </div>
           <div className="mt-1">
-            <PnlMiniChart data={series} negative={isNegative} />
+            <AreaChart data={series} color={isNegative ? '#d46356' : '#10BC83'} className="h-[5rem]" />
           </div>
         </div>
 
