@@ -246,7 +246,7 @@ function HighImpactNewsCard({ news }: { news: NewsEvent[] }) {
 
 function StatCard({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-[11.3750rem]">
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full min-h-[11.3750rem]">
       <GlowEllipse className="-left-[3.125rem] -top-[3.125rem] !w-[11.25rem] !h-[6.25rem] !blur-[4.375rem]" />
       <div className="relative p-5 h-full flex flex-col">
         <div className="flex items-center gap-2">
@@ -404,7 +404,7 @@ export default function JournalPage() {
                 </div>
               </GlassCard>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 grid-rows-2 gap-4">
                 <StatCard label="Most Traded Asset">
                   <div className="flex items-center justify-center gap-4 rounded-full px-5 py-2.5 bg-stat-pill">
                     <XauusdIcon />
