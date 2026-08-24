@@ -159,14 +159,14 @@ export default function SignalsDetailsPage() {
         {/* Chart (left) + Strategy Details (right) */}
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_23.5rem] gap-5">
           {/* P&L Performance Chart */}
-          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+          <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
             <GlowEllipse className="right-0 -top-[6.25rem]" />
-            <div className="relative p-6 lg:p-8">
+            <div className="relative p-6 lg:p-8 h-full flex flex-col">
               <div className="flex items-start justify-between mb-6">
                 <h3 className="text-white text-2xl font-acid">P&L Perfomance</h3>
                 <PeriodPill />
               </div>
-              <div className="h-[18.125rem]">
+              <div className="flex-1 min-h-[18.125rem]">
                 <PortfolioChart config={defaultChartConfig} />
               </div>
             </div>
