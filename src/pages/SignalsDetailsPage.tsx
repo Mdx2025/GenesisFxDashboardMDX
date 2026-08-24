@@ -166,7 +166,7 @@ export default function SignalsDetailsPage() {
                 <h3 className="text-white text-2xl font-acid">P&L Perfomance</h3>
                 <PeriodPill />
               </div>
-              <div className="flex-1 min-h-[18.125rem]">
+              <div className="flex-1 min-h-[18.125rem] xl:min-h-0">
                 <PortfolioChart config={defaultChartConfig} />
               </div>
             </div>
