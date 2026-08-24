@@ -84,8 +84,9 @@ const CATEGORY_ICONS: Record<string, string> = {
 }
 
 export function StreamingCategoryCard({ label, watching, live = false }: { label: string; watching: number; live?: boolean }) {
+  // isolate + webkit mask: WebKit drops the rounded overflow clip on the blurred glow below, leaking it as square corners
   return (
-    <article className="surface-raised surface-raised-border relative h-[297px] min-w-[220px] overflow-hidden rounded-[18.563px] border-[1.16px] px-[27px]" data-stream-category>
+    <article className="surface-raised surface-raised-border relative isolate h-[297px] min-w-[220px] overflow-hidden rounded-[18.563px] border-[1.16px] px-[27px] [-webkit-mask-image:-webkit-radial-gradient(white,black)]" data-stream-category>
       <div className="absolute -left-16 -top-[206px] h-[278px] w-[493px] rounded-full bg-[#064B34] opacity-80 blur-[70px]" aria-hidden="true" />
       {live && <span className="absolute left-[23px] top-7 flex items-center gap-2 text-sm text-[#FF697C]"><i className="size-2 rounded-full bg-[#E7485D] shadow-[0_0_8px_#E7485D]" />1 LIVE</span>}
       <span className="absolute left-1/2 top-[132px] grid size-[70px] -translate-x-1/2 -translate-y-1/2 place-items-center" aria-hidden="true"><img src={CATEGORY_ICONS[label]} alt="" className="max-h-[70px] max-w-[70px]" /></span>
