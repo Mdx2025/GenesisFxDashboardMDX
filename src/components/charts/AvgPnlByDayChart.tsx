@@ -42,9 +42,9 @@ interface AvgPnlByDayChartProps {
 /** Average P&L per weekday, built on the shadcn interactive area chart. */
 export function AvgPnlByDayChart({ data = defaultData, title = 'Avg P&L by Day of Week' }: AvgPnlByDayChartProps) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
+    <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden h-full">
       <GlowEllipse className="-left-[5rem] -top-[3.75rem]" />
-      <div className="relative p-7">
+      <div className="relative p-7 h-full flex flex-col">
         <div className="mb-6 flex items-center gap-2">
           <h3 className="text-base font-acid font-medium text-white">{title}</h3>
           <InfoIcon />
@@ -52,7 +52,7 @@ export function AvgPnlByDayChart({ data = defaultData, title = 'Avg P&L by Day o
 
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[19.375rem] w-full"
+          className="aspect-auto w-full flex-1 min-h-[19.375rem]"
           role="img"
           aria-label="Average profit and loss per weekday, Sunday through Saturday"
         >
