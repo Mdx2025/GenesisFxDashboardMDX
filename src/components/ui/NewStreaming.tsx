@@ -83,16 +83,16 @@ export function StreamingApplicationGate({ onApply, onBack }: { onApply: () => v
       divider="none"
       glow={false}
       rounded="30px"
-      className="mx-auto flex h-[614px] w-full max-w-[1133px] flex-col items-center overflow-hidden px-6 text-center"
+      className="mx-auto flex min-h-[614px] w-full max-w-[1133px] flex-col items-center overflow-hidden px-6 pb-14 text-center lg:h-[614px] lg:pb-0"
       data-streaming-application-gate
     >
-      <div className="mt-[109px]"><BroadcastApplicationIcon /></div>
-      <h1 className="mt-[59px] text-[50px] font-normal leading-none text-white">Streamer application required</h1>
+      <div className="mt-14 lg:mt-[109px]"><BroadcastApplicationIcon /></div>
+      <h1 className="mt-9 text-[32px] font-normal leading-tight text-white lg:mt-[59px] lg:text-[50px] lg:leading-none">Streamer application required</h1>
       <p className="mt-6 max-w-[635px] text-base leading-[19.2px] text-gfx-neutral-400">
         To go live on Genesis you must first submit a streamer application and be approved.<br className="hidden sm:block" />
         This helps us keep the community safe and high quality
       </p>
-      <div className="mt-[33px] flex flex-col items-center gap-[10px] sm:flex-row" data-streaming-application-actions>
+      <div className="mt-8 flex flex-col items-center gap-[10px] sm:flex-row lg:mt-[33px]" data-streaming-application-actions>
         <GlowButton label="Apply to become a streamer" width={280} height={44} onClick={onApply} />
         <SparkleButton onClick={onBack} className="!h-[46px] !w-[248px] max-w-full px-6">Back to Streaming</SparkleButton>
       </div>
