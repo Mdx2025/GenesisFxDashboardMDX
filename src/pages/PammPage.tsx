@@ -7,6 +7,7 @@ import { AreaChart } from '@/components/charts/AreaChart'
 import { ChevronRightIcon } from '@/components/icons'
 import { StrategySettingsModal } from '@/components/modals/StrategySettingsModal'
 import { TransferToMainWalletModal } from '@/components/modals/TransferToMainWalletModal'
+import { ConnectPammModal } from '@/components/dashboard/ConnectPammModal'
 import { pammStrategies, pammTabs, pammFilterTabs } from '@/data/pamm'
 import type { PammStrategy } from '@/data/pamm'
 
@@ -72,7 +73,7 @@ function DownloadIcon() {
 
 /* ─── Strategy Card ─── */
 
-function StrategyCard({ strategy }: { strategy: PammStrategy }) {
+function StrategyCard({ strategy, onConnect }: { strategy: PammStrategy; onConnect: () => void }) {
   const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden flex flex-col">
@@ -141,7 +142,7 @@ function StrategyCard({ strategy }: { strategy: PammStrategy }) {
               <ChevronRightIcon size={27} color="#c6c6c6" />
             </span>
           </SparkleButton>
-          <SparkleButton className="px-5.5 flex-1">
+          <SparkleButton className="px-5.5 flex-1" onClick={onConnect}>
             <span className="flex items-center justify-center gap-2">
               <span>Connect</span>
               <ChevronRightIcon size={27} color="#c6c6c6" />
@@ -164,6 +165,7 @@ export default function PammPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [transferOpen, setTransferOpen] = useState(false)
+  const [connectStrategy, setConnectStrategy] = useState<PammStrategy | null>(null)
 
   const filteredStrategies = useMemo(() => {
     const matches = pammStrategies.filter(s =>
@@ -303,7 +305,7 @@ export default function PammPage() {
             {/* Strategy Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {filteredStrategies.map(strategy => (
-                <StrategyCard key={strategy.id} strategy={strategy} />
+                <StrategyCard key={strategy.id} strategy={strategy} onConnect={() => setConnectStrategy(strategy)} />
               ))}
             </div>
           </>
@@ -478,6 +480,15 @@ export default function PammPage() {
 
       <StrategySettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
       <TransferToMainWalletModal open={transferOpen} onClose={() => setTransferOpen(false)} />
+      <ConnectPammModal
+        open={connectStrategy !== null}
+        onClose={() => setConnectStrategy(null)}
+        strategyName={connectStrategy?.name}
+        strategyInitials={connectStrategy?.initials}
+        aum={connectStrategy?.aum}
+        roi={connectStrategy ? `${connectStrategy.roi}%` : undefined}
+        minInvestment={connectStrategy ? `$${connectStrategy.minInvestment}` : undefined}
+      />
     </div>
   )
 }
