@@ -10,10 +10,10 @@ import {
   PillTabs,
   EmptyState,
   InfoListCard,
-  PortfolioChart,
   SearchInput,
   PeriodPill,
 } from '@/components/ui'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import {
   BackArrowIcon,
   UserRoundedIcon,
@@ -234,8 +234,8 @@ export default function PammManagerPage() {
                   <h3 className="text-white text-base font-acid font-medium leading-none">Performance Chart</h3>
                   <PeriodPill />
                 </div>
-                <div className="mt-10">
-                  <PortfolioChart />
+                <div className="mt-10 h-[18.125rem]">
+                  <PortfolioChart config={defaultChartConfig} />
                 </div>
               </div>
             </GlassCard>

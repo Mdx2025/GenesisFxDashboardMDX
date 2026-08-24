@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { ConnectPammModal } from '@/components/dashboard/ConnectPammModal'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge, StatCard, PortfolioChart } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill, Badge, StatCard } from '@/components/ui'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 
 /* ─── Inline SVG Icons ─── */
 
@@ -351,7 +352,9 @@ export default function PammDetailsPage() {
                 </div>
                 <PeriodPill />
               </div>
-              <PortfolioChart />
+              <div className="h-[18.125rem]">
+                <PortfolioChart config={defaultChartConfig} />
+              </div>
             </div>
           </GlassCard>
 
