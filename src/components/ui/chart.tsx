@@ -67,9 +67,14 @@ export function ChartLegendContent({ payload, className = '' }: ChartLegendConte
 
   if (!payload?.length) return null
 
+  const order = Object.keys(config)
+  const items = [...payload].sort(
+    (a, b) => order.indexOf(String(a.dataKey ?? a.value)) - order.indexOf(String(b.dataKey ?? b.value)),
+  )
+
   return (
     <div className={`flex items-center justify-center gap-10 pt-4 ${className}`}>
-      {payload.map((item) => {
+      {items.map((item) => {
         const key = String(item.dataKey ?? item.value)
         const color = item.color || `var(--color-${key})`
         return (
