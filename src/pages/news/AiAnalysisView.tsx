@@ -12,10 +12,10 @@ import {
   SparkleButton,
   TrendUpIcon,
 } from '@/components/ui'
-import { CandlestickChart } from '@/components/charts/CandlestickChart'
+import { PriceChangeBarChart } from '@/components/charts/PriceChangeBarChart'
 import {
   AI_ANALYSIS_ASSETS,
-  aiAnalysisCandles,
+  aiAnalysisPriceChanges,
   aiAnalysisFundamental,
   aiAnalysisKeyLevels,
   aiAnalysisMetrics,
@@ -174,9 +174,9 @@ export default function AiAnalysisView() {
           <QuoteCard />
 
           <AnalysisCard glow="none" className="h-[260px] p-5 sm:h-[320px] sm:p-6">
-            <CandlestickChart
-              data={aiAnalysisCandles}
-              ariaLabel={`${aiAnalysisQuote.symbol} 1 hour candlestick chart`}
+            <PriceChangeBarChart
+              data={aiAnalysisPriceChanges}
+              ariaLabel={`${aiAnalysisQuote.symbol} 1 hour price change per bar`}
             />
           </AnalysisCard>
 

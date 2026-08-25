@@ -1,3 +1,5 @@
+import type { PriceChangeDatum } from '@/components/charts/PriceChangeBarChart'
+
 export const AI_ANALYSIS_ASSETS = ['EUROUSD', 'GBPUSD', 'USDJPY', 'ZAUUSD', 'US500', 'BTCUSD', 'USOIL'] as const
 
 export const aiAnalysisQuote = {
@@ -17,35 +19,16 @@ export const aiAnalysisSentiment = {
   sell: '2 sell',
 }
 
-export interface AiAnalysisCandle {
-  wickTop: number
-  body: number
-  wickBottom: number
-  bullish: boolean
-}
-
-/**
- * EURUSD 1H price action: base drift, breakout spike, range, then the fade into resistance.
- * Values are pips above 1.1370, because CandlestickChart derives body spread from the raw
- * numbers and a price-scale series would collapse under its minimum-spread floor.
- * The count is kept near a dozen: the chart draws each body 8 reference units wide against
- * a fixed 181-unit viewport, so a denser series overlaps into a single blob.
- */
-export const aiAnalysisCandles: AiAnalysisCandle[] = [
-  { wickTop: 19, body: 6, wickBottom: 11, bullish: true },
-  { wickTop: 28, body: 7, wickBottom: 18, bullish: true },
-  { wickTop: 35, body: 8, wickBottom: 24, bullish: true },
-  { wickTop: 42, body: 9, wickBottom: 29, bullish: true },
-  { wickTop: 91, body: 28, wickBottom: 38, bullish: true },
-  { wickTop: 87, body: 16, wickBottom: 58, bullish: false },
-  { wickTop: 66, body: 9, wickBottom: 49, bullish: false },
-  { wickTop: 74, body: 7, wickBottom: 57, bullish: true },
-  { wickTop: 64, body: 10, wickBottom: 42, bullish: false },
-  { wickTop: 111, body: 30, wickBottom: 68, bullish: true },
-  { wickTop: 104, body: 10, wickBottom: 88, bullish: false },
-  { wickTop: 98, body: 9, wickBottom: 84, bullish: true },
-  { wickTop: 79, body: 12, wickBottom: 58, bullish: false },
-  { wickTop: 82, body: 8, wickBottom: 62, bullish: true },
+/** EURUSD net move per 1H bar, in pips: breakout spike, range, then the fade into resistance. */
+export const aiAnalysisPriceChanges: PriceChangeDatum[] = [
+  { period: '09:00', pips: 6.2 },
+  { period: '10:00', pips: 9.4 },
+  { period: '11:00', pips: -4.1 },
+  { period: '12:00', pips: 14.8 },
+  { period: '13:00', pips: -7.6 },
+  { period: '14:00', pips: 3.9 },
+  { period: '15:00', pips: -11.2 },
+  { period: '16:00', pips: 5.1 },
 ]
 
 export interface AiAnalysisMetric {
