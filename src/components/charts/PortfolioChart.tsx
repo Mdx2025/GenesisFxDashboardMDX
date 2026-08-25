@@ -3,6 +3,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import type { ChartSeriesConfig } from '@/components/ui/chart'
 
 const DEFAULT_HIGHLIGHT_INDEX = 15
+const FILL_GRADIENT_ID = 'portfolio-equity-fill'
 
 const defaultWaveData = [
   120, 126, 138, 154, 182, 224, 276, 312, 286, 244,
@@ -101,11 +102,19 @@ export function PortfolioChart({ config = defaultChartConfig }: PortfolioChartPr
           />
         )}
 
+        <defs>
+          <linearGradient id={FILL_GRADIENT_ID} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--color-equity)" stopOpacity={config.fillOpacity} />
+            <stop offset="55%" stopColor="var(--color-equity)" stopOpacity={config.fillOpacity * 0.35} />
+            <stop offset="100%" stopColor="var(--color-equity)" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+
         <Area
           dataKey="equity"
           type={config.tension > 0 ? 'monotone' : 'linear'}
-          fill="var(--color-equity)"
-          fillOpacity={config.fillOpacity}
+          fill={`url(#${FILL_GRADIENT_ID})`}
+          fillOpacity={1}
           stroke="var(--color-equity)"
           strokeWidth={config.lineWidth}
           isAnimationActive={false}
