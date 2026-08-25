@@ -12,8 +12,10 @@ import {
   SparkleButton,
   TrendUpIcon,
 } from '@/components/ui'
+import { CandlestickChart } from '@/components/charts/CandlestickChart'
 import {
   AI_ANALYSIS_ASSETS,
+  aiAnalysisCandles,
   aiAnalysisFundamental,
   aiAnalysisKeyLevels,
   aiAnalysisMetrics,
@@ -171,12 +173,12 @@ export default function AiAnalysisView() {
         <div className="flex flex-col gap-5">
           <QuoteCard />
 
-          <img
-            src="/images/news/ai-analysis-chart.webp"
-            alt="EURUSD 1 hour candlestick chart"
-            className="w-full rounded-[30px]"
-            loading="lazy"
-          />
+          <AnalysisCard glow="none" className="h-[260px] p-5 sm:h-[320px] sm:p-6">
+            <CandlestickChart
+              data={aiAnalysisCandles}
+              ariaLabel={`${aiAnalysisQuote.symbol} 1 hour candlestick chart`}
+            />
+          </AnalysisCard>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <NarrativeCard title="Technical" body={aiAnalysisTechnical} />
