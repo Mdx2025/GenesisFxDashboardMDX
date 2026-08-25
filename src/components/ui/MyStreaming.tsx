@@ -57,7 +57,7 @@ export function ChannelHeroCard() {
 
 export function ChannelMetricCard({ label, value, icon }: { label: string; value: string; icon: ReactNode }) {
   return (
-    <GlassCard variant="light" divider="white" glow={false} rounded="18.563px" className="h-[148px] overflow-hidden" data-channel-metric>
+    <GlassCard variant="light" divider="white" glow={false} rounded="18.563px" className="h-[148px] overflow-hidden clip-radius" data-channel-metric>
       <span className="theme-decorative-glow pointer-events-none absolute -bottom-32 -right-12 size-[260px] rounded-full bg-gfx-green-300/20 blur-[58px]" aria-hidden="true" />
       <div className="flex h-full items-center px-8">
         <div><p className="text-sm text-gfx-neutral-500">{label}</p><p className="mt-3 text-h2 leading-none text-white">{value}</p></div>

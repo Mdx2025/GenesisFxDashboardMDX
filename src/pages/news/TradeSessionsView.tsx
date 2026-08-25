@@ -40,7 +40,7 @@ function SessionCard({ session, isActive, onClick }: { session: TradeSession; is
       variant="light"
       divider="none"
       rounded="19px"
-      className={`overflow-hidden relative transition-all duration-300 ${isActive ? '!border-gfx-green-300/30 -translate-y-1' : ''} ${isOpen ? '!border-gfx-green-300/30' : ''}`}
+      className={`overflow-hidden clip-radius relative transition-all duration-300 ${isActive ? '!border-gfx-green-300/30 -translate-y-1' : ''} ${isOpen ? '!border-gfx-green-300/30' : ''}`}
     >
       {(isOpen || isActive) && (
         <>

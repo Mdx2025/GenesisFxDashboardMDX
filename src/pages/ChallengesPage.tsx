@@ -425,7 +425,7 @@ function PrizePoolModal({ open, onClose }: { open: boolean; onClose: () => void 
     >
       <div ref={modalRef} className="relative w-[793px] max-w-[95vw] max-h-[90vh] flex flex-col rounded-2xl overflow-hidden">
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
+          className="absolute inset-0 overflow-hidden clip-radius pointer-events-none rounded-2xl bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
           aria-hidden="true"
         >
           <div className="theme-decorative-glow absolute w-[493px] h-[278px] -left-[198px] bottom-[136px] bg-gfx-green-200 rounded-full blur-[157px]" />
@@ -619,7 +619,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
       aria-modal="true"
       aria-label="Start your 10x Challenge"
     >
-      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-lg overflow-hidden">
+      <div ref={modalRef} className="relative w-[95vw] md:w-[85%] xl:w-[75%] max-w-[1400px] max-h-[90vh] flex flex-col rounded-lg overflow-hidden clip-radius">
         {/* Background layer */}
         <div
           className="absolute inset-0 pointer-events-none bg-gfx-sidebar shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800"
@@ -663,7 +663,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
             {/* Two panels */}
             <div className="flex flex-col lg:flex-row gap-5">
             {/* Left — Challenge Details */}
-            <div className="relative w-full lg:w-[48%] overflow-hidden rounded-lg bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800">
+            <div className="relative w-full lg:w-[48%] overflow-hidden clip-radius rounded-lg bg-gfx-green-800 shadow-md outline outline-1 outline-offset-[-1.16px] outline-gfx-green-800">
               <GlowEllipse className="left-[36px] -top-[220px]" />
               <div className="theme-decorative-glow absolute w-[237px] h-[237px] right-[-50px] -top-[76px] opacity-30 mix-blend-color bg-gfx-green-175 rounded-full blur-[87px] pointer-events-none" aria-hidden="true" />
 

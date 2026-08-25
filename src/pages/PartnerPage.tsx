@@ -374,7 +374,7 @@ export default function PartnerPage() {
         </GlassBannerCard>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8">
-          <div className="relative overflow-hidden rounded-[19px]">
+          <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
               label="Total Referrals"
               value="16"
@@ -382,7 +382,7 @@ export default function PartnerPage() {
             />
             <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 right-0 translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
           </div>
-          <div className="relative overflow-hidden rounded-[19px]">
+          <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
               label="Total Business"
               value="$900.00"
@@ -390,7 +390,7 @@ export default function PartnerPage() {
             />
             <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-0 -translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
           </div>
-          <div className="relative overflow-hidden rounded-[19px]">
+          <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
               label="Comission Earned"
               value="$200.00"
@@ -398,7 +398,7 @@ export default function PartnerPage() {
             />
             <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 right-0 translate-x-1/4 translate-y-1/4 !blur-[5rem] opacity-60" />
           </div>
-          <div className="relative overflow-hidden rounded-[19px]">
+          <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
               label="Active Clients"
               value="$900.00"

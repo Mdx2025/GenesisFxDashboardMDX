@@ -24,7 +24,7 @@ export function PeriodPill({ periods = ['1D', '1W', '1M', '3M', '1Y', 'ALL'], de
           {selected === p && (
             <span
               data-layer="Button"
-              className="period-pill__active-surface pointer-events-none absolute left-1/2 top-1/2 h-[32.35px] w-[53.06px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[60px] bg-[#064B34] outline outline-[1.35px] outline-offset-[-1.35px] outline-transparent"
+              className="period-pill__active-surface pointer-events-none absolute left-1/2 top-1/2 h-[32.35px] w-[53.06px] -translate-x-1/2 -translate-y-1/2 overflow-hidden clip-radius rounded-[60px] bg-[#064B34] outline outline-[1.35px] outline-offset-[-1.35px] outline-transparent"
               aria-hidden="true"
             >
               <span className="period-pill__active-border absolute inset-0 rounded-[60px] border-[0.5px] border-gfx-green-glow [mask:linear-gradient(to_bottom,black_0%,transparent_60%)] [-webkit-mask:linear-gradient(to_bottom,black_0%,transparent_60%)]" />

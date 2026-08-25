@@ -31,7 +31,7 @@ export function AnalysisCard({ children, glow = 'top-left', className = '', styl
       variant="light"
       divider="none"
       rounded="18.56px"
-      className={`trades-table-card overflow-hidden ${className}`}
+      className={`trades-table-card overflow-hidden clip-radius ${className}`}
       style={style}
     >
       {glow !== 'none' && <GlowEllipse className={GLOW_POSITION[glow]} />}

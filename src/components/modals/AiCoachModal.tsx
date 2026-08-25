@@ -323,7 +323,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                     </span>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
+                  <div className="relative overflow-hidden clip-radius rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
                     <div
                       className="ac-glow pointer-events-none absolute left-1/3 -top-[140px] h-[194px] w-[260px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80px]"
                       aria-hidden="true"
@@ -357,7 +357,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               )}
 
               {view === 'response' && (
-                <div className="relative overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
+                <div className="relative overflow-hidden clip-radius rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
                   <div
                     className="ac-glow pointer-events-none absolute left-1/3 -top-[140px] h-[194px] w-[260px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80px]"
                     aria-hidden="true"
@@ -380,7 +380,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               )}
 
               {view === 'idea' && (
-                <div className="relative overflow-hidden rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
+                <div className="relative overflow-hidden clip-radius rounded-[24px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-5">
                   <div
                     className="ac-glow pointer-events-none absolute left-1/3 -top-[140px] h-[194px] w-[260px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80px]"
                     aria-hidden="true"
@@ -552,7 +552,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                       setDrawerOpen(false)
                       setView('chat')
                     }}
-                    className="relative flex h-[52.73px] w-full items-center gap-3 overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] px-5 text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+                    className="relative flex h-[52.73px] w-full items-center gap-3 overflow-hidden clip-radius rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] px-5 text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
                   >
                     <span
                       className="ac-glow pointer-events-none absolute left-[54px] -top-[98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
@@ -564,7 +564,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                     </span>
                   </button>
 
-                  <div className="relative mt-auto overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-4">
+                  <div className="relative mt-auto overflow-hidden clip-radius rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] p-4">
                     <div
                       className="ac-glow pointer-events-none absolute left-[58px] -top-[83px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                       aria-hidden="true"
@@ -614,7 +614,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
         <div
           data-ai-coach-surface
           data-ai-coach-view={view}
-          className="ai-coach-surface relative overflow-hidden rounded-[24px] border border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] shadow-[0_24px_72px_rgba(0,0,0,0.45)]"
+          className="ai-coach-surface relative overflow-hidden clip-radius rounded-[24px] border border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] shadow-[0_24px_72px_rgba(0,0,0,0.45)]"
           style={{
             width: CARD_W,
             height: CARD_H,
@@ -701,7 +701,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             <button
               type="button"
               onClick={() => setView('chat')}
-              className="absolute left-[26px] top-[306.24px] h-[52.73px] w-[276.85px] overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
+              className="absolute left-[26px] top-[306.24px] h-[52.73px] w-[276.85px] overflow-hidden clip-radius rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] text-left cursor-pointer transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--ac-border-hl)]"
             >
               <span
                 className="ac-glow pointer-events-none absolute left-[54px] -top-[98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
@@ -713,7 +713,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
               </span>
             </button>
 
-            <div className="absolute left-[20px] top-[693px] h-[139px] w-[289px] overflow-hidden rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
+            <div className="absolute left-[20px] top-[693px] h-[139px] w-[289px] overflow-hidden clip-radius rounded-[16.48px] border-[0.82px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
               <div
                 className="ac-glow pointer-events-none absolute left-[58.45px] -top-[82.98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                 aria-hidden="true"
@@ -808,7 +808,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                   </span>
                 </div>
 
-                <div className="absolute left-[29px] top-[253px] h-[146px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
+                <div className="absolute left-[29px] top-[253px] h-[146px] w-[663px] overflow-hidden clip-radius rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                   <div
                     className="ac-glow pointer-events-none absolute left-[177px] -top-[178px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                     aria-hidden="true"
@@ -856,7 +856,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             )}
 
             {view === 'response' && (
-              <div className="absolute left-[29px] top-[67px] h-[680px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
+              <div className="absolute left-[29px] top-[67px] h-[680px] w-[663px] overflow-hidden clip-radius rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                 <div
                   className="ac-glow pointer-events-none absolute left-[252px] -top-[82.98px] h-[104px] w-[160px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                   aria-hidden="true"
@@ -881,7 +881,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
             )}
 
             {view === 'idea' && (
-              <div className="absolute left-[29px] top-[67px] h-[614px] w-[663px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
+              <div className="absolute left-[29px] top-[67px] h-[614px] w-[663px] overflow-hidden clip-radius rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)]">
                 <div
                   className="ac-glow pointer-events-none absolute left-[180px] -top-[182px] h-[194px] w-[300px] rounded-full bg-[color:var(--ac-glow)] opacity-50 mix-blend-lighten blur-[80.2px]"
                   aria-hidden="true"
@@ -949,7 +949,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
 
             {ideasOpen && (
               <div
-                className="absolute left-[529px] top-[628px] h-[148px] w-[226px] overflow-hidden rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] z-20"
+                className="absolute left-[529px] top-[628px] h-[148px] w-[226px] overflow-hidden clip-radius rounded-[30px] border-[0.824px] border-[color:var(--ac-border)] bg-[color:var(--ac-bg)] z-20"
                 role="menu"
               >
                 <div

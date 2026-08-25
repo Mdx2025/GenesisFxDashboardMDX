@@ -356,8 +356,8 @@ function GiftIcon() {
 
 function RewardsTab() {
   return (
-    <GlassCard className="mt-10 !rounded-[1.16rem] h-[29.6875rem] mx-auto">
-      <div className="relative h-full overflow-hidden">
+    <GlassCard className="mt-10 !rounded-[1.16rem] h-[29.6875rem] mx-auto overflow-hidden clip-radius">
+      <div className="relative h-full">
         <h3 className="text-white text-2xl font-acid leading-normal px-6 lg:px-30 pt-6 lg:pt-10">My Rewards</h3>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="mt-4">
@@ -629,7 +629,7 @@ function SettingsTab() {
     <>
       <ChangePictureModal open={showChangePicture} onClose={() => setShowChangePicture(false)} />
 
-      <GlassCard variant="light" divider="none" className="surface-raised mt-10 !rounded-[2rem] relative overflow-hidden">
+      <GlassCard variant="light" divider="none" className="surface-raised mt-10 !rounded-[2rem] relative overflow-hidden clip-radius">
         <div className="px-4 lg:px-15 2xl:px-30 pt-6 lg:pt-8 pb-6 flex flex-col gap-6">
           <StatCard className="!bg-transparent !border-[#09241C] !shadow-none [&::after]:hidden">
             <div className="px-6 py-6 flex flex-col gap-6">
@@ -743,7 +743,7 @@ function SettingsTab() {
 function ProfileTab() {
   return (
     <>
-      <GlassCard className="mt-10 !rounded-lg relative overflow-hidden">
+      <GlassCard className="mt-10 !rounded-lg relative overflow-hidden clip-radius">
         <div className="relative px-6 lg:px-30 pt-6 lg:pt-10 pb-10 lg:pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-10">Personal Information</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -758,7 +758,7 @@ function ProfileTab() {
         <GlowEllipse className="!w-[20rem] !h-[10rem] bottom-0 left-1/2 -translate-x-1/2 translate-y-1/4 !blur-[5rem] opacity-60" />
       </GlassCard>
 
-      <GlassCard className="mt-8 !rounded-lg relative overflow-hidden">
+      <GlassCard className="mt-8 !rounded-lg relative overflow-hidden clip-radius">
         <div className="relative z-10 px-6 lg:px-30 pt-6 lg:pt-10 pb-10 lg:pb-20">
           <h3 className="text-white text-2xl font-acid leading-normal mb-8">KYC Status</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
@@ -775,8 +775,8 @@ function ProfileTab() {
 function VerificationTab() {
   return (
     <>
-      <GlassCard className="mt-10 !rounded-[1.16rem]">
-        <div className="relative overflow-hidden">
+      <GlassCard className="mt-10 !rounded-[1.16rem] overflow-hidden clip-radius">
+        <div className="relative">
           {/* Bottom highlight glows */}
           <div className="theme-decorative-glow absolute left-[29%] bottom-[-10rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />
           <div className="theme-decorative-glow absolute left-[29%] bottom-[-19rem] w-[30.8125rem] h-[17.375rem] rounded-full pointer-events-none bg-[#064B34]" style={{ filter: 'url(#blur-157)' }} aria-hidden="true" />

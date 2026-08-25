@@ -931,6 +931,16 @@ html[data-theme='light'] svg path[d='M6 6L18 18'][stroke='white'] {
     border: 1px solid var(--color-gfx-purple-border);
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  /* WebKit drops the border-radius clip on `overflow:hidden` ancestors when a
+     descendant carries a filter blur, so the glow leaks as a square halo.
+     Pair this with `overflow-hidden` on any rounded box containing a `blur-*`. */
+  .clip-radius {
+    isolation: isolate;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 
 

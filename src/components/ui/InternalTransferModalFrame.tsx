@@ -26,7 +26,7 @@ export const InternalTransferModalFrame = forwardRef<HTMLDivElement, InternalTra
         data-internal-transfer-modal-frame
       >
         <div
-          className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl border border-gfx-green-200 bg-gfx-main backdrop-blur-[23.23px]"
+          className="pointer-events-none absolute inset-0 overflow-hidden clip-radius rounded-2xl border border-gfx-green-200 bg-gfx-main backdrop-blur-[23.23px]"
           aria-hidden="true"
         >
           <div className="theme-decorative-glow absolute left-[190px] top-[682px] h-[278px] w-[493px] rounded-full bg-gfx-green-175 blur-[157px]" />
@@ -54,7 +54,7 @@ export const InternalTransferModalFrame = forwardRef<HTMLDivElement, InternalTra
 
         <div className="relative mx-auto mb-5 mt-5 w-[701px] max-w-[90%] sm:mb-[46px] sm:mt-9" data-internal-transfer-modal-card>
           <div
-            className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-1 outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
+            className="pointer-events-none absolute inset-0 overflow-hidden clip-radius rounded-xl bg-gfx-card-bg shadow-[0px_1.25px_0px_1.25px_rgba(255,255,255,0.04)_inset,0px_5.01px_25.07px_rgba(0,0,0,0.20)] outline outline-1 outline-offset-[-1.25px] outline-gfx-card-border backdrop-blur-[25px]"
             aria-hidden="true"
           >
             <div className="theme-decorative-glow absolute left-[304px] top-[-333px] h-[435px] w-[587px] origin-top-left rotate-[48deg] rounded-full bg-gfx-green-50 blur-[157px]" />

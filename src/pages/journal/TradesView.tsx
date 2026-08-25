@@ -62,7 +62,7 @@ export default function TradesView() {
         variant="light"
         divider="none"
         rounded="0.5rem"
-        className="overflow-hidden bg-gfx-green-800 shadow-md"
+        className="overflow-hidden clip-radius bg-gfx-green-800 shadow-md"
       >
         <div className="theme-decorative-glow absolute left-1/2 -translate-x-1/2 top-[-252px] w-[30.8125rem] h-[17.3750rem] rounded-full bg-gfx-green-200 blur-[9.8125rem]" />
         <div className="relative overflow-x-auto">

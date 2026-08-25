@@ -206,7 +206,7 @@ export function BecomeProviderModal({ open, onClose, onSubmit }: BecomeProviderM
       >
         {/* Modal background (clipped to contain glows) */}
         <div
-          className="absolute inset-0 overflow-hidden pointer-events-none rounded-[1.875rem] border border-gfx-green-800"
+          className="absolute inset-0 overflow-hidden clip-radius pointer-events-none rounded-[1.875rem] border border-gfx-green-800"
           aria-hidden="true"
         >
           <div className="theme-decorative-glow absolute w-[30.8125rem] h-[17.375rem] left-[-12.375rem] top-[35.0625rem] bg-gfx-green-200 rounded-full blur-[9.8225rem]" />

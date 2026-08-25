@@ -67,7 +67,7 @@ export default function DownloadPage() {
           <p className="mt-6 font-acid text-xs leading-[1.175rem] text-[#8b8b93]">No download required. Works like a native app on any device.</p>
         </section>
 
-        <GlassCard divider="none" rounded="1.5rem" className="relative min-h-[34.4375rem] overflow-hidden px-[6.625rem] pb-12 pt-[4.375rem] max-md:px-4 xl:mt-[3.75rem]" data-install-panel>
+        <GlassCard divider="none" rounded="1.5rem" className="relative min-h-[34.4375rem] overflow-hidden clip-radius px-[6.625rem] pb-12 pt-[4.375rem] max-md:px-4 xl:mt-[3.75rem]" data-install-panel>
           <div className="pointer-events-none absolute -bottom-36 left-1/2 h-56 w-[34rem] -translate-x-1/2 rounded-full bg-gfx-green-300/35 blur-[70px]" aria-hidden="true" />
           <img src="/images/pixels.png" alt="" className="pointer-events-none absolute bottom-0 left-1/2 w-[31.25rem] -translate-x-1/2 opacity-20 [clip-path:inset(72%_0_0_0)]" aria-hidden="true" />
           <div className="relative z-10 mx-auto w-full max-w-[30.25rem]">

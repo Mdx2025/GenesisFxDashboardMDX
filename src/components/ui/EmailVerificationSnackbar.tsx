@@ -55,7 +55,7 @@ export function EmailVerificationSnackbar({ open, duration = 5000, onClose }: Em
       aria-live="polite"
     >
       <div
-        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden rounded-lg bg-gfx-green-800 font-acid shadow-md outline outline-1 -outline-offset-[1.16px] outline-gfx-green-800"
+        className="relative w-[min(25.9375rem,calc(100vw-3rem))] overflow-hidden clip-radius rounded-lg bg-gfx-green-800 font-acid shadow-md outline outline-1 -outline-offset-[1.16px] outline-gfx-green-800"
       >
         {/* Decorative glows */}
         <div className="theme-decorative-glow absolute pointer-events-none w-[587px] h-[435px] left-[477px] top-[-281px] rotate-[48deg] origin-top-left bg-gfx-green-200 rounded-full blur-[157px]" aria-hidden="true" />

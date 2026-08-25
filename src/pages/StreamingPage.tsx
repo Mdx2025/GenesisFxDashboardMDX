@@ -117,7 +117,7 @@ function ChatPanel() {
           <h2 className="text-xl">Chat</h2>
           <span className="ml-auto text-sm text-[#FF697C]">LIVE</span>
         </header>
-        <div className="relative mt-5 h-[448px] w-full max-w-[493px] overflow-hidden rounded-[30px] bg-[#0C1311]" data-live-chat-panel>
+        <div className="relative mt-5 h-[448px] w-full max-w-[493px] overflow-hidden clip-radius rounded-[30px] bg-[#0C1311]" data-live-chat-panel>
           <div className="pointer-events-none absolute -top-[264px] left-0 h-[332px] w-[587px] rounded-full bg-[#00B38C] opacity-45 blur-[158.05px]" aria-hidden="true" />
           <h3 className="absolute left-[26px] top-[30px] text-base font-medium leading-[24.44px] text-[#FFFFFF]">Live Chat</h3>
           <span className="absolute right-[26px] top-[30px] text-base font-medium leading-[24.44px] text-[#FFFFFF]">1 watching</span>
