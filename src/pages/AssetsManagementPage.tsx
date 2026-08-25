@@ -186,7 +186,7 @@ export default function AssetsManagementPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col xl:shrink-0">
+                <div className="flex flex-col justify-between gap-6 xl:shrink-0 xl:self-stretch">
                   <div className="flex items-center gap-3 flex-wrap">
                     <SparkleButton onClick={() => navigate('/deposit')}>
                       <span className="flex items-center gap-2">
@@ -207,7 +207,7 @@ export default function AssetsManagementPage() {
                       </span>
                     </SparkleButton>
                   </div>
-                  <div className="h-[100px] w-full min-w-0 -mt-3 relative">
+                  <div className="h-[100px] w-full min-w-0 relative">
                     <PortfolioChart config={{ ...defaultChartConfig, gridOpacity: 0, highlightIndex: -1 }} />
                   </div>
                 </div>
