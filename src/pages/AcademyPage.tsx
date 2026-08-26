@@ -86,10 +86,7 @@ function LearningJourneyCard() {
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-// Caps have no descender, but the font still reserves 0.222em of descent below
-// the baseline. Centring the line box therefore floats the glyph ~2px high, so
-// the top padding cancels that reserved space. In em so it tracks font-size.
-const LETTER_PILL = 'h-[2.0625rem] pt-[0.222em] rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors flex items-center justify-center'
+const LETTER_PILL = 'h-[2.0625rem] rounded-full text-lg leading-4 font-normal cursor-pointer transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500'
 
 function GlossarySection() {
   const [activeLetter, setActiveLetter] = useState<string>('All')
