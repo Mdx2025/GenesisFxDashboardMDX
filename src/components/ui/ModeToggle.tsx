@@ -54,37 +54,57 @@ interface ModeToggleProps {
   onChange?: (index: number) => void
   size?: 'default' | 'sm'
   buttonClassName?: string
+  fitContentOnMobile?: boolean
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '' }: ModeToggleProps) {
+export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '', fitContentOnMobile = false }: ModeToggleProps) {
   const [internalActive, setInternalActive] = useState(defaultIndex)
   const active = activeIndex ?? internalActive
+  const containerRef = useRef<HTMLDivElement>(null)
   const indicatorRef = useRef<HTMLDivElement>(null)
+  const buttonRefs = useRef<Array<HTMLButtonElement | null>>([])
   const isFirst = useRef(true)
 
   useLayoutEffect(() => {
-    if (!indicatorRef.current) return
+    const container = containerRef.current
+    const indicator = indicatorRef.current
+    if (!container || !indicator) return
 
-    const xPct = active * 100
+    const mobileQuery = window.matchMedia('(max-width: 639px)')
+    const applyGeometry = (animate: boolean) => {
+      const activeButton = buttonRefs.current[active]
+      const contentFit = fitContentOnMobile && mobileQuery.matches && activeButton
+      const geometry = contentFit
+        ? { x: activeButton.offsetLeft, xPercent: 0, width: activeButton.offsetWidth }
+        : { x: 0, xPercent: active * 100, width: `${100 / options.length}%` }
 
-    if (isFirst.current) {
-      gsap.set(indicatorRef.current, { xPercent: xPct })
-      isFirst.current = false
-    } else {
-      gsap.to(indicatorRef.current, {
-        xPercent: xPct,
-        duration: 0.2,
-        ease: 'power2.out',
-      })
+      if (animate) {
+        gsap.to(indicator, { ...geometry, duration: 0.2, ease: 'power2.out' })
+      } else {
+        gsap.set(indicator, geometry)
+      }
     }
-  }, [active])
+
+    applyGeometry(!isFirst.current)
+    isFirst.current = false
+
+    const handleGeometryChange = () => applyGeometry(false)
+    const resizeObserver = new ResizeObserver(handleGeometryChange)
+    resizeObserver.observe(container)
+    mobileQuery.addEventListener('change', handleGeometryChange)
+
+    return () => {
+      resizeObserver.disconnect()
+      mobileQuery.removeEventListener('change', handleGeometryChange)
+    }
+  }, [active, fitContentOnMobile, options.length])
 
   return (
-    <div className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}`} role="group" aria-label="Mode selection">
+    <div ref={containerRef} className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}${fitContentOnMobile ? ' mode-toggle-mobile-content' : ''}`} role="group" aria-label="Mode selection">
       <div
         ref={indicatorRef}
         className="mode-indicator"
-        style={{ width: `${100 / options.length}%` }} /* dynamic */
+        style={{ width: `${100 / options.length}%` }}
         aria-hidden="true"
       >
         <div className="glow-emerald-mode" aria-hidden="true" />
@@ -127,6 +147,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
         return (
           <button
             key={option}
+            ref={(node) => { buttonRefs.current[i] = node }}
             className={`${isActive ? 'active' : ''} ${buttonClassName}`}
             onClick={() => { setInternalActive(i); onChange?.(i) }}
             aria-pressed={isActive}

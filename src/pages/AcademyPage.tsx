@@ -165,7 +165,7 @@ export default function AcademyPage() {
         </div>
 
         <div className="w-full max-w-xl">
-          <ModeToggle options={['Video Courses', 'E Books', 'Glossary', 'Calculators']} activeIndex={activeTab} onChange={setActiveTab} />
+          <ModeToggle options={['Video Courses', 'E Books', 'Glossary', 'Calculators']} activeIndex={activeTab} onChange={setActiveTab} fitContentOnMobile />
         </div>
 
         {activeTab === 0 && (

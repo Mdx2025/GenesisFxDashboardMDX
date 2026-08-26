@@ -30,6 +30,17 @@
   gap: 0.5rem;
   white-space: nowrap;
 }
+@media (max-width: 639px) {
+  .mode-toggle-mobile-content {
+    padding-inline: 4px;
+  }
+
+  .mode-toggle-mobile-content button {
+    flex: 1 1 auto;
+    padding-inline: 8px;
+    font-size: 0.875rem;
+  }
+}
 .mode-toggle-sm { height: 34px; }
 .mode-toggle-sm button { font-size: 0.75rem; }
 .mode-toggle button:focus-visible {
