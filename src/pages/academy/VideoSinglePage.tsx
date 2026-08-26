@@ -179,7 +179,7 @@ export default function VideoSinglePage() {
             </div>
 
             {/* Lesson Info */}
-            <div className="mt-5 flex items-start justify-between gap-4">
+            <div className="mt-5 flex items-center justify-between gap-4">
               <div className="flex flex-col gap-2">
                 <div className="inline-flex items-center h-[1.75rem] px-3 rounded-full bg-gfx-green-900 border border-gfx-green-200">
                   <span className="text-xs font-acid text-gfx-neutral-500 leading-5">
