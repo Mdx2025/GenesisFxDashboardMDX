@@ -28,15 +28,15 @@ file, claim it here.
 
 - task_id: `genesis-academy-glossary-2col-20260826`
 - owner: `artemis`
-- status: `in-progress`
+- status: `done`
 - scope_lock: `src/pages/AcademyPage.tsx` (`GlossarySection` grid line only),
   `src/components/ui/GlossaryCard.tsx`
 - request: same mobile treatment as the other screens — glossary cards two per
   row instead of one.
-- delivery: pending.
-- production_validation: pending.
-- next_exact_action: lower the grid breakpoint to base, compact card padding
-  below `sm`, build, await deploy OK.
+- delivery: `d1333ea` on `main`, deployed (Dokploy `xN5tKXjDg5dfBYKY2FGJI`).
+- production_validation: served bundle `assets/index-BM5E0xSY.css` carries
+  `sm:px-[2.3125rem]`, `sm:py-[3rem]`, `sm:gap-4.5`, `xl:grid-cols-3`.
+- next_exact_action: none. Scope released.
 
 ## Active Task — Mobile two-column boxes + banner spacing
 
