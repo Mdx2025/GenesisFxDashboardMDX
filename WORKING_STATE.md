@@ -24,6 +24,15 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — GlassSelect trigger background
+
+- task_id: `genesis-glassselect-bg-20260826`
+- owner: `artemis`
+- status: `in-progress`
+- scope_lock: `src/app.css` (token `--color-gfx-surface-select`, dark theme only)
+- request: GlassSelect trigger background to `#0C1311`, border unchanged.
+- next_exact_action: build, then await deploy approval.
+
 ## Active Task — Sidebar idle nav borders
 
 - task_id: `genesis-sidebar-idle-border-20260826`
