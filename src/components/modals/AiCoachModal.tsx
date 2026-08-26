@@ -478,7 +478,7 @@ export function AiCoachModal({ open, onClose }: AiCoachModalProps) {
                 ideasOpen={ideasOpen}
                 onToggleIdeas={() => setIdeasOpen((v) => !v)}
               />
-              <p className="mt-2 text-center text-[11px] font-acid font-normal text-[color:var(--ac-muted)]">
+              <p className="mt-2 text-center text-xs font-acid font-normal text-[color:var(--ac-muted)]">
                 AI can only discuss your trading data. Not financial advice.
               </p>
             </div>

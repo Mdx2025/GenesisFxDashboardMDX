@@ -24,6 +24,33 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Modal mobile legibility (12px floor + spacing)
+
+- task_id: `genesis-modal-mobile-legibility-20260826`
+- owner: `artemis`
+- status: `in-progress`
+- scope_lock: `src/components/modals/ClaimUsernameModal.tsx`,
+  `src/components/modals/ShareAccountModal.tsx`,
+  `src/components/modals/AiCoachModal.tsx`,
+  `src/components/modals/AiCoachModal.css`
+- request: modals whose text renders far below the 12px mobile accessibility
+  floor must be fixed, along with their lateral/top/bottom spacing, matching the
+  Internal Transfer modal.
+- root_cause: `ClaimUsernameModal` (755x551) and `ShareAccountModal` (1318x835)
+  are fixed-size Figma canvases positioned absolutely and shrunk with
+  `transform: scale()`. At 375px the scale lands at 0.47/0.27, so 16px body text
+  renders at ~7.6/4.3px and every margin shrinks with it. Internal Transfer does
+  not do this: it is real flow layout with responsive padding.
+  `AiCoachModal` is NOT affected: it early-returns a purpose-built full-screen
+  sheet below 768px, so its 1270x906 canvas never renders on phones. Its only
+  violation was a `text-[11px]` disclaimer inside that mobile branch.
+- delivery: `ClaimUsernameModal` and `ShareAccountModal` converted to responsive
+  flow layout with desktop metrics preserved (base = mobile, `sm:` = original
+  desktop values); `AiCoachModal` mobile disclaimer raised to `text-xs`.
+- production_validation: pending.
+- next_exact_action: build, await explicit deploy OK, then commit scope_lock
+  paths, push, redeploy `PFJVX3m89vh3YL2nVKU5N`, verify served bundle.
+
 ## Active Task — Academy glossary two-column mobile
 
 - task_id: `genesis-academy-glossary-2col-20260826`
