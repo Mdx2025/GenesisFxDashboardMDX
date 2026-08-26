@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { Badge, ChallengeDrawdownCard, ChallengeMetricCard, ChallengePerformanceCard, SecondaryButton } from '@/components/ui'
+import { Badge, ChallengeDrawdownCard, ChallengeMetricCard, ChallengePerformanceCard, SparkleButton } from '@/components/ui'
 import { useSidebar } from '@/layouts/RootLayout'
 
 function BackArrowIcon() {
@@ -77,15 +77,17 @@ export default function ChallengeDetailsPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 lg:justify-end">
-            <button
-              type="button"
+            <SparkleButton
               aria-label="Share challenge"
-              className="flex size-[2.875rem] cursor-pointer items-center justify-center rounded-full border border-gfx-neutral-250 bg-gradient-to-t from-gfx-green-900 to-gfx-green-800 text-gfx-neutral-550 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500"
+              className="!size-[2.875rem] !min-w-0 !rounded-full !p-0"
             >
               <ShareIcon />
-            </button>
-            <SecondaryButton className="w-[7.5rem]">Trade</SecondaryButton>
-            <SecondaryButton className="w-[8.875rem]"><WithdrawIcon />Withdraw</SecondaryButton>
+            </SparkleButton>
+            <SparkleButton className="!h-[2.875rem] !w-[7.5rem] !min-w-0 !rounded-3xl !px-5.5">Trade</SparkleButton>
+            <SparkleButton className="!h-[2.875rem] !w-[8.875rem] !min-w-0 !rounded-3xl !px-5.5">
+              <WithdrawIcon />
+              Withdraw
+            </SparkleButton>
           </div>
         </div>
 
