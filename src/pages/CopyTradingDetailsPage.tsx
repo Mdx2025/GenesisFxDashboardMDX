@@ -311,7 +311,7 @@ export default function CopyTradingDetailsPage() {
         </div>
 
         {/* 4 Stat Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
           {[
             { label: 'AUM', value: '$3,000.00', icon: <ChartUpIcon /> },
             { label: 'ROI', value: '+194.12%', valueColor: 'text-gfx-green-500', icon: <GraphUpIcon /> },
@@ -320,15 +320,15 @@ export default function CopyTradingDetailsPage() {
           ].map((stat, i) => (
             <GlassCard key={i} variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <GlowEllipse className="left-1/2 -translate-x-1/2 -bottom-[12.5rem]" />
-              <div className="relative p-6 flex justify-between items-start">
-                <div>
+              <div className="relative p-4 sm:p-6 flex justify-between items-start">
+                <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <p className="text-gfx-neutral-400 text-sm font-acid font-normal leading-[18.8px] uppercase tracking-wider">{stat.label}</p>
                     <InfoIcon />
                   </div>
-                  <p className={`${stat.valueColor || 'text-white'} text-[2.25rem] font-acid font-normal leading-none mt-3`}>{stat.value}</p>
+                  <p className={`${stat.valueColor || 'text-white'} text-2xl sm:text-[2.25rem] font-acid font-normal leading-none mt-3`}>{stat.value}</p>
                 </div>
-                <div className="w-[2.625rem] h-[2.625rem] rounded-md bg-gfx-green-900 flex items-center justify-center">
+                <div className="w-9 h-9 sm:w-[2.625rem] sm:h-[2.625rem] shrink-0 rounded-md bg-gfx-green-900 flex items-center justify-center">
                   {stat.icon}
                 </div>
               </div>

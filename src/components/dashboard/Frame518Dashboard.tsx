@@ -61,12 +61,12 @@ function FeatureCard({ icon, label, glowSide }: FeatureCardProps) {
       variant="light"
       divider="none"
       rounded="1.1602rem"
-      className="group h-37 overflow-hidden"
+      className="group h-31 overflow-hidden sm:h-37"
       role="article"
       data-feature-card
     >
       <div className={`pointer-events-none absolute -top-14 h-44 w-72 rounded-full bg-gfx-green-200/55 [filter:url(#blur-100)] ${glowSide === 'right' ? '-right-28' : '-left-28'}`} aria-hidden="true" />
-      <div className="relative z-10 flex h-full flex-col justify-center px-5.5">
+      <div className="relative z-10 flex h-full flex-col justify-center px-4 sm:px-5.5">
         <span className="flex size-10.5 items-center justify-center rounded-[0.729rem] bg-gfx-green-900 text-gfx-green-300">
           {icon}
         </span>
@@ -81,8 +81,8 @@ function BalanceHero({ onTransferClick }: Frame518DashboardProps) {
   const [balanceVisible, setBalanceVisible] = useState(true)
 
   return (
-    <section className="frame-518-balance-banner h-58.75">
-      <GlassBannerCard className="h-full" contentClassName="flex h-full items-center px-10">
+    <section className="frame-518-balance-banner h-42 sm:h-58.75">
+      <GlassBannerCard className="h-full" contentClassName="flex h-full items-center px-5 sm:px-10">
         <div className="min-w-0">
           <div className="flex items-center gap-1.5">
             <p className="font-acid text-base font-medium leading-[1.5275rem] text-gfx-neutral-400">Good afternoon, Marcelo</p>
@@ -199,7 +199,7 @@ export function Frame518Dashboard({ onTransferClick }: Frame518DashboardProps) {
     <div className="frame-518-dashboard">
       <BalanceHero onTransferClick={onTransferClick} />
 
-      <section className="ml-1 mt-13.5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Trading products">
+      <section className="ml-1 mt-7 grid grid-cols-2 gap-4 sm:mt-13.5 xl:grid-cols-4" aria-label="Trading products">
         {FEATURE_CARDS.map((card, index) => <FeatureCard key={`${card.label}-${index}`} {...card} />)}
       </section>
 

@@ -373,9 +373,10 @@ export default function PartnerPage() {
           </div>
         </GlassBannerCard>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 3xl:gap-6 4xl:gap-8">
           <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
+              dense
               label="Total Referrals"
               value="16"
               icon={<UsersGroupIcon size={22} color="white" />}
@@ -384,6 +385,7 @@ export default function PartnerPage() {
           </div>
           <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
+              dense
               label="Total Business"
               value="$900.00"
               icon={<WalletIcon size={24} color="white" />}
@@ -392,6 +394,7 @@ export default function PartnerPage() {
           </div>
           <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
+              dense
               label="Comission Earned"
               value="$200.00"
               icon={<CommissionIcon size={20} color="white" />}
@@ -400,6 +403,7 @@ export default function PartnerPage() {
           </div>
           <div className="relative overflow-hidden clip-radius rounded-[19px]">
             <StatCard
+              dense
               label="Active Clients"
               value="$900.00"
               icon={<PieChartIcon size={20} color="white" />}

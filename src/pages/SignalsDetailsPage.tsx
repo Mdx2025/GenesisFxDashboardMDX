@@ -149,11 +149,11 @@ export default function SignalsDetailsPage() {
         </div>
 
         {/* 4 Stat Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard label="Total Signals" value="2" icon={<ChartIcon />} />
-          <StatCard label="Win Rate" value="100%" valueColor="text-gfx-bullish-light" icon={<PieChartIcon />} />
-          <StatCard label="Total P&L" value="$50.35" valueColor="text-gfx-bullish-light" icon={<GraphUpIcon />} />
-          <StatCard label="Max Drawdown" value="196" icon={<UsersIcon />} />
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+          <StatCard dense label="Total Signals" value="2" icon={<ChartIcon />} />
+          <StatCard dense label="Win Rate" value="100%" valueColor="text-gfx-bullish-light" icon={<PieChartIcon />} />
+          <StatCard dense label="Total P&L" value="$50.35" valueColor="text-gfx-bullish-light" icon={<GraphUpIcon />} />
+          <StatCard dense label="Max Drawdown" value="196" icon={<UsersIcon />} />
         </div>
 
         {/* Chart (left) + Strategy Details (right) */}

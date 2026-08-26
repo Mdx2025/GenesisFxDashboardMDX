@@ -24,6 +24,24 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Mobile two-column boxes + banner spacing
+
+- task_id: `genesis-mobile-2col-20260826`
+- owner: `artemis`
+- status: `in-progress`
+- scope_lock: `src/components/dashboard/Frame518Dashboard.tsx`,
+  `src/components/ui/StatCard.tsx`, `src/components/ui/ChallengeDetails.tsx`
+  (`ChallengeMetricCard` only), `src/pages/SignalsDetailsPage.tsx`,
+  `src/pages/PammDetailsPage.tsx`, `src/pages/PartnerPage.tsx`,
+  `src/pages/CopyTradingDetailsPage.tsx`, `src/pages/ChallengeDetailsPage.tsx`
+  (KPI grid line only)
+- request: on mobile, screens with many boxes lay them out two per row instead of
+  one; the green balance banner gets reduced lateral / top / bottom spacing.
+- delivery: pending.
+- production_validation: pending.
+- next_exact_action: edit base-breakpoint grid + spacing classes, build, await
+  deploy OK.
+
 ## Active Task — GlassSelect trigger background
 
 - task_id: `genesis-glassselect-bg-20260826`

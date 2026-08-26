@@ -329,11 +329,11 @@ export default function PammDetailsPage() {
         </div>
 
         {/* 4 Stat Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard label="AUM" value="$3.50" icon={<ChartUpIcon />} labelClassName="!leading-[18.8px]" />
-          <StatCard label="ROI" value="+194.12%" valueColor="text-gfx-green-500" icon={<GraphUpIcon />} labelClassName="!leading-[18.8px]" />
-          <StatCard label="Closed P&L" value="$2.31" icon={<PieChartIcon />} labelClassName="!leading-[18.8px]" />
-          <StatCard label="AUM" value="16.18%" icon={<CalendarIcon />} labelClassName="!leading-[18.8px]" />
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+          <StatCard dense label="AUM" value="$3.50" icon={<ChartUpIcon />} labelClassName="!leading-[18.8px]" />
+          <StatCard dense label="ROI" value="+194.12%" valueColor="text-gfx-green-500" icon={<GraphUpIcon />} labelClassName="!leading-[18.8px]" />
+          <StatCard dense label="Closed P&L" value="$2.31" icon={<PieChartIcon />} labelClassName="!leading-[18.8px]" />
+          <StatCard dense label="AUM" value="16.18%" icon={<CalendarIcon />} labelClassName="!leading-[18.8px]" />
         </div>
 
         {/* Main Content: Chart (left) + Strategy Details (right) */}

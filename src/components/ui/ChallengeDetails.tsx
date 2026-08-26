@@ -80,14 +80,14 @@ interface ChallengeMetricCardProps {
 /** Compact 148px metric surface used by challenge details dashboards. */
 export function ChallengeMetricCard({ label, value, valueClassName = 'text-white', glow = 'right' }: ChallengeMetricCardProps) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="min-h-[9.25rem] overflow-hidden">
+    <GlassCard variant="light" divider="none" rounded="19px" className="min-h-[7.5rem] overflow-hidden sm:min-h-[9.25rem]">
       <div
         className={`pointer-events-none absolute top-[-4rem] h-[14rem] w-[16rem] rounded-full bg-gfx-glow-green opacity-50 blur-[95px] ${glow === 'right' ? '-right-[7rem]' : '-left-[7rem]'}`}
         aria-hidden="true"
       />
-      <div className="relative flex min-h-[9.25rem] flex-col justify-center px-6 py-5">
+      <div className="relative flex min-h-[7.5rem] flex-col justify-center px-4 py-4 sm:min-h-[9.25rem] sm:px-6 sm:py-5">
         <p className="font-acid text-sm font-normal leading-[18.8px] text-gfx-neutral-500">{label}</p>
-        <p className={`mt-2 font-acid text-4xl font-normal leading-none ${valueClassName}`}>{value}</p>
+        <p className={`mt-2 font-acid text-2xl font-normal leading-none sm:text-4xl ${valueClassName}`}>{value}</p>
       </div>
     </GlassCard>
   )
