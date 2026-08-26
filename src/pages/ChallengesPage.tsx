@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react'
 import gsap from 'gsap'
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, SearchInput, GlowButton, SparkleButton, ModeToggle, Badge, GlassSelect, GlassInput, GlowEllipse, BannerStatBox } from '@/components/ui'
@@ -250,7 +251,7 @@ const challengeAccounts: ChallengeAccount[] = Array.from({ length: 4 }, (_, inde
   days: '0/5',
 }))
 
-function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
+function ChallengeAccountCard({ account, onView }: { account: ChallengeAccount; onView: () => void }) {
   return (
     <GlassCard
       variant="light"
@@ -312,7 +313,7 @@ function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
       <div className="mt-[1.125rem] h-px w-full bg-gfx-neutral-250" aria-hidden="true" />
 
       <div className="mt-[2.0625rem] grid grid-cols-[minmax(0,1fr)_minmax(0,0.96875fr)] gap-2">
-        <SparkleButton fullWidth className="!h-[2.875rem] !rounded-3xl !px-5.5">
+        <SparkleButton fullWidth className="!h-[2.875rem] !rounded-3xl !px-5.5" onClick={onView}>
           <span>View</span>
         </SparkleButton>
         <GlowButton label="Cash out" width="100%" height={44} fontSize={16} />
@@ -321,7 +322,7 @@ function ChallengeAccountCard({ account }: { account: ChallengeAccount }) {
   )
 }
 
-function MyChallengesContent() {
+function MyChallengesContent({ onView }: { onView: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       {/* Hero Banner — Active Strategies style */}
@@ -339,7 +340,7 @@ function MyChallengesContent() {
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,23.375rem),23.375rem))] gap-3" aria-label="10X challenge accounts">
         {challengeAccounts.map(account => (
-          <ChallengeAccountCard key={account.id} account={account} />
+          <ChallengeAccountCard key={account.id} account={account} onView={onView} />
         ))}
       </div>
     </div>
@@ -745,6 +746,7 @@ function StartChallengeModal({ open, onClose }: { open: boolean; onClose: () => 
 
 export default function ChallengesPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(0)
   const [prizePoolOpen, setPrizePoolOpen] = useState(false)
   const [startChallengeOpen, setStartChallengeOpen] = useState(false)
@@ -788,7 +790,7 @@ export default function ChallengesPage() {
         </div>
 
         {/* Tab Content */}
-        {activeTab === 0 && <MyChallengesContent />}
+        {activeTab === 0 && <MyChallengesContent onView={() => navigate('/challenges/details-single-page')} />}
         {activeTab === 1 && <LeaderboardContent />}
         {activeTab === 2 && <TiersContent onPurchase={() => setStartChallengeOpen(true)} />}
       </div>

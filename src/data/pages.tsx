@@ -12,6 +12,7 @@ import DailySinglePage from '@/pages/news/DailySinglePage'
 import AccountsPage from '@/pages/AccountsPage'
 import AccountDetailsPage from '@/pages/AccountDetailsPage'
 import ChallengesPage from '@/pages/ChallengesPage'
+import ChallengeDetailsPage from '@/pages/ChallengeDetailsPage'
 import JournalPage from '@/pages/JournalPage'
 import PammPage from '@/pages/PammPage'
 import PammDetailsPage from '@/pages/PammDetailsPage'
@@ -74,6 +75,7 @@ export const PAGE_REGISTRY: PageEntry[] = [
   { path: '/tradelocker/accounts/:accountId', label: 'Account Details', description: 'Individual trading account details', icon: TradelockerIcon, component: AccountDetailsPage, showInDirectory: false },
   { path: '/tradelocker/journal', label: 'Journal', description: 'Track and analyze your trading performance', icon: TradelockerIcon, component: JournalPage },
   { path: '/challenges', label: '10X Challenges', description: 'Prove your skill and level up your capital', icon: ChallengesIcon, component: ChallengesPage },
+  { path: '/challenges/details-single-page', label: 'Challenge Details', description: '10X challenge progress and performance details', icon: ChallengesIcon, component: ChallengeDetailsPage, showInDirectory: false },
   { path: '/academy', label: 'Genesis Academy', description: 'Trading courses and educational resources', icon: AcademyIcon, component: AcademyPage },
   { path: '/academy/video-single-page', label: 'Video Course', description: 'Single video course lesson view', icon: AcademyIcon, component: VideoSinglePage, showInDirectory: false },
   { path: '/academy/ebook-single-page', label: 'E-Book', description: 'Single e-book chapter view', icon: AcademyIcon, component: EbookSinglePage, showInDirectory: false },

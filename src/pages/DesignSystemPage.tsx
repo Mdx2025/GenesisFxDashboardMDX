@@ -6,6 +6,7 @@ import {
   TradingCalendar, GlowEllipse,
   PlatformTabs, AppFeatureCard, InstallStepCard,
   PrimaryPillButton, ToggleSwitch, SharePerformanceChart,
+  ChallengeDrawdownCard, ChallengeMetricCard, ChallengePerformanceCard,
   LeaderboardAvatar, LeaderboardSparkline, LeaderboardTable, LeaderboardTabs,
   StreamCard, StreamingCategoryCard, StreamingEmptyState, StreamingLiveBadge, StreamingTabs,
   ChannelHeroCard, ChannelMetricCard, MyStreamFollowerCard, MyStreamingTabs,
@@ -421,6 +422,17 @@ export default function DesignSystemPage() {
                 <p className="text-gfx-purple-accent text-sm mb-2">Purple variant, 14px radius — compact.</p>
                 <p className="text-caption text-gfx-neutral-500">GlassCard (purple, rounded: 14px)</p>
               </GlassCard>
+            </div>
+          </Subsection>
+
+          <Subsection title="Challenge details — ChallengeDrawdownCard, ChallengeMetricCard, ChallengePerformanceCard">
+            <div className="space-y-4">
+              <ChallengeDrawdownCard amount="$125.00" equity="$1,250.00" breachFloor="$1,125.00" bufferRemaining="100%" progress={20} />
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <ChallengeMetricCard label="AUM" value="$125.00" />
+                <ChallengeMetricCard label="RETURN" value="+0.00%" valueClassName="text-gfx-bullish-light" glow="left" />
+              </div>
+              <ChallengePerformanceCard />
             </div>
           </Subsection>
 
