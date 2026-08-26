@@ -24,6 +24,43 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Assets filter row mobile UX
+
+- task_id: `genesis-assets-filter-mobile-20260826`
+- owner: `artemis`
+- status: `in-progress`
+- scope_lock: `src/pages/AssetsManagementPage.tsx`
+- request: the `All Status / All Time / All Coins` filter row is ugly on mobile.
+- root_cause: three `GlassSelect` wrappers hardcoded to `w-[18rem]` inside a
+  `flex flex-wrap` row. Below ~600px each one wraps onto its own line, so the
+  filters eat ~200px of vertical space before any data, and the `ml-auto` export
+  button is pushed onto a fourth orphan line.
+- next_exact_action: 2-col mobile grid, build, screenshot at 433px, await OK.
+
+## Active Task — Challenges status filter dropdown
+
+- task_id: `genesis-challenges-status-filter-20260826`
+- owner: `artemis`
+- status: `done`
+- scope_lock: `src/pages/ChallengesPage.tsx` (released)
+- request: the filter icon on /challenges must open a dropdown (All Status /
+  Active / Breached / Restricted / Ended) matching the supplied Figma spec,
+  refactored to Tailwind, with a correct light-theme variant, and it must
+  actually filter the rendered challenge cards.
+- shipped: commit `09b5439`, Dokploy deployment `QucIxKqcXdMJiW7WUQyD9` done.
+- verified_in_prod: bundle `assets/index-DjpyCjmp.js` carries the literal
+  markers `Breached` and `Status filter`; the dropdown renders correctly in dark
+  and light theme; selecting `Breached` moves the banner count 4 -> 1 and leaves
+  a single card rendered.
+- note: the selected pill uses `gfx-green-250`, not the literal spec color
+  `#064B34`. That color maps to `gfx-green-200`, which `app.css` overrides to
+  `#C6C6C6` under `html[data-theme='light']`, so the literal value would have
+  rendered grey in light theme.
+- note: seed accounts were all `status: 'Funded'`, a value outside the filter
+  vocabulary, so every selection would have emptied the grid. Statuses are now
+  distributed one per account across the four real states. Revertible in one
+  line if the seed data is meant to stay uniform.
+
 ## Active Task — Modal mobile legibility (12px floor + spacing)
 
 - task_id: `genesis-modal-mobile-legibility-20260826`
