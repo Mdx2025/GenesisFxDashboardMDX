@@ -125,7 +125,7 @@ function GlossarySection() {
       </div>
 
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4.5">
+        <div className="grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4.5">
           {filtered.map(term => (
             <GlossaryCard key={term.id} term={term.term} definition={term.definition} />
           ))}

@@ -24,6 +24,20 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Academy glossary two-column mobile
+
+- task_id: `genesis-academy-glossary-2col-20260826`
+- owner: `artemis`
+- status: `in-progress`
+- scope_lock: `src/pages/AcademyPage.tsx` (`GlossarySection` grid line only),
+  `src/components/ui/GlossaryCard.tsx`
+- request: same mobile treatment as the other screens — glossary cards two per
+  row instead of one.
+- delivery: pending.
+- production_validation: pending.
+- next_exact_action: lower the grid breakpoint to base, compact card padding
+  below `sm`, build, await deploy OK.
+
 ## Active Task — Mobile two-column boxes + banner spacing
 
 - task_id: `genesis-mobile-2col-20260826`
