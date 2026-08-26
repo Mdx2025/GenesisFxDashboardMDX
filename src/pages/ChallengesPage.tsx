@@ -18,8 +18,86 @@ function TrophyIcon() {
 function FilterIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M16.1667 2H4.5C3.32149 2 2.73223 2 2.36612 2.3435C2 2.687 2 3.23985 2 4.34555V4.9204C2 5.78527 2 6.2177 2.21633 6.57618C2.43267 6.93466 2.82789 7.15715 3.61835 7.60212L6.04587 8.96865C6.57622 9.2672 6.84139 9.41648 7.03126 9.58131C7.42665 9.92458 7.67007 10.3279 7.78037 10.8226C7.83333 11.0602 7.83333 11.3382 7.83333 11.8941V14.1187C7.83333 14.8766 7.83333 15.2556 8.04327 15.5511C8.25321 15.8465 8.62607 15.9923 9.3718 16.2838C10.9373 16.8958 11.7201 17.2018 12.2767 16.8537C12.8333 16.5055 12.8333 15.7099 12.8333 14.1187V11.8941C12.8333 11.3382 12.8333 11.0602 12.8863 10.8226C12.9966 10.3279 13.24 9.92458 13.6354 9.58131C13.8253 9.41648 14.0904 9.2672 14.6208 8.96865L17.0483 7.60212C17.8388 7.15715 18.234 6.93466 18.4503 6.57618C18.6667 6.2177 18.6667 5.78527 18.6667 4.9204V4.34555C18.6667 3.23985 18.6667 2.687 18.3005 2.3435C17.9344 2 17.3452 2 16.1667 2Z" fill="#808080"/>
+      <path d="M16.1667 2H4.5C3.32149 2 2.73223 2 2.36612 2.3435C2 2.687 2 3.23985 2 4.34555V4.9204C2 5.78527 2 6.2177 2.21633 6.57618C2.43267 6.93466 2.82789 7.15715 3.61835 7.60212L6.04587 8.96865C6.57622 9.2672 6.84139 9.41648 7.03126 9.58131C7.42665 9.92458 7.67007 10.3279 7.78037 10.8226C7.83333 11.0602 7.83333 11.3382 7.83333 11.8941V14.1187C7.83333 14.8766 7.83333 15.2556 8.04327 15.5511C8.25321 15.8465 8.62607 15.9923 9.3718 16.2838C10.9373 16.8958 11.7201 17.2018 12.2767 16.8537C12.8333 16.5055 12.8333 15.7099 12.8333 14.1187V11.8941C12.8333 11.3382 12.8333 11.0602 12.8863 10.8226C12.9966 10.3279 13.24 9.92458 13.6354 9.58131C13.8253 9.41648 14.0904 9.2672 14.6208 8.96865L17.0483 7.60212C17.8388 7.15715 18.234 6.93466 18.4503 6.57618C18.6667 6.2177 18.6667 5.78527 18.6667 4.9204V4.34555C18.6667 3.23985 18.6667 2.687 18.3005 2.3435C17.9344 2 17.3452 2 16.1667 2Z" fill="currentColor"/>
     </svg>
+  )
+}
+
+const STATUS_FILTERS = ['All Status', 'Active', 'Breached', 'Restricted', 'Ended'] as const
+
+type StatusFilter = (typeof STATUS_FILTERS)[number]
+
+function StatusFilterMenu({
+  value,
+  onChange,
+}: {
+  value: StatusFilter
+  onChange: (next: StatusFilter) => void
+}) {
+  const [open, setOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function handlePointerDown(event: MouseEvent) {
+      if (!containerRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('keydown', handleKey)
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('keydown', handleKey)
+    }
+  }, [open])
+
+  return (
+    <div ref={containerRef} className="relative shrink-0">
+      <button
+        type="button"
+        onClick={() => setOpen(prev => !prev)}
+        className="h-11 w-12 rounded-full border border-gfx-neutral-250 bg-transparent flex items-center justify-center cursor-pointer text-gfx-neutral-400 hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500"
+        aria-label="Filter by status"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <FilterIcon />
+      </button>
+
+      {open && (
+        <div
+          role="listbox"
+          aria-label="Status filter"
+          className="absolute right-0 top-full z-30 mt-2 flex w-[8.5625rem] flex-col gap-[0.45rem] rounded-[0.625rem] border border-gfx-neutral-250 bg-gfx-surface-select px-[0.59375rem] py-3.5 shadow-lg"
+          data-status-filter-menu
+        >
+          {STATUS_FILTERS.map(option => {
+            const selected = option === value
+            return (
+              <button
+                key={option}
+                type="button"
+                role="option"
+                aria-selected={selected}
+                onClick={() => {
+                  onChange(option)
+                  setOpen(false)
+                }}
+                className={`w-full px-2.5 text-left font-acid text-sm font-normal leading-[1.175rem] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 ${
+                  selected
+                    ? 'rounded-[3rem] bg-gfx-green-250 py-2.5 text-white'
+                    : 'text-gfx-neutral-400 hover:text-white'
+                }`}
+              >
+                {option}
+              </button>
+            )
+          })}
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -244,7 +322,7 @@ const challengeAccounts: ChallengeAccount[] = Array.from({ length: 4 }, (_, inde
   name: 'JOE DOE',
   currentPower: '$1,250 power',
   targetPower: '$125.000 power',
-  status: 'Funded',
+  status: STATUS_FILTERS[index + 1],
   returnValue: '+0.00%',
   netPnl: '$0.00',
   floor: '$125.00',
@@ -322,7 +400,12 @@ function ChallengeAccountCard({ account, onView }: { account: ChallengeAccount; 
   )
 }
 
-function MyChallengesContent({ onView }: { onView: () => void }) {
+function MyChallengesContent({ onView, statusFilter }: { onView: () => void; statusFilter: StatusFilter }) {
+  const visibleAccounts =
+    statusFilter === 'All Status'
+      ? challengeAccounts
+      : challengeAccounts.filter(account => account.status === statusFilter)
+
   return (
     <div className="flex flex-col gap-6">
       {/* Hero Banner — Active Strategies style */}
@@ -334,12 +417,12 @@ function MyChallengesContent({ onView }: { onView: () => void }) {
               Turn $125 into $1,000,000 — prove your skill, level up your capital
             </p>
           </div>
-          <BannerStatBox value={0} label="My challenges" />
+          <BannerStatBox value={visibleAccounts.length} label="My challenges" />
         </div>
       </GlassBannerCard>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,23.375rem),23.375rem))] gap-3" aria-label="10X challenge accounts">
-        {challengeAccounts.map(account => (
+        {visibleAccounts.map(account => (
           <ChallengeAccountCard key={account.id} account={account} onView={onView} />
         ))}
       </div>
@@ -750,6 +833,7 @@ export default function ChallengesPage() {
   const [activeTab, setActiveTab] = useState(0)
   const [prizePoolOpen, setPrizePoolOpen] = useState(false)
   const [startChallengeOpen, setStartChallengeOpen] = useState(false)
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('All Status')
 
   return (
     <div className="relative px-4 xl:px-5 2xl:px-7 3xl:px-10 4xl:px-14 py-4 4xl:py-6">
@@ -777,9 +861,7 @@ export default function ChallengesPage() {
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <SearchInput placeholder="Search for" />
-            <button className="h-11 w-12 rounded-full border border-gfx-neutral-250 bg-transparent flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors shrink-0" aria-label="Filter">
-              <FilterIcon />
-            </button>
+            <StatusFilterMenu value={statusFilter} onChange={setStatusFilter} />
             <SparkleButton className="px-10" onClick={() => setPrizePoolOpen(true)}>
               <PrizePoolTrophyIcon />
               <span>Prize Pool</span>
@@ -790,7 +872,7 @@ export default function ChallengesPage() {
         </div>
 
         {/* Tab Content */}
-        {activeTab === 0 && <MyChallengesContent onView={() => navigate('/challenges/details-single-page')} />}
+        {activeTab === 0 && <MyChallengesContent onView={() => navigate('/challenges/details-single-page')} statusFilter={statusFilter} />}
         {activeTab === 1 && <LeaderboardContent />}
         {activeTab === 2 && <TiersContent onPurchase={() => setStartChallengeOpen(true)} />}
       </div>
