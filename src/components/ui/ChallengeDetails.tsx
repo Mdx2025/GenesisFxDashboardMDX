@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { GlassCard } from './GlassCard'
 import { PeriodPill } from './PeriodPill'
 
@@ -97,10 +98,8 @@ interface ChallengePerformanceCardProps {
   actions?: ReactNode
 }
 
-/** Performance panel using the exact chart artwork exported from Figma. */
+/** Challenge performance panel using the design system's portfolio chart. */
 export function ChallengePerformanceCard({ title = 'Performance Chart', actions }: ChallengePerformanceCardProps) {
-  const axisLabels = ['$305', '$253', '$202', '$150', '$98']
-
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="min-h-[35rem] overflow-hidden xl:min-h-[40.75rem]">
       <div className="relative flex min-h-[35rem] flex-col px-5 py-7 sm:px-7 sm:py-9 xl:min-h-[40.75rem]">
@@ -108,24 +107,8 @@ export function ChallengePerformanceCard({ title = 'Performance Chart', actions 
           <h2 className="font-acid text-2xl font-normal leading-none text-white">{title}</h2>
           {actions ?? <PeriodPill />}
         </div>
-        <div className="relative mt-7 min-h-[27rem] flex-1 overflow-hidden">
-          <div className="pointer-events-none absolute inset-x-0 top-[8%] bottom-[15%]" aria-hidden="true">
-            {axisLabels.map((label, index) => (
-              <div
-                key={label}
-                className="absolute left-0 right-0 flex -translate-y-1/2 items-center gap-4"
-                style={{ top: `${index * 25}%` }}
-              >
-                <span className="w-12 shrink-0 font-acid text-xs font-bold tracking-[2.323px] text-gfx-neutral-300">{label}</span>
-                <span className="h-px flex-1 bg-gfx-green-150 opacity-70" />
-              </div>
-            ))}
-          </div>
-          <img
-            src="/challenge-performance-chart.svg"
-            alt="Challenge performance chart showing account gains, drawdowns, and recoveries"
-            className="relative size-full object-fill"
-          />
+        <div className="relative mt-7 h-[27rem] shrink-0 overflow-hidden xl:h-[32rem]">
+          <PortfolioChart config={defaultChartConfig} />
         </div>
       </div>
     </GlassCard>
