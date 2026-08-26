@@ -220,8 +220,8 @@ export default function AssetsManagementPage() {
           </div>
 
           <section aria-label="Assets History">
-            <div className="flex items-center gap-3 mb-6 flex-wrap" role="group" aria-label="Transaction filters">
-              <div className="w-[18rem]">
+            <div className="grid grid-cols-3 gap-2 mb-6 md:gap-3 md:flex md:items-center md:flex-wrap" role="group" aria-label="Transaction filters">
+              <div className="min-w-0 md:w-[18rem]">
                 <GlassSelect
                   size="sm"
                   placeholder="Type"
@@ -236,7 +236,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <div className="w-[18rem]">
+              <div className="min-w-0 md:w-[18rem]">
                 <GlassSelect
                   size="sm"
                   placeholder="Time"
@@ -251,7 +251,7 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <div className="w-[18rem]">
+              <div className="min-w-0 md:w-[18rem]">
                 <GlassSelect
                   size="sm"
                   placeholder="Coin"
@@ -266,8 +266,9 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
+              <div className="col-span-3 flex items-center justify-between gap-3 md:contents">
               <GreenPillButton onClick={resetFilters}>Reset</GreenPillButton>
-              <div className="ml-auto">
+              <div className="md:ml-auto">
                 <button
                   type="button"
                   className="inline-flex items-center justify-center gap-2.5 rounded-full border border-gfx-neutral-250 p-2.5 cursor-pointer transition-colors hover:border-gfx-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gfx-main"
@@ -278,6 +279,7 @@ export default function AssetsManagementPage() {
                     <path fillRule="evenodd" clipRule="evenodd" d="M2 14.6562C2 11.856 2 10.4559 2.54497 9.3863C3.02433 8.44549 3.78924 7.68058 4.73005 7.20122C5.79961 6.65625 7.19974 6.65625 10 6.65625H14C16.8003 6.65625 18.2004 6.65625 19.27 7.20122C20.2108 7.68058 20.9757 8.44549 21.455 9.3863C22 10.4559 22 11.856 22 14.6562C22 17.4565 22 18.8566 21.455 19.9262C20.9757 20.867 20.2108 21.6319 19.27 22.1113C18.2004 22.6562 16.8003 22.6562 14 22.6562H10C7.19974 22.6562 5.79961 22.6562 4.73005 22.1113C3.78924 21.6319 3.02433 20.867 2.54497 19.9262C2 18.8566 2 17.4565 2 14.6562ZM12.5303 18.1866C12.3897 18.3272 12.1989 18.4062 12 18.4062C11.8011 18.4062 11.6103 18.3272 11.4697 18.1866L8.96967 15.6866C8.67678 15.3937 8.67678 14.9188 8.96967 14.6259C9.26256 14.333 9.73744 14.333 10.0303 14.6259L11.25 15.8456V11.6562C11.25 11.242 11.5858 10.9062 12 10.9062C12.4142 10.9062 12.75 11.242 12.75 11.6562V15.8456L13.9697 14.6259C14.2626 14.333 14.7374 14.333 15.0303 14.6259C15.3232 14.9188 15.3232 15.3937 15.0303 15.6866L12.5303 18.1866Z" fill="#808080" />
                   </svg>
                 </button>
+                </div>
               </div>
             </div>
             <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
