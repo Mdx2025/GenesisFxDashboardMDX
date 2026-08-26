@@ -105,7 +105,7 @@ export function ChallengePerformanceCard({ title = 'Performance Chart', actions 
       <div className="relative flex min-h-[35rem] flex-col px-5 py-7 sm:px-7 sm:py-9 xl:min-h-[40.75rem]">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="font-acid text-2xl font-normal leading-none text-white">{title}</h2>
-          {actions ?? <PeriodPill />}
+          {actions ?? <PeriodPill fillOnMobile />}
         </div>
         <div className="relative mt-7 h-[27rem] shrink-0 overflow-hidden xl:h-[32rem]">
           <PortfolioChart config={defaultChartConfig} />
