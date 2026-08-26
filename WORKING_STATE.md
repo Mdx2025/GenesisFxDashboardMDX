@@ -28,7 +28,7 @@ file, claim it here.
 
 - task_id: `genesis-mobile-2col-20260826`
 - owner: `artemis`
-- status: `in-progress`
+- status: `done`
 - scope_lock: `src/components/dashboard/Frame518Dashboard.tsx`,
   `src/components/ui/StatCard.tsx`, `src/components/ui/ChallengeDetails.tsx`
   (`ChallengeMetricCard` only), `src/pages/SignalsDetailsPage.tsx`,
@@ -37,10 +37,11 @@ file, claim it here.
   (KPI grid line only)
 - request: on mobile, screens with many boxes lay them out two per row instead of
   one; the green balance banner gets reduced lateral / top / bottom spacing.
-- delivery: pending.
-- production_validation: pending.
-- next_exact_action: edit base-breakpoint grid + spacing classes, build, await
-  deploy OK.
+- delivery: `2daba24` on `main`, deployed (Dokploy `fkil-qqp6azf61g1HP6uU`).
+- production_validation: served bundle `assets/index-83w-jn_h.css` carries
+  `h-42`, `sm:h-58.75`, `sm:px-10`, `sm:h-37`, `sm:min-h-[9.25rem]`, `sm:p-6`,
+  `sm:w-[42px]`, `sm:text-4xl`.
+- next_exact_action: none. Scope released.
 
 ## Active Task — GlassSelect trigger background
 
