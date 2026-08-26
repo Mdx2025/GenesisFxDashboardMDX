@@ -82,6 +82,7 @@
 }
 .sidebar-logout .nav-btn:hover {
   background: transparent;
+  border-color: transparent;
   color: #a0a0a0;
 }
 

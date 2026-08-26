@@ -1,6 +1,39 @@
 # Website Working State
 <!-- website-delivery-state -->
 
+## Coordination — shared worktree rules (all agents)
+
+This checkout is used simultaneously by several agents and git authorship is
+identical for all of them, so authorship cannot tell us apart. Before touching a
+file, claim it here.
+
+- claim first: open an `## Active Task` block with `owner`, `status: in-progress`
+  and an explicit `scope_lock` (exact paths) before the first edit.
+- never `git add -A`, `git add .`, `git stash`, `git checkout --` or
+  `git reset --hard` in this tree: another agent's uncommitted work is usually
+  live in it. Commit only the exact `src/` paths you named in your `scope_lock`.
+- `dist/` churn is local build noise and is not committed.
+- if a file you need shows up modified and it is outside your `scope_lock`,
+  stop and coordinate instead of committing it.
+
+### Live ownership snapshot — 2026-08-26
+
+- `star`: Challenges (`e1c6ebc`, `6500734`, `dbe421f` on `main`) plus in-flight
+  uncommitted edits in this tree: `src/components/ui/ModeToggle.css`,
+  `src/components/ui/ModeToggle.tsx`, `src/pages/AcademyPage.tsx`. Do not touch.
+- `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
+  awaiting assignment.
+
+## Active Task — Sidebar idle nav borders
+
+- task_id: `genesis-sidebar-idle-border-20260826`
+- owner: `artemis`
+- status: `in-progress`
+- scope_lock: `src/components/ui/NavButton.css`, `src/components/dashboard/Sidebar.css`
+- request: inactive sidebar items must not show their border; the border appears
+  on hover only. Active item keeps its current border.
+- next_exact_action: build + visual QA, then await deploy approval.
+
 ## Active Task — My Streaming Figma implementation
 
 - task_id: `genesis-my-streaming-figma-20260821`
