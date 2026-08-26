@@ -28,11 +28,16 @@ file, claim it here.
 
 - task_id: `genesis-sidebar-idle-border-20260826`
 - owner: `artemis`
-- status: `in-progress`
+- status: `done`
 - scope_lock: `src/components/ui/NavButton.css`, `src/components/dashboard/Sidebar.css`
 - request: inactive sidebar items must not show their border; the border appears
   on hover only. Active item keeps its current border.
-- next_exact_action: build + visual QA, then await deploy approval.
+- delivery: commit `045dd59` on `main`; Dokploy `PFJVX3m89vh3YL2nVKU5N` deployment
+  `zvHgiBYKsTPbqgD54W0G6` done.
+- production_validation: served bundle `assets/index-CxRGgNKV.css` has
+  `.nav-btn{...border:1px solid transparent...}` and
+  `.nav-btn:hover{...border-color:#0d1e18}`; old `border:1px solid #0d1e18` absent.
+- next_exact_action: none. Scope released.
 
 ## Active Task — My Streaming Figma implementation
 
