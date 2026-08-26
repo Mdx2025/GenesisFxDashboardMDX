@@ -28,10 +28,15 @@ file, claim it here.
 
 - task_id: `genesis-glassselect-bg-20260826`
 - owner: `artemis`
-- status: `in-progress`
+- status: `done`
 - scope_lock: `src/app.css` (token `--color-gfx-surface-select`, dark theme only)
 - request: GlassSelect trigger background to `#0C1311`, border unchanged.
-- next_exact_action: build, then await deploy approval.
+- delivery: commit `2aa9e88` on `main`; Dokploy `PFJVX3m89vh3YL2nVKU5N` deployment
+  `LTL13TBL40jR6qgRSJ_Zq` done.
+- production_validation: served bundle `assets/index-CI5aFCQd.css` has
+  `--color-gfx-surface-select:#0c1311`; old `#09241C` absent; light theme `#fff`
+  unchanged.
+- next_exact_action: none. Scope released.
 
 ## Active Task — Sidebar idle nav borders
 
