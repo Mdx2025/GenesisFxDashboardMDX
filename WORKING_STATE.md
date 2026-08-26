@@ -28,7 +28,7 @@ file, claim it here.
 
 - task_id: `genesis-modal-mobile-legibility-20260826`
 - owner: `artemis`
-- status: `in-progress`
+- status: `done`
 - scope_lock: `src/components/modals/ClaimUsernameModal.tsx`,
   `src/components/modals/ShareAccountModal.tsx`,
   `src/components/modals/AiCoachModal.tsx`,
@@ -47,9 +47,17 @@ file, claim it here.
 - delivery: `ClaimUsernameModal` and `ShareAccountModal` converted to responsive
   flow layout with desktop metrics preserved (base = mobile, `sm:` = original
   desktop values); `AiCoachModal` mobile disclaimer raised to `text-xs`.
-- production_validation: pending.
-- next_exact_action: build, await explicit deploy OK, then commit scope_lock
-  paths, push, redeploy `PFJVX3m89vh3YL2nVKU5N`, verify served bundle.
+- production_validation: commit `38020b8` pushed to main, Dokploy deployment
+  `QVVqrg98-uB1xJdFwSAp1` -> `done`. Served bundle `assets/index-Buf2RJrL.js`
+  contains `data-claim-username-surface`, `sm:pt-[108px]`, `sm:pl-[33.84px]`
+  and `sm:mt-[78.84px]`.
+- next_exact_action: none. Closed.
+- deferred (not in scope, would move screens owned by `star`): the global type
+  scale in `src/app.css` still floors below 12px (`caption`/`eyebrow` 9px,
+  `h6`/`tab` 10px, `label`/`body2` 11px, `sidebar-label` 11.2px), so
+  `InternalTransferModalFrame`'s own description renders at 9px on mobile, and
+  that frame's default `contentClassName` (`px-[78px] pb-[54px] pt-8`) is not
+  responsive.
 
 ## Active Task — Academy glossary two-column mobile
 
