@@ -1,5 +1,5 @@
 import { Fragment, type ReactNode } from 'react'
-import { GlassCard, GlowEllipse, GlowButton } from '@/components/ui'
+import { GlowButton } from '@/components/ui'
 
 function BackArrowIcon() {
   return (
@@ -56,69 +56,65 @@ export function ProfileHeader({
   ctaIcon,
   onCtaClick,
 }: ProfileHeaderProps) {
+  // Below lg the header stacks into rows sharing the page's left edge; from lg it
+  // collapses into a single row with the meta line under the name.
   return (
-    <GlassCard variant="heavy" divider="none" rounded="19px" className="overflow-hidden">
-      <GlowEllipse className="left-[3%] -top-[8rem]" />
+    <div className="grid items-center gap-x-3 sm:gap-x-4 gap-y-3 grid-cols-[auto_auto_1fr] lg:grid-cols-[auto_auto_auto_1fr_auto] lg:gap-y-1.5">
+      <button
+        type="button"
+        aria-label={backLabel}
+        onClick={onBack}
+        className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 text-gfx-neutral-500 flex items-center justify-center cursor-pointer transition-colors hover:bg-gfx-green-150 hover:text-white lg:row-start-1 lg:row-span-2 lg:col-start-1"
+      >
+        <BackArrowIcon />
+      </button>
 
-      {/* Below lg the header stacks into rows that all share the card's left edge;
-          from lg it collapses into a single row with the meta line under the name. */}
-      <div className="relative z-10 p-4 sm:p-5 xl:px-7 xl:py-6 grid items-center gap-x-3 sm:gap-x-4 gap-y-3 grid-cols-[auto_auto_1fr] lg:grid-cols-[auto_auto_auto_1fr_auto] lg:gap-y-1.5">
-        <button
-          type="button"
-          aria-label={backLabel}
-          onClick={onBack}
-          className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 text-gfx-neutral-500 flex items-center justify-center cursor-pointer transition-colors hover:bg-gfx-green-150 hover:text-white lg:row-start-1 lg:row-span-2 lg:col-start-1"
-        >
-          <BackArrowIcon />
-        </button>
+      <div
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center overflow-hidden border border-gfx-green-300/40 lg:row-start-1 lg:row-span-2 lg:col-start-2"
+        style={{ background: 'linear-gradient(145deg, var(--color-gfx-green-200) 0%, var(--color-gfx-green-900) 100%)' }}
+      >
+        <span className="text-white text-base sm:text-lg font-acid font-medium tracking-wide uppercase">{initials}</span>
+      </div>
 
-        <div
-          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center overflow-hidden border border-gfx-green-300/40 lg:row-start-1 lg:row-span-2 lg:col-start-2"
-          style={{ background: 'linear-gradient(145deg, var(--color-gfx-green-200) 0%, var(--color-gfx-green-900) 100%)' }}
-        >
-          <span className="text-white text-base sm:text-lg font-acid font-medium tracking-wide uppercase">{initials}</span>
+      <h1 className="text-white text-h1 font-normal leading-[1.05] min-w-0 lg:row-start-1 lg:col-start-3">{name}</h1>
+
+      {badges && (
+        <div className="col-span-3 flex flex-wrap items-center gap-2 lg:col-span-1 lg:row-start-1 lg:col-start-4 lg:justify-self-start">
+          {badges}
         </div>
+      )}
 
-        <h1 className="text-white text-h1 font-normal leading-[1.05] min-w-0 lg:row-start-1 lg:col-start-3">{name}</h1>
+      {meta && meta.length > 0 && (
+        <p className="col-span-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-gfx-neutral-500 text-sm font-acid lg:col-span-2 lg:row-start-2 lg:col-start-3">
+          {meta.map((item, i) => (
+            <Fragment key={item}>
+              {i > 0 && <span aria-hidden="true" className="w-1 h-1 rounded-full bg-current opacity-50" />}
+              <span>{item}</span>
+            </Fragment>
+          ))}
+        </p>
+      )}
 
-        {badges && (
-          <div className="col-span-3 flex flex-wrap items-center gap-2 lg:col-span-1 lg:row-start-1 lg:col-start-4 lg:justify-self-start">
-            {badges}
-          </div>
+      <div className="col-span-3 flex items-center gap-3 lg:col-span-1 lg:row-start-1 lg:row-span-2 lg:col-start-5">
+        {onToggleFavorite && (
+          <button
+            type="button"
+            aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
+            aria-pressed={favorite}
+            onClick={onToggleFavorite}
+            className={`w-11 h-11 rounded-full border bg-gfx-green-800 flex items-center justify-center flex-shrink-0 cursor-pointer transition-colors ${
+              favorite
+                ? 'border-gfx-gold text-gfx-gold'
+                : 'border-gfx-green-200 text-gfx-neutral-500 hover:border-gfx-green-300 hover:text-white'
+            }`}
+          >
+            <StarIcon filled={favorite} />
+          </button>
         )}
-
-        {meta && meta.length > 0 && (
-          <p className="col-span-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-gfx-neutral-500 text-sm font-acid lg:col-span-2 lg:row-start-2 lg:col-start-3">
-            {meta.map((item, i) => (
-              <Fragment key={item}>
-                {i > 0 && <span aria-hidden="true" className="w-1 h-1 rounded-full bg-current opacity-50" />}
-                <span>{item}</span>
-              </Fragment>
-            ))}
-          </p>
-        )}
-
-        <div className="col-span-3 flex items-center gap-3 lg:col-span-1 lg:row-start-1 lg:row-span-2 lg:col-start-5">
-          {onToggleFavorite && (
-            <button
-              type="button"
-              aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
-              aria-pressed={favorite}
-              onClick={onToggleFavorite}
-              className={`w-11 h-11 rounded-full border bg-gfx-green-800 flex items-center justify-center flex-shrink-0 cursor-pointer transition-colors ${
-                favorite
-                  ? 'border-gfx-gold text-gfx-gold'
-                  : 'border-gfx-green-200 text-gfx-neutral-500 hover:border-gfx-green-300 hover:text-white'
-              }`}
-            >
-              <StarIcon filled={favorite} />
-            </button>
-          )}
-          <div className="flex-1 sm:flex-none sm:w-[11.25rem]">
-            <GlowButton label={ctaLabel} icon={ctaIcon} width="100%" height={44} onClick={onCtaClick} />
-          </div>
+        <div className="flex-1 sm:flex-none sm:w-[11.25rem]">
+          <GlowButton label={ctaLabel} icon={ctaIcon} width="100%" height={44} onClick={onCtaClick} />
         </div>
       </div>
-    </GlassCard>
+    </div>
   )
 }
