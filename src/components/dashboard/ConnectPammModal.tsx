@@ -4,7 +4,7 @@ import { GlowButton, GlassCard, GlassInput, GlowEllipse } from '@/components/ui'
 
 function InfoIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="flex-shrink-0">
       <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M9 12V9" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M9 6H9.00833" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -110,15 +110,15 @@ export function ConnectPammModal({
     >
       <div
         ref={modalRef}
-        className="w-[1290px] max-w-[95vw] max-h-[90vh]"
+        className="w-[1290px] max-w-[95vw] max-h-[90vh] flex"
       >
-        <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden !bg-gfx-green-800">
+        <GlassCard variant="light" divider="none" rounded="19px" className="relative flex flex-col w-full max-h-[90vh] overflow-hidden !bg-gfx-green-800">
           <GlowEllipse className="left-1/2 -translate-x-1/2 bottom-[-200px]" />
 
           {/* Close button */}
           <button
             onClick={handleClose}
-            className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[40px] top-[33px] w-6 h-6"
+            className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-5 top-5 lg:right-[40px] lg:top-[33px] w-6 h-6"
             aria-label="Close modal"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -126,12 +126,12 @@ export function ConnectPammModal({
             </svg>
           </button>
 
-          <div className="relative z-10 flex min-h-[719px]">
+          <div className="relative z-10 flex-1 min-h-0 overflow-y-auto flex flex-col lg:flex-row lg:min-h-[719px]">
           {/* Left Column — Strategy Info */}
-          <div className="w-[534px] flex-shrink-0 flex flex-col items-center relative">
+          <div className="w-full lg:w-[534px] flex-shrink-0 flex flex-col items-center relative">
             {/* Glass card background */}
             <div
-              className="absolute left-[32px] top-[33px] right-0 bottom-[33px] rounded-lg border-[1.167px] border-[rgba(255,255,255,0.06)] overflow-hidden"
+              className="absolute inset-x-4 inset-y-4 lg:left-[32px] lg:top-[33px] lg:right-0 lg:bottom-[33px] rounded-lg border-[1.167px] border-[rgba(255,255,255,0.06)] overflow-hidden"
               style={{ boxShadow: '0px 9.34px 37.34px rgba(0, 0, 0, 0.3)' }}
               aria-hidden="true"
             >
@@ -140,36 +140,36 @@ export function ConnectPammModal({
             </div>
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col items-center pt-[55px] px-10 w-full">
+            <div className="relative z-10 flex flex-col items-center pt-14 pb-10 px-8 lg:pt-[55px] lg:pb-0 lg:px-10 w-full">
               {/* Avatar */}
-              <div className="w-[150px] h-[150px] rounded-full bg-gfx-green-900 flex items-center justify-center">
-                <span className="text-white text-4xl font-acid">{strategyInitials}</span>
+              <div className="w-24 h-24 lg:w-[150px] lg:h-[150px] rounded-full bg-gfx-green-900 flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-2xl lg:text-4xl font-acid">{strategyInitials}</span>
               </div>
 
               {/* Strategy Name */}
-              <h3 className="text-white text-4xl font-acid font-normal mt-6 text-center">{strategyName}</h3>
+              <h3 className="text-white text-2xl lg:text-4xl font-acid font-normal mt-4 lg:mt-6 text-center">{strategyName}</h3>
 
               {/* AUM / ROI Cards */}
-              <div className="flex gap-3 mt-8 w-full max-w-[350px]">
-                <div className="flex-1 h-[118px] rounded-md border border-gfx-green-300 bg-gfx-green-800 flex flex-col items-center justify-center">
-                  <span className="text-gfx-green-300 text-base font-acid font-medium leading-6">Aum</span>
-                  <span className="text-gfx-green-300 text-2xl font-acid mt-1">{aum}</span>
+              <div className="flex gap-3 mt-6 lg:mt-8 w-full max-w-[350px]">
+                <div className="flex-1 min-w-0 h-24 lg:h-[118px] rounded-md border border-gfx-green-300 bg-gfx-green-800 flex flex-col items-center justify-center">
+                  <span className="text-gfx-green-300 text-sm lg:text-base font-acid font-medium leading-6">Aum</span>
+                  <span className="text-gfx-green-300 text-xl lg:text-2xl font-acid mt-1">{aum}</span>
                 </div>
-                <div className="flex-1 h-[118px] rounded-md border border-gfx-green-300 bg-gfx-green-800 flex flex-col items-center justify-center">
-                  <span className="text-gfx-green-300 text-base font-acid font-medium leading-6">ROI</span>
-                  <span className="text-gfx-green-300 text-2xl font-acid mt-1">{roi}</span>
+                <div className="flex-1 min-w-0 h-24 lg:h-[118px] rounded-md border border-gfx-green-300 bg-gfx-green-800 flex flex-col items-center justify-center">
+                  <span className="text-gfx-green-300 text-sm lg:text-base font-acid font-medium leading-6">ROI</span>
+                  <span className="text-gfx-green-300 text-xl lg:text-2xl font-acid mt-1">{roi}</span>
                 </div>
               </div>
 
               {/* Details List */}
-              <div className="flex flex-col gap-3.5 mt-10 w-full max-w-[350px]">
+              <div className="flex flex-col gap-3.5 mt-8 lg:mt-10 w-full max-w-[350px]">
                 {details.map((d) => (
-                  <div key={d.label} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-gfx-neutral-400 text-base font-acid font-medium leading-6">{d.label}</span>
+                  <div key={d.label} className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="text-gfx-neutral-400 text-sm lg:text-base font-acid font-medium leading-6 truncate">{d.label}</span>
                       <InfoIcon />
                     </div>
-                    <span className="text-white text-base font-acid font-medium leading-6">{d.value}</span>
+                    <span className="text-white text-sm lg:text-base font-acid font-medium leading-6 whitespace-nowrap">{d.value}</span>
                   </div>
                 ))}
               </div>
@@ -177,17 +177,17 @@ export function ConnectPammModal({
           </div>
 
           {/* Right Column — Investment Form */}
-          <div className="flex-1 flex flex-col pt-[106px] pr-[75px] pl-[75px]">
-            <h2 className="text-white text-4xl font-acid font-normal">Connect to PAMM</h2>
+          <div className="flex-1 flex flex-col px-6 pt-2 pb-8 lg:pt-[106px] lg:pb-0 lg:px-[75px]">
+            <h2 className="text-white text-2xl lg:text-4xl font-acid font-normal text-center lg:text-left">Connect to PAMM</h2>
 
             {/* Available Balance */}
-            <div className="mt-10 h-[50px] rounded-2xl bg-gfx-green-100 border border-gfx-neutral-350 flex items-center justify-between px-4.5">
-              <span className="text-gfx-neutral-400 text-base font-acid">Available Balance</span>
-              <span className="text-white text-base font-acid">{availableBalance}</span>
+            <div className="mt-6 lg:mt-10 h-[50px] rounded-2xl bg-gfx-green-100 border border-gfx-neutral-350 flex items-center justify-between px-4.5">
+              <span className="text-gfx-neutral-400 text-sm lg:text-base font-acid">Available Balance</span>
+              <span className="text-white text-sm lg:text-base font-acid">{availableBalance}</span>
             </div>
 
             {/* Investment Input */}
-            <div className="mt-9">
+            <div className="mt-6 lg:mt-9">
               <GlassInput
                 label="Investment"
                 type="number"
@@ -206,7 +206,7 @@ export function ConnectPammModal({
             </div>
 
             {/* Checkboxes */}
-            <div className="mt-10 flex flex-col gap-5">
+            <div className="mt-6 lg:mt-10 flex flex-col gap-5">
               <label className="flex items-start gap-3.5 cursor-pointer">
                 <button
                   onClick={() => setAgreedTerms(!agreedTerms)}
@@ -220,7 +220,7 @@ export function ConnectPammModal({
                     </svg>
                   )}
                 </button>
-                <span className="text-gfx-neutral-400 text-base font-acid leading-6">
+                <span className="text-gfx-neutral-400 text-sm lg:text-base font-acid leading-6">
                   I have read and agree to the PAMM investment agreement
                 </span>
               </label>
@@ -238,14 +238,14 @@ export function ConnectPammModal({
                     </svg>
                   )}
                 </button>
-                <span className="text-gfx-neutral-400 text-base font-acid leading-6">
+                <span className="text-gfx-neutral-400 text-sm lg:text-base font-acid leading-6">
                   I acknoweledge that investments in PAMM strategies carry risk. PAst perfomance does not guarantee future results.
                 </span>
               </label>
             </div>
 
             {/* Invest Now button */}
-            <div className="mt-10">
+            <div className="mt-8 lg:mt-10">
               <GlowButton
                 label="Invest Now"
                 width="100%"
