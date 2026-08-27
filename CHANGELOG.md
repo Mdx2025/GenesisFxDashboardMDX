@@ -2,6 +2,10 @@
 
 ## 2026-08-27
 
+- Made the Settings `Theme` control actually change the theme. `Light` / `Dark` / `Auto` only moved a local index that no one read, so the palette never changed and the choice was lost on reload. The three options now drive the same stored preference the topbar switch uses, `Auto` follows the operating system and repaints live when the system flips, and the pre-paint bootstrap in `index.html` resolves `Auto` so the page no longer flashes dark for a light-system visitor. The topbar switch and the Settings options now read from one source and stay in sync in both directions.
+
+- Levelled the Settings `Theme` options. The selected option renders as a `GlowButton` and the rest as `SparkleButton`, so the selected pill was 38px tall against 48px (46px in light theme) for the others, and the row resized as the selection moved. All three options now share one 96×48 box in both themes.
+
 - Restored the Portfolio Equity line chart on TradeLocker account details. The card stretched to its Account Details sibling, but its chart wrapper asked for `h-full` inside an auto-height parent, so the responsive container resolved to zero height and left an empty surface. The card now lays out as a column and the chart claims the remaining space with a height floor that also holds on mobile, where the card has no sibling to stretch it.
 
 - Replaced the cramped Explore Markets `ModeToggle` with the purpose-built market category rail: a stable `For you` pill, 28px category spacing, asset divider, and touch-scrollable overflow with the native scrollbar hidden.

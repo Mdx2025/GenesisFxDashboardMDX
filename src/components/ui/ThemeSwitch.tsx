@@ -1,15 +1,8 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import gsap from 'gsap'
+import { useThemePreference, type ResolvedTheme } from '@/hooks/useThemePreference'
 import './ThemeSwitch.css'
-
-type Theme = 'light' | 'dark'
-
-const THEME_STORAGE_KEY = 'genesis-fx-theme'
-
-function readTheme(): Theme {
-  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
-}
 
 function MoonIcon() {
   return (
@@ -82,7 +75,7 @@ function ReferenceGradientGlow() {
 }
 
 export function ThemeSwitch() {
-  const [theme, setTheme] = useState<Theme>(readTheme)
+  const { resolved: theme, setPreference } = useThemePreference()
   const buttonRef = useRef<HTMLButtonElement>(null)
   const knobRef = useRef<HTMLSpanElement>(null)
   const darkLayerRef = useRef<HTMLSpanElement>(null)
@@ -137,15 +130,8 @@ export function ThemeSwitch() {
     }
   }, [])
 
-  function applyTheme(nextTheme: Theme) {
-    document.documentElement.dataset.theme = nextTheme
-    document.documentElement.style.colorScheme = nextTheme
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme)
-    setTheme(nextTheme)
-  }
-
   function handleToggle() {
-    const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark'
+    const nextTheme: ResolvedTheme = theme === 'dark' ? 'light' : 'dark'
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const button = buttonRef.current
     const bloom = bloomRef.current
@@ -153,7 +139,7 @@ export function ThemeSwitch() {
     timelineRef.current?.kill()
 
     if (reduceMotion || !button || !bloom) {
-      applyTheme(nextTheme)
+      setPreference(nextTheme)
       return
     }
 
@@ -179,7 +165,7 @@ export function ThemeSwitch() {
       .to(button, { scale: 0.94, duration: 0.11, ease: 'power2.in' }, 0)
       .to(button, { scale: 1, duration: 0.32, ease: 'back.out(2.1)' }, 0.11)
       .to(bloom, { opacity: 0.48, scale: 0.72, duration: 0.28, ease: 'power2.out' }, 0)
-      .call(() => applyTheme(nextTheme), [], 0.13)
+      .call(() => setPreference(nextTheme), [], 0.13)
       .to(bloom, { opacity: 0, scale: 1.55, duration: 0.58, ease: 'power2.out' }, 0.16)
   }
 

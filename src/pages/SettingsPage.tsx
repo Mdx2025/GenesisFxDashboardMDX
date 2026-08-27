@@ -7,8 +7,20 @@ import { ChangeEmailModal } from '@/components/modals/ChangeEmailModal'
 import { CloseAccountModal } from '@/components/modals/CloseAccountModal'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { useSidebar } from '@/layouts/RootLayout'
+import { useThemePreference, type ThemePreference } from '@/hooks/useThemePreference'
 
 const TABS = ['Profile', 'Verification', 'Rewards', 'Support', 'Security', 'Settings'] as const
+
+const THEME_OPTIONS: { label: string; value: ThemePreference }[] = [
+  { label: 'Light', value: 'light' },
+  { label: 'Dark', value: 'dark' },
+  { label: 'Auto', value: 'auto' },
+]
+
+// Selected and unselected options are two different button components, so the box
+// is pinned here to keep the segmented control from resizing as selection moves.
+const THEME_OPTION_WIDTH = 96
+const THEME_OPTION_HEIGHT = 48
 
 function CameraAddIcon() {
   return (
@@ -617,7 +629,7 @@ function ChinaFlag() {
 
 function SettingsTab() {
   const [aiCoachEnabled, setAiCoachEnabled] = useState(true)
-  const [themeIndex, setThemeIndex] = useState(1)
+  const { preference: themePreference, setPreference: selectTheme } = useThemePreference()
   const [showChangePicture, setShowChangePicture] = useState(false)
   const [showChangePw, setShowChangePw] = useState(false)
   const [showChangeEmail, setShowChangeEmail] = useState(false)
@@ -667,11 +679,24 @@ function SettingsTab() {
                     <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    {['Light', 'Dark', 'Auto'].map((theme, i) =>
-                      themeIndex === i ? (
-                        <GlowButton key={theme} label={theme} width={90} height={38} fontSize={14} />
+                    {THEME_OPTIONS.map(({ label, value }) =>
+                      themePreference === value ? (
+                        <GlowButton
+                          key={value}
+                          label={label}
+                          width={THEME_OPTION_WIDTH}
+                          height={THEME_OPTION_HEIGHT}
+                          onClick={() => selectTheme(value)}
+                        />
                       ) : (
-                        <SparkleButton key={theme} onClick={() => setThemeIndex(i)}>{theme}</SparkleButton>
+                        <SparkleButton
+                          key={value}
+                          className="px-3"
+                          style={{ width: THEME_OPTION_WIDTH, height: THEME_OPTION_HEIGHT }}
+                          onClick={() => selectTheme(value)}
+                        >
+                          {label}
+                        </SparkleButton>
                       )
                     )}
                   </div>

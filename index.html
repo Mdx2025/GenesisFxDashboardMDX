@@ -8,6 +8,9 @@
       // Apply the saved theme before React paints to avoid a flash of the wrong palette.
       (function () {
         var savedTheme = localStorage.getItem('genesis-fx-theme')
+        if (savedTheme === 'auto') {
+          savedTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        }
         var theme = savedTheme === 'light' ? 'light' : 'dark'
         document.documentElement.dataset.theme = theme
         document.documentElement.style.colorScheme = theme
