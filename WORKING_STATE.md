@@ -30,6 +30,53 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Challenge drawdown uses canonical glass banner
+
+- task_id: `genesis-challenge-details-glass-banner-20260827`
+- owner: `star`
+- status: `ready-to-integrate`
+- scope_lock: `src/components/ui/ChallengeDetails.tsx`, `src/app.css`,
+  `WORKING_STATE.md`, `CHANGELOG.md`,
+  `e2e/challenge-details-glass-banner-qa.mjs`
+- request: TheZaya, Discord `#star` — the drawdown banner on
+  `/challenges/details-single-page` must use the canonical `GlassBannerCard`
+  component.
+- design_route: `surface=dashboard`, `archetype=analytics`,
+  `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot +
+  local component system + production route`, `style=existing GenesisFX
+  green-glass dashboard thesis`.
+- visual_thesis: preserve the drawdown hierarchy, values, progress semantics
+  and responsive geometry while replacing its duplicate surface implementation
+  with the established glass-banner border, glow and texture treatment.
+- dials: `design_variance=1`, `motion_intensity=1`, `visual_density=6`,
+  `art_direction=3`, `implementation_clarity=10`, `image_usage_priority=1`,
+  `spacing_generosity=4`.
+- quality_contract: WCAG 2.2 AA; no text below 12px; normal text >=4.5:1 and
+  meaningful UI >=3:1; no clipping, overlap or horizontal overflow at
+  360/390/768/1440; existing reading order and progress semantics preserved;
+  build + computed typography/contrast + structured browser check + axe when
+  available; zero relevant runtime errors or failed requests.
+- highest_risk: resolved — the bespoke glow layers were removed rather than
+  nested, and the 360px gate contains both metric columns without clipping.
+- asset_manifest: `not_applicable` — the component reuses the canonical local
+  `GlassBannerCard` glow asset; the supplied screenshot is geometry evidence.
+- implementation: `ChallengeDrawdownCard` now renders `GlassBannerCard` with
+  its original 19px radius, 270px minimum height and responsive insets. The
+  duplicate radial/dotted glow layers are gone; border, glow image and ellipse
+  come from the canonical component. The progress bar exposes a stable QA hook.
+  `--color-gfx-bullish-emphasis` preserves the current dark green and maps to
+  an AA-compliant deep green in light theme.
+- local_validation: production build passed (`888` modules, `16.55s`). Remote
+  Playwright gate passed dark 360/390/768/1440 and light 390/1440: exactly one
+  canonical banner, gradient border present, canonical glow visible only in
+  dark theme, `20%` progress retained, no clipping/overflow/tiny text, zero
+  runtime errors, zero failed responses, and axe `0` violations. Label/value
+  contrast is `7.45/18.8/8.56:1` dark and `9.38/21/5.31:1` light.
+- evidence: `e2e/challenge-details-glass-banner-qa.mjs` and
+  `/home/clawd/genesis-challenge-details-glass-banner-preview.png`.
+- next_exact_action: commit the scoped files, fast-forward `main`, deploy with
+  Dokploy and rerun the same production gate.
+
 ## Active Task — Partner marketing feature swiper
 
 - task_id: `genesis-partner-marketing-swiper-20260827`

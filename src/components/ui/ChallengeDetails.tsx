@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { GlassCard } from './GlassCard'
+import { GlassBannerCard } from './GlassBannerCard'
 import { PeriodPill } from './PeriodPill'
 
 interface ChallengeDrawdownCardProps {
@@ -11,7 +12,7 @@ interface ChallengeDrawdownCardProps {
   progress?: number
 }
 
-/** Challenge drawdown summary from the GenesisFX challenge details pattern. */
+/** Challenge drawdown summary on the canonical GenesisFX banner surface. */
 export function ChallengeDrawdownCard({
   amount,
   equity,
@@ -22,19 +23,13 @@ export function ChallengeDrawdownCard({
   const boundedProgress = Math.min(100, Math.max(0, progress))
 
   return (
-    <GlassCard
-      variant="light"
-      divider="none"
+    <GlassBannerCard
       rounded="19px"
-      className="challenge-drawdown-card min-h-[16.75rem] overflow-hidden"
+      className="challenge-drawdown-card min-h-[16.75rem]"
+      contentClassName="relative flex min-h-[16.75rem] flex-col justify-between px-5 py-7 sm:px-8 sm:py-10"
+      data-challenge-drawdown-banner
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -left-[8%] top-[-120%] size-[32rem] rounded-full bg-gfx-glow-green opacity-35 blur-[150px]" />
-        <div className="absolute left-[21%] top-[-30%] h-[22rem] w-[36rem] opacity-25 [background-image:radial-gradient(circle,#10bc83_1px,transparent_1.4px)] [background-size:10px_10px] [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_70%)]" />
-      </div>
-
-      <div className="relative flex min-h-[16.75rem] flex-col justify-between px-5 py-7 sm:px-8 sm:py-10">
-        <div className="flex items-start justify-between gap-8">
+      <div className="flex items-start justify-between gap-8">
           <div>
             <p className="font-acid text-xs font-bold uppercase leading-[15.68px] tracking-[2.323px] text-gfx-neutral-500">
               Drawdown to breach floor
@@ -47,7 +42,7 @@ export function ChallengeDrawdownCard({
             <p className="font-acid text-xs font-bold uppercase leading-[15.68px] tracking-[2.323px] text-gfx-neutral-500">
               Buffer remaining
             </p>
-            <p className="mt-4 font-acid text-4xl font-normal leading-none text-gfx-bullish-light sm:text-[2.25rem]">
+            <p className="mt-4 font-acid text-4xl font-normal leading-none text-gfx-bullish-emphasis sm:text-[2.25rem]">
               {bufferRemaining}
             </p>
           </div>
@@ -58,15 +53,15 @@ export function ChallengeDrawdownCard({
             <div
               className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#40c99c] via-[#10bc83] to-[#ecfff9] shadow-[0_0_14px_4px_rgba(207,242,230,0.58)]"
               style={{ width: `${boundedProgress}%` }}
+              data-challenge-drawdown-progress
             />
           </div>
           <div className="mt-5 flex items-center justify-between gap-6 font-acid text-sm leading-[18.8px] text-gfx-neutral-400">
             <span>Equity {equity}</span>
             <span className="text-right">Breach floor (10% DD) {breachFloor}</span>
           </div>
-        </div>
       </div>
-    </GlassCard>
+    </GlassBannerCard>
   )
 }
 

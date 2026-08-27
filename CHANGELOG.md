@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Replaced the Challenge Details drawdown banner's bespoke `GlassCard` surface and duplicate glow layers with the canonical `GlassBannerCard`. Its drawdown values, progress bar, responsive spacing and metric semantics are unchanged; the banner now inherits the same border, glow asset and themed glass treatment as the rest of GenesisFX. The `100%` buffer value now uses a theme-aware bullish emphasis token so the green stays bright in dark mode and reaches AA contrast in light mode.
+
 - Turned the four-dot Partner marketing card into a real four-item Swiper. The existing `Real Time Statistics` card was static even though its pagination implied more content; it now supports touch/pointer drag, clickable 24px dot targets and arrow-key navigation across statistics, creative assets, landing pages and referral-link tools. The original 242px green-glass composition is preserved, the CTA routes to the marketing library, motion respects reduced-motion preferences, and light-theme accents now retain AA contrast.
 
 - Removed the card surface from the three GenSocial details headers. Unifying them into `ProfileHeader` earlier today also wrapped them in a `GlassCard` with a glow behind the avatar, which read as a second banner stacked above the page's real content cards. The header now sits directly on the page background again, and dropping the card's padding puts its left edge back in line with the cards below it — measured at `x=335` on desktop and `x=16` on a 393px phone for both. The responsive grid is untouched: this is a surface change only, so the actions that used to paint off-screen on a phone stay reachable.
