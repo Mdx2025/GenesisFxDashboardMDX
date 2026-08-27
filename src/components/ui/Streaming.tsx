@@ -44,7 +44,7 @@ export function StreamCard({
 }) {
   const owner = variant === 'owner'
   return (
-    <article className={`w-full max-w-[381px] ${className}`} data-stream-card data-stream-card-variant={variant} data-followed={followed}>
+    <article className={`w-full max-w-none md:max-w-[381px] ${className}`} data-stream-card data-stream-card-variant={variant} data-followed={followed}>
       <div className="relative h-[220px] overflow-hidden rounded-[20px] bg-[#09241C] text-[#808080]" data-stream-card-media>
         <span className="absolute left-[14px] top-[14px] inline-flex h-[35px] items-center gap-1.5 rounded-[15px] bg-[#2A1411] px-[10px] text-sm leading-[18.8px] text-[#D46356]"><i className="size-1 rounded-full bg-[#D46356]" aria-hidden="true" />Live</span>
         {!owner && <span className="absolute right-[14px] top-[14px] inline-flex h-[30px] items-center gap-1.5 rounded-[30px] bg-[#0C1311] px-2 text-sm leading-[18.8px] text-[#808080]"><svg viewBox="0 0 14 14" className="size-3.5" fill="none" aria-hidden="true"><path d="m7 1.2 1.7 3.1 3.5.7-2.4 2.6.4 3.6L7 9.7l-3.2 1.5.4-3.6L1.8 5l3.5-.7L7 1.2Z" stroke="currentColor" strokeWidth="1.15" strokeLinejoin="round" /></svg>Feature</span>}

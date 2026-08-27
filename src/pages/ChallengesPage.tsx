@@ -859,9 +859,11 @@ export default function ChallengesPage() {
               onChange={setActiveTab}
             />
           </div>
-          <div className="flex items-center gap-3 flex-wrap">
-            <SearchInput placeholder="Search for" />
-            <StatusFilterMenu value={statusFilter} onChange={setStatusFilter} />
+          <div className="flex w-full flex-wrap items-center gap-3 lg:w-auto">
+            <div className="flex w-full items-center gap-3 lg:contents" data-challenge-search-filter-row>
+              <SearchInput className="min-w-0 flex-1 lg:w-auto lg:flex-none" placeholder="Search for" />
+              <StatusFilterMenu value={statusFilter} onChange={setStatusFilter} />
+            </div>
             <SparkleButton className="px-10" onClick={() => setPrizePoolOpen(true)}>
               <PrizePoolTrophyIcon />
               <span>Prize Pool</span>

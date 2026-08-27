@@ -1,0 +1,146 @@
+import { createRequire } from 'node:module'
+
+const require = createRequire('/home/clawd/.openclaw/skills/playwright-browser-automation/qa_check_layout.js')
+const { connectQaBrowser } = require('/home/clawd/.openclaw/workspace/scripts/qa-remote-browser.js')
+
+const baseUrl = process.env.BASE_URL || 'https://genesis-fx-dashboard.apps.mdxpreview.xyz'
+const browser = await connectQaBrowser({ url: baseUrl })
+const context = browser.contexts()[0] || await browser.newContext()
+const page = context.pages()[0] || await context.newPage()
+const runtimeErrors = []
+const failedResponses = []
+
+page.on('pageerror', error => runtimeErrors.push(error.message))
+page.on('response', response => {
+  if (response.status() >= 400 && !response.url().endsWith('/favicon.ico')) {
+    failedResponses.push({ status: response.status(), url: response.url() })
+  }
+})
+
+const round = value => Math.round(value * 100) / 100
+const rect = box => box ? { x: round(box.x), width: round(box.width), right: round(box.right) } : null
+
+async function gotoRoute(route, readySelector) {
+  await page.goto(baseUrl, { waitUntil: 'networkidle' })
+  await page.evaluate(nextRoute => {
+    window.history.pushState({}, '', nextRoute)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+  }, route)
+  await page.locator(readySelector).first().waitFor()
+}
+
+async function measureCard(cardSelector) {
+  return page.locator(cardSelector).first().evaluate(card => {
+    const parent = card.parentElement
+    const cardBox = card.getBoundingClientRect()
+    const parentBox = parent?.getBoundingClientRect()
+    return {
+      card: { x: cardBox.x, width: cardBox.width, right: cardBox.right },
+      parent: parentBox ? { x: parentBox.x, width: parentBox.width, right: parentBox.right } : null,
+      scrollWidth: card.scrollWidth,
+      clientWidth: card.clientWidth,
+      maxWidth: getComputedStyle(card).maxWidth,
+    }
+  })
+}
+
+async function inspectStreaming() {
+  await gotoRoute('/streaming', '[data-streaming-page]')
+  const tabs = page.locator('[data-streaming-tabs] button')
+  const states = []
+  for (const [index, name, selector] of [
+    [0, 'home', '[data-streaming-home] [data-stream-card]'],
+    [1, 'browse', '[data-streaming-browse] [data-stream-card]'],
+    [2, 'replays', '[data-replay-grid] [data-stream-card]'],
+    [3, 'following', '[data-streaming-cards-state] [data-stream-card]'],
+  ]) {
+    await tabs.nth(index).click()
+    await page.locator(selector).first().waitFor()
+    states.push({ name, ...(await measureCard(selector)) })
+  }
+  return states
+}
+
+async function inspectMyStreaming() {
+  await gotoRoute('/streaming/mystreaming', '[data-my-streaming-page]')
+  const tabs = page.locator('[data-my-streaming-tabs] button')
+  const states = []
+  for (const [index, name, selector] of [
+    [1, 'streams', '[data-channel-streams] [data-stream-card]'],
+    [2, 'replays', '[data-channel-replays] [data-stream-card]'],
+    [3, 'followers', '[data-channel-followers] [data-follower-card]'],
+  ]) {
+    await tabs.nth(index).click()
+    await page.locator(selector).first().waitFor()
+    states.push({ name, ...(await measureCard(selector)) })
+  }
+  return states
+}
+
+async function inspectChallengeActions() {
+  await gotoRoute('/challenges', '[aria-label="10X challenge accounts"]')
+  return page.evaluate(() => {
+    const search = document.querySelector('input[aria-label="Search accounts"]')
+    const filter = document.querySelector('button[aria-label="Filter by status"]')
+    const pageContent = search?.closest('.relative.px-4')
+    const contentStyle = pageContent ? getComputedStyle(pageContent) : null
+    const contentBox = pageContent?.getBoundingClientRect()
+    const searchBox = search?.parentElement?.getBoundingClientRect()
+    const filterBox = filter?.getBoundingClientRect()
+    return {
+      content: contentBox && contentStyle ? {
+        left: contentBox.left + parseFloat(contentStyle.paddingLeft),
+        right: contentBox.right - parseFloat(contentStyle.paddingRight),
+      } : null,
+      search: searchBox ? { x: searchBox.x, width: searchBox.width, right: searchBox.right } : null,
+      filter: filterBox ? { x: filterBox.x, width: filterBox.width, right: filterBox.right } : null,
+      gap: searchBox && filterBox ? filterBox.left - searchBox.right : null,
+    }
+  })
+}
+
+try {
+  const results = []
+  for (const viewport of [
+    { width: 360, height: 800 },
+    { width: 390, height: 844 },
+    { width: 414, height: 896 },
+    { width: 430, height: 932 },
+    { width: 768, height: 1024 },
+    { width: 1440, height: 960 },
+  ]) {
+    await page.setViewportSize(viewport)
+    results.push({
+      viewport,
+      streaming: await inspectStreaming(),
+      myStreaming: await inspectMyStreaming(),
+      challengeActions: await inspectChallengeActions(),
+      overflowX: await page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
+    })
+  }
+
+  const failures = []
+  for (const result of results) {
+    const mobile = result.viewport.width < 768
+    for (const state of [...result.streaming, ...result.myStreaming]) {
+      state.card = rect(state.card)
+      state.parent = rect(state.parent)
+      if (mobile && Math.abs(state.card.width - state.parent.width) > 1) failures.push(`${result.viewport.width}px ${state.name} card/parent mismatch: ${state.card.width}/${state.parent.width}`)
+      if (state.scrollWidth > state.clientWidth) failures.push(`${result.viewport.width}px ${state.name} internal overflow: ${state.scrollWidth}/${state.clientWidth}`)
+    }
+    if (mobile) {
+      const actions = result.challengeActions
+      if (Math.abs(actions.search.x - actions.content.left) > 1) failures.push(`${result.viewport.width}px search is not attached to content left`)
+      if (Math.abs(actions.filter.right - actions.content.right) > 1) failures.push(`${result.viewport.width}px filter is not attached to content right: ${actions.filter.right}/${actions.content.right}`)
+      if (Math.abs(actions.gap - 12) > 1) failures.push(`${result.viewport.width}px search/filter gap: ${actions.gap}`)
+    }
+    if (result.overflowX > 0) failures.push(`${result.viewport.width}px document overflow: ${result.overflowX}`)
+  }
+  if (runtimeErrors.length) failures.push(`runtime errors: ${JSON.stringify(runtimeErrors)}`)
+  if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
+
+  console.log(JSON.stringify({ baseUrl, results, runtimeErrors, failedResponses, failures }, null, 2))
+  if (failures.length) process.exitCode = 1
+} finally {
+  await browser.close()
+}

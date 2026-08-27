@@ -69,7 +69,7 @@ export function ChannelMetricCard({ label, value, icon }: { label: string; value
 
 export function MyStreamFollowerCard() {
   return (
-    <GlassCard variant="light" divider="white" glow={false} rounded="18.563px" className="h-[380px] w-full max-w-[374px] overflow-hidden" data-follower-card>
+    <GlassCard variant="light" divider="white" glow={false} rounded="18.563px" className="h-[380px] w-full max-w-none overflow-hidden md:max-w-[374px]" data-follower-card>
       <div className="flex h-full flex-col p-6">
         <div className="flex items-center gap-4"><span className="grid size-[56px] place-items-center rounded-full bg-gfx-green-800 text-lg text-white">KC</span><div><h2 className="text-base text-white">K Dizzy Capital 1.0</h2><p className="mt-1 text-sm text-gfx-neutral-500">0 users · $0.0k AUM</p></div></div>
         <div className="mt-7 flex items-end justify-between"><div><p className="text-sm text-gfx-neutral-500">ROI</p><p className="mt-1 text-[30px] leading-none text-gfx-green-300">194.12%</p></div><span className="text-sm text-gfx-neutral-500">148D</span></div>
