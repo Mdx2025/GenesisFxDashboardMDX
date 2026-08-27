@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Made 10X Challenge account cards fill the mobile content width through 430px while preserving the 374px design width from the `md` breakpoint. Compacted the narrow-card identity header to prevent its power values from being clipped at 360px.
+
 - Removed the empty 112px mobile Reset action reservation on Assets Management. The Reset row now exists only while filters are active, uses its natural 44px control height, and leaves a consistent 24px gap before Assets History.
 
 - Hid the fixed mobile tab bar whenever the sidebar drawer is open, restoring it automatically when the drawer closes while preserving the desktop sidebar.

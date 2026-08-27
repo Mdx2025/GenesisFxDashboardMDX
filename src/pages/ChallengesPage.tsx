@@ -336,22 +336,22 @@ function ChallengeAccountCard({ account, onView }: { account: ChallengeAccount; 
       divider="none"
       rounded="19px"
       role="article"
-      className="h-[25.75rem] w-full max-w-[23.375rem] overflow-hidden px-[1.5625rem] pt-[1.9375rem] pb-[2.1875rem]"
+      className="h-[25.75rem] w-full max-w-none overflow-hidden px-4 pt-[1.9375rem] pb-[2.1875rem] md:max-w-[23.375rem] md:px-[1.5625rem]"
       data-challenge-card
     >
       <div className="flex h-[3.9375rem] items-start">
-        <div className="flex size-[3.9375rem] shrink-0 items-center justify-center rounded-full bg-gfx-green-200 text-white font-acid text-base font-medium leading-6">
+        <div className="flex size-13 shrink-0 items-center justify-center rounded-full bg-gfx-green-200 text-white font-acid text-base font-medium leading-6 md:size-[3.9375rem]">
           {account.initials}
         </div>
 
-        <div className="ml-[1.1875rem] min-w-0 flex-1 pt-[0.3125rem]">
-          <div className="flex items-center gap-3">
+        <div className="ml-3 min-w-0 flex-1 pt-[0.3125rem] md:ml-[1.1875rem]">
+          <div className="flex items-center gap-2 md:gap-3">
             <h3 className="truncate text-white font-acid text-base font-medium leading-6">{account.name}</h3>
-            <span className="inline-flex h-7 shrink-0 items-center rounded-full bg-gfx-green-900 px-[0.9375rem] text-xs font-acid font-normal leading-[1.175rem] text-gfx-green-300">
+            <span className="inline-flex h-7 shrink-0 items-center rounded-full bg-gfx-green-900 px-2.5 text-xs font-acid font-normal leading-[1.175rem] text-gfx-green-300 md:px-[0.9375rem]">
               <span className="optical-text">{account.status}</span>
             </span>
           </div>
-          <div className="mt-[0.1875rem] flex items-center gap-[0.875rem] whitespace-nowrap text-gfx-neutral-500 font-acid text-base font-medium leading-6">
+          <div className="mt-[0.1875rem] flex items-center gap-2 whitespace-nowrap text-gfx-neutral-500 font-acid text-xs font-medium leading-6 min-[390px]:text-sm md:gap-[0.875rem] md:text-base">
             <span>{account.currentPower}</span>
             <span className="h-[1.25rem] w-px shrink-0 bg-gfx-green-900" aria-hidden="true" />
             <span>{account.targetPower}</span>
@@ -421,7 +421,7 @@ function MyChallengesContent({ onView, statusFilter }: { onView: () => void; sta
         </div>
       </GlassBannerCard>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,23.375rem),23.375rem))] gap-3" aria-label="10X challenge accounts">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-[repeat(auto-fit,minmax(min(100%,23.375rem),23.375rem))]" aria-label="10X challenge accounts">
         {visibleAccounts.map(account => (
           <ChallengeAccountCard key={account.id} account={account} onView={onView} />
         ))}
