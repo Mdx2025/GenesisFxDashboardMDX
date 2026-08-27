@@ -372,18 +372,18 @@ export default function CopyTradingPage() {
           <>
             {/* Profile Banner */}
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
-              <div className="relative flex items-center justify-between p-6 lg:p-8">
-                <div className="flex items-center gap-5">
-                  <div className="w-16 h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
+              <div className="relative flex flex-col lg:flex-row lg:items-center justify-between gap-5 lg:gap-4 p-5 lg:p-8">
+                <div className="flex items-center gap-4 lg:gap-5 min-w-0">
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0">
                     <span className="text-white text-2xl font-acid">M</span>
                   </div>
-                  <div>
-                    <h3 className="text-white text-2xl font-acid leading-normal">marcelo cedeno</h3>
-                    <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-6">Manage your copy trading strategies</p>
+                  <div className="min-w-0">
+                    <h3 className="text-white text-xl lg:text-2xl font-acid leading-normal truncate">marcelo cedeno</h3>
+                    <p className="text-gfx-neutral-500 text-sm lg:text-base font-acid font-medium leading-6">Manage your copy trading strategies</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-gfx-green-800 rounded-sm px-4 py-2 flex items-center gap-2.5">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4 flex-shrink-0">
+                  <div className="bg-gfx-green-800 rounded-sm self-start lg:self-auto px-4 py-2 flex items-center gap-2.5">
                     <WalletIcon />
                     <span className="text-gfx-neutral-400 text-sm font-acid">Social Wallet</span>
                     <span className="text-gfx-neutral-600 text-sm font-acid">$100.00</span>
@@ -393,6 +393,7 @@ export default function CopyTradingPage() {
                     icon={<PlusIcon />}
                     width={180}
                     height={44}
+                    className="!w-full lg:!w-[180px]"
                     onClick={() => setCreateStrategyOpen(true)}
                   />
                 </div>
@@ -411,7 +412,7 @@ export default function CopyTradingPage() {
             <GlassCard variant="light" divider="none" rounded="19px" className="relative overflow-hidden">
               <div className="relative">
                 {/* Dashboard Header */}
-                <div className="flex items-center justify-between p-6 lg:p-8 pb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 lg:p-8 pb-6">
                   <h3 className="text-white text-2xl font-acid leading-normal">Master Dashboard</h3>
                   <SearchInput placeholder="Search strategies" className="w-full sm:w-[17.9375rem]" />
                 </div>
