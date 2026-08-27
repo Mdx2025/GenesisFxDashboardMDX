@@ -42,7 +42,7 @@ Fixed widths belonging to modal canvases, logo artwork, chat panels, tables, int
 
 ## Explore Markets
 
-The `/news/discover` controls now use a column layout below `md`: category tabs first, then a full-width search field. At `md` and above they return to a horizontal row and the search field restores its 287px design width.
+The `/news/discover` controls now use a column layout below `md`: category tabs first, then a full-width search field. At `md` and above they return to a horizontal row and the search field restores its 287px design width. The category control uses the dedicated `DiscoverCategoryBar`, preserving the 136px `For you` pill, 28px label spacing, the asset divider, and a touch-scrollable rail with its native scrollbar hidden.
 
 ## Regression gate
 

@@ -187,7 +187,7 @@ export function DiscoverCategoryBar({ primary, assets, active, onChange, forYouL
         </span>
       </button>
 
-      <div className="ml-[25px] flex min-w-0 items-center gap-[28px] overflow-x-auto">
+      <div className="ml-[25px] flex min-w-0 items-center gap-[28px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {primary.map(label => (
           <CategoryLabel key={label} label={label} active={active === label} onChange={onChange} />
         ))}

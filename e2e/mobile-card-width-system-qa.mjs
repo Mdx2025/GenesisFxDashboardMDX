@@ -128,7 +128,9 @@ async function inspectSignalsFollower() {
 async function inspectExploreMarkets() {
   await gotoRoute('/news/discover', '[data-explore-markets-controls]')
   return page.locator('[data-explore-markets-controls]').evaluate(row => {
-    const tabs = row.querySelector('.mode-toggle')
+    const tabs = row.querySelector('.discover-category-bar')
+    const tabRail = tabs?.children[1]
+    const tabButtons = tabs ? [...tabs.querySelectorAll('button')] : []
     const search = row.querySelector('input[aria-label="Search markets"]')?.parentElement
     const rowBox = row.getBoundingClientRect()
     const tabsBox = tabs?.getBoundingClientRect()
@@ -137,6 +139,16 @@ async function inspectExploreMarkets() {
       direction: getComputedStyle(row).flexDirection,
       row: { x: rowBox.x, width: rowBox.width, right: rowBox.right },
       tabs: tabsBox ? { x: tabsBox.x, width: tabsBox.width, right: tabsBox.right, y: tabsBox.y, bottom: tabsBox.bottom } : null,
+      tabRail: tabRail ? {
+        clientWidth: tabRail.clientWidth,
+        scrollWidth: tabRail.scrollWidth,
+        overflowX: getComputedStyle(tabRail).overflowX,
+        scrollbarWidth: getComputedStyle(tabRail).scrollbarWidth,
+      } : null,
+      tabButtons: tabButtons.slice(0, 3).map(button => {
+        const box = button.getBoundingClientRect()
+        return { x: box.x, right: box.right, width: box.width }
+      }),
       search: searchBox ? { x: searchBox.x, width: searchBox.width, right: searchBox.right, y: searchBox.y } : null,
     }
   })
@@ -198,6 +210,11 @@ try {
       if (explore.direction !== 'column') failures.push(`${result.viewport.width}px Explore Markets controls direction: ${explore.direction}`)
       if (Math.abs(explore.search.x - explore.row.x) > 1 || Math.abs(explore.search.right - explore.row.right) > 1) failures.push(`${result.viewport.width}px Explore Markets search does not fill the control row`)
       if (explore.search.y <= explore.tabs.bottom) failures.push(`${result.viewport.width}px Explore Markets search is not below the tabs`)
+      if (explore.tabRail.overflowX !== 'auto') failures.push(`${result.viewport.width}px Explore Markets category rail is not scrollable`)
+      if (explore.tabRail.scrollWidth <= explore.tabRail.clientWidth) failures.push(`${result.viewport.width}px Explore Markets category rail does not overflow its viewport`)
+      if (explore.tabRail.scrollbarWidth !== 'none') failures.push(`${result.viewport.width}px Explore Markets native scrollbar is visible`)
+      const categoryGap = explore.tabButtons[2].x - explore.tabButtons[1].right
+      if (Math.abs(categoryGap - 28) > 1) failures.push(`${result.viewport.width}px Explore Markets category gap: ${categoryGap}`)
     }
     if (result.overflowX > 0) failures.push(`${result.viewport.width}px document overflow: ${result.overflowX}`)
   }

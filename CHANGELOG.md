@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Replaced the cramped Explore Markets `ModeToggle` with the purpose-built market category rail: a stable `For you` pill, 28px category spacing, asset divider, and touch-scrollable overflow with the native scrollbar hidden.
+
 - Completed a route-wide mobile card-width audit and added a reproducible 47-route, 141-state browser gate covering 780 visible cards and 522 one-column grids at 360px, 430px, and 600px. The audit confirmed that catalog cards now fill their mobile grid tracks while intentionally centered surfaces, modal canvases, tables, artwork, and multi-card compositions retain their structural widths.
 
 - Moved the Explore Markets search field below its category tabs on mobile and made it fill the content width. The desktop layout returns to a single horizontal row from the `md` breakpoint with the original 287px search width.
