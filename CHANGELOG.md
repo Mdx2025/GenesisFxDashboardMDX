@@ -2,6 +2,10 @@
 
 ## 2026-08-27
 
+- Completed a route-wide mobile card-width audit and added a reproducible 47-route, 141-state browser gate covering 780 visible cards and 522 one-column grids at 360px, 430px, and 600px. The audit confirmed that catalog cards now fill their mobile grid tracks while intentionally centered surfaces, modal canvases, tables, artwork, and multi-card compositions retain their structural widths.
+
+- Moved the Explore Markets search field below its category tabs on mobile and made it fill the content width. The desktop layout returns to a single horizontal row from the `md` breakpoint with the original 287px search width.
+
 - Wired the `Share` button in the My Streaming channel hero to the Share Account modal. The modal already shipped and is used from account details; the channel hero button simply had no handler. Opening it keeps the visitor on `/streaming/mystreaming`, and it closes on Escape and on its own close control.
 
 - Wired the `Start streaming` button in the My Streaming channel hero to the streamer application screen. The control rendered and reacted to hover but carried no click handler, so it went nowhere; it now routes to `/streaming/newstreaming`, matching the identical button already shipped on the streaming index.

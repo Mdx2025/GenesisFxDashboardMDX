@@ -42,8 +42,8 @@ export default function DiscoverView() {
       <div className="mt-6 flex flex-col gap-5">
         <h2 className="text-white text-h2 font-normal font-acid">Explore Markets</h2>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="min-w-0 flex-1">
+        <div className="flex flex-col items-stretch gap-4 md:flex-row md:items-center" data-explore-markets-controls>
+          <div className="min-w-0 w-full md:flex-1">
             <ModeToggle
               options={CATEGORIES}
               activeIndex={category}
@@ -51,7 +51,7 @@ export default function DiscoverView() {
               buttonClassName="text-[14px]! px-0! overflow-visible!"
             />
           </div>
-          <DiscoverSearchInput value={query} onChange={setQuery} />
+          <DiscoverSearchInput value={query} onChange={setQuery} className="w-full md:w-[287px]" />
         </div>
 
         <DiscoverMarketTable rows={rows} />

@@ -125,6 +125,23 @@ async function inspectSignalsFollower() {
   return measureCard('.signal-strategy-card')
 }
 
+async function inspectExploreMarkets() {
+  await gotoRoute('/news/discover', '[data-explore-markets-controls]')
+  return page.locator('[data-explore-markets-controls]').evaluate(row => {
+    const tabs = row.querySelector('.mode-toggle')
+    const search = row.querySelector('input[aria-label="Search markets"]')?.parentElement
+    const rowBox = row.getBoundingClientRect()
+    const tabsBox = tabs?.getBoundingClientRect()
+    const searchBox = search?.getBoundingClientRect()
+    return {
+      direction: getComputedStyle(row).flexDirection,
+      row: { x: rowBox.x, width: rowBox.width, right: rowBox.right },
+      tabs: tabsBox ? { x: tabsBox.x, width: tabsBox.width, right: tabsBox.right, y: tabsBox.y, bottom: tabsBox.bottom } : null,
+      search: searchBox ? { x: searchBox.x, width: searchBox.width, right: searchBox.right, y: searchBox.y } : null,
+    }
+  })
+}
+
 try {
   const results = []
   for (const viewport of [
@@ -144,6 +161,7 @@ try {
       challengeActions: await inspectChallengeActions(),
       copyTrading: await inspectCopyTrading(),
       signalsFollower: await inspectSignalsFollower(),
+      exploreMarkets: await inspectExploreMarkets(),
       overflowX: await page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
     })
   }
@@ -175,13 +193,26 @@ try {
       if (Math.abs(copyActions.buttons.at(-1).right - copyActions.row.right) > 1) failures.push(`${result.viewport.width}px copy-trading actions do not reach row right`)
       const searchCenterY = copyActions.search.y + copyActions.search.height / 2
       if (copyActions.buttons.some(button => Math.abs(button.y + button.height / 2 - searchCenterY) > 1)) failures.push(`${result.viewport.width}px copy-trading controls are not vertically aligned in one row`)
+
+      const explore = result.exploreMarkets
+      if (explore.direction !== 'column') failures.push(`${result.viewport.width}px Explore Markets controls direction: ${explore.direction}`)
+      if (Math.abs(explore.search.x - explore.row.x) > 1 || Math.abs(explore.search.right - explore.row.right) > 1) failures.push(`${result.viewport.width}px Explore Markets search does not fill the control row`)
+      if (explore.search.y <= explore.tabs.bottom) failures.push(`${result.viewport.width}px Explore Markets search is not below the tabs`)
     }
     if (result.overflowX > 0) failures.push(`${result.viewport.width}px document overflow: ${result.overflowX}`)
   }
   if (runtimeErrors.length) failures.push(`runtime errors: ${JSON.stringify(runtimeErrors)}`)
   if (failedResponses.length) failures.push(`failed responses: ${JSON.stringify(failedResponses)}`)
 
-  console.log(JSON.stringify({ baseUrl, results, runtimeErrors, failedResponses, failures }, null, 2))
+  console.log(JSON.stringify({
+    baseUrl,
+    viewportCount: results.length,
+    runtimeErrors,
+    failedResponses,
+    failureCount: failures.length,
+    failures,
+    ...(process.env.QA_VERBOSE === '1' ? { results } : {}),
+  }, null, 2))
   if (failures.length) process.exitCode = 1
 } finally {
   await browser.close()
