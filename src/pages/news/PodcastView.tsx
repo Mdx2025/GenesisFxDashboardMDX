@@ -75,16 +75,78 @@ function VolumeIcon() {
 
 /* ─── Episode Card ─── */
 
+function EpisodePlayButton({
+  episodeId,
+  layout,
+  onPlay,
+}: {
+  episodeId: number
+  layout: 'mobile' | 'desktop'
+  onPlay: () => void
+}) {
+  const gradientId = `episode-play-gradient-${episodeId}-${layout}`
+
+  return (
+    <button
+      type="button"
+      onClick={onPlay}
+      className="relative flex h-[52px] w-[52px] shrink-0 cursor-pointer items-center justify-center rounded-full transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-300 focus-visible:ring-offset-2 focus-visible:ring-offset-gfx-green-800 md:h-[58px] md:w-[58px]"
+      aria-label={`Play episode ${episodeId}`}
+      data-podcast-play-button
+    >
+      <svg viewBox="0 0 58 58" fill="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <circle cx="29" cy="29" r="28.4" fill={`url(#${gradientId})`} stroke="#09241C" />
+        <defs>
+          <radialGradient id={gradientId} cx="0" cy="0" r="1" gradientTransform="matrix(-13.96 49.11 -73.75 -161.35 37.98 1.74)" gradientUnits="userSpaceOnUse">
+            <stop offset="0.19" stopColor="#0C1311" />
+            <stop offset="0.73" stopColor="#09241C" />
+          </radialGradient>
+        </defs>
+      </svg>
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" className="relative z-10" aria-hidden="true">
+        <path d="M14.36 6.28C15.79 7.05 15.79 9.06 14.36 9.83L5.77 14.51C4.38 15.26 2.68 14.28 2.68 12.73V3.38C2.68 1.83 4.38 0.85 5.77 1.6L14.36 6.28Z" fill="#00B38C" />
+      </svg>
+    </button>
+  )
+}
+
 function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () => void }) {
   return (
-    <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
-      <div className="flex items-start p-8 h-[198px]">
+    <GlassCard
+      variant="light"
+      divider="none"
+      rounded="19px"
+      className="overflow-hidden"
+      data-podcast-episode-card
+    >
+      <article className="flex min-h-[204px] flex-col p-5 sm:min-h-[188px] sm:p-6 md:hidden" data-podcast-episode-layout="mobile">
+        <header className="flex items-center gap-4">
+          <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-gfx-green-300">
+            <span className="font-acid text-[28px] leading-none text-gfx-green-500">{episode.id}</span>
+          </div>
+
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
+            <time className="font-acid text-base text-white">
+              {episode.date}
+            </time>
+            <span className="shrink-0 font-acid text-sm text-gfx-neutral-400">{episode.duration}</span>
+          </div>
+
+          <EpisodePlayButton episodeId={episode.id} layout="mobile" onPlay={onPlay} />
+        </header>
+
+        <p className="mt-4 font-acid text-sm font-medium leading-6 text-gfx-neutral-400" data-podcast-episode-description>
+          {episode.description}
+        </p>
+      </article>
+
+      <article className="hidden min-h-[198px] items-start p-8 md:flex" data-podcast-episode-layout="desktop">
         <div className="shrink-0 w-[70px] h-[70px] rounded-full border border-gfx-green-300 flex items-center justify-center">
           <span className="text-gfx-green-500 text-4xl font-acid">{episode.id}</span>
         </div>
 
         <div className="flex flex-col gap-2 flex-1 min-w-0 ml-6">
-          <span className="text-white text-xl font-acid">{episode.date}</span>
+          <time className="text-white text-xl font-acid">{episode.date}</time>
           <p className="text-gfx-neutral-400 text-base font-acid font-medium leading-6 max-w-[362px]">
             {episode.description}
           </p>
@@ -92,26 +154,9 @@ function EpisodeCard({ episode, onPlay }: { episode: PodcastEpisode; onPlay: () 
 
         <div className="shrink-0 flex items-center gap-4">
           <span className="text-gfx-neutral-400 text-base font-acid">{episode.duration}</span>
-          <button
-            onClick={onPlay}
-            className="relative w-[58px] h-[58px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
-            aria-label="Play episode"
-          >
-            <svg width="58" height="58" viewBox="0 0 58 58" fill="none" className="absolute inset-0">
-              <circle cx="29" cy="29" r="28.4" fill="url(#epPlayGrad)" stroke="#09241C" />
-              <defs>
-                <radialGradient id="epPlayGrad" cx="0" cy="0" r="1" gradientTransform="matrix(-13.96 49.11 -73.75 -161.35 37.98 1.74)" gradientUnits="userSpaceOnUse">
-                  <stop offset="0.19" stopColor="#0C1311" />
-                  <stop offset="0.73" stopColor="#09241C" />
-                </radialGradient>
-              </defs>
-            </svg>
-            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" className="relative z-10">
-              <path d="M14.36 6.28C15.79 7.05 15.79 9.06 14.36 9.83L5.77 14.51C4.38 15.26 2.68 14.28 2.68 12.73V3.38C2.68 1.83 4.38 0.85 5.77 1.6L14.36 6.28Z" fill="#00B38C" />
-            </svg>
-          </button>
+          <EpisodePlayButton episodeId={episode.id} layout="desktop" onPlay={onPlay} />
         </div>
-      </div>
+      </article>
     </GlassCard>
   )
 }

@@ -30,6 +30,53 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Podcast episode-card mobile hierarchy
+
+- task_id: `genesis-news-podcast-mobile-cards-20260827`
+- owner: `star`
+- status: `local-validated`
+- scope_lock: `src/pages/news/PodcastView.tsx`,
+  `e2e/news-podcast-mobile-cards-qa.mjs`, `WORKING_STATE.md`, `CHANGELOG.md`
+- request: TheZaya, Discord #star — reorganize the `10.02.2026` episode cards
+  on `/news/podcast` so their internal content reads cleanly on mobile.
+- design_route: `surface=dashboard`, `archetype=analytics`,
+  `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot +
+  live codebase`, `style=existing GenesisFX glass-dashboard thesis`.
+- observed: the current 198px desktop row is forced onto mobile unchanged:
+  a 70px index, a description column, the duration and a 58px play control all
+  compete horizontally inside 32px card insets. The copy is compressed even
+  though the card itself fills its track.
+- visual_thesis: on mobile, each episode is a compact editorial record with a
+  strong index/date header, full-width summary, and an unambiguous play action;
+  from `md` upward the established horizontal desktop composition remains.
+- quality_contract: WCAG 2.2 AA; supplementary metadata >=14px and body >=14px;
+  normal text >=4.5:1, UI/focus >=3:1; primary play target >=44px; no clipping,
+  overlap or horizontal overflow at 360/390/600/768/1440; keyboard focus and
+  reduced motion preserved; build, browser assertions and automated
+  accessibility audit when available.
+- highest_risk: realistic description wrapping at 360px, keeping repeated cards
+  equal and scan-friendly, visible play focus, and avoiding any desktop drift.
+- implementation: below `md`, each card uses a 52px index, stacked 16px date /
+  14px duration and 52px play action in one header; the 14px/24px summary then
+  takes the full inner width. From `md`, the original horizontal anatomy remains,
+  but `h-[198px]` became `min-h-[198px]` so realistic copy can grow instead of
+  crossing the clipped card edge. Play buttons now have episode-specific names,
+  visible focus rings and unique SVG gradient IDs.
+- local_validation: production build passed. Repeatable remote-browser QA passed
+  at 360/390/600/768/1440 with 4/4 equal-height cards, zero overflow, zero text
+  below 12px, no clipping or containment failures, 52px mobile play targets,
+  14px body/metadata floor, description/date/duration contrast
+  `4.78:1 / 18.9:1 / 4.78:1`, visible focus ring, reduced-motion transition
+  `0.00001s`, zero runtime errors and zero failed responses. At 360/390 the
+  cards measure 206px high and the summary uses the complete 286/316px inner
+  width. At 1440 cards now grow to 246px and contain the full 144px summary.
+  The component-specific browser gate is the automated accessibility check;
+  axe is not installed in this repo or the shared Playwright runtime.
+- evidence: `e2e/news-podcast-mobile-cards-qa.mjs` and
+  `/home/clawd/genesis-news-podcast-mobile-cards.png`.
+- next_exact_action: review the scoped diff, rebase onto current `origin/main`,
+  push, deploy through Dokploy and rerun this same gate in production.
+
 ## Active Task — My Streaming: Share button must open Share Account modal
 
 - task_id: `genesis-mystreaming-share-modal-20260827`
