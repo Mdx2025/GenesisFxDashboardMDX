@@ -261,19 +261,19 @@ export default function CopyTradingPage() {
                   onChange={setFilterTab}
                 />
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <div className="flex w-full flex-nowrap items-center gap-2 sm:gap-3 lg:w-auto" data-copy-trading-actions>
                 <SearchInput
                   placeholder="Search traders"
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  className="w-full sm:w-[17.9375rem]"
+                  className="min-w-0 flex-1 lg:w-[17.9375rem] lg:flex-none"
                 />
                 <button
                   type="button"
                   aria-label="Show favorites"
                   aria-pressed={filterTab === 2}
                   onClick={() => setFilterTab(filterTab === 2 ? 0 : 2)}
-                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
+                  className="relative flex h-11 w-12 shrink-0 items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={filterTab === 2 ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -287,7 +287,7 @@ export default function CopyTradingPage() {
                   aria-label="List view"
                   aria-pressed={viewMode === 'list'}
                   onClick={() => setViewMode('list')}
-                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
+                  className="relative flex h-11 w-12 shrink-0 items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'list' ? '#064b34' : '#303030'} strokeWidth="1.2"/>
@@ -312,7 +312,7 @@ export default function CopyTradingPage() {
                   aria-label="Grid view"
                   aria-pressed={viewMode === 'grid'}
                   onClick={() => setViewMode('grid')}
-                  className="relative w-12 h-11 flex items-center justify-center cursor-pointer"
+                  className="relative flex h-11 w-12 shrink-0 items-center justify-center cursor-pointer"
                 >
                   <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke={viewMode === 'grid' ? '#064b34' : '#303030'} strokeWidth="1.2"/>

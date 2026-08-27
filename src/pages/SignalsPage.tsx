@@ -208,7 +208,7 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
 
   return (
     <div
-      className="signal-strategy-card flex flex-col w-full max-w-[31.5000rem]"
+      className="signal-strategy-card flex w-full max-w-none flex-col sm:max-w-[31.5000rem]"
       style={{
         background: 'var(--signal-card-bg)',
         borderRadius: 'var(--signal-card-radius, 18.56px)',
@@ -217,19 +217,19 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
         boxShadow: '0px 4.64px 23.2px rgba(0, 0, 0, 0.03)',
       }}
     >
-      <div className="flex flex-col gap-4 pt-8 pb-9 px-[1.5625rem]">
+      <div className="flex flex-col gap-4 px-4 pb-9 pt-8 sm:px-[1.5625rem]">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-[1.375rem]">
+        <div className="flex flex-col items-stretch gap-3 min-[400px]:flex-row min-[400px]:items-center min-[400px]:justify-between">
+          <div className="flex min-w-0 items-center gap-3 min-[400px]:gap-[1.375rem]">
             <div className="w-16 h-16 rounded-full bg-[var(--signal-avatar-bg,#064b34)] flex items-center justify-center flex-shrink-0 overflow-hidden">
               <span className="text-white text-base font-acid font-medium">{provider.initials}</span>
             </div>
-            <div className="flex flex-col gap-1">
-              <p className="text-gfx-neutral-500 text-base font-acid font-medium leading-tight">{provider.username}</p>
-              <span className="text-white text-base font-acid font-medium leading-tight">{provider.tag}</span>
+            <div className="flex min-w-0 flex-col gap-1">
+              <p className="truncate text-base font-acid font-medium leading-tight text-gfx-neutral-500">{provider.username}</p>
+              <span className="truncate text-base font-acid font-medium leading-tight text-white">{provider.tag}</span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-end gap-2 min-[400px]:justify-start">
             <span className="border border-gfx-neutral-250 rounded-full px-3 py-1 text-gfx-neutral-600 text-sm font-acid font-medium">
               {provider.pricePerMonth}
             </span>
@@ -271,15 +271,15 @@ function FollowerProviderCard({ provider, onToggleFollow, onManage }: { provider
 
         {/* Metrics */}
         <div className="grid grid-cols-3 border border-gfx-neutral-250 rounded-md overflow-hidden">
-          <div className="p-4 flex flex-col items-center gap-1.5">
+          <div className="flex flex-col items-center gap-1.5 p-2 sm:p-4">
             <span className="text-white text-base font-acid font-medium">{provider.pricePerMonth}</span>
             <span className="text-gfx-neutral-400 text-base font-acid font-medium">Price/mo</span>
           </div>
-          <div className="p-4 flex flex-col items-center gap-1.5 border-x border-gfx-neutral-250">
+          <div className="flex flex-col items-center gap-1.5 border-x border-gfx-neutral-250 p-2 sm:p-4">
             <span className="text-white text-base font-acid font-medium">{provider.profitShare}</span>
             <span className="text-gfx-neutral-400 text-base font-acid font-medium">Profit Share</span>
           </div>
-          <div className="p-4 flex flex-col items-center gap-1.5">
+          <div className="flex flex-col items-center gap-1.5 p-2 sm:p-4">
             <span className="text-white text-base font-acid font-medium">{provider.followers}</span>
             <span className="text-gfx-neutral-400 text-base font-acid font-medium">Followers</span>
           </div>
