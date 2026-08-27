@@ -30,6 +30,63 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Partner marketing feature swiper
+
+- task_id: `genesis-partner-marketing-swiper-20260827`
+- owner: `star`
+- status: `ready-to-integrate`
+- scope_lock: `src/pages/PartnerPage.tsx`, `src/pages/PartnerPage.css`,
+  `e2e/partner-marketing-swiper-qa.mjs`, `WORKING_STATE.md`, `CHANGELOG.md`
+- request: TheZaya, Discord `#star` — turn the four-dot marketing feature card
+  on `/partner` into a real four-item swiper with drag and dot navigation; use
+  the first card's context and copy geometry as the reference for the rest.
+- design_route: `surface=dashboard`, `archetype=analytics`,
+  `pattern_pack=pattern-analytics-dashboard`, `evidence=operator screenshot +
+  local codebase + production route`, `style=existing GenesisFX green-glass
+  dashboard thesis`.
+- observed_evidence: the shipped 359x242 card already exposes four visual
+  indicators but renders only one static item. Its locked anatomy is a 14px
+  Marketing badge, 16px title, 14px two-line summary, Open library link, and a
+  bottom-right active rail plus three dots. Swiper 14.0.5, A11y and Keyboard are
+  already established dependencies/patterns in this repo.
+- derived_behavior: four contextual marketing slides; pointer/touch drag;
+  clickable 24px-minimum dot controls as the WCAG 2.5.7 single-pointer
+  alternative; keyboard navigation; `aria-current` state; no autoplay; CTA
+  routes to `/partner/marketing`; reduced motion collapses transition duration.
+- visual_thesis: preserve the exact green-glass card and its compact editorial
+  hierarchy; make the existing four-point affordance truthful without adding
+  arrows, new decoration, or a second visual language.
+- dials: `design_variance=3`, `motion_intensity=4`, `visual_density=5`,
+  `art_direction=4`, `implementation_clarity=10`, `image_usage_priority=1`,
+  `spacing_generosity=4`.
+- copy_contract: slide 1 preserves `Real Time Statistics` and its analytics
+  meaning; slides 2-4 cover ready-made creatives, landing pages and referral
+  link management with the same title/body hierarchy and a two-line desktop
+  summary target. Realistic wrapping may grow on narrow mobile only within the
+  fixed 242px card.
+- quality_contract: WCAG 2.2 AA; visible text >=14px in the component; normal
+  text >=4.5:1 and UI/focus >=3:1; CTA and dot controls keyboard-operable;
+  visual dots retain the reference while hit targets are >=24x24; drag has the
+  dots and keyboard as alternatives; no autoplay; no clipping, overlap or
+  document overflow at 360/390/600/768/1440; 200% zoom reflow; reduced-motion
+  content/interaction preserved; build + computed typography/contrast +
+  structured browser checks + automated accessibility when available.
+- highest_risk: Swiper wrapper height/absolute positioning inside the 242px
+  card, dot state sync after drag, keyboard focus visibility, light-theme
+  palette preservation, and copy wrapping at 360px/200% zoom.
+- asset_manifest: `not_applicable` — the change uses no external or generated
+  media; the supplied screenshot is interaction/geometry evidence only.
+- local_validation: production build passed (`tsc -b && vite build`, 888
+  modules). Browser QA passed at 360/390/600/768/1440 in dark mode and 390/1440
+  in light mode: dot click selected slide 2, ArrowRight selected slide 3 and
+  moved focus, pointer drag selected slide 4, CTA reached `/partner/marketing`,
+  200% zoom and reduced motion remained usable, document overflow was 0, and
+  runtime/failed-response lists were empty. Computed contrast measured
+  4.76/7.01 dark and 6.29/5.31 light for body/accent text. Axe 4.13.0 reported
+  0 violations inside the carousel.
+- next_exact_action: rebase the scoped commit onto current `origin/main`, push,
+  watch the Dokploy deployment, and repeat the browser gate in production.
+
 ## Active Task — Podcast episode-card mobile hierarchy
 
 - task_id: `genesis-news-podcast-mobile-cards-20260827`

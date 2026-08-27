@@ -1,5 +1,9 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRef, useState, type KeyboardEvent } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { A11y } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import type { Swiper as SwiperType } from 'swiper'
+import 'swiper/css'
 import { useSidebar, useTransfer } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlassBannerCard, StatCard, SecondaryButton, SparkleButton, GlowButton, PeriodPill, ModeToggle, GlowEllipse } from '@/components/ui'
@@ -158,6 +162,148 @@ function HeroBanner() {
         </div>
       </div>
     </GlassCard>
+  )
+}
+
+const PARTNER_MARKETING_SLIDES = [
+  {
+    title: 'Real Time Statistics',
+    description: 'Track signups, FTDs, lots, and referral revenue by link or sub-account.',
+  },
+  {
+    title: 'Ready-Made Creatives',
+    description: 'Download banners, social assets, and campaign visuals for every channel.',
+  },
+  {
+    title: 'Landing Page Templates',
+    description: 'Launch localized landing pages and track every campaign from one workspace.',
+  },
+  {
+    title: 'Referral Link Manager',
+    description: 'Create and measure referral links for each channel, campaign, and sub-partner.',
+  },
+] as const
+
+function MarketingFeatureSwiper() {
+  const swiperRef = useRef<SwiperType | null>(null)
+  const paginationRef = useRef<HTMLDivElement | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const selectSlide = (index: number, focusDot = false) => {
+    const normalizedIndex = (index + PARTNER_MARKETING_SLIDES.length) % PARTNER_MARKETING_SLIDES.length
+    swiperRef.current?.slideTo(normalizedIndex)
+
+    if (focusDot) {
+      requestAnimationFrame(() => {
+        const dots = paginationRef.current?.querySelectorAll<HTMLButtonElement>('[data-partner-marketing-dot]')
+        dots?.[normalizedIndex]?.focus()
+      })
+    }
+  }
+
+  const handlePaginationKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    let nextIndex: number | null = null
+
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = activeIndex + 1
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = activeIndex - 1
+    if (event.key === 'Home') nextIndex = 0
+    if (event.key === 'End') nextIndex = PARTNER_MARKETING_SLIDES.length - 1
+
+    if (nextIndex !== null) {
+      event.preventDefault()
+      selectSlide(nextIndex, true)
+    }
+  }
+
+  return (
+    <section
+      className="partner-marketing-card relative h-[242px] w-full overflow-hidden rounded-[30px] border border-[#09241C] bg-gradient-to-b from-[#09241C] to-[#0C1311]"
+      aria-label="Partner marketing tools"
+      aria-roledescription="carousel"
+      data-partner-marketing-card
+      data-partner-marketing-carousel
+    >
+      <Swiper
+        modules={[A11y]}
+        onSwiper={(swiper) => { swiperRef.current = swiper }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        slidesPerView={1}
+        speed={300}
+        a11y={{ enabled: true }}
+        grabCursor
+        className="partner-marketing-swiper h-full"
+      >
+        {PARTNER_MARKETING_SLIDES.map((slide, index) => (
+          <SwiperSlide key={slide.title}>
+            <article
+              id={`partner-marketing-slide-${index + 1}`}
+              className="relative h-full"
+              aria-label={`${index + 1} of ${PARTNER_MARKETING_SLIDES.length}: ${slide.title}`}
+              aria-hidden={activeIndex !== index}
+              data-partner-marketing-slide
+            >
+              <div className="partner-marketing-badge partner-marketing-accent absolute left-[22px] top-[38px] inline-flex items-center gap-3 rounded-[20px] border border-current bg-gfx-surface-deep px-3.5 py-2">
+                <MagicStickIcon size={18} color="currentColor" />
+                <span className="font-acid text-sm">Marketing</span>
+              </div>
+
+              <h3 className="partner-marketing-title absolute inset-x-[22px] top-[114px] font-acid text-base font-medium leading-[24.44px] text-white">
+                {slide.title}
+              </h3>
+              <p className="partner-marketing-description absolute inset-x-[22px] top-[141px] font-acid text-sm font-normal leading-[18.8px]" data-partner-marketing-description>
+                {slide.description}
+              </p>
+
+              <Link
+                to="/partner/marketing"
+                tabIndex={activeIndex === index ? 0 : -1}
+                className="partner-marketing-accent partner-marketing-focus absolute bottom-[15px] left-[22px] z-10 inline-flex min-h-6 items-center gap-2 rounded-sm font-acid text-sm leading-[18.8px] hover:underline"
+              >
+                Open library
+                <svg width="5" height="9" viewBox="0 0 5 9" fill="none" aria-hidden="true">
+                  <path d="M0.582031 7.58398L4.08203 4.08398L0.582031 0.583984" stroke="currentColor" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </article>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div
+        ref={paginationRef}
+        className="absolute bottom-[7px] right-[10px] z-20 flex items-center"
+        role="group"
+        aria-label="Choose marketing feature"
+        onKeyDown={handlePaginationKeyDown}
+        data-partner-marketing-pagination
+      >
+        {PARTNER_MARKETING_SLIDES.map((slide, index) => {
+          const active = activeIndex === index
+
+          return (
+            <button
+              key={slide.title}
+              type="button"
+              aria-label={`Show ${slide.title}`}
+              aria-controls={`partner-marketing-slide-${index + 1}`}
+              aria-current={active ? 'true' : undefined}
+              onClick={() => selectSlide(index)}
+              className="partner-marketing-focus grid size-6 cursor-pointer place-items-center rounded-full"
+              data-partner-marketing-dot
+            >
+              <span
+                className={`partner-marketing-indicator block h-[7px] rounded-full transition-[width,opacity] duration-300 motion-reduce:transition-none ${active ? 'w-[25px]' : 'w-[7px] opacity-80'}`}
+                aria-hidden="true"
+              />
+            </button>
+          )
+        })}
+      </div>
+
+      <span className="sr-only" aria-live="polite">
+        Showing slide {activeIndex + 1} of {PARTNER_MARKETING_SLIDES.length}: {PARTNER_MARKETING_SLIDES[activeIndex].title}
+      </span>
+    </section>
   )
 }
 
@@ -350,26 +496,7 @@ export default function PartnerPage() {
             </div>
           </div>
           <div className="w-full lg:w-[359px] shrink-0">
-            <div className="partner-marketing-card relative w-full h-[242px] bg-gradient-to-b from-[#09241C] to-[#0C1311] rounded-[30px] border border-[#09241C]" data-partner-marketing-card>
-              <div className="partner-marketing-badge absolute left-[22px] top-[38px] bg-gfx-surface-deep rounded-[20px] border border-gfx-green-300 px-3.5 py-2 inline-flex items-center gap-3">
-                <MagicStickIcon size={18} color="#00b38c" />
-                <span className="text-gfx-green-300 text-sm font-acid">Marketing</span>
-              </div>
-              <p className="partner-marketing-title absolute left-[22px] top-[114px] text-center text-white text-base font-acid font-medium leading-[24.44px]">Real Time Statistics</p>
-              <p className="absolute left-[22px] top-[139px] w-[228px] text-[#808080] text-sm font-acid font-normal leading-[18.8px]">Track signups, FTDs, lots, and revenue by referral link or sub-</p>
-              <div className="absolute left-[25px] top-[195px] flex items-center gap-2">
-                <span className="text-gfx-green-300 text-sm font-acid leading-[18.8px] cursor-pointer hover:underline">Open library</span>
-                <svg width="5" height="9" viewBox="0 0 5 9" fill="none">
-                  <path d="M0.582031 7.58398L4.08203 4.08398L0.582031 0.583984" stroke="#00B38C" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div className="absolute right-[22px] top-[197px] flex items-center gap-[10px]">
-                <svg width="25" height="7" viewBox="0 0 25 7" fill="none"><path d="M0 3.5C0 1.567 1.567 0 3.5 0H21.5C23.433 0 25 1.567 25 3.5C25 5.433 23.433 7 21.5 7H3.5C1.567 7 0 5.433 0 3.5Z" fill="#00B38C"/></svg>
-                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="#00B38C"/></svg>
-                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="#00B38C"/></svg>
-                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><circle cx="3.5" cy="3.5" r="3.5" fill="#00B38C"/></svg>
-              </div>
-            </div>
+            <MarketingFeatureSwiper />
           </div>
         </GlassBannerCard>
 
