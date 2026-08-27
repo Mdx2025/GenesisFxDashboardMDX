@@ -24,6 +24,37 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — Hide mobile tab bar behind sidebar
+
+- task_id: `genesis-mobile-sidebar-tabbar-visibility-20260827`
+- owner: `star`
+- status: `ready-to-deploy`
+- scope_lock: `src/layouts/RootLayout.tsx`,
+  `e2e/mobile-sidebar-tab-bar-qa.mjs`, `WORKING_STATE.md`, `CHANGELOG.md`
+- request: hide the fixed mobile tab bar whenever the sidebar drawer is open,
+  then restore it when the drawer closes.
+- design_route: `surface=dashboard`, `archetype=operations`,
+  `pattern_pack=pattern-analytics-dashboard`, `evidence=live codebase`,
+  `style=existing GenesisFX glass-dashboard thesis`.
+- visual_thesis: the sidebar is the sole persistent navigation layer while its
+  mobile drawer is open; the bottom tab bar must not compete above or below it.
+- quality_contract: mobile/tab-bar closed-open-closed state must be deterministic;
+  sidebar and backdrop remain functional; keyboard focus stays visible; no
+  overflow or runtime/network errors at 390px and 960px; desktop unchanged.
+- highest_risk: restoring the tab bar after backdrop/menu close and preserving
+  the desktop sidebar where the tab bar is already hidden.
+- implementation: RootLayout now mounts the fixed mobile tab bar only while
+  `sidebarOpen` is false, so it leaves both the visual stack and tab order while
+  the drawer is active and returns when the drawer closes.
+- local_validation: `pnpm exec tsc -b --pretty false` passed; the production
+  build completed and served the new state. Repeatable browser QA passed at
+  390x844 and 960x900: tab bar visible closed, count zero while open, sidebar
+  transform open, backdrop interactive, tab bar restored after backdrop close,
+  zero overflow/runtime/network failures. At 1440x960 the tab bar remained
+  hidden and the desktop sidebar remained visible.
+- next_exact_action: commit exact scope, push `main`, verify Dokploy `done`,
+  then rerun the state QA against production.
+
 ## Active Task — ModeToggle canonical mobile spacing
 
 - task_id: `genesis-mode-toggle-mobile-default-20260827`

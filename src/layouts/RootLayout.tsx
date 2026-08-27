@@ -70,9 +70,11 @@ export default function RootLayout() {
           <main className="flex-1 min-w-0 relative" style={{ overflowX: 'clip' }}>
             <Outlet />
           </main>
-          <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-            <FloatingNavBar />
-          </div>
+          {!sidebarOpen && (
+            <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50" data-mobile-tab-bar>
+              <FloatingNavBar />
+            </div>
+          )}
         </div>
         <TransferModal
           open={transferOpen}
