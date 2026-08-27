@@ -18,16 +18,47 @@ file, claim it here.
 
 ### Live ownership snapshot — 2026-08-27
 
-- `coder`: released. My Streaming `Start streaming` route shipped
-  (`genesis-mystreaming-start-button-route-20260827`); streaming
-  featured-stream badge/button alignment (`37e8ef1`); referral-card action
-  icons resting background (`18e0f02`); `ModeToggle` long-label track sizing
-  (`12b6358`). No uncommitted `src/` work left in this tree.
+- `coder`: released. My Streaming `Share` modal wiring shipped
+  (`genesis-mystreaming-share-modal-20260827`); My Streaming
+  `Start streaming` route (`29d4baa`); streaming featured-stream badge/button
+  alignment (`37e8ef1`); referral-card action icons resting background
+  (`18e0f02`); `ModeToggle` long-label track sizing (`12b6358`). No
+  uncommitted `src/` work left in this tree.
 - `star`: released. Assets Management mobile and mobile tab-bar/sidebar shipped
   (`8665315`, `220e15f` on `main`); ModeToggle canonical mobile spacing shipped
   (`3182811`, `b562143`). No uncommitted `src/` work left in this tree.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
+
+## Active Task — My Streaming: Share button must open Share Account modal
+
+- task_id: `genesis-mystreaming-share-modal-20260827`
+- owner: `coder`
+- status: `done`
+- scope_lock: `src/components/ui/MyStreaming.tsx`,
+  `src/pages/MyStreamingPage.tsx`, `WORKING_STATE.md`, `CHANGELOG.md`
+- report: TheZaya, Discord #coder — on `/streaming/mystreaming` the `Share`
+  button must open the Share Account modal (screenshot attached).
+- finding: the modal already exists and is complete —
+  `src/components/modals/ShareAccountModal.tsx`, props `{ open, onClose }`.
+  Nothing needs to be built; the screenshot is this component. Like the
+  `Start streaming` button before it, `ChannelHeroCard`'s `Share`
+  (`MyStreaming.tsx:50`) simply carries no `onClick`.
+- precedent: `AccountDetailsPage.tsx:157/206/401` already wires this exact
+  modal from a page-level `useState`.
+- decision: state lives in `MyStreamingPage`, and `ChannelHeroCard` takes an
+  optional `onShare` callback. NOT the self-contained approach used for the
+  `Start streaming` route, because `ShareAccountModal` imports the
+  `@/components/ui` barrel, which re-exports `ChannelHeroCard` from
+  `MyStreaming.tsx` — importing the modal there would close a cycle
+  (`ui/index` -> `MyStreaming` -> `modals/ShareAccountModal` -> `ui/index`).
+  Lifting the state avoids the cycle and matches the existing precedent.
+- coordination: another agent holds `src/pages/news/DiscoverView.tsx` and
+  `e2e/mobile-card-width-system-qa.mjs` uncommitted. No overlap.
+- local_validation: clicked the real button on the built bundle. Modal absent
+  before the click, then heading `Share Account`, 7 toggles, share link
+  present, route still `/streaming/mystreaming`; Escape dismisses it.
+  0 runtime errors. Screenshot matches the reporter's attachment.
 
 ## Active Task — My Streaming: Start streaming button has no route
 

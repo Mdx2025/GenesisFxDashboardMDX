@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Wired the `Share` button in the My Streaming channel hero to the Share Account modal. The modal already shipped and is used from account details; the channel hero button simply had no handler. Opening it keeps the visitor on `/streaming/mystreaming`, and it closes on Escape and on its own close control.
+
 - Wired the `Start streaming` button in the My Streaming channel hero to the streamer application screen. The control rendered and reacted to hover but carried no click handler, so it went nowhere; it now routes to `/streaming/newstreaming`, matching the identical button already shipped on the streaming index.
 
 - Centred the `Forex` / `English` tags with the `Watch now` button in the streaming featured-stream overlay and gave them room to breathe. The tags carried a top margin inside a centre-aligned row, which offset them half a margin below the button, and the row distributed no space at all, so the last tag sat flush against the button. Tags and button now share one baseline and a consistent gap that widens on the largest screens. Mobile keeps its stacked layout unchanged.

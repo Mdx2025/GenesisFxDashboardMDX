@@ -31,7 +31,7 @@ function ShareIcon() {
   return <svg viewBox="0 0 18 18" className="size-[18px]" fill="none" aria-hidden="true"><path d="M6.8 5.2 9 3l2.2 2.2M9 3v8M4 8.3v5.2A1.5 1.5 0 0 0 5.5 15h7a1.5 1.5 0 0 0 1.5-1.5V8.3" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" strokeLinejoin="round" /></svg>
 }
 
-export function ChannelHeroCard() {
+export function ChannelHeroCard({ onShare }: { onShare?: () => void }) {
   const navigate = useNavigate()
 
   return (
@@ -50,7 +50,7 @@ export function ChannelHeroCard() {
           <span className="mt-5 inline-flex h-9 items-center gap-3 rounded-[7px] border border-gfx-green-200 bg-gfx-green-900 px-4 text-sm text-white"><span className="text-gfx-green-300" aria-hidden="true">▣</span><span className="text-gfx-neutral-500">Wallet</span>$100.00</span>
         </div>
         <div className="flex flex-wrap items-center gap-3 xl:ml-auto">
-          <SparkleButton className="!h-[46px] !min-w-[139px] !rounded-[30px] px-5"><ShareIcon />Share</SparkleButton>
+          <SparkleButton onClick={onShare} className="!h-[46px] !min-w-[139px] !rounded-[30px] px-5"><ShareIcon />Share</SparkleButton>
           <GlowButton label="Start streaming" icon={<StartStreamingIcon />} width={197} height={44} onClick={() => navigate('/streaming/newstreaming')} />
         </div>
       </div>
