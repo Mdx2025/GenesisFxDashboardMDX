@@ -28,7 +28,7 @@ file, claim it here.
 
 - task_id: `genesis-assets-filter-mobile-20260826`
 - owner: `star`
-- status: `in-progress`
+- status: `done`
 - scope_lock: `src/pages/AssetsManagementPage.tsx`,
   `e2e/assets-management-mobile-qa.mjs`, `CHANGELOG.md`
 - request: increase separation between the active `Deposits` state and
@@ -60,8 +60,18 @@ file, claim it here.
   axe violations, zero runtime errors, and zero failed responses.
 - preview_evidence:
   `/home/clawd/.openclaw/media/outbound/genesis-assets-management-mobile-reset-preview.png`.
-- next_exact_action: commit exact scoped files, deploy, rerun the same QA against
-  production, and capture the final 390px production state.
+- delivery: commit `3bcc0e3` pushed to `origin/main`; Dokploy deployment
+  `Z_ZdDNWUvvNbu5GlASwKk` finished `done` at 2026-08-27 1:33:59 AM AST.
+- production_assets: `assets/index-BAMJRZ_l.js` and
+  `assets/index-BfjZNzea.css`.
+- production_validation: the full preview matrix passed unchanged against the
+  public URL at 360x800, 390x844, 768x1024, and 1440x960; axe reported zero
+  violations; runtime/network errors and horizontal overflow were zero; `/`,
+  `/home`, `/assets-management`, `/register`, `/allpages`, and SPA fallback all
+  returned HTTP 200.
+- production_evidence:
+  `/home/clawd/.openclaw/media/outbound/genesis-assets-management-mobile-production.png`.
+- next_exact_action: none. Scope released.
 
 ## Active Task — Challenges status filter dropdown
 
