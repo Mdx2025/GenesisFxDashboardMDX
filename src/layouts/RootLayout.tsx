@@ -34,6 +34,7 @@ export default function RootLayout() {
   const [transferProcessing, setTransferProcessing] = useState(false)
   const lenisRef = useRef<Lenis | null>(null)
   const { pathname } = useLocation()
+  const mobileTabBarBottom = pathname === '/news/podcast' ? 'bottom-[116px]' : 'bottom-6'
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -71,7 +72,7 @@ export default function RootLayout() {
             <Outlet />
           </main>
           {!sidebarOpen && (
-            <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50" data-mobile-tab-bar>
+            <div className={`lg:hidden fixed ${mobileTabBarBottom} left-1/2 -translate-x-1/2 z-50`} data-mobile-tab-bar>
               <FloatingNavBar />
             </div>
           )}

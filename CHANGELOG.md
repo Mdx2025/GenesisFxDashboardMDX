@@ -6,6 +6,8 @@
 
 - Rebuilt the `Connect to PAMM` modal for mobile. The dialog was a two-column `flex` whose strategy panel was pinned at `w-[534px] flex-shrink-0`, so on a phone it never shrank: the card clipped it, the `Aum` / `ROI` boxes and the fee values ran past the right edge, and the whole investment form sat off-screen with no way to reach it. The columns now stack below `lg`, the body scrolls inside a card capped at `90vh` with the close button pinned, and the avatar, headings, stat boxes, detail rows and paddings step down to mobile sizes. The desktop layout is unchanged.
 
+- Reordered the mobile Podcast dock stack. The global floating tab bar now sits 24px above the 92px audio player on `/news/podcast`, while the player anchors to the viewport edge and every other route keeps the original 24px tab-bar offset.
+
 - Lifted the Settings profile avatar on mobile. The avatar sat at `top-[7rem]` over an `8rem` banner, so its lower edge reached `12.5rem` while the `Joe Doe` heading started at `11rem` and the circle covered the name. The avatar now straddles the banner edge on mobile and the info block below it clears the overhang.
 
 - Stacked the Settings rows on mobile. Every row (`Profile Picture`, `Theme`, `Change Language`, `AI Coach Widget`, `Change Password`, `Change Email`, `Close Account`) held its label and its control in a fixed two-column row, so on a phone the description column was squeezed to a few words per line and the `Theme` options ran past the card edge. The rows now stack with the control below its description and return to the two-column layout from the `md` breakpoint.
