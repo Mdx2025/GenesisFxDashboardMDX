@@ -100,10 +100,10 @@ function SettingRow({
   title, description, checked, onChange, height, narrow = false,
 }: { title: string; description: string; checked: boolean; onChange: (v: boolean) => void; height: string; narrow?: boolean }) {
   return (
-    <div className={`flex items-start justify-between rounded-[30px] border border-gfx-neutral-250 pl-[2.375rem] pr-[2.3125rem] pt-[1.875rem] ${height}`}>
-      <div>
+    <div className={`flex items-start justify-between gap-4 rounded-[30px] border border-gfx-neutral-250 px-5 py-6 lg:pl-[2.375rem] lg:pr-[2.3125rem] lg:pt-[1.875rem] lg:pb-0 h-auto ${height}`}>
+      <div className="min-w-0">
         <p className="font-acid text-base leading-[1.2] text-gfx-neutral-600">{title}</p>
-        <p className={`mt-[4.8px] font-acid text-base leading-[1.2] text-gfx-neutral-400 ${narrow ? 'max-w-[14.8125rem]' : ''}`}>{description}</p>
+        <p className={`mt-[4.8px] font-acid text-base leading-[1.2] text-gfx-neutral-400 ${narrow ? 'lg:max-w-[14.8125rem]' : ''}`}>{description}</p>
       </div>
       <ToggleSwitch checked={checked} onChange={onChange} label={title} />
     </div>
@@ -194,7 +194,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-modal flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto"
+      className="fixed inset-0 z-modal flex items-center justify-center bg-black/70 backdrop-blur-sm p-3 lg:p-4 overflow-y-auto"
       onClick={(e) => { if (e.target === overlayRef.current) handleClose() }}
       role="dialog"
       aria-modal="true"
@@ -205,7 +205,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
         variant="light"
         divider="none"
         rounded="1.75rem"
-        className="w-[47.625rem] max-w-[95vw] my-auto max-h-[calc(100dvh-2rem)] flex flex-col bg-gfx-green-800"
+        className="w-[47.625rem] max-w-full lg:max-w-[95vw] my-auto max-h-[calc(100dvh-1.5rem)] lg:max-h-[calc(100dvh-2rem)] flex flex-col bg-gfx-green-800"
         style={{
           '--u': `clamp(${MIN_GAP_SCALE}px, (100dvh - ${metrics.fixed + 32}px) / ${metrics.gaps}, 1px)`,
         } as CSSProperties}
@@ -213,7 +213,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-[2.75rem] top-[1.625rem] w-6 h-6"
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-4 top-4 lg:right-[2.75rem] lg:top-[1.625rem] w-6 h-6"
           aria-label="Close modal"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -234,12 +234,12 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
         <div
           ref={scrollRef}
           onScroll={syncThumb}
-          className="relative overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pl-[7.3125rem] pr-[6.1875rem] pt-[calc(var(--u)*72)] pb-[calc(var(--u)*55)]"
+          className="relative overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-5 pt-7 pb-7 lg:pl-[7.3125rem] lg:pr-[6.1875rem] lg:pt-[calc(var(--u)*72)] lg:pb-[calc(var(--u)*55)]"
         >
           {/* Title */}
-          <div className="flex items-center gap-[17px]">
+          <div className="flex items-center gap-3 lg:gap-[17px] pr-8 lg:pr-0">
             <GearIcon size={30} />
-            <h2 className="text-white font-acid font-normal text-[2.25rem] leading-none">Strategy Settings</h2>
+            <h2 className="text-white font-acid font-normal text-[1.75rem] lg:text-[2.25rem] leading-none">Strategy Settings</h2>
           </div>
 
           {/* Tabs */}
@@ -290,25 +290,29 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
           <p className={`${HINT} mt-[calc(var(--u)*8)]`}>Choose the risk level that best describes your trading strategy</p>
 
           {/* Min investment / Max investors */}
-          <div className="mt-[calc(var(--u)*37)] grid grid-cols-2 gap-x-3 gap-y-0">
-            <label className={LABEL} htmlFor="strategy-min">Min Investment ($)</label>
-            <label className={LABEL} htmlFor="strategy-max">Max Investors</label>
-            <input
-              id="strategy-min"
-              inputMode="numeric"
-              value={minInvestment}
-              onChange={(e) => setMinInvestment(e.target.value)}
-              placeholder="100"
-              className={`${FIELD} mt-[calc(var(--u)*11)] h-[3.125rem] rounded-[30px] px-4`}
-            />
-            <input
-              id="strategy-max"
-              inputMode="numeric"
-              value={maxInvestors}
-              onChange={(e) => setMaxInvestors(e.target.value)}
-              placeholder="9"
-              className={`${FIELD} mt-[calc(var(--u)*11)] h-[3.125rem] rounded-[30px] px-4`}
-            />
+          <div className="mt-[calc(var(--u)*37)] grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-4 lg:gap-y-0">
+            <div>
+              <label className={LABEL} htmlFor="strategy-min">Min Investment ($)</label>
+              <input
+                id="strategy-min"
+                inputMode="numeric"
+                value={minInvestment}
+                onChange={(e) => setMinInvestment(e.target.value)}
+                placeholder="100"
+                className={`${FIELD} mt-[calc(var(--u)*11)] h-[3.125rem] rounded-[30px] px-4`}
+              />
+            </div>
+            <div>
+              <label className={LABEL} htmlFor="strategy-max">Max Investors</label>
+              <input
+                id="strategy-max"
+                inputMode="numeric"
+                value={maxInvestors}
+                onChange={(e) => setMaxInvestors(e.target.value)}
+                placeholder="9"
+                className={`${FIELD} mt-[calc(var(--u)*11)] h-[3.125rem] rounded-[30px] px-4`}
+              />
+            </div>
           </div>
             </>
           )}
@@ -317,7 +321,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
             <>
               <div className="mt-[calc(var(--u)*50)] flex items-start gap-3">
                 <span className="mt-[0.375rem]"><InfoIcon /></span>
-                <p className="w-[21.75rem] font-acid text-base leading-[1.2] text-gfx-neutral-400">
+                <p className="w-full lg:w-[21.75rem] font-acid text-base leading-[1.2] text-gfx-neutral-400">
                   Control what trading information is visible to investors and the public
                 </p>
               </div>
@@ -332,7 +336,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
                   title="Hide Open Positions"
                   description="Hide current open positions from public view"
                   narrow
-                  height="h-[7.4375rem]"
+                  height="lg:h-[7.4375rem]"
                   checked={hideOpen}
                   onChange={setHideOpen}
                 />
@@ -341,7 +345,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
                 <SettingRow
                   title="Hide Closed Trades"
                   description="Hide trade history from public view"
-                  height="h-[7.4375rem]"
+                  height="lg:h-[7.4375rem]"
                   checked={hideClosed}
                   onChange={setHideClosed}
                 />
@@ -355,7 +359,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
                 <SettingRow
                   title="Private Strategy"
                   description="Require approval for new investors"
-                  height="h-[6.125rem]"
+                  height="lg:h-[6.125rem]"
                   checked={privateStrategy}
                   onChange={setPrivateStrategy}
                 />
@@ -364,7 +368,7 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
                 <SettingRow
                   title="Hide from Leaderboard"
                   description="Remove this strategy from public  leaderboards"
-                  height="h-[6.125rem]"
+                  height="lg:h-[6.125rem]"
                   checked={hideLeaderboard}
                   onChange={setHideLeaderboard}
                 />
@@ -374,11 +378,11 @@ export function StrategySettingsModal({ open, onClose }: StrategySettingsModalPr
 
           {/* Actions */}
           <div
-            className="flex items-center justify-center gap-3"
+            className="flex flex-col-reverse lg:flex-row items-center justify-center gap-3"
             style={{ marginTop: `calc(var(--u) * ${metrics.actionsGap})` }}
           >
-            <SparkleButton className="!w-[12.375rem] !h-[2.875rem] !rounded-[1.875rem]" onClick={handleClose}>Cancel</SparkleButton>
-            <GlowButton label="Save changes" width={200} height={44} radius={300} onClick={handleClose} />
+            <SparkleButton className="!w-full lg:!w-[12.375rem] !h-[2.875rem] !rounded-[1.875rem]" onClick={handleClose}>Cancel</SparkleButton>
+            <GlowButton label="Save changes" width={200} height={44} radius={300} className="!w-full lg:!w-[200px]" onClick={handleClose} />
           </div>
         </div>
       </GlassCard>

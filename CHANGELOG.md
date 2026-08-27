@@ -2,6 +2,10 @@
 
 ## 2026-08-27
 
+- Unclipped the PAMM manager banner on mobile. The banner was a single `flex` row locked to `h-[7.8125rem]` with `overflow-hidden`, so on a phone the avatar, the manager name, the tagline, the Social Wallet pill and `Create Strategy` all fought for one line: the content overflowed the fixed height and the card cropped the name off the top. The banner now grows with its content below `lg`, the identity block sits on its own row with a truncating name, and the wallet pill and `Create Strategy` stack underneath at full width. The `Manager Dashboard` heading no longer shares a squeezed row with its search field either. Desktop is unchanged.
+
+- Reclaimed the horizontal space in the `Strategy Settings` modal on mobile. The scroll body carried the desktop gutters `pl-[7.3125rem] pr-[6.1875rem]` at every width, so on a 393px phone 216px of the viewport went to padding and the form collapsed into a ~140px column: the title broke over two lines, `Min Investment ($)` and `Max Investors` wrapped inside a two-column grid, and the fixed-height setting rows clipped their descriptions. The gutters drop to 20px below `lg`, the paired number fields stack in the right order, the setting rows size to their content, and `Cancel` / `Save changes` stack full-width instead of overflowing the card.
+
 - Stopped browsers from pinning visitors to an old build. `nginx` served `index.html` with no `Cache-Control`, only an `ETag`, so browsers applied heuristic caching and kept requesting the previous hashed bundle after a deploy — the app looked unchanged even though the new assets were live. `index.html` is now sent as `no-cache, must-revalidate`; the hashed assets keep their one-year `immutable` policy.
 
 - Kept the PAMM strategy search and its view-mode buttons on one row on mobile. The search field was `w-full` below `sm`, so it claimed the whole line and the list/grid toggles wrapped underneath. The field now flexes to the remaining space and the toggles stay beside it, matching the desktop row.
