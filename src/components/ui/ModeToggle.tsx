@@ -54,10 +54,9 @@ interface ModeToggleProps {
   onChange?: (index: number) => void
   size?: 'default' | 'sm'
   buttonClassName?: string
-  fitContentOnMobile?: boolean
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '', fitContentOnMobile = false }: ModeToggleProps) {
+export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '' }: ModeToggleProps) {
   const [internalActive, setInternalActive] = useState(defaultIndex)
   const active = activeIndex ?? internalActive
   const containerRef = useRef<HTMLDivElement>(null)
@@ -73,7 +72,7 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
     const mobileQuery = window.matchMedia('(max-width: 639px)')
     const applyGeometry = (animate: boolean) => {
       const activeButton = buttonRefs.current[active]
-      const contentFit = fitContentOnMobile && mobileQuery.matches && activeButton
+      const contentFit = mobileQuery.matches && activeButton
       const geometry = contentFit
         ? { x: activeButton.offsetLeft, xPercent: 0, width: activeButton.offsetWidth }
         : { x: 0, xPercent: active * 100, width: `${100 / options.length}%` }
@@ -97,10 +96,10 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
       resizeObserver.disconnect()
       mobileQuery.removeEventListener('change', handleGeometryChange)
     }
-  }, [active, fitContentOnMobile, options.length])
+  }, [active, options.length])
 
   return (
-    <div ref={containerRef} className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}${fitContentOnMobile ? ' mode-toggle-mobile-content' : ''}`} role="group" aria-label="Mode selection">
+    <div ref={containerRef} className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}`} role="group" aria-label="Mode selection">
       <div
         ref={indicatorRef}
         className="mode-indicator"

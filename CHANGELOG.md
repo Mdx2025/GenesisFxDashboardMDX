@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Made content-fitted mobile geometry the canonical shared `ModeToggle` behavior across every consumer. Tabs now keep readable intrinsic spacing, switch to component-owned horizontal scrolling when long option sets exceed the viewport, preserve equal tracks on desktop, and no longer require page-level flags. Added a 12-route mobile regression matrix covering 360px/390px layout, clipping, indicator movement, focus, reduced motion, axe, runtime, and network errors.
+
 - Refined Assets Management on mobile: transaction tabs now allocate width from label content, narrow screens compact the wallet banner clear of the floating navigation, Reset appears as a compact secondary action only when filters are active, and Export lives with the history table. Added responsive, keyboard, reduced-motion, typography, axe, runtime, and network regression QA.
 
 ## 2026-08-26

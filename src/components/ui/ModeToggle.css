@@ -31,12 +31,16 @@
   white-space: nowrap;
 }
 @media (max-width: 639px) {
-  .mode-toggle-mobile-content {
+  .mode-toggle {
     padding-inline: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  .mode-toggle-mobile-content button {
-    flex: 1 1 auto;
+  .mode-toggle::-webkit-scrollbar { display: none; }
+
+  .mode-toggle button {
+    flex: 1 0 auto;
     padding-inline: 8px;
     font-size: 0.875rem;
   }

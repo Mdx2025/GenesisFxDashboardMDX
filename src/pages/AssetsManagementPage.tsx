@@ -218,7 +218,7 @@ export default function AssetsManagementPage() {
           </section>
 
           <div className="mb-4 md:mb-8 w-full max-w-xl" data-assets-history-tabs>
-            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} activeIndex={activeTab} onChange={(i) => { setActiveTab(i); resetFilters() }} fitContentOnMobile />
+            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} activeIndex={activeTab} onChange={(i) => { setActiveTab(i); resetFilters() }} />
           </div>
 
           <section aria-label="Assets History">

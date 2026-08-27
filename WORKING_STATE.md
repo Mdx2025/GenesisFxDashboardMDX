@@ -24,6 +24,42 @@ file, claim it here.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
 
+## Active Task — ModeToggle canonical mobile spacing
+
+- task_id: `genesis-mode-toggle-mobile-default-20260827`
+- owner: `star`
+- status: `ready-to-deploy`
+- scope_lock: `src/components/ui/ModeToggle.tsx`,
+  `src/components/ui/ModeToggle.css`, `src/pages/AssetsManagementPage.tsx`,
+  `src/pages/AcademyPage.tsx`, `e2e/mode-toggle-mobile-qa.mjs`,
+  `WORKING_STATE.md`, `CHANGELOG.md`
+- request: move the content-fitted mobile tab geometry from page-level opt-in
+  into the shared ModeToggle so every consumer receives the same spacing.
+- design_route: `surface=dashboard`, `archetype=operations`,
+  `pattern_pack=pattern-analytics-dashboard`, `evidence=live codebase + shipped
+  Assets Management behavior`, `style=existing GenesisFX glass-dashboard thesis`.
+- visual_thesis: preserve the existing ModeToggle appearance and desktop equal
+  tracks while making mobile labels define their own safe, readable tracks for
+  every shared-component consumer.
+- quality_contract: WCAG 2.2 AA; 12px visible-text floor; 24px minimum targets;
+  no overlap or horizontal overflow at 360px/390px; keyboard/focus and reduced
+  motion preserved; build and representative cross-route browser QA must pass.
+- highest_risk: multi-option consumers with long labels, icon-bearing options,
+  active-indicator geometry after resize, and accidental desktop changes.
+- implementation: removed the page-level `fitContentOnMobile` API and made
+  content-fitted indicator geometry canonical below 640px. Mobile buttons grow
+  to fill available space without shrinking below their content width; long
+  option sets scroll inside ModeToggle with a hidden scrollbar. Assets and
+  Academy now use the plain shared-component contract.
+- local_validation: `pnpm build` passed with 885 modules. The repeatable
+  12-route matrix passed at 360x800 and 390x844 with zero clipped labels, zero
+  document overflow, at least 16px label gaps for scrollable long sets, aligned
+  initial/moved indicators, 12px minimum text, 24px+ targets, visible keyboard
+  focus, reduced-motion visibility, zero axe violations, zero runtime errors,
+  and zero failed responses.
+- next_exact_action: commit exact scope, push `main`, and verify the automatic
+  production deployment plus public smoke.
+
 ## Active Task — Assets filter row mobile UX
 
 - task_id: `genesis-assets-filter-mobile-20260826`
