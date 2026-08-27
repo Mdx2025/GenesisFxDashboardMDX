@@ -90,6 +90,23 @@ export {
   BroadcastSessionDetails,
 } from './StartStreaming'
 export type { BroadcastPermission } from './StartStreaming'
+export {
+  BroadcasterPip,
+  ChartToolbar,
+  StreamActionChip,
+  StreamChartPanel,
+  StreamChatPanel,
+  StreamFollowButton,
+  StreamHelpButton,
+  StreamLikeChip,
+  StreamTagChip,
+  StreamTipChip,
+  StreamViewersChip,
+  WatchControlToggle,
+  WATCH_CHART_TYPES,
+  WATCH_TIMEFRAMES,
+} from './WatchStream'
+export type { StreamChatMessage, WatchChartType, WatchTimeframe } from './WatchStream'
 export { AiCoachChip, AiCoachIconChip, AiCoachPromptBar, AiCoachTradeChart } from './AiCoach'
 export {
   DiscoverLivePill,

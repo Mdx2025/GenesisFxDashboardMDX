@@ -84,6 +84,7 @@ function ReplayFilterSwitch({ value, onChange }: { value: ReplayFilter; onChange
 }
 
 function FeaturedStream() {
+  const navigate = useNavigate()
   return (
     <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-[561px] overflow-hidden" data-featured-stream>
       <img src="/images/streaming-chart.png" alt="EURUSD trading chart" className="absolute inset-0 size-full object-cover" />
@@ -102,7 +103,7 @@ function FeaturedStream() {
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">Forex</span>
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">English</span>
         </div>
-        <GlowButton className="lg:ml-auto" width={206} label="Watch now" />
+        <GlowButton className="lg:ml-auto" width={206} label="Watch now" onClick={() => navigate('/streaming/watch')} />
       </div>
     </GlassCard>
   )

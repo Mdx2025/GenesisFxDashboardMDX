@@ -13,8 +13,27 @@ export function StreamingTabs({ activeIndex, onChange, className = '' }: { activ
   )
 }
 
-export function StreamingLiveBadge({ children = 'Live' }: { children?: ReactNode }) {
-  return <span className="inline-flex h-[33px] items-center rounded-full border border-[#E7485D] px-[11px] text-sm leading-none text-[#FF697C]">{children}</span>
+export function StreamingLiveBadge({
+  children = 'Live',
+  tone = 'danger',
+  dot = false,
+  className = '',
+}: {
+  children?: ReactNode
+  tone?: 'danger' | 'success'
+  dot?: boolean
+  className?: string
+}) {
+  const toneClass =
+    tone === 'success'
+      ? 'gap-[9px] border-gfx-bullish bg-gfx-bullish-surface px-3 py-[7px] text-base leading-[24.44px] font-medium text-gfx-bullish-light'
+      : 'h-[33px] px-[11px] border-[#E7485D] text-sm leading-none text-[#FF697C]'
+  return (
+    <span className={`inline-flex items-center rounded-full border ${toneClass} ${className}`}>
+      {dot && <i className="size-[7px] shrink-0 rounded-full bg-current" aria-hidden="true" />}
+      {children}
+    </span>
+  )
 }
 
 function CameraIcon({ size = 63 }: { size?: number }) {
