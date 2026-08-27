@@ -27,15 +27,41 @@ file, claim it here.
 ## Active Task — Assets filter row mobile UX
 
 - task_id: `genesis-assets-filter-mobile-20260826`
-- owner: `artemis`
+- owner: `star`
 - status: `in-progress`
-- scope_lock: `src/pages/AssetsManagementPage.tsx`
-- request: the `All Status / All Time / All Coins` filter row is ugly on mobile.
-- root_cause: three `GlassSelect` wrappers hardcoded to `w-[18rem]` inside a
-  `flex flex-wrap` row. Below ~600px each one wraps onto its own line, so the
-  filters eat ~200px of vertical space before any data, and the `ml-auto` export
-  button is pushed onto a fourth orphan line.
-- next_exact_action: 2-col mobile grid, build, screenshot at 433px, await OK.
+- scope_lock: `src/pages/AssetsManagementPage.tsx`,
+  `e2e/assets-management-mobile-qa.mjs`, `CHANGELOG.md`
+- request: increase separation between the active `Deposits` state and
+  `Withdrawals` on mobile, and fix the awkward Reset action below the filters.
+- design_route: `surface=dashboard`, `archetype=operations`,
+  `pattern_pack=pattern-analytics-dashboard`,
+  `evidence=production URL + live codebase`,
+  `style=existing GenesisFX glass-dashboard thesis`.
+- visual_thesis: preserve the existing GenesisFX control language while making
+  the transaction mode rail scan cleanly and keeping recovery actions attached
+  to the filters they affect instead of underneath the floating mobile nav.
+- dials: `design_variance=1`, `motion_intensity=1`, `visual_density=8`,
+  `art_direction=4`, `implementation_clarity=10`,
+  `image_usage_priority=1`, `spacing_generosity=3`.
+- root_cause: the four equal-width 16px ModeToggle tracks leave almost no
+  optical gap between `Deposits` and `Withdrawals` at 390px. The always-visible
+  48px GreenPillButton Reset row lands behind the fixed mobile navigation, while
+  Export is grouped with filters instead of the history table it acts on.
+- quality_contract: WCAG 2.2 AA; 12px visible-text floor; 4.5:1 text and 3:1 UI
+  contrast; 24px minimum / 44px preferred targets; 360px, 390px, intermediate,
+  and desktop containment; keyboard/focus, reduced motion, automated axe,
+  runtime/network errors, build, and production screenshot evidence.
+- highest_risk: content-fitted indicator geometry, conditional Reset focus/target
+  behavior, mobile-nav overlap, and desktop filter/export regression.
+- local_validation: build passed with 885 modules. Remote preview QA passed at
+  360x800 and 390x844 with 16.8px / 24.3px Deposits-to-Withdrawals label gaps,
+  9.6px / 73.6px filter-to-nav clearance, zero horizontal overflow, zero text
+  below 12px, 44px keyboard-focused Reset, reduced-motion content parity, zero
+  axe violations, zero runtime errors, and zero failed responses.
+- preview_evidence:
+  `/home/clawd/.openclaw/media/outbound/genesis-assets-management-mobile-reset-preview.png`.
+- next_exact_action: commit exact scoped files, deploy, rerun the same QA against
+  production, and capture the final 390px production state.
 
 ## Active Task — Challenges status filter dropdown
 

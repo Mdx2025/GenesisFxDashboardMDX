@@ -53,7 +53,7 @@ function CoinLogo({ coin }: { coin: string }) {
   }
   return (
     <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: bg }} /* dynamic */>
-      <span className="text-tiny font-bold text-white">{coin.charAt(0)}</span>
+      <span className="text-xs font-bold text-white">{coin.charAt(0)}</span>
     </div>
   )
 }
@@ -134,6 +134,8 @@ export default function AssetsManagementPage() {
     setFilterCoin('all')
   }
 
+  const filtersActive = filterType !== 'all' || filterTime !== 'all' || filterCoin !== 'all'
+
   return (
     <>
       <SuccessSnackbar open={copied} message="Address copied to clipboard" duration={2000} onClose={() => setCopied(false)} />
@@ -147,9 +149,9 @@ export default function AssetsManagementPage() {
 
           <h1 className="text-white font-normal leading-none text-hero-lg mt-6 3xl:mt-8 4xl:mt-10">Funding</h1>
 
-          <section aria-label="Fiat Wallet" className="py-7 md:py-15">
-            <GlassBannerCard contentClassName="py-8 px-5 xl:py-17 xl:px-13 3xl:py-21 3xl:px-16 4xl:py-26 4xl:px-20">
-              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8">
+          <section aria-label="Fiat Wallet" className="py-4 max-[374px]:py-1 sm:py-7 md:py-15">
+            <GlassBannerCard contentClassName="py-5 max-[374px]:py-3 px-5 sm:py-8 xl:py-17 xl:px-13 3xl:py-21 3xl:px-16 4xl:py-26 4xl:px-20">
+              <div className="flex flex-col gap-5 sm:gap-8 xl:flex-row xl:items-start xl:justify-between">
                 <div className="flex flex-col gap-4 shrink-0">
                   <div className="flex items-center gap-2">
                     <h2 className="text-gfx-neutral-400 text-2xl font-normal leading-none">
@@ -186,7 +188,7 @@ export default function AssetsManagementPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-between gap-6 xl:shrink-0 xl:self-stretch">
+                <div className="flex flex-col justify-between gap-4 sm:gap-6 xl:shrink-0 xl:self-stretch">
                   <div className="flex items-center gap-3 flex-wrap">
                     <SparkleButton onClick={() => navigate('/deposit')}>
                       <span className="flex items-center gap-2">
@@ -215,12 +217,12 @@ export default function AssetsManagementPage() {
             </GlassBannerCard>
           </section>
 
-          <div className="mb-4 md:mb-8 w-full max-w-xl">
-            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} activeIndex={activeTab} onChange={(i) => { setActiveTab(i); resetFilters() }} />
+          <div className="mb-4 md:mb-8 w-full max-w-xl" data-assets-history-tabs>
+            <ModeToggle options={['Deposits', 'Withdrawals', 'Transfers', 'Credits']} activeIndex={activeTab} onChange={(i) => { setActiveTab(i); resetFilters() }} fitContentOnMobile />
           </div>
 
           <section aria-label="Assets History">
-            <div className="grid grid-cols-3 gap-2 mb-6 md:gap-3 md:flex md:items-center md:flex-wrap" role="group" aria-label="Transaction filters">
+            <div className="grid grid-cols-3 gap-2 mb-2 md:mb-6 md:gap-3 md:flex md:items-center md:flex-wrap" role="group" aria-label="Transaction filters">
               <div className="min-w-0 md:w-[18rem]">
                 <GlassSelect
                   size="sm"
@@ -266,28 +268,42 @@ export default function AssetsManagementPage() {
                   ]}
                 />
               </div>
-              <div className="col-span-3 flex items-center justify-between gap-3 md:contents">
-              <GreenPillButton onClick={resetFilters}>Reset</GreenPillButton>
-              <div className="md:ml-auto">
+              <div className="hidden md:block">
+                <GreenPillButton onClick={resetFilters}>Reset</GreenPillButton>
+              </div>
+            </div>
+            <div className="mb-6 flex h-28 items-start pt-1 md:hidden" data-assets-mobile-action-safe-area>
+              {filtersActive && (
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-gfx-neutral-250 p-2.5 cursor-pointer transition-colors hover:border-gfx-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gfx-main"
-                  aria-label="Export table"
+                  onClick={resetFilters}
+                  className="inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-full border border-gfx-green-200 bg-transparent px-3 text-sm text-gfx-neutral-400 transition-colors hover:border-gfx-green-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gfx-main"
+                  aria-label="Reset transaction filters"
+                  data-assets-reset-filters
                 >
-                  <svg width="24" height="25" viewBox="0 0 24 25" fill="none" aria-hidden="true">
-                    <path d="M20.3708 3.46447C18.9063 2 16.5493 2 11.8352 2C7.12119 2 4.76417 2 3.2997 3.46447C2.54222 4.22195 2.17653 5.21824 2 6.65598C2.53066 6.06532 3.16829 5.57328 3.8843 5.20846C4.66578 4.81027 5.50258 4.6488 6.4291 4.5731C7.32423 4.49997 8.42564 4.49998 9.7724 4.5H13.8981C15.2448 4.49998 16.3462 4.49997 17.2414 4.5731C18.1679 4.6488 19.0047 4.81027 19.7862 5.20846C20.5022 5.57328 21.1398 6.06532 21.6705 6.65598C21.4939 5.21824 21.1283 4.22195 20.3708 3.46447Z" fill="#A0A0A0" />
-                    <path fillRule="evenodd" clipRule="evenodd" d="M2 14.6562C2 11.856 2 10.4559 2.54497 9.3863C3.02433 8.44549 3.78924 7.68058 4.73005 7.20122C5.79961 6.65625 7.19974 6.65625 10 6.65625H14C16.8003 6.65625 18.2004 6.65625 19.27 7.20122C20.2108 7.68058 20.9757 8.44549 21.455 9.3863C22 10.4559 22 11.856 22 14.6562C22 17.4565 22 18.8566 21.455 19.9262C20.9757 20.867 20.2108 21.6319 19.27 22.1113C18.2004 22.6562 16.8003 22.6562 14 22.6562H10C7.19974 22.6562 5.79961 22.6562 4.73005 22.1113C3.78924 21.6319 3.02433 20.867 2.54497 19.9262C2 18.8566 2 17.4565 2 14.6562ZM12.5303 18.1866C12.3897 18.3272 12.1989 18.4062 12 18.4062C11.8011 18.4062 11.6103 18.3272 11.4697 18.1866L8.96967 15.6866C8.67678 15.3937 8.67678 14.9188 8.96967 14.6259C9.26256 14.333 9.73744 14.333 10.0303 14.6259L11.25 15.8456V11.6562C11.25 11.242 11.5858 10.9062 12 10.9062C12.4142 10.9062 12.75 11.242 12.75 11.6562V15.8456L13.9697 14.6259C14.2626 14.333 14.7374 14.333 15.0303 14.6259C15.3232 14.9188 15.3232 15.3937 15.0303 15.6866L12.5303 18.1866Z" fill="#808080" />
-                  </svg>
+                  Reset
                 </button>
-                </div>
-              </div>
+              )}
             </div>
             <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
               <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-lg font-bold tracking-tight text-white">Assets History</h2>
-                  <Badge variant="status">Total ({filteredTransactions.length} records)</Badge>
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex min-w-0 flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
+                    <h2 className="whitespace-nowrap text-lg font-bold tracking-tight text-white">Assets History</h2>
+                    <Badge variant="status">Total ({filteredTransactions.length} records)</Badge>
+                  </div>
+                  <button
+                    type="button"
+                    className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2.5 rounded-full border border-gfx-neutral-250 p-2.5 cursor-pointer transition-colors hover:border-gfx-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gfx-main"
+                    aria-label="Export table"
+                    data-assets-export
+                  >
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" aria-hidden="true">
+                      <path d="M20.3708 3.46447C18.9063 2 16.5493 2 11.8352 2C7.12119 2 4.76417 2 3.2997 3.46447C2.54222 4.22195 2.17653 5.21824 2 6.65598C2.53066 6.06532 3.16829 5.57328 3.8843 5.20846C4.66578 4.81027 5.50258 4.6488 6.4291 4.5731C7.32423 4.49997 8.42564 4.49998 9.7724 4.5H13.8981C15.2448 4.49998 16.3462 4.49997 17.2414 4.5731C18.1679 4.6488 19.0047 4.81027 19.7862 5.20846C20.5022 5.57328 21.1398 6.06532 21.6705 6.65598C21.4939 5.21824 21.1283 4.22195 20.3708 3.46447Z" fill="#A0A0A0" />
+                      <path fillRule="evenodd" clipRule="evenodd" d="M2 14.6562C2 11.856 2 10.4559 2.54497 9.3863C3.02433 8.44549 3.78924 7.68058 4.73005 7.20122C5.79961 6.65625 7.19974 6.65625 10 6.65625H14C16.8003 6.65625 18.2004 6.65625 19.27 7.20122C20.2108 7.68058 20.9757 8.44549 21.455 9.3863C22 10.4559 22 11.856 22 14.6562C22 17.4565 22 18.8566 21.455 19.9262C20.9757 20.867 20.2108 21.6319 19.27 22.1113C18.2004 22.6562 16.8003 22.6562 14 22.6562H10C7.19974 22.6562 5.79961 22.6562 4.73005 22.1113C3.78924 21.6319 3.02433 20.867 2.54497 19.9262C2 18.8566 2 17.4565 2 14.6562ZM12.5303 18.1866C12.3897 18.3272 12.1989 18.4062 12 18.4062C11.8011 18.4062 11.6103 18.3272 11.4697 18.1866L8.96967 15.6866C8.67678 15.3937 8.67678 14.9188 8.96967 14.6259C9.26256 14.333 9.73744 14.333 10.0303 14.6259L11.25 15.8456V11.6562C11.25 11.242 11.5858 10.9062 12 10.9062C12.4142 10.9062 12.75 11.242 12.75 11.6562V15.8456L13.9697 14.6259C14.2626 14.333 14.7374 14.333 15.0303 14.6259C15.3232 14.9188 15.3232 15.3937 15.0303 15.6866L12.5303 18.1866Z" fill="#808080" />
+                    </svg>
+                  </button>
                 </div>
               </div>
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-27
+
+- Refined Assets Management on mobile: transaction tabs now allocate width from label content, narrow screens compact the wallet banner clear of the floating navigation, Reset appears as a compact secondary action only when filters are active, and Export lives with the history table. Added responsive, keyboard, reduced-motion, typography, axe, runtime, and network regression QA.
+
 ## 2026-08-26
 
 - Added the Figma-matched 10X challenge detail route at `/challenges/details-single-page`, wired every challenge-card `View` action to it, and introduced reusable `ChallengeDrawdownCard`, `ChallengeMetricCard`, and `ChallengePerformanceCard` design-system components using the official Figma MCP tokens and chart artwork from frame `4144:64927`.
