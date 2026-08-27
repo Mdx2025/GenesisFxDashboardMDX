@@ -119,109 +119,51 @@ export function CopySubscriptionModal({
     >
       <div
         ref={modalRef}
-        className="w-[1024px] max-w-[95vw] rounded-xl flex overflow-hidden"
+        className="relative w-[1024px] max-w-[95vw] max-h-[90vh] rounded-xl flex flex-col overflow-hidden"
         style={{ background: 'var(--color-gfx-green-800)', boxShadow: 'var(--shadow-subtle), 0px 25px 50px -12px rgba(0,0,0,0.25)', outline: '1.16px solid var(--color-gfx-green-800)' }}
       >
-        {/* Left Column — Configuration Form */}
-        <div className="flex-1 p-10 flex flex-col" style={{ minWidth: 0, borderRight: '1px solid var(--color-gfx-neutral-250)' }}>
-          {/* Step indicator + title */}
-          <div className="flex items-center gap-4 mb-[39px]">
-            <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-gfx-green-300 flex items-center justify-center flex-shrink-0">
-              <span className="text-gfx-green-300 text-sm font-acid font-semibold" style={{ lineHeight: '20px' }}>1</span>
-            </div>
-            <h2 className="text-white text-2xl font-acid font-normal">Configure Subscription</h2>
-          </div>
+        {/* Close button */}
+        <button
+          type="button"
+          onClick={handleClose}
+          className="absolute z-20 cursor-pointer hover:opacity-70 transition-opacity right-4 top-4 lg:right-6 lg:top-6 w-6 h-6"
+          aria-label="Close modal"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6L18 18M18 6L6 18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
 
-          {/* Select Account */}
-          <div className="mb-[39px]">
-            <label className="block text-white text-base font-acid font-medium leading-6 mb-3">Select Account</label>
-            <GlassSelect
-              options={ACCOUNT_OPTIONS}
-              placeholder="Select an account"
-              value={account}
-              onChange={setAccount}
-            />
-          </div>
-
-          {/* Lot Size Mode */}
-          <div className="mb-8">
-            <div className="flex items-center gap-1.5 mb-[12.5px]">
-              <label className="text-white text-base font-acid font-medium leading-6">Lot Size Mode</label>
-              <InfoIcon />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {LOT_MODES.map((mode) => (
-                <button
-                  key={mode.id}
-                  type="button"
-                  onClick={() => setLotMode(mode.id)}
-                  className={`h-20 rounded-sm text-left px-4 flex flex-col justify-center cursor-pointer transition-colors ${
-                    lotMode === mode.id
-                      ? 'bg-gfx-green-900 border border-gfx-green-300'
-                      : 'bg-gfx-green-800 border border-gfx-green-900 hover:border-gfx-green-200'
-                  }`}
-                >
-                  <span className={`text-base font-acid font-medium leading-6 ${lotMode === mode.id ? 'text-gfx-green-300' : 'text-white'}`}>
-                    {mode.title}
-                  </span>
-                  <span className="text-gfx-neutral-400 text-sm font-acid leading-5 mt-0.5">
-                    {mode.subtitle}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Subscription Amount */}
-          <div className="mb-10">
-            <div className="flex items-center gap-1.5 mb-[12.5px]">
-              <label className="text-white text-base font-acid font-semibold leading-6">Subscription Amount</label>
-              <InfoIcon color="#808080" />
-            </div>
-            <div className="h-[62px] rounded-sm bg-gfx-green-900 flex items-center justify-between px-4">
-              <span className="text-gfx-neutral-500 text-sm font-acid leading-5">Account Balance</span>
-              <span className="text-white text-sm font-acid leading-5">$0.00</span>
-            </div>
-          </div>
-
-          {/* Start Copying button */}
-          <div className="mt-auto">
-            <GlowButton
-              label="Start copying"
-              width="100%"
-              height={44}
-              onClick={() => { handleClose(); onConfirm?.() }}
-            />
-          </div>
-        </div>
-
-        {/* Right Column — Profile & Summary */}
-        <div className="w-[460px] flex-shrink-0 p-10 flex flex-col">
+        {/* Columns are reversed on desktop so that stacking on mobile puts the
+            profile and summary above the form, leaving the CTA last. */}
+        <div className="flex-1 min-h-0 overflow-y-auto flex flex-col lg:flex-row-reverse">
+        {/* Profile & Summary */}
+        <div className="w-full lg:w-[460px] flex-shrink-0 p-5 lg:p-10 flex flex-col">
           {/* Profile */}
-          <div className="flex items-center gap-4 mb-[32px]">
+          <div className="flex items-center gap-4 mb-6 lg:mb-[32px] pr-8 lg:pr-0">
             <div className="w-14 h-14 rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 border border-gfx-neutral-200">
               <span className="text-white text-sm font-acid font-medium">{traderInitials}</span>
             </div>
-            <div>
-              <span className="text-white text-base font-acid font-medium leading-6 block">{traderName}</span>
-              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6 block">{traderUsername}</span>
+            <div className="min-w-0">
+              <span className="text-white text-base font-acid font-medium leading-6 block truncate">{traderName}</span>
+              <span className="text-gfx-neutral-500 text-base font-acid font-medium leading-6 block truncate">{traderUsername}</span>
             </div>
           </div>
 
           {/* AUM / ROI stat cards */}
-          <div className="flex gap-4 mb-[32px]">
-            <div className="flex-1 py-4 px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
+          <div className="flex gap-4 mb-6 lg:mb-[32px]">
+            <div className="flex-1 min-w-0 py-4 px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
               <span className="text-gfx-green-300 text-xs font-acid leading-5">AUM</span>
               <span className="text-gfx-green-300 text-base font-acid font-medium leading-6 mt-2">{aum}</span>
             </div>
-            <div className="flex-1 py-4 px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
+            <div className="flex-1 min-w-0 py-4 px-5 flex flex-col items-center bg-gfx-green-900 rounded-sm border border-gfx-green-200">
               <span className="text-gfx-green-300 text-xs font-acid leading-5">ROI</span>
               <span className="text-gfx-green-300 text-base font-acid font-medium leading-6 mt-2">{roi}</span>
             </div>
           </div>
 
           {/* Subscription Summary */}
-          <div className="flex-1 px-[29px] py-[29px] rounded-md border border-gfx-neutral-250">
+          <div className="flex-1 p-5 lg:px-[29px] lg:py-[29px] rounded-md border border-gfx-neutral-250">
             <h3 className="text-white text-base font-acid font-medium leading-6 mb-[24.5px]">Subscription Summary</h3>
 
             <div className="space-y-[17.5px]">
@@ -242,6 +184,80 @@ export function CopySubscriptionModal({
             </div>
           </div>
         </div>
+
+        {/* Configuration Form */}
+        <div className="flex-1 p-5 lg:p-10 flex flex-col border-t border-gfx-neutral-250 lg:border-t-0 lg:border-r" style={{ minWidth: 0 }}>
+          {/* Step indicator + title */}
+          <div className="flex items-center gap-4 mb-6 lg:mb-[39px]">
+            <div className="w-8 h-8 rounded-full bg-gfx-green-900 border border-gfx-green-300 flex items-center justify-center flex-shrink-0">
+              <span className="text-gfx-green-300 text-sm font-acid font-semibold" style={{ lineHeight: '20px' }}>1</span>
+            </div>
+            <h2 className="text-white text-xl lg:text-2xl font-acid font-normal">Configure Subscription</h2>
+          </div>
+
+          {/* Select Account */}
+          <div className="mb-6 lg:mb-[39px]">
+            <label className="block text-white text-base font-acid font-medium leading-6 mb-3">Select Account</label>
+            <GlassSelect
+              options={ACCOUNT_OPTIONS}
+              placeholder="Select an account"
+              value={account}
+              onChange={setAccount}
+            />
+          </div>
+
+          {/* Lot Size Mode */}
+          <div className="mb-6 lg:mb-8">
+            <div className="flex items-center gap-1.5 mb-[12.5px]">
+              <label className="text-white text-base font-acid font-medium leading-6">Lot Size Mode</label>
+              <InfoIcon />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+              {LOT_MODES.map((mode) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  onClick={() => setLotMode(mode.id)}
+                  className={`min-h-20 py-3 rounded-sm text-left px-4 flex flex-col justify-center cursor-pointer transition-colors ${
+                    lotMode === mode.id
+                      ? 'bg-gfx-green-900 border border-gfx-green-300'
+                      : 'bg-gfx-green-800 border border-gfx-green-900 hover:border-gfx-green-200'
+                  }`}
+                >
+                  <span className={`text-base font-acid font-medium leading-6 ${lotMode === mode.id ? 'text-gfx-green-300' : 'text-white'}`}>
+                    {mode.title}
+                  </span>
+                  <span className="text-gfx-neutral-400 text-sm font-acid leading-5 mt-0.5">
+                    {mode.subtitle}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Subscription Amount */}
+          <div className="mb-8 lg:mb-10">
+            <div className="flex items-center gap-1.5 mb-[12.5px]">
+              <label className="text-white text-base font-acid font-semibold leading-6">Subscription Amount</label>
+              <InfoIcon color="#808080" />
+            </div>
+            <div className="h-[62px] rounded-sm bg-gfx-green-900 flex items-center justify-between px-4">
+              <span className="text-gfx-neutral-500 text-sm font-acid leading-5">Account Balance</span>
+              <span className="text-white text-sm font-acid leading-5">$0.00</span>
+            </div>
+          </div>
+
+          {/* Start Copying button */}
+          <div className="mt-auto">
+            <GlowButton
+              label="Start copying"
+              width="100%"
+              height={44}
+              onClick={() => { handleClose(); onConfirm?.() }}
+            />
+          </div>
+        </div>
+        </div>
       </div>
     </div>
   )
@@ -249,9 +265,9 @@ export function CopySubscriptionModal({
 
 function SummaryRow({ label, value, valueClass = 'text-white' }: { label: string; value: string; valueClass?: string }) {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-4">
       <span className="text-gfx-neutral-500 text-sm font-acid leading-5">{label}</span>
-      <span className={`text-sm font-acid leading-5 ${valueClass}`}>{value}</span>
+      <span className={`text-sm font-acid leading-5 text-right ${valueClass}`}>{value}</span>
     </div>
   )
 }
