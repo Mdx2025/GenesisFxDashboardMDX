@@ -48,6 +48,11 @@
     font-size: 0.875rem;
   }
 }
+.mode-toggle-scrollable {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.mode-toggle-scrollable::-webkit-scrollbar { display: none; }
 .mode-toggle-sm { height: 34px; }
 .mode-toggle-sm button { font-size: 0.75rem; }
 .mode-toggle button:focus-visible {

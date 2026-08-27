@@ -54,9 +54,11 @@ interface ModeToggleProps {
   onChange?: (index: number) => void
   size?: 'default' | 'sm'
   buttonClassName?: string
+  ariaLabel?: string
+  scrollable?: boolean
 }
 
-export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '' }: ModeToggleProps) {
+export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, activeIndex, onChange, size = 'default', buttonClassName = '', ariaLabel = 'Mode selection', scrollable = false }: ModeToggleProps) {
   const [internalActive, setInternalActive] = useState(defaultIndex)
   const active = activeIndex ?? internalActive
   const containerRef = useRef<HTMLDivElement>(null)
@@ -103,7 +105,12 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
   }, [active, options.length])
 
   return (
-    <div ref={containerRef} className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}`} role="group" aria-label="Mode selection">
+    <div
+      ref={containerRef}
+      className={`mode-toggle${size === 'sm' ? ' mode-toggle-sm' : ''}${scrollable ? ' mode-toggle-scrollable' : ''}`}
+      role="group"
+      aria-label={ariaLabel}
+    >
       <div
         ref={indicatorRef}
         className="mode-indicator"

@@ -92,7 +92,6 @@ export {
 export type { BroadcastPermission } from './StartStreaming'
 export { AiCoachChip, AiCoachIconChip, AiCoachPromptBar, AiCoachTradeChart } from './AiCoach'
 export {
-  DiscoverCategoryBar,
   DiscoverLivePill,
   DiscoverMarketTable,
   DiscoverMoverCard,
