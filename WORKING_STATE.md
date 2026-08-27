@@ -16,13 +16,81 @@ file, claim it here.
 - if a file you need shows up modified and it is outside your `scope_lock`,
   stop and coordinate instead of committing it.
 
-### Live ownership snapshot — 2026-08-26
+### Live ownership snapshot — 2026-08-27
 
-- `star`: Challenges (`e1c6ebc`, `6500734`, `dbe421f` on `main`) plus in-flight
-  uncommitted edits in this tree: `src/components/ui/ModeToggle.css`,
-  `src/components/ui/ModeToggle.tsx`, `src/pages/AcademyPage.tsx`. Do not touch.
+- `coder`: released. `ModeToggle` long-label track sizing shipped
+  (`genesis-mode-toggle-long-label-track-20260827`). No uncommitted `src/` work
+  left in this tree.
+- `star`: released. Assets Management mobile and mobile tab-bar/sidebar shipped
+  (`8665315`, `220e15f` on `main`); ModeToggle canonical mobile spacing shipped
+  (`3182811`, `b562143`). No uncommitted `src/` work left in this tree.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
+
+## Active Task — ModeToggle long-label track sizing
+
+- task_id: `genesis-mode-toggle-long-label-track-20260827`
+- owner: `coder`
+- status: `done`
+- scope_lock: `src/components/ui/ModeToggle.tsx`,
+  `src/components/ui/ModeToggle.css`, `e2e/mode-toggle-long-label-qa.mjs`,
+  `WORKING_STATE.md`, `CHANGELOG.md`
+- coordination: this modifies `star`'s canonical `ModeToggle` (shipped earlier
+  today in `3182811` / `b562143`). `star` confirmed released before the claim
+  was opened; the mobile content-fit behaviour star introduced is preserved and
+  extended, not replaced. No page-level opt-in flags are reintroduced.
+- request: on `/partner/referrals` the `All Levels` tab is flush against the
+  left edge of the pill container.
+- root_cause: at `>=640px` `.mode-toggle` has no `padding-inline` and every
+  button is an equal `flex: 1` track. On the 11-option levels bar each track
+  measures `50.55px` while the `All Levels` label measures `51.78px`, so the
+  label is wider than its own track and crosses the container edge by
+  `-0.61px`. Every other label is `9-17px`, which is why only the first breaks.
+  Mobile is already correct via star's content-fit path (`67.78px` track,
+  `12px` left gap).
+- design_route: `surface=dashboard`, `archetype=operations`,
+  `pattern_pack=pattern-analytics-dashboard`, `evidence=measured production
+  geometry`, `style=existing GenesisFX glass-dashboard thesis`.
+- visual_thesis: an equal-width segmented control is only equal while the
+  content fits; a track whose label cannot fit must claim its own width instead
+  of spilling over the container's rounded edge.
+- quality_contract: no-op for bars whose labels already fit; tracks stay equal
+  wherever `min-width` does not bind; the indicator must stay aligned to the
+  active button at every breakpoint; 12px type floor; no overflow, runtime or
+  network errors at 390/1024/1440/1920.
+- highest_risk: `ModeToggle` has 37 consumers. A desktop geometry change must
+  not shift Client/Partner, Journal, Academy, Assets Management, News, Copy
+  Trading, PAMM or Signals.
+- implementation: `.mode-toggle` now reserves `padding-inline: 4px` at every
+  breakpoint instead of only on mobile, and `.mode-toggle button` carries
+  `min-width: max-content` plus `padding-inline: 8px` globally, so a track can
+  never shrink below its own label. The mobile-only duplicates of those
+  declarations were removed. `ModeToggle.tsx` positions the indicator from the
+  measured active button (`offsetLeft` / `offsetWidth`) rather than an assumed
+  `1/n` slice, and the `ResizeObserver` now watches every track in addition to
+  the container — the container is always full width, so only the tracks report
+  the reflow that follows a webfont swap.
+- local_validation: `pnpm exec tsc -b --pretty false` passed; `pnpm build`
+  passed (exit 0, 20.09s). Same-browser before/after regression over 17 routes
+  × 4 viewports (`e2e/mode-toggle-long-label-qa.mjs`, 156 toggle samples):
+  before = 26 failures (9 clipped labels, 13 edge collisions, 4 indicator
+  width deltas); after = **0 failures**, 0 runtime errors, 0 failed responses.
+  Referrals and Commissions level bars go from `50.53px` tracks with a
+  `-1.23px` left gap and a clipped `All Levels` to `69px` tracks with a `12px`
+  gap and no clipping — exactly the geometry mobile already had. Indicator
+  drift `-0.09px`, width delta `0.09px`. No desktop bar started scrolling and
+  `docOverflow` stayed `0`.
+- blast_radius: not a pure no-op. Every desktop toggle inherits the 4px inset
+  that mobile already had, so its tracks shrink by 4px total and the first
+  label gains 2-3px of breathing room (`Client|Partner` 138.5px -> 134.5px).
+  No label was clipped before or after, and 39 of 152 comparable samples are
+  byte-identical (the mobile ones star already fixed).
+- coordination_outcome: a concurrent agent held `Streaming.tsx`,
+  `MyStreaming.tsx` and `ChallengesPage.tsx` uncommitted in this tree while this
+  task was validating, and had added its own `CHANGELOG.md` entry. `coder` did
+  not stage those paths and waited; that agent shipped them itself in
+  `079d05c`, so only the `scope_lock` paths were committed here.
+- next_exact_action: none. Deployed and verified in production.
 
 ## Active Task — Hide mobile tab bar behind sidebar
 

@@ -69,11 +69,12 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
     const indicator = indicatorRef.current
     if (!container || !indicator) return
 
+    // Tracks are no longer guaranteed to be equal, so the indicator follows the
+    // measured active button instead of an assumed 1/n slice.
     const mobileQuery = window.matchMedia('(max-width: 639px)')
     const applyGeometry = (animate: boolean) => {
       const activeButton = buttonRefs.current[active]
-      const contentFit = mobileQuery.matches && activeButton
-      const geometry = contentFit
+      const geometry = activeButton
         ? { x: activeButton.offsetLeft, xPercent: 0, width: activeButton.offsetWidth }
         : { x: 0, xPercent: active * 100, width: `${100 / options.length}%` }
 
@@ -90,6 +91,9 @@ export function ModeToggle({ options = ['Client', 'Partner'], defaultIndex = 0, 
     const handleGeometryChange = () => applyGeometry(false)
     const resizeObserver = new ResizeObserver(handleGeometryChange)
     resizeObserver.observe(container)
+    // The container is always full width, so only the tracks report the reflow
+    // that follows a webfont swap or a label change.
+    buttonRefs.current.forEach((button) => button && resizeObserver.observe(button))
     mobileQuery.addEventListener('change', handleGeometryChange)
 
     return () => {
