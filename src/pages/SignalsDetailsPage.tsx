@@ -3,18 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { FollowStrategyModal } from '@/components/dashboard/FollowStrategyModal'
+import { ProfileHeader } from '@/components/dashboard/ProfileHeader'
 import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, PeriodPill, Badge, BannerStatBox, StatCard } from '@/components/ui'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 
 /* ─── Inline SVG Icons ─── */
-
-function BackArrowIcon() {
-  return (
-    <svg width="6" height="12" viewBox="0 0 6 12" fill="none">
-      <path d="M5 1L1 6L5 11" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
 
 function InfoIcon() {
   return (
@@ -118,36 +111,18 @@ export default function SignalsDetailsPage() {
 
       <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
 
-        {/* Header Row */}
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            aria-label="Back to signals"
-            onClick={() => navigate('/gensocial/signals')}
-            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
-          >
-            <BackArrowIcon />
-          </button>
-          <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
-            <span className="text-white text-base font-acid font-medium">CS</span>
-          </div>
-          <div>
-            <div className="flex items-center gap-6">
-              <h1 className="text-white text-h1 font-normal">C$ Signals</h1>
-              <Badge variant="active">Active</Badge>
-            </div>
-            <p className="text-gfx-neutral-500 text-sm font-acid">@csescoe — Signals Provider — 11 followers</p>
-          </div>
-          <div className="ml-auto">
-            <GlowButton
-              label="Follow"
-              icon={<FollowPersonIcon />}
-              width={140}
-              height={44}
-              onClick={() => setFollowModalOpen(true)}
-            />
-          </div>
-        </div>
+        {/* Header */}
+        <ProfileHeader
+          onBack={() => navigate('/gensocial/signals')}
+          backLabel="Back to signals"
+          initials="CS"
+          name="C$ Signals"
+          badges={<Badge variant="active">Active</Badge>}
+          meta={['@csescoe', 'Signals Provider', '11 followers']}
+          ctaLabel="Follow"
+          ctaIcon={<FollowPersonIcon />}
+          onCtaClick={() => setFollowModalOpen(true)}
+        />
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">

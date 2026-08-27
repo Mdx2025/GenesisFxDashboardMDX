@@ -2,19 +2,12 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, GlowButton, TradingCalendar, PeriodPill } from '@/components/ui'
+import { GlassCard, SparkleButton, ModeToggle, GlowEllipse, TradingCalendar, PeriodPill } from '@/components/ui'
 import { PortfolioChart, defaultChartConfig } from '@/components/charts/PortfolioChart'
 import { CopySubscriptionModal } from '@/components/dashboard/CopySubscriptionModal'
+import { ProfileHeader, ProfileHeaderPill } from '@/components/dashboard/ProfileHeader'
 
 /* ─── Inline SVG Icons ─── */
-
-function BackArrowIcon() {
-  return (
-    <svg width="6" height="12" viewBox="0 0 6 12" fill="none">
-      <path d="M5 1L1 6L5 11" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
 
 function InfoIcon() {
   return (
@@ -221,10 +214,7 @@ const closedTrades = [
   { openDate: 'Apr 01,2026', openTime: '4:54 PM', closeDate: 'Apr 01,2026', closeTime: '5:26 PM', symbol: 'XAUUSD', side: 'Buy', volume: '0.10', openPrice: 'N/A', closePrice: '4764.550', pnl: '-$15.30' },
 ]
 
-/* ─── Header Pills ─── */
-
-const headerPillBase =
-  'inline-flex items-center h-[2.1875rem] px-6 rounded-full border bg-gfx-green-800 text-xs font-acid font-normal leading-[18.8px] whitespace-nowrap'
+/* ─── Header Pill Icons ─── */
 
 function PeopleIcon() {
   return (
@@ -255,6 +245,7 @@ export default function CopyTradingDetailsPage() {
   const [perfTab, setPerfTab] = useState(0)
   const [tradeTab, setTradeTab] = useState(1)
   const [copyModalOpen, setCopyModalOpen] = useState(false)
+  const [favorite, setFavorite] = useState(false)
   const perfTabs = ['Performance Statement', 'Trading Statistics', 'Trade Calendar'] as const
   const tradeTabs = ['Open Positions', 'Closed Trades'] as const
 
@@ -272,43 +263,24 @@ export default function CopyTradingDetailsPage() {
 
       <div className="flex flex-col gap-6 mt-6 3xl:mt-8 4xl:mt-10">
 
-        {/* Header Row */}
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            aria-label="Back to copy trading"
-            onClick={() => navigate('/gensocial/copy-trading')}
-            className="w-[2.375rem] h-[2.375rem] rounded-sm bg-gfx-green-900 flex items-center justify-center cursor-pointer hover:bg-gfx-green-150 transition-colors flex-shrink-0"
-          >
-            <BackArrowIcon />
-          </button>
-          <div className="w-[3.4375rem] h-[3.4375rem] rounded-full bg-gfx-green-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
-            <span className="text-white text-base font-acid font-medium">EA</span>
-          </div>
-          <h1 className="text-white text-h1 font-normal">KingEasy</h1>
-          <div className="flex items-center gap-[1.125rem] ml-2">
-            <span className={`${headerPillBase} border-gfx-gold text-gfx-gold`}><span className="optical-text">Medium Risk</span></span>
-            <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
-              <PeopleIcon />
-              <span className="optical-text">5 Followers</span>
-            </span>
-            <span className={`${headerPillBase} border-gfx-green-200 text-gfx-neutral-550 gap-2`}>
-              <BriefcaseDollarIcon />
-              <span className="optical-text">$13,884.16 AUM</span>
-            </span>
-          </div>
-          <div className="ml-auto flex items-center gap-3">
-            <button type="button" aria-label="Add to favorites" className="relative w-12 h-11 flex items-center justify-center cursor-pointer">
-              <svg className="absolute inset-0" width="47" height="44" viewBox="0 0 47 44" fill="none">
-                <path d="M22 0.599609H25C36.8189 0.599609 46.4004 10.1811 46.4004 22C46.4004 33.8189 36.8189 43.4004 25 43.4004H22C10.1811 43.4004 0.599609 33.8189 0.599609 22C0.599609 10.1811 10.1811 0.599609 22 0.599609Z" stroke="#303030" strokeWidth="1.2"/>
-              </svg>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#808080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <GlowButton label="Connect now" width={180} height={44} onClick={() => setCopyModalOpen(true)} />
-          </div>
-        </div>
+        {/* Header */}
+        <ProfileHeader
+          onBack={() => navigate('/gensocial/copy-trading')}
+          backLabel="Back to copy trading"
+          initials="EA"
+          name="KingEasy"
+          badges={
+            <>
+              <ProfileHeaderPill tone="gold">Medium Risk</ProfileHeaderPill>
+              <ProfileHeaderPill icon={<PeopleIcon />}>5 Followers</ProfileHeaderPill>
+              <ProfileHeaderPill icon={<BriefcaseDollarIcon />}>$13,884.16 AUM</ProfileHeaderPill>
+            </>
+          }
+          favorite={favorite}
+          onToggleFavorite={() => setFavorite(prev => !prev)}
+          ctaLabel="Connect now"
+          onCtaClick={() => setCopyModalOpen(true)}
+        />
 
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
