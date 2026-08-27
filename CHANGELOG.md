@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Lifted the Settings profile avatar on mobile. The avatar sat at `top-[7rem]` over an `8rem` banner, so its lower edge reached `12.5rem` while the `Joe Doe` heading started at `11rem` and the circle covered the name. The avatar now straddles the banner edge on mobile and the info block below it clears the overhang.
+
 - Stacked the Settings rows on mobile. Every row (`Profile Picture`, `Theme`, `Change Language`, `AI Coach Widget`, `Change Password`, `Change Email`, `Close Account`) held its label and its control in a fixed two-column row, so on a phone the description column was squeezed to a few words per line and the `Theme` options ran past the card edge. The rows now stack with the control below its description and return to the two-column layout from the `md` breakpoint.
 
 - Restored the canonical `ModeToggle` for all 11 Explore Markets categories while preserving the mobile control stack and full-width search field.
