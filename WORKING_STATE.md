@@ -28,7 +28,7 @@ file, claim it here.
 
 - task_id: `genesis-mode-toggle-mobile-default-20260827`
 - owner: `star`
-- status: `ready-to-deploy`
+- status: `done`
 - scope_lock: `src/components/ui/ModeToggle.tsx`,
   `src/components/ui/ModeToggle.css`, `src/pages/AssetsManagementPage.tsx`,
   `src/pages/AcademyPage.tsx`, `e2e/mode-toggle-mobile-qa.mjs`,
@@ -57,8 +57,15 @@ file, claim it here.
   initial/moved indicators, 12px minimum text, 24px+ targets, visible keyboard
   focus, reduced-motion visibility, zero axe violations, zero runtime errors,
   and zero failed responses.
-- next_exact_action: commit exact scope, push `main`, and verify the automatic
-  production deployment plus public smoke.
+- delivery: commit `3182811` pushed to `origin/main`; Dokploy deployment
+  `2g8oft2MsaUoBGBPzb8hU` finished `done` at 2026-08-27 10:59:26 AM AST.
+- production_validation: the same 12-route matrix passed against
+  `https://genesis-fx-dashboard.apps.mdxpreview.xyz` at 360x800 and 390x844:
+  zero clipped labels, zero document overflow, aligned initial/moved
+  indicators, visible keyboard focus via real Tab navigation, reduced-motion
+  visibility, zero axe violations, zero runtime errors, and zero failed
+  responses.
+- next_exact_action: none. Scope released.
 
 ## Active Task — Assets filter row mobile UX
 

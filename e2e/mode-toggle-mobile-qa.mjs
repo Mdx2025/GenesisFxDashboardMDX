@@ -132,11 +132,18 @@ try {
   await page.setViewportSize(viewports[1])
   await gotoRoute('/assets-management')
   const firstModeButton = page.locator('[data-assets-history-tabs] .mode-toggle').getByRole('button').first()
-  await firstModeButton.focus()
-  const focusVisible = await firstModeButton.evaluate(element => {
-    const style = getComputedStyle(element)
-    return style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) >= 2
-  })
+  await page.evaluate(() => document.activeElement?.blur())
+  let focusVisible = false
+  for (let index = 0; index < 40; index += 1) {
+    await page.keyboard.press('Tab')
+    if (await firstModeButton.evaluate(element => document.activeElement === element)) {
+      focusVisible = await firstModeButton.evaluate(element => {
+        const style = getComputedStyle(element)
+        return style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) >= 2
+      })
+      break
+    }
+  }
   await page.emulateMedia({ reducedMotion: 'reduce' })
   const reducedMotionVisible = await page.locator('[data-assets-history-tabs] .mode-toggle').isVisible()
   await page.emulateMedia({ reducedMotion: 'no-preference' })
