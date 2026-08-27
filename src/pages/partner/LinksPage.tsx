@@ -2,6 +2,7 @@ import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlowEllipse, SparkleButton } from '@/components/ui'
 import { PartnerQrCodeIcon, PartnerShareIcon, PartnerCopyIcon } from '@/components/partner/shared'
+import './LinksPage.css'
 
 function LinkIcon() {
   return (
@@ -23,7 +24,7 @@ function ActionCircle({ children, label, onClick }: { children: React.ReactNode;
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="flex items-center justify-center size-[34px] rounded-full bg-gfx-green-800 cursor-pointer hover:bg-gfx-green-200 transition-colors"
+      className="referral-action-circle flex items-center justify-center size-[34px] rounded-full cursor-pointer"
     >
       {children}
     </button>

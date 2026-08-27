@@ -1,0 +1,18 @@
+/* The referral-card icons rest on the accent surface instead of the card
+   colour, so hover has to move one step up the green scale rather than appear
+   out of nothing. */
+.referral-action-circle {
+  background: var(--color-gfx-green-200);
+  transition: background 200ms;
+}
+
+.referral-action-circle:hover {
+  background: var(--color-gfx-green-250);
+}
+
+/* Light theme repaints white glyphs accent-teal, which is the hovered surface
+   colour itself. White is the intended glyph on an accent fill — same carve-out
+   app.css already grants .glow-btn and .mode-toggle button.active. */
+html[data-theme='light'] .referral-action-circle:hover :is(svg, svg *)[fill='white' i] {
+  fill: #fff !important;
+}

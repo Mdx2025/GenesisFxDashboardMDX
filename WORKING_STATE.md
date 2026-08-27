@@ -18,14 +18,67 @@ file, claim it here.
 
 ### Live ownership snapshot — 2026-08-27
 
-- `coder`: released. `ModeToggle` long-label track sizing shipped
-  (`genesis-mode-toggle-long-label-track-20260827`). No uncommitted `src/` work
-  left in this tree.
+- `coder`: released. Referral-card action icons resting background shipped
+  (`genesis-links-action-circle-resting-bg-20260827`); `ModeToggle` long-label
+  track sizing shipped (`12b6358`). No uncommitted `src/` work left in this
+  tree.
 - `star`: released. Assets Management mobile and mobile tab-bar/sidebar shipped
   (`8665315`, `220e15f` on `main`); ModeToggle canonical mobile spacing shipped
   (`3182811`, `b562143`). No uncommitted `src/` work left in this tree.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
+
+## Active Task — Referral card action icons: resting background
+
+- task_id: `genesis-links-action-circle-resting-bg-20260827`
+- owner: `coder`
+- status: `done`
+- scope_lock: `src/pages/partner/LinksPage.tsx`,
+  `src/pages/partner/LinksPage.css`, `WORKING_STATE.md`, `CHANGELOG.md`
+- coordination: another agent holds `src/pages/CopyTradingPage.tsx`,
+  `src/pages/SignalsPage.tsx`, `e2e/mobile-card-width-system-qa.mjs` and
+  `docs/mobile-card-width-audit-2026-08-27.md` uncommitted. No overlap with this
+  scope; those paths are not staged here.
+- request (TheZaya, Discord #coder): on `/partner/links` the three icons in the
+  referral-code card only show a background on hover; that background must be
+  their default state.
+- root_cause: `ActionCircle` rests on `bg-gfx-green-800`, which resolves to
+  `#0C1311` — byte-identical to the card's own `--color-gfx-surface-raised`
+  (`#0C1311`, measured live on both the button and
+  `[data-partner-referral-code-card]`). The circle is painted, it is just the
+  same colour as what is behind it, so the control reads as a bare icon until
+  `:hover` swaps in `#064B34`.
+- precedent: `/partner` renders the same QR/share/copy trio through
+  `.partner-icon-circle`, which already rests on a visible
+  `rgba(6, 75, 52, 0.3)` (= `--color-gfx-green-200` at 30%) and hovers to
+  `0.5`. `/partner/links` is the outlier, not the rule.
+- decision: promote the hover fill to the resting state
+  (`bg-gfx-green-200`) and give hover a fresh step up (`gfx-green-250`).
+  `green-250` is the only adjacent token redefined in both themes such that
+  hover gains energy in each: `#0a714f` in dark, `#00B38C` in light.
+- quality_contract: the resting circle must be visibly distinct from the card
+  surface in both themes; hover must remain distinguishable from rest; icon
+  contrast preserved (the light theme already flips `fill="white"` paths dark);
+  no layout shift; no other surface affected — `ActionCircle` is local to
+  `LinksPage.tsx`.
+- implementation: `ActionCircle` drops its Tailwind background pair for a
+  `.referral-action-circle` class in a page-local `LinksPage.css`. Resting fill
+  `--color-gfx-green-200`, hover `--color-gfx-green-250`. A light-theme rule
+  restores `fill: #fff` on the hovered circle's glyphs, the same carve-out
+  `app.css` already grants `.glow-btn` and `.mode-toggle button.active`.
+- regression found and fixed mid-task: hovering to `green-250` alone broke light
+  theme. `green-250` resolves to `#00B38C` there, which is the exact colour the
+  global light-theme rule repaints `fill="white"` glyphs — the icon vanished
+  into its own hover surface. Caught on a screenshot, not on the numbers: every
+  computed value looked correct because both were individually right.
+- local_validation: `pnpm build` green. Measured on the built bundle at 1440,
+  1024 and 390: rest `rgb(6,75,52)` vs card `rgb(12,19,17)` in dark and
+  `rgb(198,198,198)` vs `rgb(255,255,255)` in light, hover distinct from rest in
+  both themes, glyph legible in all four states, `34x34` box unchanged,
+  `docOverflow=0`, no runtime errors.
+- blast_radius: none outside this page. `ActionCircle` and
+  `.referral-action-circle` exist only in `LinksPage`; `/partner`'s
+  `.partner-icon-circle` is untouched.
 
 ## Active Task — ModeToggle long-label track sizing
 

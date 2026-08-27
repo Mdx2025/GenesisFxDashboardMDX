@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Gave the QR, share, and copy actions in the partner referral-link card a resting background. They previously sat on the exact colour of the card behind them, so the controls only became visible on hover; they now rest on the accent surface and hover one step up the green scale, matching the same icon trio already shipped on `/partner`. Light theme keeps the glyphs white on the hovered accent fill instead of repainting them the accent colour itself.
+
 - Stopped shared `ModeToggle` options from colliding with the pill's rounded edge. Tracks now refuse to shrink below their own label and the container reserves inset padding at every breakpoint, so long options such as `All Levels` on the partner referrals and commissions level bars keep their text inside the control instead of overflowing it. The sliding indicator follows the measured active track rather than an assumed equal slice, and re-measures when a webfont swap or label change reflows the tracks. Added a 17-route × 4-viewport regression matrix asserting label clipping, container edge collisions, indicator alignment, type floor, and document overflow.
 
 - Made 10X Challenge account cards fill the mobile content width through 430px while preserving the 374px design width from the `md` breakpoint. Compacted the narrow-card identity header to prevent its power values from being clipped at 360px.
