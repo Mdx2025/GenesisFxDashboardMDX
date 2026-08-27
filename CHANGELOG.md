@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Kept the PAMM strategy search and its view-mode buttons on one row on mobile. The search field was `w-full` below `sm`, so it claimed the whole line and the list/grid toggles wrapped underneath. The field now flexes to the remaining space and the toggles stay beside it, matching the desktop row.
+
 - Rebuilt the `Connect to PAMM` modal for mobile. The dialog was a two-column `flex` whose strategy panel was pinned at `w-[534px] flex-shrink-0`, so on a phone it never shrank: the card clipped it, the `Aum` / `ROI` boxes and the fee values ran past the right edge, and the whole investment form sat off-screen with no way to reach it. The columns now stack below `lg`, the body scrolls inside a card capped at `90vh` with the close button pinned, and the avatar, headings, stat boxes, detail rows and paddings step down to mobile sizes. The desktop layout is unchanged.
 
 - Lifted the Settings profile avatar on mobile. The avatar sat at `top-[7rem]` over an `8rem` banner, so its lower edge reached `12.5rem` while the `Joe Doe` heading started at `11rem` and the circle covered the name. The avatar now straddles the banner edge on mobile and the info block below it clears the overhang.

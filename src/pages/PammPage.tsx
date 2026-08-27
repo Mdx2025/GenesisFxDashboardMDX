@@ -238,12 +238,12 @@ export default function PammPage() {
                   onChange={setFilterTab}
                 />
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <div className="w-full lg:w-auto flex items-center gap-2 sm:gap-3">
                 <SearchInput
                   placeholder="Search strategies"
                   value={searchQuery}
                   onChange={setSearchQuery}
-                  className="w-full sm:w-[17.9375rem]"
+                  className="flex-1 min-w-0 sm:flex-none sm:w-[17.9375rem]"
                 />
                 <button
                   type="button"
