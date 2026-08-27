@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Stacked the Settings rows on mobile. Every row (`Profile Picture`, `Theme`, `Change Language`, `AI Coach Widget`, `Change Password`, `Change Email`, `Close Account`) held its label and its control in a fixed two-column row, so on a phone the description column was squeezed to a few words per line and the `Theme` options ran past the card edge. The rows now stack with the control below its description and return to the two-column layout from the `md` breakpoint.
+
 - Restored the canonical `ModeToggle` for all 11 Explore Markets categories while preserving the mobile control stack and full-width search field.
 
 - Made the Settings `Theme` control actually change the theme. `Light` / `Dark` / `Auto` only moved a local index that no one read, so the palette never changed and the choice was lost on reload. The three options now drive the same stored preference the topbar switch uses, `Auto` follows the operating system and repaints live when the system flips, and the pre-paint bootstrap in `index.html` resolves `Auto` so the page no longer flashes dark for a light-system visitor. The topbar switch and the Settings options now read from one source and stay in sync in both directions.

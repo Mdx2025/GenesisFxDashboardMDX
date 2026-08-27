@@ -22,6 +22,9 @@ const THEME_OPTIONS: { label: string; value: ThemePreference }[] = [
 const THEME_OPTION_WIDTH = 96
 const THEME_OPTION_HEIGHT = 48
 
+const SETTINGS_ROW =
+  'flex flex-col items-start gap-4 py-6 md:flex-row md:items-center md:justify-between md:gap-6'
+
 function CameraAddIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -665,7 +668,7 @@ function SettingsTab() {
             <div className="px-6 py-4">
               <h3 className="text-white text-2xl font-acid mb-4">Settings</h3>
               <div className="divide-y divide-[#09241c]">
-                <div className="flex items-center justify-between py-6 first:pt-0">
+                <div className={`${SETTINGS_ROW} first:pt-0`}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">Profile Picture</p>
                     <p className="text-[#808080] text-base font-acid">Change your profile picture</p>
@@ -673,12 +676,12 @@ function SettingsTab() {
                   <SparkleButton onClick={() => setShowChangePicture(true)}>Change Picture</SparkleButton>
                 </div>
 
-                <div className="w-full flex flex-row justify-between items-center py-6">
+                <div className={`w-full ${SETTINGS_ROW}`}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">Theme</p>
                     <p className="text-[#808080] text-base font-acid">Choose your preferred theme</p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     {THEME_OPTIONS.map(({ label, value }) =>
                       themePreference === value ? (
                         <GlowButton
@@ -702,7 +705,7 @@ function SettingsTab() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between py-6">
+                <div className={SETTINGS_ROW}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">Change Language</p>
                     <p className="text-[#808080] text-base font-acid">Choose your preferred language</p>
@@ -721,7 +724,7 @@ function SettingsTab() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between py-6">
+                <div className={SETTINGS_ROW}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">AI Coach Widget</p>
                     <p className="text-[#808080] text-base font-acid">Show the floating AI Coach button on every page</p>
@@ -729,7 +732,7 @@ function SettingsTab() {
                   <ToggleSwitch enabled={aiCoachEnabled} onClick={() => setAiCoachEnabled(v => !v)} />
                 </div>
 
-                <div className="flex items-center justify-between py-6">
+                <div className={SETTINGS_ROW}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">Change Password</p>
                     <p className="text-[#808080] text-base font-acid">Update your account password</p>
@@ -738,7 +741,7 @@ function SettingsTab() {
                 </div>
                 <ChangePasswordModal open={showChangePw} onClose={() => setShowChangePw(false)} />
 
-                <div className="flex items-center justify-between py-6">
+                <div className={SETTINGS_ROW}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">Change Email</p>
                     <p className="text-[#808080] text-base font-acid">Update your email address</p>
@@ -747,7 +750,7 @@ function SettingsTab() {
                 </div>
                 <ChangeEmailModal open={showChangeEmail} onClose={() => setShowChangeEmail(false)} />
 
-                <div className="flex items-center justify-between py-6">
+                <div className={SETTINGS_ROW}>
                   <div>
                     <p className="text-white text-base font-acid font-medium">Close Account</p>
                     <p className="text-[#808080] text-base font-acid">Permanently delete your account and all data</p>
