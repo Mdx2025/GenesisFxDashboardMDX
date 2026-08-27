@@ -130,9 +130,9 @@ export function ChartToolbar({
 
 function PipGrip() {
   return (
-    <span className="absolute left-[17px] top-[19px] grid h-[8px] w-[5px] grid-cols-2 gap-x-[1px] gap-y-[1px]" aria-hidden="true">
+    <span className="absolute left-[17em] top-[19em] grid h-[8em] w-[5em] grid-cols-2 gap-x-[1em] gap-y-[1em]" aria-hidden="true">
       {Array.from({ length: 6 }, (_, i) => (
-        <i key={i} className="size-[2px] bg-gfx-neutral-400" />
+        <i key={i} className="size-[2em] bg-gfx-neutral-400" />
       ))}
     </span>
   )
@@ -151,30 +151,38 @@ export function BroadcasterPip({
 }) {
   return (
     <div
-      className={`h-[251px] w-[385px] origin-bottom-right overflow-hidden rounded-[12px] bg-black ${className}`}
-      // The pip is a fixed-size Figma overlay; scaling it against the chart's
-      // container width keeps it proportional instead of overflowing on mobile.
-      style={{ scale: 'calc(100cqw / 1548px)' }}
+      className={`h-[251em] w-[385em] overflow-hidden rounded-[12em] bg-black ${className}`}
+      // Every value below is the Figma pixel measurement expressed in `em`, and this
+      // root pins 1em to one design pixel scaled by the chart's container width. The
+      // pip keeps its 385x251 geometry at the 1548px design width and shrinks with the
+      // panel instead of overflowing it on a phone.
+      style={{ fontSize: 'calc(100cqw / 1548)' }}
       data-broadcaster-pip
     >
-      <div className="absolute inset-x-0 top-0 h-[44px] bg-gfx-green-900" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-[44em] bg-gfx-green-900" aria-hidden="true" />
 
       <PipGrip />
-      <span className="absolute left-[27px] top-[23px] -translate-y-1/2 text-sm leading-[18.8px] text-gfx-neutral-400">{label}</span>
-      <span className="absolute left-[279px] top-[18px] size-[8px] rounded-full bg-gfx-green-300" aria-hidden="true" />
-      <span className="absolute left-[291px] top-[22px] -translate-y-1/2 text-sm leading-[18.8px] text-gfx-bullish-light">LIVE</span>
-      <span className="absolute left-[338px] top-[23px] h-px w-[7px] bg-[#A0A0A0]" aria-hidden="true" />
-      <ArrowUpRightIcon className="absolute left-[364px] top-[14px] text-gfx-neutral-400" />
-      <ArrowDownLeftIcon className="absolute left-[357px] top-[20.02px] text-gfx-neutral-400" />
+      <span className="absolute left-[27em] top-[23em] -translate-y-1/2 text-gfx-neutral-400">
+        <span className="text-[14em] leading-[1.3429]">{label}</span>
+      </span>
+      <span className="absolute left-[279em] top-[18em] size-[8em] rounded-full bg-gfx-green-300" aria-hidden="true" />
+      <span className="absolute left-[291em] top-[22em] -translate-y-1/2 text-gfx-bullish-light">
+        <span className="text-[14em] leading-[1.3429]">LIVE</span>
+      </span>
+      <span className="absolute left-[338em] top-[23em] h-[1em] w-[7em] bg-[#A0A0A0]" aria-hidden="true" />
+      <ArrowUpRightIcon className="absolute left-[364em] top-[14em] size-[10.7207em] text-gfx-neutral-400" />
+      <ArrowDownLeftIcon className="absolute left-[357em] top-[20.02em] size-[11em] text-gfx-neutral-400" />
 
-      <div className="absolute left-[calc(50%-0.5px)] top-[200px] h-[32px] w-[364px] -translate-x-1/2 overflow-hidden rounded-[18.627px] bg-gfx-surface-raised">
-        <PlayTriangleIcon className="absolute left-[4.4%] top-[calc(50%-0.46px)] -translate-y-1/2 text-white" />
-        <span className="absolute left-[75px] top-[calc(50%-5px)] -translate-x-1/2 text-base leading-[24.44px] font-medium whitespace-nowrap text-white">
-          {elapsed} / {duration}
+      <div className="absolute left-[calc(50%-0.5em)] top-[200em] h-[32em] w-[364em] -translate-x-1/2 overflow-hidden rounded-[18.627em] bg-gfx-surface-raised">
+        <PlayTriangleIcon className="absolute left-[4.4%] top-[calc(50%-0.46em)] h-[11.0873em] w-[10.0063em] -translate-y-1/2 text-white" />
+        <span className="absolute left-[75em] top-[calc(50%-5em)] -translate-x-1/2 whitespace-nowrap text-white">
+          <span className="text-[16em] leading-[1.5275] font-medium">
+            {elapsed} / {duration}
+          </span>
         </span>
-        <SpeakerMutedIcon className="absolute left-[285px] top-[10px] text-white" />
-        <CornerFrameIcon className="absolute left-[315.4px] top-[10px] text-white" />
-        <DotsVerticalSmallIcon className="absolute left-[345.54px] top-[10px] text-white" />
+        <SpeakerMutedIcon className="absolute left-[285em] top-[10em] size-[12.9557em] text-white" />
+        <CornerFrameIcon className="absolute left-[315.4em] top-[10em] size-[11.7199em] text-white" />
+        <DotsVerticalSmallIcon className="absolute left-[345.54em] top-[10em] h-[12.3184em] w-[2.63899em] text-white" />
       </div>
     </div>
   )
@@ -199,14 +207,20 @@ export function StreamChartPanel({ src = '/images/streaming-chart.png', alt = 'E
     >
       {/* Figma places the raster oversized and offset so the source price axis stays cropped out. */}
       <img src={src} alt={alt} className="absolute top-[-8.185%] left-[-3.506%] h-[145.44%] w-[106.83%] max-w-none" />
-      <div className="surface-raised absolute inset-x-0 bottom-0 h-[74px] border border-gfx-neutral-250">
+      {/* Same `em`-per-design-pixel trick as the pip: the strip is 74px tall with 16px
+          labels at the 1548px design width and shrinks with the panel, instead of
+          claiming 43% of its height on a phone. */}
+      <div
+        className="surface-raised absolute inset-x-0 bottom-0 h-[74em] border border-gfx-neutral-250"
+        style={{ fontSize: 'calc(100cqw / 1548)' }}
+      >
         {AXIS_TICKS.map(([tick, left]) => (
           <span
             key={tick}
-            className="absolute top-1/2 -translate-y-1/2 text-base leading-[24.44px] font-medium whitespace-nowrap text-gfx-neutral-400"
+            className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap text-gfx-neutral-400"
             style={{ left: `${left}%` }}
           >
-            {tick}
+            <span className="text-[16em] leading-[1.5275] font-medium">{tick}</span>
           </span>
         ))}
       </div>
