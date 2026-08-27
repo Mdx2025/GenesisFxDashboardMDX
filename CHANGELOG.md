@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Restored the Portfolio Equity line chart on TradeLocker account details. The card stretched to its Account Details sibling, but its chart wrapper asked for `h-full` inside an auto-height parent, so the responsive container resolved to zero height and left an empty surface. The card now lays out as a column and the chart claims the remaining space with a height floor that also holds on mobile, where the card has no sibling to stretch it.
+
 - Replaced the cramped Explore Markets `ModeToggle` with the purpose-built market category rail: a stable `For you` pill, 28px category spacing, asset divider, and touch-scrollable overflow with the native scrollbar hidden.
 
 - Completed a route-wide mobile card-width audit and added a reproducible 47-route, 141-state browser gate covering 780 visible cards and 522 one-column grids at 360px, 430px, and 600px. The audit confirmed that catalog cards now fill their mobile grid tracks while intentionally centered surfaces, modal canvases, tables, artwork, and multi-card compositions retain their structural widths.

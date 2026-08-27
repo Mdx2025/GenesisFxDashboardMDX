@@ -232,9 +232,9 @@ export default function AccountDetailsPage() {
       {/* Chart + Account Details */}
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-5 mt-6">
         {/* Portfolio Chart */}
-        <GlassCard variant="light" divider="white" rounded="19px" className="overflow-hidden p-5 xl:p-8">
+        <GlassCard variant="light" divider="white" rounded="19px" className="flex flex-col overflow-hidden p-5 xl:p-8">
           <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[500px] h-[200px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
-          <div className="relative z-10">
+          <div className="relative z-10 flex flex-1 min-h-0 flex-col">
             <p className="text-gfx-neutral-500 text-body2">Portfolio Equity</p>
             <div className="flex items-center gap-3 mt-1">
               <p className="text-white text-h2 font-normal">$17,897.30</p>
@@ -243,7 +243,7 @@ export default function AccountDetailsPage() {
                 <span className="text-gfx-bullish-light text-body2">+$6,437.21 (56.1%)</span>
               </div>
             </div>
-            <div className="h-full mt-6">
+            <div className="flex-1 min-h-[18.125rem] mt-6">
               <PortfolioChart config={{ ...defaultChartConfig, highlightIndex: -1 }} />
             </div>
           </div>
