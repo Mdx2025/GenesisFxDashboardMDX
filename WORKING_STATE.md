@@ -28,7 +28,7 @@ file, claim it here.
 
 - task_id: `genesis-mobile-sidebar-tabbar-visibility-20260827`
 - owner: `star`
-- status: `ready-to-deploy`
+- status: `done`
 - scope_lock: `src/layouts/RootLayout.tsx`,
   `e2e/mobile-sidebar-tab-bar-qa.mjs`, `WORKING_STATE.md`, `CHANGELOG.md`
 - request: hide the fixed mobile tab bar whenever the sidebar drawer is open,
@@ -52,8 +52,14 @@ file, claim it here.
   transform open, backdrop interactive, tab bar restored after backdrop close,
   zero overflow/runtime/network failures. At 1440x960 the tab bar remained
   hidden and the desktop sidebar remained visible.
-- next_exact_action: commit exact scope, push `main`, verify Dokploy `done`,
-  then rerun the state QA against production.
+- delivery: commit `220e15f` pushed to `origin/main`; Dokploy deployment
+  `hGGR78HalYpDtPHQmSH0o` finished `done` at 2026-08-27 11:16:09 AM AST.
+- production_validation: the closed-open-closed regression passed at 390x844
+  and 960x900 with tab-bar count zero while the drawer was open, interactive
+  backdrop, restored tab bar after close, and zero overflow/runtime/network
+  failures. At 1440x960 the tab bar stayed hidden and desktop sidebar visible;
+  `/assets-management` returned HTTP 200.
+- next_exact_action: none. Scope released.
 
 ## Active Task — ModeToggle canonical mobile spacing
 
