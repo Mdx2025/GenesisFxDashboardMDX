@@ -222,7 +222,7 @@ export default function AssetsManagementPage() {
           </div>
 
           <section aria-label="Assets History">
-            <div className="grid grid-cols-3 gap-2 mb-2 md:mb-6 md:gap-3 md:flex md:items-center md:flex-wrap" role="group" aria-label="Transaction filters">
+            <div className="grid grid-cols-3 gap-2 mb-6 md:gap-3 md:flex md:items-center md:flex-wrap" role="group" aria-label="Transaction filters">
               <div className="min-w-0 md:w-[18rem]">
                 <GlassSelect
                   size="sm"
@@ -272,8 +272,8 @@ export default function AssetsManagementPage() {
                 <GreenPillButton onClick={resetFilters}>Reset</GreenPillButton>
               </div>
             </div>
-            <div className="mb-6 flex h-28 items-start pt-1 md:hidden" data-assets-mobile-action-safe-area>
-              {filtersActive && (
+            {filtersActive && (
+              <div className="mb-6 flex items-start md:hidden" data-assets-mobile-reset-row>
                 <button
                   type="button"
                   onClick={resetFilters}
@@ -283,8 +283,8 @@ export default function AssetsManagementPage() {
                 >
                   Reset
                 </button>
-              )}
-            </div>
+              </div>
+            )}
             <GlassCard variant="light" divider="white" rounded="26px" className="overflow-hidden">
               <div className="absolute left-1/2 -translate-x-1/2 -top-[15%] w-[400px] h-[160px] rounded-full pointer-events-none bg-gfx-glow-green [filter:url(#blur-120)] will-change-transform" aria-hidden="true" />
               <div className="relative z-10 p-6">

@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Removed the empty 112px mobile Reset action reservation on Assets Management. The Reset row now exists only while filters are active, uses its natural 44px control height, and leaves a consistent 24px gap before Assets History.
+
 - Hid the fixed mobile tab bar whenever the sidebar drawer is open, restoring it automatically when the drawer closes while preserving the desktop sidebar.
 
 - Made content-fitted mobile geometry the canonical shared `ModeToggle` behavior across every consumer. Tabs now keep readable intrinsic spacing, switch to component-owned horizontal scrolling when long option sets exceed the viewport, preserve equal tracks on desktop, and no longer require page-level flags. Added a 12-route mobile regression matrix covering 360px/390px layout, clipping, indicator movement, focus, reduced motion, axe, runtime, and network errors.

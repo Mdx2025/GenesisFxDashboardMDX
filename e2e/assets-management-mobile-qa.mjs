@@ -51,6 +51,7 @@ async function inspectMobile(width, height) {
     const labels = buttons.map(button => button.querySelector('.btn-label')?.getBoundingClientRect())
     const nav = document.querySelector('.lg\\:hidden.fixed.bottom-6')
     const selectButtons = [...document.querySelectorAll('section[aria-label="Assets History"] [role="group"] > div > div > button')]
+    const historyCard = document.querySelector('section[aria-label="Assets History"] > .glass-card')
     const belowTwelve = [...document.querySelectorAll('[data-assets-history-tabs] *, section[aria-label="Assets History"] *')].filter(element => {
       const style = getComputedStyle(element)
       const rect = element.getBoundingClientRect()
@@ -68,7 +69,10 @@ async function inspectMobile(width, height) {
       navRect: nav?.getBoundingClientRect() || null,
       selectRects: selectButtons.map(button => button.getBoundingClientRect()),
       resetCount: document.querySelectorAll('[data-assets-reset-filters]').length,
-      safeAreaRect: document.querySelector('[data-assets-mobile-action-safe-area]')?.getBoundingClientRect() || null,
+      defaultResetRowCount: document.querySelectorAll('[data-assets-mobile-reset-row]').length,
+      filtersToHistoryGap: selectButtons.length && historyCard
+        ? historyCard.getBoundingClientRect().top - Math.max(...selectButtons.map(button => button.getBoundingClientRect().bottom))
+        : null,
       exportRect: document.querySelector('[data-assets-export]')?.getBoundingClientRect() || null,
       belowTwelve,
     }
@@ -79,6 +83,8 @@ async function inspectMobile(width, height) {
   await page.getByRole('button', { name: 'Pending', exact: true }).click()
   const reset = page.locator('[data-assets-reset-filters]')
   const resetRect = await reset.boundingBox()
+  const resetRowRect = await page.locator('[data-assets-mobile-reset-row]').boundingBox()
+  const historyRect = await page.locator('section[aria-label="Assets History"] > .glass-card').boundingBox()
   const navRect = await page.locator('.lg\\:hidden.fixed.bottom-6').boundingBox()
   await page.keyboard.press('Tab')
   for (let index = 0; index < 20 && !(await reset.evaluate(element => document.activeElement === element)); index += 1) {
@@ -99,9 +105,10 @@ async function inspectMobile(width, height) {
     labelRects: metrics.labelRects.map(normalizeRect),
     navRect: normalizeRect(metrics.navRect),
     selectRects: metrics.selectRects.map(normalizeRect),
-    safeAreaRect: normalizeRect(metrics.safeAreaRect),
     exportRect: normalizeRect(metrics.exportRect),
     resetFilteredRect: normalizeRect(resetRect),
+    resetRowFilteredRect: normalizeRect(resetRowRect),
+    resetToHistoryGap: resetRowRect && historyRect ? round(historyRect.y - (resetRowRect.y + resetRowRect.height)) : null,
     resetNavGap: resetRect && navRect ? round(navRect.x - (resetRect.x + resetRect.width)) : null,
     filtersNavGap: metrics.selectRects.length && metrics.navRect ? round(metrics.navRect.y - Math.max(...metrics.selectRects.map(rect => rect.bottom))) : null,
     resetKeyboardFocused,
@@ -124,7 +131,7 @@ async function inspectWide(width, height) {
       titleLineHeight: title ? parseFloat(getComputedStyle(title).lineHeight) : null,
       exportWithinViewport: Boolean(exportRect && exportRect.left >= 0 && exportRect.right <= innerWidth),
       desktopResetVisible: Boolean(document.querySelector('.green-pill-button')?.getBoundingClientRect().height),
-      mobileSafeAreaVisible: Boolean(document.querySelector('[data-assets-mobile-action-safe-area]')?.getBoundingClientRect().height),
+      mobileResetRowVisible: Boolean(document.querySelector('[data-assets-mobile-reset-row]')?.getBoundingClientRect().height),
     }
   })
 }
@@ -171,8 +178,12 @@ try {
     if (result.labelFontSizes.some(size => parseFloat(size) < 14)) failures.push(`${result.viewport.width}px tab label below 14px`)
     if (Math.abs(result.indicatorRect.width - result.buttonRects[0].width) > 1) failures.push(`${result.viewport.width}px indicator/button width mismatch`)
     if (result.resetCount !== 0) failures.push(`${result.viewport.width}px default Reset should be hidden`)
+    if (result.defaultResetRowCount !== 0) failures.push(`${result.viewport.width}px empty Reset row reserves space by default`)
+    if (result.filtersToHistoryGap < 16 || result.filtersToHistoryGap > 32) failures.push(`${result.viewport.width}px default filters/history gap: ${result.filtersToHistoryGap}`)
     if (result.filtersNavGap < 4) failures.push(`${result.viewport.width}px filters overlap floating nav: ${result.filtersNavGap}`)
     if (!result.resetFilteredRect || result.resetFilteredRect.height < 44) failures.push(`${result.viewport.width}px filtered Reset target below 44px`)
+    if (result.resetRowFilteredRect?.height !== result.resetFilteredRect?.height) failures.push(`${result.viewport.width}px filtered Reset row reserves extra height`)
+    if (result.resetToHistoryGap < 16 || result.resetToHistoryGap > 32) failures.push(`${result.viewport.width}px filtered Reset/history gap: ${result.resetToHistoryGap}`)
     if (result.resetNavGap < 4) failures.push(`${result.viewport.width}px filtered Reset overlaps floating nav: ${result.resetNavGap}`)
     if (!result.resetKeyboardFocused || (result.resetFocus.boxShadow === 'none' && result.resetFocus.outline.includes('none'))) failures.push(`${result.viewport.width}px Reset keyboard focus is not visible`)
     if (!result.resetCleared) failures.push(`${result.viewport.width}px Reset did not restore All Status`)
@@ -186,7 +197,7 @@ try {
     if (result.overflowX > 0) failures.push(`${result.viewport.width}px horizontal overflow: ${result.overflowX}`)
     if (!result.exportWithinViewport) failures.push(`${result.viewport.width}px Export is outside the viewport`)
     if (!result.desktopResetVisible) failures.push(`${result.viewport.width}px desktop Reset is hidden`)
-    if (result.mobileSafeAreaVisible) failures.push(`${result.viewport.width}px mobile safe area should be hidden`)
+    if (result.mobileResetRowVisible) failures.push(`${result.viewport.width}px mobile Reset row should be hidden`)
     if (result.titleHeight > result.titleLineHeight * 1.2) failures.push(`${result.viewport.width}px Assets History title wrapped`)
   }
 
