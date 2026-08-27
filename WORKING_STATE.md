@@ -34,7 +34,7 @@ file, claim it here.
 
 - task_id: `genesis-news-podcast-mobile-cards-20260827`
 - owner: `star`
-- status: `local-validated`
+- status: `done`
 - scope_lock: `src/pages/news/PodcastView.tsx`,
   `e2e/news-podcast-mobile-cards-qa.mjs`, `WORKING_STATE.md`, `CHANGELOG.md`
 - request: TheZaya, Discord #star — reorganize the `10.02.2026` episode cards
@@ -73,9 +73,12 @@ file, claim it here.
   The component-specific browser gate is the automated accessibility check;
   axe is not installed in this repo or the shared Playwright runtime.
 - evidence: `e2e/news-podcast-mobile-cards-qa.mjs` and
-  `/home/clawd/genesis-news-podcast-mobile-cards.png`.
-- next_exact_action: review the scoped diff, rebase onto current `origin/main`,
-  push, deploy through Dokploy and rerun this same gate in production.
+  `/home/clawd/genesis-news-podcast-mobile-cards-production.png`.
+- delivery: commit `a6f932d` is on `origin/main`; Dokploy deployment
+  `SQQ5CJtJSPMaI_86c3H-T` finished `done` at 2026-08-27T20:26:22.483Z.
+  The production gate passed the same five viewports with zero failures and
+  9/9 critical plus SPA-fallback HTTP smokes returned 200.
+- next_exact_action: none; scope released.
 
 ## Active Task — My Streaming: Share button must open Share Account modal
 
