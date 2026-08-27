@@ -88,7 +88,7 @@ function FeaturedStream() {
     <GlassCard variant="light" divider="none" glow={false} rounded="18.563px" className="h-[561px] overflow-hidden" data-featured-stream>
       <img src="/images/streaming-chart.png" alt="EURUSD trading chart" className="absolute inset-0 size-full object-cover" />
       <div
-        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] flex-col items-start gap-4 rounded-[30px] border-0 bg-[rgba(12,19,17,0.24)] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.2)] backdrop-blur-[32px] backdrop-saturate-[135%] lg:flex-row lg:items-center lg:gap-0 lg:rounded-full lg:px-8 lg:py-0"
+        className="absolute inset-x-[19px] bottom-[26px] flex min-h-[111px] flex-col items-start gap-4 rounded-[30px] border-0 bg-[rgba(12,19,17,0.24)] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_48px_rgba(0,0,0,0.2)] backdrop-blur-[32px] backdrop-saturate-[135%] lg:flex-row lg:items-center lg:gap-4 lg:rounded-full lg:px-8 lg:py-0 2xl:gap-6"
         data-featured-stream-overlay
       >
         <div className="flex w-full min-w-0 items-center gap-5">
@@ -98,7 +98,7 @@ function FeaturedStream() {
             <p className="mt-2 truncate text-sm text-[#A0A0A0]">EURUSD</p>
           </div>
         </div>
-        <div className="flex shrink-0 flex-wrap gap-2 lg:ml-3 lg:mt-8">
+        <div className="flex shrink-0 flex-wrap gap-2">
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">Forex</span>
           <span className="theme-preserve-light rounded-full bg-[#09241C] px-4 py-2 text-sm text-white">English</span>
         </div>

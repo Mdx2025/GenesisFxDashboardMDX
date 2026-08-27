@@ -18,15 +18,47 @@ file, claim it here.
 
 ### Live ownership snapshot — 2026-08-27
 
-- `coder`: released. Referral-card action icons resting background shipped
-  (`genesis-links-action-circle-resting-bg-20260827`); `ModeToggle` long-label
-  track sizing shipped (`12b6358`). No uncommitted `src/` work left in this
-  tree.
+- `coder`: released. Streaming featured-stream badge/button alignment shipped
+  (`genesis-streaming-hero-badge-alignment-20260827`); referral-card action
+  icons resting background (`18e0f02`); `ModeToggle` long-label track sizing
+  (`12b6358`). No uncommitted `src/` work left in this tree.
 - `star`: released. Assets Management mobile and mobile tab-bar/sidebar shipped
   (`8665315`, `220e15f` on `main`); ModeToggle canonical mobile spacing shipped
   (`3182811`, `b562143`). No uncommitted `src/` work left in this tree.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
+
+## Active Task — Streaming hero: badge / button alignment
+
+- task_id: `genesis-streaming-hero-badge-alignment-20260827`
+- owner: `coder`
+- status: `done`
+- scope_lock: `src/pages/StreamingPage.tsx`, `WORKING_STATE.md`, `CHANGELOG.md`
+- report: TheZaya, Discord #coder — on `/streaming` the `Forex` / `English`
+  badges in the featured-stream overlay are not vertically centred with the
+  `Watch now` button and sit flush against it.
+- root_cause (measured live at 1024/1440/1920, not inferred): the overlay row is
+  `lg:items-center`, and `align-items: center` centres the **margin box**, so the
+  `lg:mt-8` on the badge wrapper pushes its content 16px (half of 32) below the
+  button centre — measured `verticalOffset: 16`. Separately the row is
+  `lg:gap-0` with a `w-full` first child, so the button's `lg:ml-auto` has zero
+  free space to distribute: measured `gapBadgesToButton: 0`, the `English` pill
+  literally touches the button.
+- mobile is unaffected: at 390 the row is `column` / `items-start` / `gap-16px`
+  with `marginTop: 0`.
+- implementation: dropped `lg:mt-8 lg:ml-3` from the badge wrapper so the row's
+  own `lg:items-center` takes effect, and replaced the row's `lg:gap-0` with
+  `lg:gap-4 2xl:gap-6`. Every class touched is breakpoint-prefixed, so the
+  mobile column layout is unchanged by construction.
+- why not a flat `gap-6`: the first child is `w-full`, so every pixel of gap is
+  taken from the truncating title. A flat 24px cost two extra characters of
+  `Stream Test` and clipped `EURUSD` at 1440. 16px up to `2xl` keeps the
+  subtitle whole and still separates the tags clearly; 24px only where the
+  overlay is actually wide enough to afford it.
+- local_validation: 4 viewports on the built bundle. Desktop 1024/1440/1920 →
+  `verticalOffset: 0` (was 16) and `gapBadgesToButton: 16/16/24` (was 0). Mobile
+  390 → `column`, `gap: 16px`, `overlayHeight: 222`, byte-identical to before.
+  0 runtime errors. Screenshots confirm tag/button baselines match.
 
 ## Active Task — Referral card action icons: resting background
 
