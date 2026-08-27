@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { GlassBannerCard } from './GlassBannerCard'
 import { GlassCard } from './GlassCard'
 import { GlowButton } from './GlowButton'
@@ -31,6 +32,8 @@ function ShareIcon() {
 }
 
 export function ChannelHeroCard() {
+  const navigate = useNavigate()
+
   return (
     <GlassBannerCard
       glowSrc={null}
@@ -48,7 +51,7 @@ export function ChannelHeroCard() {
         </div>
         <div className="flex flex-wrap items-center gap-3 xl:ml-auto">
           <SparkleButton className="!h-[46px] !min-w-[139px] !rounded-[30px] px-5"><ShareIcon />Share</SparkleButton>
-          <GlowButton label="Start streaming" icon={<StartStreamingIcon />} width={197} height={44} />
+          <GlowButton label="Start streaming" icon={<StartStreamingIcon />} width={197} height={44} onClick={() => navigate('/streaming/newstreaming')} />
         </div>
       </div>
     </GlassBannerCard>

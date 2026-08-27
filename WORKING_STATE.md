@@ -18,8 +18,9 @@ file, claim it here.
 
 ### Live ownership snapshot — 2026-08-27
 
-- `coder`: released. Streaming featured-stream badge/button alignment shipped
-  (`genesis-streaming-hero-badge-alignment-20260827`); referral-card action
+- `coder`: released. My Streaming `Start streaming` route shipped
+  (`genesis-mystreaming-start-button-route-20260827`); streaming
+  featured-stream badge/button alignment (`37e8ef1`); referral-card action
   icons resting background (`18e0f02`); `ModeToggle` long-label track sizing
   (`12b6358`). No uncommitted `src/` work left in this tree.
 - `star`: released. Assets Management mobile and mobile tab-bar/sidebar shipped
@@ -27,6 +28,34 @@ file, claim it here.
   (`3182811`, `b562143`). No uncommitted `src/` work left in this tree.
 - `artemis`: News / AI Analysis (`838337a`, deployed). No open scope; idle,
   awaiting assignment.
+
+## Active Task — My Streaming: Start streaming button has no route
+
+- task_id: `genesis-mystreaming-start-button-route-20260827`
+- owner: `coder`
+- status: `done`
+- scope_lock: `src/components/ui/MyStreaming.tsx`, `WORKING_STATE.md`,
+  `CHANGELOG.md`
+- report: TheZaya, Discord #coder — on `/streaming/mystreaming` the
+  `Start streaming` button should navigate to `/streaming/newstreaming`.
+- root_cause: `ChannelHeroCard` renders `GlowButton` with no `onClick`
+  (`MyStreaming.tsx:51`), so the control is inert. `GlowButton` already accepts
+  `onClick`; nothing was wired.
+- precedent: `/streaming` renders the byte-identical button (same label, icon,
+  `width=197`, `height=44`) at `StreamingPage.tsx:245-252` and it already
+  navigates to `/streaming/newstreaming`. The channel hero was the outlier.
+- decision: call `useNavigate` inside `ChannelHeroCard` rather than adding an
+  `onStartStreaming` prop. `src/components/ui` already contains router-aware
+  components (`FloatingNavBar.tsx`, `ActionItem.tsx`), and a prop for a single
+  call site would widen the component API for no gain.
+- blast_radius: `ChannelHeroCard` has two call sites, `MyStreamingPage` and the
+  `DesignSystemPage` showcase. Both render inside the router, so the hook is
+  safe in each; the showcase button becomes navigable too, which matches how
+  the same button behaves on `/streaming`.
+- local_validation: clicked the real button on the built bundle.
+  `/streaming/mystreaming` -> `/streaming/newstreaming`, target renders the
+  `Streamer application required` screen. Control case `/streaming` still
+  routes the same way. 0 runtime errors.
 
 ## Active Task — Streaming hero: badge / button alignment
 

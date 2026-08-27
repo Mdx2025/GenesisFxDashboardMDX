@@ -2,6 +2,8 @@
 
 ## 2026-08-27
 
+- Wired the `Start streaming` button in the My Streaming channel hero to the streamer application screen. The control rendered and reacted to hover but carried no click handler, so it went nowhere; it now routes to `/streaming/newstreaming`, matching the identical button already shipped on the streaming index.
+
 - Centred the `Forex` / `English` tags with the `Watch now` button in the streaming featured-stream overlay and gave them room to breathe. The tags carried a top margin inside a centre-aligned row, which offset them half a margin below the button, and the row distributed no space at all, so the last tag sat flush against the button. Tags and button now share one baseline and a consistent gap that widens on the largest screens. Mobile keeps its stacked layout unchanged.
 
 - Gave the QR, share, and copy actions in the partner referral-link card a resting background. They previously sat on the exact colour of the card behind them, so the controls only became visible on hover; they now rest on the accent surface and hover one step up the green scale, matching the same icon trio already shipped on `/partner`. Light theme keeps the glyphs white on the hovered accent fill instead of repainting them the accent colour itself.
