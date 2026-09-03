@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-03
+
+- Extended `/challenges/details-single-page` below `Performance Chart` with the supplied Account details ledger and Open Positions / Closed Trades activity card. Both surfaces reuse GenesisFX `GlassCard`, `SparkleButton`, Acid Grotesk, spacing, radius, and semantic color conventions; the ledger collapses to one column on mobile, the tabs support keyboard navigation, and Withdraw / Start Trading route to their registered flows. Added theme-aware positive, negative, and warning value tokens plus a repeatable responsive, contrast, focus, reduced-motion, zoom, axe, navigation, and runtime QA gate.
+
 ## 2026-08-27
 
 - Replaced the Challenge Details drawdown banner's bespoke `GlassCard` surface and duplicate glow layers with the canonical `GlassBannerCard`. Its drawdown values, progress bar, responsive spacing and metric semantics are unchanged; the banner now inherits the same border, glow asset and themed glass treatment as the rest of GenesisFX. The `100%` buffer value now uses a theme-aware bullish emphasis token so the green stays bright in dark mode and reaches AA contrast in light mode.

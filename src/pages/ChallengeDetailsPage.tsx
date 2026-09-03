@@ -1,6 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { TopBar } from '@/components/dashboard/TopBar'
-import { Badge, ChallengeDrawdownCard, ChallengeMetricCard, ChallengePerformanceCard, SparkleButton } from '@/components/ui'
+import {
+  Badge,
+  ChallengeAccountDetailsCard,
+  ChallengeDrawdownCard,
+  ChallengeMetricCard,
+  ChallengePerformanceCard,
+  ChallengeTradesCard,
+  SparkleButton,
+} from '@/components/ui'
 import { useSidebar } from '@/layouts/RootLayout'
 
 function BackArrowIcon() {
@@ -110,6 +118,10 @@ export default function ChallengeDetailsPage() {
         </div>
 
         <ChallengePerformanceCard />
+
+        <ChallengeAccountDetailsCard onWithdraw={() => navigate('/withdraw')} />
+
+        <ChallengeTradesCard onStartTrading={() => navigate('/tradelocker/accounts')} />
       </div>
     </div>
   )
