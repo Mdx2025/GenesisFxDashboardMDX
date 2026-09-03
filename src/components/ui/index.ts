@@ -44,7 +44,13 @@ export type { DownloadPlatform } from './DownloadInstall'
 export { PrimaryPillButton } from './PrimaryPillButton'
 export { ToggleSwitch } from './ToggleSwitch'
 export { SharePerformanceChart } from './SharePerformanceChart'
-export { ChallengeDrawdownCard, ChallengeMetricCard, ChallengePerformanceCard } from './ChallengeDetails'
+export {
+  ChallengeAccountDetailsCard,
+  ChallengeDrawdownCard,
+  ChallengeMetricCard,
+  ChallengePerformanceCard,
+  ChallengeTradesCard,
+} from './ChallengeDetails'
 export {
   LeaderboardAvatar,
   LeaderboardPodium,

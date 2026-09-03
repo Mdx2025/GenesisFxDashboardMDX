@@ -1341,3 +1341,60 @@ Required evidence labels: `build`, `typography`, `contrast`, `responsive`, `keyb
 - validation_evidence: Vite build 293 modules; hero 1549×279 at x343/y143.8; cards 842×566, 691×283, 691×265; Terms 677×704 with 519×331 copy panel; Permissions 677×643 with three 520×91 rows; zero runtime errors and failed responses.
 - next_exact_action: refresh Graphify, review final diff, commit, rebase/push origin/main, redeploy Dokploy, and rerun production QA.
 - blockers: none.
+# Challenge account details extension — 2026-09-03
+
+```yaml
+owner: matrix
+thread_anchor: webchat-direct-2026-09-03
+target:
+  repo: /home/clawd/.openclaw/workspace/GenesisFxDashboardMDX
+  route: /challenges/details-single-page
+phase: done
+design_route:
+  surface: dashboard
+  archetype: analytics
+  pattern_pack: pattern-analytics-dashboard
+  evidence: screenshot + production URL + codebase
+  style: existing GenesisFX dark financial glass system
+visual_thesis: Extend the challenge drill-down with a compact trading ledger and actionable empty-state surface that feels native to GenesisFX rather than copied from the reference.
+dials:
+  density: compact-comfortable
+  contrast: high for values, restrained for labels
+  depth: existing single-layer glass
+  radius: canonical 19px cards and pill controls
+  motion: state transitions only; content remains complete without motion
+locked_decisions:
+  - Insert Account details and trade activity immediately after Performance Chart.
+  - Preserve the reference information architecture and exact supplied copy.
+  - Translate visual styling through existing GlassCard, SparkleButton, font-acid, and gfx semantic tokens.
+next_exact_action: Await review; commit, push, and deploy only when explicitly requested.
+definition_of_done:
+  - Build passes.
+  - Account details and both tab states render below Performance Chart.
+  - Responsive, keyboard, focus, reduced-motion, typography, contrast, axe, and runtime checks pass.
+  - Final implementation is compared directly with the supplied screenshot.
+assets: not_applicable — the request uses no load-bearing media; the screenshot is evidence only.
+quality_contract:
+  target: WCAG 2.2 AA
+  typography_floor: 12px supplementary UI text; 14px compact body; 16px preferred body
+  contrast: 4.5:1 normal text; 3:1 large text and UI components
+  viewports: 390x844, 1024x768, 1536x960, plus 200% zoom
+  interaction: keyboard, focus, tab selection, reduced motion
+  evidence: computed styles + browser checks + axe + console/page/request review + pnpm build
+```
+
+Validation evidence:
+
+- `reference-map`: independent verifier PASS; mechanical prebuild gate PASS for `docs/challenge-account-details-reference-map-2026-09-03.md`.
+- `build`: `pnpm build` PASS; TypeScript and Vite completed with 890 modules.
+- `responsive`: PASS at dark 390×844, 1024×768, 1536×960 and light 390×844, 1536×960; zero horizontal overflow; one-column ledger at 390 and two-column ledger from 1024; 16px section gaps.
+- `typography`: zero visible text below 12px in the two added cards.
+- `contrast`: minimum measured value text 6.14:1; labels 7.49:1 dark / 7.53:1 light; amber banner 7.15:1; inactive tabs 7.49:1 dark / 12.56:1 light.
+- `keyboard-focus`: ArrowRight and Home select/focus the expected tab; computed 2px green focus outline/inset ring is visible.
+- `reduced-motion`: media query matched; both cards remained visible and tabs operable.
+- `zoom`: 200% CSS zoom at a 780px viewport produced zero document overflow and kept both cards contained.
+- `automated-a11y`: axe 4.10.3 reported zero violations across both added cards.
+- `navigation`: `Start Trading` reached `/tradelocker/accounts`; Account details `Withdraw` reached `/withdraw`.
+- `runtime-errors`: zero page errors and zero failed responses.
+- `fidelity`: final screenshot `/home/clawd/genesis-challenge-account-details-final.png` compared in the same turn with the supplied 1519×790 screenshot; ledger hierarchy, amber banner, tab underline, empty-state centering, and compact proportions match while using GenesisFX tokens/components.
+- `delivery`: no commit, push, or deployment performed.

@@ -140,6 +140,9 @@
   --color-gfx-warning: #e29d58;
   --color-gfx-danger: #ff4d6a;
   --color-gfx-info: #5b9cf5;
+  --color-gfx-value-positive: #37C92E;
+  --color-gfx-value-negative: #ff717e;
+  --color-gfx-value-warning: #e29d58;
 
   /* Purple / AI Coach palette */
   --color-gfx-purple-bg: #090414;
@@ -341,6 +344,9 @@
   --color-gfx-surface-raised: #fff;
   --color-gfx-surface-raised-border: #ECECEC;
   --color-gfx-bullish-emphasis: #007A61;
+  --color-gfx-value-positive: #005a47;
+  --color-gfx-value-negative: #8f2420;
+  --color-gfx-value-warning: #6f3900;
   --shadow-md: 0 12px 34px rgba(8, 39, 29, 0.1);
   --shadow-lg: 0 20px 54px rgba(8, 39, 29, 0.13);
   --shadow-xl: 0 24px 72px rgba(8, 39, 29, 0.16);
