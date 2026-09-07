@@ -308,6 +308,8 @@ function MarketingFeatureSwiper() {
 }
 
 function PartnerWalletCard() {
+  const navigate = useNavigate()
+
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6">
@@ -320,7 +322,7 @@ function PartnerWalletCard() {
           </div>
           <p className="text-gfx-neutral-500 text-sm font-acid">$0.00</p>
         </div>
-        <SparkleButton fullWidth>Request Payout</SparkleButton>
+        <SparkleButton fullWidth onClick={() => navigate('/partner/payouts')}>Request Payout</SparkleButton>
       </div>
     </GlassCard>
   )
