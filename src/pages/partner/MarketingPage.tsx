@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SearchInput, GlowEllipse, ModeToggle, SparkleButton } from '@/components/ui'
 import { PartnerQrCodeIcon, PartnerShareIcon, PartnerCopyIcon } from '@/components/partner/shared'
 
 const TABS = ['Marketing Library', 'Landing Pages', 'Referral Links']
+/** `?tab=landing-pages` deep-links straight to a tab; anything else falls back to the first one. */
+const TAB_SLUGS = TABS.map((tab) => tab.toLowerCase().replace(/\s+/g, '-'))
 
 interface Material {
   type: 'image' | 'video' | 'document'
@@ -76,7 +79,9 @@ const GRID_COLS = 'grid-cols-[3rem_minmax(8rem,1.2fr)_minmax(5rem,0.8fr)_minmax(
 
 export default function MarketingPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
-  const [activeTabIndex, setActiveTabIndex] = useState(0)
+  const [searchParams] = useSearchParams()
+  const requestedTabIndex = TAB_SLUGS.indexOf(searchParams.get('tab') ?? '')
+  const [activeTabIndex, setActiveTabIndex] = useState(requestedTabIndex === -1 ? 0 : requestedTabIndex)
   const [search, setSearch] = useState('')
 
   const breadcrumbItems = [
