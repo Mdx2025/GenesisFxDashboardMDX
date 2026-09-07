@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, SearchInput, GlowEllipse, ModeToggle, SparkleButton } from '@/components/ui'
@@ -78,6 +78,7 @@ function DownloadButton() {
 const GRID_COLS = 'grid-cols-[3rem_minmax(8rem,1.2fr)_minmax(5rem,0.8fr)_minmax(12rem,2fr)_minmax(8rem,1fr)]'
 
 export default function MarketingPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [searchParams] = useSearchParams()
   const requestedTabIndex = TAB_SLUGS.indexOf(searchParams.get('tab') ?? '')
@@ -166,7 +167,7 @@ export default function MarketingPage() {
                       <span className="text-xs font-acid text-[#808080] leading-[18.8px] truncate">https://dashboard.genesisfxmarkets.com/a</span>
                     </div>
 
-                    <SparkleButton fullWidth>View Comission Rates</SparkleButton>
+                    <SparkleButton fullWidth onClick={() => navigate('/partner/comissions')}>View Comission Rates</SparkleButton>
                   </div>
                 </GlassCard>
               </div>

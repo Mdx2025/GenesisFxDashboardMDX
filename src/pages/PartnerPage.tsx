@@ -329,6 +329,8 @@ function PartnerWalletCard() {
 }
 
 function ReferralLinkCard() {
+  const navigate = useNavigate()
+
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden">
       <div className="relative p-6">
@@ -361,7 +363,7 @@ function ReferralLinkCard() {
           value="https://dashboard.genesisfxmarkets.com/a"
         />
 
-        <SparkleButton fullWidth>View Commission Rates</SparkleButton>
+        <SparkleButton fullWidth onClick={() => navigate('/partner/comissions')}>View Commission Rates</SparkleButton>
       </div>
     </GlassCard>
   )

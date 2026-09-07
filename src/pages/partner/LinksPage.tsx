@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/layouts/RootLayout'
 import { TopBar } from '@/components/dashboard/TopBar'
 import { GlassCard, GlowEllipse, SparkleButton } from '@/components/ui'
@@ -32,6 +33,7 @@ function ActionCircle({ children, label, onClick }: { children: React.ReactNode;
 }
 
 export default function LinksPage() {
+  const navigate = useNavigate()
   const { sidebarOpen, setSidebarOpen } = useSidebar()
 
   const breadcrumbItems = [
@@ -101,7 +103,7 @@ export default function LinksPage() {
                     </span>
                   </div>
 
-                  <SparkleButton fullWidth>View Commission Rates</SparkleButton>
+                  <SparkleButton fullWidth onClick={() => navigate('/partner/comissions')}>View Commission Rates</SparkleButton>
                 </GlassCard>
               </div>
             </div>
