@@ -147,6 +147,8 @@ function NarrativeCard({ title, body }: { title: string; body: string }) {
 
 export default function AiAnalysisView() {
   const [asset, setAsset] = useState(0)
+  const [symbol, setSymbol] = useState('')
+  const canAnalyze = symbol.trim().length > 0
 
   return (
     <div className="flex flex-col gap-5">
@@ -160,8 +162,17 @@ export default function AiAnalysisView() {
           ))}
         </div>
         <div className="flex w-full min-w-0 items-center gap-1.5 sm:w-auto">
-          <SearchInput placeholder="Search markets" ariaLabel="Search markets" className="min-w-0 flex-1 sm:w-[287px] sm:flex-none" />
-          <SparkleButton className="!h-[2.875rem] !w-[130px] sm:!w-[173px] !min-w-0 !rounded-3xl shrink-0">
+          <SearchInput
+            placeholder="Symbol"
+            ariaLabel="Symbol"
+            value={symbol}
+            onChange={setSymbol}
+            className="min-w-0 flex-1 sm:w-[287px] sm:flex-none"
+          />
+          <SparkleButton
+            className="!h-[2.875rem] !w-[130px] sm:!w-[173px] !min-w-0 !rounded-3xl shrink-0"
+            disabled={!canAnalyze}
+          >
             <AnalyzeIcon />
             Analyze
           </SparkleButton>

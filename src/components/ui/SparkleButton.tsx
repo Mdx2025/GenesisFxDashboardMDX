@@ -8,7 +8,7 @@ interface SparkleButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 export function SparkleButton({ children, fullWidth, className, type = 'button', ...props }: SparkleButtonProps) {
   return (
     <button
-      className={`sparkle-button min-w-12 ${fullWidth ? 'w-full' : 'w-auto sm:w-auto'} h-12 ${className ?? 'px-6'} relative overflow-hidden cursor-pointer group focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded-2xl [[data-theme=light]_&]:h-[2.875rem] [[data-theme=light]_&]:px-[1.375rem] [[data-theme=light]_&]:py-[0.875rem] [[data-theme=light]_&]:rounded-[1.875rem] [[data-theme=light]_&]:bg-[linear-gradient(0deg,#fff_29%,#F1FFFA_88%)] [[data-theme=light]_&]:border [[data-theme=light]_&]:border-[#9FE4CD]`}
+      className={`sparkle-button min-w-12 ${fullWidth ? 'w-full' : 'w-auto sm:w-auto'} h-12 ${className ?? 'px-6'} relative overflow-hidden cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 group focus-visible:ring-2 focus-visible:ring-gfx-green-500 focus-visible:outline-none rounded-2xl [[data-theme=light]_&]:h-[2.875rem] [[data-theme=light]_&]:px-[1.375rem] [[data-theme=light]_&]:py-[0.875rem] [[data-theme=light]_&]:rounded-[1.875rem] [[data-theme=light]_&]:bg-[linear-gradient(0deg,#fff_29%,#F1FFFA_88%)] [[data-theme=light]_&]:border [[data-theme=light]_&]:border-[#9FE4CD]`}
       type={type}
       {...props}
     >
