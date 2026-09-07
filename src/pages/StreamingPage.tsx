@@ -140,6 +140,7 @@ function ChatPanel() {
 
 function HomeState({ onFollow }: { onFollow: (username: string) => void }) {
   const categorySwiper = useRef<SwiperType | null>(null)
+  const navigate = useNavigate()
 
   return (
     <div data-streaming-home>
@@ -160,7 +161,7 @@ function HomeState({ onFollow }: { onFollow: (username: string) => void }) {
         <GlassBannerCard className="min-h-[217px]" contentClassName="flex min-h-[217px] flex-col items-start gap-6 px-10 py-8 sm:px-16 lg:flex-row lg:items-center">
           <span className="relative grid size-[79px] shrink-0 place-items-center rounded-[18px] border border-gfx-green-200 bg-gfx-green-800 text-4xl text-gfx-green-300">♕</span>
           <div className="relative lg:ml-3"><h2 className="text-[30px] text-white">Win $10,000 Cash Prize</h2><p className="mt-5 text-xl text-gfx-neutral-400">Stream live • Compete • Get Paid</p></div>
-          <GlowButton className="relative lg:ml-auto" width={180} label="Enter Now" />
+          <GlowButton className="relative lg:ml-auto" width={180} label="Enter Now" onClick={() => navigate('/streaming/newstreaming')} />
         </GlassBannerCard>
       </section>
       <section className="mt-[74px]"><SectionHeading count="1">Live channels</SectionHeading><div className="mt-9"><StreamCard onFollow={onFollow} /></div></section>

@@ -2,6 +2,8 @@
 
 ## 2026-09-07
 
+- Pointed the `/streaming` prize banner's `Enter Now` button at `/streaming/newstreaming`. The `Win $10,000 Cash Prize` banner is the page's pitch to become a streamer, but its `GlowButton` was rendered without an `onClick`, so the call to action went nowhere while the header's `Start streaming` button next to it already routed to the same application flow. `HomeState` now takes `useNavigate` the way `MyStreaming` does and sends the click to the registered `/streaming/newstreaming` route, so both entry points into the streamer application agree.
+
 - Wired the Journal `Replay` tab's `Select trade` button to the `Trades` tab. The `Trade Replay` card advertised the only active flow in `Replay`, but its `GlowButton` was rendered without an `onClick`, so the one entry point into a replay was inert — the other two cards at least say `Coming soon`. `ReplayView` now takes an optional `onSelectTrade` callback that `JournalPage` binds to its own tab state, so the click lands on the `Trades` tab where a trade is picked. The target index is resolved from `journalTabs` (`journalTabs.indexOf('Trades')`) instead of a hardcoded `4`, so reordering the tab list cannot silently point the button at the wrong view. `ModeToggle` was already controlled through `activeIndex`, so the selection pill animates onto `Trades` with no change to that component.
 
 ## 2026-09-03
