@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState, type FormEvent } from 'react'
 import {
   AnalysisCard,
   AnalysisMetricCard,
@@ -15,41 +15,61 @@ import {
 import { PriceChangeBarChart } from '@/components/charts/PriceChangeBarChart'
 import {
   AI_ANALYSIS_ASSETS,
-  aiAnalysisPriceChanges,
-  aiAnalysisFundamental,
-  aiAnalysisKeyLevels,
-  aiAnalysisMetrics,
-  aiAnalysisQuote,
-  aiAnalysisRange,
-  aiAnalysisSentiment,
-  aiAnalysisSignals,
-  aiAnalysisTechnical,
-  aiAnalysisTradeIdea,
+  buildAiAnalysis,
+  normalizeSymbol,
+  type AiAnalysisDataset,
+  type AiAnalysisQuote,
+  type AiAnalysisSentiment,
+  type AiAnalysisSignal,
+  type AiAnalysisTradeIdea,
 } from '@/data/aiAnalysis'
 
-function QuoteCard() {
+const DEFAULT_SYMBOL = AI_ANALYSIS_ASSETS[0]
+
+/** Stand-in tile for instruments that ship no flag artwork. */
+function SymbolMonogram({ symbol }: { symbol: string }) {
+  return (
+    <span
+      className="flex h-[80.5px] w-[87px] shrink-0 items-center justify-center rounded-[15px] bg-gfx-green-900 text-white text-xl font-acid leading-none"
+      aria-hidden="true"
+    >
+      {symbol.slice(0, 3)}
+    </span>
+  )
+}
+
+function QuoteCard({ quote, sentiment }: { quote: AiAnalysisQuote; sentiment: AiAnalysisSentiment }) {
   return (
     <AnalysisCard glow="top-center">
       <div className="flex min-h-[293px] flex-col items-center justify-center gap-8 px-[51px] py-8 xl:flex-row xl:justify-between xl:gap-6">
         <div className="flex items-center gap-4">
-          <img
-            src={aiAnalysisQuote.flag}
-            alt=""
-            className="h-[80.5px] w-[87px] shrink-0 rounded-[15px] object-cover"
-            loading="lazy"
-          />
+          {quote.flag ? (
+            <img src={quote.flag} alt="" className="h-[80.5px] w-[87px] shrink-0 rounded-[15px] object-cover" loading="lazy" />
+          ) : (
+            <SymbolMonogram symbol={quote.symbol} />
+          )}
           <div className="flex flex-col gap-[13px]">
             <div className="flex items-center gap-[9px]">
-              <span className="text-white text-2xl font-acid leading-none">{aiAnalysisQuote.symbol}</span>
+              <span className="text-white text-2xl font-acid leading-none" data-testid="quote-symbol">
+                {quote.symbol}
+              </span>
               <span className="inline-flex h-[30px] items-center rounded-[20px] bg-gfx-green-900 px-2.5 text-gfx-neutral-400 text-body1 font-acid leading-none">
-                {aiAnalysisQuote.market}
+                {quote.market}
               </span>
             </div>
             <div className="flex items-end gap-[13px]">
-              <span className="text-white text-h1 font-acid leading-none">{aiAnalysisQuote.price}</span>
-              <span className="ai-signal-pill ai-signal-pill--success inline-flex h-[26px] shrink-0 items-center gap-[7px] whitespace-nowrap rounded-[32px] px-2 text-base font-medium font-acid leading-none">
-                <TrendUpIcon size={21.5} />
-                {aiAnalysisQuote.change}
+              <span className="text-white text-h1 font-acid leading-none" data-testid="quote-price">
+                {quote.price}
+              </span>
+              <span
+                className={`ai-signal-pill ${
+                  quote.up ? 'ai-signal-pill--success' : 'ai-signal-pill--danger'
+                } inline-flex h-[26px] shrink-0 items-center gap-[7px] whitespace-nowrap rounded-[32px] px-2 text-base font-medium font-acid leading-none`}
+              >
+                <span className={quote.up ? 'flex' : 'flex -scale-y-100'}>
+                  <TrendUpIcon size={21.5} />
+                </span>
+                {quote.change}
               </span>
             </div>
           </div>
@@ -57,18 +77,27 @@ function QuoteCard() {
 
         <QuoteSparkline className="h-[115px] w-[222px] shrink-0" />
 
-        <SentimentGauge {...aiAnalysisSentiment} />
+        <SentimentGauge
+          {...sentiment}
+          verdictClassName={
+            sentiment.verdict === 'Buy'
+              ? 'text-gfx-bullish-light'
+              : sentiment.verdict === 'Neutral'
+                ? 'text-gfx-neutral-400'
+                : 'text-gfx-red-muted'
+          }
+        />
       </div>
     </AnalysisCard>
   )
 }
 
-function TechnicalSignalsCard() {
+function TechnicalSignalsCard({ signals }: { signals: AiAnalysisSignal[] }) {
   return (
     <AnalysisCard>
       <div className="flex flex-col gap-[13px] px-7 py-[23px]">
         <h3 className="text-gfx-neutral-400 text-base font-medium font-acid leading-[24.44px]">TECHNICAL SIGNALS</h3>
-        {aiAnalysisSignals.map(signal => (
+        {signals.map(signal => (
           <div key={signal.name} className="flex items-center justify-between gap-3">
             <span className="text-gfx-neutral-550 text-base font-medium font-acid leading-[24.44px]">{signal.name}</span>
             <span className="flex items-center gap-[9px]">
@@ -82,14 +111,14 @@ function TechnicalSignalsCard() {
   )
 }
 
-function KeyLevelsCard() {
+function KeyLevelsCard({ keyLevels }: { keyLevels: AiAnalysisDataset['keyLevels'] }) {
   return (
     <AnalysisCard>
       <div className="flex flex-col gap-[13px] px-7 py-[23px]">
         <h3 className="text-gfx-neutral-400 text-base font-medium font-acid leading-[24.44px]">KEY LEVELS</h3>
         <p className="text-gfx-red-muted text-base font-medium font-acid leading-[24.44px]">Resistance</p>
         <div className="flex flex-wrap items-center gap-2.5">
-          {aiAnalysisKeyLevels.resistance.map(level => (
+          {keyLevels.resistance.map(level => (
             <SignalPill key={level} tone="danger" wide>
               {level}
             </SignalPill>
@@ -97,7 +126,7 @@ function KeyLevelsCard() {
         </div>
         <p className="mt-[11px] text-gfx-bullish-light text-base font-medium font-acid leading-[24.44px]">Support</p>
         <div className="flex flex-wrap items-center gap-2.5">
-          {aiAnalysisKeyLevels.support.map(level => (
+          {keyLevels.support.map(level => (
             <SignalPill key={level} tone="success" wide>
               {level}
             </SignalPill>
@@ -108,11 +137,11 @@ function KeyLevelsCard() {
   )
 }
 
-function TradeIdeaCard() {
+function TradeIdeaCard({ tradeIdea }: { tradeIdea: AiAnalysisTradeIdea }) {
   const sections = [
-    { title: 'Entry', titleClass: 'text-white', body: aiAnalysisTradeIdea.entry },
-    { title: 'Stop', titleClass: 'text-gfx-red-muted', body: aiAnalysisTradeIdea.stop },
-    { title: 'Target', titleClass: 'text-gfx-bullish-light', body: aiAnalysisTradeIdea.target },
+    { title: 'Entry', titleClass: 'text-white', body: tradeIdea.entry },
+    { title: 'Stop', titleClass: 'text-gfx-red-muted', body: tradeIdea.stop },
+    { title: 'Target', titleClass: 'text-gfx-bullish-light', body: tradeIdea.target },
   ]
   return (
     <AnalysisCard>
@@ -120,7 +149,7 @@ function TradeIdeaCard() {
         <div className="flex items-center gap-[9px]">
           <h3 className="text-white text-base font-medium font-acid leading-[24.44px]">Trade Idea</h3>
           <span className="inline-flex h-[31px] items-center rounded-[32px] bg-gfx-green-900 px-2.5 text-gfx-neutral-400 text-base font-medium font-acid leading-none">
-            {aiAnalysisTradeIdea.direction}
+            {tradeIdea.direction}
           </span>
         </div>
         {sections.map(section => (
@@ -146,61 +175,78 @@ function NarrativeCard({ title, body }: { title: string; body: string }) {
 }
 
 export default function AiAnalysisView() {
-  const [asset, setAsset] = useState(0)
-  const [symbol, setSymbol] = useState('')
-  const canAnalyze = symbol.trim().length > 0
+  const [activeSymbol, setActiveSymbol] = useState<string>(DEFAULT_SYMBOL)
+  const [query, setQuery] = useState('')
+  const canAnalyze = query.trim().length > 0
+
+  const analysis = useMemo(() => buildAiAnalysis(activeSymbol), [activeSymbol])
+
+  // A searched instrument that is not one of the defaults joins the pill row,
+  // so the toolbar keeps showing what is actually on screen.
+  const assets = useMemo(
+    () => (AI_ANALYSIS_ASSETS.some(asset => asset === activeSymbol) ? [...AI_ANALYSIS_ASSETS] : [...AI_ANALYSIS_ASSETS, activeSymbol]),
+    [activeSymbol],
+  )
+
+  // Submit instead of a bare click so Enter in the field analyses too.
+  const handleAnalyze = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const next = normalizeSymbol(query)
+    if (next) setActiveSymbol(next)
+  }
 
   return (
     <div className="flex flex-col gap-5">
       {/* Toolbar: instrument selector, search and analyze */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-[5px]">
-          {AI_ANALYSIS_ASSETS.map((symbol, index) => (
-            <AssetPill key={symbol} selected={index === asset} onClick={() => setAsset(index)}>
+          {assets.map(symbol => (
+            <AssetPill key={symbol} selected={symbol === activeSymbol} onClick={() => setActiveSymbol(symbol)}>
               {symbol}
             </AssetPill>
           ))}
         </div>
-        <div className="flex w-full min-w-0 items-center gap-1.5 sm:w-auto">
+        <form onSubmit={handleAnalyze} className="flex w-full min-w-0 items-center gap-1.5 sm:w-auto">
           <SearchInput
             placeholder="Symbol"
             ariaLabel="Symbol"
-            value={symbol}
-            onChange={setSymbol}
+            value={query}
+            onChange={setQuery}
             className="min-w-0 flex-1 sm:w-[287px] sm:flex-none"
           />
           <SparkleButton
+            type="submit"
             className="!h-[2.875rem] !w-[130px] sm:!w-[173px] !min-w-0 !rounded-3xl shrink-0"
             disabled={!canAnalyze}
           >
             <AnalyzeIcon />
             Analyze
           </SparkleButton>
-        </div>
+        </form>
       </div>
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[2.04fr_1fr]">
         {/* Quote, price chart and the long-form read */}
         <div className="flex flex-col gap-5">
-          <QuoteCard />
+          <QuoteCard quote={analysis.quote} sentiment={analysis.sentiment} />
 
           <AnalysisCard glow="none" className="h-[260px] p-5 sm:h-[320px] sm:p-6">
             <PriceChangeBarChart
-              data={aiAnalysisPriceChanges}
-              ariaLabel={`${aiAnalysisQuote.symbol} 1 hour price change per bar`}
+              data={analysis.priceChanges}
+              ariaLabel={`${analysis.quote.symbol} 1 hour price change per bar`}
             />
           </AnalysisCard>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            <NarrativeCard title="Technical" body={aiAnalysisTechnical} />
-            <NarrativeCard title="Fundamental" body={aiAnalysisFundamental} />
+            <NarrativeCard title="Technical" body={analysis.technical} />
+            <NarrativeCard title="Fundamental" body={analysis.fundamental} />
           </div>
         </div>
 
         {/* Indicator rail */}
         <div className="flex flex-col gap-5">
           <div className="grid grid-cols-2 gap-5">
-            {aiAnalysisMetrics.map((metric, index) => (
+            {analysis.metrics.map((metric, index) => (
               <AnalysisMetricCard
                 key={`${metric.label}-${index}`}
                 label={metric.label}
@@ -210,10 +256,10 @@ export default function AiAnalysisView() {
               />
             ))}
           </div>
-          <RangeMeter {...aiAnalysisRange} />
-          <TechnicalSignalsCard />
-          <KeyLevelsCard />
-          <TradeIdeaCard />
+          <RangeMeter {...analysis.range} />
+          <TechnicalSignalsCard signals={analysis.signals} />
+          <KeyLevelsCard keyLevels={analysis.keyLevels} />
+          <TradeIdeaCard tradeIdea={analysis.tradeIdea} />
         </div>
       </div>
     </div>
