@@ -19,9 +19,10 @@ interface ReplayCardProps {
   description: string
   illustration: string
   active?: boolean
+  onSelect?: () => void
 }
 
-function ReplayCard({ title, description, illustration, active }: ReplayCardProps) {
+function ReplayCard({ title, description, illustration, active, onSelect }: ReplayCardProps) {
   return (
     <GlassCard variant="light" divider="none" rounded="19px" className="overflow-hidden flex-1 min-w-0">
       <div className="flex flex-col items-center pt-0 pb-8 px-9 h-[26.1875rem]">
@@ -52,6 +53,7 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
               width="100%"
               height={44}
               radius={300}
+              onClick={onSelect}
             />
           ) : (
             <div className="w-full max-w-[24.1875rem] h-11 rounded-full border border-gfx-neutral-250 flex items-center justify-center">
@@ -66,7 +68,12 @@ function ReplayCard({ title, description, illustration, active }: ReplayCardProp
 
 /* ─── Main Component ─── */
 
-export default function ReplayView() {
+interface ReplayViewProps {
+  /** Sends the user to the Journal `Trades` tab, where a trade is picked to replay. */
+  onSelectTrade?: () => void
+}
+
+export default function ReplayView({ onSelectTrade }: ReplayViewProps) {
   return (
     <div className="flex flex-col gap-4">
       {/* Header Card */}
@@ -95,6 +102,7 @@ export default function ReplayView() {
           description="Replay individual trades candle-by-candle with entry/exit markers and P&L tracking"
           illustration="/images/replay/trade-replay-v2.png"
           active
+          onSelect={onSelectTrade}
         />
         <ReplayCard
           title="Day Replay"

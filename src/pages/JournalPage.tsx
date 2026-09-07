@@ -263,6 +263,8 @@ function StatCard({ label, children }: { label: string; children: React.ReactNod
 
 /* ─── Main Page ─── */
 
+const TRADES_TAB_INDEX = journalTabs.indexOf('Trades')
+
 export default function JournalPage() {
   const { sidebarOpen, setSidebarOpen } = useSidebar()
   const [activeTab, setActiveTab] = useState(0)
@@ -444,7 +446,9 @@ export default function JournalPage() {
             onNewFolder={() => setNewFolderOpen(true)}
           />
         )}
-        {activeTab === 6 && <ReplayView />}
+        {activeTab === 6 && (
+          <ReplayView onSelectTrade={() => setActiveTab(TRADES_TAB_INDEX)} />
+        )}
 
       </div>
 

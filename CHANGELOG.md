@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-07
+
+- Wired the Journal `Replay` tab's `Select trade` button to the `Trades` tab. The `Trade Replay` card advertised the only active flow in `Replay`, but its `GlowButton` was rendered without an `onClick`, so the one entry point into a replay was inert — the other two cards at least say `Coming soon`. `ReplayView` now takes an optional `onSelectTrade` callback that `JournalPage` binds to its own tab state, so the click lands on the `Trades` tab where a trade is picked. The target index is resolved from `journalTabs` (`journalTabs.indexOf('Trades')`) instead of a hardcoded `4`, so reordering the tab list cannot silently point the button at the wrong view. `ModeToggle` was already controlled through `activeIndex`, so the selection pill animates onto `Trades` with no change to that component.
+
 ## 2026-09-03
 
 - Extended `/challenges/details-single-page` below `Performance Chart` with the supplied Account details ledger and Open Positions / Closed Trades activity card. Both surfaces reuse GenesisFX `GlassCard`, `SparkleButton`, Acid Grotesk, spacing, radius, and semantic color conventions; the ledger collapses to one column on mobile, the tabs support keyboard navigation, and Withdraw / Start Trading route to their registered flows. Added theme-aware positive, negative, and warning value tokens plus a repeatable responsive, contrast, focus, reduced-motion, zoom, axe, navigation, and runtime QA gate.
